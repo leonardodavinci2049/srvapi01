@@ -63,3 +63,4 @@ ecosystem.config.js
 .github/copilot-instructions.md
 /generated/prisma
 /upload
+/flow
