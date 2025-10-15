@@ -17,20 +17,6 @@ export interface SpOperationResult {
   changedRows: number;
 }
 
-export interface tblAccountConfigRecords extends RowDataPacket {
-  ID_CLIENTE: number;
-  ID_LOJA?: number;
-  NOME?: string;
-  PATH_IMAGEM?: string;
-  EMAIL_DE_LOGIN?: string;
-  ID_THEMA?: number;
-  EMAIL_NOTIFICATIONS?: number;
-  SMS_NOTIFICATIONS?: number;
-  WHATSAPP_NOTIFICATIONS?: number;
-  PUSH_NOTIFICATIONS?: number;
-  DATADOCADASTRO?: Date;
-}
-
 export interface tblStatisticsRecords extends RowDataPacket {
   ID_CLIENTE?: number;
   CLIENTE?: string;
