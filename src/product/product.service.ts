@@ -1,14 +1,15 @@
 import { Injectable } from '@nestjs/common';
 
-import { FindProductDto } from './dto/find-product.dto';
-import { findProductQuery } from './query/find-product.query';
+import { findProductQuery } from './query/product_find.query';
 import { DatabaseService } from 'src/database/database.service';
 import { SpProductIdData, SpResultData } from './types/product.type';
 import { resultQueryData } from 'src/core/utils/globalResult/global.result';
 import { ResultModel } from 'src/core/utils/result.model';
 import { MESSAGES } from 'src/core/utils/constants/globalConstants';
-import { FindProductIdDto } from './dto/id-product.dto';
-import { findProductIdQuery } from './query/id-product.query';
+
+import { findProductIdQuery } from './query/product-find-id.query';
+import { ProductFindDto } from './dto/product-find.dto';
+import { ProductFindIdDto } from './dto/product-find_id.dto';
 
 @Injectable()
 export class ProductService {
@@ -18,7 +19,7 @@ export class ProductService {
     return 'This action adds a new product';
   }
 
-  async findProduct(dataJsonDto: FindProductDto) {
+  async findProduct(dataJsonDto: ProductFindDto) {
     try {
       const queryString = findProductQuery(dataJsonDto);
 
@@ -49,7 +50,7 @@ export class ProductService {
     }
   }
 
-  async findProductId(dataJsonDto: FindProductIdDto) {
+  async findProductId(dataJsonDto: ProductFindIdDto) {
     try {
       const queryString = findProductIdQuery(dataJsonDto);
 

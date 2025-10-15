@@ -10,9 +10,10 @@ import {
 } from '@nestjs/common';
 import { ProductService } from './product.service';
 
-import { FindProductDto } from './dto/find-product.dto';
 import { AuthGuard } from 'src/core/guards/auth.guard';
-import { FindProductIdDto } from './dto/id-product.dto';
+
+import { ProductFindDto } from './dto/product-find.dto';
+import { ProductFindIdDto } from './dto/product-find_id.dto';
 
 @Controller('product')
 export class ProductController {
@@ -40,13 +41,13 @@ export class ProductController {
 
   @UseGuards(AuthGuard)
   @Post('v1/find-product')
-  findProduct(@Body() dataJsonDto: FindProductDto) {
+  findProduct(@Body() dataJsonDto: ProductFindDto) {
     return this.productService.findProduct(dataJsonDto);
   }
 
   @UseGuards(AuthGuard)
   @Post('v1/find-product-id')
-  findProductId(@Body() dataJsonDto: FindProductIdDto) {
+  findProductId(@Body() dataJsonDto: ProductFindIdDto) {
     return this.productService.findProductId(dataJsonDto);
   }
 

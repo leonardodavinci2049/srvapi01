@@ -2,6 +2,11 @@ import { ApiProperty } from '@nestjs/swagger';
 import { IsNotEmpty, IsString, IsInt } from 'class-validator';
 
 export class ProductFindIdDto {
+  @ApiProperty({ description: 'App ID' })
+  @IsInt()
+  @IsNotEmpty()
+  pe_app_id: number;
+
   @ApiProperty({ description: 'System Client ID', example: 1 })
   @IsNotEmpty()
   @IsInt()
