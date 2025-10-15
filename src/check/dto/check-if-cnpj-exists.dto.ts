@@ -1,0 +1,15 @@
+import { IsInt, IsString } from 'class-validator';
+
+export class CheckIfCnpjExistsDto {
+  @IsInt()
+  ID_SYSTEM?: number;
+
+  @IsInt()
+  ID_LOJA: number;
+
+  @IsInt()
+  ID_USUARIO: number;
+
+  @IsString({ message: 'TERMO must be a valid string', each: true })
+  TERMO: string;
+}
