@@ -1,6 +1,9 @@
+import { v4 as UuidV4 } from 'uuid';
+
 import { ProductCreateDto } from '../dto/product-create.dto';
 
 export function createProductQuery(dataJsonDto: ProductCreateDto): string {
+  const OlUuid = UuidV4();
   const olAppId = dataJsonDto.pe_app_id;
   const olSystemClientId = dataJsonDto.pe_system_client_id;
   const olStoreId = dataJsonDto.pe_store_id;
@@ -40,6 +43,7 @@ export function createProductQuery(dataJsonDto: ProductCreateDto): string {
   const olInfo = dataJsonDto.pe_info ?? '';
 
   const queryString = ` call sp_product_create_v2(
+   '${OlUuid}',
     ${olAppId},
     ${olSystemClientId},
     ${olStoreId},

@@ -27,27 +27,22 @@ export class ProductWebFindIdDto {
   pe_organization_id: string;
 
   @ApiProperty({ description: 'Member ID', maxLength: 200, example: 'MEM001' })
-  @IsNotEmpty()
   @IsString()
   pe_member_id: string;
 
   @ApiProperty({ description: 'User ID', maxLength: 200, example: 'USER001' })
-  @IsNotEmpty()
   @IsString()
   pe_user_id: string;
 
   @ApiProperty({ description: 'Person ID', example: 1 })
-  @IsNotEmpty()
   @IsInt()
   pe_person_id: number;
 
   @ApiProperty({ description: 'Type Business', example: 1 })
-  @IsNotEmpty()
   @IsInt()
   pe_type_business: number;
 
   @ApiProperty({ description: 'Product ID', example: 1 })
-  @IsNotEmpty()
   @IsInt()
   pe_id_produto: number;
 
@@ -56,7 +51,6 @@ export class ProductWebFindIdDto {
     maxLength: 300,
     example: 'produto-exemplo',
   })
-  @IsNotEmpty()
   @IsString()
   pe_slug_produto: string;
 }

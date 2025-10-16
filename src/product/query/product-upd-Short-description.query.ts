@@ -1,6 +1,6 @@
 import { ProductUpdShortDescriptionDto } from '../dto/product-upd-Short-description.dto';
 
-export function updShortDescriptionProductQuery(
+export function ProductUpdShortDescriptionQuery(
   dataJsonDto: ProductUpdShortDescriptionDto,
 ): string {
   const olAppId = dataJsonDto.pe_app_id;

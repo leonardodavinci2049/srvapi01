@@ -1,7 +1,7 @@
-import { ProductUpdCharacteristicsDto } from '../dto/product-upd-characteristics.dto';
+import { ProductUpdCaracteristicsDto } from '../dto/product-upd-caracteristics.dto';
 
-export function updCharacteristicsProductQuery(
-  dataJsonDto: ProductUpdCharacteristicsDto,
+export function updCaracteristicsProductQuery(
+  dataJsonDto: ProductUpdCaracteristicsDto,
 ): string {
   const olAppId = dataJsonDto.pe_app_id;
   const olSystemClientId = dataJsonDto.pe_system_client_id;
