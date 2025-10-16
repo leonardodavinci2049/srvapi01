@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsOptional, IsString, IsNumber } from 'class-validator';
+import { IsOptional, IsString, IsNumber, IsNotEmpty } from 'class-validator';
 import { Type } from 'class-transformer';
 
 export class ProductPdvFindDto {
@@ -10,13 +10,13 @@ export class ProductPdvFindDto {
   pe_app_id?: number;
 
   @ApiProperty({ description: 'System Client ID', example: 1, required: false })
-  @IsOptional()
+  @IsNotEmpty()
   @IsNumber()
   @Type(() => Number)
   pe_system_client_id?: number;
 
   @ApiProperty({ description: 'Store ID', example: 1, required: false })
-  @IsOptional()
+  @IsNotEmpty()
   @IsNumber()
   @Type(() => Number)
   pe_store_id?: number;
