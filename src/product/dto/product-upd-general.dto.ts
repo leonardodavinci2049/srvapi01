@@ -60,7 +60,6 @@ export class ProductUpdGeneralDto {
     maxLength: 100,
     example: 'REF001',
   })
-  @IsNotEmpty()
   @IsString()
   pe_ref: string;
 
@@ -69,7 +68,6 @@ export class ProductUpdGeneralDto {
     maxLength: 100,
     example: 'Model X',
   })
-  @IsNotEmpty()
   @IsString()
   pe_modelo: string;
 
@@ -78,7 +76,6 @@ export class ProductUpdGeneralDto {
     maxLength: 100,
     example: 'Etiqueta Premium',
   })
-  @IsNotEmpty()
   @IsString()
   pe_etiqueta: string;
 
@@ -87,7 +84,6 @@ export class ProductUpdGeneralDto {
     maxLength: 200,
     example: 'Descrição da aba',
   })
-  @IsNotEmpty()
   @IsString()
   pe_descricao_tab: string;
 }
