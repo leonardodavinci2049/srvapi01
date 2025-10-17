@@ -89,3 +89,26 @@ export class TaxonomyUpdateDto {
   @IsString()
   pe_info?: string;
 }
+
+/*
+Sample JSON for testing:
+{
+  "pe_app_id": 1,
+  "pe_system_client_id": 100,
+  "pe_store_id": 5,
+  "pe_organization_id": "ORG_12345",
+  "pe_member_id": "MBR_67890",
+  "pe_user_id": "USR_54321",
+  "pe_person_id": 999,
+  "pe_id_taxonomy": 456,
+  "pe_parent_id": 123,
+  "pe_taxonomia": "Electronics",
+  "pe_slug": "electronics-category",
+  "pe_path_imagem": "/images/categories/electronics.jpg",
+  "pe_ordem": 1,
+  "pe_meta_title": "Electronics Category - Best Products",
+  "pe_meta_description": "Discover our wide range of electronic products including smartphones, laptops, and accessories.",
+  "pe_inativo": 0,
+  "pe_info": "Category for all electronic products"
+}
+*/
