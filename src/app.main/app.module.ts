@@ -8,11 +8,12 @@ import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
 import { ProductModule } from 'src/product/product.module';
-import { CategoryModule } from 'src/category/category.module';
+
 import { CartModule } from 'src/cart/cart.module';
 import { CustomerModule } from 'src/customer/customer.module';
 import { AccountModule } from 'src/account/account.module';
 import { CheckModule } from 'src/check/check.module';
+import { TaxonomyModule } from 'src/taxonomy/taxonomy.module';
 
 @Module({
   imports: [
@@ -28,7 +29,7 @@ import { CheckModule } from 'src/check/check.module';
     ProductModule, // Importando o módulo de produtos
     CartModule, // Importando o módulo de carrinho
     CustomerModule, // Importando o módulo de clientes
-    CategoryModule,
+    TaxonomyModule,
     AccountModule,
     CheckModule,
     ThrottlerModule.forRoot([
