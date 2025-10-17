@@ -114,8 +114,6 @@ export class TaxonomyService {
         queryString,
       )) as unknown as SpResultTaxonomyFindIdData;
 
-      console.log('resultData', resultData);
-
       const tblRecords = resultData[0];
 
       const qtRecords: number = tblRecords.length;
@@ -153,8 +151,6 @@ export class TaxonomyService {
       const resultData = (await this.dbService.selectExecute(
         queryString,
       )) as unknown as SpResultTaxonomyFindData;
-
-      console.log('resultData', resultData);
 
       const tblRecords = resultData[0];
 
@@ -194,8 +190,6 @@ export class TaxonomyService {
         queryString,
       )) as unknown as SpResultTaxonomyFindMenuData;
 
-      console.log('resultData', resultData);
-
       const tblRecords = resultData[0];
 
       const qtRecords: number = tblRecords.length;
@@ -233,8 +227,6 @@ export class TaxonomyService {
       const resultData = (await this.dbService.selectExecute(
         queryString,
       )) as unknown as SpResultTaxonomyRelProdutoData;
-
-      console.log('resultData', resultData);
 
       const tblRecords = resultData[0];
 
