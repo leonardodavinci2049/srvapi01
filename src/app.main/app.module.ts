@@ -14,6 +14,7 @@ import { CustomerModule } from 'src/customer/customer.module';
 import { AccountModule } from 'src/account/account.module';
 import { CheckModule } from 'src/check/check.module';
 import { TaxonomyModule } from 'src/taxonomy/taxonomy.module';
+import { PrismaModule } from 'src/prisma/prisma.module';
 
 @Module({
   imports: [
@@ -25,7 +26,7 @@ import { TaxonomyModule } from 'src/taxonomy/taxonomy.module';
       exclude: ['/api/*'], // Exclui a API
       serveRoot: '/', // Serve na raiz da aplicação
     }),
-
+    PrismaModule,
     ProductModule, // Importando o módulo de produtos
     CartModule, // Importando o módulo de carrinho
     CustomerModule, // Importando o módulo de clientes
