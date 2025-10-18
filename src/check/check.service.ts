@@ -44,6 +44,7 @@ export class CheckService {
       }
 
       return resultQueryData<SpCheckIfEmailExistType>(
+        0,
         recordId,
         0,
         '',
@@ -80,6 +81,7 @@ export class CheckService {
       }
 
       return resultQueryData<SpCheckIfCpfExistType>(
+        0,
         recordId,
         0,
         '',
@@ -116,6 +118,7 @@ export class CheckService {
       }
 
       return resultQueryData<SpCheckIfCnpjExistType>(
+        0,
         recordId,
         0,
         '',

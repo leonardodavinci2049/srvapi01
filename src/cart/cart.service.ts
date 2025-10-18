@@ -61,6 +61,7 @@ export class CartService {
       }
 
       return resultQueryData<SpCartItemAddV1Type>(
+        0,
         recordId,
         0,
         '',
@@ -96,6 +97,7 @@ export class CartService {
       }
 
       return resultQueryData<SpCartItemsSelectV1Type>(
+        0,
         recordId,
         0,
         '',
@@ -131,6 +133,7 @@ export class CartService {
       }
 
       return resultQueryData<SpCartItemQtUpdateV1Type>(
+        0,
         recordId,
         0,
         '',
@@ -165,6 +168,7 @@ export class CartService {
         //TODO: Send instructions by email or WhatsApp
       }
       return resultQueryData<SpCartItemDeleteV1Type>(
+        0,
         recordId,
         0,
         '',
@@ -199,6 +203,7 @@ export class CartService {
         //TODO: Send instructions by email or WhatsApp
       }
       return resultQueryData<SpCartQuantityItemsV1Type>(
+        0,
         recordId,
         0,
         '',
@@ -233,6 +238,7 @@ export class CartService {
         //TODO: Send instructions by email or WhatsApp
       }
       return resultQueryData<SpCartClearAllV1Type>(
+        0,
         recordId,
         0,
         '',
@@ -266,6 +272,7 @@ export class CartService {
       }
       const Feedback = DefaultFeedback[0]?.pl_feedback || '';
       return resultQueryData<SpCartCheckCustomerType>(
+        0,
         recordId,
         0,
         Feedback,
@@ -301,6 +308,7 @@ export class CartService {
       }
 
       return resultQueryData<SpCartViewCustomerV1Type>(
+        0,
         recordId,
         0,
         '',
@@ -335,6 +343,7 @@ export class CartService {
         //TODO: Send instructions by email or WhatsApp
       }
       return resultQueryData<SpCartOrderCreateV1Type>(
+        0,
         recordId,
         0,
         '',

@@ -2,6 +2,7 @@ import { ResultModel } from 'src/core/utils/result.model';
 import { MESSAGES, RESPONSE_CODES } from '../constants/globalConstants';
 
 export function resultQueryData<T>(
+  crudId: number,
   recordId: number,
   errorId: number,
   feedback: string,
@@ -13,18 +14,33 @@ export function resultQueryData<T>(
   //console.log('resultQueryDataxxxxxxx');
 
   if (errorId === 0 && recordId > 0) {
-    const sucessoMessage =
-      feedback && feedback.trim() !== ''
-        ? feedback
-        : MESSAGES.PROCESSING_SUCCESS;
-    return new ResultModel(
-      RESPONSE_CODES.SUCCESS,
-      sucessoMessage,
-      recordId,
-      sanitizedData, // Sanitize the data
-      quantity,
-      info1,
-    );
+    if (crudId === 1 && errorId === 0 && quantity === 0) {
+      const sucessoMessage =
+        feedback && feedback.trim() !== ''
+          ? feedback
+          : MESSAGES.PROCESSING_SUCCESS;
+      return new ResultModel(
+        RESPONSE_CODES.SUCCESS,
+        sucessoMessage,
+        recordId,
+        sanitizedData, // Sanitize the data
+        quantity,
+        info1,
+      );
+    } else {
+      const sucessoMessage =
+        feedback && feedback.trim() !== ''
+          ? feedback
+          : MESSAGES.PROCESSING_SUCCESS;
+      return new ResultModel(
+        RESPONSE_CODES.SUCCESS,
+        sucessoMessage,
+        recordId,
+        sanitizedData, // Sanitize the data
+        quantity,
+        info1,
+      );
+    }
   } else {
     const failedMessage =
       feedback && feedback.trim() !== ''

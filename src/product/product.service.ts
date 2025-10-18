@@ -81,6 +81,7 @@ export class ProductService {
       const Feedback = DefaultFeedback[0]?.sp_message || '';
 
       return resultQueryData<SpResultRecordCreateType>(
+        0,
         recordId,
         errorId,
         Feedback,
@@ -115,11 +116,12 @@ export class ProductService {
       const errorId: number = DefaultFeedback[0]?.sp_error_id ?? 0;
       let Feedback = DefaultFeedback[0]?.sp_message || '';
 
-      if (recordId === 0) {
+      if (qtRecords === 0 && errorId === 0) {
         Feedback = 'Product not found';
       }
 
       return resultQueryData<SpProductFindIdDataType>(
+        0,
         recordId,
         errorId,
         Feedback,
@@ -156,11 +158,12 @@ export class ProductService {
       const errorId: number = DefaultFeedback[0]?.sp_error_id ?? 0;
       let Feedback = DefaultFeedback[0]?.sp_message || '';
 
-      if (recordId === 0) {
+      if (qtRecords === 0 && errorId === 0) {
         Feedback = 'Product not found';
       }
 
       return resultQueryData<SpProductFindDataType>(
+        0,
         recordId,
         errorId,
         Feedback,
@@ -195,11 +198,12 @@ export class ProductService {
       const errorId: number = DefaultFeedback[0]?.sp_error_id ?? 0;
       let Feedback = DefaultFeedback[0]?.sp_message || '';
 
-      if (recordId === 0) {
+      if (qtRecords === 0 && errorId === 0) {
         Feedback = 'Product not found';
       }
 
       return resultQueryData<SpProductWebFindIdDataType>(
+        0,
         recordId,
         errorId,
         Feedback,
@@ -235,11 +239,12 @@ export class ProductService {
       const errorId: number = DefaultFeedback[0]?.sp_error_id ?? 0;
       let Feedback = DefaultFeedback[0]?.sp_message || '';
 
-      if (recordId === 0) {
+      if (qtRecords === 0 && errorId === 0) {
         Feedback = 'Product not found';
       }
 
       return resultQueryData<SpProductWebFindDataType>(
+        0,
         recordId,
         errorId,
         Feedback,
@@ -276,11 +281,12 @@ export class ProductService {
       const errorId: number = DefaultFeedback[0]?.sp_error_id ?? 0;
       let Feedback = DefaultFeedback[0]?.sp_message || '';
 
-      if (recordId === 0) {
+      if (qtRecords === 0 && errorId === 0) {
         Feedback = 'Product not found';
       }
 
       return resultQueryData<SpProductPdvFindDataType>(
+        0,
         recordId,
         errorId,
         Feedback,
@@ -314,6 +320,7 @@ export class ProductService {
       const Feedback = DefaultFeedback[0]?.sp_message || '';
 
       return resultQueryData<SpResultRecordUpdateType>(
+        0,
         recordId,
         errorId,
         Feedback,
@@ -347,6 +354,7 @@ export class ProductService {
       const Feedback = DefaultFeedback[0]?.sp_message || '';
 
       return resultQueryData<SpResultRecordUpdateType>(
+        0,
         recordId,
         errorId,
         Feedback,
@@ -380,6 +388,7 @@ export class ProductService {
       const Feedback = DefaultFeedback[0]?.sp_message || '';
 
       return resultQueryData<SpResultRecordUpdateType>(
+        0,
         recordId,
         errorId,
         Feedback,
@@ -412,6 +421,7 @@ export class ProductService {
       const Feedback = DefaultFeedback[0]?.sp_message || '';
 
       return resultQueryData<SpResultRecordUpdateType>(
+        0,
         recordId,
         errorId,
         Feedback,
@@ -445,6 +455,7 @@ export class ProductService {
       const Feedback = DefaultFeedback[0]?.sp_message || '';
 
       return resultQueryData<SpResultRecordUpdateType>(
+        0,
         recordId,
         errorId,
         Feedback,
@@ -478,6 +489,7 @@ export class ProductService {
       const Feedback = DefaultFeedback[0]?.sp_message || '';
 
       return resultQueryData<SpResultRecordUpdateType>(
+        0,
         recordId,
         errorId,
         Feedback,
@@ -511,6 +523,7 @@ export class ProductService {
       const Feedback = DefaultFeedback[0]?.sp_message || '';
 
       return resultQueryData<SpResultRecordUpdateType>(
+        0,
         recordId,
         errorId,
         Feedback,
@@ -545,6 +558,7 @@ export class ProductService {
       const Feedback = DefaultFeedback[0]?.sp_message || '';
 
       return resultQueryData<SpResultRecordUpdateType>(
+        0,
         recordId,
         errorId,
         Feedback,
@@ -577,6 +591,7 @@ export class ProductService {
       const Feedback = DefaultFeedback[0]?.sp_message || '';
 
       return resultQueryData<SpResultRecordUpdateType>(
+        0,
         recordId,
         errorId,
         Feedback,
@@ -612,6 +627,7 @@ export class ProductService {
       const Feedback = DefaultFeedback[0]?.sp_message || '';
 
       return resultQueryData<SpResultRecordUpdateType>(
+        0,
         recordId,
         errorId,
         Feedback,
@@ -644,6 +660,7 @@ export class ProductService {
       const Feedback = DefaultFeedback[0]?.sp_message || '';
 
       return resultQueryData<SpResultRecordUpdateType>(
+        0,
         recordId,
         errorId,
         Feedback,
@@ -677,6 +694,7 @@ export class ProductService {
       const Feedback = DefaultFeedback[0]?.sp_message || '';
 
       return resultQueryData<SpResultRecordUpdateType>(
+        0,
         recordId,
         errorId,
         Feedback,
