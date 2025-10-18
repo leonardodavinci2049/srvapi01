@@ -22,19 +22,12 @@ export interface tblCheckRecords extends RowDataPacket {
   ID_RECORD: number;
 }
 
-export type SpCheckIfEmailExistType = [
-  tblCheckRecords[],
-  SpDefaultFeedback[],
-  SpOperationResult,
-];
+export interface CheckRecordsType {
+  ID_CHECK?: number;
+  ID_RECORD: number;
+}
 
-export type SpCheckIfCpfExistType = [
-  tblCheckRecords[],
-  SpDefaultFeedback[],
-  SpOperationResult,
-];
-
-export type SpCheckIfCnpjExistType = [
+export type SpCheckIfExistType = [
   tblCheckRecords[],
   SpDefaultFeedback[],
   SpOperationResult,

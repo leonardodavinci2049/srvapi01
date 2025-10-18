@@ -13,7 +13,7 @@ export function resultQueryData<T>(
   const sanitizedData = JSON.parse(JSON.stringify(resultData)) as T;
   //console.log('resultQueryDataxxxxxxx');
 
-  if (errorId === 0 && recordId > 0) {
+  if (errorId === 0) {
     if (crudId === 1 && errorId === 0 && quantity === 0) {
       const sucessoMessage =
         feedback && feedback.trim() !== ''
