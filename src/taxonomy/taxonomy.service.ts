@@ -59,6 +59,7 @@ export class TaxonomyService {
       const Feedback = DefaultFeedback[0]?.sp_message || '';
 
       return resultQueryData<SpResultRecordCreateType>(
+        0,
         recordId,
         errorId,
         Feedback,
@@ -92,6 +93,7 @@ export class TaxonomyService {
       const Feedback = DefaultFeedback[0]?.sp_message || '';
 
       return resultQueryData<SpResultRecordCreateType>(
+        0,
         recordId,
         errorId,
         Feedback,
@@ -126,11 +128,12 @@ export class TaxonomyService {
       const errorId: number = DefaultFeedback[0]?.sp_error_id ?? 0;
       let Feedback = DefaultFeedback[0]?.sp_message || '';
 
-      if (recordId === 0) {
+      if (qtRecords === 0 && errorId === 0) {
         Feedback = 'Product not found';
       }
 
       return resultQueryData<SpResultTaxonomyFindIdData>(
+        0,
         recordId,
         errorId,
         Feedback,
@@ -164,11 +167,11 @@ export class TaxonomyService {
       const errorId: number = DefaultFeedback[0]?.sp_error_id ?? 0;
       let Feedback = DefaultFeedback[0]?.sp_message || '';
 
-      if (recordId === 0) {
+      if (qtRecords === 0 && errorId === 0) {
         Feedback = 'Product not found';
       }
-
       return resultQueryData<SpResultTaxonomyFindData>(
+        0,
         recordId,
         errorId,
         Feedback,
@@ -202,11 +205,12 @@ export class TaxonomyService {
       const errorId: number = DefaultFeedback[0]?.sp_error_id ?? 0;
       let Feedback = DefaultFeedback[0]?.sp_message || '';
 
-      if (recordId === 0) {
+      if (qtRecords === 0 && errorId === 0) {
         Feedback = 'Product not found';
       }
 
       return resultQueryData<SpResultTaxonomyFindMenuData>(
+        0,
         recordId,
         errorId,
         Feedback,
@@ -240,11 +244,12 @@ export class TaxonomyService {
       const errorId: number = DefaultFeedback[0]?.sp_error_id ?? 0;
       let Feedback = DefaultFeedback[0]?.sp_message || '';
 
-      if (recordId === 0) {
+      if (qtRecords === 0 && errorId === 0) {
         Feedback = 'Product not found';
       }
 
       return resultQueryData<SpResultTaxonomyRelProdutoData>(
+        0,
         recordId,
         errorId,
         Feedback,
@@ -278,6 +283,7 @@ export class TaxonomyService {
       const Feedback = DefaultFeedback[0]?.sp_message || '';
 
       return resultQueryData<SpResultRecordUpdateType>(
+        0,
         recordId,
         errorId,
         Feedback,
@@ -311,6 +317,7 @@ export class TaxonomyService {
       const Feedback = DefaultFeedback[0]?.sp_message || '';
 
       return resultQueryData<SpResultRecordDeleteType>(
+        0,
         recordId,
         errorId,
         Feedback,
@@ -344,6 +351,7 @@ export class TaxonomyService {
       const Feedback = DefaultFeedback[0]?.sp_message || '';
 
       return resultQueryData<SpResultRecordDeleteType>(
+        0,
         recordId,
         errorId,
         Feedback,

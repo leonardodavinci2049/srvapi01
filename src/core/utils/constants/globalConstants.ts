@@ -10,6 +10,7 @@ export const PASSWORD_MIN_LENGTH = 8;
 export const RESPONSE_CODES = {
   SUCCESS: 100200,
   PROCESSED_SUCCESS: 100201,
+  NO_CONTENT_FOUND: 100200, // Busca válida mas sem resultados
   NOT_FOUND: 100404,
   VALIDATION_ERROR: 100400,
   INTERNAL_ERROR: 100500,
@@ -30,6 +31,9 @@ export const MESSAGES = {
   USER_UPDATED: 'Usuário atualizado com sucesso',
   USER_DELETED: 'Usuário excluído com sucesso',
   USER_NOT_FOUND: 'Usuário não encontrado',
+  SEARCH_NO_RESULTS:
+    'Busca realizada com sucesso, mas nenhum resultado foi encontrado',
+  RESOURCE_NOT_FOUND: 'Recurso não encontrado', // Para 404 real
   PROCESSING_SUCCESS: 'Informações processadas com sucesso',
   PROCESSING_FAILURE: 'Não foi possível processar as informações',
   INVALID_TOKEN: 'Token inválido',

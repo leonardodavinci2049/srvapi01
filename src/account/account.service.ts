@@ -92,6 +92,7 @@ export class AccountService {
       }
 
       return resultQueryData<SpResultAccountStatisticsType>(
+        0,
         recordId,
         0,
         '',
@@ -127,6 +128,7 @@ export class AccountService {
       }
 
       return resultQueryData<SpResultAccountStatisticsType>(
+        0,
         recordId,
         0,
         '',
@@ -161,6 +163,7 @@ export class AccountService {
       }
 
       return resultQueryData<SpResultAccountSummaryType>(
+        0,
         recordId,
         0,
         '',
@@ -196,6 +199,7 @@ export class AccountService {
       }
 
       return resultQueryData<SpResultAccountProfileType>(
+        0,
         recordId,
         0,
         '',
@@ -231,6 +235,7 @@ export class AccountService {
       }
 
       return resultQueryData<SpResultAccountOrdersListType>(
+        0,
         recordId,
         0,
         '',
@@ -265,6 +270,7 @@ export class AccountService {
       }
 
       return resultQueryData<SpResultAccountOrdersSummaryType>(
+        0,
         recordId,
         0,
         '',
@@ -300,6 +306,7 @@ export class AccountService {
       }
 
       return resultQueryData<SpResultAccountProductsPromotionType>(
+        0,
         recordId,
         0,
         '',
@@ -335,6 +342,7 @@ export class AccountService {
       }
 
       return resultQueryData<SpResultAccountServicesType>(
+        0,
         recordId,
         0,
         '',
@@ -370,6 +378,7 @@ export class AccountService {
       }
 
       return resultQueryData<SpResultAccountConfigType>(
+        0,
         recordId,
         0,
         '',
@@ -406,6 +415,7 @@ export class AccountService {
       }
 
       return resultQueryData<SpResultAccountGeneralUpdType>(
+        0,
         recordId,
         0,
         '',
@@ -441,6 +451,7 @@ export class AccountService {
       }
 
       return resultQueryData<SpResultAccountTypeUpdType>(
+        0,
         recordId,
         0,
         '',
@@ -476,6 +487,7 @@ export class AccountService {
       }
 
       return resultQueryData<SpResultAccountBusinessUpdType>(
+        0,
         recordId,
         0,
         '',
@@ -511,6 +523,7 @@ export class AccountService {
       }
 
       return resultQueryData<SpResultAccountPersonalUpdType>(
+        0,
         recordId,
         0,
         '',
@@ -546,6 +559,7 @@ export class AccountService {
       }
 
       return resultQueryData<SpResultAccountAddressUpdType>(
+        0,
         recordId,
         0,
         '',
@@ -581,6 +595,7 @@ export class AccountService {
       }
 
       return resultQueryData<SpResultAccountInternetUpdType>(
+        0,
         recordId,
         0,
         '',
@@ -610,13 +625,14 @@ export class AccountService {
 
       const tblRecord = tblRecords[0] || 0;
 
-      const recordId: number = tblRecord?.ID_CLIENTE ?? 0;
+      const recordId: number = tblRecord?.ID_THEMA ?? 0;
 
       if (recordId > 0) {
         //TODO: Send instructions by email or WhatsApp
       }
 
       return resultQueryData<SpResultAccountThemeUpdType>(
+        0,
         recordId,
         0,
         '',
@@ -644,13 +660,14 @@ export class AccountService {
 
       const tblRecord = tblRecords[0] || 0;
 
-      const recordId: number = tblRecord?.ID_CLIENTE ?? 0;
+      const recordId: number = tblRecord?.ID_THEMA ?? 0;
 
       if (recordId > 0) {
         //TODO: Send instructions by email or WhatsApp
       }
 
       return resultQueryData<SpResultAccountNotificationUpdType>(
+        0,
         recordId,
         0,
         '',
@@ -678,13 +695,14 @@ export class AccountService {
 
       const tblRecord = tblRecords[0] || 0;
 
-      const recordId: number = tblRecord?.ID_CLIENTE ?? 0;
+      const recordId: number = tblRecord?.ID_THEMA ?? 0;
 
       if (recordId > 0) {
         //TODO: Send instructions by email or WhatsApp
       }
 
       return resultQueryData<SpResultAccountEmailUpdType>(
+        0,
         recordId,
         0,
         '',
@@ -712,13 +730,14 @@ export class AccountService {
 
       const tblRecord = tblRecords[0] || 0;
 
-      const recordId: number = tblRecord?.ID_CLIENTE ?? 0;
+      const recordId: number = tblRecord?.ID_THEMA ?? 0;
 
       if (recordId > 0) {
         //TODO: Send instructions by email or WhatsApp
       }
 
       return resultQueryData<SpResultAccountPasswordUpdType>(
+        0,
         recordId,
         0,
         '',
