@@ -47,6 +47,12 @@ export class ProductCreateDto {
   @IsNotEmpty()
   pe_nome_produto: string;
 
+  // Product Basic Info
+  @ApiProperty({ description: 'Product Slug', maxLength: 255 })
+  @IsString()
+  @IsNotEmpty()
+  pe_slug: string;
+
   @ApiProperty({
     description: 'Product Description',
     maxLength: 500,

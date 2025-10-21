@@ -14,6 +14,7 @@ export function createProductQuery(dataJsonDto: ProductCreateDto): string {
   const olTypeBusiness = dataJsonDto.pe_type_business;
 
   const olNomeProduto = dataJsonDto.pe_nome_produto;
+  const olSlug = dataJsonDto.pe_slug ?? '';
   const olDescricaoTab = dataJsonDto.pe_descricao_tab ?? '';
   const olEtiqueta = dataJsonDto.pe_etiqueta ?? '';
   const olRef = dataJsonDto.pe_ref ?? '';
@@ -53,6 +54,7 @@ export function createProductQuery(dataJsonDto: ProductCreateDto): string {
     ${olPersonId},
     ${olTypeBusiness},
     '${olNomeProduto}',
+    '${olSlug}',
     '${olDescricaoTab}',
     '${olEtiqueta}',
     '${olRef}',
