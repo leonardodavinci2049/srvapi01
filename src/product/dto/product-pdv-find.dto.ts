@@ -63,6 +63,15 @@ export class ProductPdvFindDto {
   @Type(() => Number)
   pe_id_taxonomy?: number;
 
+  @ApiProperty({
+    description: 'slug Taxonomy',
+    maxLength: 300,
+    example: 'categoria-exemplo',
+    required: false,
+  })
+  @IsString()
+  pe_slug_taxonomy?: string;
+
   @ApiProperty({ description: 'Product ID', example: 1, required: false })
   @IsOptional()
   @IsNumber()
