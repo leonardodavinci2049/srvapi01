@@ -10,6 +10,7 @@ export function pdvFindProductQuery(dataJsonDto: ProductPdvFindDto): string {
   const olPersonId = dataJsonDto.pe_person_id ?? 0;
 
   const olIdTaxonomy = dataJsonDto.pe_id_taxonomy ?? 0;
+  const olSlugTaxonomy = dataJsonDto.pe_slug_taxonomy ?? '';
   const olIdProduct = dataJsonDto.pe_id_produto ?? 0;
   const olProduct = dataJsonDto.pe_produto ?? '';
 
@@ -30,6 +31,7 @@ export function pdvFindProductQuery(dataJsonDto: ProductPdvFindDto): string {
     '${olUserId}',
     ${olPersonId},
     ${olIdTaxonomy},
+    '${olSlugTaxonomy}',
     ${olIdProduct},
     '${olProduct}',
     ${olFlagEstoque},
