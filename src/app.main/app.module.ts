@@ -15,6 +15,9 @@ import { AccountModule } from 'src/account/account.module';
 import { CheckModule } from 'src/check/check.module';
 import { TaxonomyModule } from 'src/taxonomy/taxonomy.module';
 import { PrismaModule } from 'src/prisma/prisma.module';
+import { BrandModule } from 'src/brand/brand.module';
+import { PtypeModule } from 'src/ptype/ptype.module';
+import { SupplierModule } from 'src/supplier/supplier.module';
 
 @Module({
   imports: [
@@ -33,6 +36,9 @@ import { PrismaModule } from 'src/prisma/prisma.module';
     TaxonomyModule,
     AccountModule,
     CheckModule,
+    BrandModule,
+    PtypeModule,
+    SupplierModule,
     ThrottlerModule.forRoot([
       // proteção conta ataque de força bruta
       {

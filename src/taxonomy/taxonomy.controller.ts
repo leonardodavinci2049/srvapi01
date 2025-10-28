@@ -1,4 +1,4 @@
-import { Controller, Post, Body, UseGuards } from '@nestjs/common';
+import { Controller, Post, Body, UseGuards, Get } from '@nestjs/common';
 import { TaxonomyService } from './taxonomy.service';
 import { TaxonomyCreateDto } from './dto/taxonomy-create.dto';
 import { TaxonomyRelCreateDto } from './dto/taxonomy-rel-create.dto';
@@ -14,6 +14,21 @@ import { AuthGuard } from 'src/core/guards/auth.guard';
 @Controller('taxonomy')
 export class TaxonomyController {
   constructor(private readonly taxonomyService: TaxonomyService) {}
+
+  @Get()
+  getHello() {
+    return {
+      name: 'Wholesale API',
+      status: 'online',
+      version: '1.0.1',
+      documentation: '/',
+      timestamp: new Date().toISOString(),
+      endpoints: {
+        base: '/api',
+        auth: '/api/taxonomy',
+      },
+    };
+  }
 
   @UseGuards(AuthGuard)
   @Post('v2/taxonomy-create')

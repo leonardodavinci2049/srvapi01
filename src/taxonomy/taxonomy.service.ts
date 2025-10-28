@@ -147,6 +147,7 @@ export class TaxonomyService {
       return new ResultModel(100404, errorMessage, 0, []);
     }
   }
+
   async tskTaxonomyFindV2(dataJsonDto: TaxonomyFindDto) {
     try {
       const queryString = findTaxonomyQuery(dataJsonDto);
@@ -185,6 +186,7 @@ export class TaxonomyService {
       return new ResultModel(100404, errorMessage, 0, []);
     }
   }
+
   async tskTaxonomyFindMenuV2(dataJsonDto: TaxonomyFindMenuDto) {
     try {
       const queryString = findTaxonomyMenuQuery(dataJsonDto);
