@@ -10,6 +10,11 @@ import { TaxonomyUpdateDto } from './dto/taxonomy-update.dto';
 import { TaxonomyDeleteDto } from './dto/taxonomy-delete.dto';
 import { TaxonomyRelDeleteDto } from './dto/taxonomy-rel-delete.dto';
 import { AuthGuard } from 'src/core/guards/auth.guard';
+import { TaxonomyUpdNameDto } from './dto/taxonomy-upd-name.dto';
+import { TaxonomyUpdParentIdDto } from './dto/taxonomy-upd-parent-id.dto';
+import { TaxonomyUpdOrdemDto } from './dto/taxonomy-upd-ordem.dto';
+import { TaxonomyUpdInactiveDto } from './dto/taxonomy-upd-inactive.dto';
+import { TaxonomyUpdMetadataDto } from './dto/taxonomy-upd-metadata.dto';
 
 @Controller('taxonomy')
 export class TaxonomyController {
@@ -73,7 +78,37 @@ export class TaxonomyController {
   }
 
   @UseGuards(AuthGuard)
-  @Post('v2/taxonomy-delete')
+  @Post('v2/taxonomy-upd-name')
+  taxonomyUpdNameV2(@Body() dataJsonDto: TaxonomyUpdNameDto) {
+    return this.taxonomyService.tskTaxonomyUpdNameV2(dataJsonDto);
+  }
+
+  @UseGuards(AuthGuard)
+  @Post('v2/taxonomy-upd-parent-id')
+  taxonomyUpdParentIdV2(@Body() dataJsonDto: TaxonomyUpdParentIdDto) {
+    return this.taxonomyService.tskTaxonomyUpdParentIdV2(dataJsonDto);
+  }
+
+  @UseGuards(AuthGuard)
+  @Post('v2/taxonomy-upd-ordem')
+  taxonomyUpdOrdemV2(@Body() dataJsonDto: TaxonomyUpdOrdemDto) {
+    return this.taxonomyService.tskTaxonomyUpdOrdemV2(dataJsonDto);
+  }
+
+  @UseGuards(AuthGuard)
+  @Post('v2/taxonomy-upd-inactive')
+  taxonomyUpdInactiveV2(@Body() dataJsonDto: TaxonomyUpdInactiveDto) {
+    return this.taxonomyService.tskTaxonomyUpdInactiveV2(dataJsonDto);
+  }
+
+  @UseGuards(AuthGuard)
+  @Post('v2/taxonomy-upd-metadata')
+  taxonomyUpdMetadataV2(@Body() dataJsonDto: TaxonomyUpdMetadataDto) {
+    return this.taxonomyService.tskTaxonomyUpdMetadataV2(dataJsonDto);
+  }
+
+  @UseGuards(AuthGuard)
+  @Post('v2/taxonomy-upd-delete')
   taxonomyDeleteV2(@Body() dataJsonDto: TaxonomyDeleteDto) {
     return this.taxonomyService.tskTaxonomyDeleteV2(dataJsonDto);
   }

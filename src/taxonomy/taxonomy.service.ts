@@ -35,6 +35,16 @@ import { findTaxonomyIdQuery } from './query/taxonomy-find-id.query';
 import { findTaxonomyQuery } from './query/taxonomy-find.query';
 import { findTaxonomyMenuQuery } from './query/taxonomy-find-menu.query';
 import { findTaxonomyRelProdutoQuery } from './query/taxonomy-rel-produto.query';
+import { TaxonomyUpdNameDto } from './dto/taxonomy-upd-name.dto';
+import { TaxonomyUpdParentIdDto } from './dto/taxonomy-upd-parent-id.dto';
+import { TaxonomyUpdOrdemDto } from './dto/taxonomy-upd-ordem.dto';
+import { TaxonomyUpdInactiveDto } from './dto/taxonomy-upd-inactive.dto';
+import { TaxonomyUpdMetadataDto } from './dto/taxonomy-upd-metadata.dto';
+import { taxonomyUpdNameQuery } from './query/taxonomy-upd-name.query';
+import { taxonomyUpdParentIdQuery } from './query/taxonomy-upd-parent-id.query';
+import { taxonomyUpdOrdemQuery } from './query/taxonomy-upd-ordem.query';
+import { taxonomyUpdInactiveQuery } from './query/taxonomy-upd-inactive.query';
+import { taxonomyUpdMetadataQuery } from './query/taxonomy-upd-metadata.query';
 
 @Injectable()
 export class TaxonomyService {
@@ -269,6 +279,176 @@ export class TaxonomyService {
   async tskTaxonomyUpdateV2(dataJsonDto: TaxonomyUpdateDto) {
     try {
       const queryString = updateTaxonomyQuery(dataJsonDto);
+
+      const resultData = (await this.dbService.selectExecute(
+        queryString,
+      )) as unknown as SpResultRecordUpdateType;
+
+      const DefaultFeedback = resultData[0];
+      const qtRecords = DefaultFeedback.length ?? 0;
+      const errorId: number = DefaultFeedback[0]?.sp_error_id ?? 0;
+      const recordId: number = DefaultFeedback[0]?.sp_return_id ?? 0;
+
+      if (recordId > 0) {
+        //TODO: Send instructions by email or WhatsApp
+      }
+      const Feedback = DefaultFeedback[0]?.sp_message || '';
+
+      return resultQueryData<SpResultRecordUpdateType>(
+        0,
+        recordId,
+        errorId,
+        Feedback,
+        resultData,
+        qtRecords,
+        '',
+      );
+    } catch (err) {
+      const errorMessage =
+        err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
+      return new ResultModel(100404, errorMessage, 0, []);
+    }
+  }
+
+  async tskTaxonomyUpdNameV2(dataJsonDto: TaxonomyUpdNameDto) {
+    try {
+      const queryString = taxonomyUpdNameQuery(dataJsonDto);
+
+      const resultData = (await this.dbService.selectExecute(
+        queryString,
+      )) as unknown as SpResultRecordUpdateType;
+
+      const DefaultFeedback = resultData[0];
+      const qtRecords = DefaultFeedback.length ?? 0;
+      const errorId: number = DefaultFeedback[0]?.sp_error_id ?? 0;
+      const recordId: number = DefaultFeedback[0]?.sp_return_id ?? 0;
+
+      if (recordId > 0) {
+        //TODO: Send instructions by email or WhatsApp
+      }
+      const Feedback = DefaultFeedback[0]?.sp_message || '';
+
+      return resultQueryData<SpResultRecordUpdateType>(
+        0,
+        recordId,
+        errorId,
+        Feedback,
+        resultData,
+        qtRecords,
+        '',
+      );
+    } catch (err) {
+      const errorMessage =
+        err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
+      return new ResultModel(100404, errorMessage, 0, []);
+    }
+  }
+
+  async tskTaxonomyUpdParentIdV2(dataJsonDto: TaxonomyUpdParentIdDto) {
+    try {
+      const queryString = taxonomyUpdParentIdQuery(dataJsonDto);
+
+      const resultData = (await this.dbService.selectExecute(
+        queryString,
+      )) as unknown as SpResultRecordUpdateType;
+
+      const DefaultFeedback = resultData[0];
+      const qtRecords = DefaultFeedback.length ?? 0;
+      const errorId: number = DefaultFeedback[0]?.sp_error_id ?? 0;
+      const recordId: number = DefaultFeedback[0]?.sp_return_id ?? 0;
+
+      if (recordId > 0) {
+        //TODO: Send instructions by email or WhatsApp
+      }
+      const Feedback = DefaultFeedback[0]?.sp_message || '';
+
+      return resultQueryData<SpResultRecordUpdateType>(
+        0,
+        recordId,
+        errorId,
+        Feedback,
+        resultData,
+        qtRecords,
+        '',
+      );
+    } catch (err) {
+      const errorMessage =
+        err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
+      return new ResultModel(100404, errorMessage, 0, []);
+    }
+  }
+
+  async tskTaxonomyUpdOrdemV2(dataJsonDto: TaxonomyUpdOrdemDto) {
+    try {
+      const queryString = taxonomyUpdOrdemQuery(dataJsonDto);
+
+      const resultData = (await this.dbService.selectExecute(
+        queryString,
+      )) as unknown as SpResultRecordUpdateType;
+
+      const DefaultFeedback = resultData[0];
+      const qtRecords = DefaultFeedback.length ?? 0;
+      const errorId: number = DefaultFeedback[0]?.sp_error_id ?? 0;
+      const recordId: number = DefaultFeedback[0]?.sp_return_id ?? 0;
+
+      if (recordId > 0) {
+        //TODO: Send instructions by email or WhatsApp
+      }
+      const Feedback = DefaultFeedback[0]?.sp_message || '';
+
+      return resultQueryData<SpResultRecordUpdateType>(
+        0,
+        recordId,
+        errorId,
+        Feedback,
+        resultData,
+        qtRecords,
+        '',
+      );
+    } catch (err) {
+      const errorMessage =
+        err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
+      return new ResultModel(100404, errorMessage, 0, []);
+    }
+  }
+
+  async tskTaxonomyUpdInactiveV2(dataJsonDto: TaxonomyUpdInactiveDto) {
+    try {
+      const queryString = taxonomyUpdInactiveQuery(dataJsonDto);
+
+      const resultData = (await this.dbService.selectExecute(
+        queryString,
+      )) as unknown as SpResultRecordUpdateType;
+
+      const DefaultFeedback = resultData[0];
+      const qtRecords = DefaultFeedback.length ?? 0;
+      const errorId: number = DefaultFeedback[0]?.sp_error_id ?? 0;
+      const recordId: number = DefaultFeedback[0]?.sp_return_id ?? 0;
+
+      if (recordId > 0) {
+        //TODO: Send instructions by email or WhatsApp
+      }
+      const Feedback = DefaultFeedback[0]?.sp_message || '';
+
+      return resultQueryData<SpResultRecordUpdateType>(
+        0,
+        recordId,
+        errorId,
+        Feedback,
+        resultData,
+        qtRecords,
+        '',
+      );
+    } catch (err) {
+      const errorMessage =
+        err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
+      return new ResultModel(100404, errorMessage, 0, []);
+    }
+  }
+
+  async tskTaxonomyUpdMetadataV2(dataJsonDto: TaxonomyUpdMetadataDto) {
+    try {
+      const queryString = taxonomyUpdMetadataQuery(dataJsonDto);
 
       const resultData = (await this.dbService.selectExecute(
         queryString,
