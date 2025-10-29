@@ -118,7 +118,7 @@ export class ProductService {
 
       const recordId: number = tblRecord?.ID_PRODUTO ?? 0;
 
-      const DefaultFeedback = resultData[2];
+      const DefaultFeedback = resultData[3];
       const errorId: number = DefaultFeedback[0]?.sp_error_id ?? 0;
       let Feedback = DefaultFeedback[0]?.sp_message || '';
 
