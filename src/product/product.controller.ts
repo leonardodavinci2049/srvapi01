@@ -22,7 +22,7 @@ import { ProductUpdVariouDto } from './dto/product-upd-variou.dto';
 import { ProductUpdTypeDto } from './dto/product-upd-type.dto';
 import { ProductUpdBrandDto } from './dto/product-upd-brand.dto';
 import { ProductUpdPathImageDto } from './dto/product-upd-path-image.dto';
-import { ProductUpdPathImagemDto } from './dto/product-upd-path-imagem.dto';
+
 import { ProductUpdMetadataDto } from './dto/product-upd-metadata.dto';
 
 @Controller('product')
@@ -156,12 +156,6 @@ export class ProductController {
   @Post('v2/product-upd-variou')
   productUpdVariouV2(@Body() dataJsonDto: ProductUpdVariouDto) {
     return this.productService.tskProductUpdVariouV2(dataJsonDto);
-  }
-
-  @UseGuards(AuthGuard)
-  @Post('v2/product-upd-path-imagem')
-  ProductUpdPathImagemV2(@Body() dataJsonDto: ProductUpdPathImagemDto) {
-    return this.productService.tskProductUpdPathImagemV2(dataJsonDto);
   }
 
   @UseGuards(AuthGuard)

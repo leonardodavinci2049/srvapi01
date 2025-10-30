@@ -29,6 +29,7 @@ import { DatabaseService } from 'src/database/database.service';
 import { createTaxonomyRelQuery } from './query/taxonomy-rel-create.query';
 import { updateTaxonomyQuery } from './query/taxonomy-update.query';
 import { deleteTaxonomyQuery } from './query/taxonomy-delete.query';
+import { buildHierarchy } from './utils/build-hierarchy.util';
 import { deleteTaxonomyRelQuery } from './query/taxonomy-rel-delete.query';
 import { findTaxonomyIdQuery } from './query/taxonomy-find-id.query';
 
@@ -45,6 +46,8 @@ import { taxonomyUpdParentIdQuery } from './query/taxonomy-upd-parent-id.query';
 import { taxonomyUpdOrdemQuery } from './query/taxonomy-upd-ordem.query';
 import { taxonomyUpdInactiveQuery } from './query/taxonomy-upd-inactive.query';
 import { taxonomyUpdMetadataQuery } from './query/taxonomy-upd-metadata.query';
+import { TaxonomyUpdPathImageDto } from './dto/taxonomy-upd-path_image.dto';
+import { taxonomyUpdPathImageQuery } from './query/taxonomy-upd-path-image.query';
 
 @Injectable()
 export class TaxonomyService {
@@ -213,6 +216,15 @@ export class TaxonomyService {
 
       const recordId: number = tblRecord?.ID_TAXONOMY ?? 0;
 
+      // Converter para estrutura hierárquica
+      const hierarchicalCategories = buildHierarchy(tblRecords);
+
+      // Criar nova estrutura de dados com categorias hierárquicas
+      const hierarchicalResultData = [
+        hierarchicalCategories,
+        ...resultData.slice(1),
+      ] as unknown as SpResultTaxonomyFindMenuData;
+
       const DefaultFeedback = resultData[1];
       const errorId: number = DefaultFeedback[0]?.sp_error_id ?? 0;
       let Feedback = DefaultFeedback[0]?.sp_message || '';
@@ -226,7 +238,7 @@ export class TaxonomyService {
         recordId,
         errorId,
         Feedback,
-        resultData,
+        hierarchicalResultData,
         qtRecords,
         '',
       );
@@ -381,6 +393,40 @@ export class TaxonomyService {
   async tskTaxonomyUpdOrdemV2(dataJsonDto: TaxonomyUpdOrdemDto) {
     try {
       const queryString = taxonomyUpdOrdemQuery(dataJsonDto);
+
+      const resultData = (await this.dbService.selectExecute(
+        queryString,
+      )) as unknown as SpResultRecordUpdateType;
+
+      const DefaultFeedback = resultData[0];
+      const qtRecords = DefaultFeedback.length ?? 0;
+      const errorId: number = DefaultFeedback[0]?.sp_error_id ?? 0;
+      const recordId: number = DefaultFeedback[0]?.sp_return_id ?? 0;
+
+      if (recordId > 0) {
+        //TODO: Send instructions by email or WhatsApp
+      }
+      const Feedback = DefaultFeedback[0]?.sp_message || '';
+
+      return resultQueryData<SpResultRecordUpdateType>(
+        0,
+        recordId,
+        errorId,
+        Feedback,
+        resultData,
+        qtRecords,
+        '',
+      );
+    } catch (err) {
+      const errorMessage =
+        err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
+      return new ResultModel(100404, errorMessage, 0, []);
+    }
+  }
+
+  async tskTaxonomyUpdPathImageV2(dataJsonDto: TaxonomyUpdPathImageDto) {
+    try {
+      const queryString = taxonomyUpdPathImageQuery(dataJsonDto);
 
       const resultData = (await this.dbService.selectExecute(
         queryString,

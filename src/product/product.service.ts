@@ -55,10 +55,9 @@ import { updVariouProductQuery } from './query/product-upd-variou.query';
 import { updDescriptionProductQuery } from './query/product-upd-description.query';
 import { ProductUpdPathImageDto } from './dto/product-upd-path-image.dto';
 import { updPathImageProductQuery } from './query/product-upd-path-image';
-import { ProductUpdPathImagemDto } from './dto/product-upd-path-imagem.dto';
+
 import { ProductUpdMetadataDto } from './dto/product-upd-metadata.dto';
 import { ProductUpdMetadataQuery } from './query/product-upd-metadata.query';
-import { ProductUpdPathImagemQuery } from './query/product-upd-path-imagem.query';
 
 @Injectable()
 export class ProductService {
@@ -718,40 +717,6 @@ export class ProductService {
   async tskProductUpdVariouV2(dataJsonDto: ProductUpdVariouDto) {
     try {
       const queryString = updVariouProductQuery(dataJsonDto);
-
-      const resultData = (await this.dbService.selectExecute(
-        queryString,
-      )) as unknown as SpResultRecordUpdateType;
-
-      const DefaultFeedback = resultData[0];
-      const qtRecords = DefaultFeedback.length ?? 0;
-      const errorId: number = DefaultFeedback[0]?.sp_error_id ?? 0;
-      const recordId: number = DefaultFeedback[0]?.sp_return_id ?? 0;
-
-      if (recordId > 0) {
-        //TODO: Send instructions by email or WhatsApp
-      }
-      const Feedback = DefaultFeedback[0]?.sp_message || '';
-
-      return resultQueryData<SpResultRecordUpdateType>(
-        0,
-        recordId,
-        errorId,
-        Feedback,
-        resultData,
-        qtRecords,
-        '',
-      );
-    } catch (err) {
-      const errorMessage =
-        err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
-      return new ResultModel(100404, errorMessage, 0, []);
-    }
-  }
-
-  async tskProductUpdPathImagemV2(dataJsonDto: ProductUpdPathImagemDto) {
-    try {
-      const queryString = ProductUpdPathImagemQuery(dataJsonDto);
 
       const resultData = (await this.dbService.selectExecute(
         queryString,

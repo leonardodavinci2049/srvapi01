@@ -18,18 +18,23 @@ export interface SpOperationResult {
 }
 
 export interface TblTaxonomyFindId extends RowDataPacket {
-  ID_TAXONOMY: number;
-  PARENT_ID: number;
-  TAXONOMIA: string;
-  ANOTACOES: string | null;
-  PATH_IMAGEM: string | null;
-  SLUG: string | null;
-  LEVEL: number | null;
-  ORDEM: number;
-  ID_IMAGEM: number | null;
-  QT_RECORDS: number | null;
-  META_TITLE: string | null;
-  META_DESCRIPTION: string | null;
+  ID_TAXONOMY?: number;
+  PARENT_ID?: number;
+  TAXONOMIA?: string;
+  PARENT_CATEGORY?: string;
+  PATH_IMAGEM?: string | null;
+  SLUG?: string | null;
+  LEVEL?: number | null;
+  ORDEM?: number;
+  ID_IMAGEM?: number | null;
+  QT_RECORDS?: number | null;
+  INATIVO?: number;
+
+  META_TITLE?: string | null;
+  META_DESCRIPTION?: string | null;
+  ANOTACOES?: string | null;
+  CREATEDAT?: string;
+  UPDATEDAT?: string;
 }
 
 export interface TblTaxonomyFind extends RowDataPacket {
@@ -48,15 +53,15 @@ export interface TblTaxonomyFind extends RowDataPacket {
 }
 
 export interface TblTaxonomyFindMenu extends RowDataPacket {
-  ID_TAXONOMY: number;
-  PARENT_ID: number;
-  TAXONOMIA: string;
-  PATH_IMAGEM: string | null;
-  SLUG: string | null;
-  LEVEL: number;
-  ORDEM: number;
-  ID_IMAGEM: number | null;
-  QT_RECORDS: number | null;
+  ID_TAXONOMY?: number;
+  PARENT_ID?: number;
+  TAXONOMIA?: string;
+  PATH_IMAGEM?: string | null;
+  SLUG?: string | null;
+  LEVEL?: number;
+  ORDEM?: number;
+  ID_IMAGEM?: number | null;
+  QT_RECORDS?: number | null;
 }
 
 export interface TblTaxonomyRelProduto extends RowDataPacket {

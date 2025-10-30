@@ -1,7 +1,7 @@
-import { ProductUpdPathImagemDto } from '../dto/product-upd-path-imagem.dto';
+import { TaxonomyUpdPathImageDto } from '../dto/taxonomy-upd-path_image.dto';
 
-export function ProductUpdPathImagemQuery(
-  dataJsonDto: ProductUpdPathImagemDto,
+export function taxonomyUpdPathImageQuery(
+  dataJsonDto: TaxonomyUpdPathImageDto,
 ): string {
   const olAppId = dataJsonDto.pe_app_id ?? 1;
   const olSystemClientId = dataJsonDto.pe_system_client_id;
@@ -11,11 +11,10 @@ export function ProductUpdPathImagemQuery(
   const olUserId = dataJsonDto.pe_user_id;
   const olPersonId = dataJsonDto.pe_person_id;
 
-  //pe_id_produto
-  const olIdProduto = dataJsonDto.pe_id_produto;
+  const olIdTaxonomy = dataJsonDto.pe_id_taxonomy;
   const olPathImagem = dataJsonDto.pe_path_imagem;
 
-  const queryString = ` call sp_product_upd_path_imagem_v2(
+  const queryString = ` call sp_taxonomy_upd_path_image_v2(
         ${olAppId},
         ${olSystemClientId},
         ${olStoreId},
@@ -23,8 +22,9 @@ export function ProductUpdPathImagemQuery(
         '${olMemberId}',
         '${olUserId}',
         ${olPersonId},
-        ${olIdProduto},
-        '${olPathImagem}'      ) `;
+        ${olIdTaxonomy},
+        '${olPathImagem}'
+      ) `;
 
   return queryString;
 }
