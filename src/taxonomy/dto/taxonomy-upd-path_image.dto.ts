@@ -1,7 +1,7 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IsString, IsNotEmpty, IsInt } from 'class-validator';
 
-export class ProductUpdPathImagemDto {
+export class TaxonomyUpdPathImageDto {
   @ApiProperty({ description: 'App ID', example: 1 })
   @IsNotEmpty()
   @IsInt()
@@ -41,15 +41,18 @@ export class ProductUpdPathImagemDto {
   @IsInt()
   pe_person_id: number;
 
-  @ApiProperty({ description: 'Product ID', example: 1 })
+  // PE_ID_TAXONOMY
+
+  @ApiProperty({ description: 'Taxonomy ID', example: 1 })
   @IsNotEmpty()
   @IsInt()
-  pe_id_produto: number;
+  pe_id_taxonomy: number;
 
+  // PE_PATH_IMAGEM
   @ApiProperty({
-    description: 'url Path Imagem',
+    description: 'Taxonomy Image Path',
     maxLength: 200,
-    example: 'https://example.com/image.jpg',
+    example: 'path/to/image.jpg',
   })
   @IsNotEmpty()
   @IsString()
@@ -66,7 +69,8 @@ Sample JSON for testing:
   "pe_member_id": "MBR_67890",
   "pe_user_id": "USR_54321",
   "pe_person_id": 999,
-  "pe_id_produto": 123,
-  "pe_path_imagem": "https://example.com/image.jpg"
+  "pe_id_taxonomy": 10,
+  "pe_path_imagem": "path/to/image.jpg"
+
 }
 */

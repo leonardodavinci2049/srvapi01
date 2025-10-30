@@ -15,6 +15,7 @@ import { TaxonomyUpdParentIdDto } from './dto/taxonomy-upd-parent-id.dto';
 import { TaxonomyUpdOrdemDto } from './dto/taxonomy-upd-ordem.dto';
 import { TaxonomyUpdInactiveDto } from './dto/taxonomy-upd-inactive.dto';
 import { TaxonomyUpdMetadataDto } from './dto/taxonomy-upd-metadata.dto';
+import { TaxonomyUpdPathImageDto } from './dto/taxonomy-upd-path_image.dto';
 
 @Controller('taxonomy')
 export class TaxonomyController {
@@ -93,6 +94,12 @@ export class TaxonomyController {
   @Post('v2/taxonomy-upd-ordem')
   taxonomyUpdOrdemV2(@Body() dataJsonDto: TaxonomyUpdOrdemDto) {
     return this.taxonomyService.tskTaxonomyUpdOrdemV2(dataJsonDto);
+  }
+
+  @UseGuards(AuthGuard)
+  @Post('v2/taxonomy-upd-path-image')
+  taxonomyUpdPathImageV2(@Body() dataJsonDto: TaxonomyUpdPathImageDto) {
+    return this.taxonomyService.tskTaxonomyUpdPathImageV2(dataJsonDto);
   }
 
   @UseGuards(AuthGuard)
