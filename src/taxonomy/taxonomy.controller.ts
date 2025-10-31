@@ -115,7 +115,7 @@ export class TaxonomyController {
   }
 
   @UseGuards(AuthGuard)
-  @Post('v2/taxonomy-upd-delete')
+  @Post('v2/taxonomy-delete')
   taxonomyDeleteV2(@Body() dataJsonDto: TaxonomyDeleteDto) {
     return this.taxonomyService.tskTaxonomyDeleteV2(dataJsonDto);
   }
