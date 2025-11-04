@@ -68,14 +68,14 @@ export class ProductController {
   }
 
   @UseGuards(AuthGuard)
-  @Post('v2/product-find-web-id')
-  findProductWebId(@Body() dataJsonDto: ProductWebFindIdDto) {
+  @Post('v2/product-web-find-id')
+  findProductWebIdV2(@Body() dataJsonDto: ProductWebFindIdDto) {
     return this.productService.tskProductWebFindIdV2(dataJsonDto);
   }
 
   @UseGuards(AuthGuard)
   @Post('v2/product-web-find')
-  findProductWeb(@Body() dataJsonDto: ProductWebFindDto) {
+  findProductWebV2(@Body() dataJsonDto: ProductWebFindDto) {
     return this.productService.tskProductWebFindV2(dataJsonDto);
   }
 
