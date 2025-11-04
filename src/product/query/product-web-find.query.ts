@@ -14,8 +14,9 @@ export function webFindProductQuery(dataJsonDto: ProductWebFindDto): string {
   const olIdProduct = dataJsonDto.pe_id_produto ?? 0;
   const olProduct = dataJsonDto.pe_produto ?? '';
 
+  const olIdMarca = dataJsonDto.pe_id_marca ?? 0;
+
   const olFlagEstoque = dataJsonDto.pe_flag_estoque ?? 0;
-  const olFlagInativo = dataJsonDto.pe_flag_inativo ?? 0;
 
   const olQtRegistros = dataJsonDto.pe_qt_registros ?? 100;
   const olPaginaId = dataJsonDto.pe_pagina_id ?? 1;
@@ -34,8 +35,8 @@ export function webFindProductQuery(dataJsonDto: ProductWebFindDto): string {
     '${olSlugTaxonomy}',
     ${olIdProduct},
     '${olProduct}',
+    ${olIdMarca},
     ${olFlagEstoque},
-    ${olFlagInativo},
     ${olQtRegistros},
     ${olPaginaId},
     ${olColunaId},

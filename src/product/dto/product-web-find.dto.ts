@@ -88,17 +88,17 @@ export class ProductWebFindDto {
   @IsString()
   pe_produto?: string;
 
+  @ApiProperty({ description: 'BRAND ID', example: 1, required: false })
+  @IsOptional()
+  @IsNumber()
+  @Type(() => Number)
+  pe_id_marca?: number;
+
   @ApiProperty({ description: 'Stock Flag', example: 1, required: false })
   @IsOptional()
   @IsNumber()
   @Type(() => Number)
   pe_flag_estoque?: number;
-
-  @ApiProperty({ description: 'Inactive Flag', example: 0, required: false })
-  @IsOptional()
-  @IsNumber()
-  @Type(() => Number)
-  pe_flag_inativo?: number;
 
   @ApiProperty({
     description: 'Number of Records',

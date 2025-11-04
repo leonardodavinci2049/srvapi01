@@ -85,6 +85,46 @@ export interface tblProductId extends RowDataPacket {
   DATADOCADASTRO?: Date;
 }
 
+export interface tblProductWebId extends RowDataPacket {
+  ID_PRODUTO: number;
+  SKU?: number;
+  PRODUTO?: string;
+  DESCRICAO_TAB?: string;
+  ETIQUETA?: string;
+  REF?: string;
+  MODELO?: string;
+  PATH_IMAGEM?: string | null;
+  SLUG?: string | null;
+  PATH_IMAGEM_MARCA?: string;
+  ID_TIPO?: number;
+  TIPO?: string;
+  ID_MARCA?: number;
+  MARCA?: string;
+  VL_ATACADO?: number;
+  VL_CORPORATIVO?: number;
+  VL_VAREJO?: number;
+  OURO?: number;
+  PRATA?: number;
+  BRONZE?: number;
+  ESTOQUE_LOJA?: number;
+  TEMPODEGARANTIA_DIA?: number;
+  PESO_GR?: number;
+  COMPRIMENTO_MM?: number;
+  LARGURA_MM?: number;
+  ALTURA_MM?: number;
+  DIAMETRO_MM?: number;
+  DESTAQUE?: number;
+  PROMOCAO?: number;
+  FLAG_SERVICO?: number;
+  IMPORTADO?: number;
+  DESCRICAO_VENDA?: string | null;
+  ANOTACOES?: string | null;
+  META_TITLE?: string | null;
+  META_DESCRIPTION?: string | null;
+  DT_UPDATE?: Date;
+  DATADOCADASTRO?: Date;
+}
+
 export interface tblProductFind extends RowDataPacket {
   ID_PRODUTO: number;
   ID_POST?: number;
@@ -124,6 +164,35 @@ export interface tblProductFind extends RowDataPacket {
   DATADOCADASTRO?: Date;
 }
 
+export interface tblProductWebFind extends RowDataPacket {
+  ID_PRODUTO: number;
+  SKU?: number;
+  PRODUTO?: string;
+  DESCRICAO_TAB?: string;
+  ETIQUETA?: string;
+  REF?: string;
+  MODELO?: string;
+  TIPO?: string;
+  MARCA?: string;
+  PATH_IMAGEM_MARCA?: string;
+  PATH_IMAGEM?: string | null;
+  SLUG?: string | null;
+  ESTOQUE_LOJA?: number;
+  OURO?: number;
+  PRATA?: number;
+  BRONZE?: number;
+  VL_ATACADO?: number;
+  VL_CORPORATIVO?: number;
+  VL_VAREJO?: number;
+  DECONTO?: number;
+  TEMPODEGARANTIA_DIA?: number;
+  DESCRICAO_VENDA?: string | null;
+  IMPORTADO?: number;
+  PROMOCAO?: number;
+  LANCAMENTO?: number;
+  DATADOCADASTRO?: Date;
+}
+
 export interface tbltaxonomy extends RowDataPacket {
   ID_TAXONOMY?: number;
   PARENT_ID?: number;
@@ -159,14 +228,14 @@ export type SpProductFindDataType = [
 ];
 
 export type SpProductWebFindIdDataType = [
-  tblProductId[],
+  tblProductWebId[],
   tbltaxonomy[],
   SpDefaultFeedback[],
   SpOperationResult,
 ];
 
 export type SpProductWebFindDataType = [
-  tblProductId[],
+  tblProductWebFind[],
   SpDefaultFeedback[],
   SpOperationResult,
 ];
