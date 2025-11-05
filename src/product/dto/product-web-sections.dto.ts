@@ -2,7 +2,7 @@ import { ApiProperty } from '@nestjs/swagger';
 import { IsOptional, IsString, IsNumber } from 'class-validator';
 import { Type } from 'class-transformer';
 
-export class ProductWebFindDto {
+export class ProductWebSectionsDto {
   @ApiProperty({ description: 'App ID', example: 1, required: false })
   @IsOptional()
   @IsNumber()
@@ -63,42 +63,40 @@ export class ProductWebFindDto {
   @Type(() => Number)
   pe_id_taxonomy?: number;
 
+  // PE_ID_MARCA INT,
   @ApiProperty({
-    description: 'slug Taxonomy',
-    maxLength: 300,
-    example: 'categoria-exemplo',
+    description: 'Brand ID',
+    example: 1,
     required: false,
   })
-  @IsString()
-  pe_slug_taxonomy?: string;
-
-  @ApiProperty({ description: 'Product ID', example: 1, required: false })
-  @IsOptional()
-  @IsNumber()
-  @Type(() => Number)
-  pe_id_produto?: number;
-
-  @ApiProperty({
-    description: 'Product Name',
-    maxLength: 300,
-    example: 'Produto Exemplo',
-    required: false,
-  })
-  @IsOptional()
-  @IsString()
-  pe_produto?: string;
-
-  @ApiProperty({ description: 'BRAND ID', example: 1, required: false })
   @IsOptional()
   @IsNumber()
   @Type(() => Number)
   pe_id_marca?: number;
 
-  @ApiProperty({ description: 'Stock Flag', example: 1, required: false })
+  @ApiProperty({ description: 'Type ID', example: 1, required: false })
   @IsOptional()
   @IsNumber()
   @Type(() => Number)
-  pe_flag_estoque?: number;
+  pe_id_tipo?: number;
+
+  @ApiProperty({ description: 'flag Promotions', example: 1, required: false })
+  @IsOptional()
+  @IsNumber()
+  @Type(() => Number)
+  pe_flag_promotions?: number;
+
+  @ApiProperty({ description: 'flag Highlight', example: 1, required: false })
+  @IsOptional()
+  @IsNumber()
+  @Type(() => Number)
+  pe_flag_highlight?: number;
+
+  @ApiProperty({ description: 'flag Launch', example: 1, required: false })
+  @IsOptional()
+  @IsNumber()
+  @Type(() => Number)
+  pe_flag_lancamento?: number;
 
   @ApiProperty({
     description: 'Number of Records',
@@ -140,11 +138,11 @@ Sample JSON for testing:
   "pe_user_id": "USER001",
   "pe_person_id": 1,
   "pe_id_taxonomy": 1,
-  "pe_slug_taxonomy": "categoria-exemplo",
-  "pe_id_produto": 1,
-  "pe_produto": "Produto Exemplo",
   "pe_id_marca": 1,
-  "pe_flag_estoque": 1,
+  "pe_id_tipo": 1,
+  "pe_flag_promotions": 1,
+  "pe_flag_highlight": 1,
+  "pe_flag_lancamento": 1,
   "pe_qt_registros": 10,
   "pe_pagina_id": 1,
   "pe_coluna_id": 1,
