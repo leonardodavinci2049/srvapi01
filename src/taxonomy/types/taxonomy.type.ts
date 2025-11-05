@@ -64,6 +64,18 @@ export interface TblTaxonomyFindMenu extends RowDataPacket {
   QT_RECORDS?: number | null;
 }
 
+export interface TblTaxonomyWebMenu extends RowDataPacket {
+  ID_TAXONOMY?: number;
+  PARENT_ID?: number;
+  TAXONOMIA?: string;
+  PATH_IMAGEM?: string | null;
+  SLUG?: string | null;
+  LEVEL?: number;
+  ORDEM?: number;
+  ID_IMAGEM?: number | null;
+  QT_RECORDS?: number | null;
+}
+
 export interface TblTaxonomyRelProduto extends RowDataPacket {
   ID_TAXONOMY: number;
   TAXONOMIA: string;
@@ -91,6 +103,12 @@ export type SpResultTaxonomyFindMenuData = [
 ];
 export type SpResultTaxonomyRelProdutoData = [
   TblTaxonomyRelProduto[],
+  SpDefaultFeedback[],
+  SpOperationResult,
+];
+
+export type SpResultTaxonomyWebMenuData = [
+  TblTaxonomyWebMenu[],
   SpDefaultFeedback[],
   SpOperationResult,
 ];

@@ -24,6 +24,7 @@ import { ProductUpdBrandDto } from './dto/product-upd-brand.dto';
 import { ProductUpdPathImageDto } from './dto/product-upd-path-image.dto';
 
 import { ProductUpdMetadataDto } from './dto/product-upd-metadata.dto';
+import { ProductWebSectionsDto } from './dto/product-web-sections.dto';
 
 @Controller('product')
 export class ProductController {
@@ -71,6 +72,12 @@ export class ProductController {
   @Post('v2/product-web-find-id')
   findProductWebIdV2(@Body() dataJsonDto: ProductWebFindIdDto) {
     return this.productService.tskProductWebFindIdV2(dataJsonDto);
+  }
+
+  @UseGuards(AuthGuard)
+  @Post('v2/product-web-sections')
+  findProductWebSectionsV2(@Body() dataJsonDto: ProductWebSectionsDto) {
+    return this.productService.tskProductWebSectionsV2(dataJsonDto);
   }
 
   @UseGuards(AuthGuard)

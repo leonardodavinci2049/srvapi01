@@ -18,6 +18,7 @@ import {
   SpProductPdvFindDataType,
   SpProductWebFindDataType,
   SpProductWebFindIdDataType,
+  SpProductWebSectionsDataType,
   SpResultRecordCreateType,
   SpResultRecordUpdateType,
 } from './types/product.type';
@@ -58,6 +59,8 @@ import { updPathImageProductQuery } from './query/product-upd-path-image';
 
 import { ProductUpdMetadataDto } from './dto/product-upd-metadata.dto';
 import { ProductUpdMetadataQuery } from './query/product-upd-metadata.query';
+import { webFindProductSectionsQuery } from './query/product-web-sections.query';
+import { ProductWebSectionsDto } from './dto/product-web-sections.dto';
 
 @Injectable()
 export class ProductService {
@@ -199,7 +202,7 @@ export class ProductService {
 
       const recordId: number = tblRecord?.ID_PRODUTO ?? 0;
 
-      const DefaultFeedback = resultData[2];
+      const DefaultFeedback = resultData[3];
       const errorId: number = DefaultFeedback[0]?.sp_error_id ?? 0;
       let Feedback = DefaultFeedback[0]?.sp_message || '';
 
@@ -249,6 +252,48 @@ export class ProductService {
       }
 
       return resultQueryData<SpProductWebFindDataType>(
+        0,
+        recordId,
+        errorId,
+        Feedback,
+        resultData,
+        qtRecords,
+        '',
+      );
+    } catch (err) {
+      const errorMessage =
+        err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
+      return new ResultModel(100404, errorMessage, 0, []);
+    }
+  }
+
+  async tskProductWebSectionsV2(dataJsonDto: ProductWebSectionsDto) {
+    try {
+      const queryString = webFindProductSectionsQuery(dataJsonDto);
+
+      const resultData = (await this.dbService.selectExecute(
+        queryString,
+      )) as unknown as SpProductWebSectionsDataType;
+
+      // console.log('resultData', resultData);
+
+      const tblRecords = resultData[0];
+
+      const qtRecords: number = tblRecords.length;
+
+      const tblRecord = tblRecords[0] || 0;
+
+      const recordId: number = tblRecord?.ID_PRODUTO ?? 0;
+
+      const DefaultFeedback = resultData[1];
+      const errorId: number = DefaultFeedback[0]?.sp_error_id ?? 0;
+      let Feedback = DefaultFeedback[0]?.sp_message || '';
+
+      if (qtRecords === 0 && errorId === 0) {
+        Feedback = 'Product not found';
+      }
+
+      return resultQueryData<SpProductWebSectionsDataType>(
         0,
         recordId,
         errorId,

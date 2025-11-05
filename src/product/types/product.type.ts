@@ -125,6 +125,26 @@ export interface tblProductWebId extends RowDataPacket {
   DATADOCADASTRO?: Date;
 }
 
+export interface tblProductWebRelated extends RowDataPacket {
+  ID_TAXONOMY?: number;
+  SKU?: number;
+  PRODUTO?: string;
+  DESCRICAO_TAB?: string;
+  ETIQUETA?: string;
+  REF?: string;
+  MODELO?: string;
+  PATH_IMAGEM?: string | null;
+  SLUG?: string | null;
+  ESTOQUE_LOJA?: number;
+  VL_ATACADO?: number;
+  VL_CORPORATIVO?: number;
+  VL_VAREJO?: number;
+  IMPORTADO?: number;
+  PROMOCAO?: number;
+  LANCAMENTO?: number;
+  DATADOCADASTRO?: Date;
+}
+
 export interface tblProductFind extends RowDataPacket {
   ID_PRODUTO: number;
   ID_POST?: number;
@@ -193,6 +213,35 @@ export interface tblProductWebFind extends RowDataPacket {
   DATADOCADASTRO?: Date;
 }
 
+export interface tblProductWebSections extends RowDataPacket {
+  ID_PRODUTO: number;
+  SKU?: number;
+  PRODUTO?: string;
+  DESCRICAO_TAB?: string;
+  ETIQUETA?: string;
+  REF?: string;
+  MODELO?: string;
+  TIPO?: string;
+  MARCA?: string;
+  PATH_IMAGEM_MARCA?: string;
+  PATH_IMAGEM?: string | null;
+  SLUG?: string | null;
+  ESTOQUE_LOJA?: number;
+  OURO?: number;
+  PRATA?: number;
+  BRONZE?: number;
+  VL_ATACADO?: number;
+  VL_CORPORATIVO?: number;
+  VL_VAREJO?: number;
+  DECONTO?: number;
+  TEMPODEGARANTIA_DIA?: number;
+  DESCRICAO_VENDA?: string | null;
+  IMPORTADO?: number;
+  PROMOCAO?: number;
+  LANCAMENTO?: number;
+  DATADOCADASTRO?: Date;
+}
+
 export interface tbltaxonomy extends RowDataPacket {
   ID_TAXONOMY?: number;
   PARENT_ID?: number;
@@ -230,6 +279,13 @@ export type SpProductFindDataType = [
 export type SpProductWebFindIdDataType = [
   tblProductWebId[],
   tbltaxonomy[],
+  tblProductWebRelated[],
+  SpDefaultFeedback[],
+  SpOperationResult,
+];
+
+export type SpProductWebSectionsDataType = [
+  tblProductWebSections[],
   SpDefaultFeedback[],
   SpOperationResult,
 ];

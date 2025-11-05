@@ -22,6 +22,7 @@ import {
   SpResultTaxonomyFindIdData,
   SpResultTaxonomyFindMenuData,
   SpResultTaxonomyRelProdutoData,
+  SpResultTaxonomyWebMenuData,
 } from './types/taxonomy.type';
 
 import { createTaxonomyQuery } from './query/taxonomy-create.query';
@@ -48,6 +49,8 @@ import { taxonomyUpdInactiveQuery } from './query/taxonomy-upd-inactive.query';
 import { taxonomyUpdMetadataQuery } from './query/taxonomy-upd-metadata.query';
 import { TaxonomyUpdPathImageDto } from './dto/taxonomy-upd-path_image.dto';
 import { taxonomyUpdPathImageQuery } from './query/taxonomy-upd-path-image.query';
+import { TaxonomyWebMenuDto } from './dto/taxonomy-web-menu.dto';
+import { findTaxonomyWebMenuQuery } from './query/taxonomy-web-menu.query';
 
 @Injectable()
 export class TaxonomyService {
@@ -248,6 +251,56 @@ export class TaxonomyService {
       return new ResultModel(100404, errorMessage, 0, []);
     }
   }
+
+  async tskTaxonomyWebMenuV2(dataJsonDto: TaxonomyWebMenuDto) {
+    try {
+      const queryString = findTaxonomyWebMenuQuery(dataJsonDto);
+
+      const resultData = (await this.dbService.selectExecute(
+        queryString,
+      )) as unknown as SpResultTaxonomyWebMenuData;
+
+      const tblRecords = resultData[0];
+
+      const qtRecords: number = tblRecords.length;
+
+      const tblRecord = tblRecords[0] || 0;
+
+      const recordId: number = tblRecord?.ID_TAXONOMY ?? 0;
+
+      // Converter para estrutura hierárquica
+      const hierarchicalCategories = buildHierarchy(tblRecords);
+
+      // Criar nova estrutura de dados com categorias hierárquicas
+      const hierarchicalResultData = [
+        hierarchicalCategories,
+        ...resultData.slice(1),
+      ] as unknown as SpResultTaxonomyWebMenuData;
+
+      const DefaultFeedback = resultData[1];
+      const errorId: number = DefaultFeedback[0]?.sp_error_id ?? 0;
+      let Feedback = DefaultFeedback[0]?.sp_message || '';
+
+      if (qtRecords === 0 && errorId === 0) {
+        Feedback = 'Product not found';
+      }
+
+      return resultQueryData<SpResultTaxonomyFindMenuData>(
+        0,
+        recordId,
+        errorId,
+        Feedback,
+        hierarchicalResultData,
+        qtRecords,
+        '',
+      );
+    } catch (err) {
+      const errorMessage =
+        err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
+      return new ResultModel(100404, errorMessage, 0, []);
+    }
+  }
+
   async tskTaxonomyRelProdutoV2(dataJsonDto: TaxonomyRelProdutoDto) {
     try {
       const queryString = findTaxonomyRelProdutoQuery(dataJsonDto);

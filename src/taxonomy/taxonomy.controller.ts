@@ -16,6 +16,7 @@ import { TaxonomyUpdOrdemDto } from './dto/taxonomy-upd-ordem.dto';
 import { TaxonomyUpdInactiveDto } from './dto/taxonomy-upd-inactive.dto';
 import { TaxonomyUpdMetadataDto } from './dto/taxonomy-upd-metadata.dto';
 import { TaxonomyUpdPathImageDto } from './dto/taxonomy-upd-path_image.dto';
+import { TaxonomyWebMenuDto } from './dto/taxonomy-web-menu.dto';
 
 @Controller('taxonomy')
 export class TaxonomyController {
@@ -64,6 +65,12 @@ export class TaxonomyController {
   @Post('v2/taxonomy-find-menu')
   taxonomyFindMenuV2(@Body() dataJsonDto: TaxonomyFindMenuDto) {
     return this.taxonomyService.tskTaxonomyFindMenuV2(dataJsonDto);
+  }
+
+  @UseGuards(AuthGuard)
+  @Post('v2/taxonomy-web-menu')
+  taxonomyWebMenuV2(@Body() dataJsonDto: TaxonomyWebMenuDto) {
+    return this.taxonomyService.tskTaxonomyWebMenuV2(dataJsonDto);
   }
 
   @UseGuards(AuthGuard)
