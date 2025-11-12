@@ -48,7 +48,6 @@ export class ProductUpdShortDescriptionDto {
 
   @ApiProperty({
     description: 'Sales Description',
-    maxLength: 255,
     example: 'Descrição de venda do produto',
   })
   @IsNotEmpty()
