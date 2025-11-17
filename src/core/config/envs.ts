@@ -1,49 +1,37 @@
 import 'dotenv/config';
 
-import * as joi from 'joi';
-// zod
-// env_-schema não usar por enquanto altera o tsconfig
-interface EnvVars {
-  APP_API_URL: string;
-  APP_SWAGGER_URL: string;
+import { z } from 'zod';
 
-  APP_JWT_SECRET: string;
-  APP_PORT: number;
-  API_KEY: string;
-  DB_MYSQL_HOST: string;
-  DB_MYSQL_PORT: number;
-  DB_MYSQL_USER: string;
-  DB_MYSQL_PASSWORD: string;
-  DB_MYSQL_DATABASE: string;
-}
-
-const envsSchema = joi
+const envsSchema = z
   .object({
-    APP_API_URL: joi.string().required(),
-    APP_SWAGGER_URL: joi.string().required(),
+    APP_API_URL: z.string().min(1),
+    APP_SWAGGER_URL: z.string().min(1),
 
-    APP_JWT_SECRET: joi.string().required(),
-    APP_PORT: joi.number().positive().required(),
-    API_KEY: joi.string().required(),
+    APP_JWT_SECRET: z.string().min(1),
+    APP_PORT: z.coerce.number().positive(),
+    API_KEY: z.string().min(1),
 
-    DB_MYSQL_HOST: joi.string().required(),
-    DB_MYSQL_PORT: joi.number().positive().required(),
-    DB_MYSQL_USER: joi.string().required(),
-    DB_MYSQL_PASSWORD: joi.string().required(),
-    DB_MYSQL_DATABASE: joi.string().required(),
+    DB_MYSQL_HOST: z.string().min(1),
+    DB_MYSQL_PORT: z.coerce.number().positive(),
+    DB_MYSQL_USER: z.string().min(1),
+    DB_MYSQL_PASSWORD: z.string().min(1),
+    DB_MYSQL_DATABASE: z.string().min(1),
   })
-  .unknown(true);
+  .passthrough();
 
-const validationResult = envsSchema.validate(process.env);
-const error: joi.ValidationError | undefined = validationResult.error;
-const value = validationResult.value as EnvVars;
+const validationResult = envsSchema.safeParse(process.env);
 
-if (error) {
-  throw new Error(`❌ Invalid environment variables:  ${error.message}`);
+if (!validationResult.success) {
+  const message = validationResult.error.issues
+    .map((issue) => `${issue.path.join('.') || 'env'}: ${issue.message}`)
+    .join(', ');
+  throw new Error(`❌ Invalid environment variables: ${message}`);
 }
-const envVars: EnvVars = value;
+
+const envVars = validationResult.data;
 
 export const envs = {
+  APP_API_URL: envVars.APP_API_URL,
   APP_SWAGGER_URL: envVars.APP_SWAGGER_URL,
 
   APP_JWT_SECRET: envVars.APP_JWT_SECRET,
