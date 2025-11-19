@@ -1,66 +1,36 @@
-import { IsInt, IsOptional, IsString } from 'class-validator';
-import { Type } from 'class-transformer';
-
+import { ApiProperty } from '@nestjs/swagger';
+import { IsNotEmpty, IsNumber, IsString } from 'class-validator';
 export class ConfigurationCreateDto {
-  @IsInt()
-  @Type(() => Number)
-  ID_SYSTEM_CLIENTE: number;
+  @ApiProperty({ description: 'App ID' })
+  @IsNumber()
+  @IsNotEmpty()
+  pe_app_id: number;
 
-  @IsInt()
-  @Type(() => Number)
-  ID_LOJA: number;
+  @ApiProperty({ description: 'System Client ID' })
+  @IsNumber()
+  @IsNotEmpty()
+  pe_system_client_id: number;
 
+  @ApiProperty({ description: 'Store ID' })
+  @IsNumber()
+  @IsNotEmpty()
+  pe_store_id: number;
+
+  @ApiProperty({ description: 'Organization ID', maxLength: 200 })
   @IsString()
-  @IsOptional()
-  NOME_EMPRESA?: string;
+  @IsNotEmpty()
+  pe_organization_id: string;
 
+  @ApiProperty({ description: 'Member ID', maxLength: 200 })
   @IsString()
-  @IsOptional()
-  SLOGAN?: string;
+  @IsNotEmpty()
+  pe_member_id: string;
 
+  @ApiProperty({ description: 'User ID', maxLength: 200 })
   @IsString()
-  @IsOptional()
-  SOBRE?: string;
+  pe_user_id: string;
 
-  @IsString()
-  @IsOptional()
-  SOBRE_PAGINA?: string;
-
-  @IsString()
-  @IsOptional()
-  ENDERECO?: string;
-
-  @IsString()
-  @IsOptional()
-  TELEFONE?: string;
-
-  @IsString()
-  @IsOptional()
-  EMAIL?: string;
-
-  @IsString()
-  @IsOptional()
-  SITE?: string;
-
-  @IsString()
-  @IsOptional()
-  FACEBOOK?: string;
-
-  @IsString()
-  @IsOptional()
-  INSTAGRAM?: string;
-
-  @IsString()
-  @IsOptional()
-  HORARIO_FUNCIONAMENTO?: string;
-
-  @IsInt()
-  @IsOptional()
-  @Type(() => Number)
-  ID_USUARIO?: number;
-
-  @IsInt()
-  @IsOptional()
-  @Type(() => Number)
-  ID_DEPARTAMENTO?: number;
+  @ApiProperty({ description: 'Person ID' })
+  @IsNumber()
+  pe_person_id: number;
 }

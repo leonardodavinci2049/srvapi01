@@ -1,36 +1,37 @@
-import { IsInt, IsOptional, IsString } from 'class-validator';
-import { Type } from 'class-transformer';
+import { ApiProperty } from '@nestjs/swagger';
+import { IsNotEmpty, IsNumber, IsString } from 'class-validator';
 
 export class ConfigurationInternetUpdDto {
-  @IsInt()
-  @Type(() => Number)
-  id: number;
+  @ApiProperty({ description: 'App ID' })
+  @IsNumber()
+  @IsNotEmpty()
+  pe_app_id: number;
 
-  @IsInt()
-  @Type(() => Number)
-  systemId: number;
+  @ApiProperty({ description: 'System Client ID' })
+  @IsNumber()
+  @IsNotEmpty()
+  pe_system_client_id: number;
 
-  @IsInt()
-  @Type(() => Number)
-  storeId: number;
+  @ApiProperty({ description: 'Store ID' })
+  @IsNumber()
+  @IsNotEmpty()
+  pe_store_id: number;
 
+  @ApiProperty({ description: 'Organization ID', maxLength: 200 })
   @IsString()
-  @IsOptional()
-  EMAIL?: string;
+  @IsNotEmpty()
+  pe_organization_id: string;
 
+  @ApiProperty({ description: 'Member ID', maxLength: 200 })
   @IsString()
-  @IsOptional()
-  SITE?: string;
+  @IsNotEmpty()
+  pe_member_id: string;
 
+  @ApiProperty({ description: 'User ID', maxLength: 200 })
   @IsString()
-  @IsOptional()
-  FACEBOOK?: string;
+  pe_user_id: string;
 
-  @IsString()
-  @IsOptional()
-  INSTAGRAM?: string;
-
-  @IsInt()
-  @Type(() => Number)
-  userId: number;
+  @ApiProperty({ description: 'Person ID' })
+  @IsNumber()
+  pe_person_id: number;
 }
