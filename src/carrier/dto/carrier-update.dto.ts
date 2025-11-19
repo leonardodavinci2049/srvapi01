@@ -1,5 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsNotEmpty, IsNumber, IsString } from 'class-validator';
+import { Type } from 'class-transformer';
+import { IsNotEmpty, IsNumber, IsOptional, IsString } from 'class-validator';
 
 export class CarrierUpdateDto {
   @ApiProperty({ description: 'App ID' })
@@ -33,5 +34,74 @@ export class CarrierUpdateDto {
 
   @ApiProperty({ description: 'Person ID' })
   @IsNumber()
-  pe_person_id: number;
+  @IsOptional()
+  @Type(() => Number)
+  pe_person_id?: number;
+
+  @ApiProperty({ description: 'Carrier ID' })
+  @IsNumber()
+  @IsOptional()
+  @Type(() => Number)
+  pe_id_transportadora?: number;
+
+  @ApiProperty({ description: 'Person Type ID' })
+  @IsNumber()
+  @IsOptional()
+  @Type(() => Number)
+  pe_id_pessoa_tipo?: number;
+
+  @ApiProperty({ description: 'Name', maxLength: 300 })
+  @IsString()
+  @IsOptional()
+  pe_nome?: string;
+
+  @ApiProperty({ description: 'Phone 1', maxLength: 100 })
+  @IsString()
+  @IsOptional()
+  pe_fone1?: string;
+
+  @ApiProperty({ description: 'WhatsApp 1', maxLength: 100 })
+  @IsString()
+  @IsOptional()
+  pe_whatapp1?: string;
+
+  @ApiProperty({ description: 'Email 1', maxLength: 100 })
+  @IsString()
+  @IsOptional()
+  pe_email1?: string;
+
+  @ApiProperty({ description: 'Website', maxLength: 300 })
+  @IsString()
+  @IsOptional()
+  pe_website?: string;
+
+  @ApiProperty({ description: 'CNPJ', maxLength: 100 })
+  @IsString()
+  @IsOptional()
+  pe_cnpj?: string;
+
+  @ApiProperty({ description: 'Company Name', maxLength: 300 })
+  @IsString()
+  @IsOptional()
+  pe_razao_social?: string;
+
+  @ApiProperty({ description: 'Responsible Name', maxLength: 300 })
+  @IsString()
+  @IsOptional()
+  pe_nome_responsavel?: string;
+
+  @ApiProperty({ description: 'CPF', maxLength: 100 })
+  @IsString()
+  @IsOptional()
+  pe_cpf?: string;
+
+  @ApiProperty({ description: 'Image Path', maxLength: 300 })
+  @IsString()
+  @IsOptional()
+  pe_path_imagem?: string;
+
+  @ApiProperty({ description: 'Notes' })
+  @IsString()
+  @IsOptional()
+  pe_anotacoes?: string;
 }

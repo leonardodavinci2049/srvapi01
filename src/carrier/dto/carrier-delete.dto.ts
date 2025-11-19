@@ -1,5 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsNotEmpty, IsNumber, IsString } from 'class-validator';
+import { Type } from 'class-transformer';
+import { IsNotEmpty, IsNumber, IsOptional, IsString } from 'class-validator';
 
 export class CarrierDeleteDto {
   @ApiProperty({ description: 'App ID' })
@@ -33,5 +34,13 @@ export class CarrierDeleteDto {
 
   @ApiProperty({ description: 'Person ID' })
   @IsNumber()
-  pe_person_id: number;
+  @IsOptional()
+  @Type(() => Number)
+  pe_person_id?: number;
+
+  @ApiProperty({ description: 'Carrier ID' })
+  @IsNumber()
+  @IsNotEmpty()
+  @Type(() => Number)
+  pe_id_transportadora: number;
 }

@@ -1,5 +1,14 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsNotEmpty, IsNumber, IsString } from 'class-validator';
+import { Type } from 'class-transformer';
+import {
+  IsDateString,
+  IsInt,
+  IsNotEmpty,
+  IsNumber,
+  IsOptional,
+  IsString,
+  MaxLength,
+} from 'class-validator';
 
 export class CustomerPersonalUpdDto {
   @ApiProperty({ description: 'App ID' })
@@ -34,4 +43,50 @@ export class CustomerPersonalUpdDto {
   @ApiProperty({ description: 'Person ID' })
   @IsNumber()
   pe_person_id: number;
+
+  @ApiProperty({ description: 'Customer ID', required: false })
+  @IsInt()
+  @IsOptional()
+  @Type(() => Number)
+  pe_customer_id?: number;
+
+  @ApiProperty({ description: 'CPF', maxLength: 100, required: false })
+  @IsString()
+  @IsOptional()
+  @MaxLength(100)
+  pe_cpf?: string;
+
+  @ApiProperty({
+    description: 'Primeiro nome',
+    maxLength: 300,
+    required: false,
+  })
+  @IsString()
+  @IsOptional()
+  @MaxLength(300)
+  pe_primeiro_nome?: string;
+
+  @ApiProperty({ description: 'Sobrenome', maxLength: 100, required: false })
+  @IsString()
+  @IsOptional()
+  @MaxLength(100)
+  pe_sobrenome?: string;
+
+  @ApiProperty({
+    description: 'Caminho da imagem',
+    maxLength: 100,
+    required: false,
+  })
+  @IsString()
+  @IsOptional()
+  @MaxLength(100)
+  pe_path_imagem?: string;
+
+  @ApiProperty({
+    description: 'Data de nascimento (YYYY-MM-DD)',
+    required: false,
+  })
+  @IsDateString()
+  @IsOptional()
+  pe_datadonascimento?: string;
 }

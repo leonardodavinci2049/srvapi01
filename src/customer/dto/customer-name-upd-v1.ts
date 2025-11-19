@@ -1,5 +1,12 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsNotEmpty, IsNumber, IsString } from 'class-validator';
+import { Type } from 'class-transformer';
+import {
+  IsInt,
+  IsNotEmpty,
+  IsNumber,
+  IsOptional,
+  IsString,
+} from 'class-validator';
 
 export class CustomerNameUpdV1 {
   @ApiProperty({ description: 'App ID' })
@@ -34,4 +41,18 @@ export class CustomerNameUpdV1 {
   @ApiProperty({ description: 'Person ID' })
   @IsNumber()
   pe_person_id: number;
+
+  @ApiProperty({ description: 'Customer ID', required: false })
+  @IsInt()
+  @IsOptional()
+  @Type(() => Number)
+  pe_customer_id?: number;
+
+  @ApiProperty({
+    description: 'Nome completo do cliente',
+    required: false,
+  })
+  @IsString()
+  @IsOptional()
+  pe_nome?: string;
 }
