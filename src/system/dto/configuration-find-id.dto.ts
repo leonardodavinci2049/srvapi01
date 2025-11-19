@@ -34,4 +34,8 @@ export class ConfigurationFindIdDto {
   @ApiProperty({ description: 'Person ID' })
   @IsNumber()
   pe_person_id: number;
+
+  @ApiProperty({ description: 'ID Configuration' })
+  @IsNumber()
+  pe_id_configuration: number;
 }

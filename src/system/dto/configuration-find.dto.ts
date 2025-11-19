@@ -1,5 +1,12 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsNotEmpty, IsNumber, IsString } from 'class-validator';
+import {
+  IsNotEmpty,
+  IsNumber,
+  IsString,
+  IsOptional,
+  MaxLength,
+} from 'class-validator';
+import { Type } from 'class-transformer';
 
 export class ConfigurationFindDto {
   @ApiProperty({ description: 'App ID' })
@@ -34,4 +41,22 @@ export class ConfigurationFindDto {
   @ApiProperty({ description: 'Person ID' })
   @IsNumber()
   pe_person_id: number;
+
+  @ApiProperty({ description: 'Configuration ID' })
+  @IsNumber()
+  @IsOptional()
+  @Type(() => Number)
+  pe_id_configuration?: number;
+
+  @ApiProperty({ description: 'Company Name', maxLength: 100 })
+  @IsString()
+  @IsOptional()
+  @MaxLength(100)
+  pe_company_name?: string;
+
+  @ApiProperty({ description: 'Limit' })
+  @IsNumber()
+  @IsOptional()
+  @Type(() => Number)
+  pe_limit?: number;
 }
