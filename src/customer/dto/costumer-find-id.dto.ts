@@ -34,4 +34,8 @@ export class CostumerFindIdDto {
   @ApiProperty({ description: 'Person ID' })
   @IsNumber()
   pe_person_id: number;
+
+  @ApiProperty({ description: 'Customer ID' })
+  @IsNumber()
+  pe_customer_id: number;
 }

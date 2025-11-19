@@ -1,5 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsNotEmpty, IsNumber, IsString } from 'class-validator';
+import { Type } from 'class-transformer';
+import { IsNotEmpty, IsNumber, IsOptional, IsString } from 'class-validator';
 
 export class CarrierSelDto {
   @ApiProperty({ description: 'App ID' })
@@ -33,5 +34,24 @@ export class CarrierSelDto {
 
   @ApiProperty({ description: 'Person ID' })
   @IsNumber()
-  pe_person_id: number;
+  @IsOptional()
+  @Type(() => Number)
+  pe_person_id?: number;
+
+  @ApiProperty({ description: 'Carrier ID' })
+  @IsNumber()
+  @IsOptional()
+  @Type(() => Number)
+  pe_id_transportadora?: number;
+
+  @ApiProperty({ description: 'Carrier Name', maxLength: 100 })
+  @IsString()
+  @IsOptional()
+  pe_nome?: string;
+
+  @ApiProperty({ description: 'Query Limit' })
+  @IsNumber()
+  @IsOptional()
+  @Type(() => Number)
+  pe_limit?: number;
 }

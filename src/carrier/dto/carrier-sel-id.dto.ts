@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsNotEmpty, IsNumber, IsString } from 'class-validator';
+import { IsNotEmpty, IsNumber, IsOptional, IsString } from 'class-validator';
 
 export class CarrierSelIdDto {
   @ApiProperty({ description: 'App ID' })
@@ -33,5 +33,11 @@ export class CarrierSelIdDto {
 
   @ApiProperty({ description: 'Person ID' })
   @IsNumber()
-  pe_person_id: number;
+  @IsOptional()
+  pe_person_id?: number;
+
+  @ApiProperty({ description: 'Carrier ID' })
+  @IsNumber()
+  @IsOptional()
+  pe_id_transportadora?: number;
 }
