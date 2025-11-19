@@ -1,5 +1,12 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsNotEmpty, IsNumber, IsString } from 'class-validator';
+import {
+  IsNotEmpty,
+  IsNumber,
+  IsString,
+  IsOptional,
+  MaxLength,
+} from 'class-validator';
+import { Type } from 'class-transformer';
 
 export class ConfigurationAboutPageUpdDto {
   @ApiProperty({ description: 'App ID' })
@@ -34,4 +41,16 @@ export class ConfigurationAboutPageUpdDto {
   @ApiProperty({ description: 'Person ID' })
   @IsNumber()
   pe_person_id: number;
+
+  @ApiProperty({ description: 'Configuration ID' })
+  @IsNumber()
+  @IsOptional()
+  @Type(() => Number)
+  pe_id_configuration?: number;
+
+  @ApiProperty({ description: 'Company About Page', maxLength: 200 })
+  @IsString()
+  @IsOptional()
+  @MaxLength(200)
+  pe_company_about_page?: string;
 }
