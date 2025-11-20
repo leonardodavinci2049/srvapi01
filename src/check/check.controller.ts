@@ -44,12 +44,6 @@ export class CheckController {
   }
 
   @UseGuards(AuthGuard)
-  @Post('v2/check-if-taxonomy-slug-exists')
-  checkIfTaxonomySlugExists(@Body() dataJsonDto: CheckIfExistsDto) {
-    return this.checkService.tskCheckIfTaxonomySlugExist(dataJsonDto);
-  }
-
-  @UseGuards(AuthGuard)
   @Post('v2/check-if-product-name-exists')
   checkIfProductNameExists(@Body() dataJsonDto: CheckIfExistsDto) {
     return this.checkService.tskCheckIfProductNameExist(dataJsonDto);
@@ -59,5 +53,17 @@ export class CheckController {
   @Post('v2/check-if-product-slug-exists')
   checkIfProductSlugExists(@Body() dataJsonDto: CheckIfExistsDto) {
     return this.checkService.tskCheckIfProductSlugExist(dataJsonDto);
+  }
+
+  @UseGuards(AuthGuard)
+  @Post('v2/check-if-taxonomy-name-exists')
+  checkIfTaxonomyNameExists(@Body() dataJsonDto: CheckIfExistsDto) {
+    return this.checkService.tskCheckIfTaxonomyNameExist(dataJsonDto);
+  }
+
+  @UseGuards(AuthGuard)
+  @Post('v2/check-if-taxonomy-slug-exists')
+  checkIfTaxonomySlugExists(@Body() dataJsonDto: CheckIfExistsDto) {
+    return this.checkService.tskCheckIfTaxonomySlugExist(dataJsonDto);
   }
 }

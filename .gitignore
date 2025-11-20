@@ -65,4 +65,3 @@ ecosystem.config.js
 /upload
 /flow
 .github
-/generated/prisma
