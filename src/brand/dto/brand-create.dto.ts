@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsNotEmpty, IsNumber, IsString } from 'class-validator';
+import { IsNotEmpty, IsNumber, IsString, MaxLength } from 'class-validator';
 
 export class BrandCreateDto {
   @ApiProperty({ description: 'App ID' })
@@ -34,4 +34,16 @@ export class BrandCreateDto {
   @ApiProperty({ description: 'Person ID' })
   @IsNumber()
   pe_person_id: number;
+
+  @ApiProperty({ description: 'Brand name', maxLength: 100 })
+  @IsString()
+  @IsNotEmpty()
+  @MaxLength(100)
+  pe_marca: string;
+
+  @ApiProperty({ description: 'Brand slug', maxLength: 300 })
+  @IsString()
+  @IsNotEmpty()
+  @MaxLength(300)
+  pe_slug: string;
 }

@@ -1,5 +1,13 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsNotEmpty, IsNumber, IsString } from 'class-validator';
+import {
+  IsInt,
+  IsNotEmpty,
+  IsNumber,
+  IsOptional,
+  IsString,
+  MaxLength,
+} from 'class-validator';
+import { Type } from 'class-transformer';
 
 export class BrandUpdateDto {
   @ApiProperty({ description: 'App ID' })
@@ -34,4 +42,33 @@ export class BrandUpdateDto {
   @ApiProperty({ description: 'Person ID' })
   @IsNumber()
   pe_person_id: number;
+
+  @ApiProperty({ description: 'Brand ID' })
+  @IsInt()
+  @IsNotEmpty()
+  @Type(() => Number)
+  pe_id_marca: number;
+
+  @ApiProperty({ description: 'Brand name', maxLength: 100 })
+  @IsString()
+  @IsNotEmpty()
+  @MaxLength(100)
+  pe_marca: string;
+
+  @ApiProperty({ description: 'Brand slug', maxLength: 100 })
+  @IsString()
+  @IsNotEmpty()
+  @MaxLength(100)
+  pe_slug: string;
+
+  @ApiProperty({ description: 'Image path', maxLength: 500 })
+  @IsString()
+  @IsOptional()
+  @MaxLength(500)
+  pe_path_imagem?: string;
+
+  @ApiProperty({ description: 'Notes/annotations' })
+  @IsString()
+  @IsOptional()
+  pe_anotacoes?: string;
 }
