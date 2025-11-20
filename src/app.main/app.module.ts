@@ -14,7 +14,7 @@ import { CustomerModule } from 'src/customer/customer.module';
 import { AccountModule } from 'src/account/account.module';
 import { CheckModule } from 'src/check/check.module';
 import { TaxonomyModule } from 'src/taxonomy/taxonomy.module';
-import { PrismaModule } from 'src/prisma/prisma.module';
+
 import { BrandModule } from 'src/brand/brand.module';
 import { PtypeModule } from 'src/ptype/ptype.module';
 import { SupplierModule } from 'src/supplier/supplier.module';
@@ -29,7 +29,7 @@ import { SupplierModule } from 'src/supplier/supplier.module';
       exclude: ['/api/*'], // Exclui a API
       serveRoot: '/', // Serve na raiz da aplicação
     }),
-    PrismaModule,
+
     ProductModule, // Importando o módulo de produtos
     CartModule, // Importando o módulo de carrinho
     CustomerModule, // Importando o módulo de clientes
