@@ -34,4 +34,8 @@ export class BrandSelIdDto {
   @ApiProperty({ description: 'Person ID' })
   @IsNumber()
   pe_person_id: number;
+
+  @ApiProperty({ description: 'Marca ID' })
+  @IsNumber()
+  pe_marca_id: number;
 }
