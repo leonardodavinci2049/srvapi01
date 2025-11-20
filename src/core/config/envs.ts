@@ -16,6 +16,8 @@ const envsSchema = z
     DB_MYSQL_USER: z.string().min(1),
     DB_MYSQL_PASSWORD: z.string().min(1),
     DB_MYSQL_DATABASE: z.string().min(1),
+
+    DATABASE_URL: z.string().min(1),
   })
   .passthrough();
 
@@ -43,4 +45,6 @@ export const envs = {
   DB_MYSQL_USER: envVars.DB_MYSQL_USER,
   DB_MYSQL_PASSWORD: envVars.DB_MYSQL_PASSWORD,
   DB_MYSQL_DATABASE: envVars.DB_MYSQL_DATABASE,
+
+  DATABASE_URL: envVars.DATABASE_URL,
 };

@@ -5,7 +5,6 @@ generator client {
 
 datasource db {
   provider = "mysql"
-  url      = env("DATABASE_URL")
 }
 
 model tbl_boleto_bancario {
@@ -2293,8 +2292,8 @@ model tbl_system_config {
   ID_WEBSITE_START      Int?
   FLAG_ARREDONDAR_PRECO Int?      @default(1)
   QT_MIN_VERSAO         Int?      @default(0)
-  DT_EXPORTE            DateTime? @db.Date
-  DT_UPDATE             DateTime? @db.Date
+  CREATEDAT             DateTime? @db.DateTime(0)
+  UPDATEDAT             DateTime? @db.DateTime(0)
 }
 
 model tbl_system_log_erro {
@@ -2540,6 +2539,12 @@ model tbl_taxonomy {
   @@index([ID_SYSTEM], map: "ID_SYSTEM_CLIENTE")
   @@index([INATIVO], map: "INATIVO")
   @@index([PARENT_ID], map: "PARENT_ID")
+  @@index([ID_TAXONOMY], map: "INDEX_CREATEDAT")
+  @@index([ID_TAXONOMY], map: "INDEX_LEVEL")
+  @@index([ID_TAXONOMY], map: "INDEX_QT_RECORDS")
+  @@index([ID_TAXONOMY], map: "INDEX_SLUG")
+  @@index([ID_TAXONOMY], map: "INDEX_TAXONOMIA")
+  @@index([ID_TAXONOMY], map: "INDEX_UUID")
 }
 
 model tbl_taxonomy_rel {
@@ -2557,30 +2562,26 @@ model tbl_taxonomy_rel {
 
   @@id([ID_TAXONOMY, ID_RECORD])
   @@index([ID_SYSTEM], map: "ID_SYSTEM_CLIENTE")
-}
-
-model tbl_taxonomy_slug {
-  ID_TAXONOMY            Int     @id
-  TAXONOMIA              String? @db.VarChar(100)
-  SLUG                   String? @db.VarChar(300)
-  /// This field was commented out because of an invalid name. Please provide a valid one that matches [a-zA-Z][a-zA-Z0-9_]*
-  // 187 Int? @map("187")
-  INFORM_TICA_ELETR_NICO String? @map("INFORMÁTICA ELETRÔNICO") @db.VarChar(50)
-  informatica_eletronico String? @map("informatica-eletronico") @db.VarChar(50)
+  @@index([ID_TAXONOMY], map: "ID_RECORD")
+  @@index([ID_TAXONOMY], map: "ID_TAXONOMY")
 }
 
 model tbl_transportadora {
   ID_TRANSPORTADORA      Int       @id @default(autoincrement())
+  UUID                   String?   @db.VarChar(100)
   ID_SYSTEM_CLIENTE      Int?      @default(0)
   ID_LOJA                Int?      @default(1)
   ID_USUARIO             Int?      @default(1)
   ID_DEPARTAMENTO        Int?      @default(1)
   ID_CATEGORIA           Int?      @default(1)
   ID_TIPO                Int?      @default(1)
+  ID_PESSOA_TIPO         Int?      @default(1)
   ID_RESPONSAVEL         Int?
   ID_IMAGEM              Int?
   NOME                   String?   @db.VarChar(300)
+  SLUG                   String?   @db.VarChar(45)
   FISIJURI               String?   @db.VarChar(10)
+  PATH_IMAGEM            String?   @db.VarChar(300)
   FONE1                  String?   @db.VarChar(200)
   FONE2                  String?   @db.VarChar(200)
   WHATAPP1               String?   @db.VarChar(200)
@@ -2644,4 +2645,60 @@ model tbl_transportadora {
   ANOTACOES              String?   @db.LongText
   DT_EXPORTE             DateTime? @db.Date
   DT_UPDATE              DateTime? @db.Date
+  CREATEDAT              DateTime? @db.DateTime(0)
+  UPDATEDAT              DateTime? @db.DateTime(0)
+}
+
+model tbl_system_configuration {
+  ID_CONFIGURATION      Int       @id @default(autoincrement())
+  UUID                  String?   @db.VarChar(100)
+  SYSTEM_CLIENT_ID      Int?
+  ORGANIZATION_ID       String?   @db.VarChar(200)
+  USER_ID               String?   @db.VarChar(200)
+  PERSON_ID             Int?      @default(1)
+  COMPANY_NAME          String?   @db.VarChar(200)
+  COMPANY_TITLE         String?   @db.VarChar(100)
+  COMPANY_CNPJ          String?   @db.VarChar(100)
+  COMPANY_PHONE         String?   @db.VarChar(100)
+  COMPANY_WHATSAPP      String?   @db.VarChar(100)
+  COMPANY_EMAIL         String?   @db.VarChar(100)
+  COMPANY_ABOUT_SHORT1  String?   @db.Text
+  COMPANY_ABOUT_PAGE    String?   @db.LongText
+  COMPANY_OPENING_HOURS String?   @db.Text
+  COMPANY_ADDRESS1      String?   @db.Text
+  COMPANY_ADDRESS2      String?   @db.Text
+  COMPANY_ADDRESS3      String?   @db.Text
+  COMPANY_MAPS          String?   @db.Text
+  ADDRESS_ZIP_CODE      String?   @db.VarChar(45)
+  ADDRESS_STREET        String?   @db.VarChar(200)
+  ADDRESS_ADDITIONAL    String?   @db.VarChar(300)
+  ADDRESS_NEIGHBORHOOD  String?   @db.VarChar(100)
+  ADDRESS_CITY          String?   @db.VarChar(100)
+  ADDRESS_STATE         String?   @db.VarChar(100)
+  ADDRESS_COUNTRY       String?   @db.VarChar(100)
+  COMPANY_INTERNET1     String?   @db.VarChar(300)
+  COMPANY_INTERNET2     String?   @db.VarChar(300)
+  COMPANY_INTERNET3     String?   @db.VarChar(300)
+  COMPANY_INTERNET4     String?   @db.VarChar(300)
+  COMPANY_INTERNET5     String?   @db.VarChar(300)
+  SLOGAN1               String?   @db.VarChar(300)
+  SLOGAN2               String?   @db.VarChar(300)
+  SLOGAN3               String?   @db.VarChar(300)
+  SLOGAN4               String?   @db.VarChar(300)
+  SLOGAN5               String?   @db.VarChar(300)
+  CALL_TO_ACTION1       String?   @db.Text
+  CALL_TO_ACTION2       String?   @db.Text
+  CALL_TO_ACTION3       String?   @db.Text
+  CALL_TO_ACTION4       String?   @db.Text
+  CALL_TO_ACTION5       String?   @db.Text
+  DEVELOPER_LOGO_DARK   String?   @db.VarChar(300)
+  DEVELOPER_LOGO_WHITE  String?   @db.VarChar(300)
+  DEVELOPER_NAME        String?   @db.VarChar(300)
+  DEVELOPER_URL         String?   @db.VarChar(300)
+  CONFIGURATION_KEY     String?   @db.VarChar(300)
+  CONFIGURATION_VALUE   String?   @db.Text
+  CONFIGURATION_NOTES   String?   @db.Text
+  FLAG_DESABLED         Int?      @default(0) @db.SmallInt
+  CREATEDAT             DateTime? @db.DateTime(0)
+  UPDATEDAT             DateTime? @db.DateTime(0)
 }
