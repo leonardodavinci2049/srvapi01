@@ -1,6 +1,5 @@
 import { Injectable } from '@nestjs/common';
 import { DatabaseService } from 'src/database/database.service';
-import { PrismaService } from 'src/prisma/prisma.service';
 
 import { resultQueryData } from 'src/core/utils/globalResult/global.result';
 import { ResultModel } from 'src/core/utils/result.model';
@@ -11,10 +10,7 @@ import { CheckIfExistsDto } from './dto/check-if-exists.dto';
 
 @Injectable()
 export class CheckService {
-  constructor(
-    private readonly dbService: DatabaseService,
-    private readonly prisma: PrismaService,
-  ) {}
+  constructor(private readonly dbService: DatabaseService) {}
 
   async tskCheckIfEmailExist(dataJsonDto: CheckIfExistsDto) {
     try {
