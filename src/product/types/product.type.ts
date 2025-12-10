@@ -180,7 +180,7 @@ export interface tblProductFind extends RowDataPacket {
   ID_IMAGEM?: number;
   PATH_IMAGEM?: string | null;
   SLUG?: string | null;
-  DT_UPDATE?: Date;
+  CATEGORIAS?: string | null;
   DATADOCADASTRO?: Date;
 }
 
