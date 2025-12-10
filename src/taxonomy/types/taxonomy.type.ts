@@ -77,9 +77,12 @@ export interface TblTaxonomyWebMenu extends RowDataPacket {
 }
 
 export interface TblTaxonomyRelProduto extends RowDataPacket {
-  ID_TAXONOMY: number;
-  TAXONOMIA: string;
-  CREATEDAT: string;
+  ID_TAXONOMY?: number;
+  PARENT_ID?: number;
+  TAXONOMIA?: string;
+  SLUG?: string | null;
+  ORDEM?: number;
+  LEVEL?: number;
 }
 
 export type SpResultRecordCreateType = [SpDefaultFeedback[], SpOperationResult];
