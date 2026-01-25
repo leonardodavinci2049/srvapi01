@@ -11,11 +11,11 @@ const envsSchema = z
     APP_PORT: z.coerce.number().positive(),
     API_KEY: z.string().min(1),
 
-    DB_MYSQL_HOST: z.string().min(1),
-    DB_MYSQL_PORT: z.coerce.number().positive(),
-    DB_MYSQL_USER: z.string().min(1),
-    DB_MYSQL_PASSWORD: z.string().min(1),
-    DB_MYSQL_DATABASE: z.string().min(1),
+    DATABASE_HOST: z.string().min(1),
+    DATABASE_PORT: z.coerce.number().positive(),
+    DATABASE_USER: z.string().min(1),
+    DATABASE_PASSWORD: z.string().min(1),
+    DATABASE_NAME: z.string().min(1),
   })
   .passthrough();
 
@@ -38,9 +38,9 @@ export const envs = {
   APP_PORT: envVars.APP_PORT,
   API_KEY: envVars.API_KEY,
 
-  DB_MYSQL_HOST: envVars.DB_MYSQL_HOST,
-  DB_MYSQL_PORT: envVars.DB_MYSQL_PORT,
-  DB_MYSQL_USER: envVars.DB_MYSQL_USER,
-  DB_MYSQL_PASSWORD: envVars.DB_MYSQL_PASSWORD,
-  DB_MYSQL_DATABASE: envVars.DB_MYSQL_DATABASE,
+  DATABASE_HOST: envVars.DATABASE_HOST,
+  DATABASE_PORT: envVars.DATABASE_PORT,
+  DATABASE_USER: envVars.DATABASE_USER,
+  DATABASE_PASSWORD: envVars.DATABASE_PASSWORD,
+  DATABASE_NAME: envVars.DATABASE_NAME,
 };
