@@ -10,7 +10,7 @@ export function OrderOperCloseIdQuery(
   const olUserId = dataJsonDto.pe_user_id;
   const olMemberRole = dataJsonDto.pe_member_role;
   const olPersonId = dataJsonDto.pe_person_id;
-  const olOrderOperationId = dataJsonDto.pe_order_operation_id;
+  const olOrderId = dataJsonDto.pe_order_id;
 
   const queryString = ` call sp_order_oper_close_id_v2(
         ${olAppId},
@@ -20,7 +20,7 @@ export function OrderOperCloseIdQuery(
         '${olUserId}',
         '${olMemberRole}',
         ${olPersonId},
-        ${olOrderOperationId}
+        ${olOrderId}
 
       ) `;
 

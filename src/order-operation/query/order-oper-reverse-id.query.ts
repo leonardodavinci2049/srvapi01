@@ -10,7 +10,8 @@ export function OrderOperReverseIdQuery(
   const olUserId = dataJsonDto.pe_user_id;
   const olMemberRole = dataJsonDto.pe_member_role;
   const olPersonId = dataJsonDto.pe_person_id;
-  const olOrderOperationId = dataJsonDto.pe_order_operation_id;
+  const olNomeUsuario = dataJsonDto.pe_nome_usuario;
+  const olIdPedido = dataJsonDto.pe_id_pedido;
 
   const queryString = ` call sp_order_oper_reverse_id_v2(
         ${olAppId},
@@ -20,8 +21,8 @@ export function OrderOperReverseIdQuery(
         '${olUserId}',
         '${olMemberRole}',
         ${olPersonId},
-        ${olOrderOperationId}
-
+        '${olNomeUsuario}',
+        ${olIdPedido}
       ) `;
 
   return queryString;

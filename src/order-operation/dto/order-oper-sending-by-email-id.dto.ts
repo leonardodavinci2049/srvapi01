@@ -1,11 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import {
-  IsNotEmpty,
-  IsNumber,
-  IsString,
-  IsEmail,
-  IsOptional,
-} from 'class-validator';
+import { IsNotEmpty, IsNumber, IsString } from 'class-validator';
 
 export class OrderOperSendingByEmailIdDto {
   @ApiProperty({ description: 'App ID' })
@@ -40,13 +34,15 @@ export class OrderOperSendingByEmailIdDto {
   @IsNumber()
   pe_person_id: number;
 
-  @ApiProperty({ description: 'Order Operation ID' })
+  @ApiProperty({ description: 'Order ID' })
   @IsNumber()
-  @IsNotEmpty()
-  pe_order_operation_id: number;
+  pe_id_pedido: number;
 
-  @ApiProperty({ description: 'Recipient Email', required: false })
-  @IsEmail()
-  @IsOptional()
-  pe_recipient_email?: string;
+  @ApiProperty({ description: 'Seller ID' })
+  @IsNumber()
+  pe_id_vendedor: number;
+
+  @ApiProperty({ description: 'Business Type' })
+  @IsNumber()
+  pe_type_business: number;
 }

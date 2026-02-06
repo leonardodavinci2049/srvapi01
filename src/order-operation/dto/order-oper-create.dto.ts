@@ -1,12 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import {
-  IsNotEmpty,
-  IsNumber,
-  IsString,
-  IsOptional,
-  MaxLength,
-} from 'class-validator';
-import { Type } from 'class-transformer';
+import { IsNotEmpty, IsNumber, IsString } from 'class-validator';
 
 export class OrderOperCreateDto {
   @ApiProperty({ description: 'App ID' })
@@ -41,25 +34,27 @@ export class OrderOperCreateDto {
   @IsNumber()
   pe_person_id: number;
 
-  @ApiProperty({ description: 'Order ID' })
+  @ApiProperty({ description: 'Customer ID' })
   @IsNumber()
-  @IsNotEmpty()
-  @Type(() => Number)
-  pe_order_id: number;
+  pe_customer_id: number;
 
-  @ApiProperty({
-    description: 'Operation Type',
-    maxLength: 100,
-    required: false,
-  })
-  @IsString()
-  @IsOptional()
-  @MaxLength(100)
-  pe_operation_type?: string;
+  @ApiProperty({ description: 'Seller ID' })
+  @IsNumber()
+  pe_id_vendedor: number;
 
-  @ApiProperty({ description: 'Description', maxLength: 500, required: false })
+  @ApiProperty({ description: 'Business Type' })
+  @IsNumber()
+  pe_type_business: number;
+
+  @ApiProperty({ description: 'Payment Form ID' })
+  @IsNumber()
+  pe_id_pg_forma: number;
+
+  @ApiProperty({ description: 'Location ID' })
+  @IsNumber()
+  pe_id_location: number;
+
+  @ApiProperty({ description: 'Observations' })
   @IsString()
-  @IsOptional()
-  @MaxLength(500)
-  pe_description?: string;
+  pe_observacoes: string;
 }
