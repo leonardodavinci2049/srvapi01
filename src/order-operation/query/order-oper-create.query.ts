@@ -8,9 +8,12 @@ export function OrderOperCreateQuery(dataJsonDto: OrderOperCreateDto): string {
   const olUserId = dataJsonDto.pe_user_id;
   const olMemberRole = dataJsonDto.pe_member_role;
   const olPersonId = dataJsonDto.pe_person_id;
-  const olOrderId = dataJsonDto.pe_order_id;
-  const olOperationType = dataJsonDto.pe_operation_type ?? '';
-  const olDescription = dataJsonDto.pe_description ?? '';
+  const olCustomerId = dataJsonDto.pe_customer_id;
+  const olSellerId = dataJsonDto.pe_seller_id;
+  const olBusinessType = dataJsonDto.pe_business_type;
+  const olPaymentFormId = dataJsonDto.pe_payment_form_id;
+  const olLocationId = dataJsonDto.pe_location_id;
+  const olNotes = dataJsonDto.pe_notes;
 
   const queryString = ` call sp_order_oper_create_v2(
         ${olAppId},
@@ -20,10 +23,12 @@ export function OrderOperCreateQuery(dataJsonDto: OrderOperCreateDto): string {
         '${olUserId}',
         '${olMemberRole}',
         ${olPersonId},
-        ${olOrderId},
-        '${olOperationType}',
-        '${olDescription}'
-
+        ${olCustomerId},
+        ${olSellerId},
+        ${olBusinessType},
+        ${olPaymentFormId},
+        ${olLocationId},
+        '${olNotes.replace(/'/g, "''")}'
       ) `;
 
   return queryString;

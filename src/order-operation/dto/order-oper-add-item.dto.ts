@@ -34,13 +34,35 @@ export class OrderOperAddItemDto {
   @IsNumber()
   pe_person_id: number;
 
-  @ApiProperty({ description: 'Order Operation ID' })
+  @ApiProperty({ description: 'Order ID' })
   @IsNumber()
-  @IsNotEmpty()
-  pe_order_operation_id: number;
+  pe_order_id: number;
+
+  @ApiProperty({ description: 'Customer ID' })
+  @IsNumber()
+  pe_customer_id: number;
+
+  @ApiProperty({ description: 'Seller ID' })
+  @IsNumber()
+  pe_seller_id: number;
+
+  @ApiProperty({ description: 'Payment Form ID' })
+  @IsNumber()
+  pe_payment_form_id: number;
 
   @ApiProperty({ description: 'Product ID' })
   @IsNumber()
-  @IsNotEmpty()
   pe_product_id: number;
+
+  @ApiProperty({ description: 'Product Quantity' })
+  @IsNumber()
+  pe_product_quantity: number;
+
+  @ApiProperty({ description: 'Business Type' })
+  @IsNumber()
+  pe_business_type: number;
+
+  @ApiProperty({ description: 'Notes' })
+  @IsString()
+  pe_notes: string;
 }

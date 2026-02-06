@@ -34,8 +34,8 @@ export class OrderOperCloseIdDto {
   @IsNumber()
   pe_person_id: number;
 
-  @ApiProperty({ description: 'Order Operation ID' })
+  @ApiProperty({ description: 'Order ID' })
   @IsNumber()
   @IsNotEmpty()
-  pe_order_operation_id: number;
+  pe_order_id: number;
 }

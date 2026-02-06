@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsNotEmpty, IsNumber, IsString } from 'class-validator';
+import { IsNotEmpty, IsNumber, IsString, IsOptional } from 'class-validator';
 import { Type } from 'class-transformer';
 
 export class OrdersFindSellerIdDto {
@@ -33,11 +33,24 @@ export class OrdersFindSellerIdDto {
 
   @ApiProperty({ description: 'Person ID' })
   @IsNumber()
+  @IsOptional()
   pe_person_id: number;
 
-  @ApiProperty({ description: 'Seller ID' })
+  @ApiProperty({ description: 'Order ID' })
   @IsNumber()
-  @IsNotEmpty()
+  @IsOptional()
+  @Type(() => Number)
+  pe_order_id: number;
+
+  @ApiProperty({ description: 'Salesperson ID' })
+  @IsNumber()
+  @IsOptional()
   @Type(() => Number)
   pe_seller_id: number;
+
+  @ApiProperty({ description: 'Business Type' })
+  @IsNumber()
+  @IsOptional()
+  @Type(() => Number)
+  pe_type_business: number;
 }
