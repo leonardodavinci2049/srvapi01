@@ -9,6 +9,7 @@ export function OrdersFindIdQuery(dataJsonDto: OrdersFindIdDto): string {
   const olMemberRole = dataJsonDto.pe_member_role;
   const olPersonId = dataJsonDto.pe_person_id;
   const olOrderId = dataJsonDto.pe_order_id;
+  const olTypeBusiness = dataJsonDto.pe_type_business;
 
   const queryString = ` call sp_orders_find_id_v2(
         ${olAppId},
@@ -18,8 +19,8 @@ export function OrdersFindIdQuery(dataJsonDto: OrdersFindIdDto): string {
         '${olUserId}',
         '${olMemberRole}',
         ${olPersonId},
-        ${olOrderId}
-
+        ${olOrderId},
+        ${olTypeBusiness}
       ) `;
 
   return queryString;

@@ -10,8 +10,14 @@ export function OrderOperAddItemQuery(
   const olUserId = dataJsonDto.pe_user_id;
   const olMemberRole = dataJsonDto.pe_member_role;
   const olPersonId = dataJsonDto.pe_person_id;
-  const olOrderOperationId = dataJsonDto.pe_order_operation_id;
+  const olOrderId = dataJsonDto.pe_order_id;
+  const olCustomerId = dataJsonDto.pe_customer_id;
+  const olSellerId = dataJsonDto.pe_seller_id;
+  const olPaymentFormId = dataJsonDto.pe_payment_form_id;
   const olProductId = dataJsonDto.pe_product_id;
+  const olProductQuantity = dataJsonDto.pe_product_quantity;
+  const olBusinessType = dataJsonDto.pe_business_type;
+  const olNotes = dataJsonDto.pe_notes;
 
   const queryString = ` call sp_order_oper_add_item_v2(
         ${olAppId},
@@ -21,9 +27,14 @@ export function OrderOperAddItemQuery(
         '${olUserId}',
         '${olMemberRole}',
         ${olPersonId},
-        ${olOrderOperationId},
-        ${olProductId}
-
+        ${olOrderId},
+        ${olCustomerId},
+        ${olSellerId},
+        ${olPaymentFormId},
+        ${olProductId},
+        ${olProductQuantity},
+        ${olBusinessType},
+        '${olNotes.replace(/'/g, "''")}'
       ) `;
 
   return queryString;

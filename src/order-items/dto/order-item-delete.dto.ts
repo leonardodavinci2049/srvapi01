@@ -36,9 +36,9 @@ export class OrderItemDeleteDto {
 
   @ApiProperty({ description: 'User Name', maxLength: 200 })
   @IsString()
-  pe_nome_usuario: string;
+  pe_user_name: string;
 
   @ApiProperty({ description: 'Movement ID' })
   @IsNumber()
-  pe_id_movimento: number;
+  pe_movement_id: number;
 }
