@@ -8,8 +8,8 @@ export function OrderItemDeleteQuery(dataJsonDto: OrderItemDeleteDto): string {
   const olUserId = dataJsonDto.pe_user_id;
   const olMemberRole = dataJsonDto.pe_member_role;
   const olPersonId = dataJsonDto.pe_person_id;
-  const olUserName = dataJsonDto.pe_nome_usuario;
-  const olMovementId = dataJsonDto.pe_id_movimento;
+  const olUserName = dataJsonDto.pe_user_name;
+  const olMovementId = dataJsonDto.pe_movement_id;
 
   const queryString = ` call sp_order_item_delete_v2(
         ${olAppId},

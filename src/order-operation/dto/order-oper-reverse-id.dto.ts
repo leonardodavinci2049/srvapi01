@@ -36,9 +36,10 @@ export class OrderOperReverseIdDto {
 
   @ApiProperty({ description: 'User Name', maxLength: 200 })
   @IsString()
-  pe_nome_usuario: string;
+  pe_user_name: string;
 
   @ApiProperty({ description: 'Order ID' })
   @IsNumber()
-  pe_id_pedido: number;
+  @IsNotEmpty()
+  pe_order_id: number;
 }

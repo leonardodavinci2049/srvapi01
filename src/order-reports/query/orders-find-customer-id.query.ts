@@ -10,7 +10,7 @@ export function OrdersFindCustomerIdQuery(
   const olUserId = dataJsonDto.pe_user_id;
   const olMemberRole = dataJsonDto.pe_member_role;
   const olPersonId = dataJsonDto.pe_person_id;
-  const olIdPedido = dataJsonDto.pe_id_pedido;
+  const olOrderId = dataJsonDto.pe_order_id;
   const olTypeBusiness = dataJsonDto.pe_type_business;
 
   const queryString = ` call sp_orders_find_customer_id_v2(
@@ -21,7 +21,7 @@ export function OrdersFindCustomerIdQuery(
         '${olUserId}',
         '${olMemberRole}',
         ${olPersonId},
-        ${olIdPedido},
+        ${olOrderId},
         ${olTypeBusiness}
       ) `;
 

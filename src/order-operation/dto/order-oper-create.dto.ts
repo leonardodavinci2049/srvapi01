@@ -40,21 +40,21 @@ export class OrderOperCreateDto {
 
   @ApiProperty({ description: 'Seller ID' })
   @IsNumber()
-  pe_id_vendedor: number;
+  pe_seller_id: number;
 
   @ApiProperty({ description: 'Business Type' })
   @IsNumber()
-  pe_type_business: number;
+  pe_business_type: number;
 
   @ApiProperty({ description: 'Payment Form ID' })
   @IsNumber()
-  pe_id_pg_forma: number;
+  pe_payment_form_id: number;
 
   @ApiProperty({ description: 'Location ID' })
   @IsNumber()
-  pe_id_location: number;
+  pe_location_id: number;
 
-  @ApiProperty({ description: 'Observations' })
+  @ApiProperty({ description: 'Notes' })
   @IsString()
-  pe_observacoes: string;
+  pe_notes: string;
 }

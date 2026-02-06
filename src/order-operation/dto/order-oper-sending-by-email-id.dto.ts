@@ -36,13 +36,13 @@ export class OrderOperSendingByEmailIdDto {
 
   @ApiProperty({ description: 'Order ID' })
   @IsNumber()
-  pe_id_pedido: number;
+  pe_order_id: number;
 
   @ApiProperty({ description: 'Seller ID' })
   @IsNumber()
-  pe_id_vendedor: number;
+  pe_seller_id: number;
 
   @ApiProperty({ description: 'Business Type' })
   @IsNumber()
-  pe_type_business: number;
+  pe_business_type: number;
 }

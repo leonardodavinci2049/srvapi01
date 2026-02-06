@@ -36,7 +36,7 @@ export class OrderOperAddItemDto {
 
   @ApiProperty({ description: 'Order ID' })
   @IsNumber()
-  pe_id_pedido: number;
+  pe_order_id: number;
 
   @ApiProperty({ description: 'Customer ID' })
   @IsNumber()
@@ -44,25 +44,25 @@ export class OrderOperAddItemDto {
 
   @ApiProperty({ description: 'Seller ID' })
   @IsNumber()
-  pe_id_vendedor: number;
+  pe_seller_id: number;
 
   @ApiProperty({ description: 'Payment Form ID' })
   @IsNumber()
-  pe_id_pg_forma: number;
+  pe_payment_form_id: number;
 
   @ApiProperty({ description: 'Product ID' })
   @IsNumber()
-  pe_id_produto: number;
+  pe_product_id: number;
 
   @ApiProperty({ description: 'Product Quantity' })
   @IsNumber()
-  pe_qt_produto: number;
+  pe_product_quantity: number;
 
   @ApiProperty({ description: 'Business Type' })
   @IsNumber()
-  pe_type_business: number;
+  pe_business_type: number;
 
   @ApiProperty({ description: 'Notes' })
   @IsString()
-  pe_anotacoes: string;
+  pe_notes: string;
 }

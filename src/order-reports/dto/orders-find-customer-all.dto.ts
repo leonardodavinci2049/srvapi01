@@ -46,53 +46,47 @@ export class OrdersFindCustomerAllDto {
   @IsNumber()
   @IsOptional()
   @Type(() => Number)
-  pe_id_pedido: number;
+  pe_order_id: number;
 
   @ApiProperty({ description: 'Customer ID' })
   @IsNumber()
   @IsOptional()
   @Type(() => Number)
-  pe_id_cliente: number;
+  pe_customer_id: number;
 
   @ApiProperty({ description: 'Salesperson ID' })
   @IsNumber()
   @IsOptional()
   @Type(() => Number)
-  pe_id_vendedor: number;
-
-  @ApiProperty({ description: 'Physical Person ID' })
-  @IsNumber()
-  @IsOptional()
-  @Type(() => Number)
-  pe_id_fisico: number;
+  pe_seller_id: number;
 
   @ApiProperty({ description: 'Order Status ID' })
   @IsNumber()
   @IsOptional()
   @Type(() => Number)
-  pe_id_status_pedido: number;
+  pe_order_status_id: number;
 
   @ApiProperty({ description: 'Financial Status ID' })
   @IsNumber()
   @IsOptional()
   @Type(() => Number)
-  pe_id_status_financ: number;
+  pe_financial_status_id: number;
 
   @ApiProperty({ description: 'Location ID' })
   @IsNumber()
   @IsOptional()
   @Type(() => Number)
-  pe_id_localizacao: number;
+  pe_location_id: number;
 
   @ApiProperty({ description: 'Initial Date' })
   @Type(() => Date)
   @IsOptional()
-  pe_data_inicial: Date;
+  pe_initial_date: Date;
 
   @ApiProperty({ description: 'Final Date' })
   @Type(() => Date)
   @IsOptional()
-  pe_data_final: Date;
+  pe_final_date: Date;
 
   @ApiProperty({ description: 'Limit' })
   @IsNumber()

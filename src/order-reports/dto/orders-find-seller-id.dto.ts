@@ -40,13 +40,13 @@ export class OrdersFindSellerIdDto {
   @IsNumber()
   @IsOptional()
   @Type(() => Number)
-  pe_id_pedido: number;
+  pe_order_id: number;
 
   @ApiProperty({ description: 'Salesperson ID' })
   @IsNumber()
   @IsOptional()
   @Type(() => Number)
-  pe_id_vendedor: number;
+  pe_seller_id: number;
 
   @ApiProperty({ description: 'Business Type' })
   @IsNumber()

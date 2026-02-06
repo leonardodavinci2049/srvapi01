@@ -10,9 +10,9 @@ export function OrderOperSendingByEmailIdQuery(
   const olUserId = dataJsonDto.pe_user_id;
   const olMemberRole = dataJsonDto.pe_member_role;
   const olPersonId = dataJsonDto.pe_person_id;
-  const olIdPedido = dataJsonDto.pe_id_pedido;
-  const olIdVendedor = dataJsonDto.pe_id_vendedor;
-  const olTypeBusiness = dataJsonDto.pe_type_business;
+  const olOrderId = dataJsonDto.pe_order_id;
+  const olSellerId = dataJsonDto.pe_seller_id;
+  const olBusinessType = dataJsonDto.pe_business_type;
 
   const queryString = ` call sp_order_oper_sending_by_email_id_v2(
         ${olAppId},
@@ -22,9 +22,9 @@ export function OrderOperSendingByEmailIdQuery(
         '${olUserId}',
         '${olMemberRole}',
         ${olPersonId},
-        ${olIdPedido},
-        ${olIdVendedor},
-        ${olTypeBusiness}
+        ${olOrderId},
+        ${olSellerId},
+        ${olBusinessType}
       ) `;
 
   return queryString;

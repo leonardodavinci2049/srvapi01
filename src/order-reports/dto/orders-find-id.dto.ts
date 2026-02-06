@@ -39,7 +39,7 @@ export class OrdersFindIdDto {
   @IsNumber()
   @IsOptional()
   @Type(() => Number)
-  pe_id_pedido: number;
+  pe_order_id: number;
 
   @ApiProperty({ description: 'Business Type' })
   @IsNumber()

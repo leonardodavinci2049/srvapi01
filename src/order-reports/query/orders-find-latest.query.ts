@@ -10,18 +10,17 @@ export function OrdersFindLatestQuery(
   const olUserId = dataJsonDto.pe_user_id;
   const olMemberRole = dataJsonDto.pe_member_role;
   const olPersonId = dataJsonDto.pe_person_id;
-  const olIdPedido = dataJsonDto.pe_id_pedido;
-  const olIdCliente = dataJsonDto.pe_id_cliente;
-  const olIdVendedor = dataJsonDto.pe_id_vendedor;
-  const olIdFisico = dataJsonDto.pe_id_fisico;
-  const olIdStatusPedido = dataJsonDto.pe_id_status_pedido;
-  const olIdStatusFinanc = dataJsonDto.pe_id_status_financ;
-  const olIdLocalizacao = dataJsonDto.pe_id_localizacao;
-  const olDataInicial = dataJsonDto.pe_data_inicial
-    ? new Date(dataJsonDto.pe_data_inicial).toISOString().split('T')[0]
+  const olOrderId = dataJsonDto.pe_order_id;
+  const olCustomerId = dataJsonDto.pe_customer_id;
+  const olSellerId = dataJsonDto.pe_seller_id;
+  const olOrderStatusId = dataJsonDto.pe_order_status_id;
+  const olFinancialStatusId = dataJsonDto.pe_financial_status_id;
+  const olLocationId = dataJsonDto.pe_location_id;
+  const olInitialDate = dataJsonDto.pe_initial_date
+    ? new Date(dataJsonDto.pe_initial_date).toISOString().split('T')[0]
     : null;
-  const olDataFinal = dataJsonDto.pe_data_final
-    ? new Date(dataJsonDto.pe_data_final).toISOString().split('T')[0]
+  const olFinalDate = dataJsonDto.pe_final_date
+    ? new Date(dataJsonDto.pe_final_date).toISOString().split('T')[0]
     : null;
 
   const olLimit = dataJsonDto.pe_limit ?? 100;
@@ -34,15 +33,14 @@ export function OrdersFindLatestQuery(
         '${olUserId}',
         '${olMemberRole}',
         ${olPersonId},
-        ${olIdPedido},
-        ${olIdCliente},
-        ${olIdVendedor},
-        ${olIdFisico},
-        ${olIdStatusPedido},
-        ${olIdStatusFinanc},
-        ${olIdLocalizacao},
-        ${olDataInicial ? `'${olDataInicial}'` : 'NULL'},
-        ${olDataFinal ? `'${olDataFinal}'` : 'NULL'},
+        ${olOrderId},
+        ${olCustomerId},
+        ${olSellerId},
+        ${olOrderStatusId},
+        ${olFinancialStatusId},
+        ${olLocationId},
+        ${olInitialDate ? `'${olInitialDate}'` : 'NULL'},
+        ${olFinalDate ? `'${olFinalDate}'` : 'NULL'},
         ${olLimit}
       ) `;
 
