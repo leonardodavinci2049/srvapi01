@@ -10,9 +10,21 @@ export function OrdersFindCustomerAllQuery(
   const olUserId = dataJsonDto.pe_user_id;
   const olMemberRole = dataJsonDto.pe_member_role;
   const olPersonId = dataJsonDto.pe_person_id;
-  const olCustomerId = dataJsonDto.pe_customer_id;
-  const olPage = dataJsonDto.page ?? 1;
-  const olLimit = dataJsonDto.limit ?? 10;
+  const olIdPedido = dataJsonDto.pe_id_pedido;
+  const olIdCliente = dataJsonDto.pe_id_cliente;
+  const olIdVendedor = dataJsonDto.pe_id_vendedor;
+  const olIdFisico = dataJsonDto.pe_id_fisico;
+  const olIdStatusPedido = dataJsonDto.pe_id_status_pedido;
+  const olIdStatusFinanc = dataJsonDto.pe_id_status_financ;
+  const olIdLocalizacao = dataJsonDto.pe_id_localizacao;
+  const olDataInicial = dataJsonDto.pe_data_inicial
+    ? new Date(dataJsonDto.pe_data_inicial).toISOString().split('T')[0]
+    : null;
+  const olDataFinal = dataJsonDto.pe_data_final
+    ? new Date(dataJsonDto.pe_data_final).toISOString().split('T')[0]
+    : null;
+
+  const olLimit = dataJsonDto.pe_limit ?? 100;
 
   const queryString = ` call sp_orders_find_customer_all_v2(
         ${olAppId},
@@ -22,8 +34,15 @@ export function OrdersFindCustomerAllQuery(
         '${olUserId}',
         '${olMemberRole}',
         ${olPersonId},
-        ${olCustomerId},
-        ${olPage},
+        ${olIdPedido},
+        ${olIdCliente},
+        ${olIdVendedor},
+        ${olIdFisico},
+        ${olIdStatusPedido},
+        ${olIdStatusFinanc},
+        ${olIdLocalizacao},
+        ${olDataInicial ? `'${olDataInicial}'` : 'NULL'},
+        ${olDataFinal ? `'${olDataFinal}'` : 'NULL'},
         ${olLimit}
 
       ) `;

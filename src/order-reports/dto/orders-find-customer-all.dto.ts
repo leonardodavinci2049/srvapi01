@@ -39,25 +39,65 @@ export class OrdersFindCustomerAllDto {
 
   @ApiProperty({ description: 'Person ID' })
   @IsNumber()
+  @IsOptional()
   pe_person_id: number;
+
+  @ApiProperty({ description: 'Order ID' })
+  @IsNumber()
+  @IsOptional()
+  @Type(() => Number)
+  pe_id_pedido: number;
 
   @ApiProperty({ description: 'Customer ID' })
   @IsNumber()
-  @IsNotEmpty()
+  @IsOptional()
   @Type(() => Number)
-  pe_customer_id: number;
+  pe_id_cliente: number;
 
-  @ApiProperty({ description: 'Page number', required: false })
+  @ApiProperty({ description: 'Salesperson ID' })
+  @IsNumber()
+  @IsOptional()
+  @Type(() => Number)
+  pe_id_vendedor: number;
+
+  @ApiProperty({ description: 'Physical Person ID' })
+  @IsNumber()
+  @IsOptional()
+  @Type(() => Number)
+  pe_id_fisico: number;
+
+  @ApiProperty({ description: 'Order Status ID' })
+  @IsNumber()
+  @IsOptional()
+  @Type(() => Number)
+  pe_id_status_pedido: number;
+
+  @ApiProperty({ description: 'Financial Status ID' })
+  @IsNumber()
+  @IsOptional()
+  @Type(() => Number)
+  pe_id_status_financ: number;
+
+  @ApiProperty({ description: 'Location ID' })
+  @IsNumber()
+  @IsOptional()
+  @Type(() => Number)
+  pe_id_localizacao: number;
+
+  @ApiProperty({ description: 'Initial Date' })
+  @Type(() => Date)
+  @IsOptional()
+  pe_data_inicial: Date;
+
+  @ApiProperty({ description: 'Final Date' })
+  @Type(() => Date)
+  @IsOptional()
+  pe_data_final: Date;
+
+  @ApiProperty({ description: 'Limit' })
   @IsNumber()
   @IsOptional()
   @Type(() => Number)
   @Min(1)
-  page?: number;
-
-  @ApiProperty({ description: 'Page size', required: false })
-  @IsNumber()
-  @IsOptional()
-  @Type(() => Number)
-  @Min(1)
-  limit?: number;
+  pe_limit: number;
 }

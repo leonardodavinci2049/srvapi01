@@ -10,7 +10,9 @@ export function OrdersFindSellerIdQuery(
   const olUserId = dataJsonDto.pe_user_id;
   const olMemberRole = dataJsonDto.pe_member_role;
   const olPersonId = dataJsonDto.pe_person_id;
-  const olSellerId = dataJsonDto.pe_seller_id;
+  const olIdPedido = dataJsonDto.pe_id_pedido;
+  const olSellerId = dataJsonDto.pe_id_vendedor;
+  const olTypeBusiness = dataJsonDto.pe_type_business;
 
   const queryString = ` call sp_orders_find_seller_id_v2(
         ${olAppId},
@@ -20,8 +22,9 @@ export function OrdersFindSellerIdQuery(
         '${olUserId}',
         '${olMemberRole}',
         ${olPersonId},
-        ${olSellerId}
-
+        ${olIdPedido},
+        ${olSellerId},
+        ${olTypeBusiness}
       ) `;
 
   return queryString;
