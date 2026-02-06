@@ -11,6 +11,7 @@ export function OrderFindCoHistoryIdQuery(
   const olMemberRole = dataJsonDto.pe_member_role;
   const olPersonId = dataJsonDto.pe_person_id;
   const olOrderId = dataJsonDto.pe_order_id;
+  const olTypeBusiness = dataJsonDto.pe_type_business;
 
   const queryString = ` call sp_order_find_co_history_id_v2(
         ${olAppId},
@@ -20,8 +21,8 @@ export function OrderFindCoHistoryIdQuery(
         '${olUserId}',
         '${olMemberRole}',
         ${olPersonId},
-        ${olOrderId}
-
+        ${olOrderId},
+        ${olTypeBusiness}
       ) `;
 
   return queryString;
