@@ -47,13 +47,6 @@ export class OrderItemFindAllDto {
   @Type(() => Number)
   pe_order_id?: number;
 
-  @ApiProperty({ description: 'Page number', required: false })
-  @IsNumber()
-  @IsOptional()
-  @Type(() => Number)
-  @Min(1)
-  page?: number;
-
   @ApiProperty({ description: 'Page size', required: false })
   @IsNumber()
   @IsOptional()

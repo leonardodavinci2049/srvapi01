@@ -11,7 +11,6 @@ export function OrderItemFindAllQuery(
   const olMemberRole = dataJsonDto.pe_member_role;
   const olPersonId = dataJsonDto.pe_person_id;
   const olOrderId = dataJsonDto.pe_order_id ?? null;
-  const olPage = dataJsonDto.page ?? 1;
   const olLimit = dataJsonDto.limit ?? 10;
 
   const queryString = ` call sp_order_item_find_all_v2(
@@ -23,7 +22,6 @@ export function OrderItemFindAllQuery(
         '${olMemberRole}',
         ${olPersonId},
         ${olOrderId},
-        ${olPage},
         ${olLimit}
 
       ) `;
