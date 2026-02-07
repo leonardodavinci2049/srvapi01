@@ -1,34 +1,29 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Body, Controller, Get, Post, UseGuards } from '@nestjs/common';
 import { OrderOperationService } from './order-operation.service';
-import { CreateOrderOperationDto } from './dto/create-order-operation.dto';
-import { UpdateOrderOperationDto } from './dto/update-order-operation.dto';
+import { AuthGuard } from 'src/core/guards/auth.guard';
+import { OrderOperSendingByEmailIdDto } from './dto/order-oper-sending-by-email-id.dto';
 
 @Controller('order-operation')
 export class OrderOperationController {
   constructor(private readonly orderOperationService: OrderOperationService) {}
-
-  @Post()
-  create(@Body() createOrderOperationDto: CreateOrderOperationDto) {
-    return this.orderOperationService.create(createOrderOperationDto);
-  }
-
   @Get()
-  findAll() {
-    return this.orderOperationService.findAll();
+  getHello() {
+    return {
+      name: 'Wholesale API',
+      status: 'online',
+      version: '1.0.1',
+      documentation: '/',
+      timestamp: new Date().toISOString(),
+      endpoints: {
+        base: '/api',
+        auth: '/api/order-items',
+      },
+    };
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.orderOperationService.findOne(+id);
-  }
-
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateOrderOperationDto: UpdateOrderOperationDto) {
-    return this.orderOperationService.update(+id, updateOrderOperationDto);
-  }
-
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.orderOperationService.remove(+id);
+  @UseGuards(AuthGuard)
+  @Post('v2/order-oper-sending-by-email')
+  OrderOperSendingByEmailV2(@Body() dataJsonDto: OrderOperSendingByEmailIdDto) {
+    return this.orderOperationService.tskOrderOperSendingByEmailV2(dataJsonDto);
   }
 }

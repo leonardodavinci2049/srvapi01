@@ -18,6 +18,11 @@ import { TaxonomyModule } from 'src/taxonomy/taxonomy.module';
 import { BrandModule } from 'src/brand/brand.module';
 import { PtypeModule } from 'src/ptype/ptype.module';
 import { SupplierModule } from 'src/supplier/supplier.module';
+import { OrderItemsModule } from 'src/order-items/order-items.module';
+import { OrderOperationModule } from 'src/order-operation/order-operation.module';
+import { OrderReportsModule } from 'src/order-reports/order-reports.module';
+import { OrderSalesModule } from 'src/order-sales/order-sales.module';
+import { OrderUpdModule } from 'src/order-upd/order-upd.module';
 
 @Module({
   imports: [
@@ -39,6 +44,11 @@ import { SupplierModule } from 'src/supplier/supplier.module';
     BrandModule,
     PtypeModule,
     SupplierModule,
+    OrderItemsModule,
+    OrderOperationModule,
+    OrderReportsModule,
+    OrderSalesModule,
+    OrderUpdModule,
     ThrottlerModule.forRoot([
       // proteção conta ataque de força bruta
       {

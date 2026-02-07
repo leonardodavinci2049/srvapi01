@@ -1,26 +1,37 @@
 import { Injectable } from '@nestjs/common';
-import { CreateOrderOperationDto } from './dto/create-order-operation.dto';
-import { UpdateOrderOperationDto } from './dto/update-order-operation.dto';
+import { ResultModel } from 'src/core/utils/result.model';
+import { MESSAGES } from 'src/core/utils/constants/globalConstants';
+
+import { DatabaseService } from 'src/database/database.service';
+
+import { OrderOperSendingByEmailIdDto } from './dto/order-oper-sending-by-email-id.dto';
+import { OrderOperSendingByEmailIdQuery } from './query/order-oper-sending-by-email-id.query';
+import { SpResultOrderOperSendingByEmailData } from './types/order-operation.type';
+import { processProcedureResultMultiQuery } from 'src/core/procedure.result/process-procedure-result.query';
 
 @Injectable()
 export class OrderOperationService {
-  create(createOrderOperationDto: CreateOrderOperationDto) {
-    return 'This action adds a new orderOperation';
-  }
+  constructor(private readonly dbService: DatabaseService) {}
 
-  findAll() {
-    return `This action returns all orderOperation`;
-  }
+  async tskOrderOperSendingByEmailV2(
+    dataJsonDto: OrderOperSendingByEmailIdDto,
+  ) {
+    try {
+      const queryString = OrderOperSendingByEmailIdQuery(dataJsonDto);
 
-  findOne(id: number) {
-    return `This action returns a #${id} orderOperation`;
-  }
+      const resultData = (await this.dbService.selectExecute(
+        queryString,
+      )) as unknown as SpResultOrderOperSendingByEmailData;
 
-  update(id: number, updateOrderOperationDto: UpdateOrderOperationDto) {
-    return `This action updates a #${id} orderOperation`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} orderOperation`;
+      return processProcedureResultMultiQuery(
+        resultData as unknown[],
+        ['orderSummary', 'orderItems', 'customerDetails', 'sellerDetails'],
+        'Order Oper Sending By Email not found',
+      );
+    } catch (err) {
+      const errorMessage =
+        err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
+      return new ResultModel(100404, errorMessage, 0, []);
+    }
   }
 }
