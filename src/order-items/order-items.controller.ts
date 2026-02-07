@@ -1,34 +1,31 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, UseGuards } from '@nestjs/common';
 import { OrderItemsService } from './order-items.service';
-import { CreateOrderItemDto } from './dto/create-order-item.dto';
-import { UpdateOrderItemDto } from './dto/update-order-item.dto';
+
+import { AuthGuard } from 'src/core/guards/auth.guard';
+import { OrderItemFindAllDto } from './dto/order-item-find-all.dto';
 
 @Controller('order-items')
 export class OrderItemsController {
   constructor(private readonly orderItemsService: OrderItemsService) {}
 
-  @Post()
-  create(@Body() createOrderItemDto: CreateOrderItemDto) {
-    return this.orderItemsService.create(createOrderItemDto);
-  }
-
   @Get()
-  findAll() {
-    return this.orderItemsService.findAll();
+  getHello() {
+    return {
+      name: 'Wholesale API',
+      status: 'online',
+      version: '1.0.1',
+      documentation: '/',
+      timestamp: new Date().toISOString(),
+      endpoints: {
+        base: '/api',
+        auth: '/api/order-items',
+      },
+    };
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.orderItemsService.findOne(+id);
-  }
-
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateOrderItemDto: UpdateOrderItemDto) {
-    return this.orderItemsService.update(+id, updateOrderItemDto);
-  }
-
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.orderItemsService.remove(+id);
+  @UseGuards(AuthGuard)
+  @Post('v2/Order-items-find')
+  OrderItemsFindV2(@Body() dataJsonDto: OrderItemFindAllDto) {
+    return this.orderItemsService.tskOrderItemsFindV2(dataJsonDto);
   }
 }

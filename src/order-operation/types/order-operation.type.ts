@@ -17,52 +17,34 @@ export interface SpOperationResult {
   changedRows: number;
 }
 
-export interface TblTaxonomyFindId extends RowDataPacket {
-  ID_TAXONOMY?: number;
-  PARENT_ID?: number;
-  TAXONOMIA?: string;
-  PARENT_CATEGORY?: string;
-  PATH_IMAGEM?: string | null;
-  SLUG?: string | null;
-  LEVEL?: number | null;
-  ORDEM?: number;
-  ID_IMAGEM?: number | null;
-  QT_RECORDS?: number | null;
-  INATIVO?: number;
-
-  META_TITLE?: string | null;
-  META_DESCRIPTION?: string | null;
-  ANOTACOES?: string | null;
-  CREATEDAT?: string;
-  UPDATEDAT?: string;
+export interface TblOrderSummaryFindId extends RowDataPacket {
+  ID_XXXX?: number;
 }
 
-export interface TblTaxonomyFind extends RowDataPacket {
-  ID_TAXONOMY: number;
-  PARENT_ID: number;
-  TAXONOMIA: string;
-  ANOTACOES: string | null;
-  PATH_IMAGEM: string | null;
-  SLUG: string | null;
-  LEVEL: number | null;
-  ORDEM: number;
-  ID_IMAGEM: number | null;
-  QT_RECORDS: number | null;
-  META_TITLE: string | null;
-  META_DESCRIPTION: string | null;
+export interface TblOrderItemsFindId extends RowDataPacket {
+  ID_XXXX?: number;
 }
 
+export interface TblCustomerDetailsFindId extends RowDataPacket {
+  ID_XXXX?: number;
+}
+
+export interface TblSellerDetailsFindId extends RowDataPacket {
+  ID_XXXX?: number;
+}
+export type SpResultRecordOperationType = [
+  SpDefaultFeedback[],
+  SpOperationResult,
+];
 export type SpResultRecordCreateType = [SpDefaultFeedback[], SpOperationResult];
 export type SpResultRecordUpdateType = [SpDefaultFeedback[], SpOperationResult];
 export type SpResultRecordDeleteType = [SpDefaultFeedback[], SpOperationResult];
 
 export type SpResultTaxonomyFindIdData = [
-  TblTaxonomyFindId[],
-  SpDefaultFeedback[],
-  SpOperationResult,
-];
-export type SpResultTaxonomyFindData = [
-  TblTaxonomyFind[],
+  TblOrderSummaryFindId[],
+  TblOrderItemsFindId[],
+  TblCustomerDetailsFindId[],
+  TblSellerDetailsFindId[],
   SpDefaultFeedback[],
   SpOperationResult,
 ];
