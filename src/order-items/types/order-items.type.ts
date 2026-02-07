@@ -80,7 +80,6 @@ export interface TblOrderItemFindId extends RowDataPacket {
   IPI?: number;
   TAXA_PERCA?: number;
   VL_ST?: number;
-  UF?: string | null;
   ICMS_BC?: number;
   ICMS_VALOR?: number;
   ICMS_ALIQUOTA?: number;

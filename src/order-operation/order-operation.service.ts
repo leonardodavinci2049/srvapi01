@@ -7,6 +7,7 @@ import { DatabaseService } from 'src/database/database.service';
 import { OrderOperSendingByEmailIdDto } from './dto/order-oper-sending-by-email-id.dto';
 import { OrderOperSendingByEmailIdQuery } from './query/order-oper-sending-by-email-id.query';
 import { SpResultOrderOperSendingByEmailData } from './types/order-operation.type';
+import { processProcedureResultMultiQuery } from 'src/core/procedure.result/process-procedure-result.query';
 
 @Injectable()
 export class OrderOperationService {
@@ -22,7 +23,11 @@ export class OrderOperationService {
         queryString,
       )) as unknown as SpResultOrderOperSendingByEmailData;
 
-      return resultData;
+      return processProcedureResultMultiQuery(
+        resultData as unknown[],
+        ['orderSummary', 'orderItems', 'customerDetails', 'sellerDetails'],
+        'Order Oper Sending By Email not found',
+      );
     } catch (err) {
       const errorMessage =
         err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;

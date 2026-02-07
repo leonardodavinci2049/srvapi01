@@ -7,16 +7,38 @@ import { DatabaseService } from 'src/database/database.service';
 
 import { OrderItemFindAllDto } from './dto/order-item-find-all.dto';
 import { OrderItemFindAllQuery } from './query/order-item-find-all.query';
-import { processProcedureResultQueryWithoutId } from 'src/core/procedure.result/process-procedure-result.query';
+import { processProcedureResultMultiQuery } from 'src/core/procedure.result/process-procedure-result.query';
 
 import {
   SpResultOrderItemsFindData,
-  TblOrderItemsFind,
+  SpResultOrderItemsFindIdData,
 } from './types/order-items.type';
+import { OrderItemFindIdQuery } from './query/order-item-find-id.query';
+import { OrderItemFindIdDto } from './dto/order-item-find-id.dto';
 
 @Injectable()
 export class OrderItemsService {
   constructor(private readonly dbService: DatabaseService) {}
+
+  async tskOrderItemsFindIdV2(dataJsonDto: OrderItemFindIdDto) {
+    try {
+      const queryString = OrderItemFindIdQuery(dataJsonDto);
+
+      const resultData = (await this.dbService.selectExecute(
+        queryString,
+      )) as unknown as SpResultOrderItemsFindIdData;
+
+      return processProcedureResultMultiQuery(
+        resultData as unknown[],
+        ['orderItem'],
+        'Order Items not found',
+      );
+    } catch (err) {
+      const errorMessage =
+        err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
+      return new ResultModel(100404, errorMessage, 0, []);
+    }
+  }
 
   async tskOrderItemsFindV2(dataJsonDto: OrderItemFindAllDto) {
     try {
@@ -26,8 +48,9 @@ export class OrderItemsService {
         queryString,
       )) as unknown as SpResultOrderItemsFindData;
 
-      return processProcedureResultQueryWithoutId<TblOrderItemsFind>(
+      return processProcedureResultMultiQuery(
         resultData as unknown[],
+        ['orderItems'],
         'Order Items not found',
       );
     } catch (err) {

@@ -3,6 +3,7 @@ import { OrderItemsService } from './order-items.service';
 
 import { AuthGuard } from 'src/core/guards/auth.guard';
 import { OrderItemFindAllDto } from './dto/order-item-find-all.dto';
+import { OrderItemFindIdDto } from './dto/order-item-find-id.dto';
 
 @Controller('order-items')
 export class OrderItemsController {
@@ -21,6 +22,12 @@ export class OrderItemsController {
         auth: '/api/order-items',
       },
     };
+  }
+
+  @UseGuards(AuthGuard)
+  @Post('v2/Order-items-find-id')
+  OrderItemsFindIdV2(@Body() dataJsonDto: OrderItemFindIdDto) {
+    return this.orderItemsService.tskOrderItemsFindIdV2(dataJsonDto);
   }
 
   @UseGuards(AuthGuard)

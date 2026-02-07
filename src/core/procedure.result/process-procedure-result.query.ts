@@ -79,9 +79,9 @@ export function processProcedureResultQueryWithoutId<T>(
   }
 
   const qtRecords: number = tblRecords.length;
-  const recordId: string = qtRecords > 0 ? String(tblRecords.length) : '';
 
   const errorId: number = DefaultFeedback[0]?.sp_error_id ?? 0;
+  const recordId: string = DefaultFeedback[0]?.sp_return_id || '0';
   let Feedback = DefaultFeedback[0]?.sp_message || '';
 
   if (qtRecords === 0 && errorId === 0) {
@@ -95,6 +95,77 @@ export function processProcedureResultQueryWithoutId<T>(
     Feedback,
     tblRecords,
     qtRecords,
+    '',
+  );
+}
+
+/**
+ * Processa resultado de procedure que retorna múltiplos result sets tipados.
+ *
+ * @param resultData - Array bruto retornado pela procedure
+ * @param resultSetNames - Nomes para cada result set de dados (ex: ['orderSummary', 'orderItems', 'customer', 'seller'])
+ * @param notFoundMessage - Mensagem quando nenhum registro é encontrado
+ *
+ * O feedback (SpDefaultFeedback) é esperado logo após os result sets de dados,
+ * seguido pelo SpOperationResult.
+ *
+ * Exemplo de uso:
+ * ```
+ * processProcedureResultMultiQuery(
+ *   resultData as unknown[],
+ *   ['orderSummary', 'orderItems', 'customer', 'seller'],
+ *   'Order not found',
+ * );
+ * ```
+ */
+export function processProcedureResultMultiQuery(
+  resultData: unknown[],
+  resultSetNames: string[],
+  notFoundMessage: string,
+): ResultModel {
+  const data: Record<string, unknown[]> = {};
+  let totalRecords = 0;
+  let DefaultFeedback: SpDefaultFeedback[] = [];
+
+  // Verifica se o primeiro array é na verdade o feedback
+  // (isso acontece quando não há registros e a procedure "pula" os SELECTs)
+  const firstResultSet = resultData[0] as unknown[];
+  const isFirstResultFeedback =
+    firstResultSet.length > 0 &&
+    typeof firstResultSet[0] === 'object' &&
+    firstResultSet[0] !== null &&
+    'sp_error_id' in firstResultSet[0];
+
+  if (isFirstResultFeedback) {
+    for (const name of resultSetNames) {
+      data[name] = [];
+    }
+    DefaultFeedback = firstResultSet as SpDefaultFeedback[];
+  } else {
+    for (let i = 0; i < resultSetNames.length; i++) {
+      const resultSet = (resultData[i] as unknown[]) || [];
+      data[resultSetNames[i]] = resultSet;
+      totalRecords += resultSet.length;
+    }
+    const feedbackIndex = resultSetNames.length;
+    DefaultFeedback = (resultData[feedbackIndex] as SpDefaultFeedback[]) || [];
+  }
+
+  const errorId: number = DefaultFeedback[0]?.sp_error_id ?? 0;
+  const recordId: string = DefaultFeedback[0]?.sp_return_id || '0';
+  let Feedback = DefaultFeedback[0]?.sp_message || '';
+
+  if (totalRecords === 0 && errorId === 0) {
+    Feedback = notFoundMessage;
+  }
+
+  return resultQueryData<Record<string, unknown[]>>(
+    0,
+    recordId,
+    errorId,
+    Feedback,
+    data,
+    totalRecords,
     '',
   );
 }
