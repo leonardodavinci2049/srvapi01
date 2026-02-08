@@ -1,5 +1,5 @@
-import { resultQueryData } from "./procedure.result";
-import type { ResultModel } from "./result.model";
+import { resultQueryData } from './procedure.result';
+import type { ResultModel } from './result.model';
 
 interface SpDefaultFeedback {
   sp_return_id?: string;
@@ -14,9 +14,9 @@ export function processProcedureResultMutation(
   const DefaultFeedback = resultData[0] as SpDefaultFeedback[];
   const qtRecords = DefaultFeedback.length ?? 0;
   const errorId: number = DefaultFeedback[0]?.sp_error_id ?? 0;
-  const recordId: string = DefaultFeedback[0]?.sp_return_id ?? "";
+  const recordId: string = DefaultFeedback[0]?.sp_return_id ?? '';
 
-  let Feedback = DefaultFeedback[0]?.sp_message || "";
+  let Feedback = DefaultFeedback[0]?.sp_message || '';
 
   if (qtRecords === 0 && errorId === 0) {
     Feedback = notFoundMessage;
@@ -29,6 +29,6 @@ export function processProcedureResultMutation(
     Feedback,
     DefaultFeedback,
     qtRecords,
-    "",
+    '',
   );
 }
