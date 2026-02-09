@@ -103,7 +103,7 @@ export class OrderOperationService {
     }
   }
 
-  async tskOrderOperSendingByEmailV2(
+  async taskOrderOperSendingByEmailV2(
     dataJsonDto: OrderOperSendingByEmailIdDto,
   ) {
     try {
