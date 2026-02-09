@@ -26,6 +26,12 @@ export class OrderOperationController {
   }
 
   @UseGuards(AuthGuard)
+  @Post('v2/order-oper-create')
+  orderOperCreateV2(@Body() dataJsonDto: OrderOperCreateDto) {
+    return this.orderOperationService.taskOrderOperCreateV2(dataJsonDto);
+  }
+
+  @UseGuards(AuthGuard)
   @Post('v2/order-oper-add-item')
   orderOperAddItemV2(@Body() dataJsonDto: OrderOperAddItemDto) {
     return this.orderOperationService.taskOrderOperAddItemV2(dataJsonDto);
@@ -35,12 +41,6 @@ export class OrderOperationController {
   @Post('v2/order-oper-close-id')
   orderOperCloseIdV2(@Body() dataJsonDto: OrderOperCloseIdDto) {
     return this.orderOperationService.taskOrderOperCloseIdV2(dataJsonDto);
-  }
-
-  @UseGuards(AuthGuard)
-  @Post('v2/order-oper-create')
-  orderOperCreateV2(@Body() dataJsonDto: OrderOperCreateDto) {
-    return this.orderOperationService.taskOrderOperCreateV2(dataJsonDto);
   }
 
   @UseGuards(AuthGuard)

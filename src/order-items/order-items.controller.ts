@@ -3,8 +3,7 @@ import { OrderItemsService } from './order-items.service';
 
 import { AuthGuard } from 'src/core/guards/auth.guard';
 import { OrderItemFindAllDto } from './dto/order-item-find-all.dto';
-import { OrderItemFindIdDto } from './dto/order-item-find-id.dto';
-import { OrderItemUpdAdditionDto } from './dto/order-item-upd-addition.dto';
+
 import { OrderItemUpdDiscountDto } from './dto/order-item-upd-discount.dto';
 import { OrderItemUpdDiscountAdmDto } from './dto/order-item-upd-discount-adm.dto';
 import { OrderItemUpdInsuranceVlDto } from './dto/order-item-upd-insurance-vl.dto';
@@ -13,6 +12,7 @@ import { OrderItemUpdQtDto } from './dto/order-item-upd-qt.dto';
 import { OrderItemDeleteDto } from './dto/order-item-delete.dto';
 import { OrderItemUpdValueDto } from './dto/order-item-upd-value.dto';
 import { OrderItemUpdFreteVlDto } from './dto/order-item-upd-frete-vl.dto';
+import { OrderItemFindIdDto } from './dto/order-item-find-id.dto';
 
 @Controller('order-items')
 export class OrderItemsController {
@@ -43,12 +43,6 @@ export class OrderItemsController {
   @Post('v2/order-items-find')
   OrderItemsFindV2(@Body() dataJsonDto: OrderItemFindAllDto) {
     return this.orderItemsService.tskOrderItemsFindV2(dataJsonDto);
-  }
-
-  @UseGuards(AuthGuard)
-  @Post('v2/order-items-addition')
-  orderItemUpdAdditionV2(@Body() dataJsonDto: OrderItemUpdAdditionDto) {
-    return this.orderItemsService.tskorderItemUpdAdditionV2(dataJsonDto);
   }
 
   @UseGuards(AuthGuard)
