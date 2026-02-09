@@ -1,8 +1,10 @@
 import { OrderOperAddItemDto } from '../dto/order-oper-add-item.dto';
+import { v4 as UuidV4 } from 'uuid';
 
 export function OrderOperAddItemQuery(
   dataJsonDto: OrderOperAddItemDto,
 ): string {
+  const OlUuid = UuidV4();
   const olAppId = dataJsonDto.pe_app_id ?? 1;
   const olSystemClientId = dataJsonDto.pe_system_client_id;
   const olStoreId = dataJsonDto.pe_store_id;
@@ -20,6 +22,7 @@ export function OrderOperAddItemQuery(
   const olNotes = dataJsonDto.pe_notes;
 
   const queryString = ` call sp_order_oper_add_item_v2(
+        '${OlUuid}',
         ${olAppId},
         ${olSystemClientId},
         ${olStoreId},

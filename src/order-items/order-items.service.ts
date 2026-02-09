@@ -17,7 +17,7 @@ import {
 } from './types/order-items.type';
 import { OrderItemFindIdQuery } from './query/order-item-find-id.query';
 import { OrderItemFindIdDto } from './dto/order-item-find-id.dto';
-import { OrderItemUpdAdditionDto } from './dto/order-item-upd-addition.dto';
+
 import { OrderItemUpdDiscountAdmDto } from './dto/order-item-upd-discount-adm.dto';
 import { OrderItemUpdDiscountDto } from './dto/order-item-upd-discount.dto';
 import { OrderItemDeleteDto } from './dto/order-item-delete.dto';
@@ -34,7 +34,7 @@ import { OrderItemUpdNotesQuery } from './query/order-item-upd-notes.query';
 import { OrderItemUpdInsuranceVlQuery } from './query/order-item-upd-insurance-vl.query';
 import { OrderItemUpdFreteVlQuery } from './query/order-item-upd-frete-vl.query';
 import { OrderItemUpdDiscountQuery } from './query/order-item-upd-discount.query';
-import { OrderItemUpdAdditionQuery } from './query/order-item-upd-addition.query';
+
 import { OrderItemUpdDiscountAdmQuery } from './query/order-item-upd-discount-adm.query';
 import { OrderItemUpdFreteVlDto } from './dto/order-item-upd-frete-vl.dto';
 import { processProcedureResultMutation } from 'src/core/procedure.result/process-procedure-result.mutation';
@@ -75,25 +75,6 @@ export class OrderItemsService {
         resultData as unknown[],
         ['orderItems'],
         'Order Items not found',
-      );
-    } catch (err) {
-      const errorMessage =
-        err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
-      return new ResultModel(100404, errorMessage, 0, []);
-    }
-  }
-
-  async tskorderItemUpdAdditionV2(dataJsonDto: OrderItemUpdAdditionDto) {
-    try {
-      const queryString = OrderItemUpdAdditionQuery(dataJsonDto);
-
-      const resultData = (await this.dbService.selectExecute(
-        queryString,
-      )) as unknown as SpResultRecordUpdateType;
-
-      return processProcedureResultMutation(
-        resultData as unknown[],
-        'Order Item update failed',
       );
     } catch (err) {
       const errorMessage =
