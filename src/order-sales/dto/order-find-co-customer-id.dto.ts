@@ -47,3 +47,18 @@ export class OrderFindCoCustomerIdDto {
   @Type(() => Number)
   pe_type_business: number;
 }
+
+/*
+Sample JSON for testing in body endpoint:
+{
+  "pe_app_id": 1,
+  "pe_system_client_id": 1,
+  "pe_store_id": 1,
+  "pe_organization_id": "org123",
+  "pe_user_id": "user123",
+  "pe_member_role": "admin",
+  "pe_person_id": 123,
+  "pe_order_id": PE_ID_PEDIDO,
+  "pe_type_business": 1
+}
+*/

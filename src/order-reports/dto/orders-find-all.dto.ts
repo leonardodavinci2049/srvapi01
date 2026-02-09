@@ -95,3 +95,26 @@ export class OrdersFindAllDto {
   @Min(1)
   pe_limit: number;
 }
+
+/*Sample JSON for testing in body endpoint:
+{
+  "pe_app_id": 1,
+  "pe_system_client_id": 1,
+  "pe_store_id": 3,
+  "pe_organization_id": "ORG001",
+  "pe_member_role": "saller",
+  "pe_user_id": "USER001",
+  "pe_person_id": 29014,
+
+  "pe_order_id": 0,
+  "pe_customer_id": 0,
+  "pe_seller_id": 0,
+
+  "pe_order_status_id": 14,
+  "pe_financial_status_id": 0,
+  "pe_location_id": 3,
+  "pe_initial_date": "2024-02-01",
+  "pe_final_date": "2024-12-31",
+  "pe_limit": 10
+}
+*/
