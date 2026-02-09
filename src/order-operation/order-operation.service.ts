@@ -29,6 +29,25 @@ import { OrderOperSendingByEmailIdDto } from './dto/order-oper-sending-by-email-
 export class OrderOperationService {
   constructor(private readonly dbService: DatabaseService) {}
 
+  async taskOrderOperCreateV2(dataJsonDto: OrderOperCreateDto) {
+    try {
+      const queryString = OrderOperCreateQuery(dataJsonDto);
+
+      const resultData = (await this.dbService.selectExecute(
+        queryString,
+      )) as unknown as SpResultRecordUpdateType;
+
+      return processProcedureResultMutation(
+        resultData as unknown[],
+        'Order Oper create failed',
+      );
+    } catch (err) {
+      const errorMessage =
+        err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
+      return new ResultModel(100404, errorMessage, 0, []);
+    }
+  }
+
   async taskOrderOperAddItemV2(dataJsonDto: OrderOperAddItemDto) {
     try {
       const queryString = OrderOperAddItemQuery(dataJsonDto);
@@ -66,24 +85,7 @@ export class OrderOperationService {
       return new ResultModel(100404, errorMessage, 0, []);
     }
   }
-  async taskOrderOperCreateV2(dataJsonDto: OrderOperCreateDto) {
-    try {
-      const queryString = OrderOperCreateQuery(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
-        queryString,
-      )) as unknown as SpResultRecordUpdateType;
-
-      return processProcedureResultMutation(
-        resultData as unknown[],
-        'Order Oper create failed',
-      );
-    } catch (err) {
-      const errorMessage =
-        err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
-      return new ResultModel(100404, errorMessage, 0, []);
-    }
-  }
   async taskOrderOperReverseIdV2(dataJsonDto: OrderOperReverseIdDto) {
     try {
       const queryString = OrderOperReverseIdQuery(dataJsonDto);

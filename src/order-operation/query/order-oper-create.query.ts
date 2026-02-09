@@ -1,6 +1,8 @@
 import { OrderOperCreateDto } from '../dto/order-oper-create.dto';
+import { v4 as UuidV4 } from 'uuid';
 
 export function OrderOperCreateQuery(dataJsonDto: OrderOperCreateDto): string {
+  const OlUuid = UuidV4();
   const olAppId = dataJsonDto.pe_app_id ?? 1;
   const olSystemClientId = dataJsonDto.pe_system_client_id;
   const olStoreId = dataJsonDto.pe_store_id;
@@ -16,6 +18,7 @@ export function OrderOperCreateQuery(dataJsonDto: OrderOperCreateDto): string {
   const olNotes = dataJsonDto.pe_notes;
 
   const queryString = ` call sp_order_oper_create_v2(
+        '${OlUuid}',
         ${olAppId},
         ${olSystemClientId},
         ${olStoreId},
