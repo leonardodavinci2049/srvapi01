@@ -5,22 +5,24 @@ import { MESSAGES } from 'src/core/utils/constants/globalConstants';
 import { DatabaseService } from 'src/database/database.service';
 
 import { OrderUpdCustomerIdDto } from './dto/order-upd-customer-id.dto';
-import { OrderUpdDiscountDto } from './dto/order-upd-discount.dto';
-import { OrderUpdFreteDto } from './dto/order-upd-frete.dto';
-import { OrderUpdNotesDto } from './dto/order-upd-notes.dto';
+import { OrderUpdFreteIdDto } from './dto/order-upd-frete-id.dto';
 import { OrderUpdPgMethodIdDto } from './dto/order-upd-pg-method-id.dto';
 import { OrderUpdSellerIdDto } from './dto/order-upd-seller-id.dto';
 import { OrderUpdStatusIdDto } from './dto/order-upd-status-id.dto';
-import { SpResultTaxonomyFindIdData } from './types/order-upd.type';
+import { OrderUpdNotesIdDto } from './dto/order-upd-notes-id.dto';
+import { OrderUpdDiscountIdDto } from './dto/order-upd-discount-id.dto';
+
+import { SpResultRecordUpdateType } from './types/order-upd.type';
 
 import { OrderUpdCustomerIdQuery } from './query/order-upd-customer-id.query';
-import { OrderUpdFreteQuery } from './query/order-upd-frete.query';
-
-import { OrderUpdNotesQuery } from './query/order-upd-notes.query';
 import { OrderUpdPgMethodIdQuery } from './query/order-upd-pg-method-id.query';
 import { OrderUpdSellerIdQuery } from './query/order-upd-seller-id.query';
 import { OrderUpdStatusIdQuery } from './query/order-upd-status-id.query';
-import { OrderUpdDiscountQuery } from './query/order-upd-discount.query';
+import { OrderUpdDiscountIdQuery } from './query/order-upd-discount-id.query';
+import { OrderUpdFreteIdQuery } from './query/order-upd-frete-id.query';
+import { OrderUpdNotesIdQuery } from './query/order-upd-notes-id.query';
+import { processProcedureResultMutation } from 'src/core/procedure.result/process-procedure-result.mutation';
+
 @Injectable()
 export class OrderUpdService {
   constructor(private readonly dbService: DatabaseService) {}
@@ -31,15 +33,12 @@ export class OrderUpdService {
 
       const resultData = (await this.dbService.selectExecute(
         queryString,
-      )) as unknown as SpResultTaxonomyFindIdData;
+      )) as unknown as SpResultRecordUpdateType;
 
-      return resultData;
-
-      /* 
       return processProcedureResultMutation(
         resultData as unknown[],
-        'Order Oper add item failed',
-      ); */
+        'Order Item update failed',
+      );
     } catch (err) {
       const errorMessage =
         err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
@@ -47,21 +46,18 @@ export class OrderUpdService {
     }
   }
 
-  async taskOrderUpdDiscountV2(dataJsonDto: OrderUpdDiscountDto) {
+  async taskOrderUpdDiscountIdV2(dataJsonDto: OrderUpdDiscountIdDto) {
     try {
-      const queryString = OrderUpdDiscountQuery(dataJsonDto);
+      const queryString = OrderUpdDiscountIdQuery(dataJsonDto);
 
       const resultData = (await this.dbService.selectExecute(
         queryString,
-      )) as unknown as SpResultTaxonomyFindIdData;
+      )) as unknown as SpResultRecordUpdateType;
 
-      return resultData;
-
-      /* 
       return processProcedureResultMutation(
         resultData as unknown[],
-        'Order Oper add item failed',
-      ); */
+        'Order Item update failed',
+      );
     } catch (err) {
       const errorMessage =
         err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
@@ -69,21 +65,18 @@ export class OrderUpdService {
     }
   }
 
-  async taskOrderUpdFreteV2(dataJsonDto: OrderUpdFreteDto) {
+  async taskOrderUpdFreteIdV2(dataJsonDto: OrderUpdFreteIdDto) {
     try {
-      const queryString = OrderUpdFreteQuery(dataJsonDto);
+      const queryString = OrderUpdFreteIdQuery(dataJsonDto);
 
       const resultData = (await this.dbService.selectExecute(
         queryString,
-      )) as unknown as SpResultTaxonomyFindIdData;
+      )) as unknown as SpResultRecordUpdateType;
 
-      return resultData;
-
-      /* 
       return processProcedureResultMutation(
         resultData as unknown[],
-        'Order Oper add item failed',
-      ); */
+        'Order Item update failed',
+      );
     } catch (err) {
       const errorMessage =
         err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
@@ -91,21 +84,18 @@ export class OrderUpdService {
     }
   }
 
-  async taskOrderUpdNotesV2(dataJsonDto: OrderUpdNotesDto) {
+  async taskOrderUpdNotesIdV2(dataJsonDto: OrderUpdNotesIdDto) {
     try {
-      const queryString = OrderUpdNotesQuery(dataJsonDto);
+      const queryString = OrderUpdNotesIdQuery(dataJsonDto);
 
       const resultData = (await this.dbService.selectExecute(
         queryString,
-      )) as unknown as SpResultTaxonomyFindIdData;
+      )) as unknown as SpResultRecordUpdateType;
 
-      return resultData;
-
-      /* 
       return processProcedureResultMutation(
         resultData as unknown[],
-        'Order Oper add item failed',
-      ); */
+        'Order Item update failed',
+      );
     } catch (err) {
       const errorMessage =
         err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
@@ -119,15 +109,12 @@ export class OrderUpdService {
 
       const resultData = (await this.dbService.selectExecute(
         queryString,
-      )) as unknown as SpResultTaxonomyFindIdData;
+      )) as unknown as SpResultRecordUpdateType;
 
-      return resultData;
-
-      /* 
       return processProcedureResultMutation(
         resultData as unknown[],
-        'Order Oper add item failed',
-      ); */
+        'Order Item update failed',
+      );
     } catch (err) {
       const errorMessage =
         err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
@@ -141,15 +128,12 @@ export class OrderUpdService {
 
       const resultData = (await this.dbService.selectExecute(
         queryString,
-      )) as unknown as SpResultTaxonomyFindIdData;
+      )) as unknown as SpResultRecordUpdateType;
 
-      return resultData;
-
-      /* 
       return processProcedureResultMutation(
         resultData as unknown[],
-        'Order Oper add item failed',
-      ); */
+        'Order Item update failed',
+      );
     } catch (err) {
       const errorMessage =
         err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
@@ -163,15 +147,12 @@ export class OrderUpdService {
 
       const resultData = (await this.dbService.selectExecute(
         queryString,
-      )) as unknown as SpResultTaxonomyFindIdData;
+      )) as unknown as SpResultRecordUpdateType;
 
-      return resultData;
-
-      /* 
       return processProcedureResultMutation(
         resultData as unknown[],
-        'Order Oper add item failed',
-      ); */
+        'Order Item update failed',
+      );
     } catch (err) {
       const errorMessage =
         err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;

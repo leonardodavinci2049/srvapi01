@@ -1,6 +1,6 @@
-import { OrderUpdNotesDto } from '../dto/order-upd-notes.dto';
+import { OrderUpdFreteIdDto } from '../dto/order-upd-frete-id.dto';
 
-export function OrderUpdNotesQuery(dataJsonDto: OrderUpdNotesDto): string {
+export function OrderUpdFreteIdQuery(dataJsonDto: OrderUpdFreteIdDto): string {
   const olAppId = dataJsonDto.pe_app_id ?? 1;
   const olSystemClientId = dataJsonDto.pe_system_client_id;
   const olStoreId = dataJsonDto.pe_store_id;
@@ -9,9 +9,9 @@ export function OrderUpdNotesQuery(dataJsonDto: OrderUpdNotesDto): string {
   const olMemberRole = dataJsonDto.pe_member_role;
   const olPersonId = dataJsonDto.pe_person_id;
   const olOrderId = dataJsonDto.pe_order_id;
-  const olNotes = dataJsonDto.pe_notes ?? '';
+  const olFreteValue = dataJsonDto.pe_frete_value;
 
-  const queryString = ` call sp_order_upd_notes_v2(
+  const queryString = ` call sp_order_upd_frete_id_v2(
         ${olAppId},
         ${olSystemClientId},
         ${olStoreId},
@@ -20,7 +20,7 @@ export function OrderUpdNotesQuery(dataJsonDto: OrderUpdNotesDto): string {
         '${olMemberRole}',
         ${olPersonId},
         ${olOrderId},
-        '${olNotes}'
+        ${olFreteValue}
 
       ) `;
 
