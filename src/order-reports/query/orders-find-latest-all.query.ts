@@ -1,7 +1,7 @@
-import { OrdersFindLatestDto } from '../dto/orders-find-latest.dto';
+import { OrdersFindLatestAllDto } from '../dto/orders-find-latest-all.dto';
 
-export function OrdersFindLatestQuery(
-  dataJsonDto: OrdersFindLatestDto,
+export function OrdersFindLatestAllQuery(
+  dataJsonDto: OrdersFindLatestAllDto,
 ): string {
   const olAppId = dataJsonDto.pe_app_id ?? 1;
   const olSystemClientId = dataJsonDto.pe_system_client_id;
@@ -25,7 +25,7 @@ export function OrdersFindLatestQuery(
 
   const olLimit = dataJsonDto.pe_limit ?? 100;
 
-  const queryString = ` call sp_orders_find_latest_v2(
+  const queryString = ` call sp_orders_find_latest_all_v2(
         ${olAppId},
         ${olSystemClientId},
         ${olStoreId},
