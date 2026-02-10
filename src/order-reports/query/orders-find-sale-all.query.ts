@@ -1,6 +1,8 @@
-import { OrdersFindAllDto } from '../dto/orders-find-all.dto';
+import { OrdersFindSaleAllDto } from '../dto/orders-find-sale-all.dto';
 
-export function OrdersFindAllQuery(dataJsonDto: OrdersFindAllDto): string {
+export function OrdersFindSaleAllQuery(
+  dataJsonDto: OrdersFindSaleAllDto,
+): string {
   const olAppId = dataJsonDto.pe_app_id ?? 1;
   const olSystemClientId = dataJsonDto.pe_system_client_id;
   const olStoreId = dataJsonDto.pe_store_id;
@@ -22,7 +24,7 @@ export function OrdersFindAllQuery(dataJsonDto: OrdersFindAllDto): string {
     : null;
   const olLimit = dataJsonDto.pe_limit;
 
-  const queryString = ` call sp_orders_find_all_v2(
+  const queryString = ` call sp_orders_find_sale_all_v2(
         ${olAppId},
         ${olSystemClientId},
         ${olStoreId},

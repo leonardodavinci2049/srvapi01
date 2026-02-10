@@ -66,3 +66,5 @@ ecosystem.config.js
 /flow
 .github
 /schemas
+/json-response
+

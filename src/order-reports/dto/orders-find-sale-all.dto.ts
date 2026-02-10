@@ -8,7 +8,7 @@ import {
 } from 'class-validator';
 import { Type } from 'class-transformer';
 
-export class OrdersFindAllDto {
+export class OrdersFindSaleAllDto {
   @ApiProperty({ description: 'App ID' })
   @IsNumber()
   @IsNotEmpty()
