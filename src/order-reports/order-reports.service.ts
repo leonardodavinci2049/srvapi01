@@ -4,25 +4,23 @@ import { MESSAGES } from 'src/core/utils/constants/globalConstants';
 
 import { DatabaseService } from 'src/database/database.service';
 
-import { OrdersFindAllDto } from './dto/orders-find-all.dto';
 import { OrdersFindCustomerAllDto } from './dto/orders-find-customer-all.dto';
 import { OrdersFindCustomerIdDto } from './dto/orders-find-customer-id.dto';
-import { OrdersFindIdDto } from './dto/orders-find-id.dto';
+
 import { OrdersFindSellerAllDto } from './dto/orders-find-seller-all.dto';
 import { OrdersFindSellerIdDto } from './dto/orders-find-seller-id.dto';
 
 import {
-  SpResultOrderFindAllData,
   SpResultOrderFindCustomerAllData,
   SpResultOrderFindCustomerIdData,
-  SpResultOrderFindIdData,
   SpResultOrderFindLatestAllData,
+  SpResultOrderFindLatestIdData,
+  SpResultOrderFindSaleAllData,
+  SpResultOrderFindSaleIdData,
   SpResultOrderFindSellerAllData,
   SpResultOrderFindSellerIdData,
 } from './types/order-reports.type';
 
-import { OrdersFindAllQuery } from './query/orders-find-all.query';
-import { OrdersFindIdQuery } from './query/orders-find-id.query';
 import { OrdersFindSellerAllQuery } from './query/orders-find-seller-all.query';
 import { OrdersFindSellerIdQuery } from './query/orders-find-seller-id.query';
 
@@ -33,22 +31,26 @@ import { OrdersFindLatestIdDto } from './dto/orders-find-latest-id.dto';
 import { OrdersFindLatestAllDto } from './dto/orders-find-latest-all.dto';
 import { OrdersFindLatestAllQuery } from './query/orders-find-latest-all.query';
 import { OrdersFindLatestIdQuery } from './query/orders-find-latest-id.query';
+import { OrdersFindSaleAllQuery } from './query/orders-find-sale-all.query';
+import { OrdersFindSaleAllDto } from './dto/orders-find-sale-all.dto';
+import { OrdersFindSaleIdDto } from './dto/orders-find-sale-id.dto';
+import { OrdersFindSaleIdQuery } from './query/orders-find-sale-id.query';
 
 @Injectable()
 export class OrderReportsService {
   constructor(private readonly dbService: DatabaseService) {}
 
-  async taskOrdersFindAllV2(dataJsonDto: OrdersFindAllDto) {
+  async taskOrdersFindSaleAllV2(dataJsonDto: OrdersFindSaleAllDto) {
     try {
-      const queryString = OrdersFindAllQuery(dataJsonDto);
+      const queryString = OrdersFindSaleAllQuery(dataJsonDto);
 
       const resultData = (await this.dbService.selectExecute(
         queryString,
-      )) as unknown as SpResultOrderFindAllData;
+      )) as unknown as SpResultOrderFindSaleAllData;
 
       return processProcedureResultMultiQuery(
         resultData as unknown[],
-        ['Orders Sold'],
+        ['Orders Sale All'],
         'Order Items not found',
       );
     } catch (err) {
@@ -58,13 +60,13 @@ export class OrderReportsService {
     }
   }
 
-  async taskOrdersFindIdV2(dataJsonDto: OrdersFindIdDto) {
+  async taskOrdersFindSaleIdV2(dataJsonDto: OrdersFindSaleIdDto) {
     try {
-      const queryString = OrdersFindIdQuery(dataJsonDto);
+      const queryString = OrdersFindSaleIdQuery(dataJsonDto);
 
       const resultData = (await this.dbService.selectExecute(
         queryString,
-      )) as unknown as SpResultOrderFindIdData;
+      )) as unknown as SpResultOrderFindSaleIdData;
 
       return processProcedureResultMultiQuery(
         resultData as unknown[],
@@ -202,17 +204,16 @@ export class OrderReportsService {
 
       const resultData = (await this.dbService.selectExecute(
         queryString,
-      )) as unknown as SpResultOrderFindIdData;
+      )) as unknown as SpResultOrderFindLatestIdData;
 
       return processProcedureResultMultiQuery(
         resultData as unknown[],
         [
-          'Order Summary',
-          'Order Items',
+          'Latest Orders Summary',
+          'Latest Order Items',
+          'Status History',
           'Customer Information',
           'Seller Information',
-          'Trading Information',
-          'Shipping Information',
         ],
         'Order Items not found',
       );

@@ -1,6 +1,8 @@
-import { OrdersFindIdDto } from '../dto/orders-find-id.dto';
+import { OrdersFindSaleIdDto } from '../dto/orders-find-sale-id.dto';
 
-export function OrdersFindIdQuery(dataJsonDto: OrdersFindIdDto): string {
+export function OrdersFindSaleIdQuery(
+  dataJsonDto: OrdersFindSaleIdDto,
+): string {
   const olAppId = dataJsonDto.pe_app_id ?? 1;
   const olSystemClientId = dataJsonDto.pe_system_client_id;
   const olStoreId = dataJsonDto.pe_store_id;
@@ -11,7 +13,7 @@ export function OrdersFindIdQuery(dataJsonDto: OrdersFindIdDto): string {
   const olOrderId = dataJsonDto.pe_order_id;
   const olTypeBusiness = dataJsonDto.pe_type_business;
 
-  const queryString = ` call sp_orders_find_id_v2(
+  const queryString = ` call sp_orders_find_sale_id_v2(
         ${olAppId},
         ${olSystemClientId},
         ${olStoreId},

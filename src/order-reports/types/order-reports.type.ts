@@ -175,7 +175,7 @@ export interface TblTradingInformation extends RowDataPacket {
   USUARIO_RETIRADA?: string;
 }
 
-export interface TblOrderFindAll extends RowDataPacket {
+export interface TblOrderFindSaleAll extends RowDataPacket {
   DATA_VENDA?: Date | string;
   ID_PEDIDO?: number;
   ID_CLIENTE?: number;
@@ -435,17 +435,51 @@ export interface TblOrderFindLatestAll extends RowDataPacket {
   DATA_ESTORNO?: Date | string | null;
 }
 
+export interface TblLatestOrdersSummary extends RowDataPacket {
+  ID_PEDIDO?: number;
+  QT_ITENS?: number;
+  VL_SUBTOTAL?: string;
+  VL_FRETE?: string;
+  VL_ACRESCIMO?: string;
+  VL_SEGURO?: string;
+  VL_DESCONTO?: string;
+  VL_TOTAL_PEDIDO?: string;
+}
+export interface TblLatestOrderItems extends RowDataPacket {
+  ID_ITEM?: number;
+  ID_PEDIDO?: number;
+  ID_PRODUTO?: number;
+  SKU?: number;
+  PRODUTO?: string;
+  QT?: number;
+  VL_UNITARIO?: string;
+  VL_SUBTOTAL?: string;
+  VL_ACRESCIMO?: string;
+  VL_SEGURO?: string;
+  VL_DESCONTO?: string;
+  VL_FRETE?: string;
+  VL_TOTAL?: string;
+  STATUS?: string | null;
+  ID_IMAGEM?: number;
+  PATH_IMAGEM?: string;
+  SLUG?: string;
+  TEMPODEGARANTIA_MES?: number;
+  TEMPODEGARANTIA_DIA?: number;
+  QT_ESTORNADA?: number;
+  DATADOCADASTRO?: Date | string | null;
+}
+
 export type SpResultRecordCreateType = [SpDefaultFeedback[], SpOperationResult];
 export type SpResultRecordUpdateType = [SpDefaultFeedback[], SpOperationResult];
 export type SpResultRecordDeleteType = [SpDefaultFeedback[], SpOperationResult];
 
-export type SpResultOrderFindAllData = [
-  TblOrderFindAll[],
+export type SpResultOrderFindSaleAllData = [
+  TblOrderFindSaleAll[],
   SpDefaultFeedback[],
   SpOperationResult,
 ];
 
-export type SpResultOrderFindIdData = [
+export type SpResultOrderFindSaleIdData = [
   TblOrderSummary[],
   TblOrderItems[],
   TblCustomerInformation[],
@@ -487,6 +521,16 @@ export type SpResultOrderFindSellerIdData = [
 
 export type SpResultOrderFindLatestAllData = [
   TblOrderFindLatestAll[],
+  SpDefaultFeedback[],
+  SpOperationResult,
+];
+
+export type SpResultOrderFindLatestIdData = [
+  TblLatestOrdersSummary[],
+  TblLatestOrderItems[],
+  TblStatusHistory[],
+  TblCustomerInformation[],
+  TblSellerInformation[],
   SpDefaultFeedback[],
   SpOperationResult,
 ];
