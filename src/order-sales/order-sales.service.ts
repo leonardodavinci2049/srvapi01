@@ -3,7 +3,6 @@ import { ResultModel } from 'src/core/utils/result.model';
 import { MESSAGES } from 'src/core/utils/constants/globalConstants';
 
 import { DatabaseService } from 'src/database/database.service';
-import { SpResultTaxonomyFindIdData } from './types/order-sales.type';
 
 import { OrderFindCoSellerIdDto } from './dto/order-find-co-seller-id.dto';
 import { OrderFindCoDeliveryIdDto } from './dto/order-find-co-delivery-id.dto';
@@ -14,7 +13,7 @@ import { OrderFindCoHistoryIdDto } from './dto/order-find-co-history-id.dto';
 import { OrderFindCoNfIdDto } from './dto/order-find-co-nf-id.dto';
 import { OrderFindCoPgFormaIdDto } from './dto/order-find-co-pg-forma-id.dto';
 import { OrderFindCoProtocolIdDto } from './dto/order-find-co-protocol-id.dto';
-import { OrderFindCoSellerFindIdDto } from './dto/order-find-co-seller-find-id.dto';
+
 import { OrderFindCoSummaryIdDto } from './dto/order-find-co-summary-id.dto';
 import { OrdersFindDashboardIdDto } from './dto/orders-find-dashboard-id.dto';
 
@@ -27,228 +26,42 @@ import { OrderFindCoHistoryIdQuery } from './query/order-find-co-history-id.quer
 import { OrderFindCoNfIdQuery } from './query/order-find-co-nf-id.query';
 import { OrderFindCoPgFormaIdQuery } from './query/order-find-co-pg-forma-id.query';
 import { OrderFindCoProtocolIdQuery } from './query/order-find-co-protocol-id.query';
-import { OrderFindCoSellerFindIdQuery } from './query/order-find-co-seller-find-id.query';
+
 import { OrderFindCoSellerIdQuery } from './query/order-find-co-seller-id.query';
 import { OrderFindCoSummaryIdQuery } from './query/order-find-co-summary-id.query';
 import { OrdersFindDashboardIdQuery } from './query/orders-find-dashboard-id.query';
+import {
+  SpResultOrderFindCoCarrierIdData,
+  SpResultOrderFindCoCustomerIdData,
+  SpResultOrderFindCoDeliveryIdData,
+  SpResultOrderFindCoHistoryIdData,
+  SpResultOrderFindCoNfIdData,
+  SpResultOrderFindCoPgFormaIdData,
+  SpResultOrderFindCoSellerIdData,
+  SpResultOrderFindCoSummaryIdData,
+  SpResultOrderFindEquipmentIdData,
+  SpResultOrderFindProtocolIdData,
+} from './types/order-sales.type';
+import { SpResultOrderFindCustomerAllData } from 'src/order-reports/types/order-reports.type';
+import { processProcedureResultMultiQuery } from 'src/core/procedure.result/process-procedure-result.query';
 
 @Injectable()
 export class OrderSalesService {
   constructor(private readonly dbService: DatabaseService) {}
 
-  async taskOrderFindCoCarrierIdV2(dataJsonDto: OrderFindCoCarrierIdDto) {
+  async taskOrdersFindDashboardIdV2(dataJsonDto: OrdersFindDashboardIdDto) {
     try {
-      const queryString = OrderFindCoCarrierIdQuery(dataJsonDto);
+      const queryString = OrdersFindDashboardIdQuery(dataJsonDto);
 
       const resultData = (await this.dbService.selectExecute(
         queryString,
-      )) as unknown as SpResultTaxonomyFindIdData;
+      )) as unknown as SpResultOrderFindCustomerAllData;
 
-      return resultData;
-
-      /* 
-      return processProcedureResultMutation(
+      return processProcedureResultMultiQuery(
         resultData as unknown[],
-        'Order Oper add item failed',
-      ); */
-    } catch (err) {
-      const errorMessage =
-        err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
-      return new ResultModel(100404, errorMessage, 0, []);
-    }
-  }
-
-  async taskOrderFindCoCustomerIdV2(dataJsonDto: OrderFindCoCustomerIdDto) {
-    try {
-      const queryString = OrderFindCoCustomerIdQuery(dataJsonDto);
-
-      const resultData = (await this.dbService.selectExecute(
-        queryString,
-      )) as unknown as SpResultTaxonomyFindIdData;
-
-      return resultData;
-
-      /* 
-      return processProcedureResultMutation(
-        resultData as unknown[],
-        'Order Oper add item failed',
-      ); */
-    } catch (err) {
-      const errorMessage =
-        err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
-      return new ResultModel(100404, errorMessage, 0, []);
-    }
-  }
-
-  async taskOrderFindCoDeliveryIdV2(dataJsonDto: OrderFindCoDeliveryIdDto) {
-    try {
-      const queryString = OrderFindCoDeliveryIdQuery(dataJsonDto);
-
-      const resultData = (await this.dbService.selectExecute(
-        queryString,
-      )) as unknown as SpResultTaxonomyFindIdData;
-
-      return resultData;
-
-      /* 
-      return processProcedureResultMutation(
-        resultData as unknown[],
-        'Order Oper add item failed',
-      ); */
-    } catch (err) {
-      const errorMessage =
-        err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
-      return new ResultModel(100404, errorMessage, 0, []);
-    }
-  }
-
-  async taskOrderFindCoEquipmentIdV2(dataJsonDto: OrderFindCoEquipmentIdDto) {
-    try {
-      const queryString = OrderFindCoEquipmentIdQuery(dataJsonDto);
-
-      const resultData = (await this.dbService.selectExecute(
-        queryString,
-      )) as unknown as SpResultTaxonomyFindIdData;
-
-      return resultData;
-
-      /* 
-      return processProcedureResultMutation(
-        resultData as unknown[],
-        'Order Oper add item failed',
-      ); */
-    } catch (err) {
-      const errorMessage =
-        err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
-      return new ResultModel(100404, errorMessage, 0, []);
-    }
-  }
-
-  async taskOrderFindCoHistoryIdV2(dataJsonDto: OrderFindCoHistoryIdDto) {
-    try {
-      const queryString = OrderFindCoHistoryIdQuery(dataJsonDto);
-
-      const resultData = (await this.dbService.selectExecute(
-        queryString,
-      )) as unknown as SpResultTaxonomyFindIdData;
-
-      return resultData;
-
-      /* 
-      return processProcedureResultMutation(
-        resultData as unknown[],
-        'Order Oper add item failed',
-      ); */
-    } catch (err) {
-      const errorMessage =
-        err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
-      return new ResultModel(100404, errorMessage, 0, []);
-    }
-  }
-
-  async taskOrderFindCoNfIdV2(dataJsonDto: OrderFindCoNfIdDto) {
-    try {
-      const queryString = OrderFindCoNfIdQuery(dataJsonDto);
-
-      const resultData = (await this.dbService.selectExecute(
-        queryString,
-      )) as unknown as SpResultTaxonomyFindIdData;
-
-      return resultData;
-
-      /* 
-      return processProcedureResultMutation(
-        resultData as unknown[],
-        'Order Oper add item failed',
-      ); */
-    } catch (err) {
-      const errorMessage =
-        err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
-      return new ResultModel(100404, errorMessage, 0, []);
-    }
-  }
-
-  async taskOrderFindCoPgFormaIdV2(dataJsonDto: OrderFindCoPgFormaIdDto) {
-    try {
-      const queryString = OrderFindCoPgFormaIdQuery(dataJsonDto);
-
-      const resultData = (await this.dbService.selectExecute(
-        queryString,
-      )) as unknown as SpResultTaxonomyFindIdData;
-
-      return resultData;
-
-      /* 
-      return processProcedureResultMutation(
-        resultData as unknown[],
-        'Order Oper add item failed',
-      ); */
-    } catch (err) {
-      const errorMessage =
-        err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
-      return new ResultModel(100404, errorMessage, 0, []);
-    }
-  }
-
-  async taskOrderFindCoProtocolIdV2(dataJsonDto: OrderFindCoProtocolIdDto) {
-    try {
-      const queryString = OrderFindCoProtocolIdQuery(dataJsonDto);
-
-      const resultData = (await this.dbService.selectExecute(
-        queryString,
-      )) as unknown as SpResultTaxonomyFindIdData;
-
-      return resultData;
-
-      /* 
-      return processProcedureResultMutation(
-        resultData as unknown[],
-        'Order Oper add item failed',
-      ); */
-    } catch (err) {
-      const errorMessage =
-        err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
-      return new ResultModel(100404, errorMessage, 0, []);
-    }
-  }
-
-  async taskOrderFindCoSellerFindIdV2(dataJsonDto: OrderFindCoSellerFindIdDto) {
-    try {
-      const queryString = OrderFindCoSellerFindIdQuery(dataJsonDto);
-
-      const resultData = (await this.dbService.selectExecute(
-        queryString,
-      )) as unknown as SpResultTaxonomyFindIdData;
-
-      return resultData;
-
-      /* 
-      return processProcedureResultMutation(
-        resultData as unknown[],
-        'Order Oper add item failed',
-      ); */
-    } catch (err) {
-      const errorMessage =
-        err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
-      return new ResultModel(100404, errorMessage, 0, []);
-    }
-  }
-
-  async taskOrderFindCoSellerIdV2(dataJsonDto: OrderFindCoSellerIdDto) {
-    try {
-      const queryString = OrderFindCoSellerIdQuery(dataJsonDto);
-
-      const resultData = (await this.dbService.selectExecute(
-        queryString,
-      )) as unknown as SpResultTaxonomyFindIdData;
-
-      return resultData;
-
-      /* 
-      return processProcedureResultMutation(
-        resultData as unknown[],
-        'Order Oper add item failed',
-      ); */
+        ['Order Summary', 'Order Details', 'Order Items', 'Customer Details'],
+        'Order Items not found',
+      );
     } catch (err) {
       const errorMessage =
         err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
@@ -262,15 +75,13 @@ export class OrderSalesService {
 
       const resultData = (await this.dbService.selectExecute(
         queryString,
-      )) as unknown as SpResultTaxonomyFindIdData;
+      )) as unknown as SpResultOrderFindCoSummaryIdData;
 
-      return resultData;
-
-      /* 
-      return processProcedureResultMutation(
+      return processProcedureResultMultiQuery(
         resultData as unknown[],
-        'Order Oper add item failed',
-      ); */
+        ['Order Summary'],
+        'Order Items not found',
+      );
     } catch (err) {
       const errorMessage =
         err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
@@ -278,21 +89,178 @@ export class OrderSalesService {
     }
   }
 
-  async taskOrdersFindDashboardIdV2(dataJsonDto: OrdersFindDashboardIdDto) {
+  async taskOrderFindCoCarrierIdV2(dataJsonDto: OrderFindCoCarrierIdDto) {
     try {
-      const queryString = OrdersFindDashboardIdQuery(dataJsonDto);
+      const queryString = OrderFindCoCarrierIdQuery(dataJsonDto);
 
       const resultData = (await this.dbService.selectExecute(
         queryString,
-      )) as unknown as SpResultTaxonomyFindIdData;
+      )) as unknown as SpResultOrderFindCoCarrierIdData;
 
-      return resultData;
-
-      /* 
-      return processProcedureResultMutation(
+      return processProcedureResultMultiQuery(
         resultData as unknown[],
-        'Order Oper add item failed',
-      ); */
+        ['Order Carrier'],
+        'Order Items not found',
+      );
+    } catch (err) {
+      const errorMessage =
+        err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
+      return new ResultModel(100404, errorMessage, 0, []);
+    }
+  }
+
+  async taskOrderFindCoCustomerIdV2(dataJsonDto: OrderFindCoCustomerIdDto) {
+    try {
+      const queryString = OrderFindCoCustomerIdQuery(dataJsonDto);
+
+      const resultData = (await this.dbService.selectExecute(
+        queryString,
+      )) as unknown as SpResultOrderFindCoCustomerIdData;
+
+      return processProcedureResultMultiQuery(
+        resultData as unknown[],
+        ['Order Customer'],
+        'Order Items not found',
+      );
+    } catch (err) {
+      const errorMessage =
+        err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
+      return new ResultModel(100404, errorMessage, 0, []);
+    }
+  }
+
+  async taskOrderFindCoDeliveryIdV2(dataJsonDto: OrderFindCoDeliveryIdDto) {
+    try {
+      const queryString = OrderFindCoDeliveryIdQuery(dataJsonDto);
+
+      const resultData = (await this.dbService.selectExecute(
+        queryString,
+      )) as unknown as SpResultOrderFindCoDeliveryIdData;
+
+      return processProcedureResultMultiQuery(
+        resultData as unknown[],
+        ['Order Delivery'],
+        'Order Items not found',
+      );
+    } catch (err) {
+      const errorMessage =
+        err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
+      return new ResultModel(100404, errorMessage, 0, []);
+    }
+  }
+
+  async taskOrderFindCoEquipmentIdV2(dataJsonDto: OrderFindCoEquipmentIdDto) {
+    try {
+      const queryString = OrderFindCoEquipmentIdQuery(dataJsonDto);
+
+      const resultData = (await this.dbService.selectExecute(
+        queryString,
+      )) as unknown as SpResultOrderFindEquipmentIdData;
+
+      return processProcedureResultMultiQuery(
+        resultData as unknown[],
+        ['Order Equipment'],
+        'Order Items not found',
+      );
+    } catch (err) {
+      const errorMessage =
+        err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
+      return new ResultModel(100404, errorMessage, 0, []);
+    }
+  }
+
+  async taskOrderFindCoHistoryIdV2(dataJsonDto: OrderFindCoHistoryIdDto) {
+    try {
+      const queryString = OrderFindCoHistoryIdQuery(dataJsonDto);
+
+      const resultData = (await this.dbService.selectExecute(
+        queryString,
+      )) as unknown as SpResultOrderFindCoHistoryIdData;
+
+      return processProcedureResultMultiQuery(
+        resultData as unknown[],
+        ['Order History'],
+        'Order Items not found',
+      );
+    } catch (err) {
+      const errorMessage =
+        err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
+      return new ResultModel(100404, errorMessage, 0, []);
+    }
+  }
+
+  async taskOrderFindCoNfIdV2(dataJsonDto: OrderFindCoNfIdDto) {
+    try {
+      const queryString = OrderFindCoNfIdQuery(dataJsonDto);
+
+      const resultData = (await this.dbService.selectExecute(
+        queryString,
+      )) as unknown as SpResultOrderFindCoNfIdData;
+      return processProcedureResultMultiQuery(
+        resultData as unknown[],
+        ['Order Nf'],
+        'Order Items not found',
+      );
+    } catch (err) {
+      const errorMessage =
+        err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
+      return new ResultModel(100404, errorMessage, 0, []);
+    }
+  }
+
+  async taskOrderFindCoPgFormaIdV2(dataJsonDto: OrderFindCoPgFormaIdDto) {
+    try {
+      const queryString = OrderFindCoPgFormaIdQuery(dataJsonDto);
+
+      const resultData = (await this.dbService.selectExecute(
+        queryString,
+      )) as unknown as SpResultOrderFindCoPgFormaIdData;
+
+      return processProcedureResultMultiQuery(
+        resultData as unknown[],
+        ['Order Pg Forma'],
+        'Order Items not found',
+      );
+    } catch (err) {
+      const errorMessage =
+        err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
+      return new ResultModel(100404, errorMessage, 0, []);
+    }
+  }
+
+  async taskOrderFindCoProtocolIdV2(dataJsonDto: OrderFindCoProtocolIdDto) {
+    try {
+      const queryString = OrderFindCoProtocolIdQuery(dataJsonDto);
+
+      const resultData = (await this.dbService.selectExecute(
+        queryString,
+      )) as unknown as SpResultOrderFindProtocolIdData;
+
+      return processProcedureResultMultiQuery(
+        resultData as unknown[],
+        ['Order Protocol'],
+        'Order Items not found',
+      );
+    } catch (err) {
+      const errorMessage =
+        err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
+      return new ResultModel(100404, errorMessage, 0, []);
+    }
+  }
+
+  async taskOrderFindCoSellerIdV2(dataJsonDto: OrderFindCoSellerIdDto) {
+    try {
+      const queryString = OrderFindCoSellerIdQuery(dataJsonDto);
+
+      const resultData = (await this.dbService.selectExecute(
+        queryString,
+      )) as unknown as SpResultOrderFindCoSellerIdData;
+
+      return processProcedureResultMultiQuery(
+        resultData as unknown[],
+        ['Order Seller'],
+        'Order Items not found',
+      );
     } catch (err) {
       const errorMessage =
         err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
