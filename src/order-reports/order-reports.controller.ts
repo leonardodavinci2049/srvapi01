@@ -4,10 +4,12 @@ import { AuthGuard } from 'src/core/guards/auth.guard';
 import { OrdersFindAllDto } from './dto/orders-find-all.dto';
 import { OrdersFindCustomerAllDto } from './dto/orders-find-customer-all.dto';
 import { OrdersFindCustomerIdDto } from './dto/orders-find-customer-id.dto';
-import { OrdersFindLatestDto } from './dto/orders-find-latest.dto';
+
 import { OrdersFindSellerAllDto } from './dto/orders-find-seller-all.dto';
 import { OrdersFindSellerIdDto } from './dto/orders-find-seller-id.dto';
 import { OrdersFindIdDto } from './dto/orders-find-id.dto';
+import { OrdersFindLatestAllDto } from './dto/orders-find-latest-all.dto';
+import { OrdersFindLatestIdDto } from './dto/orders-find-latest-id.dto';
 
 @Controller('order-reports')
 export class OrderReportsController {
@@ -27,10 +29,17 @@ export class OrderReportsController {
       },
     };
   }
+
   @UseGuards(AuthGuard)
   @Post('v2/order-find-all')
   OrdersFindAllV2(@Body() dataJsonDto: OrdersFindAllDto) {
     return this.orderReportsService.taskOrdersFindAllV2(dataJsonDto);
+  }
+
+  @UseGuards(AuthGuard)
+  @Post('v2/order-find-id')
+  OrdersFindIdV2(@Body() dataJsonDto: OrdersFindIdDto) {
+    return this.orderReportsService.taskOrdersFindIdV2(dataJsonDto);
   }
 
   @UseGuards(AuthGuard)
@@ -46,26 +55,24 @@ export class OrderReportsController {
   }
 
   @UseGuards(AuthGuard)
-  @Post('v2/order-find-id')
-  OrdersFindIdQueryV2(@Body() dataJsonDto: OrdersFindIdDto) {
-    return this.orderReportsService.taskOrdersFindIdQueryV2(dataJsonDto);
-  }
-
-  @UseGuards(AuthGuard)
-  @Post('v2/order-find-latest')
-  OrdersFindLatestV2(@Body() dataJsonDto: OrdersFindLatestDto) {
-    return this.orderReportsService.taskOrdersFindLatestV2(dataJsonDto);
-  }
-
-  @UseGuards(AuthGuard)
   @Post('v2/order-find-seller-all')
   OrdersFindSellerAllV2(@Body() dataJsonDto: OrdersFindSellerAllDto) {
     return this.orderReportsService.taskOrdersFindSellerAllV2(dataJsonDto);
   }
-
   @UseGuards(AuthGuard)
   @Post('v2/order-find-seller-id')
   OrdersFindSellerIdV2(@Body() dataJsonDto: OrdersFindSellerIdDto) {
     return this.orderReportsService.taskOrdersFindSellerIdV2(dataJsonDto);
+  }
+
+  @UseGuards(AuthGuard)
+  @Post('v2/order-find-latest-all')
+  OrdersFindLatestAllV2(@Body() dataJsonDto: OrdersFindLatestAllDto) {
+    return this.orderReportsService.taskOrdersFindLatestAllV2(dataJsonDto);
+  }
+  @UseGuards(AuthGuard)
+  @Post('v2/order-find-latest-id')
+  OrdersFindLatestIdV2(@Body() dataJsonDto: OrdersFindLatestIdDto) {
+    return this.orderReportsService.taskOrdersFindLatestIdV2(dataJsonDto);
   }
 }

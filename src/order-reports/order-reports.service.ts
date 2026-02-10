@@ -10,17 +10,29 @@ import { OrdersFindCustomerIdDto } from './dto/orders-find-customer-id.dto';
 import { OrdersFindIdDto } from './dto/orders-find-id.dto';
 import { OrdersFindSellerAllDto } from './dto/orders-find-seller-all.dto';
 import { OrdersFindSellerIdDto } from './dto/orders-find-seller-id.dto';
-import { OrdersFindLatestDto } from './dto/orders-find-latest.dto';
 
-import { SpResultTaxonomyFindIdData } from './types/order-reports.type';
+import {
+  SpResultOrderFindAllData,
+  SpResultOrderFindCustomerAllData,
+  SpResultOrderFindCustomerIdData,
+  SpResultOrderFindIdData,
+  SpResultOrderFindLatestAllData,
+  SpResultOrderFindSellerAllData,
+  SpResultOrderFindSellerIdData,
+} from './types/order-reports.type';
 
 import { OrdersFindAllQuery } from './query/orders-find-all.query';
 import { OrdersFindIdQuery } from './query/orders-find-id.query';
 import { OrdersFindSellerAllQuery } from './query/orders-find-seller-all.query';
 import { OrdersFindSellerIdQuery } from './query/orders-find-seller-id.query';
-import { OrdersFindLatestQuery } from './query/orders-find-latest.query';
+
 import { OrdersFindCustomerIdQuery } from './query/orders-find-customer-id.query';
 import { OrdersFindCustomerAllQuery } from './query/orders-find-customer-all.query';
+import { processProcedureResultMultiQuery } from 'src/core/procedure.result/process-procedure-result.query';
+import { OrdersFindLatestIdDto } from './dto/orders-find-latest-id.dto';
+import { OrdersFindLatestAllDto } from './dto/orders-find-latest-all.dto';
+import { OrdersFindLatestAllQuery } from './query/orders-find-latest-all.query';
+import { OrdersFindLatestIdQuery } from './query/orders-find-latest-id.query';
 
 @Injectable()
 export class OrderReportsService {
@@ -32,15 +44,40 @@ export class OrderReportsService {
 
       const resultData = (await this.dbService.selectExecute(
         queryString,
-      )) as unknown as SpResultTaxonomyFindIdData;
+      )) as unknown as SpResultOrderFindAllData;
 
-      return resultData;
-
-      /* 
-      return processProcedureResultMutation(
+      return processProcedureResultMultiQuery(
         resultData as unknown[],
-        'Order Oper add item failed',
-      ); */
+        ['Orders Sold'],
+        'Order Items not found',
+      );
+    } catch (err) {
+      const errorMessage =
+        err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
+      return new ResultModel(100404, errorMessage, 0, []);
+    }
+  }
+
+  async taskOrdersFindIdV2(dataJsonDto: OrdersFindIdDto) {
+    try {
+      const queryString = OrdersFindIdQuery(dataJsonDto);
+
+      const resultData = (await this.dbService.selectExecute(
+        queryString,
+      )) as unknown as SpResultOrderFindIdData;
+
+      return processProcedureResultMultiQuery(
+        resultData as unknown[],
+        [
+          'Order Summary',
+          'Order Items',
+          'Customer Information',
+          'Seller Information',
+          'Trading Information',
+          'Shipping Information',
+        ],
+        'Order Items not found',
+      );
     } catch (err) {
       const errorMessage =
         err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
@@ -54,15 +91,13 @@ export class OrderReportsService {
 
       const resultData = (await this.dbService.selectExecute(
         queryString,
-      )) as unknown as SpResultTaxonomyFindIdData;
+      )) as unknown as SpResultOrderFindCustomerAllData;
 
-      return resultData;
-
-      /* 
-      return processProcedureResultMutation(
+      return processProcedureResultMultiQuery(
         resultData as unknown[],
-        'Order Oper add item failed',
-      ); */
+        ['customer orders'],
+        'Order Items not found',
+      );
     } catch (err) {
       const errorMessage =
         err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
@@ -76,59 +111,19 @@ export class OrderReportsService {
 
       const resultData = (await this.dbService.selectExecute(
         queryString,
-      )) as unknown as SpResultTaxonomyFindIdData;
+      )) as unknown as SpResultOrderFindCustomerIdData;
 
-      return resultData;
-
-      /* 
-      return processProcedureResultMutation(
+      return processProcedureResultMultiQuery(
         resultData as unknown[],
-        'Order Oper add item failed',
-      ); */
-    } catch (err) {
-      const errorMessage =
-        err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
-      return new ResultModel(100404, errorMessage, 0, []);
-    }
-  }
-
-  async taskOrdersFindIdQueryV2(dataJsonDto: OrdersFindIdDto) {
-    try {
-      const queryString = OrdersFindIdQuery(dataJsonDto);
-
-      const resultData = (await this.dbService.selectExecute(
-        queryString,
-      )) as unknown as SpResultTaxonomyFindIdData;
-
-      return resultData;
-
-      /* 
-      return processProcedureResultMutation(
-        resultData as unknown[],
-        'Order Oper add item failed',
-      ); */
-    } catch (err) {
-      const errorMessage =
-        err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
-      return new ResultModel(100404, errorMessage, 0, []);
-    }
-  }
-
-  async taskOrdersFindLatestV2(dataJsonDto: OrdersFindLatestDto) {
-    try {
-      const queryString = OrdersFindLatestQuery(dataJsonDto);
-
-      const resultData = (await this.dbService.selectExecute(
-        queryString,
-      )) as unknown as SpResultTaxonomyFindIdData;
-
-      return resultData;
-
-      /* 
-      return processProcedureResultMutation(
-        resultData as unknown[],
-        'Order Oper add item failed',
-      ); */
+        [
+          'Customer Orders Summary',
+          'Customer Order Items',
+          'Status History',
+          'Customer Information',
+          'Seller Information',
+        ],
+        'Order Items not found',
+      );
     } catch (err) {
       const errorMessage =
         err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
@@ -142,15 +137,13 @@ export class OrderReportsService {
 
       const resultData = (await this.dbService.selectExecute(
         queryString,
-      )) as unknown as SpResultTaxonomyFindIdData;
+      )) as unknown as SpResultOrderFindSellerAllData;
 
-      return resultData;
-
-      /* 
-      return processProcedureResultMutation(
+      return processProcedureResultMultiQuery(
         resultData as unknown[],
-        'Order Oper add item failed',
-      ); */
+        ['seller orders'],
+        'Order Items not found',
+      );
     } catch (err) {
       const errorMessage =
         err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
@@ -164,15 +157,65 @@ export class OrderReportsService {
 
       const resultData = (await this.dbService.selectExecute(
         queryString,
-      )) as unknown as SpResultTaxonomyFindIdData;
+      )) as unknown as SpResultOrderFindSellerIdData;
 
-      return resultData;
-
-      /* 
-      return processProcedureResultMutation(
+      return processProcedureResultMultiQuery(
         resultData as unknown[],
-        'Order Oper add item failed',
-      ); */
+        [
+          'Seller Orders Summary',
+          'Seller Order Items',
+          'Status History',
+          'Customer Information',
+        ],
+        'Order Items not found',
+      );
+    } catch (err) {
+      const errorMessage =
+        err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
+      return new ResultModel(100404, errorMessage, 0, []);
+    }
+  }
+
+  async taskOrdersFindLatestAllV2(dataJsonDto: OrdersFindLatestAllDto) {
+    try {
+      const queryString = OrdersFindLatestAllQuery(dataJsonDto);
+
+      const resultData = (await this.dbService.selectExecute(
+        queryString,
+      )) as unknown as SpResultOrderFindLatestAllData;
+
+      return processProcedureResultMultiQuery(
+        resultData as unknown[],
+        ['Last orders'],
+        'Order Items not found',
+      );
+    } catch (err) {
+      const errorMessage =
+        err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
+      return new ResultModel(100404, errorMessage, 0, []);
+    }
+  }
+
+  async taskOrdersFindLatestIdV2(dataJsonDto: OrdersFindLatestIdDto) {
+    try {
+      const queryString = OrdersFindLatestIdQuery(dataJsonDto);
+
+      const resultData = (await this.dbService.selectExecute(
+        queryString,
+      )) as unknown as SpResultOrderFindIdData;
+
+      return processProcedureResultMultiQuery(
+        resultData as unknown[],
+        [
+          'Order Summary',
+          'Order Items',
+          'Customer Information',
+          'Seller Information',
+          'Trading Information',
+          'Shipping Information',
+        ],
+        'Order Items not found',
+      );
     } catch (err) {
       const errorMessage =
         err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
