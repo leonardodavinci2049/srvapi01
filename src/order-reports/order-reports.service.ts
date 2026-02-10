@@ -9,7 +9,10 @@ import { OrdersFindCustomerIdDto } from './dto/orders-find-customer-id.dto';
 
 import { OrdersFindSellerAllDto } from './dto/orders-find-seller-all.dto';
 import { OrdersFindSellerIdDto } from './dto/orders-find-seller-id.dto';
-
+import { OrdersFindSaleAllDto } from './dto/orders-find-sale-all.dto';
+import { OrdersFindSaleIdDto } from './dto/orders-find-sale-id.dto';
+import { OrdersFindLatestAllDto } from './dto/orders-find-latest-all.dto';
+import { OrdersFindLatestIdDto } from './dto/orders-find-latest-id.dto';
 import {
   SpResultOrderFindCustomerAllData,
   SpResultOrderFindCustomerIdData,
@@ -27,13 +30,11 @@ import { OrdersFindSellerIdQuery } from './query/orders-find-seller-id.query';
 import { OrdersFindCustomerIdQuery } from './query/orders-find-customer-id.query';
 import { OrdersFindCustomerAllQuery } from './query/orders-find-customer-all.query';
 import { processProcedureResultMultiQuery } from 'src/core/procedure.result/process-procedure-result.query';
-import { OrdersFindLatestIdDto } from './dto/orders-find-latest-id.dto';
-import { OrdersFindLatestAllDto } from './dto/orders-find-latest-all.dto';
+
 import { OrdersFindLatestAllQuery } from './query/orders-find-latest-all.query';
 import { OrdersFindLatestIdQuery } from './query/orders-find-latest-id.query';
 import { OrdersFindSaleAllQuery } from './query/orders-find-sale-all.query';
-import { OrdersFindSaleAllDto } from './dto/orders-find-sale-all.dto';
-import { OrdersFindSaleIdDto } from './dto/orders-find-sale-id.dto';
+
 import { OrdersFindSaleIdQuery } from './query/orders-find-sale-id.query';
 
 @Injectable()
