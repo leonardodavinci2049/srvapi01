@@ -1,8 +1,6 @@
-import { OrderUpdDiscountDto } from '../dto/order-upd-discount.dto';
+import { OrderUpdNotesIdDto } from '../dto/order-upd-notes-id.dto';
 
-export function OrderUpdDiscountQuery(
-  dataJsonDto: OrderUpdDiscountDto,
-): string {
+export function OrderUpdNotesIdQuery(dataJsonDto: OrderUpdNotesIdDto): string {
   const olAppId = dataJsonDto.pe_app_id ?? 1;
   const olSystemClientId = dataJsonDto.pe_system_client_id;
   const olStoreId = dataJsonDto.pe_store_id;
@@ -11,9 +9,9 @@ export function OrderUpdDiscountQuery(
   const olMemberRole = dataJsonDto.pe_member_role;
   const olPersonId = dataJsonDto.pe_person_id;
   const olOrderId = dataJsonDto.pe_order_id;
-  const olDiscountValue = dataJsonDto.pe_discount_value;
+  const olNotes = dataJsonDto.pe_notes ?? '';
 
-  const queryString = ` call sp_order_upd_discount_v2(
+  const queryString = ` call sp_order_upd_notes_id_v2(
         ${olAppId},
         ${olSystemClientId},
         ${olStoreId},
@@ -22,7 +20,7 @@ export function OrderUpdDiscountQuery(
         '${olMemberRole}',
         ${olPersonId},
         ${olOrderId},
-        ${olDiscountValue}
+        '${olNotes}'
 
       ) `;
 

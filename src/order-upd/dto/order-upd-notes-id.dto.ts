@@ -8,7 +8,7 @@ import {
 } from 'class-validator';
 import { Type } from 'class-transformer';
 
-export class OrderUpdNotesDto {
+export class OrderUpdNotesIdDto {
   @ApiProperty({ description: 'App ID' })
   @IsNumber()
   @IsNotEmpty()
@@ -31,6 +31,7 @@ export class OrderUpdNotesDto {
 
   @ApiProperty({ description: 'User ID', maxLength: 200 })
   @IsString()
+  @IsNotEmpty()
   pe_user_id: string;
 
   @ApiProperty({ description: 'Member Role', maxLength: 200 })

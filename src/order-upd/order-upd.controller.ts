@@ -3,9 +3,9 @@ import { OrderUpdService } from './order-upd.service';
 import { AuthGuard } from 'src/core/guards/auth.guard';
 
 import { OrderUpdCustomerIdDto } from './dto/order-upd-customer-id.dto';
-import { OrderUpdDiscountDto } from './dto/order-upd-discount.dto';
-import { OrderUpdFreteDto } from './dto/order-upd-frete.dto';
-import { OrderUpdNotesDto } from './dto/order-upd-notes.dto';
+import { OrderUpdDiscountDto } from './dto/order-upd-discount-id.dto';
+import { OrderUpdFreteDto } from './dto/order-upd-frete-id.dto';
+import { OrderUpdNotesDto } from './dto/order-upd-notes-id.dto';
 import { OrderUpdPgMethodIdDto } from './dto/order-upd-pg-method-id.dto';
 import { OrderUpdSellerIdDto } from './dto/order-upd-seller-id.dto';
 import { OrderUpdStatusIdDto } from './dto/order-upd-status-id.dto';

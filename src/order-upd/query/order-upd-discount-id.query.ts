@@ -1,6 +1,8 @@
-import { OrderUpdFreteDto } from '../dto/order-upd-frete.dto';
+import { OrderUpdDiscountIdDto } from '../dto/order-upd-discount-id.dto';
 
-export function OrderUpdFreteQuery(dataJsonDto: OrderUpdFreteDto): string {
+export function OrderUpdDiscountIdQuery(
+  dataJsonDto: OrderUpdDiscountIdDto,
+): string {
   const olAppId = dataJsonDto.pe_app_id ?? 1;
   const olSystemClientId = dataJsonDto.pe_system_client_id;
   const olStoreId = dataJsonDto.pe_store_id;
@@ -9,9 +11,9 @@ export function OrderUpdFreteQuery(dataJsonDto: OrderUpdFreteDto): string {
   const olMemberRole = dataJsonDto.pe_member_role;
   const olPersonId = dataJsonDto.pe_person_id;
   const olOrderId = dataJsonDto.pe_order_id;
-  const olFreteValue = dataJsonDto.pe_frete_value;
+  const olDiscountValue = dataJsonDto.pe_discount_value;
 
-  const queryString = ` call sp_order_upd_frete_v2(
+  const queryString = ` call sp_order_upd_discount_id_v2(
         ${olAppId},
         ${olSystemClientId},
         ${olStoreId},
@@ -20,7 +22,7 @@ export function OrderUpdFreteQuery(dataJsonDto: OrderUpdFreteDto): string {
         '${olMemberRole}',
         ${olPersonId},
         ${olOrderId},
-        ${olFreteValue}
+        ${olDiscountValue}
 
       ) `;
 
