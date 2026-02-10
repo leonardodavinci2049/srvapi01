@@ -9,7 +9,7 @@ import { OrderFindCoHistoryIdDto } from './dto/order-find-co-history-id.dto';
 import { OrderFindCoNfIdDto } from './dto/order-find-co-nf-id.dto';
 import { OrderFindCoPgFormaIdDto } from './dto/order-find-co-pg-forma-id.dto';
 import { OrderFindCoProtocolIdDto } from './dto/order-find-co-protocol-id.dto';
-import { OrderFindCoSellerFindIdDto } from './dto/order-find-co-seller-find-id.dto';
+
 import { OrderFindCoSellerIdDto } from './dto/order-find-co-seller-id.dto';
 import { OrderFindCoSummaryIdDto } from './dto/order-find-co-summary-id.dto';
 import { OrdersFindDashboardIdDto } from './dto/orders-find-dashboard-id.dto';
@@ -37,6 +37,13 @@ export class OrderSalesController {
   OrderFindDashboardIdV2(@Body() dataJsonDto: OrdersFindDashboardIdDto) {
     return this.orderSalesService.taskOrdersFindDashboardIdV2(dataJsonDto);
   }
+
+  @UseGuards(AuthGuard)
+  @Post('v2/order-find-co-summary-id')
+  OrderFindCoSummaryIdV2(@Body() dataJsonDto: OrderFindCoSummaryIdDto) {
+    return this.orderSalesService.taskOrderFindCoSummaryIdV2(dataJsonDto);
+  }
+
   @UseGuards(AuthGuard)
   @Post('v2/order-find-co-carrier-id')
   OrderFindCoCarrierIdV2(@Body() dataJsonDto: OrderFindCoCarrierIdDto) {
@@ -82,23 +89,10 @@ export class OrderSalesController {
   OrderFindCoProtocolIdV2(@Body() dataJsonDto: OrderFindCoProtocolIdDto) {
     return this.orderSalesService.taskOrderFindCoProtocolIdV2(dataJsonDto);
   }
-  @UseGuards(AuthGuard)
-  @Post('v2/order-find-co-seller-find-id')
-  OrderFindCoSellerOrderFindIdV2(
-    @Body() dataJsonDto: OrderFindCoSellerFindIdDto,
-  ) {
-    return this.orderSalesService.taskOrderFindCoSellerFindIdV2(dataJsonDto);
-  }
 
   @UseGuards(AuthGuard)
   @Post('v2/order-find-co-seller-id')
   OrderFindCoSellerIdV2(@Body() dataJsonDto: OrderFindCoSellerIdDto) {
     return this.orderSalesService.taskOrderFindCoSellerIdV2(dataJsonDto);
-  }
-
-  @UseGuards(AuthGuard)
-  @Post('v2/order-find-co-summary-id')
-  OrderFindCoSummaryIdV2(@Body() dataJsonDto: OrderFindCoSummaryIdDto) {
-    return this.orderSalesService.taskOrderFindCoSummaryIdV2(dataJsonDto);
   }
 }

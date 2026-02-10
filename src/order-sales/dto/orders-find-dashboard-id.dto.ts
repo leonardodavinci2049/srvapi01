@@ -64,7 +64,8 @@ Sample JSON for testing in body endpoint:
   "pe_user_id": "user123",
   "pe_member_role": "admin",
   "pe_person_id": 123,
-  "pe_order_id": 29014,
+  "pe_order_id": 480670,
+  "pe_id_seller": 29014,
   "pe_type_business": 1
 }
 */
