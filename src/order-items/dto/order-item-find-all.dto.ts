@@ -52,7 +52,7 @@ export class OrderItemFindAllDto {
   @IsOptional()
   @Type(() => Number)
   @Min(1)
-  limit?: number;
+  pe_limit?: number;
 }
 
 /*

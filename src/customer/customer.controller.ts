@@ -1,40 +1,28 @@
-import {
-  Controller,
-  Get,
-  Post,
-  Body,
-  Patch,
-  Param,
-  Delete,
-} from '@nestjs/common';
+import { Controller, Get, Post, Body, UseGuards } from '@nestjs/common';
 import { CustomerService } from './customer.service';
+import { AuthGuard } from 'src/core/guards/auth.guard';
 
 @Controller('customer')
 export class CustomerController {
   constructor(private readonly customerService: CustomerService) {}
-
-  @Post()
-  create() {
-    return this.customerService.create();
-  }
-
   @Get()
-  findAll() {
-    return this.customerService.findAll();
+  getHello() {
+    return {
+      name: 'Wholesale API',
+      status: 'online',
+      version: '1.0.1',
+      documentation: '/',
+      timestamp: new Date().toISOString(),
+      endpoints: {
+        base: '/api',
+        auth: '/api/order-upd',
+      },
+    };
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.customerService.findOne(+id);
-  }
-
-  @Patch(':id')
-  update(@Param('id') id: string) {
-    return this.customerService.update(+id);
-  }
-
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.customerService.remove(+id);
+  @UseGuards(AuthGuard)
+  @Post('v2/order-upd-customer-id')
+  OrderUpdCustomerIdV2() {
+    return this.customerService.create();
   }
 }

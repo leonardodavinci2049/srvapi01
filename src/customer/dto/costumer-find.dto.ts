@@ -1,14 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { Type } from 'class-transformer';
-import {
-  IsEmail,
-  IsInt,
-  IsNotEmpty,
-  IsNumber,
-  IsOptional,
-  IsString,
-  MaxLength,
-} from 'class-validator';
+import { IsNotEmpty, IsNumber, IsString } from 'class-validator';
 
 export class CostumerFindDto {
   @ApiProperty({ description: 'App ID' })
@@ -31,87 +22,66 @@ export class CostumerFindDto {
   @IsNotEmpty()
   pe_organization_id: string;
 
-  @ApiProperty({ description: 'Member ID', maxLength: 200 })
-  @IsString()
-  @IsNotEmpty()
-  pe_member_id: string;
-
   @ApiProperty({ description: 'User ID', maxLength: 200 })
   @IsString()
   pe_user_id: string;
 
+  @ApiProperty({ description: 'Member Role', maxLength: 200 })
+  @IsString()
+  pe_member_role: string;
+
   @ApiProperty({ description: 'Person ID' })
   @IsNumber()
+  @IsNotEmpty()
   pe_person_id: number;
 
-  @ApiProperty({ description: 'Customer ID', required: false })
-  @IsInt()
-  @IsOptional()
-  @Type(() => Number)
-  pe_customer_id?: number;
+  @ApiProperty({ description: 'Customer ID' })
+  @IsNumber()
+  @IsNotEmpty()
+  pe_customer_id: number;
 
-  @ApiProperty({
-    description: 'Nome completo',
-    maxLength: 200,
-    required: false,
-  })
+  @ApiProperty({ description: 'NOME', maxLength: 200 })
   @IsString()
-  @IsOptional()
-  @MaxLength(200)
-  pe_nome?: string;
+  @IsNotEmpty()
+  pe_nome: string;
 
-  @ApiProperty({ description: 'CPF', maxLength: 200, required: false })
+  @ApiProperty({ description: 'CPF', maxLength: 200 })
   @IsString()
-  @IsOptional()
-  @MaxLength(200)
-  pe_cpf?: string;
+  @IsNotEmpty()
+  pe_cpf: string;
 
-  @ApiProperty({ description: 'CNPJ', maxLength: 200, required: false })
+  @ApiProperty({ description: 'CNPJ', maxLength: 200 })
   @IsString()
-  @IsOptional()
-  @MaxLength(200)
-  pe_cnpj?: string;
+  @IsNotEmpty()
+  pe_cnpj: string;
 
-  @ApiProperty({ description: 'Telefone 1', maxLength: 200, required: false })
+  @ApiProperty({ description: 'FONE1', maxLength: 200 })
   @IsString()
-  @IsOptional()
-  @MaxLength(200)
-  pe_fone1?: string;
+  @IsNotEmpty()
+  pe_fone1: string;
 
-  @ApiProperty({
-    description: 'Email de login',
-    maxLength: 200,
-    required: false,
-  })
-  @IsEmail()
-  @IsOptional()
-  @MaxLength(200)
-  pe_email_de_login?: string;
+  @ApiProperty({ description: 'EMAIL_DE_LOGIN', maxLength: 200 })
+  @IsString()
+  @IsNotEmpty()
+  pe_email_de_login: string;
 
-  @ApiProperty({
-    description: 'Quantidade de registros por página',
-    required: false,
-  })
-  @IsInt()
-  @IsOptional()
-  @Type(() => Number)
-  pe_qt_registros?: number;
+  @ApiProperty({ description: 'QT_REGISTROS' })
+  @IsNumber()
+  @IsNotEmpty()
+  pe_qt_registros: number;
 
-  @ApiProperty({ description: 'Número da página', required: false })
-  @IsInt()
-  @IsOptional()
-  @Type(() => Number)
-  pe_pagina_id?: number;
+  @ApiProperty({ description: 'PAGINA_ID' })
+  @IsNumber()
+  @IsNotEmpty()
+  pe_pagina_id: number;
 
-  @ApiProperty({ description: 'ID da coluna para ordenação', required: false })
-  @IsInt()
-  @IsOptional()
-  @Type(() => Number)
-  pe_coluna_id?: number;
+  @ApiProperty({ description: 'COLUNA_ID' })
+  @IsNumber()
+  @IsNotEmpty()
+  pe_coluna_id: number;
 
-  @ApiProperty({ description: 'ID da ordem (ASC/DESC)', required: false })
-  @IsInt()
-  @IsOptional()
-  @Type(() => Number)
-  pe_ordem_id?: number;
+  @ApiProperty({ description: 'ORDEM_ID' })
+  @IsNumber()
+  @IsNotEmpty()
+  pe_ordem_id: number;
 }
