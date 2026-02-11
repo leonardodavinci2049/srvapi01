@@ -1,6 +1,6 @@
-import { CostumerFindDto } from '../dto/costumer-find.dto';
+import { CostumerFindAllDto } from '../dto/costumer-find-all.dto';
 
-export function CostumerFindQuery(dataJsonDto: CostumerFindDto): string {
+export function CostumerFindAllQuery(dataJsonDto: CostumerFindAllDto): string {
   const olAppId = dataJsonDto.pe_app_id ?? 1;
   const olSystemClientId = dataJsonDto.pe_system_client_id;
   const olStoreId = dataJsonDto.pe_store_id;
@@ -19,7 +19,7 @@ export function CostumerFindQuery(dataJsonDto: CostumerFindDto): string {
   const olColumnId = dataJsonDto.pe_column_id;
   const olOrderId = dataJsonDto.pe_order_id;
 
-  const queryString = ` call sp_costumer_find_v2(
+  const queryString = ` call sp_costumer_find_all_v2(
         ${olAppId},
         ${olSystemClientId},
         ${olStoreId},

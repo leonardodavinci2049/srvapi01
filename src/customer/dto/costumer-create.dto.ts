@@ -24,6 +24,7 @@ export class CostumerCreateDto {
 
   @ApiProperty({ description: 'User ID', maxLength: 200 })
   @IsString()
+  @IsNotEmpty()
   pe_user_id: string;
 
   @ApiProperty({ description: 'Member Role', maxLength: 200 })

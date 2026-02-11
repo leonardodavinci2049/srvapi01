@@ -1,7 +1,7 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IsNotEmpty, IsNumber, IsString } from 'class-validator';
 
-export class CostumerFindDto {
+export class CostumerFindAllDto {
   @ApiProperty({ description: 'App ID' })
   @IsNumber()
   @IsNotEmpty()
