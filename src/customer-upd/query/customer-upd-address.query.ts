@@ -1,7 +1,7 @@
-import { OrderItemFindAllDto } from '../dto/order-item-find-all.dto';
+import { CustomerUpdAddressDto } from '../dto/customer-upd-address.dto';
 
-export function OrderItemFindAllQuery(
-  dataJsonDto: OrderItemFindAllDto,
+export function CustomerUpdAddressQuery(
+  dataJsonDto: CustomerUpdAddressDto,
 ): string {
   const olAppId = dataJsonDto.pe_app_id ?? 1;
   const olSystemClientId = dataJsonDto.pe_system_client_id;
@@ -10,19 +10,15 @@ export function OrderItemFindAllQuery(
   const olUserId = dataJsonDto.pe_user_id;
   const olMemberRole = dataJsonDto.pe_member_role;
   const olPersonId = dataJsonDto.pe_person_id;
-  const olOrderId = dataJsonDto.pe_order_id ?? null;
-  const olLimit = dataJsonDto.pe_limit ?? 10;
 
-  const queryString = ` call sp_order_item_find_all_v2(
+  const queryString = ` call sp_customer_upd_address(
         ${olAppId},
         ${olSystemClientId},
         ${olStoreId},
         '${olOrganizationId}',
         '${olUserId}',
         '${olMemberRole}',
-        ${olPersonId},
-        ${olOrderId},
-        ${olLimit}
+        ${olPersonId}
 
       ) `;
 

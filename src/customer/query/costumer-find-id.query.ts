@@ -1,8 +1,6 @@
-import { OrderItemFindAllDto } from '../dto/order-item-find-all.dto';
+import { CostumerFindIdDto } from '../dto/costumer-find-id.dto';
 
-export function OrderItemFindAllQuery(
-  dataJsonDto: OrderItemFindAllDto,
-): string {
+export function CostumerFindIdQuery(dataJsonDto: CostumerFindIdDto): string {
   const olAppId = dataJsonDto.pe_app_id ?? 1;
   const olSystemClientId = dataJsonDto.pe_system_client_id;
   const olStoreId = dataJsonDto.pe_store_id;
@@ -10,10 +8,9 @@ export function OrderItemFindAllQuery(
   const olUserId = dataJsonDto.pe_user_id;
   const olMemberRole = dataJsonDto.pe_member_role;
   const olPersonId = dataJsonDto.pe_person_id;
-  const olOrderId = dataJsonDto.pe_order_id ?? null;
-  const olLimit = dataJsonDto.pe_limit ?? 10;
+  const olCustomerId = dataJsonDto.pe_customer_id;
 
-  const queryString = ` call sp_order_item_find_all_v2(
+  const queryString = ` call sp_costumer_find_id(
         ${olAppId},
         ${olSystemClientId},
         ${olStoreId},
@@ -21,8 +18,7 @@ export function OrderItemFindAllQuery(
         '${olUserId}',
         '${olMemberRole}',
         ${olPersonId},
-        ${olOrderId},
-        ${olLimit}
+        ${olCustomerId}
 
       ) `;
 
