@@ -10,15 +10,19 @@ export function CustomerUpdInlNotesQuery(
   const olUserId = dataJsonDto.pe_user_id;
   const olMemberRole = dataJsonDto.pe_member_role;
   const olPersonId = dataJsonDto.pe_person_id;
+  const olCustomerId = dataJsonDto.pe_customer_id;
+  const olNotes = dataJsonDto.pe_notes;
 
-  const queryString = ` call sp_customer_upd_inl_notes(
+  const queryString = ` call sp_customer_upd_inl_notes_v2(
         ${olAppId},
         ${olSystemClientId},
         ${olStoreId},
         '${olOrganizationId}',
         '${olUserId}',
         '${olMemberRole}',
-        ${olPersonId}
+        ${olPersonId},
+        ${olCustomerId},
+        '${olNotes}'
 
       ) `;
 

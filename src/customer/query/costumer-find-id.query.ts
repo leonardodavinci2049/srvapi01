@@ -10,7 +10,7 @@ export function CostumerFindIdQuery(dataJsonDto: CostumerFindIdDto): string {
   const olPersonId = dataJsonDto.pe_person_id;
   const olCustomerId = dataJsonDto.pe_customer_id;
 
-  const queryString = ` call sp_costumer_find_id(
+  const queryString = ` call sp_costumer_find_id_v2(
         ${olAppId},
         ${olSystemClientId},
         ${olStoreId},

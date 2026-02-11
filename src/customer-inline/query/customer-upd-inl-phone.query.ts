@@ -10,15 +10,19 @@ export function CustomerUpdInlPhoneQuery(
   const olUserId = dataJsonDto.pe_user_id;
   const olMemberRole = dataJsonDto.pe_member_role;
   const olPersonId = dataJsonDto.pe_person_id;
+  const olCustomerId = dataJsonDto.pe_customer_id;
+  const olPhone = dataJsonDto.pe_phone;
 
-  const queryString = ` call sp_customer_upd_inl_phone(
+  const queryString = ` call sp_customer_upd_inl_phone_v2(
         ${olAppId},
         ${olSystemClientId},
         ${olStoreId},
         '${olOrganizationId}',
         '${olUserId}',
         '${olMemberRole}',
-        ${olPersonId}
+        ${olPersonId},
+        ${olCustomerId},
+        '${olPhone}'
 
       ) `;
 

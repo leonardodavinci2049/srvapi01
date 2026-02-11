@@ -10,15 +10,19 @@ export function CustomerUpdInlTypePersonQuery(
   const olUserId = dataJsonDto.pe_user_id;
   const olMemberRole = dataJsonDto.pe_member_role;
   const olPersonId = dataJsonDto.pe_person_id;
+  const olCustomerId = dataJsonDto.pe_customer_id;
+  const olPersonTypeId = dataJsonDto.pe_person_type_id;
 
-  const queryString = ` call sp_customer_upd_inl_type_person(
+  const queryString = ` call sp_customer_upd_inl_type_person_v2(
         ${olAppId},
         ${olSystemClientId},
         ${olStoreId},
         '${olOrganizationId}',
         '${olUserId}',
         '${olMemberRole}',
-        ${olPersonId}
+        ${olPersonId},
+        ${olCustomerId},
+        ${olPersonTypeId}
 
       ) `;
 

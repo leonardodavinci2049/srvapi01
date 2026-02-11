@@ -9,24 +9,24 @@ export function CostumerCreateQuery(dataJsonDto: CostumerCreateDto): string {
   const olUserId = dataJsonDto.pe_user_id;
   const olMemberRole = dataJsonDto.pe_member_role;
   const olPersonId = dataJsonDto.pe_person_id;
-  const olNomeUsuario = dataJsonDto.pe_nome_usuario;
-  const olNome = dataJsonDto.pe_nome;
-  const olEmailDeLogin = dataJsonDto.pe_email_de_login;
-  const olIdPessoaTipo = dataJsonDto.pe_id_pessoa_tipo;
+  const olUserName = dataJsonDto.pe_user_name;
+  const olName = dataJsonDto.pe_name;
+  const olEmail = dataJsonDto.pe_email;
+  const olPersonTypeId = dataJsonDto.pe_person_type_id;
   const olCnpj = dataJsonDto.pe_cnpj;
-  const olRazaoSocial = dataJsonDto.pe_razao_social;
+  const olCompanyName = dataJsonDto.pe_company_name;
   const olCpf = dataJsonDto.pe_cpf;
-  const olFone1 = dataJsonDto.pe_fone1;
-  const olWhatsapp1 = dataJsonDto.pe_whatsapp1;
-  const olImagem01 = dataJsonDto.pe_imagem01;
-  const olCep = dataJsonDto.pe_cep;
-  const olEndereco = dataJsonDto.pe_endereco;
-  const olEnderecoNumero = dataJsonDto.pe_endereco_numero;
-  const olComplemento = dataJsonDto.pe_complemento;
-  const olBairro = dataJsonDto.pe_bairro;
-  const olCidade = dataJsonDto.pe_cidade;
-  const olUf = dataJsonDto.pe_uf;
-  const olAnotacoes = dataJsonDto.pe_anotacoes;
+  const olPhone = dataJsonDto.pe_phone;
+  const olWhatsapp = dataJsonDto.pe_whatsapp;
+  const olImage = dataJsonDto.pe_image;
+  const olZipCode = dataJsonDto.pe_zip_code;
+  const olAddress = dataJsonDto.pe_address;
+  const olAddressNumber = dataJsonDto.pe_address_number;
+  const olComplement = dataJsonDto.pe_complement;
+  const olNeighborhood = dataJsonDto.pe_neighborhood;
+  const olCity = dataJsonDto.pe_city;
+  const olState = dataJsonDto.pe_state;
+  const olNotes = dataJsonDto.pe_notes;
 
   const queryString = ` call sp_costumer_create_v2(
         '${OlUuid}',
@@ -37,24 +37,24 @@ export function CostumerCreateQuery(dataJsonDto: CostumerCreateDto): string {
         '${olUserId}',
         '${olMemberRole}',
         ${olPersonId},
-        '${olNomeUsuario}',
-        '${olNome}',
-        '${olEmailDeLogin}',
-        ${olIdPessoaTipo},
+        '${olUserName}',
+        '${olName}',
+        '${olEmail}',
+        ${olPersonTypeId},
         '${olCnpj}',
-        '${olRazaoSocial}',
+        '${olCompanyName}',
         '${olCpf}',
-        '${olFone1}',
-        '${olWhatsapp1}',
-        '${olImagem01}',
-        '${olCep}',
-        '${olEndereco}',
-        '${olEnderecoNumero}',
-        '${olComplemento}',
-        '${olBairro}',
-        '${olCidade}',
-        '${olUf}',
-        '${olAnotacoes}'
+        '${olPhone}',
+        '${olWhatsapp}',
+        '${olImage}',
+        '${olZipCode}',
+        '${olAddress}',
+        '${olAddressNumber}',
+        '${olComplement}',
+        '${olNeighborhood}',
+        '${olCity}',
+        '${olState}',
+        '${olNotes}'
       ) `;
 
   return queryString;

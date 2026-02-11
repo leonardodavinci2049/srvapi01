@@ -1,7 +1,7 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IsNotEmpty, IsNumber, IsString } from 'class-validator';
 
-export class CostumerFindDto {
+export class CostumerFindAllDto {
   @ApiProperty({ description: 'App ID' })
   @IsNumber()
   @IsNotEmpty()
@@ -43,7 +43,7 @@ export class CostumerFindDto {
   @ApiProperty({ description: 'NOME', maxLength: 200 })
   @IsString()
   @IsNotEmpty()
-  pe_nome: string;
+  pe_name: string;
 
   @ApiProperty({ description: 'CPF', maxLength: 200 })
   @IsString()
@@ -55,33 +55,33 @@ export class CostumerFindDto {
   @IsNotEmpty()
   pe_cnpj: string;
 
-  @ApiProperty({ description: 'FONE1', maxLength: 200 })
+  @ApiProperty({ description: 'PHONE', maxLength: 200 })
   @IsString()
   @IsNotEmpty()
-  pe_fone1: string;
+  pe_phone: string;
 
-  @ApiProperty({ description: 'EMAIL_DE_LOGIN', maxLength: 200 })
+  @ApiProperty({ description: 'EMAIL', maxLength: 200 })
   @IsString()
   @IsNotEmpty()
-  pe_email_de_login: string;
+  pe_email: string;
 
   @ApiProperty({ description: 'QT_REGISTROS' })
   @IsNumber()
   @IsNotEmpty()
   pe_qt_registros: number;
 
-  @ApiProperty({ description: 'PAGINA_ID' })
+  @ApiProperty({ description: 'PAGE_ID' })
   @IsNumber()
   @IsNotEmpty()
-  pe_pagina_id: number;
+  pe_page_id: number;
 
-  @ApiProperty({ description: 'COLUNA_ID' })
+  @ApiProperty({ description: 'COLUMN_ID' })
   @IsNumber()
   @IsNotEmpty()
-  pe_coluna_id: number;
+  pe_column_id: number;
 
-  @ApiProperty({ description: 'ORDEM_ID' })
+  @ApiProperty({ description: 'ORDER_ID' })
   @IsNumber()
   @IsNotEmpty()
-  pe_ordem_id: number;
+  pe_order_id: number;
 }

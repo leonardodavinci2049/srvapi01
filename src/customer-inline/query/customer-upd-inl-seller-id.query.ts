@@ -10,15 +10,19 @@ export function CustomerUpdInlSellerIdQuery(
   const olUserId = dataJsonDto.pe_user_id;
   const olMemberRole = dataJsonDto.pe_member_role;
   const olPersonId = dataJsonDto.pe_person_id;
+  const olCustomerId = dataJsonDto.pe_customer_id;
+  const olSellerId = dataJsonDto.pe_seller_id;
 
-  const queryString = ` call sp_customer_upd_inl_seller_id(
+  const queryString = ` call sp_customer_upd_inl_seller_id_v2(
         ${olAppId},
         ${olSystemClientId},
         ${olStoreId},
         '${olOrganizationId}',
         '${olUserId}',
         '${olMemberRole}',
-        ${olPersonId}
+        ${olPersonId},
+        ${olCustomerId},
+        ${olSellerId}
 
       ) `;
 

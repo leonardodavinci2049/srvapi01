@@ -10,16 +10,31 @@ export function CustomerUpdInternetQuery(
   const olUserId = dataJsonDto.pe_user_id;
   const olMemberRole = dataJsonDto.pe_member_role;
   const olPersonId = dataJsonDto.pe_person_id;
+  const olCustomerId = dataJsonDto.pe_customer_id;
+  const olWebsite = dataJsonDto.pe_website;
+  const olFacebook = dataJsonDto.pe_facebook;
+  const olTwitter = dataJsonDto.pe_twitter;
+  const olLinkedin = dataJsonDto.pe_linkedin;
+  const olInstagram = dataJsonDto.pe_instagram;
+  const olTiktok = dataJsonDto.pe_tiktok;
+  const olTelegram = dataJsonDto.pe_telegram;
 
-  const queryString = ` call sp_customer_internet_upd(
+  const queryString = ` call sp_customer_upd_internet_v2(
         ${olAppId},
         ${olSystemClientId},
         ${olStoreId},
         '${olOrganizationId}',
         '${olUserId}',
         '${olMemberRole}',
-        ${olPersonId}
-
+        ${olPersonId},
+        ${olCustomerId},
+        '${olWebsite}',
+        '${olFacebook}',
+        '${olTwitter}',
+        '${olLinkedin}',
+        '${olInstagram}',
+        '${olTiktok}',
+        '${olTelegram}'
       ) `;
 
   return queryString;

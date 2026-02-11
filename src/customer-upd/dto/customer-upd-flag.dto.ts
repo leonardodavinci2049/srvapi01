@@ -33,4 +33,33 @@ export class CustomerUpdFlagDto {
   @ApiProperty({ description: 'Person ID' })
   @IsNumber()
   pe_person_id: number;
+
+  @ApiProperty({ description: 'Customer ID' })
+  @IsNumber()
+  @IsNotEmpty()
+  pe_customer_id: number;
+
+  @ApiProperty({ description: 'Client' })
+  @IsNumber()
+  pe_client: number;
+
+  @ApiProperty({ description: 'Seller' })
+  @IsNumber()
+  pe_seller: number;
+
+  @ApiProperty({ description: 'Supplier' })
+  @IsNumber()
+  pe_supplier: number;
+
+  @ApiProperty({ description: 'Professional' })
+  @IsNumber()
+  pe_professional: number;
+
+  @ApiProperty({ description: 'Employee' })
+  @IsNumber()
+  pe_employee: number;
+
+  @ApiProperty({ description: 'Restriction' })
+  @IsNumber()
+  pe_restriction: number;
 }

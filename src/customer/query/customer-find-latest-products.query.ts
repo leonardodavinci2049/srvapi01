@@ -13,7 +13,7 @@ export function CustomerFindLatestProductsQuery(
   const olCustomerId = dataJsonDto.pe_customer_id;
   const olLimit = dataJsonDto.pe_limit;
 
-  const queryString = ` call sp_customer_find_latest_products(
+  const queryString = ` call sp_customer_find_latest_products_v2(
         ${olAppId},
         ${olSystemClientId},
         ${olStoreId},
