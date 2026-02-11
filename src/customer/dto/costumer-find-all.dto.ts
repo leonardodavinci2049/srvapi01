@@ -85,3 +85,27 @@ export class CostumerFindAllDto {
   @IsNotEmpty()
   pe_order_id: number;
 }
+
+/*
+Sample JSON for testing in body endpoint:
+{
+  "pe_app_id": 1,
+  "pe_system_client_id": 1,
+  "pe_store_id": 3,
+  "pe_organization_id": "ORG001",
+  "pe_member_role": "saller",
+  "pe_user_id": "USER001",
+  "pe_person_id": 29014,
+  "pe_customer_id": 0,
+  "pe_name": "",
+  "pe_cpf": "",
+  "pe_cnpj": "",
+  "pe_phone": "",
+  "pe_email": ""
+  "pe_qt_registros": 10,
+  "pe_page_id": 0,
+  "pe_column_id": 2,
+  "pe_order_id": 1
+
+}
+*/

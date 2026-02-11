@@ -74,3 +74,24 @@ export class CustomerUpdInternetDto {
   @IsNotEmpty()
   pe_telegram: string;
 }
+
+/*
+Sample JSON for testing in body endpoint:
+{
+  "pe_app_id": 1,
+  "pe_system_client_id": 1,
+  "pe_store_id": 3,
+  "pe_organization_id": "ORG001",
+  "pe_member_role": "saller",
+  "pe_user_id": "USER001",
+  "pe_person_id": 29014,
+  "pe_customer_id": 47723,
+  "pe_website": "https://www.example.com",
+  "pe_facebook": "https://www.facebook.com/example",
+  "pe_twitter": "https://www.twitter.com/example",
+  "pe_linkedin": "https://www.linkedin.com/in/example",
+  "pe_instagram": "https://www.instagram.com/example",
+  "pe_tiktok": "https://www.tiktok.com/@example",
+  "pe_telegram": "https://t.me/example"
+}
+*/

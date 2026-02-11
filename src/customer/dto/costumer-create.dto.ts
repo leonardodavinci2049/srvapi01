@@ -36,11 +36,6 @@ export class CostumerCreateDto {
   @IsNotEmpty()
   pe_person_id: number;
 
-  @ApiProperty({ description: 'User name', maxLength: 200 })
-  @IsString()
-  @IsNotEmpty()
-  pe_user_name: string;
-
   @ApiProperty({ description: 'Name', maxLength: 255 })
   @IsString()
   @IsNotEmpty()
@@ -112,3 +107,34 @@ export class CostumerCreateDto {
   @IsString()
   pe_notes: string;
 }
+
+/*
+Sample JSON for testing in body endpoint:
+{
+  "pe_app_id": 1,
+  "pe_system_client_id": 1,
+  "pe_store_id": 3,
+  "pe_organization_id": "ORG001",
+  "pe_member_role": "saller",
+  "pe_user_id": "USER001",
+  "pe_person_id": 29014,
+  "pe_name": "John Doe",
+  "pe_email": "
+  "pe_person_type_id": 1,
+  "pe_cnpj": "12345678000199",
+  "pe_company_name": "Doe Enterprises",
+  "pe_cpf": "12345678901",
+  "pe_phone": "11999999999",
+  "pe_whatsapp": "11999999999",
+  "pe_image": "http://example.com/image.jpg",
+  "pe_zip_code": "12345678",
+  "pe_address": "Rua Exemplo",
+  "pe_address_number": "123",
+  "pe_complement": "Apt 45",
+  "pe_neighborhood": "Bairro Exemplo",
+  "pe_city": "Cidade Exemplo",
+  "pe_state": "SP",
+  "pe_notes": "Cliente VIP"
+
+}
+*/
