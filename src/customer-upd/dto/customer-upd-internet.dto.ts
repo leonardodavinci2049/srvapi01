@@ -41,38 +41,32 @@ export class CustomerUpdInternetDto {
 
   @ApiProperty({ description: 'Website', maxLength: 500 })
   @IsString()
-  @IsNotEmpty()
   pe_website: string;
 
   @ApiProperty({ description: 'Facebook', maxLength: 500 })
   @IsString()
-  @IsNotEmpty()
   pe_facebook: string;
 
   @ApiProperty({ description: 'Twitter', maxLength: 500 })
   @IsString()
-  @IsNotEmpty()
   pe_twitter: string;
 
   @ApiProperty({ description: 'LinkedIn', maxLength: 500 })
   @IsString()
-  @IsNotEmpty()
   pe_linkedin: string;
 
   @ApiProperty({ description: 'Instagram', maxLength: 500 })
   @IsString()
-  @IsNotEmpty()
   pe_instagram: string;
 
   @ApiProperty({ description: 'TikTok', maxLength: 500 })
   @IsString()
-  @IsNotEmpty()
   pe_tiktok: string;
 
   @ApiProperty({ description: 'Telegram', maxLength: 500 })
   @IsString()
-  @IsNotEmpty()
   pe_telegram: string;
+
 }
 
 /*

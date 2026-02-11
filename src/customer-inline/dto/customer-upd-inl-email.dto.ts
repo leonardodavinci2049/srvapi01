@@ -41,7 +41,6 @@ export class CustomerUpdInlEmailDto {
 
   @ApiProperty({ description: 'Email', maxLength: 200 })
   @IsString()
-  @IsNotEmpty()
   pe_email: string;
 }
 

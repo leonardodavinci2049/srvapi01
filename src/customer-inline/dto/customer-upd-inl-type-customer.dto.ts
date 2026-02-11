@@ -56,6 +56,6 @@ Sample JSON for testing in body endpoint:
   "pe_user_id": "USER001",
   "pe_person_id": 29014,
   "pe_customer_id": 47723,
-  "pe_customer_type_id": 67890
+  "pe_customer_type_id": 1
 }
 */

@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsNotEmpty, IsNumber, IsString } from 'class-validator';
+import { IsNotEmpty, IsNumber, IsOptional, IsString } from 'class-validator';
 
 export class CostumerFindAllDto {
   @ApiProperty({ description: 'App ID' })
@@ -37,32 +37,32 @@ export class CostumerFindAllDto {
 
   @ApiProperty({ description: 'Customer ID' })
   @IsNumber()
-  @IsNotEmpty()
+  @IsOptional()
   pe_customer_id: number;
 
   @ApiProperty({ description: 'NOME', maxLength: 200 })
   @IsString()
-  @IsNotEmpty()
+  @IsOptional()
   pe_name: string;
 
   @ApiProperty({ description: 'CPF', maxLength: 200 })
   @IsString()
-  @IsNotEmpty()
+  @IsOptional()
   pe_cpf: string;
 
   @ApiProperty({ description: 'CNPJ', maxLength: 200 })
   @IsString()
-  @IsNotEmpty()
+  @IsOptional()
   pe_cnpj: string;
 
   @ApiProperty({ description: 'PHONE', maxLength: 200 })
   @IsString()
-  @IsNotEmpty()
+  @IsOptional()
   pe_phone: string;
 
   @ApiProperty({ description: 'EMAIL', maxLength: 200 })
   @IsString()
-  @IsNotEmpty()
+  @IsOptional()
   pe_email: string;
 
   @ApiProperty({ description: 'QT_REGISTROS' })

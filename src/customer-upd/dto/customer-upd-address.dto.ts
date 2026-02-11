@@ -42,17 +42,14 @@ export class CustomerUpdAddressDto {
 
   @ApiProperty({ description: 'Zip Code', maxLength: 100 })
   @IsString()
-  @IsNotEmpty()
   pe_zip_code: string;
 
   @ApiProperty({ description: 'Address', maxLength: 300 })
   @IsString()
-  @IsNotEmpty()
   pe_address: string;
 
   @ApiProperty({ description: 'Address Number', maxLength: 100 })
   @IsString()
-  @IsNotEmpty()
   pe_address_number: string;
 
   @ApiProperty({ description: 'Complement', maxLength: 100 })
@@ -61,17 +58,14 @@ export class CustomerUpdAddressDto {
 
   @ApiProperty({ description: 'Neighborhood', maxLength: 300 })
   @IsString()
-  @IsNotEmpty()
   pe_neighborhood: string;
 
   @ApiProperty({ description: 'City', maxLength: 300 })
   @IsString()
-  @IsNotEmpty()
   pe_city: string;
 
   @ApiProperty({ description: 'State', maxLength: 100 })
   @IsString()
-  @IsNotEmpty()
   pe_state: string;
 
   @ApiProperty({ description: 'City Code', maxLength: 100 })

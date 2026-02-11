@@ -46,17 +46,14 @@ export class CustomerUpdGeneralDto {
 
   @ApiProperty({ description: 'Phone 1', maxLength: 100 })
   @IsString()
-  @IsNotEmpty()
   pe_phone: string;
 
   @ApiProperty({ description: 'WhatsApp 1', maxLength: 100 })
   @IsString()
-  @IsNotEmpty()
   pe_whatsapp: string;
 
   @ApiProperty({ description: 'Login Email', maxLength: 100 })
   @IsString()
-  @IsNotEmpty()
   pe_email: string;
 
   @ApiProperty({ description: 'Image Path', maxLength: 500 })

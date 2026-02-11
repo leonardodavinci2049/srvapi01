@@ -40,7 +40,6 @@ export class CustomerUpdInlPhoneDto {
 
   @ApiProperty({ description: 'Phone', maxLength: 200 })
   @IsString()
-  @IsNotEmpty()
   pe_phone: string;
 }
 

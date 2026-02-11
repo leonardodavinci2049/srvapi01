@@ -77,9 +77,9 @@ Sample JSON for testing in body endpoint:
   "pe_customer_id": 47723,
   "pe_client": 1,
   "pe_seller": 0,
-  "pe_supplier": 0,
+  "pe_supplier": 1,
   "pe_professional": 0,
-  "pe_employee": 0,
+  "pe_employee": 1,
   "pe_restriction": 0
 }
 */
