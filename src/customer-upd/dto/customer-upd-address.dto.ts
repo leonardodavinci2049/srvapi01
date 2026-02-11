@@ -32,5 +32,53 @@ export class CustomerUpdAddressDto {
 
   @ApiProperty({ description: 'Person ID' })
   @IsNumber()
+  @IsNotEmpty()
   pe_person_id: number;
+
+  @ApiProperty({ description: 'Customer ID' })
+  @IsNumber()
+  @IsNotEmpty()
+  pe_customer_id: number;
+
+  @ApiProperty({ description: 'Zip Code', maxLength: 100 })
+  @IsString()
+  @IsNotEmpty()
+  pe_zip_code: string;
+
+  @ApiProperty({ description: 'Address', maxLength: 300 })
+  @IsString()
+  @IsNotEmpty()
+  pe_address: string;
+
+  @ApiProperty({ description: 'Address Number', maxLength: 100 })
+  @IsString()
+  @IsNotEmpty()
+  pe_address_number: string;
+
+  @ApiProperty({ description: 'Complement', maxLength: 100 })
+  @IsString()
+  pe_complement: string;
+
+  @ApiProperty({ description: 'Neighborhood', maxLength: 300 })
+  @IsString()
+  @IsNotEmpty()
+  pe_neighborhood: string;
+
+  @ApiProperty({ description: 'City', maxLength: 300 })
+  @IsString()
+  @IsNotEmpty()
+  pe_city: string;
+
+  @ApiProperty({ description: 'State', maxLength: 100 })
+  @IsString()
+  @IsNotEmpty()
+  pe_state: string;
+
+  @ApiProperty({ description: 'City Code', maxLength: 100 })
+  @IsString()
+  pe_city_code: string;
+
+  @ApiProperty({ description: 'State Code', maxLength: 100 })
+  @IsString()
+  pe_state_code: string;
 }

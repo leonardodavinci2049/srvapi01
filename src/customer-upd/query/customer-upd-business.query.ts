@@ -10,16 +10,29 @@ export function CustomerUpdBusinessQuery(
   const olUserId = dataJsonDto.pe_user_id;
   const olMemberRole = dataJsonDto.pe_member_role;
   const olPersonId = dataJsonDto.pe_person_id;
+  const olCustomerId = dataJsonDto.pe_customer_id;
+  const olCnpj = dataJsonDto.pe_cnpj;
+  const olCompanyName = dataJsonDto.pe_company_name;
+  const olStateRegistration = dataJsonDto.pe_state_registration;
+  const olMunicipalRegistration = dataJsonDto.pe_municipal_registration;
+  const olResponsibleName = dataJsonDto.pe_responsible_name;
+  const olMainActivity = dataJsonDto.pe_main_activity;
 
-  const queryString = ` call sp_customer_upd_business(
+  const queryString = ` call sp_customer_upd_business_v2(
         ${olAppId},
         ${olSystemClientId},
         ${olStoreId},
         '${olOrganizationId}',
         '${olUserId}',
         '${olMemberRole}',
-        ${olPersonId}
-
+        ${olPersonId},
+        ${olCustomerId},
+        '${olCnpj}',
+        '${olCompanyName}',
+        '${olStateRegistration}',
+        '${olMunicipalRegistration}',
+        '${olResponsibleName}',
+        '${olMainActivity}'
       ) `;
 
   return queryString;

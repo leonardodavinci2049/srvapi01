@@ -33,4 +33,35 @@ export class CustomerUpdBusinessDto {
   @ApiProperty({ description: 'Person ID' })
   @IsNumber()
   pe_person_id: number;
+
+  @ApiProperty({ description: 'Customer ID' })
+  @IsNumber()
+  @IsNotEmpty()
+  pe_customer_id: number;
+
+  @ApiProperty({ description: 'CNPJ', maxLength: 100 })
+  @IsString()
+  @IsNotEmpty()
+  pe_cnpj: string;
+
+  @ApiProperty({ description: 'Company Name', maxLength: 300 })
+  @IsString()
+  @IsNotEmpty()
+  pe_company_name: string;
+
+  @ApiProperty({ description: 'State Registration', maxLength: 100 })
+  @IsString()
+  pe_state_registration: string;
+
+  @ApiProperty({ description: 'Municipal Registration', maxLength: 100 })
+  @IsString()
+  pe_municipal_registration: string;
+
+  @ApiProperty({ description: 'Responsible Name', maxLength: 300 })
+  @IsString()
+  pe_responsible_name: string;
+
+  @ApiProperty({ description: 'Main Activity', maxLength: 300 })
+  @IsString()
+  pe_main_activity: string;
 }

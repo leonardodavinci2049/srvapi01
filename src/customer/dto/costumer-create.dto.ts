@@ -38,22 +38,22 @@ export class CostumerCreateDto {
   @ApiProperty({ description: 'User name', maxLength: 200 })
   @IsString()
   @IsNotEmpty()
-  pe_nome_usuario: string;
+  pe_user_name: string;
 
   @ApiProperty({ description: 'Name', maxLength: 255 })
   @IsString()
   @IsNotEmpty()
-  pe_nome: string;
+  pe_name: string;
 
   @ApiProperty({ description: 'Login email', maxLength: 255 })
   @IsString()
   @IsNotEmpty()
-  pe_email_de_login: string;
+  pe_email: string;
 
   @ApiProperty({ description: 'Person type ID' })
   @IsNumber()
   @IsNotEmpty()
-  pe_id_pessoa_tipo: number;
+  pe_person_type_id: number;
 
   @ApiProperty({ description: 'CNPJ', maxLength: 100 })
   @IsString()
@@ -61,7 +61,7 @@ export class CostumerCreateDto {
 
   @ApiProperty({ description: 'Company name', maxLength: 255 })
   @IsString()
-  pe_razao_social: string;
+  pe_company_name: string;
 
   @ApiProperty({ description: 'CPF', maxLength: 100 })
   @IsString()
@@ -69,45 +69,45 @@ export class CostumerCreateDto {
 
   @ApiProperty({ description: 'Phone 1', maxLength: 100 })
   @IsString()
-  pe_fone1: string;
+  pe_phone: string;
 
   @ApiProperty({ description: 'WhatsApp 1', maxLength: 100 })
   @IsString()
-  pe_whatsapp1: string;
+  pe_whatsapp: string;
 
   @ApiProperty({ description: 'Image 1', maxLength: 500 })
   @IsString()
-  pe_imagem01: string;
+  pe_image: string;
 
   @ApiProperty({ description: 'ZIP code', maxLength: 100 })
   @IsString()
-  pe_cep: string;
+  pe_zip_code: string;
 
   @ApiProperty({ description: 'Address', maxLength: 300 })
   @IsString()
-  pe_endereco: string;
+  pe_address: string;
 
   @ApiProperty({ description: 'Address number', maxLength: 100 })
   @IsString()
-  pe_endereco_numero: string;
+  pe_address_number: string;
 
   @ApiProperty({ description: 'Complement', maxLength: 100 })
   @IsString()
-  pe_complemento: string;
+  pe_complement: string;
 
   @ApiProperty({ description: 'Neighborhood', maxLength: 300 })
   @IsString()
-  pe_bairro: string;
+  pe_neighborhood: string;
 
   @ApiProperty({ description: 'City', maxLength: 300 })
   @IsString()
-  pe_cidade: string;
+  pe_city: string;
 
   @ApiProperty({ description: 'State', maxLength: 100 })
   @IsString()
-  pe_uf: string;
+  pe_state: string;
 
   @ApiProperty({ description: 'Notes' })
   @IsString()
-  pe_anotacoes: string;
+  pe_notes: string;
 }

@@ -33,4 +33,14 @@ export class CustomerUpdInlTypeCustomerDto {
   @ApiProperty({ description: 'Person ID' })
   @IsNumber()
   pe_person_id: number;
+
+  @ApiProperty({ description: 'Customer ID' })
+  @IsNumber()
+  @IsNotEmpty()
+  pe_customer_id: number;
+
+  @ApiProperty({ description: 'Customer Type ID' })
+  @IsNumber()
+  @IsNotEmpty()
+  pe_customer_type_id: number;
 }
