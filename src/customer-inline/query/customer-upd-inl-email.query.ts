@@ -10,15 +10,19 @@ export function CustomerUpdInlEmailQuery(
   const olUserId = dataJsonDto.pe_user_id;
   const olMemberRole = dataJsonDto.pe_member_role;
   const olPersonId = dataJsonDto.pe_person_id;
+  const olCustomerId = dataJsonDto.pe_customer_id;
+  const olEmail = dataJsonDto.pe_email;
 
-  const queryString = ` call sp_customer_upd_inl_email(
+  const queryString = ` call sp_customer_upd_inl_email_v2(
         ${olAppId},
         ${olSystemClientId},
         ${olStoreId},
         '${olOrganizationId}',
         '${olUserId}',
         '${olMemberRole}',
-        ${olPersonId}
+        ${olPersonId},
+        ${olCustomerId},
+        '${olEmail}'
 
       ) `;
 

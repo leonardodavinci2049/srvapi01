@@ -10,15 +10,19 @@ export function CustomerUpdInlWhatsappQuery(
   const olUserId = dataJsonDto.pe_user_id;
   const olMemberRole = dataJsonDto.pe_member_role;
   const olPersonId = dataJsonDto.pe_person_id;
+  const olCustomerId = dataJsonDto.pe_customer_id;
+  const olWhatsapp1 = dataJsonDto.pe_whatsapp1;
 
-  const queryString = ` call sp_customer_upd_inl_whatsapp(
+  const queryString = ` call sp_customer_upd_inl_whatsapp_v2(
         ${olAppId},
         ${olSystemClientId},
         ${olStoreId},
         '${olOrganizationId}',
         '${olUserId}',
         '${olMemberRole}',
-        ${olPersonId}
+        ${olPersonId},
+        ${olCustomerId},
+        '${olWhatsapp1}'
 
       ) `;
 

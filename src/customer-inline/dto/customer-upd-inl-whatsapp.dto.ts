@@ -33,4 +33,14 @@ export class CustomerUpdInlWhatsappDto {
   @ApiProperty({ description: 'Person ID' })
   @IsNumber()
   pe_person_id: number;
+
+  @ApiProperty({ description: 'Customer ID' })
+  @IsNumber()
+  @IsNotEmpty()
+  pe_customer_id: number;
+
+  @ApiProperty({ description: 'WhatsApp Number', maxLength: 200 })
+  @IsString()
+  @IsNotEmpty()
+  pe_whatsapp1: string;
 }

@@ -1,6 +1,6 @@
-import { CostumerFindDto } from '../dto/costumer-find.dto';
+import { CostumerFindAllDto } from '../dto/costumer-find-all.dto';
 
-export function CostumerFindQuery(dataJsonDto: CostumerFindDto): string {
+export function CostumerFindAllQuery(dataJsonDto: CostumerFindAllDto): string {
   const olAppId = dataJsonDto.pe_app_id ?? 1;
   const olSystemClientId = dataJsonDto.pe_system_client_id;
   const olStoreId = dataJsonDto.pe_store_id;
@@ -9,17 +9,17 @@ export function CostumerFindQuery(dataJsonDto: CostumerFindDto): string {
   const olMemberRole = dataJsonDto.pe_member_role;
   const olPersonId = dataJsonDto.pe_person_id;
   const olCustomerId = dataJsonDto.pe_customer_id;
-  const olNome = dataJsonDto.pe_nome;
+  const olName = dataJsonDto.pe_name;
   const olCpf = dataJsonDto.pe_cpf;
   const olCnpj = dataJsonDto.pe_cnpj;
-  const olFone1 = dataJsonDto.pe_fone1;
-  const olEmailDeLogin = dataJsonDto.pe_email_de_login;
+  const olPhone = dataJsonDto.pe_phone;
+  const olEmail = dataJsonDto.pe_email;
   const olQtRegistros = dataJsonDto.pe_qt_registros;
-  const olPaginaId = dataJsonDto.pe_pagina_id;
-  const olColunaId = dataJsonDto.pe_coluna_id;
-  const olOrdemId = dataJsonDto.pe_ordem_id;
+  const olPageId = dataJsonDto.pe_page_id;
+  const olColumnId = dataJsonDto.pe_column_id;
+  const olOrderId = dataJsonDto.pe_order_id;
 
-  const queryString = ` call sp_costumer_find(
+  const queryString = ` call sp_costumer_find_all_v2(
         ${olAppId},
         ${olSystemClientId},
         ${olStoreId},
@@ -28,15 +28,15 @@ export function CostumerFindQuery(dataJsonDto: CostumerFindDto): string {
         '${olMemberRole}',
         ${olPersonId},
         ${olCustomerId},
-        '${olNome}',
+        '${olName}',
         '${olCpf}',
         '${olCnpj}',
-        '${olFone1}',
-        '${olEmailDeLogin}',
+        '${olPhone}',
+        '${olEmail}',
         ${olQtRegistros},
-        ${olPaginaId},
-        ${olColunaId},
-        ${olOrdemId}
+        ${olPageId},
+        ${olColumnId},
+        ${olOrderId}
 
       ) `;
 

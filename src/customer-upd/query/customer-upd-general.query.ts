@@ -10,16 +10,27 @@ export function CustomerUpdGeneralQuery(
   const olUserId = dataJsonDto.pe_user_id;
   const olMemberRole = dataJsonDto.pe_member_role;
   const olPersonId = dataJsonDto.pe_person_id;
+  const olCustomerId = dataJsonDto.pe_customer_id;
+  const olName = dataJsonDto.pe_name;
+  const olPhone1 = dataJsonDto.pe_phone1;
+  const olWhatsapp1 = dataJsonDto.pe_whatsapp1;
+  const olLoginEmail = dataJsonDto.pe_login_email;
+  const olImagePath = dataJsonDto.pe_image_path;
 
-  const queryString = ` call sp_customer_upd_general(
+  const queryString = ` call sp_customer_upd_general_v2(
         ${olAppId},
         ${olSystemClientId},
         ${olStoreId},
         '${olOrganizationId}',
         '${olUserId}',
         '${olMemberRole}',
-        ${olPersonId}
-
+        ${olPersonId},
+        ${olCustomerId},
+        '${olName}',
+        '${olPhone1}',
+        '${olWhatsapp1}',
+        '${olLoginEmail}',
+        '${olImagePath}'
       ) `;
 
   return queryString;

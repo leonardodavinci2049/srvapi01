@@ -33,4 +33,32 @@ export class CustomerUpdPersonalDto {
   @ApiProperty({ description: 'Person ID' })
   @IsNumber()
   pe_person_id: number;
+
+  @ApiProperty({ description: 'Customer ID' })
+  @IsNumber()
+  @IsNotEmpty()
+  pe_customer_id: number;
+
+  @ApiProperty({ description: 'CPF', maxLength: 100 })
+  @IsString()
+  @IsNotEmpty()
+  pe_cpf: string;
+
+  @ApiProperty({ description: 'First Name', maxLength: 300 })
+  @IsString()
+  @IsNotEmpty()
+  pe_first_name: string;
+
+  @ApiProperty({ description: 'Last Name', maxLength: 100 })
+  @IsString()
+  @IsNotEmpty()
+  pe_last_name: string;
+
+  @ApiProperty({ description: 'Image Path', maxLength: 100 })
+  @IsString()
+  pe_image_path: string;
+
+  @ApiProperty({ description: 'Birth Date' })
+  @IsString()
+  pe_birth_date: string;
 }
