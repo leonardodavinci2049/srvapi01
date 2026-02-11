@@ -41,17 +41,14 @@ export class CustomerUpdPersonalDto {
 
   @ApiProperty({ description: 'CPF', maxLength: 100 })
   @IsString()
-  @IsNotEmpty()
   pe_cpf: string;
 
   @ApiProperty({ description: 'First Name', maxLength: 300 })
   @IsString()
-  @IsNotEmpty()
   pe_first_name: string;
 
   @ApiProperty({ description: 'Last Name', maxLength: 100 })
   @IsString()
-  @IsNotEmpty()
   pe_last_name: string;
 
   @ApiProperty({ description: 'Image Path', maxLength: 100 })
@@ -62,3 +59,22 @@ export class CustomerUpdPersonalDto {
   @IsString()
   pe_birth_date: string;
 }
+
+/*
+Sample JSON for testing in body endpoint:
+{
+  "pe_app_id": 1,
+  "pe_system_client_id": 1,
+  "pe_store_id": 3,
+  "pe_organization_id": "ORG001",
+  "pe_member_role": "saller",
+  "pe_user_id": "USER001",
+  "pe_person_id": 29014,
+  "pe_customer_id": 47723,
+  "pe_cpf": "123.456.789-00",
+  "pe_first_name": "John",
+  "pe_last_name": "Doe",
+  "pe_image_path": "/images/john_doe.jpg",
+  "pe_birth_date": "1990-01-01"
+  }
+*/

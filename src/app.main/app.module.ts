@@ -23,6 +23,8 @@ import { OrderOperationModule } from 'src/order-operation/order-operation.module
 import { OrderReportsModule } from 'src/order-reports/order-reports.module';
 import { OrderSalesModule } from 'src/order-sales/order-sales.module';
 import { OrderUpdModule } from 'src/order-upd/order-upd.module';
+import { CustomerInlineModule } from 'src/customer-inline/customer-inline.module';
+import { CustomerUpdModule } from 'src/customer-upd/customer-upd.module';
 
 @Module({
   imports: [
@@ -38,6 +40,8 @@ import { OrderUpdModule } from 'src/order-upd/order-upd.module';
     ProductModule, // Importando o módulo de produtos
     CartModule, // Importando o módulo de carrinho
     CustomerModule, // Importando o módulo de clientes
+    CustomerInlineModule, // Importando o módulo de atualização inline de clientes
+    CustomerUpdModule,
     TaxonomyModule,
     AccountModule,
     CheckModule,

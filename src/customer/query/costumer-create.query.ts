@@ -9,7 +9,6 @@ export function CostumerCreateQuery(dataJsonDto: CostumerCreateDto): string {
   const olUserId = dataJsonDto.pe_user_id;
   const olMemberRole = dataJsonDto.pe_member_role;
   const olPersonId = dataJsonDto.pe_person_id;
-  const olUserName = dataJsonDto.pe_user_name;
   const olName = dataJsonDto.pe_name;
   const olEmail = dataJsonDto.pe_email;
   const olPersonTypeId = dataJsonDto.pe_person_type_id;
@@ -37,7 +36,6 @@ export function CostumerCreateQuery(dataJsonDto: CostumerCreateDto): string {
         '${olUserId}',
         '${olMemberRole}',
         ${olPersonId},
-        '${olUserName}',
         '${olName}',
         '${olEmail}',
         ${olPersonTypeId},
