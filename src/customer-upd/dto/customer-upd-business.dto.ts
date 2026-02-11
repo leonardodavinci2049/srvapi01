@@ -65,3 +65,23 @@ export class CustomerUpdBusinessDto {
   @IsString()
   pe_main_activity: string;
 }
+
+/*
+Sample JSON for testing in body endpoint:
+{
+  "pe_app_id": 1,
+  "pe_system_client_id": 1,
+  "pe_store_id": 3,
+  "pe_organization_id": "ORG001",
+  "pe_member_role": "saller",
+  "pe_user_id": "USER001",
+  "pe_person_id": 29014,
+  "pe_customer_id": 47723,
+  "pe_cnpj": "12.345.678/0001-90",
+  "pe_company_name": "Example Company Ltda",
+  "pe_state_registration": "123456789",
+  "pe_municipal_registration": "987654321",
+  "pe_responsible_name": "John Doe",
+  "pe_main_activity": "Retail"  
+}
+*/

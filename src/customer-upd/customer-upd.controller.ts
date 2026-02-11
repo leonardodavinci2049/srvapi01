@@ -1,4 +1,4 @@
-import { Controller, Post, Body, UseGuards } from '@nestjs/common';
+import { Controller, Post, Body, UseGuards, Get } from '@nestjs/common';
 import { CustomerUpdService } from './customer-upd.service';
 
 import { CustomerUpdAddressDto } from './dto/customer-upd-address.dto';
@@ -12,6 +12,21 @@ import { CustomerUpdPersonalDto } from './dto/customer-upd-personal.dto';
 @Controller('customer-upd')
 export class CustomerUpdController {
   constructor(private readonly customerUpdService: CustomerUpdService) {}
+
+  @Get()
+  getHello() {
+    return {
+      name: 'Wholesale API',
+      status: 'online',
+      version: '1.0.1',
+      documentation: '/',
+      timestamp: new Date().toISOString(),
+      endpoints: {
+        base: '/api',
+        auth: '/api/customer-upd',
+      },
+    };
+  }
 
   @UseGuards(AuthGuard)
   @Post('v2/customer-upd-address')
