@@ -31,3 +31,8 @@ export type SpResultSupplierFindAllData = [
   SpDefaultFeedback[],
   SpOperationResult,
 ];
+export type SpResultSupplierFindIdData = [
+  TblSupplierFindALL[],
+  SpDefaultFeedback[],
+  SpOperationResult,
+];
