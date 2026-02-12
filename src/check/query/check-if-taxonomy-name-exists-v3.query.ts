@@ -1,0 +1,28 @@
+import { CheckIfExistsDto } from '../dto/check-if-exists-v3.dto';
+
+export function CheckIfTaxonomyNameExistsV3Query(
+  dataJsonDto: CheckIfExistsDto,
+): string {
+  const olAppId = dataJsonDto.pe_app_id ?? 1;
+  const olSystemClientId = dataJsonDto.pe_system_client_id;
+  const olStoreId = dataJsonDto.pe_store_id;
+  const olOrganizationId = dataJsonDto.pe_organization_id;
+  const olUserId = dataJsonDto.pe_user_id;
+  const olMemberRole = dataJsonDto.pe_member_role;
+  const olPersonId = dataJsonDto.pe_person_id;
+  const olTerm = dataJsonDto.pe_term;
+
+  const queryString = ` call sp_check_if_taxonomy_name_exists_v3(
+        ${olAppId},
+        ${olSystemClientId},
+        ${olStoreId},
+        '${olOrganizationId}',
+        '${olUserId}',
+        '${olMemberRole}',
+        ${olPersonId},
+        '${olTerm}'
+
+      ) `;
+
+  return queryString;
+}
