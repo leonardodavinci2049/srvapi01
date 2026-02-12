@@ -1,7 +1,7 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IsString, IsNotEmpty, IsNumber, MinLength } from 'class-validator';
 
-export class CheckIfExistsDto {
+export class CheckIfExistsV3Dto {
   @ApiProperty({ description: 'App ID' })
   @IsNumber()
   @IsNotEmpty()

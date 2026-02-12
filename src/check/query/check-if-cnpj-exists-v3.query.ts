@@ -1,7 +1,7 @@
-import { CheckIfExistsDto } from '../dto/check-if-exists-v3.dto';
+import { CheckIfExistsV3Dto } from '../dto/check-if-exists-v3.dto';
 
 export function CheckIfCnpjExistsV3Query(
-  dataJsonDto: CheckIfExistsDto,
+  dataJsonDto: CheckIfExistsV3Dto,
 ): string {
   const olAppId = dataJsonDto.pe_app_id ?? 1;
   const olSystemClientId = dataJsonDto.pe_system_client_id;
