@@ -14,6 +14,43 @@ export class ProductPdvService {
     return 'This action adds a new productPdv';
   }
 
-  async taskProductFindPdvAllV2(dataJsonDto: ProductFindPdvAllV2Dto) {}
-  async taskProductFindPdvIdV2(dataJsonDto: ProductFindPdvIdV2Dto) {}
+  async taskProductFindPdvAllV2(dataJsonDto: ProductFindPdvAllV2Dto) {
+
+    try {
+      const queryString = CostumerFindAllQuery(dataJsonDto);
+
+      const resultData = (await this.dbService.selectExecute(
+        queryString,
+      )) as unknown as SpResultCustomerFindAllData;
+
+      return processProcedureResultMultiQuery(
+        resultData as unknown[],
+        ['Customer find All'],
+        'Customer find Allnot found',
+      );
+    } catch (err) {
+      const errorMessage =
+        err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
+      return new ResultModel(100404, errorMessage, 0, []);
+    }
+  }
+  async taskProductFindPdvIdV2(dataJsonDto: ProductFindPdvIdV2Dto) {
+    try {
+      const queryString = CostumerFindAllQuery(dataJsonDto);
+
+      const resultData = (await this.dbService.selectExecute(
+        queryString,
+      )) as unknown as SpResultCustomerFindAllData;
+
+      return processProcedureResultMultiQuery(
+        resultData as unknown[],
+        ['Customer find All'],
+        'Customer find Allnot found',
+      );
+    } catch (err) {
+      const errorMessage =
+        err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
+      return new ResultModel(100404, errorMessage, 0, []);
+    }
+  }
 }

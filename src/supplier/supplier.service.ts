@@ -21,15 +21,122 @@ import { SupplierRelDeleteV2Dto } from './dto/supplier-rel-delete-v2.dto';
 export class SupplierService {
   constructor(private readonly dbService: DatabaseService) {}
 
-  async taskSupplierCreateV2(dataJsonDto: SupplierCreateV2Dto) {}
-  async taskSupplierRelCreateV2(dataJsonDto: SupplierRelCreateV2Dto) {}
+  async taskSupplierCreateV2(dataJsonDto: SupplierCreateV2Dto) {
+    try {
+      const queryString = CustomerUpdInlEmailQuery(dataJsonDto);
+
+      const resultData = (await this.dbService.selectExecute(
+        queryString,
+      )) as unknown as SpResultRecordUpdateType;
+
+      return processProcedureResultMutation(
+        resultData as unknown[],
+        'Customer update email failed',
+      );
+    } catch (err) {
+      const errorMessage =
+        err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
+      return new ResultModel(100404, errorMessage, 0, []);
+    }
+  }
+
+  async taskSupplierRelCreateV2(dataJsonDto: SupplierRelCreateV2Dto) {
+    try {
+      const queryString = CustomerUpdInlEmailQuery(dataJsonDto);
+
+      const resultData = (await this.dbService.selectExecute(
+        queryString,
+      )) as unknown as SpResultRecordUpdateType;
+
+      return processProcedureResultMutation(
+        resultData as unknown[],
+        'Customer update email failed',
+      );
+    } catch (err) {
+      const errorMessage =
+        err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
+      return new ResultModel(100404, errorMessage, 0, []);
+    }
+  }
+
   async taskSupplierFindAllV2(dataJsonDto: SupplierFindAllV2Dto) {}
-  async taskSupplierRelFindProdAllV2(
-    dataJsonDto: SupplierRelFindProdAllV2Dto,
-  ) {}
-  async taskSupplierFindIdV2(dataJsonDto: SupplierFindIdV2Dto) {}
-  async taskSupplierUpdateV2(dataJsonDto: SupplierUpdateV2Dto) {}
-  async taskSupplierRelDeleteV2(dataJsonDto: SupplierRelDeleteV2Dto) {}
+  async taskSupplierRelFindProdAllV2(dataJsonDto: SupplierRelFindProdAllV2Dto) {
+    try {
+      const queryString = CostumerFindAllQuery(dataJsonDto);
+
+      const resultData = (await this.dbService.selectExecute(
+        queryString,
+      )) as unknown as SpResultCustomerFindAllData;
+
+      return processProcedureResultMultiQuery(
+        resultData as unknown[],
+        ['Customer find All'],
+        'Customer find Allnot found',
+      );
+    } catch (err) {
+      const errorMessage =
+        err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
+      return new ResultModel(100404, errorMessage, 0, []);
+    }
+  }
+
+  async taskSupplierFindIdV2(dataJsonDto: SupplierFindIdV2Dto) {
+    try {
+      const queryString = CostumerFindAllQuery(dataJsonDto);
+
+      const resultData = (await this.dbService.selectExecute(
+        queryString,
+      )) as unknown as SpResultCustomerFindAllData;
+
+      return processProcedureResultMultiQuery(
+        resultData as unknown[],
+        ['Customer find All'],
+        'Customer find Allnot found',
+      );
+    } catch (err) {
+      const errorMessage =
+        err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
+      return new ResultModel(100404, errorMessage, 0, []);
+    }
+  }
+
+  async taskSupplierUpdateV2(dataJsonDto: SupplierUpdateV2Dto) {
+    try {
+      const queryString = CustomerUpdInlEmailQuery(dataJsonDto);
+
+      const resultData = (await this.dbService.selectExecute(
+        queryString,
+      )) as unknown as SpResultRecordUpdateType;
+
+      return processProcedureResultMutation(
+        resultData as unknown[],
+        'Customer update email failed',
+      );
+    } catch (err) {
+      const errorMessage =
+        err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
+      return new ResultModel(100404, errorMessage, 0, []);
+    }
+  }
+
+  async taskSupplierRelDeleteV2(dataJsonDto: SupplierRelDeleteV2Dto) {
+    try {
+      const queryString = CustomerUpdInlEmailQuery(dataJsonDto);
+
+      const resultData = (await this.dbService.selectExecute(
+        queryString,
+      )) as unknown as SpResultRecordUpdateType;
+
+      return processProcedureResultMutation(
+        resultData as unknown[],
+        'Customer update email failed',
+      );
+    } catch (err) {
+      const errorMessage =
+        err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
+      return new ResultModel(100404, errorMessage, 0, []);
+    }
+  }
 
   async tskBrandFindV2(dataJsonDto: SupplierFindAllDto) {
     try {

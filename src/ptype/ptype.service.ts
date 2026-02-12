@@ -18,11 +18,102 @@ import { TypeDeleteV2Dto } from './dto/type-delete-v2.dto';
 export class PtypeService {
   constructor(private readonly dbService: DatabaseService) {}
 
-  async taskTypeCreateV2(dataJsonDto: TypeCreateV2Dto) {}
-  async taskTypeFindAllV2(dataJsonDto: TypeFindAllV2Dto) {}
-  async taskTypeFindIdV2(dataJsonDto: TypeFindIdV2Dto) {}
-  async taskTypeUpdateV2(dataJsonDto: TypeUpdateV2Dto) {}
-  async taskTypeDeleteV2(dataJsonDto: TypeDeleteV2Dto) {}
+  async taskTypeCreateV2(dataJsonDto: TypeCreateV2Dto) {
+    try {
+      const queryString = CustomerUpdInlEmailQuery(dataJsonDto);
+
+      const resultData = (await this.dbService.selectExecute(
+        queryString,
+      )) as unknown as SpResultRecordUpdateType;
+
+      return processProcedureResultMutation(
+        resultData as unknown[],
+        'Customer update email failed',
+      );
+    } catch (err) {
+      const errorMessage =
+        err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
+      return new ResultModel(100404, errorMessage, 0, []);
+    }
+  }
+
+  async taskTypeFindAllV2(dataJsonDto: TypeFindAllV2Dto) {
+    try {
+      const queryString = CostumerFindAllQuery(dataJsonDto);
+
+      const resultData = (await this.dbService.selectExecute(
+        queryString,
+      )) as unknown as SpResultCustomerFindAllData;
+
+      return processProcedureResultMultiQuery(
+        resultData as unknown[],
+        ['Customer find All'],
+        'Customer find Allnot found',
+      );
+    } catch (err) {
+      const errorMessage =
+        err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
+      return new ResultModel(100404, errorMessage, 0, []);
+    }
+  }
+  async taskTypeFindIdV2(dataJsonDto: TypeFindIdV2Dto) {
+    try {
+      const queryString = CostumerFindAllQuery(dataJsonDto);
+
+      const resultData = (await this.dbService.selectExecute(
+        queryString,
+      )) as unknown as SpResultCustomerFindAllData;
+
+      return processProcedureResultMultiQuery(
+        resultData as unknown[],
+        ['Customer find All'],
+        'Customer find Allnot found',
+      );
+    } catch (err) {
+      const errorMessage =
+        err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
+      return new ResultModel(100404, errorMessage, 0, []);
+    }
+  }
+  
+  async taskTypeUpdateV2(dataJsonDto: TypeUpdateV2Dto) {
+    try {
+      const queryString = CustomerUpdInlEmailQuery(dataJsonDto);
+
+      const resultData = (await this.dbService.selectExecute(
+        queryString,
+      )) as unknown as SpResultRecordUpdateType;
+
+      return processProcedureResultMutation(
+        resultData as unknown[],
+        'Customer update email failed',
+      );
+    } catch (err) {
+      const errorMessage =
+        err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
+      return new ResultModel(100404, errorMessage, 0, []);
+    }
+  }
+
+  async taskTypeDeleteV2(dataJsonDto: TypeDeleteV2Dto) {
+    try {
+      const queryString = CustomerUpdInlEmailQuery(dataJsonDto);
+
+      const resultData = (await this.dbService.selectExecute(
+        queryString,
+      )) as unknown as SpResultRecordUpdateType;
+
+      return processProcedureResultMutation(
+        resultData as unknown[],
+        'Customer update email failed',
+      );
+    } catch (err) {
+      const errorMessage =
+        err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
+      return new ResultModel(100404, errorMessage, 0, []);
+    }
+  }
+
 
   async tskPTypeFindV2(dataJsonDto: TypeFindAllDto) {
     try {
