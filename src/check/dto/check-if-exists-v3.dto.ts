@@ -1,8 +1,7 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { Type } from 'class-transformer';
-import { IsNotEmpty, IsNumber, IsOptional, IsString } from 'class-validator';
+import { IsString, IsNotEmpty, IsNumber, MinLength } from 'class-validator';
 
-export class CarrierSelDto {
+export class CheckIfExistsDto {
   @ApiProperty({ description: 'App ID' })
   @IsNumber()
   @IsNotEmpty()
@@ -23,10 +22,10 @@ export class CarrierSelDto {
   @IsNotEmpty()
   pe_organization_id: string;
 
-  @ApiProperty({ description: 'Member ID', maxLength: 200 })
+  @ApiProperty({ description: 'Member Role', maxLength: 200 })
   @IsString()
   @IsNotEmpty()
-  pe_member_id: string;
+  pe_member_role: string;
 
   @ApiProperty({ description: 'User ID', maxLength: 200 })
   @IsString()
@@ -34,24 +33,11 @@ export class CarrierSelDto {
 
   @ApiProperty({ description: 'Person ID' })
   @IsNumber()
-  @IsOptional()
-  @Type(() => Number)
-  pe_person_id?: number;
+  pe_person_id: number;
 
-  @ApiProperty({ description: 'Carrier ID' })
-  @IsNumber()
-  @IsOptional()
-  @Type(() => Number)
-  pe_id_transportadora?: number;
-
-  @ApiProperty({ description: 'Carrier Name', maxLength: 100 })
-  @IsString()
-  @IsOptional()
-  pe_nome?: string;
-
-  @ApiProperty({ description: 'Query Limit' })
-  @IsNumber()
-  @IsOptional()
-  @Type(() => Number)
-  pe_limit?: number;
+  @ApiProperty({ description: 'Search term', minLength: 3 })
+  @IsString({ message: 'TERMO must be a valid string' })
+  @IsNotEmpty()
+  @MinLength(3, { message: 'TERMO must have at least 3 characters' })
+  pe_term: string;
 }

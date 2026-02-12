@@ -1,7 +1,7 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsNotEmpty, IsNumber, IsString } from 'class-validator';
+import { IsString, IsNotEmpty, IsNumber } from 'class-validator';
 
-export class TypeCreateDto {
+export class BrandUpdateV2Dto {
   @ApiProperty({ description: 'App ID' })
   @IsNumber()
   @IsNotEmpty()
@@ -22,14 +22,13 @@ export class TypeCreateDto {
   @IsNotEmpty()
   pe_organization_id: string;
 
-  @ApiProperty({ description: 'Member ID', maxLength: 200 })
-  @IsString()
-  @IsNotEmpty()
-  pe_member_id: string;
-
   @ApiProperty({ description: 'User ID', maxLength: 200 })
   @IsString()
   pe_user_id: string;
+
+  @ApiProperty({ description: 'Member Role', maxLength: 200 })
+  @IsString()
+  pe_member_role: string;
 
   @ApiProperty({ description: 'Person ID' })
   @IsNumber()
