@@ -9,10 +9,27 @@ import { SupplierFindAllQuery } from './query/supplier-find-all.query';
 import { SpResultSupplierFindAllData } from './types/supplier.type';
 
 import { DatabaseService } from 'src/database/database.service';
+import { SupplierCreateV2Dto } from './dto/supplier-create-v2.dto';
+import { SupplierRelCreateV2Dto } from './dto/supplier-rel-create-v2.dto';
+import { SupplierFindAllV2Dto } from './dto/supplier-find-all-v2.dto';
+import { SupplierRelFindProdAllV2Dto } from './dto/supplier-rel-find-prod-all-v2.dto';
+import { SupplierFindIdV2Dto } from './dto/supplier-find-id-v2.dto';
+import { SupplierUpdateV2Dto } from './dto/supplier-update-v2.dto';
+import { SupplierRelDeleteV2Dto } from './dto/supplier-rel-delete-v2.dto';
 
 @Injectable()
 export class SupplierService {
   constructor(private readonly dbService: DatabaseService) {}
+
+  async taskSupplierCreateV2(dataJsonDto: SupplierCreateV2Dto) {}
+  async taskSupplierRelCreateV2(dataJsonDto: SupplierRelCreateV2Dto) {}
+  async taskSupplierFindAllV2(dataJsonDto: SupplierFindAllV2Dto) {}
+  async taskSupplierRelFindProdAllV2(
+    dataJsonDto: SupplierRelFindProdAllV2Dto,
+  ) {}
+  async taskSupplierFindIdV2(dataJsonDto: SupplierFindIdV2Dto) {}
+  async taskSupplierUpdateV2(dataJsonDto: SupplierUpdateV2Dto) {}
+  async taskSupplierRelDeleteV2(dataJsonDto: SupplierRelDeleteV2Dto) {}
 
   async tskBrandFindV2(dataJsonDto: SupplierFindAllDto) {
     try {

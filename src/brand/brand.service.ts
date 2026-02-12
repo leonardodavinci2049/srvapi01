@@ -9,6 +9,11 @@ import { DatabaseService } from 'src/database/database.service';
 import { BrandFindAllDto } from './dto/brand-find-all.dto';
 import { BrandFindAllQuery } from './query/brand-find-all.query';
 import { SpResultBrandFindAllData } from './types/brand.type';
+import { BrandCreateV2Dto } from './dto/brand-create-v2.dto';
+import { BrandFindAllV2Dto } from './dto/brand-find-all-v2.dto';
+import { BrandFindIdV2Dto } from './dto/brand-find-id-v2.dto';
+import { BrandUpdateV2Dto } from './dto/brand-update-v2.dto';
+import { BrandDeleteV2Dto } from './dto/brand-delete-v2.dto';
 
 @Injectable()
 export class BrandService {
@@ -52,4 +57,11 @@ export class BrandService {
       return new ResultModel(100404, errorMessage, 0, []);
     }
   }
+
+  async taskBrandCreateV2(dataJsonDto: BrandCreateV2Dto) {}
+  async taskBrandFindAllV2(dataJsonDto: BrandFindAllV2Dto) {}
+  async taskBrandFindIdV2(dataJsonDto: BrandFindIdV2Dto) {}
+  async taskBrandUpdateV2(dataJsonDto: BrandUpdateV2Dto) {}
+  async taskBrandDeleteV2(dataJsonDto: BrandDeleteV2Dto) {}
+  
 }

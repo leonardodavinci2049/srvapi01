@@ -8,10 +8,21 @@ import { DatabaseService } from 'src/database/database.service';
 import { TypeFindAllDto } from './dto/type-find-all.dto';
 import { TypeFindAllQuery } from './query/type-find-all.query';
 import { SpResultPTypeFindAllData } from './types/ptype.type';
+import { TypeCreateV2Dto } from './dto/type-create-v2.dto';
+import { TypeFindAllV2Dto } from './dto/type-find-all-v2.dto';
+import { TypeFindIdV2Dto } from './dto/type-find-id-v2.dto';
+import { TypeUpdateV2Dto } from './dto/type-update-v2.dto';
+import { TypeDeleteV2Dto } from './dto/type-delete-v2.dto';
 
 @Injectable()
 export class PtypeService {
   constructor(private readonly dbService: DatabaseService) {}
+
+  async taskTypeCreateV2(dataJsonDto: TypeCreateV2Dto) {}
+  async taskTypeFindAllV2(dataJsonDto: TypeFindAllV2Dto) {}
+  async taskTypeFindIdV2(dataJsonDto: TypeFindIdV2Dto) {}
+  async taskTypeUpdateV2(dataJsonDto: TypeUpdateV2Dto) {}
+  async taskTypeDeleteV2(dataJsonDto: TypeDeleteV2Dto) {}
 
   async tskPTypeFindV2(dataJsonDto: TypeFindAllDto) {
     try {

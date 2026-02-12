@@ -18,10 +18,19 @@ import { CheckIfProductSlugExistsQuery } from './query/check-if-product-slug.que
 
 import { CheckIfTaxomomyNameExistsQuery } from './query/check-if-taxonomy-name.query';
 import { CheckIfTaxomomySlugExistsQuery } from './query/check-if-taxonomy-slug.query';
+import { CheckIfExistsV3Dto } from './dto/check-if-exists-v3.dto';
 
 @Injectable()
 export class CheckService {
   constructor(private readonly dbService: DatabaseService) {}
+
+  async taskCheckIfCnpjExistsV3(dataJsonDto: CheckIfExistsV3Dto) {}
+  async taskCheckIfCpfExistsV3(dataJsonDto: CheckIfExistsV3Dto) {}
+  async taskCheckIfEmailExistsV3(dataJsonDto: CheckIfExistsV3Dto) {}
+  async taskCheckIfProductNameExistV3(dataJsonDto: CheckIfExistsV3Dto) {}
+  async taskCheckIfProductSlugExistV3(dataJsonDto: CheckIfExistsV3Dto) {}
+  async taskCheckIfTaxonomyNameExistsV3(dataJsonDto: CheckIfExistsV3Dto) {}
+  async taskCheckIfTaxonomySlugExistsV3(dataJsonDto: CheckIfExistsV3Dto) {}
 
   async tskCheckIfEmailExist(dataJsonDto: CheckIfExistsDto) {
     try {
