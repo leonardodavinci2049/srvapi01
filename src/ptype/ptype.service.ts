@@ -7,11 +7,126 @@ import { MESSAGES } from 'src/core/utils/constants/globalConstants';
 import { DatabaseService } from 'src/database/database.service';
 import { TypeFindAllDto } from './dto/type-find-all.dto';
 import { TypeFindAllQuery } from './query/type-find-all.query';
-import { SpResultPTypeFindAllData } from './types/ptype.type';
+
+import { TypeCreateV2Dto } from './dto/type-create-v2.dto';
+import { TypeFindAllV2Dto } from './dto/type-find-all-v2.dto';
+import { TypeFindIdV2Dto } from './dto/type-find-id-v2.dto';
+import { TypeUpdateV2Dto } from './dto/type-update-v2.dto';
+import { TypeDeleteV2Dto } from './dto/type-delete-v2.dto';
+import { TypeCreateV2Query } from './query/type-create-v2.query';
+import { processProcedureResultMutation } from 'src/core/procedure.result/process-procedure-result.mutation';
+import {
+  SpResultPTypeFindAllData,
+  SpResultPTypeFindIdData,
+  SpResultRecordCreateType,
+  SpResultRecordDeleteType,
+  SpResultRecordUpdateType,
+} from './types/ptype.type';
+import { TypeFindAllV2Query } from './query/type-find-all-v2.query';
+import { processProcedureResultMultiQuery } from 'src/core/procedure.result/process-procedure-result.query';
+import { TypeFindIdV2Query } from './query/type-find-id-v2.query';
+import { TypeUpdateV2Query } from './query/type-update-v2.query';
+import { TypeDeleteV2Query } from './query/type-delete-v2.query';
 
 @Injectable()
 export class PtypeService {
   constructor(private readonly dbService: DatabaseService) {}
+
+  async taskTypeCreateV2(dataJsonDto: TypeCreateV2Dto) {
+    try {
+      const queryString = TypeCreateV2Query(dataJsonDto);
+
+      const resultData = (await this.dbService.selectExecute(
+        queryString,
+      )) as unknown as SpResultRecordCreateType;
+
+      return processProcedureResultMutation(
+        resultData as unknown[],
+        'Type create failed',
+      );
+    } catch (err) {
+      const errorMessage =
+        err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
+      return new ResultModel(100404, errorMessage, 0, []);
+    }
+  }
+
+  async taskTypeFindAllV2(dataJsonDto: TypeFindAllV2Dto) {
+    try {
+      const queryString = TypeFindAllV2Query(dataJsonDto);
+
+      const resultData = (await this.dbService.selectExecute(
+        queryString,
+      )) as unknown as SpResultPTypeFindAllData;
+
+      return processProcedureResultMultiQuery(
+        resultData as unknown[],
+        ['Type find All'],
+        'Type find All not found',
+      );
+    } catch (err) {
+      const errorMessage =
+        err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
+      return new ResultModel(100404, errorMessage, 0, []);
+    }
+  }
+  async taskTypeFindIdV2(dataJsonDto: TypeFindIdV2Dto) {
+    try {
+      const queryString = TypeFindIdV2Query(dataJsonDto);
+
+      const resultData = (await this.dbService.selectExecute(
+        queryString,
+      )) as unknown as SpResultPTypeFindIdData;
+
+      return processProcedureResultMultiQuery(
+        resultData as unknown[],
+        ['Type find Id'],
+        'Type find Id not found',
+      );
+    } catch (err) {
+      const errorMessage =
+        err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
+      return new ResultModel(100404, errorMessage, 0, []);
+    }
+  }
+
+  async taskTypeUpdateV2(dataJsonDto: TypeUpdateV2Dto) {
+    try {
+      const queryString = TypeUpdateV2Query(dataJsonDto);
+
+      const resultData = (await this.dbService.selectExecute(
+        queryString,
+      )) as unknown as SpResultRecordUpdateType;
+
+      return processProcedureResultMutation(
+        resultData as unknown[],
+        'Type update failed',
+      );
+    } catch (err) {
+      const errorMessage =
+        err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
+      return new ResultModel(100404, errorMessage, 0, []);
+    }
+  }
+
+  async taskTypeDeleteV2(dataJsonDto: TypeDeleteV2Dto) {
+    try {
+      const queryString = TypeDeleteV2Query(dataJsonDto);
+
+      const resultData = (await this.dbService.selectExecute(
+        queryString,
+      )) as unknown as SpResultRecordDeleteType;
+
+      return processProcedureResultMutation(
+        resultData as unknown[],
+        'Type delete failed',
+      );
+    } catch (err) {
+      const errorMessage =
+        err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
+      return new ResultModel(100404, errorMessage, 0, []);
+    }
+  }
 
   async tskPTypeFindV2(dataJsonDto: TypeFindAllDto) {
     try {

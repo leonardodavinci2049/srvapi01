@@ -17,6 +17,10 @@ export interface SpOperationResult {
   changedRows: number;
 }
 
+export type SpResultRecordCreateType = [SpDefaultFeedback[], SpOperationResult];
+export type SpResultRecordUpdateType = [SpDefaultFeedback[], SpOperationResult];
+export type SpResultRecordDeleteType = [SpDefaultFeedback[], SpOperationResult];
+
 export interface TblBrandFindALL extends RowDataPacket {
   ID_MARCA: number;
   MARCA: string;

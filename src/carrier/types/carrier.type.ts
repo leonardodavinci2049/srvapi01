@@ -17,6 +17,10 @@ export interface SpOperationResult {
   changedRows: number;
 }
 
+export type SpResultRecordCreateType = [SpDefaultFeedback[], SpOperationResult];
+export type SpResultRecordUpdateType = [SpDefaultFeedback[], SpOperationResult];
+export type SpResultRecordDeleteType = [SpDefaultFeedback[], SpOperationResult];
+
 export interface TblPTypeFindALL extends RowDataPacket {
   ID_TIPO: number;
   TIPO: string;
