@@ -31,3 +31,9 @@ export type SpResultPTypeFindAllData = [
   SpDefaultFeedback[],
   SpOperationResult,
 ];
+
+export type SpResultPTypeFindIdData = [
+  TblPTypeFindALL[],
+  SpDefaultFeedback[],
+  SpOperationResult,
+];

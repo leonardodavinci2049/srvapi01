@@ -26,7 +26,12 @@ export interface TblProductFindALL extends RowDataPacket {
   PRODUTO: string;
 }
 
-export type SpResultProductFindAllData = [
+export type SpResultProductFindPdvAllData = [
+  TblProductFindALL[],
+  SpDefaultFeedback[],
+  SpOperationResult,
+];
+export type SpResultProductFindPdvIdData = [
   TblProductFindALL[],
   SpDefaultFeedback[],
   SpOperationResult,

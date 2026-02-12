@@ -7,12 +7,26 @@ import { MESSAGES } from 'src/core/utils/constants/globalConstants';
 import { DatabaseService } from 'src/database/database.service';
 import { TypeFindAllDto } from './dto/type-find-all.dto';
 import { TypeFindAllQuery } from './query/type-find-all.query';
-import { SpResultPTypeFindAllData } from './types/ptype.type';
+
 import { TypeCreateV2Dto } from './dto/type-create-v2.dto';
 import { TypeFindAllV2Dto } from './dto/type-find-all-v2.dto';
 import { TypeFindIdV2Dto } from './dto/type-find-id-v2.dto';
 import { TypeUpdateV2Dto } from './dto/type-update-v2.dto';
 import { TypeDeleteV2Dto } from './dto/type-delete-v2.dto';
+import { TypeCreateV2Query } from './query/type-create-v2.query';
+import { processProcedureResultMutation } from 'src/core/procedure.result/process-procedure-result.mutation';
+import {
+  SpResultPTypeFindAllData,
+  SpResultPTypeFindIdData,
+  SpResultRecordCreateType,
+  SpResultRecordDeleteType,
+  SpResultRecordUpdateType,
+} from './types/ptype.type';
+import { TypeFindAllV2Query } from './query/type-find-all-v2.query';
+import { processProcedureResultMultiQuery } from 'src/core/procedure.result/process-procedure-result.query';
+import { TypeFindIdV2Query } from './query/type-find-id-v2.query';
+import { TypeUpdateV2Query } from './query/type-update-v2.query';
+import { TypeDeleteV2Query } from './query/type-delete-v2.query';
 
 @Injectable()
 export class PtypeService {
@@ -20,15 +34,15 @@ export class PtypeService {
 
   async taskTypeCreateV2(dataJsonDto: TypeCreateV2Dto) {
     try {
-      const queryString = CustomerUpdInlEmailQuery(dataJsonDto);
+      const queryString = TypeCreateV2Query(dataJsonDto);
 
       const resultData = (await this.dbService.selectExecute(
         queryString,
-      )) as unknown as SpResultRecordUpdateType;
+      )) as unknown as SpResultRecordCreateType;
 
       return processProcedureResultMutation(
         resultData as unknown[],
-        'Customer update email failed',
+        'Type create failed',
       );
     } catch (err) {
       const errorMessage =
@@ -39,16 +53,16 @@ export class PtypeService {
 
   async taskTypeFindAllV2(dataJsonDto: TypeFindAllV2Dto) {
     try {
-      const queryString = CostumerFindAllQuery(dataJsonDto);
+      const queryString = TypeFindAllV2Query(dataJsonDto);
 
       const resultData = (await this.dbService.selectExecute(
         queryString,
-      )) as unknown as SpResultCustomerFindAllData;
+      )) as unknown as SpResultPTypeFindAllData;
 
       return processProcedureResultMultiQuery(
         resultData as unknown[],
-        ['Customer find All'],
-        'Customer find Allnot found',
+        ['Type find All'],
+        'Type find All not found',
       );
     } catch (err) {
       const errorMessage =
@@ -58,16 +72,16 @@ export class PtypeService {
   }
   async taskTypeFindIdV2(dataJsonDto: TypeFindIdV2Dto) {
     try {
-      const queryString = CostumerFindAllQuery(dataJsonDto);
+      const queryString = TypeFindIdV2Query(dataJsonDto);
 
       const resultData = (await this.dbService.selectExecute(
         queryString,
-      )) as unknown as SpResultCustomerFindAllData;
+      )) as unknown as SpResultPTypeFindIdData;
 
       return processProcedureResultMultiQuery(
         resultData as unknown[],
-        ['Customer find All'],
-        'Customer find Allnot found',
+        ['Type find Id'],
+        'Type find Id not found',
       );
     } catch (err) {
       const errorMessage =
@@ -75,10 +89,10 @@ export class PtypeService {
       return new ResultModel(100404, errorMessage, 0, []);
     }
   }
-  
+
   async taskTypeUpdateV2(dataJsonDto: TypeUpdateV2Dto) {
     try {
-      const queryString = CustomerUpdInlEmailQuery(dataJsonDto);
+      const queryString = TypeUpdateV2Query(dataJsonDto);
 
       const resultData = (await this.dbService.selectExecute(
         queryString,
@@ -86,7 +100,7 @@ export class PtypeService {
 
       return processProcedureResultMutation(
         resultData as unknown[],
-        'Customer update email failed',
+        'Type update failed',
       );
     } catch (err) {
       const errorMessage =
@@ -97,15 +111,15 @@ export class PtypeService {
 
   async taskTypeDeleteV2(dataJsonDto: TypeDeleteV2Dto) {
     try {
-      const queryString = CustomerUpdInlEmailQuery(dataJsonDto);
+      const queryString = TypeDeleteV2Query(dataJsonDto);
 
       const resultData = (await this.dbService.selectExecute(
         queryString,
-      )) as unknown as SpResultRecordUpdateType;
+      )) as unknown as SpResultRecordDeleteType;
 
       return processProcedureResultMutation(
         resultData as unknown[],
-        'Customer update email failed',
+        'Type delete failed',
       );
     } catch (err) {
       const errorMessage =
@@ -113,7 +127,6 @@ export class PtypeService {
       return new ResultModel(100404, errorMessage, 0, []);
     }
   }
-
 
   async tskPTypeFindV2(dataJsonDto: TypeFindAllDto) {
     try {
