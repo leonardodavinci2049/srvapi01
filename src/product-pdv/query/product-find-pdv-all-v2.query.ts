@@ -1,7 +1,7 @@
-import { CheckIfExistsV3Dto } from '../dto/check-if-exists-v3.dto';
+import { ProductFindPdvAllV2Dto } from '../dto/product-find-pdv-all-v2.dto';
 
-export function CheckIfCnpjExistsV3Query(
-  dataJsonDto: CheckIfExistsV3Dto,
+export function ProductFindPdvAllV2Query(
+  dataJsonDto: ProductFindPdvAllV2Dto,
 ): string {
   const olAppId = dataJsonDto.pe_app_id ?? 1;
   const olSystemClientId = dataJsonDto.pe_system_client_id;
@@ -10,17 +10,15 @@ export function CheckIfCnpjExistsV3Query(
   const olUserId = dataJsonDto.pe_user_id;
   const olMemberRole = dataJsonDto.pe_member_role;
   const olPersonId = dataJsonDto.pe_person_id;
-  const olTerm = dataJsonDto.pe_term;
 
-  const queryString = ` call sp_check_if_cnpj_exists_v3(
+  const queryString = ` call sp_product_find_pdv_all_v2(
         ${olAppId},
         ${olSystemClientId},
         ${olStoreId},
         '${olOrganizationId}',
         '${olUserId}',
         '${olMemberRole}',
-        ${olPersonId},
-        '${olTerm}'
+        ${olPersonId}
 
       ) `;
 
