@@ -7,7 +7,10 @@ import { MESSAGES } from 'src/core/utils/constants/globalConstants';
 
 import { CheckIfExistsDto } from './dto/check-if-exists.dto';
 
-import { SpCheckIfExistType } from './types/check.type';
+import {
+  SpCheckIfExistType,
+  SpResultRecordCheckType,
+} from './types/check.type';
 
 import { CheckIfEmailExistsQuery } from './query/check-if-email-exists.query';
 import { CheckIfCpfExistsQuery } from './query/check-if-cpf-exists.query';
@@ -19,19 +22,151 @@ import { CheckIfProductSlugExistsQuery } from './query/check-if-product-slug.que
 import { CheckIfTaxomomyNameExistsQuery } from './query/check-if-taxonomy-name.query';
 import { CheckIfTaxomomySlugExistsQuery } from './query/check-if-taxonomy-slug.query';
 import { CheckIfExistsV3Dto } from './dto/check-if-exists-v3.dto';
+import { processProcedureResultMutation } from 'src/core/procedure.result/process-procedure-result.mutation';
+import { CheckIfCnpjExistsV3Query } from './query/check-if-cnpj-exists-v3.query';
+import { CheckIfCpfExistsV3Query } from './query/check-if-cpf-exists-v3.query';
+import { CheckIfEmailExistsV3Query } from './query/check-if-email-exists-v3.query';
+import { CheckIfProductNameExistV3Query } from './query/check-if-product-name-exist-v3.query';
+import { CheckIfProductSlugExistV3Query } from './query/check-if-product-slug-exist-v3.query';
+import { CheckIfTaxonomySlugExistsV3Query } from './query/check-if-taxonomy-slug-exists-v3.query';
+import { CheckIfTaxonomyNameExistsV3Query } from './query/check-if-taxonomy-name-exists-v3.query';
 
 @Injectable()
 export class CheckService {
   constructor(private readonly dbService: DatabaseService) {}
 
-  async taskCheckIfCnpjExistsV3(dataJsonDto: CheckIfExistsV3Dto) {}
-  async taskCheckIfCpfExistsV3(dataJsonDto: CheckIfExistsV3Dto) {}
-  async taskCheckIfEmailExistsV3(dataJsonDto: CheckIfExistsV3Dto) {}
-  async taskCheckIfProductNameExistV3(dataJsonDto: CheckIfExistsV3Dto) {}
-  async taskCheckIfProductSlugExistV3(dataJsonDto: CheckIfExistsV3Dto) {}
-  async taskCheckIfTaxonomyNameExistsV3(dataJsonDto: CheckIfExistsV3Dto) {}
-  async taskCheckIfTaxonomySlugExistsV3(dataJsonDto: CheckIfExistsV3Dto) {}
+  async taskCheckIfCnpjExistsV3(dataJsonDto: CheckIfExistsV3Dto) {
+    try {
+      const queryString = CheckIfCnpjExistsV3Query(dataJsonDto);
 
+      const resultData = (await this.dbService.selectExecute(
+        queryString,
+      )) as unknown as SpResultRecordCheckType;
+
+      return processProcedureResultMutation(
+        resultData as unknown[],
+        'Check if CNPJ exists failed',
+      );
+    } catch (err) {
+      const errorMessage =
+        err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
+      return new ResultModel(100404, errorMessage, 0, []);
+    }
+  }
+
+  async taskCheckIfCpfExistsV3(dataJsonDto: CheckIfExistsV3Dto) {
+    try {
+      const queryString = CheckIfCpfExistsV3Query(dataJsonDto);
+
+      const resultData = (await this.dbService.selectExecute(
+        queryString,
+      )) as unknown as SpResultRecordCheckType;
+
+      return processProcedureResultMutation(
+        resultData as unknown[],
+        'Check if CPF exists failed',
+      );
+    } catch (err) {
+      const errorMessage =
+        err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
+      return new ResultModel(100404, errorMessage, 0, []);
+    }
+  }
+
+  async taskCheckIfEmailExistsV3(dataJsonDto: CheckIfExistsV3Dto) {
+    try {
+      const queryString = CheckIfEmailExistsV3Query(dataJsonDto);
+
+      const resultData = (await this.dbService.selectExecute(
+        queryString,
+      )) as unknown as SpResultRecordCheckType;
+
+      return processProcedureResultMutation(
+        resultData as unknown[],
+        'Check if email exists failed',
+      );
+    } catch (err) {
+      const errorMessage =
+        err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
+      return new ResultModel(100404, errorMessage, 0, []);
+    }
+  }
+
+  async taskCheckIfProductNameExistV3(dataJsonDto: CheckIfExistsV3Dto) {
+    try {
+      const queryString = CheckIfProductNameExistV3Query(dataJsonDto);
+
+      const resultData = (await this.dbService.selectExecute(
+        queryString,
+      )) as unknown as SpResultRecordCheckType;
+
+      return processProcedureResultMutation(
+        resultData as unknown[],
+        'Check if product name exists failed',
+      );
+    } catch (err) {
+      const errorMessage =
+        err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
+      return new ResultModel(100404, errorMessage, 0, []);
+    }
+  }
+
+  async taskCheckIfProductSlugExistV3(dataJsonDto: CheckIfExistsV3Dto) {
+    try {
+      const queryString = CheckIfProductSlugExistV3Query(dataJsonDto);
+
+      const resultData = (await this.dbService.selectExecute(
+        queryString,
+      )) as unknown as SpResultRecordCheckType;
+
+      return processProcedureResultMutation(
+        resultData as unknown[],
+        'Check if product slug exists failed',
+      );
+    } catch (err) {
+      const errorMessage =
+        err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
+      return new ResultModel(100404, errorMessage, 0, []);
+    }
+  }
+
+  async taskCheckIfTaxonomyNameExistsV3(dataJsonDto: CheckIfExistsV3Dto) {
+    try {
+      const queryString = CheckIfTaxonomyNameExistsV3Query(dataJsonDto);
+
+      const resultData = (await this.dbService.selectExecute(
+        queryString,
+      )) as unknown as SpResultRecordCheckType;
+
+      return processProcedureResultMutation(
+        resultData as unknown[],
+        'Check if taxonomy name exists failed',
+      );
+    } catch (err) {
+      const errorMessage =
+        err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
+      return new ResultModel(100404, errorMessage, 0, []);
+    }
+  }
+
+  async taskCheckIfTaxonomySlugExistsV3(dataJsonDto: CheckIfExistsV3Dto) {
+    try {
+      const queryString = CheckIfTaxonomySlugExistsV3Query(dataJsonDto);
+
+      const resultData = (await this.dbService.selectExecute(
+        queryString,
+      )) as unknown as SpResultRecordCheckType;
+
+      return processProcedureResultMutation(
+        resultData as unknown[],
+        'Check if taxonomy slug exists failed',
+      );
+    } catch (err) {
+      const errorMessage =
+        err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
+      return new ResultModel(100404, errorMessage, 0, []);
+    }
+  }
   async tskCheckIfEmailExist(dataJsonDto: CheckIfExistsDto) {
     try {
       const queryString = CheckIfEmailExistsQuery(dataJsonDto);

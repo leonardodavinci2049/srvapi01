@@ -21,6 +21,10 @@ export interface tblCheckRecords extends RowDataPacket {
   ID_CHECK?: number;
   ID_RECORD: number;
 }
+export type SpResultRecordCheckType = [SpDefaultFeedback[], SpOperationResult];
+export type SpResultRecordCreateType = [SpDefaultFeedback[], SpOperationResult];
+export type SpResultRecordUpdateType = [SpDefaultFeedback[], SpOperationResult];
+export type SpResultRecordDeleteType = [SpDefaultFeedback[], SpOperationResult];
 
 export interface CheckRecordsType {
   ID_CHECK?: number;

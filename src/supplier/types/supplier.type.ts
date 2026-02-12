@@ -17,6 +17,10 @@ export interface SpOperationResult {
   changedRows: number;
 }
 
+export type SpResultRecordCreateType = [SpDefaultFeedback[], SpOperationResult];
+export type SpResultRecordUpdateType = [SpDefaultFeedback[], SpOperationResult];
+export type SpResultRecordDeleteType = [SpDefaultFeedback[], SpOperationResult];
+
 export interface TblSupplierFindALL extends RowDataPacket {
   ID_FORNECEDOR: number;
   FORNECEDOR: string;
