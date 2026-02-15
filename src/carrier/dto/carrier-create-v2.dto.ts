@@ -34,6 +34,10 @@ export class CarrierCreateV2Dto {
   @IsNumber()
   pe_person_id: number;
 
+  @ApiProperty({ description: 'Person ID' })
+  @IsNumber()
+  pe_type_person_id: number;
+
   @ApiProperty({ description: 'Name', maxLength: 300 })
   @IsString()
   pe_name: string;
@@ -69,6 +73,10 @@ export class CarrierCreateV2Dto {
   @ApiProperty({ description: 'CPF (Individual Tax ID)', maxLength: 100 })
   @IsString()
   pe_cpf: string;
+
+  @ApiProperty({ description: 'Image Path', maxLength: 300 })
+  @IsString()
+  pe_image_path: string;
 }
 
 /*
@@ -82,6 +90,7 @@ Sample JSON for testing in body endpoint:
   "pe_member_role": "saller",
   "pe_user_id": "USER001",
   "pe_person_id": 29014,
+  "pe_type_person_id": 1,
   "pe_name": "Carrier Name",
   "pe_phone": "123456789",
   "pe_whatsapp": "123456789",
@@ -90,7 +99,8 @@ Sample JSON for testing in body endpoint:
   "pe_cnpj": "12.345.678/0001-90",
   "pe_company_name": "Example Company Ltda",
   "pe_responsible_name": "John Doe",
-  "pe_cpf": "123.456.789-00"
+  "pe_cpf": "123.456.789-00",
+  "pe_image_path": "/images/carrier.jpg"
 }
 
 */

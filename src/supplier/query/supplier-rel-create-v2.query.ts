@@ -10,6 +10,9 @@ export function SupplierRelCreateV2Query(
   const olUserId = dataJsonDto.pe_user_id;
   const olMemberRole = dataJsonDto.pe_member_role;
   const olPersonId = dataJsonDto.pe_person_id;
+  const olSupplierId = dataJsonDto.pe_supplier_id;
+  const olProductId = dataJsonDto.pe_product_id;
+  const olSupplierCode = dataJsonDto.pe_supplier_code;
 
   const queryString = ` call sp_supplier_rel_create_v2(
         ${olAppId},
@@ -18,8 +21,10 @@ export function SupplierRelCreateV2Query(
         '${olOrganizationId}',
         '${olUserId}',
         '${olMemberRole}',
-        ${olPersonId}
-
+        ${olPersonId},
+        ${olSupplierId},
+        ${olProductId},
+        '${olSupplierCode}'
       ) `;
 
   return queryString;

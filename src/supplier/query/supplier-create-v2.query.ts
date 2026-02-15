@@ -10,6 +10,8 @@ export function SupplierCreateV2Query(
   const olUserId = dataJsonDto.pe_user_id;
   const olMemberRole = dataJsonDto.pe_member_role;
   const olPersonId = dataJsonDto.pe_person_id;
+  const olSupplierName = dataJsonDto.pe_supplier_name;
+  const olSlug = dataJsonDto.pe_slug;
 
   const queryString = ` call sp_supplier_create_v2(
         ${olAppId},
@@ -18,8 +20,9 @@ export function SupplierCreateV2Query(
         '${olOrganizationId}',
         '${olUserId}',
         '${olMemberRole}',
-        ${olPersonId}
-
+        ${olPersonId},
+        '${olSupplierName}',
+        '${olSlug}'
       ) `;
 
   return queryString;

@@ -10,6 +10,10 @@ export function SupplierUpdateV2Query(
   const olUserId = dataJsonDto.pe_user_id;
   const olMemberRole = dataJsonDto.pe_member_role;
   const olPersonId = dataJsonDto.pe_person_id;
+  const olSupplierId = dataJsonDto.pe_supplier_id;
+  const olSupplier = dataJsonDto.pe_supplier;
+  const olNotes = dataJsonDto.pe_notes;
+  const olInactive = dataJsonDto.pe_inactive;
 
   const queryString = ` call sp_supplier_update_v2(
         ${olAppId},
@@ -18,7 +22,11 @@ export function SupplierUpdateV2Query(
         '${olOrganizationId}',
         '${olUserId}',
         '${olMemberRole}',
-        ${olPersonId}
+        ${olPersonId},
+        ${olSupplierId},
+        '${olSupplier}',
+        '${olNotes}',
+        ${olInactive}
 
       ) `;
 
