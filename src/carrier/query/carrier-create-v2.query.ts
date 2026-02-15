@@ -2,7 +2,7 @@ import { CarrierCreateV2Dto } from '../dto/carrier-create-v2.dto';
 import { v4 as UuidV4 } from 'uuid';
 
 export function CarrierCreateV2Query(dataJsonDto: CarrierCreateV2Dto): string {
-    const OlUuid = UuidV4();
+  const OlUuid = UuidV4();
   const olAppId = dataJsonDto.pe_app_id ?? 1;
   const olSystemClientId = dataJsonDto.pe_system_client_id;
   const olStoreId = dataJsonDto.pe_store_id;

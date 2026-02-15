@@ -66,11 +66,12 @@ Sample JSON for testing in body endpoint:
   "pe_member_role": "saller",
   "pe_user_id": "USER001",
   "pe_person_id": 29014,
-  "pe_id_type": 123,
-  "pe_type": "Electronics",
-  "pe_slug": "electronics",
-  "pe_notes": "Updated notes",
+  "pe_type_id": 30,
+  "pe_type": "Example Type",
+  "pe_slug": "example-type",
+  "pe_notes": "These are some notes about the type.",
   "pe_inactive": 0
+
 }
 
 */
