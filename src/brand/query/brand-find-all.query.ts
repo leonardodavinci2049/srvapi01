@@ -9,8 +9,8 @@ export function BrandFindAllQuery(dataJsonDto: BrandFindAllDto): string {
   const olUserId = dataJsonDto.pe_user_id;
   const olPersonId = dataJsonDto.pe_person_id;
 
-  const olIdMarca = dataJsonDto.pe_id_marca;
-  const olMarca = dataJsonDto.pe_marca;
+  const olIdMarca = dataJsonDto.pe_brand_id;
+  const olMarca = dataJsonDto.pe_brand;
   const olLimit = dataJsonDto.pe_limit;
 
   const queryString = ` call sp_brand_sel_all_v2(
@@ -23,7 +23,8 @@ export function BrandFindAllQuery(dataJsonDto: BrandFindAllDto): string {
         ${olPersonId},
         ${olIdMarca},
         '${olMarca}',
-        ${olLimit}
+        ${olLimit},  
+
 
 
       ) `;

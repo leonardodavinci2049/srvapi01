@@ -10,6 +10,7 @@ export function CheckIfTaxonomyNameExistsV3Query(
   const olUserId = dataJsonDto.pe_user_id;
   const olMemberRole = dataJsonDto.pe_member_role;
   const olPersonId = dataJsonDto.pe_person_id;
+  const olParentId = dataJsonDto.pe_parent_id;
   const olTerm = dataJsonDto.pe_term;
 
   const queryString = ` call sp_check_if_taxonomy_name_exists_v3(
@@ -20,6 +21,7 @@ export function CheckIfTaxonomyNameExistsV3Query(
         '${olUserId}',
         '${olMemberRole}',
         ${olPersonId},
+        ${olParentId},
         '${olTerm}'
 
       ) `;

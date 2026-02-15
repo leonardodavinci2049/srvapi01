@@ -34,9 +34,17 @@ export class CarrierUpdateV2Dto {
   @IsNumber()
   pe_person_id: number;
 
+  @ApiProperty({ description: 'Carrier ID' })
+  @IsNumber()
+  pe_carrier_id: number;
+
+  @ApiProperty({ description: 'Type Person ID' })
+  @IsNumber()
+  pe_type_person_id: number;
+
   @ApiProperty({ description: 'Name', maxLength: 300 })
   @IsString()
-  pe_name: string;
+  pe_carrier_name: string;
 
   @ApiProperty({ description: 'Phone', maxLength: 100 })
   @IsString()
@@ -90,18 +98,19 @@ Sample JSON for testing in body endpoint:
   "pe_member_role": "saller",
   "pe_user_id": "USER001",
   "pe_person_id": 29014,
-  "pe_name": "Carrier Name",
-  "pe_phone": "1234567890",
-  "pe_whatsapp": "1234567890",
+  "pe_carrier_id": 123,
+  "pe_type_person_id": 1,
+  "pe_carrier_name": "Carrier Name",
+  "pe_phone": "123456789",
+  "pe_whatsapp": "123456789",
   "pe_email": "test@example.com",
   "pe_website": "https://www.example.com",
   "pe_cnpj": "12.345.678/0001-90",
-  "pe_company_name": "Example Company Ltda",
-  "pe_responsible_name": "John Doe",
+  "pe_company_name": "Company Legal Name",
+  "pe_responsible_name": "Responsible Person Name",
   "pe_cpf": "123.456.789-00",
-  "pe_image_path": "/images/carrier-name.png",
-  "pe_notes": "Some notes about the carrier"
-
+  "pe_image_path": "/images/carrier.jpg",
+  "pe_notes": "Additional notes about the carrier"
 }
 
 */

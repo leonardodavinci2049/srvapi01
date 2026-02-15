@@ -38,9 +38,8 @@ export class BrandFindAllV2Dto {
   @IsNumber()
   pe_brand_id: number;
 
-  @ApiProperty({ description: 'Brand', maxLength: 100 })
+  @ApiProperty({ description: 'Brand', maxLength: 200 })
   @IsString()
-  @IsNotEmpty()
   pe_brand: string;
 
   @ApiProperty({ description: 'Limit' })
