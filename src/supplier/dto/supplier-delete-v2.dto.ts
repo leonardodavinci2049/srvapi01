@@ -1,7 +1,7 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IsString, IsNotEmpty, IsNumber } from 'class-validator';
 
-export class BrandDeleteV2Dto {
+export class SupplierDeleteV2Dto {
   @ApiProperty({ description: 'App ID' })
   @IsNumber()
   @IsNotEmpty()
@@ -34,9 +34,9 @@ export class BrandDeleteV2Dto {
   @IsNumber()
   pe_person_id: number;
 
-  @ApiProperty({ description: 'Brand ID' })
+  @ApiProperty({ description: 'Supplier ID' })
   @IsNumber()
-  pe_brand_id: number;
+  pe_id_supplier: number;
 }
 
 /*
@@ -50,7 +50,7 @@ Sample JSON for testing in body endpoint:
   "pe_member_role": "saller",
   "pe_user_id": "USER001",
   "pe_person_id": 29014,
-  "pe_brand_id": 123
+  "pe_id_supplier": 123
 
 }
 
