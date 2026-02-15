@@ -8,6 +8,8 @@ export function TypeCreateV2Query(dataJsonDto: TypeCreateV2Dto): string {
   const olUserId = dataJsonDto.pe_user_id;
   const olMemberRole = dataJsonDto.pe_member_role;
   const olPersonId = dataJsonDto.pe_person_id;
+  const olType = dataJsonDto.pe_type;
+  const olSlug = dataJsonDto.pe_slug;
 
   const queryString = ` call sp_type_create_v2(
         ${olAppId},
@@ -16,8 +18,9 @@ export function TypeCreateV2Query(dataJsonDto: TypeCreateV2Dto): string {
         '${olOrganizationId}',
         '${olUserId}',
         '${olMemberRole}',
-        ${olPersonId}
-
+        ${olPersonId},
+        '${olType}',
+        '${olSlug}'
       ) `;
 
   return queryString;

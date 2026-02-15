@@ -36,7 +36,7 @@ export class SupplierRelFindProdAllV2Dto {
 
   @ApiProperty({ description: 'Supplier ID' })
   @IsNumber()
-  pe_id_supplier: number;
+  pe_supplier_id: number;
 
   @ApiProperty({ description: 'Supplier', maxLength: 200 })
   @IsString()
@@ -44,7 +44,7 @@ export class SupplierRelFindProdAllV2Dto {
 
   @ApiProperty({ description: 'Product ID' })
   @IsNumber()
-  pe_id_product: number;
+  pe_product_id: number;
 
   @ApiProperty({ description: 'Product', maxLength: 300 })
   @IsString()
@@ -66,12 +66,11 @@ Sample JSON for testing in body endpoint:
   "pe_member_role": "saller",
   "pe_user_id": "USER001",
   "pe_person_id": 29014,
-  "pe_id_supplier": 123,
+  "pe_supplier_id": 123,
   "pe_supplier": "Supplier Name",
-  "pe_id_product": 456,
+  "pe_product_id": 456,
   "pe_product": "Product Name",
   "pe_limit": 10
-
 }
 
 */

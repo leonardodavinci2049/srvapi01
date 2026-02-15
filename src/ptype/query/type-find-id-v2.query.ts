@@ -8,6 +8,7 @@ export function TypeFindIdV2Query(dataJsonDto: TypeFindIdV2Dto): string {
   const olUserId = dataJsonDto.pe_user_id;
   const olMemberRole = dataJsonDto.pe_member_role;
   const olPersonId = dataJsonDto.pe_person_id;
+  const olTypeId = dataJsonDto.pe_type_id;
 
   const queryString = ` call sp_type_find_id_v2(
         ${olAppId},
@@ -16,7 +17,8 @@ export function TypeFindIdV2Query(dataJsonDto: TypeFindIdV2Dto): string {
         '${olOrganizationId}',
         '${olUserId}',
         '${olMemberRole}',
-        ${olPersonId}
+        ${olPersonId},
+        ${olTypeId}
 
       ) `;
 

@@ -10,6 +10,11 @@ export function SupplierRelFindProdAllV2Query(
   const olUserId = dataJsonDto.pe_user_id;
   const olMemberRole = dataJsonDto.pe_member_role;
   const olPersonId = dataJsonDto.pe_person_id;
+  const olSupplierId = dataJsonDto.pe_supplier_id;
+  const olProductId = dataJsonDto.pe_product_id;
+  const olSupplier = dataJsonDto.pe_supplier;
+  const olProduct = dataJsonDto.pe_product;
+  const olLimit = dataJsonDto.pe_limit;
 
   const queryString = ` call sp_supplier_rel_find_prod_all_v2(
         ${olAppId},
@@ -18,8 +23,12 @@ export function SupplierRelFindProdAllV2Query(
         '${olOrganizationId}',
         '${olUserId}',
         '${olMemberRole}',
-        ${olPersonId}
-
+        ${olPersonId},
+        ${olSupplierId},
+        ${olProductId},
+        '${olSupplier}',
+        '${olProduct}',
+        ${olLimit}
       ) `;
 
   return queryString;

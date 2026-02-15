@@ -36,7 +36,7 @@ export class TypeFindAllV2Dto {
 
   @ApiProperty({ description: 'Type ID' })
   @IsNumber()
-  pe_id_type: number;
+  pe_type_id: number;
 
   @ApiProperty({ description: 'Type', maxLength: 100 })
   @IsString()
@@ -58,7 +58,7 @@ Sample JSON for testing in body endpoint:
   "pe_member_role": "saller",
   "pe_user_id": "USER001",
   "pe_person_id": 29014,
-  "pe_id_type": 123,
+  "pe_type_id": 123,
   "pe_type": "Electronics",
   "pe_limit": 10
 

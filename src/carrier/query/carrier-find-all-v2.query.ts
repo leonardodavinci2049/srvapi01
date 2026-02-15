@@ -10,6 +10,9 @@ export function CarrierFindAllV2Query(
   const olUserId = dataJsonDto.pe_user_id;
   const olMemberRole = dataJsonDto.pe_member_role;
   const olPersonId = dataJsonDto.pe_person_id;
+  const olCarrierId = dataJsonDto.pe_carrier_id;
+  const olName = dataJsonDto.pe_name;
+  const olLimit = dataJsonDto.pe_limit;
 
   const queryString = ` call sp_carrier_find_all_v2(
         ${olAppId},
@@ -18,8 +21,10 @@ export function CarrierFindAllV2Query(
         '${olOrganizationId}',
         '${olUserId}',
         '${olMemberRole}',
-        ${olPersonId}
-
+        ${olPersonId},
+        ${olCarrierId},
+        '${olName}',
+        ${olLimit}
       ) `;
 
   return queryString;

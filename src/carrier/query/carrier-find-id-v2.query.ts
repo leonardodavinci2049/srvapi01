@@ -8,6 +8,7 @@ export function CarrierFindIdV2Query(dataJsonDto: CarrierFindIdV2Dto): string {
   const olUserId = dataJsonDto.pe_user_id;
   const olMemberRole = dataJsonDto.pe_member_role;
   const olPersonId = dataJsonDto.pe_person_id;
+  const olCarrierId = dataJsonDto.pe_carrier_id;
 
   const queryString = ` call sp_carrier_find_id_v2(
         ${olAppId},
@@ -16,7 +17,8 @@ export function CarrierFindIdV2Query(dataJsonDto: CarrierFindIdV2Dto): string {
         '${olOrganizationId}',
         '${olUserId}',
         '${olMemberRole}',
-        ${olPersonId}
+        ${olPersonId},
+        ${olCarrierId}
 
       ) `;
 

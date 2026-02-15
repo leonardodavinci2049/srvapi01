@@ -8,6 +8,11 @@ export function TypeUpdateV2Query(dataJsonDto: TypeUpdateV2Dto): string {
   const olUserId = dataJsonDto.pe_user_id;
   const olMemberRole = dataJsonDto.pe_member_role;
   const olPersonId = dataJsonDto.pe_person_id;
+  const olTypeId = dataJsonDto.pe_type_id;
+  const olType = dataJsonDto.pe_type;
+  const olSlug = dataJsonDto.pe_slug;
+  const olNotes = dataJsonDto.pe_notes;
+  const olInactive = dataJsonDto.pe_inactive;
 
   const queryString = ` call sp_type_update_v2(
         ${olAppId},
@@ -16,8 +21,12 @@ export function TypeUpdateV2Query(dataJsonDto: TypeUpdateV2Dto): string {
         '${olOrganizationId}',
         '${olUserId}',
         '${olMemberRole}',
-        ${olPersonId}
-
+        ${olPersonId},
+        ${olTypeId},
+        '${olType}',
+        '${olSlug}',
+        '${olNotes}',
+        ${olInactive}
       ) `;
 
   return queryString;

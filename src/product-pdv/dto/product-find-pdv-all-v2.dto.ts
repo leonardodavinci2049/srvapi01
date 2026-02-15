@@ -36,7 +36,7 @@ export class ProductFindPdvAllV2Dto {
 
   @ApiProperty({ description: 'Product ID' })
   @IsNumber()
-  pe_id_product: number;
+  pe_product_id: number;
 
   @ApiProperty({ description: 'Product name', maxLength: 300 })
   @IsString()
@@ -44,15 +44,15 @@ export class ProductFindPdvAllV2Dto {
 
   @ApiProperty({ description: 'Taxonomy ID' })
   @IsNumber()
-  pe_id_taxonomy: number;
+  pe_taxonomy_id: number;
 
   @ApiProperty({ description: 'Type ID' })
   @IsNumber()
-  pe_id_type: number;
+  pe_type_id: number;
 
   @ApiProperty({ description: 'Brand ID' })
   @IsNumber()
-  pe_id_brand: number;
+  pe_brand_id: number;
 
   @ApiProperty({ description: 'Stock flag' })
   @IsNumber()
@@ -64,7 +64,7 @@ export class ProductFindPdvAllV2Dto {
 
   @ApiProperty({ description: 'Record quantity' })
   @IsNumber()
-  pe_qt_records: number;
+  pe_records_quantity: number;
 
   @ApiProperty({ description: 'Page ID' })
   @IsNumber()
@@ -90,18 +90,17 @@ Sample JSON for testing in body endpoint:
   "pe_member_role": "saller",
   "pe_user_id": "USER001",
   "pe_person_id": 29014,
-  "pe_id_product": 123,
-  "pe_product": "Product Name",
-  "pe_id_taxonomy": 10,
-  "pe_id_type": 5,
-  "pe_id_brand": 2,
+  "pe_product_id": 1,
+  "pe_product": "Product A",
+  "pe_taxonomy_id": 10,
+  "pe_type_id": 20,
+  "pe_brand_id": 30,
   "pe_flag_stock": 1,
-  "pe_flag_service": 0,
-  "pe_qt_records": 50,
+  "pe_flag_service": 0,     
+  "pe_records_quantity": 100,
   "pe_page_id": 1,
-  "pe_column_id": 10,
+  "pe_column_id": 1,
   "pe_order_id": 1
-
-}
+  }
 
 */
