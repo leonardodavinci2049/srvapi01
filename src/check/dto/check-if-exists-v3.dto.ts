@@ -1,5 +1,11 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsString, IsNotEmpty, IsNumber, MinLength } from 'class-validator';
+import {
+  IsString,
+  IsNotEmpty,
+  IsNumber,
+  MinLength,
+  IsOptional,
+} from 'class-validator';
 
 export class CheckIfExistsV3Dto {
   @ApiProperty({ description: 'App ID' })
@@ -35,9 +41,32 @@ export class CheckIfExistsV3Dto {
   @IsNumber()
   pe_person_id: number;
 
+  @ApiProperty({ description: 'Parent ID' })
+  @IsNumber()
+  @IsOptional()
+  pe_parent_id: number;
+
   @ApiProperty({ description: 'Search term', minLength: 3 })
   @IsString({ message: 'TERMO must be a valid string' })
   @IsNotEmpty()
   @MinLength(3, { message: 'TERMO must have at least 3 characters' })
   pe_term: string;
 }
+
+/*
+Sample JSON for testing in body endpoint:
+
+{
+  "pe_app_id": 1,
+  "pe_system_client_id": 1,
+  "pe_store_id": 3,
+  "pe_organization_id": "ORG001",
+  "pe_member_role": "saller",
+  "pe_user_id": "USER001",
+  "pe_person_id": 29014,
+  "pe_parent_id": 12345,
+  "pe_term": "example search term"   
+
+}
+
+*/

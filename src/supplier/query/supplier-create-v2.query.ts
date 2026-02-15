@@ -1,8 +1,11 @@
 import { SupplierCreateV2Dto } from '../dto/supplier-create-v2.dto';
+import { v4 as UuidV4 } from 'uuid';
 
+// 36960
 export function SupplierCreateV2Query(
   dataJsonDto: SupplierCreateV2Dto,
 ): string {
+  const OlUuid = UuidV4();
   const olAppId = dataJsonDto.pe_app_id ?? 1;
   const olSystemClientId = dataJsonDto.pe_system_client_id;
   const olStoreId = dataJsonDto.pe_store_id;
@@ -14,6 +17,7 @@ export function SupplierCreateV2Query(
   const olSlug = dataJsonDto.pe_slug;
 
   const queryString = ` call sp_supplier_create_v2(
+        '${OlUuid}',
         ${olAppId},
         ${olSystemClientId},
         ${olStoreId},

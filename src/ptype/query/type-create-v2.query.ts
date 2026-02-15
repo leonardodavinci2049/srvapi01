@@ -1,6 +1,8 @@
 import { TypeCreateV2Dto } from '../dto/type-create-v2.dto';
+import { v4 as UuidV4 } from 'uuid';
 
 export function TypeCreateV2Query(dataJsonDto: TypeCreateV2Dto): string {
+  const OlUuid = UuidV4();
   const olAppId = dataJsonDto.pe_app_id ?? 1;
   const olSystemClientId = dataJsonDto.pe_system_client_id;
   const olStoreId = dataJsonDto.pe_store_id;
@@ -12,6 +14,7 @@ export function TypeCreateV2Query(dataJsonDto: TypeCreateV2Dto): string {
   const olSlug = dataJsonDto.pe_slug;
 
   const queryString = ` call sp_type_create_v2(
+        '${OlUuid}',
         ${olAppId},
         ${olSystemClientId},
         ${olStoreId},

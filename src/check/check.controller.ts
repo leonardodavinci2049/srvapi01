@@ -26,8 +26,8 @@ export class CheckController {
   // https://wserpapp01.comsuporte.com.br/api/check
   @UseGuards(AuthGuard)
   @Post('v3/check-if-email-exists')
-  checkIfCnpjExistsV3(@Body() dataJsonDto: CheckIfExistsV3Dto) {
-    return this.checkService.taskCheckIfCnpjExistsV3(dataJsonDto);
+  checkIfEmailExistsV3(@Body() dataJsonDto: CheckIfExistsV3Dto) {
+    return this.checkService.taskCheckIfEmailExistsV3(dataJsonDto);
   }
 
   @UseGuards(AuthGuard)
@@ -37,9 +37,9 @@ export class CheckController {
   }
 
   @UseGuards(AuthGuard)
-  @Post('v3/check-if-email-exists')
-  checkIfEmailExistsV3(@Body() dataJsonDto: CheckIfExistsV3Dto) {
-    return this.checkService.taskCheckIfEmailExistsV3(dataJsonDto);
+  @Post('v3/check-if-cnpj-exists')
+  checkIfCnpjExistsV3(@Body() dataJsonDto: CheckIfExistsV3Dto) {
+    return this.checkService.taskCheckIfCnpjExistsV3(dataJsonDto);
   }
 
   @UseGuards(AuthGuard)

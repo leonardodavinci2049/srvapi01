@@ -25,6 +25,8 @@ import { OrderSalesModule } from 'src/order-sales/order-sales.module';
 import { OrderUpdModule } from 'src/order-upd/order-upd.module';
 import { CustomerInlineModule } from 'src/customer-inline/customer-inline.module';
 import { CustomerUpdModule } from 'src/customer-upd/customer-upd.module';
+import { CarrierModule } from 'src/carrier/carrier.module';
+import { ProductPdvModule } from 'src/product-pdv/product-pdv.module';
 
 @Module({
   imports: [
@@ -38,6 +40,7 @@ import { CustomerUpdModule } from 'src/customer-upd/customer-upd.module';
     }),
 
     ProductModule, // Importando o módulo de produtos
+    ProductPdvModule, // Importando o módulo de produtos para PDV
     CartModule, // Importando o módulo de carrinho
     CustomerModule, // Importando o módulo de clientes
     CustomerInlineModule, // Importando o módulo de atualização inline de clientes
@@ -46,6 +49,7 @@ import { CustomerUpdModule } from 'src/customer-upd/customer-upd.module';
     AccountModule,
     CheckModule,
     BrandModule,
+    CarrierModule,
     PtypeModule,
     SupplierModule,
     OrderItemsModule,
