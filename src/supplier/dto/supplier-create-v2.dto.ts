@@ -36,7 +36,7 @@ export class SupplierCreateV2Dto {
 
   @ApiProperty({ description: 'Supplier', maxLength: 100 })
   @IsString()
-  pe_supplier: string;
+  pe_supplier_name: string;
 
   @ApiProperty({ description: 'Slug', maxLength: 300 })
   @IsString()
@@ -54,7 +54,7 @@ Sample JSON for testing in body endpoint:
   "pe_member_role": "saller",
   "pe_user_id": "USER001",
   "pe_person_id": 29014,
-  "pe_supplier": "Supplier Name",
+  "pe_supplier_name": "Supplier Name",
   "pe_slug": "supplier-name"
 
 }

@@ -36,7 +36,7 @@ export class SupplierUpdateV2Dto {
 
   @ApiProperty({ description: 'Supplier ID' })
   @IsNumber()
-  pe_id_supplier: number;
+  pe_supplier_id: number;
 
   @ApiProperty({ description: 'Supplier', maxLength: 100 })
   @IsString()
@@ -62,11 +62,10 @@ Sample JSON for testing in body endpoint:
   "pe_member_role": "saller",
   "pe_user_id": "USER001",
   "pe_person_id": 29014,
-  "pe_id_supplier": 123,
-  "pe_supplier": "Supplier Name",
+  "pe_supplier_id": 123,
+  "pe_supplier": "Updated Supplier Name",
   "pe_notes": "Some notes about the supplier",
   "pe_inactive": 0
-
 }
 
 */

@@ -10,6 +10,7 @@ export function SupplierDeleteV2Query(
   const olUserId = dataJsonDto.pe_user_id;
   const olMemberRole = dataJsonDto.pe_member_role;
   const olPersonId = dataJsonDto.pe_person_id;
+  const olSupplierId = dataJsonDto.pe_supplier_id;
 
   const queryString = ` call sp_supplier_delete_v2(
         ${olAppId},
@@ -18,8 +19,8 @@ export function SupplierDeleteV2Query(
         '${olOrganizationId}',
         '${olUserId}',
         '${olMemberRole}',
-        ${olPersonId}
-
+        ${olPersonId},
+          ${olSupplierId}
       ) `;
 
   return queryString;

@@ -8,6 +8,7 @@ export function CarrierDeleteV2Query(dataJsonDto: CarrierDeleteV2Dto): string {
   const olUserId = dataJsonDto.pe_user_id;
   const olMemberRole = dataJsonDto.pe_member_role;
   const olPersonId = dataJsonDto.pe_person_id;
+  const olCarrierId = dataJsonDto.pe_carrier_id;
 
   const queryString = ` call sp_carrier_delete_v2(
         ${olAppId},
@@ -16,8 +17,8 @@ export function CarrierDeleteV2Query(dataJsonDto: CarrierDeleteV2Dto): string {
         '${olOrganizationId}',
         '${olUserId}',
         '${olMemberRole}',
-        ${olPersonId}
-
+        ${olPersonId},
+        ${olCarrierId}
       ) `;
 
   return queryString;

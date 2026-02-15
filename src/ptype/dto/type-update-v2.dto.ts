@@ -36,7 +36,7 @@ export class TypeUpdateV2Dto {
 
   @ApiProperty({ description: 'Type ID' })
   @IsNumber()
-  pe_id_type: number;
+  pe_type_id: number;
 
   @ApiProperty({ description: 'Type', maxLength: 100 })
   @IsString()

@@ -10,6 +10,7 @@ export function ProductFindPdvIdV2Query(
   const olUserId = dataJsonDto.pe_user_id;
   const olMemberRole = dataJsonDto.pe_member_role;
   const olPersonId = dataJsonDto.pe_person_id;
+  const olProductId = dataJsonDto.pe_product_id;
 
   const queryString = ` call sp_product_find_pdv_id_v2(
         ${olAppId},
@@ -18,8 +19,8 @@ export function ProductFindPdvIdV2Query(
         '${olOrganizationId}',
         '${olUserId}',
         '${olMemberRole}',
-        ${olPersonId}
-
+        ${olPersonId},
+        ${olProductId}
       ) `;
 
   return queryString;

@@ -8,6 +8,9 @@ export function TypeFindAllV2Query(dataJsonDto: TypeFindAllV2Dto): string {
   const olUserId = dataJsonDto.pe_user_id;
   const olMemberRole = dataJsonDto.pe_member_role;
   const olPersonId = dataJsonDto.pe_person_id;
+  const olTypeId = dataJsonDto.pe_type_id;
+  const olType = dataJsonDto.pe_type;
+  const olLimit = dataJsonDto.pe_limit;
 
   const queryString = ` call sp_type_find_all_v2(
         ${olAppId},
@@ -16,8 +19,10 @@ export function TypeFindAllV2Query(dataJsonDto: TypeFindAllV2Dto): string {
         '${olOrganizationId}',
         '${olUserId}',
         '${olMemberRole}',
-        ${olPersonId}
-
+        ${olPersonId},
+        ${olTypeId},
+        '${olType}',
+        ${olLimit}
       ) `;
 
   return queryString;
