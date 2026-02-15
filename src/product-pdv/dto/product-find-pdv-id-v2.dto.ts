@@ -36,7 +36,7 @@ export class ProductFindPdvIdV2Dto {
 
   @ApiProperty({ description: 'Product ID' })
   @IsNumber()
-  pe_id_product: number;
+  pe_product_id: number;
 }
 
 /*
@@ -50,7 +50,7 @@ Sample JSON for testing in body endpoint:
   "pe_member_role": "saller",
   "pe_user_id": "USER001",
   "pe_person_id": 29014,
-  "pe_id_product": 1
+  "pe_product_id": 1
 
 }
 
