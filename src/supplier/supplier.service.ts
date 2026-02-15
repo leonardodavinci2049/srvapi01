@@ -1,11 +1,8 @@
 import { Injectable } from '@nestjs/common';
 
-import { resultQueryData } from 'src/core/utils/globalResult/global.result';
 import { ResultModel } from 'src/core/utils/result.model';
 import { MESSAGES } from 'src/core/utils/constants/globalConstants';
 
-import { SupplierFindAllDto } from './dto/supplier-find-all.dto';
-import { SupplierFindAllQuery } from './query/supplier-find-all.query';
 import {
   SpResultRecordCreateType,
   SpResultRecordDeleteType,
@@ -31,6 +28,8 @@ import { SupplierRelFindProdAllV2Query } from './query/supplier-rel-find-prod-al
 import { SupplierFindIdV2Query } from './query/supplier-find-id-v2.query';
 import { SupplierUpdateV2Query } from './query/supplier-update-v2.query';
 import { SupplierRelDeleteV2Query } from './query/supplier-rel-delete-v2.query';
+import { SupplierDeleteV2Query } from './query/supplier-delete-v2.query';
+import { SupplierDeleteV2Dto } from './dto/supplier-delete-v2.dto';
 
 @Injectable()
 export class SupplierService {
@@ -172,37 +171,17 @@ export class SupplierService {
     }
   }
 
-  async tskBrandFindV2(dataJsonDto: SupplierFindAllDto) {
+  async taskSupplierDeleteV2(dataJsonDto: SupplierDeleteV2Dto) {
     try {
-      const queryString = SupplierFindAllQuery(dataJsonDto);
+      const queryString = SupplierDeleteV2Query(dataJsonDto);
 
       const resultData = (await this.dbService.selectExecute(
         queryString,
-      )) as unknown as SpResultSupplierFindAllData;
+      )) as unknown as SpResultRecordDeleteType;
 
-      const tblRecords = resultData[0];
-
-      const qtRecords: number = tblRecords.length;
-
-      const tblRecord = tblRecords[0] || 0;
-
-      const recordId: number = tblRecord?.ID_FORNECEDOR ?? 0;
-
-      const DefaultFeedback = resultData[1];
-      const errorId: number = DefaultFeedback[0]?.sp_error_id ?? 0;
-      let Feedback = DefaultFeedback[0]?.sp_message || '';
-
-      if (qtRecords === 0 && errorId === 0) {
-        Feedback = 'Product not found';
-      }
-      return resultQueryData<SpResultSupplierFindAllData>(
-        0,
-        recordId,
-        errorId,
-        Feedback,
-        resultData,
-        qtRecords,
-        '',
+      return processProcedureResultMutation(
+        resultData as unknown[],
+        'Supplier delete failed',
       );
     } catch (err) {
       const errorMessage =
