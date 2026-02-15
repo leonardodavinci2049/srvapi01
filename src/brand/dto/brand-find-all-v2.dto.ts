@@ -36,12 +36,12 @@ export class BrandFindAllV2Dto {
 
   @ApiProperty({ description: 'Brand ID' })
   @IsNumber()
-  pe_id_marca: number;
+  pe_brand_id: number;
 
   @ApiProperty({ description: 'Brand', maxLength: 100 })
   @IsString()
   @IsNotEmpty()
-  pe_marca: string;
+  pe_brand: string;
 
   @ApiProperty({ description: 'Limit' })
   @IsNumber()
@@ -59,8 +59,8 @@ Sample JSON for testing in body endpoint:
   "pe_member_role": "saller",
   "pe_user_id": "USER001",
   "pe_person_id": 29014,
-  "pe_id_marca": 123,
-  "pe_marca": "Brand Name",
+  "pe_brand_id": 123,
+  "pe_brand": "Brand Name",
   "pe_limit": 10
 
 }

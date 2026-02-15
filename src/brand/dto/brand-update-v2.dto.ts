@@ -36,11 +36,11 @@ export class BrandUpdateV2Dto {
 
   @ApiProperty({ description: 'Brand ID' })
   @IsNumber()
-  pe_id_marca: number;
+  pe_brand_id: number;
 
   @ApiProperty({ description: 'Brand', maxLength: 100 })
   @IsString()
-  pe_marca: string;
+  pe_brand: string;
 
   @ApiProperty({ description: 'Slug', maxLength: 100 })
   @IsString()
@@ -48,15 +48,15 @@ export class BrandUpdateV2Dto {
 
   @ApiProperty({ description: 'Image Path', maxLength: 500 })
   @IsString()
-  pe_path_imagem: string;
+  pe_image_path: string;
 
   @ApiProperty({ description: 'Notes' })
   @IsString()
-  pe_anotacoes: string;
+  pe_notes: string;
 
   @ApiProperty({ description: 'Inactive' })
   @IsNumber()
-  pe_inativo: number;
+  pe_inactive: number;
 }
 
 /*
@@ -70,12 +70,12 @@ Sample JSON for testing in body endpoint:
   "pe_member_role": "saller",
   "pe_user_id": "USER001",
   "pe_person_id": 29014,
-  "pe_id_marca": 123,
-  "pe_marca": "Brand Name",   
+  "pe_brand_id": 123,
+  "pe_brand": "Brand Name",   
   "pe_slug": "brand-name",
-  "pe_path_imagem": "/images/brand-name.png",
-  "pe_anotacoes": "Some notes about the brand",
-  "pe_inativo": 0
+  "pe_image_path": "/images/brand-name.png",
+  "pe_notes": "Some notes about the brand",
+  "pe_inactive": 0
 
 }
 

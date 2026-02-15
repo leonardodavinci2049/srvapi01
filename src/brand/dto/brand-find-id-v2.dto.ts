@@ -36,7 +36,7 @@ export class BrandFindIdV2Dto {
 
   @ApiProperty({ description: 'Brand ID' })
   @IsNumber()
-  pe_id_marca: number;
+  pe_brand_id: number;
 }
 
 /*
@@ -50,7 +50,7 @@ Sample JSON for testing in body endpoint:
   "pe_member_role": "saller",
   "pe_user_id": "USER001",
   "pe_person_id": 29014,
-  "pe_id_marca": 123
+  "pe_brand_id": 123
 
 }
 

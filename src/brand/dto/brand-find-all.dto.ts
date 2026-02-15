@@ -40,12 +40,12 @@ export class BrandFindAllDto {
   @IsNumber()
   @IsOptional()
   @Type(() => Number)
-  pe_id_marca?: number;
+  pe_brand_id?: number;
 
   @ApiProperty({ description: 'Brand name', maxLength: 100, required: false })
   @IsString()
   @IsOptional()
-  pe_marca?: string;
+  pe_brand?: string;
 
   @ApiProperty({ description: 'Result limit', required: false })
   @IsNumber()
@@ -64,8 +64,8 @@ Sample JSON for testing:
   "pe_member_id": "MBR_67890",
   "pe_user_id": "USR_54321",
   "pe_person_id": 999,
-  "pe_id_marca": 15,
-  "pe_marca": "Brand XYZ",
+  "pe_brand_id": 15,
+  "pe_brand": "Brand XYZ",
   "pe_limit": 100
 }
 */

@@ -37,7 +37,7 @@ export class BrandCreateV2Dto {
   @ApiProperty({ description: 'Brand', maxLength: 100 })
   @IsString()
   @IsNotEmpty()
-  pe_marca: string;
+  pe_brand: string;
 
   @ApiProperty({ description: 'Slug', maxLength: 300 })
   @IsString()
@@ -56,7 +56,7 @@ Sample JSON for testing in body endpoint:
   "pe_member_role": "saller",
   "pe_user_id": "USER001",
   "pe_person_id": 29014,
-  "pe_marca": "Brand Name",
+  "pe_brand": "Brand Name",
   "pe_slug": "brand-name"
 
 }
