@@ -1,6 +1,8 @@
 import { BrandCreateV2Dto } from '../dto/brand-create-v2.dto';
+import { v4 as UuidV4 } from 'uuid';
 
 export function BrandCreateV2Query(dataJsonDto: BrandCreateV2Dto): string {
+  const OlUuid = UuidV4();
   const olAppId = dataJsonDto.pe_app_id ?? 1;
   const olSystemClientId = dataJsonDto.pe_system_client_id;
   const olStoreId = dataJsonDto.pe_store_id;
@@ -12,6 +14,7 @@ export function BrandCreateV2Query(dataJsonDto: BrandCreateV2Dto): string {
   const olSlug = dataJsonDto.pe_slug;
 
   const queryString = ` call sp_brand_create_v2(
+        '${OlUuid}',
         ${olAppId},
         ${olSystemClientId},
         ${olStoreId},
@@ -21,7 +24,6 @@ export function BrandCreateV2Query(dataJsonDto: BrandCreateV2Dto): string {
         ${olPersonId},
         '${olBrand}',
         '${olSlug}'
-
       ) `;
 
   return queryString;

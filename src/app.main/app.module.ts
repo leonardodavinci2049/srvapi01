@@ -25,6 +25,7 @@ import { OrderSalesModule } from 'src/order-sales/order-sales.module';
 import { OrderUpdModule } from 'src/order-upd/order-upd.module';
 import { CustomerInlineModule } from 'src/customer-inline/customer-inline.module';
 import { CustomerUpdModule } from 'src/customer-upd/customer-upd.module';
+import { CarrierModule } from 'src/carrier/carrier.module';
 
 @Module({
   imports: [
@@ -46,6 +47,7 @@ import { CustomerUpdModule } from 'src/customer-upd/customer-upd.module';
     AccountModule,
     CheckModule,
     BrandModule,
+    CarrierModule,
     PtypeModule,
     SupplierModule,
     OrderItemsModule,

@@ -8,8 +8,10 @@ export function BrandFindAllV2Query(dataJsonDto: BrandFindAllV2Dto): string {
   const olUserId = dataJsonDto.pe_user_id;
   const olMemberRole = dataJsonDto.pe_member_role;
   const olPersonId = dataJsonDto.pe_person_id;
+
   const olBrandId = dataJsonDto.pe_brand_id;
   const olBrand = dataJsonDto.pe_brand;
+  const olLimit = dataJsonDto.pe_limit;
 
   const queryString = ` call sp_brand_find_all_v2(
         ${olAppId},
@@ -20,8 +22,8 @@ export function BrandFindAllV2Query(dataJsonDto: BrandFindAllV2Dto): string {
         '${olMemberRole}',
         ${olPersonId},
         ${olBrandId},
-        '${olBrand}'
-      ) `;
+        '${olBrand}',
+        ${olLimit}      ) `;
 
   return queryString;
 }
