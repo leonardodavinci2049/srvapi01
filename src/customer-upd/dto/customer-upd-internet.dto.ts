@@ -66,7 +66,6 @@ export class CustomerUpdInternetDto {
   @ApiProperty({ description: 'Telegram', maxLength: 500 })
   @IsString()
   pe_telegram: string;
-
 }
 
 /*

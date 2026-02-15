@@ -21,13 +21,24 @@ export type SpResultRecordCreateType = [SpDefaultFeedback[], SpOperationResult];
 export type SpResultRecordUpdateType = [SpDefaultFeedback[], SpOperationResult];
 export type SpResultRecordDeleteType = [SpDefaultFeedback[], SpOperationResult];
 
-export interface TblPTypeFindALL extends RowDataPacket {
+export interface TblCarrierFindALL extends RowDataPacket {
   ID_TIPO: number;
   TIPO: string;
 }
 
-export type SpResultPTypeFindAllData = [
-  TblPTypeFindALL[],
+export type SpResultCarrierFindAllData = [
+  TblCarrierFindALL[],
+  SpDefaultFeedback[],
+  SpOperationResult,
+];
+
+export interface TblCarrierFindId extends RowDataPacket {
+  ID_TIPO: number;
+  TIPO: string;
+}
+
+export type SpResultCarrierFindIdData = [
+  TblCarrierFindId[],
   SpDefaultFeedback[],
   SpOperationResult,
 ];

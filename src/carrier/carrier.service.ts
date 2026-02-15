@@ -11,7 +11,8 @@ import { CarrierUpdateV2Dto } from './dto/carrier-update-v2.dto';
 import { CarrierDeleteV2Dto } from './dto/carrier-delete-v2.dto';
 import { CarrierCreateV2Query } from './query/carrier-create-v2.query';
 import {
-  SpResultPTypeFindAllData,
+  SpResultCarrierFindAllData,
+  SpResultCarrierFindIdData,
   SpResultRecordCreateType,
   SpResultRecordDeleteType,
   SpResultRecordUpdateType,
@@ -54,7 +55,7 @@ export class CarrierService {
 
       const resultData = (await this.dbService.selectExecute(
         queryString,
-      )) as unknown as SpResultPTypeFindAllData;
+      )) as unknown as SpResultCarrierFindAllData;
 
       return processProcedureResultMultiQuery(
         resultData as unknown[],
@@ -74,7 +75,7 @@ export class CarrierService {
 
       const resultData = (await this.dbService.selectExecute(
         queryString,
-      )) as unknown as SpResultPTypeFindAllData;
+      )) as unknown as SpResultCarrierFindIdData;
 
       return processProcedureResultMultiQuery(
         resultData as unknown[],
