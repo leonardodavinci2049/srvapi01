@@ -33,4 +33,9 @@ export class CarrierDeleteV2Dto {
   @ApiProperty({ description: 'Person ID' })
   @IsNumber()
   pe_person_id: number;
+
+  @ApiProperty({ description: 'Carrier ID' })
+  @IsNumber()
+  @IsNotEmpty()
+  pe_carrier_id: number;
 }
