@@ -3,6 +3,7 @@ import { CheckService } from './check.service';
 
 import { AuthGuard } from 'src/core/guards/auth.guard';
 import { CheckIfExistsDto } from './dto/check-if-exists.dto';
+import { CheckIfExistsV3Dto } from './dto/check-if-exists-v3.dto';
 
 @Controller('check')
 export class CheckController {
@@ -22,9 +23,51 @@ export class CheckController {
       },
     };
   }
-  // https://wserpapp01.comsuporte.com.br/api/cart
+  // https://wserpapp01.comsuporte.com.br/api/check
+  @UseGuards(AuthGuard)
+  @Post('v3/check-if-email-exists')
+  checkIfCnpjExistsV3(@Body() dataJsonDto: CheckIfExistsV3Dto) {
+    return this.checkService.taskCheckIfCnpjExistsV3(dataJsonDto);
+  }
 
-  // -- dasbord  ---
+  @UseGuards(AuthGuard)
+  @Post('v3/check-if-cpf-exists')
+  checkIfCpfExistsV3(@Body() dataJsonDto: CheckIfExistsV3Dto) {
+    return this.checkService.taskCheckIfCpfExistsV3(dataJsonDto);
+  }
+
+  @UseGuards(AuthGuard)
+  @Post('v3/check-if-email-exists')
+  checkIfEmailExistsV3(@Body() dataJsonDto: CheckIfExistsV3Dto) {
+    return this.checkService.taskCheckIfEmailExistsV3(dataJsonDto);
+  }
+
+  @UseGuards(AuthGuard)
+  @Post('v3/check-if-product-name-exists')
+  checkIfProductNameExistV3(@Body() dataJsonDto: CheckIfExistsV3Dto) {
+    return this.checkService.taskCheckIfProductNameExistV3(dataJsonDto);
+  }
+
+  @UseGuards(AuthGuard)
+  @Post('v3/check-if-product-slug-exists')
+  checkIfProductSlugExistV3(@Body() dataJsonDto: CheckIfExistsV3Dto) {
+    return this.checkService.taskCheckIfProductSlugExistV3(dataJsonDto);
+  }
+
+  @UseGuards(AuthGuard)
+  @Post('v3/check-if-taxonomy-name-exists')
+  checkIfTaxonomyNameExistsV3(@Body() dataJsonDto: CheckIfExistsV3Dto) {
+    return this.checkService.taskCheckIfTaxonomyNameExistsV3(dataJsonDto);
+  }
+
+  @UseGuards(AuthGuard)
+  @Post('v3/check-if-taxonomy-slug-exists')
+  checkIfTaxonomySlugExistsV3(@Body() dataJsonDto: CheckIfExistsV3Dto) {
+    return this.checkService.taskCheckIfTaxonomySlugExistsV3(dataJsonDto);
+  }
+
+  //  ======== versão antiga - manter para compatibilidade com frontend antigo ========
+
   @UseGuards(AuthGuard)
   @Post('v2/check-if-email-exists')
   checkIfEmailExists(@Body() dataJsonDto: CheckIfExistsDto) {

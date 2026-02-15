@@ -33,4 +33,64 @@ export class CarrierCreateV2Dto {
   @ApiProperty({ description: 'Person ID' })
   @IsNumber()
   pe_person_id: number;
+
+  @ApiProperty({ description: 'Name', maxLength: 300 })
+  @IsString()
+  pe_name: string;
+
+  @ApiProperty({ description: 'Phone', maxLength: 100 })
+  @IsString()
+  pe_phone: string;
+
+  @ApiProperty({ description: 'WhatsApp', maxLength: 100 })
+  @IsString()
+  pe_whatsapp: string;
+
+  @ApiProperty({ description: 'Email', maxLength: 100 })
+  @IsString()
+  pe_email: string;
+
+  @ApiProperty({ description: 'Website', maxLength: 300 })
+  @IsString()
+  pe_website: string;
+
+  @ApiProperty({ description: 'CNPJ (Company Tax ID)', maxLength: 100 })
+  @IsString()
+  pe_cnpj: string;
+
+  @ApiProperty({ description: 'Company Legal Name', maxLength: 300 })
+  @IsString()
+  pe_company_name: string;
+
+  @ApiProperty({ description: 'Responsible Name', maxLength: 300 })
+  @IsString()
+  pe_responsible_name: string;
+
+  @ApiProperty({ description: 'CPF (Individual Tax ID)', maxLength: 100 })
+  @IsString()
+  pe_cpf: string;
 }
+
+/*
+Sample JSON for testing in body endpoint:
+
+{
+  "pe_app_id": 1,
+  "pe_system_client_id": 1,
+  "pe_store_id": 3,
+  "pe_organization_id": "ORG001",
+  "pe_member_role": "saller",
+  "pe_user_id": "USER001",
+  "pe_person_id": 29014,
+  "pe_name": "Carrier Name",
+  "pe_phone": "123456789",
+  "pe_whatsapp": "123456789",
+  "pe_email": "test@example.com",
+  "pe_website": "https://www.example.com",
+  "pe_cnpj": "12.345.678/0001-90",
+  "pe_company_name": "Example Company Ltda",
+  "pe_responsible_name": "John Doe",
+  "pe_cpf": "123.456.789-00"
+}
+
+*/

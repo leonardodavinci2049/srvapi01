@@ -33,4 +33,44 @@ export class TypeUpdateV2Dto {
   @ApiProperty({ description: 'Person ID' })
   @IsNumber()
   pe_person_id: number;
+
+  @ApiProperty({ description: 'Type ID' })
+  @IsNumber()
+  pe_id_type: number;
+
+  @ApiProperty({ description: 'Type', maxLength: 100 })
+  @IsString()
+  pe_type: string;
+
+  @ApiProperty({ description: 'Slug', maxLength: 100 })
+  @IsString()
+  pe_slug: string;
+
+  @ApiProperty({ description: 'Notes' })
+  @IsString()
+  pe_notes: string;
+
+  @ApiProperty({ description: 'Inactive' })
+  @IsNumber()
+  pe_inactive: number;
 }
+
+/*
+Sample JSON for testing in body endpoint:
+
+{
+  "pe_app_id": 1,
+  "pe_system_client_id": 1,
+  "pe_store_id": 3,
+  "pe_organization_id": "ORG001",
+  "pe_member_role": "saller",
+  "pe_user_id": "USER001",
+  "pe_person_id": 29014,
+  "pe_id_type": 123,
+  "pe_type": "Electronics",
+  "pe_slug": "electronics",
+  "pe_notes": "Updated notes",
+  "pe_inactive": 0
+}
+
+*/

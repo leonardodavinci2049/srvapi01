@@ -23,6 +23,7 @@ import { CheckIfTaxomomyNameExistsQuery } from './query/check-if-taxonomy-name.q
 import { CheckIfTaxomomySlugExistsQuery } from './query/check-if-taxonomy-slug.query';
 import { CheckIfExistsV3Dto } from './dto/check-if-exists-v3.dto';
 import { processProcedureResultMutation } from 'src/core/procedure.result/process-procedure-result.mutation';
+
 import { CheckIfCnpjExistsV3Query } from './query/check-if-cnpj-exists-v3.query';
 import { CheckIfCpfExistsV3Query } from './query/check-if-cpf-exists-v3.query';
 import { CheckIfEmailExistsV3Query } from './query/check-if-email-exists-v3.query';
@@ -167,6 +168,9 @@ export class CheckService {
       return new ResultModel(100404, errorMessage, 0, []);
     }
   }
+
+  //  ======== versão antiga - manter para compatibilidade com frontend antigo ========
+
   async tskCheckIfEmailExist(dataJsonDto: CheckIfExistsDto) {
     try {
       const queryString = CheckIfEmailExistsQuery(dataJsonDto);
