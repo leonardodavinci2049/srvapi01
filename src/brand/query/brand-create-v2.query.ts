@@ -8,6 +8,8 @@ export function BrandCreateV2Query(dataJsonDto: BrandCreateV2Dto): string {
   const olUserId = dataJsonDto.pe_user_id;
   const olMemberRole = dataJsonDto.pe_member_role;
   const olPersonId = dataJsonDto.pe_person_id;
+  const olBrand = dataJsonDto.pe_brand;
+  const olSlug = dataJsonDto.pe_slug;
 
   const queryString = ` call sp_brand_create_v2(
         ${olAppId},
@@ -16,7 +18,9 @@ export function BrandCreateV2Query(dataJsonDto: BrandCreateV2Dto): string {
         '${olOrganizationId}',
         '${olUserId}',
         '${olMemberRole}',
-        ${olPersonId}
+        ${olPersonId},
+        '${olBrand}',
+        '${olSlug}'
 
       ) `;
 
