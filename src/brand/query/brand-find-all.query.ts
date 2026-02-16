@@ -5,8 +5,8 @@ export function BrandFindAllQuery(dataJsonDto: BrandFindAllDto): string {
   const olSystemClientId = dataJsonDto.pe_system_client_id;
   const olStoreId = dataJsonDto.pe_store_id;
   const olOrganizationId = dataJsonDto.pe_organization_id;
-  const olMemberId = dataJsonDto.pe_member_id;
   const olUserId = dataJsonDto.pe_user_id;
+  const olMemberRole = dataJsonDto.pe_member_role;
   const olPersonId = dataJsonDto.pe_person_id;
 
   const olIdMarca = dataJsonDto.pe_brand_id;
@@ -18,8 +18,8 @@ export function BrandFindAllQuery(dataJsonDto: BrandFindAllDto): string {
         ${olSystemClientId},
         ${olStoreId},
         '${olOrganizationId}',
-        '${olMemberId}',
         '${olUserId}',
+        '${olMemberRole}',
         ${olPersonId},
         ${olIdMarca},
         '${olMarca}',
