@@ -40,9 +40,9 @@ export class OrderItemsController {
   }
 
   @UseGuards(AuthGuard)
-  @Post('v2/order-items-find')
-  OrderItemsFindV2(@Body() dataJsonDto: OrderItemFindAllDto) {
-    return this.orderItemsService.tskOrderItemsFindV2(dataJsonDto);
+  @Post('v2/order-items-find-all')
+  OrderItemsFindAllV2(@Body() dataJsonDto: OrderItemFindAllDto) {
+    return this.orderItemsService.tskOrderItemsFindAllV2(dataJsonDto);
   }
 
   @UseGuards(AuthGuard)

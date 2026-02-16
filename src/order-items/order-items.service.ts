@@ -63,7 +63,7 @@ export class OrderItemsService {
     }
   }
 
-  async tskOrderItemsFindV2(dataJsonDto: OrderItemFindAllDto) {
+  async tskOrderItemsFindAllV2(dataJsonDto: OrderItemFindAllDto) {
     try {
       const queryString = OrderItemFindAllQuery(dataJsonDto);
 
