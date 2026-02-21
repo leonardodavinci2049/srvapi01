@@ -12,7 +12,7 @@ export function BrandFindAllQuery(dataJsonDto: BrandFindAllDto): string {
   const olIdMarca = dataJsonDto.pe_brand_id;
   const olMarca = dataJsonDto.pe_brand;
   const olLimit = dataJsonDto.pe_limit;
-
+// naõ use mais esse endpoint, usar o sp_brand_sel_all_v2
   const queryString = ` call sp_brand_sel_all_v2(
         ${olAppId},
         ${olSystemClientId},
@@ -24,9 +24,6 @@ export function BrandFindAllQuery(dataJsonDto: BrandFindAllDto): string {
         ${olIdMarca},
         '${olMarca}',
         ${olLimit},  
-
-
-
       ) `;
 
   return queryString;

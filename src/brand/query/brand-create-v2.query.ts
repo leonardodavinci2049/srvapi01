@@ -26,5 +26,9 @@ export function BrandCreateV2Query(dataJsonDto: BrandCreateV2Dto): string {
         '${olSlug}'
       ) `;
 
+
+  console.log('queryString', queryString);
+
+
   return queryString;
 }
