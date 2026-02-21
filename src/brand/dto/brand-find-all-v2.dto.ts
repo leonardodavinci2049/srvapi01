@@ -48,6 +48,10 @@ export class BrandFindAllV2Dto {
   @IsString()
   pe_brand: string;
 
+  @ApiProperty({ description: 'Inactive' })
+  @IsNumber()
+  pe_inactive: number;
+
   @ApiProperty({ description: 'Limit' })
   @IsNumber()
   pe_limit: number;

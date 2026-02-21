@@ -73,16 +73,19 @@ Sample JSON for testing in body endpoint:
   "pe_system_client_id": 1,
   "pe_store_id": 3,
   "pe_organization_id": "ORG001",
-  "pe_member_role": "saller",
   "pe_user_id": "USER001",
+  "pe_user_name": "User Name",
+  "pe_user_role": "saller",
   "pe_person_id": 29014,
   "pe_brand_id": 123,
-  "pe_brand": "Brand Name",   
+  "pe_brand": "Brand Name",
   "pe_slug": "brand-name",
   "pe_image_path": "/images/brand-name.png",
   "pe_notes": "Some notes about the brand",
   "pe_inactive": 0
 
 }
+
+
 
 */

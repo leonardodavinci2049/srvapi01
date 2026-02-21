@@ -49,6 +49,14 @@ export class BrandCreateV2Dto {
   @IsString()
   @IsNotEmpty()
   pe_slug: string;
+
+  @ApiProperty({ description: 'Image Path', maxLength: 500 })
+  @IsString()
+  pe_image_path: string;
+
+  @ApiProperty({ description: 'Notes' })
+  @IsString()
+  pe_notes: string;
 }
 
 /*
@@ -59,12 +67,14 @@ Sample JSON for testing in body endpoint:
   "pe_system_client_id": 1,
   "pe_store_id": 3,
   "pe_organization_id": "ORG001",
-  "pe_member_role": "saller",
   "pe_user_id": "USER001",
+  "pe_user_name": "User Name",
+  "pe_user_role": "saller",
   "pe_person_id": 29014,
   "pe_brand": "Brand Name",
-  "pe_slug": "brand-name"
-
+  "pe_slug": "brand-name",
+  "pe_image_path": "path/to/image",
+  "pe_notes": "Some notes"
 }
 
 */

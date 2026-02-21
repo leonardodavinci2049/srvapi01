@@ -24,10 +24,34 @@ export type SpResultRecordDeleteType = [SpDefaultFeedback[], SpOperationResult];
 export interface TblBrandFindALL extends RowDataPacket {
   ID_MARCA: number;
   MARCA: string;
+  SLUG: string;
+  PATH_IMAGEM: string;
+  INATIVO: number;
+  DATADOCADASTRO: Date;
 }
+
+
+export interface TblBrandFindId extends RowDataPacket {
+  ID_MARCA: number;
+  MARCA: string;
+ 	SLUG : string;
+	PATH_IMAGEM: string;
+ 	ANOTACOES: string;          
+	INATIVO: number; 
+	DT_UPDATE: Date; 
+	DATADOCADASTRO: Date;   
+}
+
 
 export type SpResultBrandFindAllData = [
   TblBrandFindALL[],
+  SpDefaultFeedback[],
+  SpOperationResult,
+];
+
+
+export type SpResultBrandFindIdData = [
+  TblBrandFindId[],
   SpDefaultFeedback[],
   SpOperationResult,
 ];
