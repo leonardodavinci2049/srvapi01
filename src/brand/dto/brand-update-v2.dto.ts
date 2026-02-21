@@ -48,10 +48,6 @@ export class BrandUpdateV2Dto {
   @IsString()
   pe_brand: string;
 
-  @ApiProperty({ description: 'Slug', maxLength: 100 })
-  @IsString()
-  pe_slug: string;
-
   @ApiProperty({ description: 'Image Path', maxLength: 500 })
   @IsString()
   pe_image_path: string;
@@ -79,7 +75,6 @@ Sample JSON for testing in body endpoint:
   "pe_person_id": 29014,
   "pe_brand_id": 123,
   "pe_brand": "Brand Name",
-  "pe_slug": "brand-name",
   "pe_image_path": "/images/brand-name.png",
   "pe_notes": "Some notes about the brand",
   "pe_inactive": 0

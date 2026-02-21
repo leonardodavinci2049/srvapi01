@@ -11,7 +11,6 @@ export function BrandUpdateV2Query(dataJsonDto: BrandUpdateV2Dto): string {
   const olPersonId = dataJsonDto.pe_person_id;
   const olBrandId = dataJsonDto.pe_brand_id;
   const olBrand = dataJsonDto.pe_brand;
-  const olSlug = dataJsonDto.pe_slug;
   const olImagePath = dataJsonDto.pe_image_path;
   const olNotes = dataJsonDto.pe_notes;
   const olInactive = dataJsonDto.pe_inactive;
@@ -27,7 +26,6 @@ export function BrandUpdateV2Query(dataJsonDto: BrandUpdateV2Dto): string {
         ${olPersonId},
         ${olBrandId},
         '${olBrand}',
-        '${olSlug}',
         '${olImagePath}',
         '${olNotes}',
         ${olInactive}

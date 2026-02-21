@@ -45,11 +45,6 @@ export class BrandCreateV2Dto {
   @IsNotEmpty()
   pe_brand: string;
 
-  @ApiProperty({ description: 'Slug', maxLength: 300 })
-  @IsString()
-  @IsNotEmpty()
-  pe_slug: string;
-
   @ApiProperty({ description: 'Image Path', maxLength: 500 })
   @IsString()
   pe_image_path: string;
