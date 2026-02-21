@@ -26,9 +26,10 @@ export class BrandFindIdV2Dto {
   @IsString()
   pe_user_id: string;
 
-  @ApiProperty({ description: 'Member Role', maxLength: 200 })
+  @ApiProperty({ description: 'User Role', maxLength: 200 })
   @IsString()
-  pe_member_role: string;
+  @IsNotEmpty()
+  pe_user_role: string;
 
   @ApiProperty({ description: 'Person ID' })
   @IsNumber()

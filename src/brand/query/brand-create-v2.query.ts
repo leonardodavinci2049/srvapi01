@@ -8,7 +8,7 @@ export function BrandCreateV2Query(dataJsonDto: BrandCreateV2Dto): string {
   const olStoreId = dataJsonDto.pe_store_id;
   const olOrganizationId = dataJsonDto.pe_organization_id;
   const olUserId = dataJsonDto.pe_user_id;
-  const olMemberRole = dataJsonDto.pe_member_role;
+  const olUserRole = dataJsonDto.pe_user_role;
   const olPersonId = dataJsonDto.pe_person_id;
   const olBrand = dataJsonDto.pe_brand;
   const olSlug = dataJsonDto.pe_slug;
@@ -20,7 +20,7 @@ export function BrandCreateV2Query(dataJsonDto: BrandCreateV2Dto): string {
         ${olStoreId},
         '${olOrganizationId}',
         '${olUserId}',
-        '${olMemberRole}',
+        '${olUserRole}',
         ${olPersonId},
         '${olBrand}',
         '${olSlug}'
