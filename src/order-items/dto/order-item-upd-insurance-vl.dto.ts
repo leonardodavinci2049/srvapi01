@@ -24,6 +24,7 @@ export class OrderItemUpdInsuranceVlDto {
   pe_organization_id: string;
 
   @ApiProperty({ description: 'User ID', maxLength: 200 })
+  @IsNotEmpty()
   @IsString()
   pe_user_id: string;
 
@@ -36,6 +37,10 @@ export class OrderItemUpdInsuranceVlDto {
   @IsString()
   @IsNotEmpty()
   pe_user_role: string;
+
+  @ApiProperty({ description: 'Person ID' })
+  @IsNumber()
+  pe_person_id: number;
 
   @ApiProperty({ description: 'Order Item ID' })
   @IsNumber()
