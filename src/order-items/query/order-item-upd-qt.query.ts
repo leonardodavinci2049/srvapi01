@@ -6,7 +6,8 @@ export function OrderItemUpdQtQuery(dataJsonDto: OrderItemUpdQtDto): string {
   const olStoreId = dataJsonDto.pe_store_id;
   const olOrganizationId = dataJsonDto.pe_organization_id;
   const olUserId = dataJsonDto.pe_user_id;
-  const olMemberRole = dataJsonDto.pe_member_role;
+  const olUserName = dataJsonDto.pe_user_name;
+  const olUserRole = dataJsonDto.pe_user_role;
   const olPersonId = dataJsonDto.pe_person_id;
   const olOrderItemId = dataJsonDto.pe_order_item_id;
   const olQuantity = dataJsonDto.pe_quantity;
@@ -17,7 +18,8 @@ export function OrderItemUpdQtQuery(dataJsonDto: OrderItemUpdQtDto): string {
         ${olStoreId},
         '${olOrganizationId}',
         '${olUserId}',
-        '${olMemberRole}',
+        '${olUserName}',
+        '${olUserRole}',	
         ${olPersonId},
         ${olOrderItemId},
         ${olQuantity}
