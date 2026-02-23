@@ -7,7 +7,8 @@ export function CostumerCreateQuery(dataJsonDto: CostumerCreateDto): string {
   const olStoreId = dataJsonDto.pe_store_id;
   const olOrganizationId = dataJsonDto.pe_organization_id;
   const olUserId = dataJsonDto.pe_user_id;
-  const olMemberRole = dataJsonDto.pe_member_role;
+  const olUserName = dataJsonDto.pe_user_name;
+  const olUserRole = dataJsonDto.pe_user_role;
   const olPersonId = dataJsonDto.pe_person_id;
   const olName = dataJsonDto.pe_name;
   const olEmail = dataJsonDto.pe_email;
@@ -34,7 +35,8 @@ export function CostumerCreateQuery(dataJsonDto: CostumerCreateDto): string {
         ${olStoreId},
         '${olOrganizationId}',
         '${olUserId}',
-        '${olMemberRole}',
+        '${olUserName}',
+        '${olUserRole}',	
         ${olPersonId},
         '${olName}',
         '${olEmail}',

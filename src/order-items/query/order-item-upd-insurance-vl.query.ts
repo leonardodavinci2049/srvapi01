@@ -8,7 +8,8 @@ export function OrderItemUpdInsuranceVlQuery(
   const olStoreId = dataJsonDto.pe_store_id;
   const olOrganizationId = dataJsonDto.pe_organization_id;
   const olUserId = dataJsonDto.pe_user_id;
-  const olMemberRole = dataJsonDto.pe_member_role;
+  const olUserName = dataJsonDto.pe_user_name;
+  const olUserRole = dataJsonDto.pe_user_role;
   const olPersonId = dataJsonDto.pe_person_id;
   const olOrderItemId = dataJsonDto.pe_order_item_id;
   const olInsuranceValue = dataJsonDto.pe_insurance_value;
@@ -19,7 +20,8 @@ export function OrderItemUpdInsuranceVlQuery(
         ${olStoreId},
         '${olOrganizationId}',
         '${olUserId}',
-        '${olMemberRole}',
+        '${olUserName}',
+        '${olUserRole}',
         ${olPersonId},
         ${olOrderItemId},
         ${olInsuranceValue}

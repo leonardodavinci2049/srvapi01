@@ -23,6 +23,7 @@ export class BrandCreateV2Dto {
   pe_organization_id: string;
 
   @ApiProperty({ description: 'User ID', maxLength: 200 })
+  @IsNotEmpty()
   @IsString()
   pe_user_id: string;
 

@@ -8,7 +8,8 @@ export function CarrierCreateV2Query(dataJsonDto: CarrierCreateV2Dto): string {
   const olStoreId = dataJsonDto.pe_store_id;
   const olOrganizationId = dataJsonDto.pe_organization_id;
   const olUserId = dataJsonDto.pe_user_id;
-  const olMemberRole = dataJsonDto.pe_member_role;
+  const olUserName = dataJsonDto.pe_user_name;
+  const olUserRole = dataJsonDto.pe_user_role;
   const olPersonId = dataJsonDto.pe_person_id;
   const olTypePersonId = dataJsonDto.pe_type_person_id;
   const olName = dataJsonDto.pe_name;
@@ -19,8 +20,8 @@ export function CarrierCreateV2Query(dataJsonDto: CarrierCreateV2Dto): string {
   const olCnpj = dataJsonDto.pe_cnpj;
   const olCompanyName = dataJsonDto.pe_company_name;
   const olResponsibleName = dataJsonDto.pe_responsible_name;
-  const pe_cpf = dataJsonDto.pe_cpf;
-  const pe_image_path = dataJsonDto.pe_image_path;
+  const olCpf = dataJsonDto.pe_cpf;
+  const olImagePath = dataJsonDto.pe_image_path;
 
   const queryString = ` call sp_carrier_create_v2(
         '${OlUuid}',
@@ -29,7 +30,8 @@ export function CarrierCreateV2Query(dataJsonDto: CarrierCreateV2Dto): string {
         ${olStoreId},
         '${olOrganizationId}',
         '${olUserId}',
-        '${olMemberRole}',
+        '${olUserName}',
+        '${olUserRole}',
         ${olPersonId},
         ${olTypePersonId},
         '${olName}',
@@ -40,8 +42,8 @@ export function CarrierCreateV2Query(dataJsonDto: CarrierCreateV2Dto): string {
         '${olCnpj}',
         '${olCompanyName}',
         '${olResponsibleName}',
-        '${pe_cpf}',
-        '${pe_image_path}'
+        '${olCpf}',
+        '${olImagePath}'
       ) `;
 
   return queryString;
