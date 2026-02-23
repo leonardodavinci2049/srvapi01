@@ -30,12 +30,19 @@ export class OrdersFindLatestAllDto {
   pe_organization_id: string;
 
   @ApiProperty({ description: 'User ID', maxLength: 200 })
+  @IsNotEmpty()
   @IsString()
   pe_user_id: string;
 
-  @ApiProperty({ description: 'Member Role', maxLength: 200 })
+  @ApiProperty({ description: 'User Name', maxLength: 200 })
   @IsString()
-  pe_member_role: string;
+  @IsNotEmpty()
+  pe_user_name: string;
+
+  @ApiProperty({ description: 'User Role', maxLength: 200 })
+  @IsString()
+  @IsNotEmpty()
+  pe_user_role: string;
 
   @ApiProperty({ description: 'Person ID' })
   @IsNumber()
@@ -104,9 +111,9 @@ Sample JSON for testing in body endpoint:
   "pe_store_id": 1,
   "pe_organization_id": "org123",
   "pe_user_id": "user123",
-  "pe_member_role": "admin",
   "pe_person_id": 123,
-
+  "pe_user_name": "John Doe",
+  "pe_user_role": "admin",
   "pe_order_id": 0,
   "pe_customer_id": 0,
   "pe_seller_id": 0,
