@@ -8,7 +8,8 @@ export function OrdersFindDashboardIdQuery(
   const olStoreId = dataJsonDto.pe_store_id;
   const olOrganizationId = dataJsonDto.pe_organization_id;
   const olUserId = dataJsonDto.pe_user_id;
-  const olMemberRole = dataJsonDto.pe_member_role;
+  const olUserName = dataJsonDto.pe_user_name;
+  const olUserRole = dataJsonDto.pe_user_role;
   const olPersonId = dataJsonDto.pe_person_id;
   const olOrderId = dataJsonDto.pe_order_id;
   const olSellerId = dataJsonDto.pe_id_seller;
@@ -20,7 +21,8 @@ export function OrdersFindDashboardIdQuery(
         ${olStoreId},
         '${olOrganizationId}',
         '${olUserId}',
-        '${olMemberRole}',
+        '${olUserName}',
+        '${olUserRole}',	
         ${olPersonId},
         ${olOrderId},
         ${olSellerId},
