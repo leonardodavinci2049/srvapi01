@@ -38,7 +38,6 @@ export class OrderUpdPgMethodIdDto {
   @IsNotEmpty()
   pe_user_role: string;
 
-
   @ApiProperty({ description: 'Person ID' })
   @IsNumber()
   pe_person_id: number;
@@ -63,7 +62,8 @@ export class OrderUpdPgMethodIdDto {
   "pe_store_id": 1,
   "pe_organization_id": "org123",
   "pe_user_id": "user123",
-  "pe_member_role": "admin",
+  "pe_user_name": "John Doe",
+  "pe_user_role": "admin",
   "pe_person_id": 123,
   "pe_order_id": 480669,
   "pe_pg_method_id": 456
