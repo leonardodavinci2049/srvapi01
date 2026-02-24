@@ -40,7 +40,7 @@ export class BrandFindAllV2Dto {
   @IsNumber()
   pe_person_id: number;
 
-  @ApiProperty({ description: 'Search term', maxLength: 200 })
+  @ApiProperty({ description: 'Search term', maxLength: 300 })
   @IsString()
   pe_search: string;
 
@@ -65,8 +65,7 @@ Sample JSON for testing in body endpoint:
   "pe_user_name": "John Doe",
   "pe_user_role": "saller",
   "pe_person_id": 29014,
-  "pe_brand_id": 123,
-  "pe_brand": "Brand Name",
+  "pe_search": "search term",
   "pe_inactive": 0,
   "pe_limit": 10
 

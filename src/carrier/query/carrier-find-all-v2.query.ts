@@ -11,8 +11,8 @@ export function CarrierFindAllV2Query(
   const olUserName = dataJsonDto.pe_user_name;
   const olUserRole = dataJsonDto.pe_user_role;
   const olPersonId = dataJsonDto.pe_person_id;
-  const olCarrierId = dataJsonDto.pe_carrier_id;
-  const olName = dataJsonDto.pe_name;
+
+  const olSearch = dataJsonDto.pe_search ? dataJsonDto.pe_search : '';
   const olLimit = dataJsonDto.pe_limit;
 
   const queryString = ` call sp_carrier_find_all_v2(
@@ -25,8 +25,7 @@ export function CarrierFindAllV2Query(
         '${olUserName}',
         '${olUserRole}',	
         ${olPersonId},
-        ${olCarrierId},
-        '${olName}',
+        '${olSearch}',
         ${olLimit}
       ) `;
 

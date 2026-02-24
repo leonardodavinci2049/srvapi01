@@ -11,8 +11,8 @@ export function ProductFindPdvAllV2Query(
   const olUserName = dataJsonDto.pe_user_name;
   const olUserRole = dataJsonDto.pe_user_role;
   const olPersonId = dataJsonDto.pe_person_id;
-  const olProductId = dataJsonDto.pe_product_id;
-  const olProduct = dataJsonDto.pe_product;
+  const olSearch = dataJsonDto.pe_search ? dataJsonDto.pe_search : '';
+
   const olTaxonomyId = dataJsonDto.pe_taxonomy_id;
   const olTypeId = dataJsonDto.pe_type_id;
   const olBrandId = dataJsonDto.pe_brand_id;
@@ -32,8 +32,7 @@ export function ProductFindPdvAllV2Query(
         '${olUserName}',
         '${olUserRole}',	
         ${olPersonId},
-        ${olProductId},
-        '${olProduct}',
+        '${olSearch}',
         ${olTaxonomyId},
         ${olTypeId},
         ${olBrandId}, 

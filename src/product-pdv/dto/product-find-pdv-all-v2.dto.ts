@@ -41,13 +41,9 @@ export class ProductFindPdvAllV2Dto {
   @IsNumber()
   pe_person_id: number;
 
-  @ApiProperty({ description: 'Product ID' })
-  @IsNumber()
-  pe_product_id: number;
-
-  @ApiProperty({ description: 'Product name', maxLength: 300 })
+  @ApiProperty({ description: 'Search term', maxLength: 300 })
   @IsString()
-  pe_product: string;
+  pe_search: string;
 
   @ApiProperty({ description: 'Taxonomy ID' })
   @IsNumber()
@@ -98,8 +94,7 @@ Sample JSON for testing in body endpoint:
   "pe_user_name": "John Doe",
   "pe_user_role": "admin",
   "pe_person_id": 29014,
-  "pe_product_id": 1,
-  "pe_product": "Product A",
+  "pe_search": "search term",
   "pe_taxonomy_id": 10,
   "pe_type_id": 20,
   "pe_brand_id": 30,

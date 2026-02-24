@@ -41,13 +41,9 @@ export class TypeFindAllV2Dto {
   @IsNumber()
   pe_person_id: number;
 
-  @ApiProperty({ description: 'Type ID' })
-  @IsNumber()
-  pe_type_id: number;
-
-  @ApiProperty({ description: 'Type', maxLength: 100 })
+  @ApiProperty({ description: 'Search term', maxLength: 300 })
   @IsString()
-  pe_type: string;
+  pe_search: string;
 
   @ApiProperty({ description: 'Limit' })
   @IsNumber()
@@ -66,8 +62,7 @@ Sample JSON for testing in body endpoint:
   "pe_user_name": "John Doe",
   "pe_user_role": "admin",
   "pe_person_id": 29014,
-  "pe_type_id": 123,
-  "pe_type": "Electronics",
+  "pe_search": "search term",
   "pe_limit": 10
 
 }

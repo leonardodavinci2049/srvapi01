@@ -27,6 +27,6 @@ export function BrandFindAllV2Query(dataJsonDto: BrandFindAllV2Dto): string {
         '${olSearch}',
         ${olInactive},
         ${olLimit}      ) `;
-        
+
   return queryString;
 }

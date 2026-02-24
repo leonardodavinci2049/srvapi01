@@ -11,8 +11,7 @@ export function SupplierFindAllV2Query(
   const olUserName = dataJsonDto.pe_user_name;
   const olUserRole = dataJsonDto.pe_user_role;
   const olPersonId = dataJsonDto.pe_person_id;
-  const olSupplierId = dataJsonDto.pe_supplier_id;
-  const olSupplierName = dataJsonDto.pe_supplier_name;
+  const olSearch = dataJsonDto.pe_search;
   const olLimit = dataJsonDto.pe_limit;
 
   const queryString = ` call sp_supplier_find_all_v2(
@@ -24,8 +23,7 @@ export function SupplierFindAllV2Query(
         '${olUserName}',
         '${olUserRole}',	
         ${olPersonId},
-        ${olSupplierId},
-        '${olSupplierName}',
+      '${olSearch}',
         ${olLimit}
 
       ) `;

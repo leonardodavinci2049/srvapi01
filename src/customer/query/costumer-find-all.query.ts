@@ -9,12 +9,9 @@ export function CostumerFindAllQuery(dataJsonDto: CostumerFindAllDto): string {
   const olUserName = dataJsonDto.pe_user_name;
   const olUserRole = dataJsonDto.pe_user_role;
   const olPersonId = dataJsonDto.pe_person_id;
-  const olCustomerId = dataJsonDto.pe_customer_id;
-  const olName = dataJsonDto.pe_name;
-  const olCpf = dataJsonDto.pe_cpf;
-  const olCnpj = dataJsonDto.pe_cnpj;
-  const olPhone = dataJsonDto.pe_phone;
-  const olEmail = dataJsonDto.pe_email;
+
+  const olSearch = dataJsonDto.pe_search;
+
   const olQtRegistros = dataJsonDto.pe_qt_registros;
   const olPageId = dataJsonDto.pe_page_id;
   const olColumnId = dataJsonDto.pe_column_id;
@@ -29,12 +26,7 @@ export function CostumerFindAllQuery(dataJsonDto: CostumerFindAllDto): string {
         '${olUserName}',
         '${olUserRole}',	
         ${olPersonId},
-        ${olCustomerId},
-        '${olName}',
-        '${olCpf}',
-        '${olCnpj}',
-        '${olPhone}',
-        '${olEmail}',
+        '${olSearch}',
         ${olQtRegistros},
         ${olPageId},
         ${olColumnId},

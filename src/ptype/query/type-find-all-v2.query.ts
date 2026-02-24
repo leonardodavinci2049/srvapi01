@@ -9,8 +9,7 @@ export function TypeFindAllV2Query(dataJsonDto: TypeFindAllV2Dto): string {
   const olUserName = dataJsonDto.pe_user_name;
   const olUserRole = dataJsonDto.pe_user_role;
   const olPersonId = dataJsonDto.pe_person_id;
-  const olTypeId = dataJsonDto.pe_type_id;
-  const olType = dataJsonDto.pe_type;
+  const olSearch = dataJsonDto.pe_search;
   const olLimit = dataJsonDto.pe_limit;
 
   const queryString = ` call sp_type_find_all_v2(
@@ -22,8 +21,7 @@ export function TypeFindAllV2Query(dataJsonDto: TypeFindAllV2Dto): string {
         '${olUserName}',
         '${olUserRole}',
         ${olPersonId},
-        ${olTypeId},
-        '${olType}',
+        '${olSearch}',
         ${olLimit}
       ) `;
 
