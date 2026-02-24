@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsNotEmpty, IsNumber, IsOptional, IsString } from 'class-validator';
+import { IsNotEmpty, IsNumber, IsString } from 'class-validator';
 
 export class CostumerFindAllDto {
   @ApiProperty({ description: 'App ID' })
@@ -42,35 +42,9 @@ export class CostumerFindAllDto {
   @IsNotEmpty()
   pe_person_id: number;
 
-  @ApiProperty({ description: 'Customer ID' })
-  @IsNumber()
-  @IsOptional()
-  pe_customer_id: number;
-
-  @ApiProperty({ description: 'NOME', maxLength: 200 })
+  @ApiProperty({ description: 'Search term', maxLength: 300 })
   @IsString()
-  @IsOptional()
-  pe_name: string;
-
-  @ApiProperty({ description: 'CPF', maxLength: 200 })
-  @IsString()
-  @IsOptional()
-  pe_cpf: string;
-
-  @ApiProperty({ description: 'CNPJ', maxLength: 200 })
-  @IsString()
-  @IsOptional()
-  pe_cnpj: string;
-
-  @ApiProperty({ description: 'PHONE', maxLength: 200 })
-  @IsString()
-  @IsOptional()
-  pe_phone: string;
-
-  @ApiProperty({ description: 'EMAIL', maxLength: 200 })
-  @IsString()
-  @IsOptional()
-  pe_email: string;
+  pe_search: string;
 
   @ApiProperty({ description: 'QT_REGISTROS' })
   @IsNumber()
@@ -104,12 +78,7 @@ Sample JSON for testing in body endpoint:
   "pe_user_name": "John Doe",
   "pe_user_role": "saller",
   "pe_person_id": 29014,
-  "pe_customer_id": 0,
-  "pe_name": "",
-  "pe_cpf": "",
-  "pe_cnpj": "",
-  "pe_phone": "",
-  "pe_email": ""
+  "pe_search": "search term",
   "pe_qt_registros": 10,
   "pe_page_id": 0,
   "pe_column_id": 2,
