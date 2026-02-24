@@ -17,7 +17,6 @@ export function CarrierFindIdV2Query(dataJsonDto: CarrierFindIdV2Dto): string {
         ${olStoreId},
         '${olOrganizationId}',
         '${olUserId}',
-        '${olUserId}',
         '${olUserName}',
         '${olUserRole}',
         ${olPersonId},

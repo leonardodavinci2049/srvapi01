@@ -21,7 +21,6 @@ export function CarrierFindAllV2Query(
         ${olStoreId},
         '${olOrganizationId}',
         '${olUserId}',
-        '${olUserId}',
         '${olUserName}',
         '${olUserRole}',	
         ${olPersonId},
