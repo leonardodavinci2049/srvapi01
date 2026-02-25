@@ -13,6 +13,8 @@ import {
 import { ProductFindPdvAllV2Query } from './query/product-find-pdv-all-v2.query';
 import { processProcedureResultMultiQuery } from 'src/core/procedure.result/process-procedure-result.query';
 import { ProductFindPdvIdV2Query } from './query/product-find-pdv-id-v2.query';
+import { ProductFindPdvSearchV2Dto } from './dto/product-find-Pdv-search.dto';
+import { ProductFindPdvSearchV2Query } from './query/product-find-Pdv-search.query';
 
 @Injectable()
 export class ProductPdvService {
@@ -40,6 +42,32 @@ export class ProductPdvService {
       return new ResultModel(100404, errorMessage, 0, []);
     }
   }
+
+  async taskProductFindPdvSearchV2(dataJsonDto: ProductFindPdvSearchV2Dto) {
+    try {
+      const queryString = ProductFindPdvSearchV2Query(dataJsonDto);
+
+      const resultData = (await this.dbService.selectExecute(
+        queryString,
+      )) as unknown as SpResultProductFindPdvAllData;
+
+      return processProcedureResultMultiQuery(
+        resultData as unknown[],
+        ['Product Pdv find Search', ],
+        'Product Pdv find Search not found',
+      );
+    } catch (err) {
+      const errorMessage =
+        err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
+      return new ResultModel(100404, errorMessage, 0, []);
+    }
+  }
+
+
+
+
+
+
   async taskProductFindPdvIdV2(dataJsonDto: ProductFindPdvIdV2Dto) {
     try {
       const queryString = ProductFindPdvIdV2Query(dataJsonDto);
@@ -50,7 +78,7 @@ export class ProductPdvService {
 
       return processProcedureResultMultiQuery(
         resultData as unknown[],
-        ['Product Pdv find Id'],
+        ['Product Pdv find Id', 'Related Categories', 'Related Products'],
         'Customer find Allnot found',
       );
     } catch (err) {
