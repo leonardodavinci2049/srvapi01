@@ -61,7 +61,7 @@ import { ProductPdvModule } from 'src/product-pdv/product-pdv.module';
       // proteção conta ataque de força bruta
       {
         ttl: 60000, // tempo 1 minuto
-        limit: 500, // 100 requisições
+        limit: 50000, // 50000 requisições
         // ignoreUserAgents: [/googlebot/],
       },
     ]),

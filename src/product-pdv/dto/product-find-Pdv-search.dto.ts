@@ -1,7 +1,7 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsNotEmpty, IsNumber, IsString } from 'class-validator';
+import { IsString, IsNotEmpty, IsNumber } from 'class-validator';
 
-export class OrderItemFindIdDto {
+export class ProductFindPdvSearchV2Dto {
   @ApiProperty({ description: 'App ID' })
   @IsNumber()
   @IsNotEmpty()
@@ -41,14 +41,26 @@ export class OrderItemFindIdDto {
   @IsNumber()
   pe_person_id: number;
 
-  @ApiProperty({ description: 'Order Item ID' })
+  @ApiProperty({ description: 'Customer ID' })
   @IsNumber()
-  @IsNotEmpty()
-  pe_order_item_id: number;
+  pe_customer_id: number;
+
+  @ApiProperty({ description: 'Search term', maxLength: 300 })
+  @IsString()
+  pe_search: string;
+
+  @ApiProperty({ description: 'Stock flag' })
+  @IsNumber()
+  pe_flag_stock: number;
+
+  @ApiProperty({ description: 'Limit' })
+  @IsNumber()
+  pe_limit: number;
 }
 
 /*
 Sample JSON for testing in body endpoint:
+
 {
   "pe_app_id": 1,
   "pe_system_client_id": 1,
@@ -58,6 +70,10 @@ Sample JSON for testing in body endpoint:
   "pe_user_name": "John Doe",
   "pe_user_role": "admin",
   "pe_person_id": 29014,
-  "pe_order_item_id": 722070
-}
+  "pe_customer_id": 12345,
+  "pe_search": "Product Name",
+  "pe_flag_stock": 1,
+  "pe_limit": 10
+  }
+
 */
