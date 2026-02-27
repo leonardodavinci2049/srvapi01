@@ -22,7 +22,7 @@ export function findProductQuery(dataJsonDto: ProductFindDto): string {
   const olColunaId = dataJsonDto.pe_coluna_id ?? 1;
   const olOrderId = dataJsonDto.pe_ordem_id ?? 1;
 
-  const queryString = ` call sp_product_find_v2(
+  const queryString = ` call sp_product_find_all_v2(
     ${olAppId},
     ${olSystemClientId},
     ${olStoreId},

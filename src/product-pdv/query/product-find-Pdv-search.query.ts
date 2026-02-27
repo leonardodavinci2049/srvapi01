@@ -1,7 +1,7 @@
-import { CarrierFindAllV2Dto } from '../dto/carrier-find-all-v2.dto';
+import { ProductFindPdvSearchV2Dto } from "../dto/product-find-Pdv-search.dto";
 
-export function CarrierFindAllV2Query(
-  dataJsonDto: CarrierFindAllV2Dto,
+export function ProductFindPdvSearchV2Query  (
+  dataJsonDto: ProductFindPdvSearchV2Dto,
 ): string {
   const olAppId = dataJsonDto.pe_app_id ?? 1;
   const olSystemClientId = dataJsonDto.pe_system_client_id;
@@ -11,11 +11,12 @@ export function CarrierFindAllV2Query(
   const olUserName = dataJsonDto.pe_user_name;
   const olUserRole = dataJsonDto.pe_user_role;
   const olPersonId = dataJsonDto.pe_person_id;
-
+  const olCustomerId = dataJsonDto.pe_customer_id;
   const olSearch = dataJsonDto.pe_search ? dataJsonDto.pe_search : '';
+  const olFlagStock = dataJsonDto.pe_flag_stock;
   const olLimit = dataJsonDto.pe_limit;
 
-  const queryString = ` call sp_carrier_find_all_v2(
+  const queryString = ` call sp_product_find_pdv_search_v2(
         ${olAppId},
         ${olSystemClientId},
         ${olStoreId},
@@ -24,7 +25,9 @@ export function CarrierFindAllV2Query(
         '${olUserName}',
         '${olUserRole}',	
         ${olPersonId},
+        ${olCustomerId},
         '${olSearch}',
+        ${olFlagStock},
         ${olLimit}
       ) `;
 
