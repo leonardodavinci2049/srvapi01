@@ -20,12 +20,11 @@ export class ProductPdvController {
     return this.productPdvService.taskProductFindPdvAllV2(dataJsonDto);
   }
 
-   @UseGuards(AuthGuard)
+  @UseGuards(AuthGuard)
   @Post('v2/product-find-pdv-search')
   productFindPdvSearchV2(@Body() dataJsonDto: ProductFindPdvSearchV2Dto) {
     return this.productPdvService.taskProductFindPdvSearchV2(dataJsonDto);
   }
-
 
   @UseGuards(AuthGuard)
   @Post('v2/product-find-pdv-id')

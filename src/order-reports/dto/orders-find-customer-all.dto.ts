@@ -44,7 +44,6 @@ export class OrdersFindCustomerAllDto {
   @IsNotEmpty()
   pe_user_role: string;
 
-
   @ApiProperty({ description: 'Person ID' })
   @IsNumber()
   @IsOptional()

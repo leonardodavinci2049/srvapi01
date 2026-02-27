@@ -21,8 +21,8 @@ export function processProcedureResultQuery<T extends { id: string }>(
     firstResultSet[0] !== null &&
     'sp_error_id' in firstResultSet[0];
 
-  let tblRecords: T[] = [];
-  let DefaultFeedback: SpDefaultFeedback[] = [];
+  let tblRecords: T[];
+  let DefaultFeedback: SpDefaultFeedback[];
 
   if (isFirstResultFeedback) {
     tblRecords = [];
@@ -67,8 +67,8 @@ export function processProcedureResultQueryWithoutId<T>(
     firstResultSet[0] !== null &&
     'sp_error_id' in firstResultSet[0];
 
-  let tblRecords: T[] = [];
-  let DefaultFeedback: SpDefaultFeedback[] = [];
+  let tblRecords: T[];
+  let DefaultFeedback: SpDefaultFeedback[];
 
   if (isFirstResultFeedback) {
     tblRecords = [];
@@ -125,7 +125,7 @@ export function processProcedureResultMultiQuery(
 ): ResultModel {
   const data: Record<string, unknown[]> = {};
   let totalRecords = 0;
-  let DefaultFeedback: SpDefaultFeedback[] = [];
+  let DefaultFeedback: SpDefaultFeedback[];
 
   // Verifica se o primeiro array é na verdade o feedback
   // (isso acontece quando não há registros e a procedure "pula" os SELECTs)

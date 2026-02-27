@@ -1,6 +1,6 @@
-import { ProductFindPdvSearchV2Dto } from "../dto/product-find-Pdv-search.dto";
+import { ProductFindPdvSearchV2Dto } from '../dto/product-find-Pdv-search.dto';
 
-export function ProductFindPdvSearchV2Query  (
+export function ProductFindPdvSearchV2Query(
   dataJsonDto: ProductFindPdvSearchV2Dto,
 ): string {
   const olAppId = dataJsonDto.pe_app_id ?? 1;

@@ -44,6 +44,5 @@ export function ProductFindPdvAllV2Query(
         ${olOrderId}
       ) `;
 
-
   return queryString;
 }
