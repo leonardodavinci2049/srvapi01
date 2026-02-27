@@ -123,13 +123,23 @@ export interface TblProductFindPdvId extends RowDataPacket {
   LARGURA_MM: number;
   ALTURA_MM: number;
   DIAMETRO_MM: number;
+  CFOP: string;
+  CST: string;
+  EAN: string;
+  NCM: number;
+  NBM: string;
+  PPB: number;
+  TEMP: string;
   DESTAQUE: number;
   PROMOCAO: number;
   FLAG_SERVICO: number;
   IMPORTADO: number;
+  META_TITLE: string | null;
+  META_DESCRIPTION: string | null;
   DESCRICAO_VENDA: string | null;
   ANOTACOES: string | null;
   DATADOCADASTRO: string;
+  DT_UPDATE: string;
 }
 
 
