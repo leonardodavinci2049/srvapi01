@@ -142,7 +142,6 @@ export interface TblProductFindPdvId extends RowDataPacket {
   DT_UPDATE: string;
 }
 
-
 export interface TblRelatedCategories extends RowDataPacket {
   ID_TAXONOMY: number;
   PARENT_ID: number;
@@ -151,7 +150,6 @@ export interface TblRelatedCategories extends RowDataPacket {
   ORDEM: number;
   LEVEL: number;
 }
-
 
 export interface TblRelatedProducts extends RowDataPacket {
   ID_TAXONOMY: number;
@@ -170,7 +168,7 @@ export interface TblRelatedProducts extends RowDataPacket {
   IMPORTADO: number;
   PROMOCAO: number;
   LANCAMENTO: number;
-} 
+}
 
 export type SpResultProductFindPdvAllData = [
   TblProductFindPdvAll[],
@@ -188,6 +186,6 @@ export type SpResultProductFindPdvIdData = [
   TblProductFindPdvId[],
   SpDefaultFeedback[],
   TblRelatedCategories[],
-  TblRelatedProducts[], 
+  TblRelatedProducts[],
   SpOperationResult,
 ];

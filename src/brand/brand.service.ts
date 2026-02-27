@@ -1,6 +1,5 @@
 import { Injectable } from '@nestjs/common';
 
-import { resultQueryData } from 'src/core/utils/globalResult/global.result';
 import { ResultModel } from 'src/core/utils/result.model';
 import { MESSAGES } from 'src/core/utils/constants/globalConstants';
 
@@ -27,8 +26,6 @@ import { BrandDeleteV2Query } from './query/brand-delete-v2.query';
 @Injectable()
 export class BrandService {
   constructor(private readonly dbService: DatabaseService) {}
-
-
 
   async taskBrandCreateV2(dataJsonDto: BrandCreateV2Dto) {
     try {

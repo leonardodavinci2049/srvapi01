@@ -53,7 +53,7 @@ export class ProductPdvService {
 
       return processProcedureResultMultiQuery(
         resultData as unknown[],
-        ['Product Pdv find Search', ],
+        ['Product Pdv find Search'],
         'Product Pdv find Search not found',
       );
     } catch (err) {
@@ -62,11 +62,6 @@ export class ProductPdvService {
       return new ResultModel(100404, errorMessage, 0, []);
     }
   }
-
-
-
-
-
 
   async taskProductFindPdvIdV2(dataJsonDto: ProductFindPdvIdV2Dto) {
     try {

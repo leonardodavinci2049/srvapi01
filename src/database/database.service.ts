@@ -10,6 +10,18 @@ import {
 } from 'mysql2/promise';
 import { envs } from 'src/core/config/envs';
 
+// Tipos compatíveis com mysql2 v3.18+
+type SqlParam =
+  | string
+  | number
+  | bigint
+  | boolean
+  | Date
+  | null
+  | Buffer
+  | Uint8Array;
+type QueryParams = SqlParam[] | { [key: string]: SqlParam };
+
 @Injectable()
 export class DatabaseService {
   // Property to hold the connection to MySQL database
@@ -50,7 +62,7 @@ export class DatabaseService {
   // Método para SELECT (sem transação)
   async selectQuery<T extends RowDataPacket>(
     queryString: string,
-    params?: any[],
+    params?: QueryParams,
   ): Promise<T[]> {
     const [results] = await this.poolConnection.query<T[]>(queryString, params);
     return results;
@@ -58,7 +70,7 @@ export class DatabaseService {
   // Método para SELECT com segurança reforçada
   async selectExecute<T extends RowDataPacket>(
     queryString: string,
-    params?: any[],
+    params?: QueryParams,
   ): Promise<T[]> {
     const [results] = await this.poolConnection.execute<T[]>(
       queryString,
@@ -70,7 +82,7 @@ export class DatabaseService {
   // Insert/Update/Delete usando execute
   async ModifyExecute(
     queryString: string,
-    params?: any[],
+    params?: QueryParams,
   ): Promise<ResultSetHeader> {
     const [results] = await this.poolConnection.execute(queryString, params);
     return results as ResultSetHeader;
@@ -79,7 +91,7 @@ export class DatabaseService {
   // Insert/Update/Delete usando query
   async ModifyQuery(
     queryString: string,
-    params?: any[],
+    params?: QueryParams,
   ): Promise<ResultSetHeader> {
     const [results] = await this.poolConnection.query(queryString, params);
     return results as ResultSetHeader;
@@ -132,7 +144,7 @@ export class DatabaseService {
   // Para procedimentos armazenados que retornam múltiplos conjuntos de resultados
   async chamarProcedimento<T extends RowDataPacket>(
     nomeProcedimento: string,
-    params?: any[],
+    params?: SqlParam[],
   ): Promise<T[][]> {
     const query = `CALL ${nomeProcedimento}(${params ? params.map(() => '?').join(',') : ''})`;
     const [results] = await this.poolConnection.execute<T[][]>(query, params);
