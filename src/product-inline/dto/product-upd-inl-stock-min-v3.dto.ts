@@ -40,4 +40,12 @@ export class ProductUpdInlStockMinV3Dto {
   @ApiProperty({ description: 'Person ID' })
   @IsNumber()
   pe_person_id: number;
+
+  @ApiProperty({ description: 'Product ID' })
+  @IsNumber()
+  pe_product_id: number;
+
+  @ApiProperty({ description: 'Stock Minimum' })
+  @IsNumber()
+  pe_stock_min: number;
 }

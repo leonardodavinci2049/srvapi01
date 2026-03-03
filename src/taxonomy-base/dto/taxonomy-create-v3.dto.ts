@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsString, IsNotEmpty, IsNumber } from 'class-validator';
+import { IsString, IsNotEmpty, IsNumber, IsOptional } from 'class-validator';
 
 export class TaxonomyCreateV3Dto {
   @ApiProperty({ description: 'App ID' })
@@ -40,4 +40,29 @@ export class TaxonomyCreateV3Dto {
   @ApiProperty({ description: 'Person ID' })
   @IsNumber()
   pe_person_id: number;
+
+  @ApiProperty({ description: 'Taxonomy Type ID' })
+  @IsNumber()
+  @IsNotEmpty()
+  pe_type_id: number;
+
+  @ApiProperty({ description: 'Parent Taxonomy ID' })
+  @IsNumber()
+  @IsNotEmpty()
+  pe_parent_id: number;
+
+  @ApiProperty({ description: 'Taxonomy Name', maxLength: 100 })
+  @IsString()
+  @IsNotEmpty()
+  pe_taxonomy_name: string;
+
+  @ApiProperty({ description: 'Taxonomy Slug', maxLength: 300 })
+  @IsString()
+  @IsNotEmpty()
+  pe_slug: string;
+
+  @ApiProperty({ description: 'Taxonomy Level' })
+  @IsNumber()
+  @IsOptional()
+  pe_level: number;
 }

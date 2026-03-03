@@ -13,6 +13,11 @@ export function TaxonomyCreateV3Query(
   const olUserName = dataJsonDto.pe_user_name;
   const olUserRole = dataJsonDto.pe_user_role;
   const olPersonId = dataJsonDto.pe_person_id;
+  const olTypeId = dataJsonDto.pe_type_id;
+  const olParentId = dataJsonDto.pe_parent_id;
+  const olTaxonomyName = dataJsonDto.pe_taxonomy_name;
+  const olSlug = dataJsonDto.pe_slug;
+  const olLevel = dataJsonDto.pe_level;
 
   const queryString = ` call sp_taxonomy_create_v3(
         '${OlUuid}',
@@ -23,7 +28,12 @@ export function TaxonomyCreateV3Query(
         '${olUserId}',
         '${olUserName}',
         '${olUserRole}',
-        ${olPersonId}
+        ${olPersonId},
+        ${olTypeId},
+        ${olParentId},
+        '${olTaxonomyName}',
+        '${olSlug}',
+        ${olLevel}
       ) `;
 
   return queryString;

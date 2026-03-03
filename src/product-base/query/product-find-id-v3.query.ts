@@ -9,6 +9,7 @@ export function ProductFindIdV3Query(dataJsonDto: ProductFindIdV3Dto): string {
   const olUserName = dataJsonDto.pe_user_name;
   const olUserRole = dataJsonDto.pe_user_role;
   const olPersonId = dataJsonDto.pe_person_id;
+  const olProductId = dataJsonDto.pe_product_id;
 
   const queryString = ` call sp_product_find_id_v3(
         ${olAppId},
@@ -18,7 +19,8 @@ export function ProductFindIdV3Query(dataJsonDto: ProductFindIdV3Dto): string {
         '${olUserId}',
         '${olUserName}',
         '${olUserRole}',
-        ${olPersonId}
+        ${olPersonId},
+        ${olProductId}
       ) `;
 
   return queryString;

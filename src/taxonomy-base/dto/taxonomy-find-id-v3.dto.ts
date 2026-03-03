@@ -40,4 +40,8 @@ export class TaxonomyFindIdV3Dto {
   @ApiProperty({ description: 'Person ID' })
   @IsNumber()
   pe_person_id: number;
+
+  @ApiProperty({ description: 'Taxonomy ID' })
+  @IsNumber()
+  pe_taxonomy_id: number;
 }

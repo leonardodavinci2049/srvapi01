@@ -11,6 +11,8 @@ export function ProductUpdInlTypeV3Query(
   const olUserName = dataJsonDto.pe_user_name;
   const olUserRole = dataJsonDto.pe_user_role;
   const olPersonId = dataJsonDto.pe_person_id;
+  const olProductId = dataJsonDto.pe_product_id;
+  const olTypeId = dataJsonDto.pe_type_id;
 
   const queryString = ` call sp_product_upd_inl_type_v3(
         ${olAppId},
@@ -20,7 +22,9 @@ export function ProductUpdInlTypeV3Query(
         '${olUserId}',
         '${olUserName}',
         '${olUserRole}',
-        ${olPersonId}
+        ${olPersonId},
+        ${olProductId},
+        ${olTypeId}
       ) `;
 
   return queryString;

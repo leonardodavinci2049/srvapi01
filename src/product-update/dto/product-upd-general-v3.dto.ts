@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsString, IsNotEmpty, IsNumber } from 'class-validator';
+import { IsString, IsNotEmpty, IsNumber, IsOptional } from 'class-validator';
 
 export class ProductUpdGeneralV3Dto {
   @ApiProperty({ description: 'App ID' })
@@ -40,4 +40,41 @@ export class ProductUpdGeneralV3Dto {
   @ApiProperty({ description: 'Person ID' })
   @IsNumber()
   pe_person_id: number;
+
+  @ApiProperty({ description: 'Product ID' })
+  @IsNumber()
+  pe_product_id: number;
+
+  @ApiProperty({ description: 'Product name', maxLength: 255, required: false })
+  @IsOptional()
+  @IsString()
+  pe_product_name: string;
+
+  @ApiProperty({ description: 'Reference', maxLength: 100, required: false })
+  @IsOptional()
+  @IsString()
+  pe_ref: string;
+
+  @ApiProperty({ description: 'Model', maxLength: 100, required: false })
+  @IsOptional()
+  @IsString()
+  pe_model: string;
+
+  @ApiProperty({
+    description: 'Label / Etiqueta',
+    maxLength: 100,
+    required: false,
+  })
+  @IsOptional()
+  @IsString()
+  pe_label: string;
+
+  @ApiProperty({
+    description: 'Tab description',
+    maxLength: 200,
+    required: false,
+  })
+  @IsOptional()
+  @IsString()
+  pe_tab_description: string;
 }

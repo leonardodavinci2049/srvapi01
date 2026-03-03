@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsString, IsNotEmpty, IsNumber } from 'class-validator';
+import { IsString, IsNotEmpty, IsNumber, IsOptional } from 'class-validator';
 
 export class ProductFindAllV3Dto {
   @ApiProperty({ description: 'App ID' })
@@ -40,4 +40,54 @@ export class ProductFindAllV3Dto {
   @ApiProperty({ description: 'Person ID' })
   @IsNumber()
   pe_person_id: number;
+
+  @ApiProperty({ description: 'Search term', maxLength: 300, required: false })
+  @IsString()
+  @IsOptional()
+  pe_search: string;
+
+  @ApiProperty({ description: 'Taxonomy ID', required: false })
+  @IsNumber()
+  @IsOptional()
+  pe_id_taxonomy: number;
+
+  @ApiProperty({ description: 'Type ID', required: false })
+  @IsNumber()
+  @IsOptional()
+  pe_id_tipo: number;
+
+  @ApiProperty({ description: 'Brand ID', required: false })
+  @IsNumber()
+  @IsOptional()
+  pe_id_marca: number;
+
+  @ApiProperty({ description: 'Stock flag', required: false })
+  @IsNumber()
+  @IsOptional()
+  pe_flag_estoque: number;
+
+  @ApiProperty({ description: 'Service flag', required: false })
+  @IsNumber()
+  @IsOptional()
+  pe_flag_servico: number;
+
+  @ApiProperty({ description: 'Number of records per page', required: false })
+  @IsNumber()
+  @IsOptional()
+  pe_qt_registros: number;
+
+  @ApiProperty({ description: 'Page number', required: false })
+  @IsNumber()
+  @IsOptional()
+  pe_pagina_id: number;
+
+  @ApiProperty({ description: 'Column ID for sorting', required: false })
+  @IsNumber()
+  @IsOptional()
+  pe_coluna_id: number;
+
+  @ApiProperty({ description: 'Order ID for sorting', required: false })
+  @IsNumber()
+  @IsOptional()
+  pe_ordem_id: number;
 }

@@ -11,6 +11,16 @@ export function ProductUpdFlagsV3Query(
   const olUserName = dataJsonDto.pe_user_name;
   const olUserRole = dataJsonDto.pe_user_role;
   const olPersonId = dataJsonDto.pe_person_id;
+  const olProductId = dataJsonDto.pe_product_id;
+  const olInactiveFlag = dataJsonDto.pe_inactive_flag;
+  const olImportedFlag = dataJsonDto.pe_imported_flag;
+  const olPhysicalControlFlag = dataJsonDto.pe_physical_control_flag;
+  const olStockControlFlag = dataJsonDto.pe_stock_control_flag;
+  const olFeaturedFlag = dataJsonDto.pe_featured_flag;
+  const olPromotionFlag = dataJsonDto.pe_promotion_flag;
+  const olDiscontinuedFlag = dataJsonDto.pe_discontinued_flag;
+  const olServiceFlag = dataJsonDto.pe_service_flag;
+  const olWebsiteOffFlag = dataJsonDto.pe_website_off_flag;
 
   const queryString = ` call sp_product_upd_flags_v3(
         ${olAppId},
@@ -20,7 +30,17 @@ export function ProductUpdFlagsV3Query(
         '${olUserId}',
         '${olUserName}',
         '${olUserRole}',
-        ${olPersonId}
+        ${olPersonId},
+        ${olProductId},
+        ${olInactiveFlag},
+        ${olImportedFlag},
+        ${olPhysicalControlFlag},
+        ${olStockControlFlag},
+        ${olFeaturedFlag},
+        ${olPromotionFlag},
+        ${olDiscontinuedFlag},
+        ${olServiceFlag},
+        ${olWebsiteOffFlag}
       ) `;
 
   return queryString;

@@ -11,6 +11,10 @@ export function ProductUpdPriceV3Query(
   const olUserName = dataJsonDto.pe_user_name;
   const olUserRole = dataJsonDto.pe_user_role;
   const olPersonId = dataJsonDto.pe_person_id;
+  const olProductId = dataJsonDto.pe_product_id;
+  const olWholesalePrice = dataJsonDto.pe_wholesale_price;
+  const olCorporatePrice = dataJsonDto.pe_corporate_price;
+  const olRetailPrice = dataJsonDto.pe_retail_price;
 
   const queryString = ` call sp_product_upd_price_v3(
         ${olAppId},
@@ -20,7 +24,11 @@ export function ProductUpdPriceV3Query(
         '${olUserId}',
         '${olUserName}',
         '${olUserRole}',
-        ${olPersonId}
+        ${olPersonId},
+        ${olProductId},
+        ${olWholesalePrice},
+        ${olCorporatePrice},
+        ${olRetailPrice}
       ) `;
 
   return queryString;
