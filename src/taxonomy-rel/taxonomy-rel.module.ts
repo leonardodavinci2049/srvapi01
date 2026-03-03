@@ -1,4 +1,5 @@
 import { Module } from '@nestjs/common';
+
 import { TaxonomyRelService } from './taxonomy-rel.service';
 import { TaxonomyRelController } from './taxonomy-rel.controller';
 

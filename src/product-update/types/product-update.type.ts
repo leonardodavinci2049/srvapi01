@@ -21,19 +21,23 @@ export type SpResultRecordCreateType = [SpDefaultFeedback[], SpOperationResult];
 export type SpResultRecordUpdateType = [SpDefaultFeedback[], SpOperationResult];
 export type SpResultRecordDeleteType = [SpDefaultFeedback[], SpOperationResult];
 
-export interface TblPTypeFindALL extends RowDataPacket {
-  ID_TIPO: number;
-  TIPO: string;
+export interface TblProductFindAllV3 extends RowDataPacket {
+  ID_PRODUTO: number;
+  PRODUTO: string;
+}
+export interface TblProductFindIdV3 extends RowDataPacket {
+  ID_PRODUTO: number;
+  PRODUTO: string;
 }
 
-export type SpResultPTypeFindAllData = [
-  TblPTypeFindALL[],
+export type SpResultProductFindAllV3Data = [
+  TblProductFindAllV3[],
   SpDefaultFeedback[],
   SpOperationResult,
 ];
 
-export type SpResultPTypeFindIdData = [
-  TblPTypeFindALL[],
+export type SpResultProductFindIdV3Data = [
+  TblProductFindIdV3[],
   SpDefaultFeedback[],
   SpOperationResult,
 ];
