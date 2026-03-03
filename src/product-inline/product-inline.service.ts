@@ -33,7 +33,7 @@ export class ProductInlineService {
     return 'This action adds a new productInline';
   }
 
-  async taskproductUpdInlBrandV3(dataJsonDto: ProductUpdInlBrandV3Dto) {
+  async taskProductUpdInlBrandV3(dataJsonDto: ProductUpdInlBrandV3Dto) {
     try {
       const queryString = ProductUpdInlBrandV3Query(dataJsonDto);
 
@@ -52,7 +52,7 @@ export class ProductInlineService {
     }
   }
 
-  async taskproductUpdInlDescriptionV3(
+  async taskProductUpdInlDescriptionV3(
     dataJsonDto: ProductUpdInlDescriptionV3Dto,
   ) {
     try {
@@ -64,7 +64,7 @@ export class ProductInlineService {
 
       return processProcedureResultMutation(
         resultData as unknown[],
-        'Brand update failed',
+        'Description update failed',
       );
     } catch (err) {
       const errorMessage =
@@ -73,7 +73,7 @@ export class ProductInlineService {
     }
   }
 
-  async taskproductUpdInlNameV3(dataJsonDto: ProductUpdInlNameV3Dto) {
+  async taskProductUpdInlNameV3(dataJsonDto: ProductUpdInlNameV3Dto) {
     try {
       const queryString = ProductUpdInlNameV3Query(dataJsonDto);
 
@@ -83,7 +83,7 @@ export class ProductInlineService {
 
       return processProcedureResultMutation(
         resultData as unknown[],
-        'Brand update failed',
+        'Name update failed',
       );
     } catch (err) {
       const errorMessage =
@@ -92,7 +92,7 @@ export class ProductInlineService {
     }
   }
 
-  async taskproductUpdInlPathImageV3(dataJsonDto: ProductUpdInlPathImageV3Dto) {
+  async taskProductUpdInlPathImageV3(dataJsonDto: ProductUpdInlPathImageV3Dto) {
     try {
       const queryString = ProductUpdInlPathImageV3Query(dataJsonDto);
 
@@ -102,7 +102,7 @@ export class ProductInlineService {
 
       return processProcedureResultMutation(
         resultData as unknown[],
-        'Brand update failed',
+        'Path image update failed',
       );
     } catch (err) {
       const errorMessage =
@@ -111,7 +111,7 @@ export class ProductInlineService {
     }
   }
 
-  async taskproductUpdInlShortDescriptionV3(
+  async taskProductUpdInlShortDescriptionV3(
     dataJsonDto: ProductUpdInlShortDescriptionV3Dto,
   ) {
     try {
@@ -123,7 +123,7 @@ export class ProductInlineService {
 
       return processProcedureResultMutation(
         resultData as unknown[],
-        'Brand update failed',
+        'Short description update failed',
       );
     } catch (err) {
       const errorMessage =
@@ -132,7 +132,7 @@ export class ProductInlineService {
     }
   }
 
-  async taskproductUpdInlStockMinV3(dataJsonDto: ProductUpdInlStockMinV3Dto) {
+  async taskProductUpdInlStockMinV3(dataJsonDto: ProductUpdInlStockMinV3Dto) {
     try {
       const queryString = ProductUpdInlStockMinV3Query(dataJsonDto);
 
@@ -142,7 +142,7 @@ export class ProductInlineService {
 
       return processProcedureResultMutation(
         resultData as unknown[],
-        'Brand update failed',
+        'Stock min update failed',
       );
     } catch (err) {
       const errorMessage =
@@ -151,7 +151,7 @@ export class ProductInlineService {
     }
   }
 
-  async taskproductUpdInlStockV3(dataJsonDto: ProductUpdInlStockV3Dto) {
+  async taskProductUpdInlStockV3(dataJsonDto: ProductUpdInlStockV3Dto) {
     try {
       const queryString = ProductUpdInlStockV3Query(dataJsonDto);
 
@@ -161,7 +161,7 @@ export class ProductInlineService {
 
       return processProcedureResultMutation(
         resultData as unknown[],
-        'Brand update failed',
+        'Stock update failed',
       );
     } catch (err) {
       const errorMessage =
@@ -170,7 +170,7 @@ export class ProductInlineService {
     }
   }
 
-  async taskproductUpdInlTypeV3(dataJsonDto: ProductUpdInlTypeV3Dto) {
+  async taskProductUpdInlTypeV3(dataJsonDto: ProductUpdInlTypeV3Dto) {
     try {
       const queryString = ProductUpdInlTypeV3Query(dataJsonDto);
 
@@ -180,7 +180,7 @@ export class ProductInlineService {
 
       return processProcedureResultMutation(
         resultData as unknown[],
-        'Brand update failed',
+        'Type update failed',
       );
     } catch (err) {
       const errorMessage =
@@ -189,7 +189,7 @@ export class ProductInlineService {
     }
   }
 
-  async taskproductUpdInlVariouV3(dataJsonDto: ProductUpdInlVariouV3Dto) {
+  async taskProductUpdInlVariouV3(dataJsonDto: ProductUpdInlVariouV3Dto) {
     try {
       const queryString = ProductUpdInlVariouV3Query(dataJsonDto);
 
@@ -199,7 +199,7 @@ export class ProductInlineService {
 
       return processProcedureResultMutation(
         resultData as unknown[],
-        'Brand update failed',
+        'Various update failed',
       );
     } catch (err) {
       const errorMessage =
