@@ -11,6 +11,8 @@ export function TaxonomyFindMenuV3Query(
   const olUserName = dataJsonDto.pe_user_name;
   const olUserRole = dataJsonDto.pe_user_role;
   const olPersonId = dataJsonDto.pe_person_id;
+  const olTypeId = dataJsonDto.pe_type_id;
+  const olParentId = dataJsonDto.pe_parent_id;
 
   const queryString = ` call sp_taxonomy_find_menu_v3(
         ${olAppId},
@@ -20,7 +22,9 @@ export function TaxonomyFindMenuV3Query(
         '${olUserId}',
         '${olUserName}',
         '${olUserRole}',
-        ${olPersonId}
+        ${olPersonId},
+        ${olTypeId},
+        ${olParentId}
       ) `;
 
   return queryString;

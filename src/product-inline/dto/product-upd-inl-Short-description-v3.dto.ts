@@ -40,4 +40,13 @@ export class ProductUpdInlShortDescriptionV3Dto {
   @ApiProperty({ description: 'Person ID' })
   @IsNumber()
   pe_person_id: number;
+
+  @ApiProperty({ description: 'Product ID' })
+  @IsNumber()
+  pe_product_id: number;
+
+  @ApiProperty({ description: 'Short Description', maxLength: 300 })
+  @IsString()
+  @IsNotEmpty()
+  pe_descricao_curta: string;
 }

@@ -11,6 +11,12 @@ export function ProductUpdGeneralV3Query(
   const olUserName = dataJsonDto.pe_user_name;
   const olUserRole = dataJsonDto.pe_user_role;
   const olPersonId = dataJsonDto.pe_person_id;
+  const olProductId = dataJsonDto.pe_product_id;
+  const olProductName = dataJsonDto.pe_product_name;
+  const olRef = dataJsonDto.pe_ref;
+  const olModel = dataJsonDto.pe_model;
+  const olLabel = dataJsonDto.pe_label;
+  const olTabDescription = dataJsonDto.pe_tab_description;
 
   const queryString = ` call sp_product_upd_general_v3(
         ${olAppId},
@@ -20,7 +26,13 @@ export function ProductUpdGeneralV3Query(
         '${olUserId}',
         '${olUserName}',
         '${olUserRole}',
-        ${olPersonId}
+        ${olPersonId},
+        ${olProductId},
+        '${olProductName}',
+        '${olRef}',
+        '${olModel}',
+        '${olLabel}',
+        '${olTabDescription}'
       ) `;
 
   return queryString;

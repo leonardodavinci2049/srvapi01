@@ -11,9 +11,20 @@ export function ProductFindAllV3Query(
   const olUserName = dataJsonDto.pe_user_name;
   const olUserRole = dataJsonDto.pe_user_role;
   const olPersonId = dataJsonDto.pe_person_id;
+  const olSearch = dataJsonDto.pe_search ?? '';
+  const olIdTaxonomy = dataJsonDto.pe_id_taxonomy ?? 0;
+  const olIdTipo = dataJsonDto.pe_id_tipo ?? 0;
+  const olIdMarca = dataJsonDto.pe_id_marca ?? 0;
+
+  const olFlagEstoque = dataJsonDto.pe_flag_estoque ?? 0;
+  const olFlagServico = dataJsonDto.pe_flag_servico ?? 0;
+
+  const olQtRegistros = dataJsonDto.pe_qt_registros ?? 10;
+  const olPaginaId = dataJsonDto.pe_pagina_id ?? 1;
+  const olColunaId = dataJsonDto.pe_coluna_id ?? 0;
+  const olOrdemId = dataJsonDto.pe_ordem_id ?? 0;
 
   const queryString = ` call sp_product_find_all_v3(
-
         ${olAppId},
         ${olSystemClientId},
         ${olStoreId},
@@ -21,8 +32,18 @@ export function ProductFindAllV3Query(
         '${olUserId}',
         '${olUserName}',
         '${olUserRole}',
-        ${olPersonId}
-      ) `;
+        ${olPersonId},
+        '${olSearch}',
+        ${olIdTaxonomy},
+        ${olIdTipo},
+        ${olIdMarca},
+        ${olFlagEstoque},
+        ${olFlagServico},
+        ${olQtRegistros},
+        ${olPaginaId},
+        ${olColunaId},
+        ${olOrdemId}
+    ) `;
 
   return queryString;
 }

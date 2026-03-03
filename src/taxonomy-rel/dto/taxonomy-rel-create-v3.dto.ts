@@ -40,4 +40,14 @@ export class TaxonomyRelCreateV3Dto {
   @ApiProperty({ description: 'Person ID' })
   @IsNumber()
   pe_person_id: number;
+
+  @ApiProperty({ description: 'Taxonomy ID' })
+  @IsNumber()
+  @IsNotEmpty()
+  pe_taxonomy_id: number;
+
+  @ApiProperty({ description: 'Record ID' })
+  @IsNumber()
+  @IsNotEmpty()
+  pe_record_id: number;
 }

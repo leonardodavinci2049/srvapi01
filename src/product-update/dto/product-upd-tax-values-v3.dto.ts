@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsString, IsNotEmpty, IsNumber } from 'class-validator';
+import { IsString, IsNotEmpty, IsNumber, IsOptional } from 'class-validator';
 
 export class ProductUpdTaxValuesV3Dto {
   @ApiProperty({ description: 'App ID' })
@@ -40,4 +40,43 @@ export class ProductUpdTaxValuesV3Dto {
   @ApiProperty({ description: 'Person ID' })
   @IsNumber()
   pe_person_id: number;
+
+  @ApiProperty({ description: 'Product ID' })
+  @IsNumber()
+  pe_product_id: number;
+
+  @ApiProperty({ description: 'CFOP', maxLength: 100, required: false })
+  @IsOptional()
+  @IsString()
+  pe_cfop: string;
+
+  @ApiProperty({ description: 'CST', maxLength: 100, required: false })
+  @IsOptional()
+  @IsString()
+  pe_cst: string;
+
+  @ApiProperty({ description: 'EAN', maxLength: 100, required: false })
+  @IsOptional()
+  @IsString()
+  pe_ean: string;
+
+  @ApiProperty({ description: 'NBM', maxLength: 100, required: false })
+  @IsOptional()
+  @IsString()
+  pe_nbm: string;
+
+  @ApiProperty({ description: 'NCM', required: false })
+  @IsOptional()
+  @IsNumber()
+  pe_ncm: number;
+
+  @ApiProperty({ description: 'PPB', required: false })
+  @IsOptional()
+  @IsNumber()
+  pe_ppb: number;
+
+  @ApiProperty({ description: 'TEMP', required: false })
+  @IsOptional()
+  @IsNumber()
+  pe_temp: number;
 }
