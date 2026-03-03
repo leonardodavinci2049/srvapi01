@@ -26,7 +26,7 @@ export class TaxonomyRelService {
     return 'This action adds a new taxonomyRel';
   }
 
-  async tasktaxonomyRelCreateV3(dataJsonDto: TaxonomyRelCreateV3Dto) {
+  async taskTaxonomyRelCreateV3(dataJsonDto: TaxonomyRelCreateV3Dto) {
     try {
       const queryString = TaxonomyRelCreateV3Query(dataJsonDto);
 
@@ -45,7 +45,7 @@ export class TaxonomyRelService {
     }
   }
 
-  async tasktaxonomyRelProdutoAllV3(dataJsonDto: TaxonomyRelProdutoAllV3Dto) {
+  async taskTaxonomyRelProdutoAllV3(dataJsonDto: TaxonomyRelProdutoAllV3Dto) {
     try {
       const queryString = TaxonomyRelProdutoAllV3Query(dataJsonDto);
 
@@ -65,7 +65,7 @@ export class TaxonomyRelService {
     }
   }
 
-  async tasktaxonomyRelDeleteV3(dataJsonDto: TaxonomyRelDeleteV3Dto) {
+  async taskTaxonomyRelDeleteV3(dataJsonDto: TaxonomyRelDeleteV3Dto) {
     try {
       const queryString = TaxonomyRelDeleteV3Query(dataJsonDto);
 
