@@ -35,7 +35,7 @@ export class TaxonomyBaseService {
     return 'This action adds a new taxonomyBase';
   }
 
-  async tasktaxonomyCreateV3(dataJsonDto: TaxonomyCreateV3Dto) {
+  async taskTaxonomyCreateV3(dataJsonDto: TaxonomyCreateV3Dto) {
     try {
       const queryString = TaxonomyCreateV3Query(dataJsonDto);
 
@@ -54,7 +54,7 @@ export class TaxonomyBaseService {
     }
   }
 
-  async tasktaxonomyFindAllV3(dataJsonDto: TaxonomyFindAllV3Dto) {
+  async taskTaxonomyFindAllV3(dataJsonDto: TaxonomyFindAllV3Dto) {
     try {
       const queryString = TaxonomyFindAllV3Query(dataJsonDto);
 
@@ -74,7 +74,7 @@ export class TaxonomyBaseService {
     }
   }
 
-  async tasktaxonomyFindIdV3(dataJsonDto: TaxonomyFindIdV3Dto) {
+  async taskTaxonomyFindIdV3(dataJsonDto: TaxonomyFindIdV3Dto) {
     try {
       const queryString = TaxonomyFindIdV3Query(dataJsonDto);
 
@@ -94,7 +94,7 @@ export class TaxonomyBaseService {
     }
   }
 
-  async tasktaxonomyFindMenuV3(dataJsonDto: TaxonomyFindMenuV3Dto) {
+  async taskTaxonomyFindMenuV3(dataJsonDto: TaxonomyFindMenuV3Dto) {
     try {
       const queryString = TaxonomyFindMenuV3Query(dataJsonDto);
 
@@ -114,7 +114,7 @@ export class TaxonomyBaseService {
     }
   }
 
-  async tasktaxonomyUpdateV3(dataJsonDto: TaxonomyUpdateV3Dto) {
+  async taskTaxonomyUpdateV3(dataJsonDto: TaxonomyUpdateV3Dto) {
     try {
       const queryString = TaxonomyUpdateV3Query(dataJsonDto);
 
@@ -133,7 +133,7 @@ export class TaxonomyBaseService {
     }
   }
 
-  async tasktaxonomyDeleteV3(dataJsonDto: TaxonomyDeleteV3Dto) {
+  async taskTaxonomyDeleteV3(dataJsonDto: TaxonomyDeleteV3Dto) {
     try {
       const queryString = TaxonomyDeleteV3Query(dataJsonDto);
 

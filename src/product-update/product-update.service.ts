@@ -28,7 +28,7 @@ export class ProductUpdateService {
     return 'This action adds a new productUpdate';
   }
 
-  async taskproductUpdCharacteristicsV3(
+  async taskProductUpdCharacteristicsV3(
     dataJsonDto: ProductUpdCharacteristicsV3Dto,
   ) {
     try {
@@ -49,7 +49,7 @@ export class ProductUpdateService {
     }
   }
 
-  async taskproductUpdFlagsV3(dataJsonDto: ProductUpdFlagsV3Dto) {
+  async taskProductUpdFlagsV3(dataJsonDto: ProductUpdFlagsV3Dto) {
     try {
       const queryString = ProductUpdFlagsV3Query(dataJsonDto);
 
@@ -68,7 +68,7 @@ export class ProductUpdateService {
     }
   }
 
-  async taskproductUpdGeneralV3(dataJsonDto: ProductUpdGeneralV3Dto) {
+  async taskProductUpdGeneralV3(dataJsonDto: ProductUpdGeneralV3Dto) {
     try {
       const queryString = ProductUpdGeneralV3Query(dataJsonDto);
 
@@ -87,7 +87,7 @@ export class ProductUpdateService {
     }
   }
 
-  async taskproductUpdMetadataV3(dataJsonDto: ProductUpdMetadataV3Dto) {
+  async taskProductUpdMetadataV3(dataJsonDto: ProductUpdMetadataV3Dto) {
     try {
       const queryString = ProductUpdMetadataV3Query(dataJsonDto);
 
@@ -106,7 +106,7 @@ export class ProductUpdateService {
     }
   }
 
-  async taskproductUpdPriceV3(dataJsonDto: ProductUpdPriceV3Dto) {
+  async taskProductUpdPriceV3(dataJsonDto: ProductUpdPriceV3Dto) {
     try {
       const queryString = ProductUpdPriceV3Query(dataJsonDto);
 
@@ -125,7 +125,7 @@ export class ProductUpdateService {
     }
   }
 
-  async taskproductUpdTaxValuesV3(dataJsonDto: ProductUpdTaxValuesV3Dto) {
+  async taskProductUpdTaxValuesV3(dataJsonDto: ProductUpdTaxValuesV3Dto) {
     try {
       const queryString = ProductUpdTaxValuesV3Query(dataJsonDto);
 
