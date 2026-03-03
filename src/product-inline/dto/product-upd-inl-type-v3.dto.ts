@@ -40,4 +40,12 @@ export class ProductUpdInlTypeV3Dto {
   @ApiProperty({ description: 'Person ID' })
   @IsNumber()
   pe_person_id: number;
+
+  @ApiProperty({ description: 'Product ID' })
+  @IsNumber()
+  pe_product_id: number;
+
+  @ApiProperty({ description: 'Type id' })
+  @IsNumber()
+  pe_type_id: number;
 }

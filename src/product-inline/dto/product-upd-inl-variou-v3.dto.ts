@@ -40,4 +40,13 @@ export class ProductUpdInlVariouV3Dto {
   @ApiProperty({ description: 'Person ID' })
   @IsNumber()
   pe_person_id: number;
+
+  @ApiProperty({ description: 'Product ID' })
+  @IsNumber()
+  pe_product_id: number;
+
+  @ApiProperty({ description: 'termo', maxLength: 300 })
+  @IsString()
+  @IsNotEmpty()
+  pe_termo: string;
 }

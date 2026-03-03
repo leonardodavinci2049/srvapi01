@@ -11,6 +11,14 @@ export function ProductUpdTaxValuesV3Query(
   const olUserName = dataJsonDto.pe_user_name;
   const olUserRole = dataJsonDto.pe_user_role;
   const olPersonId = dataJsonDto.pe_person_id;
+  const olProductId = dataJsonDto.pe_product_id;
+  const olCfop = dataJsonDto.pe_cfop;
+  const olCst = dataJsonDto.pe_cst;
+  const olEan = dataJsonDto.pe_ean;
+  const olNbm = dataJsonDto.pe_nbm;
+  const olNcm = dataJsonDto.pe_ncm;
+  const olPpb = dataJsonDto.pe_ppb;
+  const olTemp = dataJsonDto.pe_temp;
 
   const queryString = ` call sp_product_upd_tax_values_v3(
         ${olAppId},
@@ -20,7 +28,15 @@ export function ProductUpdTaxValuesV3Query(
         '${olUserId}',
         '${olUserName}',
         '${olUserRole}',
-        ${olPersonId}
+        ${olPersonId},
+        ${olProductId},
+        '${olCfop}',
+        '${olCst}',
+        '${olEan}',
+        '${olNbm}',
+        ${olNcm},
+        ${olPpb},
+        ${olTemp}
       ) `;
 
   return queryString;
