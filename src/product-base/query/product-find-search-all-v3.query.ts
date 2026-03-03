@@ -1,7 +1,7 @@
-import { ProductFindSearchV3Dto } from '../dto/product-find-search-v3.dto';
+import { ProductFindSearchAllV3Dto } from '../dto/product-find-search-all-v3.dto';
 
-export function ProductFindSearchV3Query(
-  dataJsonDto: ProductFindSearchV3Dto,
+export function ProductFindSearchAllV3Query(
+  dataJsonDto: ProductFindSearchAllV3Dto,
 ): string {
   const olAppId = dataJsonDto.pe_app_id ?? 1;
   const olSystemClientId = dataJsonDto.pe_system_client_id;
@@ -17,7 +17,7 @@ export function ProductFindSearchV3Query(
   const olFlagStock = dataJsonDto.pe_flag_stock;
   const olLimit = dataJsonDto.pe_records_quantity;
 
-  const queryString = ` call sp_product_find_search_v3(_
+  const queryString = ` call sp_product_find_search_all_v3(_
         ${olAppId},
         ${olSystemClientId},
         ${olStoreId},

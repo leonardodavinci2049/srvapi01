@@ -176,7 +176,7 @@ export type SpResultProductFindBaseAllV3Data = [
   SpOperationResult,
 ];
 
-export type SpResultProductFindBaseSearchV3Data = [
+export type SpResultProductFindBaseSearchAllV3Data = [
   TblProductFindBaseSearch[],
   SpDefaultFeedback[],
   SpOperationResult,

@@ -15,13 +15,13 @@ import { ProductCreateV3Query } from './query/product-create-v3.query';
 import {
   SpResultProductFindBaseAllV3Data,
   SpResultProductFindBaseIdV3Data,
-  SpResultProductFindBaseSearchV3Data,
+  SpResultProductFindBaseSearchAllV3Data,
   SpResultRecordCreateType,
 } from './types/product-base.type';
 import { ProductFindAllV3Query } from './query/product-find-all-v3.query';
 import { ProductFindIdV3Query } from './query/product-find-id-v3.query';
-import { ProductFindSearchV3Dto } from './dto/product-find-search-v3.dto';
-import { ProductFindSearchV3Query } from './query/product-find-serach-v3.query';
+import { ProductFindSearchAllV3Dto } from './dto/product-find-search-all-v3.dto';
+import { ProductFindSearchAllV3Query } from './query/product-find-search-all-v3.query';
 
 @Injectable()
 export class ProductBaseService {
@@ -30,7 +30,7 @@ export class ProductBaseService {
     return 'This action adds a new productBase';
   }
 
-  async taskproductCreateV3(dataJsonDto: ProductCreateV3Dto) {
+  async taskProductCreateV3(dataJsonDto: ProductCreateV3Dto) {
     try {
       const queryString = ProductCreateV3Query(dataJsonDto);
 
@@ -49,7 +49,7 @@ export class ProductBaseService {
     }
   }
 
-  async taskproductFindAllV3(dataJsonDto: ProductFindAllV3Dto) {
+  async taskProductFindAllV3(dataJsonDto: ProductFindAllV3Dto) {
     try {
       const queryString = ProductFindAllV3Query(dataJsonDto);
 
@@ -69,13 +69,13 @@ export class ProductBaseService {
     }
   }
 
-  async taskproductSerchAllV3(dataJsonDto: ProductFindSearchV3Dto) {
+  async taskProductSearchAllV3(dataJsonDto: ProductFindSearchAllV3Dto) {
     try {
-      const queryString = ProductFindSearchV3Query(dataJsonDto);
+      const queryString = ProductFindSearchAllV3Query(dataJsonDto);
 
       const resultData = (await this.dbService.selectExecute(
         queryString,
-      )) as unknown as SpResultProductFindBaseSearchV3Data;
+      )) as unknown as SpResultProductFindBaseSearchAllV3Data;
 
       return processProcedureResultMultiQuery(
         resultData as unknown[],
@@ -89,7 +89,7 @@ export class ProductBaseService {
     }
   }
 
-  async taskproductFindIdV3(dataJsonDto: ProductFindIdV3Dto) {
+  async taskProductFindIdV3(dataJsonDto: ProductFindIdV3Dto) {
     try {
       const queryString = ProductFindIdV3Query(dataJsonDto);
 
