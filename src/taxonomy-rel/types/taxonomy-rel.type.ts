@@ -17,23 +17,101 @@ export interface SpOperationResult {
   changedRows: number;
 }
 
+export interface TblTaxonomyFindId extends RowDataPacket {
+  ID_TAXONOMY?: number;
+  PARENT_ID?: number;
+  TAXONOMIA?: string;
+  PARENT_CATEGORY?: string;
+  PATH_IMAGEM?: string | null;
+  SLUG?: string | null;
+  LEVEL?: number | null;
+  ORDEM?: number;
+  ID_IMAGEM?: number | null;
+  QT_RECORDS?: number | null;
+  INATIVO?: number;
+
+  META_TITLE?: string | null;
+  META_DESCRIPTION?: string | null;
+  ANOTACOES?: string | null;
+  CREATEDAT?: string;
+  UPDATEDAT?: string;
+}
+
+export interface TblTaxonomyFind extends RowDataPacket {
+  ID_TAXONOMY: number;
+  PARENT_ID: number;
+  TAXONOMIA: string;
+  ANOTACOES: string | null;
+  PATH_IMAGEM: string | null;
+  SLUG: string | null;
+  LEVEL: number | null;
+  ORDEM: number;
+  ID_IMAGEM: number | null;
+  QT_RECORDS: number | null;
+  META_TITLE: string | null;
+  META_DESCRIPTION: string | null;
+}
+
+export interface TblTaxonomyFindMenu extends RowDataPacket {
+  ID_TAXONOMY?: number;
+  PARENT_ID?: number;
+  TAXONOMIA?: string;
+  PATH_IMAGEM?: string | null;
+  SLUG?: string | null;
+  LEVEL?: number;
+  ORDEM?: number;
+  ID_IMAGEM?: number | null;
+  QT_RECORDS?: number | null;
+}
+
+export interface TblTaxonomyWebMenu extends RowDataPacket {
+  ID_TAXONOMY?: number;
+  PARENT_ID?: number;
+  TAXONOMIA?: string;
+  PATH_IMAGEM?: string | null;
+  SLUG?: string | null;
+  LEVEL?: number;
+  ORDEM?: number;
+  ID_IMAGEM?: number | null;
+  QT_RECORDS?: number | null;
+}
+
+export interface TblTaxonomyRelProduto extends RowDataPacket {
+  ID_TAXONOMY?: number;
+  PARENT_ID?: number;
+  TAXONOMIA?: string;
+  SLUG?: string | null;
+  ORDEM?: number;
+  LEVEL?: number;
+}
+
 export type SpResultRecordCreateType = [SpDefaultFeedback[], SpOperationResult];
 export type SpResultRecordUpdateType = [SpDefaultFeedback[], SpOperationResult];
 export type SpResultRecordDeleteType = [SpDefaultFeedback[], SpOperationResult];
 
-export interface TblPTypeFindALL extends RowDataPacket {
-  ID_TIPO: number;
-  TIPO: string;
-}
-
-export type SpResultPTypeFindAllData = [
-  TblPTypeFindALL[],
+export type SpResultTaxonomyFindIdV3Data = [
+  TblTaxonomyFindId[],
+  SpDefaultFeedback[],
+  SpOperationResult,
+];
+export type SpResultTaxonomyFindAllV3Data = [
+  TblTaxonomyFind[],
+  SpDefaultFeedback[],
+  SpOperationResult,
+];
+export type SpResultTaxonomyFindMenuV3Data = [
+  TblTaxonomyFindMenu[],
+  SpDefaultFeedback[],
+  SpOperationResult,
+];
+export type SpResultTaxonomyRelProdutoV3Data = [
+  TblTaxonomyRelProduto[],
   SpDefaultFeedback[],
   SpOperationResult,
 ];
 
-export type SpResultPTypeFindIdData = [
-  TblPTypeFindALL[],
+export type SpResultTaxonomyWebMenuV3Data = [
+  TblTaxonomyWebMenu[],
   SpDefaultFeedback[],
   SpOperationResult,
 ];
