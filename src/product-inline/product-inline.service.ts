@@ -64,7 +64,7 @@ export class ProductInlineService {
 
       return processProcedureResultMutation(
         resultData as unknown[],
-        'Brand update failed',
+        'Description update failed',
       );
     } catch (err) {
       const errorMessage =
@@ -83,7 +83,7 @@ export class ProductInlineService {
 
       return processProcedureResultMutation(
         resultData as unknown[],
-        'Brand update failed',
+        'Name update failed',
       );
     } catch (err) {
       const errorMessage =
@@ -102,7 +102,7 @@ export class ProductInlineService {
 
       return processProcedureResultMutation(
         resultData as unknown[],
-        'Brand update failed',
+        'Path image update failed',
       );
     } catch (err) {
       const errorMessage =
@@ -123,7 +123,7 @@ export class ProductInlineService {
 
       return processProcedureResultMutation(
         resultData as unknown[],
-        'Brand update failed',
+        'Short description update failed',
       );
     } catch (err) {
       const errorMessage =
@@ -142,7 +142,7 @@ export class ProductInlineService {
 
       return processProcedureResultMutation(
         resultData as unknown[],
-        'Brand update failed',
+        'Stock min update failed',
       );
     } catch (err) {
       const errorMessage =
@@ -161,7 +161,7 @@ export class ProductInlineService {
 
       return processProcedureResultMutation(
         resultData as unknown[],
-        'Brand update failed',
+        'Stock update failed',
       );
     } catch (err) {
       const errorMessage =
@@ -180,7 +180,7 @@ export class ProductInlineService {
 
       return processProcedureResultMutation(
         resultData as unknown[],
-        'Brand update failed',
+        'Type update failed',
       );
     } catch (err) {
       const errorMessage =
@@ -199,7 +199,7 @@ export class ProductInlineService {
 
       return processProcedureResultMutation(
         resultData as unknown[],
-        'Brand update failed',
+        'Various update failed',
       );
     } catch (err) {
       const errorMessage =

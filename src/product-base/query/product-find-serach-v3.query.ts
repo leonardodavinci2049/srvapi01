@@ -1,7 +1,7 @@
-import { ProductFindAllV3Dto } from '../dto/product-find-all-v3.dto';
+import { ProductFindSearchV3Dto } from '../dto/product-find-search-v3.dto';
 
-export function ProductFindAllV3Query(
-  dataJsonDto: ProductFindAllV3Dto,
+export function ProductFindSearchV3Query(
+  dataJsonDto: ProductFindSearchV3Dto,
 ): string {
   const olAppId = dataJsonDto.pe_app_id ?? 1;
   const olSystemClientId = dataJsonDto.pe_system_client_id;
@@ -12,19 +12,12 @@ export function ProductFindAllV3Query(
   const olUserRole = dataJsonDto.pe_user_role;
   const olPersonId = dataJsonDto.pe_person_id;
 
+  const olCustomerId = dataJsonDto.pe_customer_id;
   const olSearch = dataJsonDto.pe_search ? dataJsonDto.pe_search : '';
-
-  const olTaxonomyId = dataJsonDto.pe_taxonomy_id;
-  const olTypeId = dataJsonDto.pe_type_id;
-  const olBrandId = dataJsonDto.pe_brand_id;
   const olFlagStock = dataJsonDto.pe_flag_stock;
-  const olFlagService = dataJsonDto.pe_flag_service;
-  const olRecordsQuantity = dataJsonDto.pe_records_quantity;
-  const olPageId = dataJsonDto.pe_page_id;
-  const olColumnId = dataJsonDto.pe_column_id;
-  const olOrderId = dataJsonDto.pe_order_id;
+  const olLimit = dataJsonDto.pe_records_quantity;
 
-  const queryString = ` call sp_product_find_all_v3(_
+  const queryString = ` call sp_product_find_search_v3(_
         ${olAppId},
         ${olSystemClientId},
         ${olStoreId},
@@ -34,16 +27,9 @@ export function ProductFindAllV3Query(
         '${olUserRole}',
         ${olPersonId},
         '${olSearch}',
-        ${olTaxonomyId},
-        ${olTypeId},
-        ${olBrandId},
+        ${olCustomerId},
         ${olFlagStock},
-        ${olFlagService},
-        ${olRecordsQuantity},
-        ${olPageId},
-        ${olColumnId},
-        ${olOrderId}
-
+        ${olLimit}
     ) `;
 
   return queryString;

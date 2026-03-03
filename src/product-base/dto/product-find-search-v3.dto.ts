@@ -1,7 +1,7 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsString, IsNotEmpty, IsNumber, IsOptional } from 'class-validator';
+import { IsString, IsNotEmpty, IsNumber } from 'class-validator';
 
-export class ProductFindAllV3Dto {
+export class ProductFindSearchV3Dto {
   @ApiProperty({ description: 'App ID' })
   @IsNumber()
   @IsNotEmpty()
@@ -41,45 +41,19 @@ export class ProductFindAllV3Dto {
   @IsNumber()
   pe_person_id: number;
 
-  @ApiProperty({ description: 'Search term', maxLength: 300, required: false })
+  @ApiProperty({ description: 'Customer ID' })
+  @IsNumber()
+  pe_customer_id: number;
+
+  @ApiProperty({ description: 'Search term', maxLength: 300 })
   @IsString()
-  @IsOptional()
   pe_search: string;
-
-  @ApiProperty({ description: 'Taxonomy ID', required: false })
-  @IsNumber()
-  @IsOptional()
-  pe_taxonomy_id: number;
-
-  @ApiProperty({ description: 'Type ID' })
-  @IsNumber()
-  pe_type_id: number;
-
-  @ApiProperty({ description: 'Brand ID' })
-  @IsNumber()
-  pe_brand_id: number;
 
   @ApiProperty({ description: 'Stock flag' })
   @IsNumber()
   pe_flag_stock: number;
 
-  @ApiProperty({ description: 'Service flag' })
-  @IsNumber()
-  pe_flag_service: number;
-
   @ApiProperty({ description: 'Record quantity' })
   @IsNumber()
   pe_records_quantity: number;
-
-  @ApiProperty({ description: 'Page ID' })
-  @IsNumber()
-  pe_page_id: number;
-
-  @ApiProperty({ description: 'Column ID' })
-  @IsNumber()
-  pe_column_id: number;
-
-  @ApiProperty({ description: 'Order ID' })
-  @IsNumber()
-  pe_order_id: number;
 }

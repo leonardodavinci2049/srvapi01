@@ -13,12 +13,15 @@ import { ProductFindIdV3Dto } from './dto/product-find-id-v3.dto';
 
 import { ProductCreateV3Query } from './query/product-create-v3.query';
 import {
-  SpResultProductFindAllV3Data,
-  SpResultProductFindIdV3Data,
+  SpResultProductFindBaseAllV3Data,
+  SpResultProductFindBaseIdV3Data,
+  SpResultProductFindBaseSearchV3Data,
   SpResultRecordCreateType,
 } from './types/product-base.type';
 import { ProductFindAllV3Query } from './query/product-find-all-v3.query';
 import { ProductFindIdV3Query } from './query/product-find-id-v3.query';
+import { ProductFindSearchV3Dto } from './dto/product-find-search-v3.dto';
+import { ProductFindSearchV3Query } from './query/product-find-serach-v3.query';
 
 @Injectable()
 export class ProductBaseService {
@@ -37,7 +40,7 @@ export class ProductBaseService {
 
       return processProcedureResultMutation(
         resultData as unknown[],
-        'Brand create failed',
+        'Product create failed',
       );
     } catch (err) {
       const errorMessage =
@@ -52,12 +55,32 @@ export class ProductBaseService {
 
       const resultData = (await this.dbService.selectExecute(
         queryString,
-      )) as unknown as SpResultProductFindAllV3Data;
+      )) as unknown as SpResultProductFindBaseAllV3Data;
 
       return processProcedureResultMultiQuery(
         resultData as unknown[],
-        ['Brand find All'],
-        'Brand find All not found',
+        ['Product find All'],
+        'Product find All not found',
+      );
+    } catch (err) {
+      const errorMessage =
+        err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
+      return new ResultModel(100404, errorMessage, 0, []);
+    }
+  }
+
+  async taskproductSerchAllV3(dataJsonDto: ProductFindSearchV3Dto) {
+    try {
+      const queryString = ProductFindSearchV3Query(dataJsonDto);
+
+      const resultData = (await this.dbService.selectExecute(
+        queryString,
+      )) as unknown as SpResultProductFindBaseSearchV3Data;
+
+      return processProcedureResultMultiQuery(
+        resultData as unknown[],
+        ['Product find All'],
+        'Product find All not found',
       );
     } catch (err) {
       const errorMessage =
@@ -72,12 +95,16 @@ export class ProductBaseService {
 
       const resultData = (await this.dbService.selectExecute(
         queryString,
-      )) as unknown as SpResultProductFindIdV3Data;
+      )) as unknown as SpResultProductFindBaseIdV3Data;
 
       return processProcedureResultMultiQuery(
         resultData as unknown[],
-        ['Brand find All'],
-        'Brand find All not found',
+        [
+          'Product find Id',
+          'Product find Id categories',
+          'Product find Id related',
+        ],
+        'Product find Id not found',
       );
     } catch (err) {
       const errorMessage =
