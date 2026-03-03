@@ -40,4 +40,14 @@ export class TaxonomyFindMenuV3Dto {
   @ApiProperty({ description: 'Person ID' })
   @IsNumber()
   pe_person_id: number;
+
+  @ApiProperty({ description: 'Taxonomy Type ID' })
+  @IsNumber()
+  @IsNotEmpty()
+  pe_type_id: number;
+
+  @ApiProperty({ description: 'Parent Taxonomy ID' })
+  @IsNumber()
+  @IsNotEmpty()
+  pe_parent_id: number;
 }

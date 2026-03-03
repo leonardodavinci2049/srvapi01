@@ -11,6 +11,7 @@ export function TaxonomyFindIdV3Query(
   const olUserName = dataJsonDto.pe_user_name;
   const olUserRole = dataJsonDto.pe_user_role;
   const olPersonId = dataJsonDto.pe_person_id;
+  const olTaxonomyId = dataJsonDto.pe_taxonomy_id;
 
   const queryString = ` call sp_taxonomy_find_id_v3(
         ${olAppId},
@@ -20,7 +21,8 @@ export function TaxonomyFindIdV3Query(
         '${olUserId}',
         '${olUserName}',
         '${olUserRole}',
-        ${olPersonId}
+        ${olPersonId},
+        ${olTaxonomyId}
       ) `;
 
   return queryString;
