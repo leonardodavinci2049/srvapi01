@@ -169,3 +169,49 @@ export class ProductCreateV3Dto {
   @IsString()
   pe_additional_info: string;
 }
+
+/*
+Sample JSON for testing in body endpoint:
+
+{
+  "pe_app_id": 1,
+  "pe_system_client_id": 1,
+  "pe_store_id": 1,
+  "pe_organization_id": "ORG001",
+  "pe_user_id": "USER001",
+  "pe_user_name": "John Doe",
+  "pe_user_role": "saller",
+  "pe_person_id": 29014,
+
+  "pe_product_name": "Product Name5",
+
+  "pe_tab_description": "Tab Description5",
+  "pe_label": "Label5",
+  "pe_ref": "REF12345",
+  "pe_model": "ModelX",
+  "pe_supplier_id": 1001,
+
+  "pe_product_type_id": 1,
+  "pe_brand_id": 1,
+
+  "pe_weight_gr": 500,
+  "pe_length_mm": 200,
+  "pe_width_mm": 150,
+  "pe_height_mm": 100,
+  "pe_diameter_mm": null,
+
+  "pe_warranty_period_days": 365,
+
+  "pe_wholesale_price": 50.00,
+  "pe_retail_price": 75.00,
+  "pe_corporate_price": 65.00,
+
+  "pe_stock_quantity": 100,
+
+  "pe_website_off_flag": 0,
+  "pe_imported_flag": 1,
+  
+  "pe_additional_info": "This is a sample product for testing."
+}
+
+*/

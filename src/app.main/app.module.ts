@@ -27,6 +27,11 @@ import { CustomerInlineModule } from 'src/customer-inline/customer-inline.module
 import { CustomerUpdModule } from 'src/customer-upd/customer-upd.module';
 import { CarrierModule } from 'src/carrier/carrier.module';
 import { ProductPdvModule } from 'src/product-pdv/product-pdv.module';
+import { ProductUpdateModule } from 'src/product-update/product-update.module';
+import { ProductInlineModule } from 'src/product-inline/product-inline.module';
+import { ProductBaseModule } from 'src/product-base/product-base.module';
+import { TaxonomyRelModule } from 'src/taxonomy-rel/taxonomy-rel.module';
+import { TaxonomyBaseModule } from 'src/taxonomy-base/taxonomy-base.module';
 
 @Module({
   imports: [
@@ -41,11 +46,16 @@ import { ProductPdvModule } from 'src/product-pdv/product-pdv.module';
 
     ProductModule, // Importando o módulo de produtos
     ProductPdvModule, // Importando o módulo de produtos para PDV
+    ProductBaseModule,
+    ProductInlineModule,
+    ProductUpdateModule,
     CartModule, // Importando o módulo de carrinho
     CustomerModule, // Importando o módulo de clientes
     CustomerInlineModule, // Importando o módulo de atualização inline de clientes
     CustomerUpdModule,
     TaxonomyModule,
+    TaxonomyBaseModule,
+    TaxonomyRelModule,
     AccountModule,
     CheckModule,
     BrandModule,
