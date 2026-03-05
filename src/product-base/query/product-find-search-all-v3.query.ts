@@ -17,7 +17,7 @@ export function ProductFindSearchAllV3Query(
   const olFlagStock = dataJsonDto.pe_flag_stock;
   const olLimit = dataJsonDto.pe_records_quantity;
 
-  const queryString = ` call sp_product_find_search_all_v3(_
+  const queryString = ` call sp_product_find_search_all_v3(
         ${olAppId},
         ${olSystemClientId},
         ${olStoreId},
@@ -26,11 +26,12 @@ export function ProductFindSearchAllV3Query(
         '${olUserName}',
         '${olUserRole}',
         ${olPersonId},
+         ${olCustomerId},       
         '${olSearch}',
-        ${olCustomerId},
         ${olFlagStock},
         ${olLimit}
     ) `;
+  //  console.log('Generated Query:', queryString);
 
   return queryString;
 }

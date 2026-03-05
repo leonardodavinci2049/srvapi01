@@ -66,3 +66,25 @@ export class TaxonomyCreateV3Dto {
   @IsOptional()
   pe_level: number;
 }
+
+/*
+Sample JSON for testing in body endpoint:
+
+{
+  "pe_app_id": 1,
+  "pe_system_client_id": 1,
+  "pe_store_id": 1,
+  "pe_organization_id": "ORG001",
+  "pe_user_id": "USER001",
+  "pe_user_name": "User Name",
+  "pe_user_role": "saller",
+  "pe_person_id": 29014,
+  "pe_type_id": 123,
+  "pe_parent_id": 0,
+  "pe_taxonomy_name": "Sample Taxonomy",
+  "pe_slug": "sample-taxonomy",
+  "pe_level": 1
+
+}
+
+*/
