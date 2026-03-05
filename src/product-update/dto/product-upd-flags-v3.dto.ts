@@ -90,3 +90,30 @@ export class ProductUpdFlagsV3Dto {
   @IsNumber()
   pe_website_off_flag: number;
 }
+
+/*
+Sample JSON for testing in body endpoint:
+
+{
+  "pe_app_id": 1,
+  "pe_system_client_id": 1,
+  "pe_store_id": 1,
+  "pe_organization_id": "ORG001",
+  "pe_user_id": "USER001",
+  "pe_user_name": "User Name",
+  "pe_user_role": "saller",
+  "pe_person_id": 29014,
+  "pe_product_id": 56813,
+  "pe_inactive_flag": 0,
+  "pe_imported_flag": 1,
+  "pe_physical_control_flag": 0,
+  "pe_stock_control_flag": 1,
+  "pe_featured_flag": 0,
+  "pe_promotion_flag": 1,
+  "pe_discontinued_flag": 0,
+  "pe_service_flag": 0,
+  "pe_website_off_flag": 1
+
+}
+
+*/

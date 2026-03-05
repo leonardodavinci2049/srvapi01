@@ -7,6 +7,7 @@ import { TaxonomyFindAllV3Dto } from './dto/taxonomy-find-all-v3.dto';
 import { TaxonomyFindIdV3Dto } from './dto/taxonomy-find-id-v3.dto';
 import { TaxonomyFindMenuV3Dto } from './dto/taxonomy-find-menu-v3.dto';
 import { TaxonomyUpdateV3Dto } from './dto/taxonomy-update-v3.dto';
+import { TaxonomyUpdMetadataV3Dto } from './dto/taxonomy-upd-metadata-v3.dto';
 
 @Controller('taxonomy-base')
 export class TaxonomyBaseController {
@@ -55,6 +56,12 @@ export class TaxonomyBaseController {
   @Post('v3/taxonomy-update')
   taxonomyUpdateV3(@Body() dataJsonDto: TaxonomyUpdateV3Dto) {
     return this.taxonomyBaseService.taskTaxonomyUpdateV3(dataJsonDto);
+  }
+
+  @UseGuards(AuthGuard)
+  @Post('v3/taxonomy-upd-metadata')
+  taxonomyUpdInlMetadataV3(@Body() dataJsonDto: TaxonomyUpdMetadataV3Dto) {
+    return this.taxonomyBaseService.taskTaxonomyUpdInlMetadataV3(dataJsonDto);
   }
 
   @UseGuards(AuthGuard)

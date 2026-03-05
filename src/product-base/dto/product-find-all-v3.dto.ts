@@ -83,3 +83,29 @@ export class ProductFindAllV3Dto {
   @IsNumber()
   pe_order_id: number;
 }
+
+/*
+Sample JSON for testing in body endpoint:
+
+{
+  "pe_app_id": 1,
+  "pe_system_client_id": 1,
+  "pe_store_id": 1,
+  "pe_organization_id": "ORG001",
+  "pe_user_id": "USER001",
+  "pe_user_name": "User Name",
+  "pe_user_role": "saller",
+  "pe_person_id": 29014,
+  "pe_search": "",
+  "pe_taxonomy_id": 0,
+  "pe_type_id": 0,
+  "pe_brand_id": 0,
+  "pe_flag_stock":  ,
+  "pe_flag_service": 0,
+  "pe_records_quantity": 10,
+  "pe_page_id": 0,
+  "pe_column_id": 1,
+  "pe_order_id": 1
+}
+
+*/

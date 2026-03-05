@@ -24,7 +24,7 @@ export function ProductFindAllV3Query(
   const olColumnId = dataJsonDto.pe_column_id;
   const olOrderId = dataJsonDto.pe_order_id;
 
-  const queryString = ` call sp_product_find_all_v3(_
+  const queryString = ` call sp_product_find_all_v3(
         ${olAppId},
         ${olSystemClientId},
         ${olStoreId},
@@ -45,6 +45,7 @@ export function ProductFindAllV3Query(
         ${olOrderId}
 
     ) `;
+  //    console.log('Generated Query:', queryString);
 
   return queryString;
 }

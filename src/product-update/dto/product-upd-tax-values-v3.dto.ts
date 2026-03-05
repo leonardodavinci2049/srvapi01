@@ -80,3 +80,27 @@ export class ProductUpdTaxValuesV3Dto {
   @IsNumber()
   pe_temp: number;
 }
+
+/*
+Sample JSON for testing in body endpoint:
+
+{
+  "pe_app_id": 1,
+  "pe_system_client_id": 1,
+  "pe_store_id": 1,
+  "pe_organization_id": "ORG001",
+  "pe_user_id": "USER001",
+  "pe_user_name": "User Name",
+  "pe_user_role": "saller",
+  "pe_person_id": 29014,
+  "pe_product_id": 56813,
+  "pe_cfop": "CFOP001",
+  "pe_cst": "CST001",
+  "pe_ean": "EAN001",
+  "pe_nbm": "NBM001",
+  "pe_ncm": 12345678,
+  "pe_ppb": 10.5,
+  "pe_temp": 5.0
+}
+
+*/

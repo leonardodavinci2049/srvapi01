@@ -56,18 +56,42 @@ export class TaxonomyFindAllV3Dto {
   @IsOptional()
   pe_flag_inactive: number;
 
-  @ApiProperty({ description: 'Number of records per page' })
+  @ApiProperty({ description: 'Record quantity' })
   @IsNumber()
-  @IsOptional()
   pe_records_quantity: number;
 
-  @ApiProperty({ description: 'Page number (pagination)' })
+  @ApiProperty({ description: 'Page ID' })
   @IsNumber()
-  @IsOptional()
   pe_page_id: number;
 
-  @ApiProperty({ description: 'Sort column ID' })
+  @ApiProperty({ description: 'Column ID' })
   @IsNumber()
-  @IsOptional()
   pe_column_id: number;
+
+  @ApiProperty({ description: 'Order ID' })
+  @IsNumber()
+  pe_order_id: number;
 }
+
+/*
+Sample JSON for testing in body endpoint:
+
+{
+  "pe_app_id": 1,
+  "pe_system_client_id": 1,
+  "pe_store_id": 1,
+  "pe_organization_id": "ORG001",
+  "pe_user_id": "USER001",
+  "pe_user_name": "User Name",
+  "pe_user_role": "saller",
+  "pe_person_id": 29014,
+  "pe_parent_id": 0,
+  "pe_search": "",
+  "pe_flag_inactive": 0,
+  "pe_records_quantity": 20,
+  "pe_page_id": 0,
+  "pe_column_id": 1,
+  "pe_order_id": 1
+
+}
+*/

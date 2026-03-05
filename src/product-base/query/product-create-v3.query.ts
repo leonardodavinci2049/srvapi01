@@ -50,29 +50,35 @@ export function ProductCreateV3Query(dataJsonDto: ProductCreateV3Dto): string {
         '${olUserName}',
         '${olUserRole}',
         ${olPersonId},
+
         '${olProductName}',
         '${olSlug}',
+
         '${olTabDescription}',
         '${olLabel}',
         '${olRef}',
         '${olModel}',
+
         ${olSupplierId},
         ${olProductTypeId},
         ${olBrandId},
+
         ${olWeightGr},
         ${olLengthMm},
         ${olWidthMm},
         ${olHeightMm},
         ${olDiameterMm},
         ${olWarrantyPeriodDays},
+
         ${olWholesalePrice},
         ${olRetailPrice},
         ${olCorporatePrice},
+
         ${olStockQuantity},
+
         ${olFlagWebsiteOff},
         ${olFlagImportado},
         '${olInfo}'
       ) `;
-
   return queryString;
 }

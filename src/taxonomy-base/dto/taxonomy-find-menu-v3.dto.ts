@@ -51,3 +51,21 @@ export class TaxonomyFindMenuV3Dto {
   @IsNotEmpty()
   pe_parent_id: number;
 }
+
+/*
+Sample JSON for testing in body endpoint:
+{
+  "pe_app_id": 1,
+  "pe_system_client_id": 1,
+  "pe_store_id": 1,
+  "pe_organization_id": "ORG001",
+  "pe_user_id": "USER001",
+  "pe_user_name": "User Name",
+  "pe_user_role": "saller",
+  "pe_person_id": 29014,
+  "pe_type_id": 12345,
+  "pe_parent_id": 0
+
+}
+
+*/

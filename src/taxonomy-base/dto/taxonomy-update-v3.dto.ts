@@ -91,3 +91,31 @@ export class TaxonomyUpdateV3Dto {
   @IsOptional()
   pe_info: string;
 }
+
+/*
+Sample JSON for testing in body endpoint:
+
+{
+  "pe_app_id": 1,
+  "pe_system_client_id": 1,
+  "pe_store_id": 1,
+  "pe_organization_id": "ORG001",
+  "pe_user_id": "USER001",
+  "pe_user_name": "User Name",
+  "pe_user_role": "saller",
+  "pe_person_id": 29014,
+  "pe_taxonomy_id": 3569,
+  "pe_parent_id": 0,
+  "pe_taxonomy_name": "Sample Taxonomy Name",
+  "pe_slug": "sample-taxonomy-slug",
+  "pe_image_path": "/images/sample.jpg",
+  "pe_sort_order": 1,
+  "pe_meta_title": "Sample Meta Title",
+  "pe_meta_description": "This is a sample meta description for the taxonomy.",
+  "pe_inactive": 0,
+  "pe_info": "Additional information about the taxonomy."
+
+}
+
+
+*/
