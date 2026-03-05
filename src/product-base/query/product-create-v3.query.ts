@@ -13,7 +13,6 @@ export function ProductCreateV3Query(dataJsonDto: ProductCreateV3Dto): string {
   const olUserRole = dataJsonDto.pe_user_role;
   const olPersonId = dataJsonDto.pe_person_id;
 
-  const olBusinessType = dataJsonDto.pe_business_type;
   const olProductName = dataJsonDto.pe_product_name;
   const olSlug = generateSlug(dataJsonDto.pe_product_name);
   const olTabDescription = dataJsonDto.pe_tab_description ?? '';
@@ -51,7 +50,7 @@ export function ProductCreateV3Query(dataJsonDto: ProductCreateV3Dto): string {
         '${olUserName}',
         '${olUserRole}',
         ${olPersonId},
-        ${olBusinessType},  
+
         '${olProductName}',
         '${olSlug}',
 

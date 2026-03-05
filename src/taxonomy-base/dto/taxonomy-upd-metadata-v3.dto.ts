@@ -1,7 +1,7 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IsString, IsNotEmpty, IsNumber } from 'class-validator';
 
-export class TaxonomyRelCreateV3Dto {
+export class TaxonomyUpdMetadataV3Dto {
   @ApiProperty({ description: 'App ID' })
   @IsNumber()
   @IsNotEmpty()
@@ -46,10 +46,17 @@ export class TaxonomyRelCreateV3Dto {
   @IsNotEmpty()
   pe_taxonomy_id: number;
 
-  @ApiProperty({ description: 'Record ID' })
-  @IsNumber()
-  @IsNotEmpty()
-  pe_record_id: number;
+  @ApiProperty({ description: 'Meta Title', maxLength: 300 })
+  @IsString()
+  pe_meta_title: string;
+
+  @ApiProperty({ description: 'Meta Description', maxLength: 500 })
+  @IsString()
+  pe_meta_description: string;
+
+  @ApiProperty({ description: 'Meta Keywords', maxLength: 500 })
+  @IsString()
+  pe_meta_keywords: string;
 }
 
 /*
@@ -65,27 +72,10 @@ Sample JSON for testing in body endpoint:
   "pe_user_role": "saller",
   "pe_person_id": 29014,
   "pe_taxonomy_id": 3566,
-  "pe_record_id": 56819 
+  "pe_meta_title": "Sample Meta Title",
+  "pe_meta_description": "Sample meta description for SEO",
+  "pe_meta_keywords": "keyword1, keyword2, keyword3"
 }
 
-*/
 
-/*
-Sample JSON response:
-
-{
-    "statusCode": 100200,
-    "message": "Cadastro criado com sucesso.",
-    "recordId": 3566,
-    "data": [
-        {
-            "sp_return_id": 3566,
-            "sp_message": "Cadastro criado com sucesso.",
-            "sp_error_id": 0
-        }
-    ],
-    "quantity": 1,
-    "errorId": 0,
-    "info1": ""
-}
 */

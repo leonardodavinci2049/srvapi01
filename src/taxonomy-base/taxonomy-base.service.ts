@@ -26,6 +26,8 @@ import { TaxonomyFindIdV3Query } from './query/taxonomy-find-id-v3.query';
 import { TaxonomyFindMenuV3Query } from './query/taxonomy-find-menu-v3.query';
 import { TaxonomyUpdateV3Query } from './query/taxonomy-update-v3.query';
 import { TaxonomyDeleteV3Query } from './query/taxonomy-delete-v3.query';
+import { TaxonomyUpdMetadataV3Dto } from './dto/taxonomy-upd-metadata-v3.dto';
+import { TaxonomyUpdMetadataV3Query } from './query/taxonomy-upd-metadata-v3.query';
 
 @Injectable()
 export class TaxonomyBaseService {
@@ -117,6 +119,25 @@ export class TaxonomyBaseService {
   async taskTaxonomyUpdateV3(dataJsonDto: TaxonomyUpdateV3Dto) {
     try {
       const queryString = TaxonomyUpdateV3Query(dataJsonDto);
+
+      const resultData = (await this.dbService.selectExecute(
+        queryString,
+      )) as unknown as SpResultTaxonomyWebMenuV3Data;
+
+      return processProcedureResultMutation(
+        resultData as unknown[],
+        'Taxonomy update failed',
+      );
+    } catch (err) {
+      const errorMessage =
+        err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
+      return new ResultModel(100404, errorMessage, 0, []);
+    }
+  }
+
+  async taskTaxonomyUpdInlMetadataV3(dataJsonDto: TaxonomyUpdMetadataV3Dto) {
+    try {
+      const queryString = TaxonomyUpdMetadataV3Query(dataJsonDto);
 
       const resultData = (await this.dbService.selectExecute(
         queryString,

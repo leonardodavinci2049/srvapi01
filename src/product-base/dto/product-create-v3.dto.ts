@@ -41,10 +41,6 @@ export class ProductCreateV3Dto {
   @IsNumber()
   pe_person_id: number;
 
-  @ApiProperty({ description: 'Business Type' })
-  @IsNumber()
-  pe_business_type: number;
-
   // Product
   @ApiProperty({ description: 'Product Name', maxLength: 300 })
   @IsString()

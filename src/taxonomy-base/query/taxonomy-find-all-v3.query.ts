@@ -17,6 +17,7 @@ export function TaxonomyFindAllV3Query(
   const olRecordsQuantity = dataJsonDto.pe_records_quantity;
   const olPageId = dataJsonDto.pe_page_id;
   const olColumnId = dataJsonDto.pe_column_id;
+  const olOrderId = dataJsonDto.pe_order_id;
 
   const queryString = ` call sp_taxonomy_find_all_v3(
         ${olAppId},
@@ -32,8 +33,9 @@ export function TaxonomyFindAllV3Query(
         ${olFlagInactive},
         ${olRecordsQuantity},
         ${olPageId},
-        ${olColumnId}
+        ${olColumnId},
+        ${olOrderId}
       ) `;
-
+  // console.log('QueryString: ', queryString);
   return queryString;
 }

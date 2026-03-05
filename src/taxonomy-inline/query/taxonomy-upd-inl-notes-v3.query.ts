@@ -1,7 +1,7 @@
-import { ProductFindSearchAllV3Dto } from '../dto/product-find-search-all-v3.dto';
+import { TaxonomyUpdInlNotesV3Dto } from '../dto/taxonomy-upd-inl-notes-v3.dto';
 
-export function ProductFindSearchAllV3Query(
-  dataJsonDto: ProductFindSearchAllV3Dto,
+export function TaxonomyUpdInlNotesV3Query(
+  dataJsonDto: TaxonomyUpdInlNotesV3Dto,
 ): string {
   const olAppId = dataJsonDto.pe_app_id ?? 1;
   const olSystemClientId = dataJsonDto.pe_system_client_id;
@@ -11,13 +11,10 @@ export function ProductFindSearchAllV3Query(
   const olUserName = dataJsonDto.pe_user_name;
   const olUserRole = dataJsonDto.pe_user_role;
   const olPersonId = dataJsonDto.pe_person_id;
+  const olTaxonomyId = dataJsonDto.pe_taxonomy_id;
+  const olNotes = dataJsonDto.pe_notes;
 
-  const olCustomerId = dataJsonDto.pe_customer_id;
-  const olSearch = dataJsonDto.pe_search ? dataJsonDto.pe_search : '';
-  const olFlagStock = dataJsonDto.pe_flag_stock;
-  const olLimit = dataJsonDto.pe_records_quantity;
-
-  const queryString = ` call sp_product_find_search_all_v3(
+  const queryString = ` call sp_taxonomy_upd_inl_notes_v3(
         ${olAppId},
         ${olSystemClientId},
         ${olStoreId},
@@ -26,12 +23,9 @@ export function ProductFindSearchAllV3Query(
         '${olUserName}',
         '${olUserRole}',
         ${olPersonId},
-         ${olCustomerId},       
-        '${olSearch}',
-        ${olFlagStock},
-        ${olLimit}
-    ) `;
-  //  console.log('Generated Query:', queryString);
+        ${olTaxonomyId},
+        '${olNotes}'
+      ) `;
 
   return queryString;
 }

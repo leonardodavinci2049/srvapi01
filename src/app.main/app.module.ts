@@ -32,6 +32,7 @@ import { ProductInlineModule } from 'src/product-inline/product-inline.module';
 import { ProductBaseModule } from 'src/product-base/product-base.module';
 import { TaxonomyRelModule } from 'src/taxonomy-rel/taxonomy-rel.module';
 import { TaxonomyBaseModule } from 'src/taxonomy-base/taxonomy-base.module';
+import { TaxonomyInlineModule } from 'src/taxonomy-inline/taxonomy-inline.module';
 
 @Module({
   imports: [
@@ -55,6 +56,7 @@ import { TaxonomyBaseModule } from 'src/taxonomy-base/taxonomy-base.module';
     CustomerUpdModule,
     TaxonomyModule,
     TaxonomyBaseModule,
+    TaxonomyInlineModule,
     TaxonomyRelModule,
     AccountModule,
     CheckModule,

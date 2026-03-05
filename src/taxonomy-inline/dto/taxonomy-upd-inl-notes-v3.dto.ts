@@ -1,7 +1,7 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IsString, IsNotEmpty, IsNumber } from 'class-validator';
 
-export class TaxonomyRelCreateV3Dto {
+export class TaxonomyUpdInlNotesV3Dto {
   @ApiProperty({ description: 'App ID' })
   @IsNumber()
   @IsNotEmpty()
@@ -46,10 +46,9 @@ export class TaxonomyRelCreateV3Dto {
   @IsNotEmpty()
   pe_taxonomy_id: number;
 
-  @ApiProperty({ description: 'Record ID' })
-  @IsNumber()
-  @IsNotEmpty()
-  pe_record_id: number;
+  @ApiProperty({ description: 'Notes', maxLength: 500 })
+  @IsString()
+  pe_notes: string;
 }
 
 /*
@@ -65,27 +64,7 @@ Sample JSON for testing in body endpoint:
   "pe_user_role": "saller",
   "pe_person_id": 29014,
   "pe_taxonomy_id": 3566,
-  "pe_record_id": 56819 
+  "pe_notes": "Sample notes for this taxonomy"
 }
 
-*/
-
-/*
-Sample JSON response:
-
-{
-    "statusCode": 100200,
-    "message": "Cadastro criado com sucesso.",
-    "recordId": 3566,
-    "data": [
-        {
-            "sp_return_id": 3566,
-            "sp_message": "Cadastro criado com sucesso.",
-            "sp_error_id": 0
-        }
-    ],
-    "quantity": 1,
-    "errorId": 0,
-    "info1": ""
-}
 */
