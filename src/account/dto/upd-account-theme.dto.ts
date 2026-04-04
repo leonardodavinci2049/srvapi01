@@ -5,11 +5,11 @@ export class UpdAccountThemeDto {
   ID_SYSTEM?: number;
 
   @IsInt()
-  ID_LOJA: number;
+  ID_LOJA!: number;
 
   @IsInt()
-  ID_USUARIO: number;
+  ID_USUARIO!: number;
 
   @IsInt()
-  ID_THEMA: number;
+  ID_THEMA!: number;
 }

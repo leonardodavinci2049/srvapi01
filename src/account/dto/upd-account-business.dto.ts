@@ -5,33 +5,33 @@ export class UpdAccountBusinessDto {
   ID_SYSTEM?: number;
 
   @IsInt()
-  ID_LOJA: number;
+  ID_LOJA!: number;
 
   @IsInt()
-  ID_USUARIO: number;
+  ID_USUARIO!: number;
 
   @IsString({ message: 'CNPJ must be a valid string', each: true })
-  CNPJ: string;
+  CNPJ!: string;
 
   @IsString({ message: 'RAZAO_SOCIAL must be a valid string', each: true })
-  RAZAO_SOCIAL: string;
+  RAZAO_SOCIAL!: string;
 
   @IsOptional()
   @IsString({ message: 'INSC_ESTADUAL must be a valid string', each: true })
-  INSC_ESTADUAL: string;
+  INSC_ESTADUAL!: string;
 
   @IsOptional()
   @IsString({ message: 'INSC_MUNICIPAL must be a valid string', each: true })
-  INSC_MUNICIPAL: string;
+  INSC_MUNICIPAL!: string;
 
   @IsOptional()
   @IsString({ message: 'NOME_RESPONSAVEL must be a valid string', each: true })
-  NOME_RESPONSAVEL: string;
+  NOME_RESPONSAVEL!: string;
 
   @IsOptional()
   @IsString({
     message: 'ATIVIDADE_PRINCIPAL must be a valid string',
     each: true,
   })
-  ATIVIDADE_PRINCIPAL: string;
+  ATIVIDADE_PRINCIPAL!: string;
 }

@@ -8,25 +8,25 @@ export class CreateCartOrderDto {
   @IsInt()
   ID_SYSTEM?: number;
   @IsInt()
-  ID_LOJA: number;
+  ID_LOJA!: number;
 
   @IsInt()
-  ID_USUARIO: number;
+  ID_USUARIO!: number;
 
   @IsInt()
-  ID_VENDEDOR: number;
+  ID_VENDEDOR!: number;
 
   @IsInt()
-  ID_CARRINHO: number;
+  ID_CARRINHO!: number;
 
   @IsInt()
-  TYPE_BUSINESS: number;
+  TYPE_BUSINESS!: number;
 
   @IsInt()
-  ID_PG_FORMA: number;
+  ID_PG_FORMA!: number;
 
   @IsInt()
-  ID_LOCATION: number;
+  ID_LOCATION!: number;
 
   @IsOptional()
   @IsString()

@@ -5,11 +5,11 @@ export class UpdAccountPasswordDto {
   ID_SYSTEM?: number;
 
   @IsInt()
-  ID_LOJA: number;
+  ID_LOJA!: number;
 
   @IsInt()
-  ID_USUARIO: number;
+  ID_USUARIO!: number;
 
   @IsString({ message: 'SENHA must be a valid string', each: true })
-  SENHA: string;
+  SENHA!: string;
 }

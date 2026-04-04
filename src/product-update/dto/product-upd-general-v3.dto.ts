@@ -5,60 +5,60 @@ export class ProductUpdGeneralV3Dto {
   @ApiProperty({ description: 'App ID' })
   @IsNumber()
   @IsNotEmpty()
-  pe_app_id: number;
+  pe_app_id!: number;
 
   @ApiProperty({ description: 'System Client ID' })
   @IsNumber()
   @IsNotEmpty()
-  pe_system_client_id: number;
+  pe_system_client_id!: number;
 
   @ApiProperty({ description: 'Store ID' })
   @IsNumber()
   @IsNotEmpty()
-  pe_store_id: number;
+  pe_store_id!: number;
 
   @ApiProperty({ description: 'Organization ID', maxLength: 200 })
   @IsString()
   @IsNotEmpty()
-  pe_organization_id: string;
+  pe_organization_id!: string;
 
   @ApiProperty({ description: 'User ID', maxLength: 200 })
   @IsNotEmpty()
   @IsString()
-  pe_user_id: string;
+  pe_user_id!: string;
 
   @ApiProperty({ description: 'User Name', maxLength: 200 })
   @IsString()
   @IsNotEmpty()
-  pe_user_name: string;
+  pe_user_name!: string;
 
   @ApiProperty({ description: 'User Role', maxLength: 200 })
   @IsString()
   @IsNotEmpty()
-  pe_user_role: string;
+  pe_user_role!: string;
 
   @ApiProperty({ description: 'Person ID' })
   @IsNumber()
-  pe_person_id: number;
+  pe_person_id!: number;
 
   @ApiProperty({ description: 'Product ID' })
   @IsNumber()
-  pe_product_id: number;
+  pe_product_id!: number;
 
   @ApiProperty({ description: 'Product name', maxLength: 255, required: false })
   @IsOptional()
   @IsString()
-  pe_product_name: string;
+  pe_product_name!: string;
 
   @ApiProperty({ description: 'Reference', maxLength: 100, required: false })
   @IsOptional()
   @IsString()
-  pe_ref: string;
+  pe_ref!: string;
 
   @ApiProperty({ description: 'Model', maxLength: 100, required: false })
   @IsOptional()
   @IsString()
-  pe_model: string;
+  pe_model!: string;
 
   @ApiProperty({
     description: 'Label / Etiqueta',
@@ -67,7 +67,7 @@ export class ProductUpdGeneralV3Dto {
   })
   @IsOptional()
   @IsString()
-  pe_label: string;
+  pe_label!: string;
 
   @ApiProperty({
     description: 'Tab description',
@@ -76,7 +76,7 @@ export class ProductUpdGeneralV3Dto {
   })
   @IsOptional()
   @IsString()
-  pe_tab_description: string;
+  pe_tab_description!: string;
 }
 
 /*

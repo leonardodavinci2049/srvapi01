@@ -5,80 +5,80 @@ export class ProductUpdTaxValuesV3Dto {
   @ApiProperty({ description: 'App ID' })
   @IsNumber()
   @IsNotEmpty()
-  pe_app_id: number;
+  pe_app_id!: number;
 
   @ApiProperty({ description: 'System Client ID' })
   @IsNumber()
   @IsNotEmpty()
-  pe_system_client_id: number;
+  pe_system_client_id!: number;
 
   @ApiProperty({ description: 'Store ID' })
   @IsNumber()
   @IsNotEmpty()
-  pe_store_id: number;
+  pe_store_id!: number;
 
   @ApiProperty({ description: 'Organization ID', maxLength: 200 })
   @IsString()
   @IsNotEmpty()
-  pe_organization_id: string;
+  pe_organization_id!: string;
 
   @ApiProperty({ description: 'User ID', maxLength: 200 })
   @IsNotEmpty()
   @IsString()
-  pe_user_id: string;
+  pe_user_id!: string;
 
   @ApiProperty({ description: 'User Name', maxLength: 200 })
   @IsString()
   @IsNotEmpty()
-  pe_user_name: string;
+  pe_user_name!: string;
 
   @ApiProperty({ description: 'User Role', maxLength: 200 })
   @IsString()
   @IsNotEmpty()
-  pe_user_role: string;
+  pe_user_role!: string;
 
   @ApiProperty({ description: 'Person ID' })
   @IsNumber()
-  pe_person_id: number;
+  pe_person_id!: number;
 
   @ApiProperty({ description: 'Product ID' })
   @IsNumber()
-  pe_product_id: number;
+  pe_product_id!: number;
 
   @ApiProperty({ description: 'CFOP', maxLength: 100, required: false })
   @IsOptional()
   @IsString()
-  pe_cfop: string;
+  pe_cfop!: string;
 
   @ApiProperty({ description: 'CST', maxLength: 100, required: false })
   @IsOptional()
   @IsString()
-  pe_cst: string;
+  pe_cst!: string;
 
   @ApiProperty({ description: 'EAN', maxLength: 100, required: false })
   @IsOptional()
   @IsString()
-  pe_ean: string;
+  pe_ean!: string;
 
   @ApiProperty({ description: 'NBM', maxLength: 100, required: false })
   @IsOptional()
   @IsString()
-  pe_nbm: string;
+  pe_nbm!: string;
 
   @ApiProperty({ description: 'NCM', required: false })
   @IsOptional()
   @IsNumber()
-  pe_ncm: number;
+  pe_ncm!: number;
 
   @ApiProperty({ description: 'PPB', required: false })
   @IsOptional()
   @IsNumber()
-  pe_ppb: number;
+  pe_ppb!: number;
 
   @ApiProperty({ description: 'TEMP', required: false })
   @IsOptional()
   @IsNumber()
-  pe_temp: number;
+  pe_temp!: number;
 }
 
 /*

@@ -5,83 +5,83 @@ export class CustomerUpdAddressDto {
   @ApiProperty({ description: 'App ID' })
   @IsNumber()
   @IsNotEmpty()
-  pe_app_id: number;
+  pe_app_id!: number;
 
   @ApiProperty({ description: 'System Client ID' })
   @IsNumber()
   @IsNotEmpty()
-  pe_system_client_id: number;
+  pe_system_client_id!: number;
 
   @ApiProperty({ description: 'Store ID' })
   @IsNumber()
   @IsNotEmpty()
-  pe_store_id: number;
+  pe_store_id!: number;
 
   @ApiProperty({ description: 'Organization ID', maxLength: 200 })
   @IsString()
   @IsNotEmpty()
-  pe_organization_id: string;
+  pe_organization_id!: string;
 
   @ApiProperty({ description: 'User ID', maxLength: 200 })
   @IsNotEmpty()
   @IsString()
-  pe_user_id: string;
+  pe_user_id!: string;
 
   @ApiProperty({ description: 'User Name', maxLength: 200 })
   @IsString()
   @IsNotEmpty()
-  pe_user_name: string;
+  pe_user_name!: string;
 
   @ApiProperty({ description: 'User Role', maxLength: 200 })
   @IsString()
   @IsNotEmpty()
-  pe_user_role: string;
+  pe_user_role!: string;
 
   @ApiProperty({ description: 'Person ID' })
   @IsNumber()
   @IsNotEmpty()
-  pe_person_id: number;
+  pe_person_id!: number;
 
   @ApiProperty({ description: 'Customer ID' })
   @IsNumber()
   @IsNotEmpty()
-  pe_customer_id: number;
+  pe_customer_id!: number;
 
   @ApiProperty({ description: 'Zip Code', maxLength: 100 })
   @IsString()
-  pe_zip_code: string;
+  pe_zip_code!: string;
 
   @ApiProperty({ description: 'Address', maxLength: 300 })
   @IsString()
-  pe_address: string;
+  pe_address!: string;
 
   @ApiProperty({ description: 'Address Number', maxLength: 100 })
   @IsString()
-  pe_address_number: string;
+  pe_address_number!: string;
 
   @ApiProperty({ description: 'Complement', maxLength: 100 })
   @IsString()
-  pe_complement: string;
+  pe_complement!: string;
 
   @ApiProperty({ description: 'Neighborhood', maxLength: 300 })
   @IsString()
-  pe_neighborhood: string;
+  pe_neighborhood!: string;
 
   @ApiProperty({ description: 'City', maxLength: 300 })
   @IsString()
-  pe_city: string;
+  pe_city!: string;
 
   @ApiProperty({ description: 'State', maxLength: 100 })
   @IsString()
-  pe_state: string;
+  pe_state!: string;
 
   @ApiProperty({ description: 'City Code', maxLength: 100 })
   @IsString()
-  pe_city_code: string;
+  pe_city_code!: string;
 
   @ApiProperty({ description: 'State Code', maxLength: 100 })
   @IsString()
-  pe_state_code: string;
+  pe_state_code!: string;
 }
 
 /*
