@@ -5,23 +5,23 @@ export class FindAccountOrdersListDto {
   ID_SYSTEM?: number;
 
   @IsInt()
-  ID_LOJA: number;
+  ID_LOJA!: number;
 
   @IsInt()
-  ID_USUARIO: number;
+  ID_USUARIO!: number;
 
   @IsInt()
-  ID_PEDIDO: number;
+  ID_PEDIDO!: number;
 
   @IsInt()
-  ID_STATUS_PEDIDO: number;
+  ID_STATUS_PEDIDO!: number;
 
   @IsInt()
-  ID_STATUS_FINANC: number;
+  ID_STATUS_FINANC!: number;
 
   @IsInt()
-  ID_STATUS_ENTREGA: number;
+  ID_STATUS_ENTREGA!: number;
 
   @IsInt()
-  LIMIT: number;
+  LIMIT!: number;
 }

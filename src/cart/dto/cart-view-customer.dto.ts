@@ -5,15 +5,15 @@ export class CartViewCustomerDto {
   ID_SYSTEM?: number;
 
   @IsInt()
-  ID_LOJA: number;
+  ID_LOJA!: number;
   @IsOptional()
   @IsInt()
-  ID_USUARIO: number;
+  ID_USUARIO!: number;
 
   @IsInt()
   ID_CARRINHO?: number;
 
   @IsOptional()
   @IsInt()
-  TYPE_BUSINESS: number;
+  TYPE_BUSINESS!: number;
 }

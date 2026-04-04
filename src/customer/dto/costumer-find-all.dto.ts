@@ -5,66 +5,66 @@ export class CostumerFindAllDto {
   @ApiProperty({ description: 'App ID' })
   @IsNumber()
   @IsNotEmpty()
-  pe_app_id: number;
+  pe_app_id!: number;
 
   @ApiProperty({ description: 'System Client ID' })
   @IsNumber()
   @IsNotEmpty()
-  pe_system_client_id: number;
+  pe_system_client_id!: number;
 
   @ApiProperty({ description: 'Store ID' })
   @IsNumber()
   @IsNotEmpty()
-  pe_store_id: number;
+  pe_store_id!: number;
 
   @ApiProperty({ description: 'Organization ID', maxLength: 200 })
   @IsString()
   @IsNotEmpty()
-  pe_organization_id: string;
+  pe_organization_id!: string;
 
   @ApiProperty({ description: 'User ID', maxLength: 200 })
   @IsNotEmpty()
   @IsString()
-  pe_user_id: string;
+  pe_user_id!: string;
 
   @ApiProperty({ description: 'User Name', maxLength: 200 })
   @IsString()
   @IsNotEmpty()
-  pe_user_name: string;
+  pe_user_name!: string;
 
   @ApiProperty({ description: 'User Role', maxLength: 200 })
   @IsString()
   @IsNotEmpty()
-  pe_user_role: string;
+  pe_user_role!: string;
 
   @ApiProperty({ description: 'Person ID' })
   @IsNumber()
   @IsNotEmpty()
-  pe_person_id: number;
+  pe_person_id!: number;
 
   @ApiProperty({ description: 'Search term', maxLength: 300 })
   @IsString()
-  pe_search: string;
+  pe_search!: string;
 
   @ApiProperty({ description: 'QT_REGISTROS' })
   @IsNumber()
   @IsNotEmpty()
-  pe_qt_registros: number;
+  pe_qt_registros!: number;
 
   @ApiProperty({ description: 'PAGE_ID' })
   @IsNumber()
   @IsNotEmpty()
-  pe_page_id: number;
+  pe_page_id!: number;
 
   @ApiProperty({ description: 'COLUMN_ID' })
   @IsNumber()
   @IsNotEmpty()
-  pe_column_id: number;
+  pe_column_id!: number;
 
   @ApiProperty({ description: 'ORDER_ID' })
   @IsNumber()
   @IsNotEmpty()
-  pe_order_id: number;
+  pe_order_id!: number;
 }
 
 /*

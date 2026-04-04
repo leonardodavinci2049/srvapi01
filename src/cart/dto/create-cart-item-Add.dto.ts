@@ -8,21 +8,21 @@ export class CreateCartItemAddDto {
   @IsInt()
   ID_SYSTEM?: number;
   @IsInt()
-  ID_LOJA: number;
+  ID_LOJA!: number;
 
   @IsInt()
-  ID_USUARIO: number;
+  ID_USUARIO!: number;
 
   @IsInt()
-  ID_CARRINHO: number;
+  ID_CARRINHO!: number;
 
   @IsInt()
-  ID_PRODUTO: number;
+  ID_PRODUTO!: number;
   @IsInt()
-  QT: number;
+  QT!: number;
 
   @IsInt()
-  TYPE_BUSINESS: number;
+  TYPE_BUSINESS!: number;
 
   @IsOptional()
   @IsString()

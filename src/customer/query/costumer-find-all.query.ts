@@ -33,6 +33,7 @@ export function CostumerFindAllQuery(dataJsonDto: CostumerFindAllDto): string {
         ${olOrderId}
 
       ) `;
+  //console.log('queryString', queryString);
 
   return queryString;
 }

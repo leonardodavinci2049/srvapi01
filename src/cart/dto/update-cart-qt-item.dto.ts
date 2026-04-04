@@ -4,20 +4,20 @@ import { IsInt } from 'class-validator';
 
 export class UpdateCartQtItemDto {
   @IsInt()
-  ID_SYSTEM: number;
+  ID_SYSTEM!: number;
 
   @IsInt()
-  ID_LOJA: number;
+  ID_LOJA!: number;
 
   @IsInt()
-  ID_USUARIO: number;
+  ID_USUARIO!: number;
 
   @IsInt()
-  ID_CARRINHO: number;
+  ID_CARRINHO!: number;
 
   @IsInt()
-  ID_PRODUTO: number;
+  ID_PRODUTO!: number;
 
   @IsInt()
-  QT_ITEM: number;
+  QT_ITEM!: number;
 }

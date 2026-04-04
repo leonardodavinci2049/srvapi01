@@ -5,11 +5,11 @@ export class UpdAccountEmailDto {
   ID_SYSTEM?: number;
 
   @IsInt()
-  ID_LOJA: number;
+  ID_LOJA!: number;
 
   @IsInt()
-  ID_USUARIO: number;
+  ID_USUARIO!: number;
 
   @IsString({ message: 'EMAIL must be a valid string', each: true })
-  EMAIL_DE_LOGIN: string;
+  EMAIL_DE_LOGIN!: string;
 }

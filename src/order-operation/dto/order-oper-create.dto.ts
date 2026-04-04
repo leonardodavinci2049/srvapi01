@@ -5,65 +5,65 @@ export class OrderOperCreateDto {
   @ApiProperty({ description: 'App ID' })
   @IsNumber()
   @IsNotEmpty()
-  pe_app_id: number;
+  pe_app_id!: number;
 
   @ApiProperty({ description: 'System Client ID' })
   @IsNumber()
   @IsNotEmpty()
-  pe_system_client_id: number;
+  pe_system_client_id!: number;
 
   @ApiProperty({ description: 'Store ID' })
   @IsNumber()
   @IsNotEmpty()
-  pe_store_id: number;
+  pe_store_id!: number;
 
   @ApiProperty({ description: 'Organization ID', maxLength: 200 })
   @IsString()
   @IsNotEmpty()
-  pe_organization_id: string;
+  pe_organization_id!: string;
 
   @ApiProperty({ description: 'User ID', maxLength: 200 })
   @IsNotEmpty()
   @IsString()
-  pe_user_id: string;
+  pe_user_id!: string;
 
   @ApiProperty({ description: 'User Name', maxLength: 200 })
   @IsString()
   @IsNotEmpty()
-  pe_user_name: string;
+  pe_user_name!: string;
 
   @ApiProperty({ description: 'User Role', maxLength: 200 })
   @IsString()
   @IsNotEmpty()
-  pe_user_role: string;
+  pe_user_role!: string;
 
   @ApiProperty({ description: 'Person ID' })
   @IsNumber()
-  pe_person_id: number;
+  pe_person_id!: number;
 
   @ApiProperty({ description: 'Customer ID' })
   @IsNumber()
-  pe_customer_id: number;
+  pe_customer_id!: number;
 
   @ApiProperty({ description: 'Seller ID' })
   @IsNumber()
-  pe_seller_id: number;
+  pe_seller_id!: number;
 
   @ApiProperty({ description: 'Business Type' })
   @IsNumber()
-  pe_business_type: number;
+  pe_business_type!: number;
 
   @ApiProperty({ description: 'Payment Form ID' })
   @IsNumber()
-  pe_payment_form_id: number;
+  pe_payment_form_id!: number;
 
   @ApiProperty({ description: 'Location ID' })
   @IsNumber()
-  pe_location_id: number;
+  pe_location_id!: number;
 
   @ApiProperty({ description: 'Notes' })
   @IsString()
-  pe_notes: string;
+  pe_notes!: string;
 }
 
 /*Sample JSON for testing in body endpoint:

@@ -5,45 +5,45 @@ export class TaxonomyFindIdDto {
   @ApiProperty({ description: 'App ID' })
   @IsNumber()
   @IsNotEmpty()
-  pe_app_id: number;
+  pe_app_id!: number;
 
   @ApiProperty({ description: 'System Client ID' })
   @IsNumber()
   @IsNotEmpty()
-  pe_system_client_id: number;
+  pe_system_client_id!: number;
 
   @ApiProperty({ description: 'Store ID' })
   @IsNumber()
   @IsNotEmpty()
-  pe_store_id: number;
+  pe_store_id!: number;
 
   @ApiProperty({ description: 'Organization ID', maxLength: 200 })
   @IsString()
   @IsNotEmpty()
-  pe_organization_id: string;
+  pe_organization_id!: string;
 
   @ApiProperty({ description: 'Member ID', maxLength: 200 })
   @IsString()
   @IsNotEmpty()
-  pe_member_id: string;
+  pe_member_id!: string;
 
   @ApiProperty({ description: 'User ID', maxLength: 200 })
   @IsString()
-  pe_user_id: string;
+  pe_user_id!: string;
 
   @ApiProperty({ description: 'Person ID' })
   @IsNumber()
-  pe_person_id: number;
+  pe_person_id!: number;
 
   @ApiProperty({ description: 'Taxonomy ID' })
   @IsNumber()
   @IsOptional()
-  pe_id_taxonomy: number;
+  pe_id_taxonomy!: number;
 
   @ApiProperty({ description: 'slug taxonomy' })
   @IsString()
   @IsOptional()
-  pe_slug_taxonomy: string;
+  pe_slug_taxonomy!: string;
 }
 
 /*

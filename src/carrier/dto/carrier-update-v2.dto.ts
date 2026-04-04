@@ -5,93 +5,93 @@ export class CarrierUpdateV2Dto {
   @ApiProperty({ description: 'App ID' })
   @IsNumber()
   @IsNotEmpty()
-  pe_app_id: number;
+  pe_app_id!: number;
 
   @ApiProperty({ description: 'System Client ID' })
   @IsNumber()
   @IsNotEmpty()
-  pe_system_client_id: number;
+  pe_system_client_id!: number;
 
   @ApiProperty({ description: 'Store ID' })
   @IsNumber()
   @IsNotEmpty()
-  pe_store_id: number;
+  pe_store_id!: number;
 
   @ApiProperty({ description: 'Organization ID', maxLength: 200 })
   @IsString()
   @IsNotEmpty()
-  pe_organization_id: string;
+  pe_organization_id!: string;
 
   @ApiProperty({ description: 'User ID', maxLength: 200 })
   @IsNotEmpty()
   @IsString()
-  pe_user_id: string;
+  pe_user_id!: string;
 
   @ApiProperty({ description: 'User Name', maxLength: 200 })
   @IsString()
   @IsNotEmpty()
-  pe_user_name: string;
+  pe_user_name!: string;
 
   @ApiProperty({ description: 'User Role', maxLength: 200 })
   @IsString()
   @IsNotEmpty()
-  pe_user_role: string;
+  pe_user_role!: string;
 
   @ApiProperty({ description: 'Person ID' })
   @IsNumber()
-  pe_person_id: number;
+  pe_person_id!: number;
 
   @ApiProperty({ description: 'Carrier ID' })
   @IsNumber()
-  pe_carrier_id: number;
+  pe_carrier_id!: number;
 
   @ApiProperty({ description: 'Type Person ID' })
   @IsNumber()
-  pe_type_person_id: number;
+  pe_type_person_id!: number;
 
   @ApiProperty({ description: 'Name', maxLength: 300 })
   @IsString()
-  pe_carrier_name: string;
+  pe_carrier_name!: string;
 
   @ApiProperty({ description: 'Phone', maxLength: 100 })
   @IsString()
-  pe_phone: string;
+  pe_phone!: string;
 
   @ApiProperty({ description: 'WhatsApp', maxLength: 100 })
   @IsString()
-  pe_whatsapp: string;
+  pe_whatsapp!: string;
 
   @ApiProperty({ description: 'Email', maxLength: 100 })
   @IsString()
-  pe_email: string;
+  pe_email!: string;
 
   @ApiProperty({ description: 'Website', maxLength: 300 })
   @IsString()
-  pe_website: string;
+  pe_website!: string;
 
   @ApiProperty({ description: 'CNPJ (Company Tax ID)', maxLength: 100 })
   @IsString()
-  pe_cnpj: string;
+  pe_cnpj!: string;
 
   @ApiProperty({ description: 'Company Legal Name', maxLength: 300 })
   @IsString()
-  pe_company_name: string;
+  pe_company_name!: string;
 
   @ApiProperty({ description: 'Responsible Name', maxLength: 300 })
   @IsString()
-  pe_responsible_name: string;
+  pe_responsible_name!: string;
 
   @ApiProperty({ description: 'CPF (Individual Tax ID)', maxLength: 100 })
   @IsString()
-  pe_cpf: string;
+  pe_cpf!: string;
 
   @ApiProperty({ description: 'Image Path', maxLength: 300 })
   @IsString()
-  pe_image_path: string;
+  pe_image_path!: string;
 
   @ApiProperty({ description: 'Notes' })
   @IsString()
-  pe_notes: string;
+  pe_notes!: string;
 }
 
 /*

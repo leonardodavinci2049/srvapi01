@@ -5,83 +5,83 @@ export class ProductFindAllV3Dto {
   @ApiProperty({ description: 'App ID' })
   @IsNumber()
   @IsNotEmpty()
-  pe_app_id: number;
+  pe_app_id!: number;
 
   @ApiProperty({ description: 'System Client ID' })
   @IsNumber()
   @IsNotEmpty()
-  pe_system_client_id: number;
+  pe_system_client_id!: number;
 
   @ApiProperty({ description: 'Store ID' })
   @IsNumber()
   @IsNotEmpty()
-  pe_store_id: number;
+  pe_store_id!: number;
 
   @ApiProperty({ description: 'Organization ID', maxLength: 200 })
   @IsString()
   @IsNotEmpty()
-  pe_organization_id: string;
+  pe_organization_id!: string;
 
   @ApiProperty({ description: 'User ID', maxLength: 200 })
   @IsNotEmpty()
   @IsString()
-  pe_user_id: string;
+  pe_user_id!: string;
 
   @ApiProperty({ description: 'User Name', maxLength: 200 })
   @IsString()
   @IsNotEmpty()
-  pe_user_name: string;
+  pe_user_name!: string;
 
   @ApiProperty({ description: 'User Role', maxLength: 200 })
   @IsString()
   @IsNotEmpty()
-  pe_user_role: string;
+  pe_user_role!: string;
 
   @ApiProperty({ description: 'Person ID' })
   @IsNumber()
-  pe_person_id: number;
+  pe_person_id!: number;
 
   @ApiProperty({ description: 'Search term', maxLength: 300, required: false })
   @IsString()
   @IsOptional()
-  pe_search: string;
+  pe_search!: string;
 
   @ApiProperty({ description: 'Taxonomy ID', required: false })
   @IsNumber()
   @IsOptional()
-  pe_taxonomy_id: number;
+  pe_taxonomy_id!: number;
 
   @ApiProperty({ description: 'Type ID' })
   @IsNumber()
-  pe_type_id: number;
+  pe_type_id!: number;
 
   @ApiProperty({ description: 'Brand ID' })
   @IsNumber()
-  pe_brand_id: number;
+  pe_brand_id!: number;
 
   @ApiProperty({ description: 'Stock flag' })
   @IsNumber()
-  pe_flag_stock: number;
+  pe_flag_stock!: number;
 
   @ApiProperty({ description: 'Service flag' })
   @IsNumber()
-  pe_flag_service: number;
+  pe_flag_service!: number;
 
   @ApiProperty({ description: 'Record quantity' })
   @IsNumber()
-  pe_records_quantity: number;
+  pe_records_quantity!: number;
 
   @ApiProperty({ description: 'Page ID' })
   @IsNumber()
-  pe_page_id: number;
+  pe_page_id!: number;
 
   @ApiProperty({ description: 'Column ID' })
   @IsNumber()
-  pe_column_id: number;
+  pe_column_id!: number;
 
   @ApiProperty({ description: 'Order ID' })
   @IsNumber()
-  pe_order_id: number;
+  pe_order_id!: number;
 }
 
 /*
