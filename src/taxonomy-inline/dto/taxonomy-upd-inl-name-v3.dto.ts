@@ -5,51 +5,51 @@ export class TaxonomyUpdInlNameV3Dto {
   @ApiProperty({ description: 'App ID' })
   @IsNumber()
   @IsNotEmpty()
-  pe_app_id: number;
+  pe_app_id!: number;
 
   @ApiProperty({ description: 'System Client ID' })
   @IsNumber()
   @IsNotEmpty()
-  pe_system_client_id: number;
+  pe_system_client_id!: number;
 
   @ApiProperty({ description: 'Store ID' })
   @IsNumber()
   @IsNotEmpty()
-  pe_store_id: number;
+  pe_store_id!: number;
 
   @ApiProperty({ description: 'Organization ID', maxLength: 200 })
   @IsString()
   @IsNotEmpty()
-  pe_organization_id: string;
+  pe_organization_id!: string;
 
   @ApiProperty({ description: 'User ID', maxLength: 200 })
   @IsNotEmpty()
   @IsString()
-  pe_user_id: string;
+  pe_user_id!: string;
 
   @ApiProperty({ description: 'User Name', maxLength: 200 })
   @IsString()
   @IsNotEmpty()
-  pe_user_name: string;
+  pe_user_name!: string;
 
   @ApiProperty({ description: 'User Role', maxLength: 200 })
   @IsString()
   @IsNotEmpty()
-  pe_user_role: string;
+  pe_user_role!: string;
 
   @ApiProperty({ description: 'Person ID' })
   @IsNumber()
-  pe_person_id: number;
+  pe_person_id!: number;
 
   @ApiProperty({ description: 'Taxonomy ID' })
   @IsNumber()
   @IsNotEmpty()
-  pe_taxonomy_id: number;
+  pe_taxonomy_id!: number;
 
   @ApiProperty({ description: 'Taxonomy Name', maxLength: 300 })
   @IsString()
   @IsNotEmpty()
-  pe_taxonomy_name: string;
+  pe_taxonomy_name!: string;
 }
 
 /*

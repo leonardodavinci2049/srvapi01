@@ -5,42 +5,42 @@ export class UpdAccountAddressDto {
   ID_SYSTEM?: number;
 
   @IsInt()
-  ID_LOJA: number;
+  ID_LOJA!: number;
 
   @IsInt()
-  ID_USUARIO: number;
+  ID_USUARIO!: number;
 
   @IsString({ message: 'CEP must be a valid string', each: true })
-  CEP: string;
+  CEP!: string;
 
   @IsOptional()
   @IsString({ message: 'ENDERECO must be a valid string', each: true })
-  ENDERECO: string;
+  ENDERECO!: string;
 
   @IsOptional()
   @IsString({ message: 'ENDERECO_NUMERO must be a valid string', each: true })
-  ENDERECO_NUMERO: string;
+  ENDERECO_NUMERO!: string;
 
   @IsOptional()
   @IsString({ message: 'COMPLEMENTO must be a valid string', each: true })
-  COMPLEMENTO: string;
+  COMPLEMENTO!: string;
 
   @IsOptional()
   @IsString({ message: 'BAIRRO must be a valid string', each: true })
-  BAIRRO: string;
+  BAIRRO!: string;
 
   @IsOptional()
   @IsString({ message: 'CIDADE must be a valid string', each: true })
-  CIDADE: string;
+  CIDADE!: string;
   @IsOptional()
   @IsString({ message: 'UF must be a valid string', each: true })
-  UF: string;
+  UF!: string;
 
   @IsOptional()
   @IsString({ message: 'COD_MUNICIPIO must be a valid string', each: true })
-  COD_MUNICIPIO: string;
+  COD_MUNICIPIO!: string;
 
   @IsOptional()
   @IsString({ message: 'COD_UF must be a valid string', each: true })
-  COD_UF: string;
+  COD_UF!: string;
 }

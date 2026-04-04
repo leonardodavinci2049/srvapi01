@@ -5,14 +5,14 @@ export class FindAccountOrdersSummaryDto {
   ID_SYSTEM?: number;
 
   @IsInt()
-  ID_LOJA: number;
+  ID_LOJA!: number;
 
   @IsInt()
-  ID_USUARIO: number;
+  ID_USUARIO!: number;
 
   @IsInt()
-  ID_PEDIDO: number;
+  ID_PEDIDO!: number;
 
   @IsInt()
-  TYPE_BUSINESS: number;
+  TYPE_BUSINESS!: number;
 }

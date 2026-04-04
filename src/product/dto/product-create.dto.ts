@@ -5,53 +5,53 @@ export class ProductCreateDto {
   @ApiProperty({ description: 'App ID' })
   @IsNumber()
   @IsNotEmpty()
-  pe_app_id: number;
+  pe_app_id!: number;
 
   @ApiProperty({ description: 'System Client ID' })
   @IsNumber()
   @IsNotEmpty()
-  pe_system_client_id: number;
+  pe_system_client_id!: number;
 
   @ApiProperty({ description: 'Store ID' })
   @IsNumber()
   @IsNotEmpty()
-  pe_store_id: number;
+  pe_store_id!: number;
 
   // Organization & User Info
   @ApiProperty({ description: 'Organization ID', maxLength: 200 })
   @IsString()
   @IsNotEmpty()
-  pe_organization_id: string;
+  pe_organization_id!: string;
 
   @ApiProperty({ description: 'Member ID', maxLength: 200 })
   @IsString()
   @IsNotEmpty()
-  pe_member_id: string;
+  pe_member_id!: string;
 
   @ApiProperty({ description: 'User ID', maxLength: 200 })
   @IsString()
-  pe_user_id: string;
+  pe_user_id!: string;
 
   @ApiProperty({ description: 'Person ID' })
   @IsNumber()
-  pe_person_id: number;
+  pe_person_id!: number;
 
   @ApiProperty({ description: 'Business Type' })
   @IsNumber()
   @IsNotEmpty()
-  pe_type_business: number;
+  pe_type_business!: number;
 
   // Product Basic Info
   @ApiProperty({ description: 'Product Name', maxLength: 255 })
   @IsString()
   @IsNotEmpty()
-  pe_nome_produto: string;
+  pe_nome_produto!: string;
 
   // Product Basic Info
   @ApiProperty({ description: 'Product Slug', maxLength: 255 })
   @IsString()
   @IsNotEmpty()
-  pe_slug: string;
+  pe_slug!: string;
 
   @ApiProperty({
     description: 'Product Description',

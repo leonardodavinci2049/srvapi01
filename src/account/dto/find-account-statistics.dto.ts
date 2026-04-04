@@ -5,11 +5,11 @@ export class FindAccountStatisticsDto {
   ID_SYSTEM?: number;
 
   @IsInt()
-  ID_LOJA: number;
+  ID_LOJA!: number;
 
   @IsInt()
-  ID_USUARIO: number;
+  ID_USUARIO!: number;
 
   @IsInt()
-  INTERVAL_DIAS: number;
+  INTERVAL_DIAS!: number;
 }
