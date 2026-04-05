@@ -25,6 +25,8 @@ import { CustomerUpdInlSellerIdQuery } from './query/customer-upd-inl-seller-id.
 import { CustomerUpdInlTypeCustomerQuery } from './query/customer-upd-inl-type-customer.query';
 import { CustomerUpdInlTypePersonQuery } from './query/customer-upd-inl-type-person.query';
 import { CustomerUpdInlWhatsappQuery } from './query/customer-upd-inl-whatsapp.query';
+import { CustomerUpdInlFieldQuery } from './query/costumer-upd-inl-field.query';
+import { CustomerUpdInlFieldDto } from './dto/costumer-upd-inl-field.dto';
 
 @Injectable()
 export class CustomerInlineService {
@@ -33,6 +35,26 @@ export class CustomerInlineService {
   create() {
     return 'This action adds a new customerInline';
   }
+
+    async TaskCustomerUpdInlField(dataJsonDto: CustomerUpdInlFieldDto) {
+    try {
+      const queryString = CustomerUpdInlFieldQuery(dataJsonDto);
+
+      const resultData = (await this.dbService.selectExecute(
+        queryString,
+      )) as unknown as SpResultRecordUpdateType;
+
+      return processProcedureResultMutation(
+        resultData as unknown[],
+        'Customer update field failed',
+      );
+    } catch (err) {
+      const errorMessage =
+        err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
+      return new ResultModel(100404, errorMessage, 0, []);
+    }
+  }
+
 
   async TaskCustomerUpdInlEmail(dataJsonDto: CustomerUpdInlEmailDto) {
     try {

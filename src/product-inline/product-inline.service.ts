@@ -25,12 +25,33 @@ import { ProductUpdInlStockMinV3Query } from './query/product-upd-inl-stock-min-
 import { ProductUpdInlStockV3Query } from './query/product-upd-inl-stock-v3.query';
 import { ProductUpdInlTypeV3Query } from './query/product-upd-inl-type-v3.query';
 import { ProductUpdInlVariouV3Query } from './query/product-upd-inl-variou-v3.query';
+import { ProductUpdInlFieldDto } from './dto/product-upd-inl-field.dto';
+import { ProductUpdInlFieldQuery } from './query/product-upd-inl-field.query';
 
 @Injectable()
 export class ProductInlineService {
   constructor(private readonly dbService: DatabaseService) {}
   create() {
     return 'This action adds a new productInline';
+  }
+
+  async taskProductUpdInlFieldV3(dataJsonDto: ProductUpdInlFieldDto) {
+    try {
+      const queryString = ProductUpdInlFieldQuery(dataJsonDto);
+
+      const resultData = (await this.dbService.selectExecute(
+        queryString,
+      )) as unknown as SpResultRecordUpdateType;
+
+      return processProcedureResultMutation(
+        resultData as unknown[],
+        'Product update field failed',
+      );
+    } catch (err) {
+      const errorMessage =
+        err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
+      return new ResultModel(100404, errorMessage, 0, []);
+    }
   }
 
   async taskProductUpdInlBrandV3(dataJsonDto: ProductUpdInlBrandV3Dto) {

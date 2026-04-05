@@ -50,6 +50,7 @@ export interface TblOrderDetails extends RowDataPacket {
   DATA_RETIRADA?: string | null;
   DATA_ENTREGA?: string | null;
   DATADOCADASTRO?: string;
+  ANOTACOES?: string;
 }
 export interface TblOrderItems extends RowDataPacket {
   ID_MOVIMENTO?: number;
@@ -110,6 +111,7 @@ export interface TblCustomerDetails extends RowDataPacket {
   PAIS?: string;
   COD_MUNICIPIO?: number;
   COD_UF?: number;
+  ANOTACOES?: string;
 }
 
 export interface TblOrderFindCoCarrierId extends RowDataPacket {

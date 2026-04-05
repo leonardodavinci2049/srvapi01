@@ -67,4 +67,4 @@ ecosystem.config.js
 .github
 /schemas
 /json-response
-
+/docs-database

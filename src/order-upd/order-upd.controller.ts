@@ -10,6 +10,7 @@ import { OrderUpdStatusIdDto } from './dto/order-upd-status-id.dto';
 import { OrderUpdDiscountIdDto } from './dto/order-upd-discount-id.dto';
 import { OrderUpdFreteIdDto } from './dto/order-upd-frete-id.dto';
 import { OrderUpdNotesIdDto } from './dto/order-upd-notes-id.dto';
+import { OrderUpdInlFieldDto } from './dto/order-upd-inl-field.dto';
 
 @Controller('order-upd')
 export class OrderUpdController {
@@ -28,6 +29,12 @@ export class OrderUpdController {
         auth: '/api/order-upd',
       },
     };
+  }
+
+  @UseGuards(AuthGuard)
+  @Post('v2/order-upd-inl-field')
+  OrderUpdInlFieldV2(@Body() dataJsonDto: OrderUpdInlFieldDto) {
+    return this.orderUpdService.taskOrderUpdInlFieldV2(dataJsonDto);
   }
 
   @UseGuards(AuthGuard)
