@@ -21,11 +21,32 @@ import { OrderUpdStatusIdQuery } from './query/order-upd-status-id.query';
 import { OrderUpdDiscountIdQuery } from './query/order-upd-discount-id.query';
 import { OrderUpdFreteIdQuery } from './query/order-upd-frete-id.query';
 import { OrderUpdNotesIdQuery } from './query/order-upd-notes-id.query';
+import { OrderUpdInlFieldDto } from './dto/order-upd-inl-field.dto';
+import { OrderUpdInlFieldQuery } from './query/order-upd-inl-field.query';
 import { processProcedureResultMutation } from 'src/core/procedure.result/process-procedure-result.mutation';
 
 @Injectable()
 export class OrderUpdService {
   constructor(private readonly dbService: DatabaseService) {}
+
+  async taskOrderUpdInlFieldV2(dataJsonDto: OrderUpdInlFieldDto) {
+    try {
+      const queryString = OrderUpdInlFieldQuery(dataJsonDto);
+
+      const resultData = (await this.dbService.selectExecute(
+        queryString,
+      )) as unknown as SpResultRecordUpdateType;
+
+      return processProcedureResultMutation(
+        resultData as unknown[],
+        'Order update field failed',
+      );
+    } catch (err) {
+      const errorMessage =
+        err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
+      return new ResultModel(100404, errorMessage, 0, []);
+    }
+  }
 
   async taskOrderUpdCustomerIdV2(dataJsonDto: OrderUpdCustomerIdDto) {
     try {

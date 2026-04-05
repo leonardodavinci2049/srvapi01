@@ -37,11 +37,32 @@ import { OrderItemUpdDiscountQuery } from './query/order-item-upd-discount.query
 
 import { OrderItemUpdDiscountAdmQuery } from './query/order-item-upd-discount-adm.query';
 import { OrderItemUpdFreteVlDto } from './dto/order-item-upd-frete-vl.dto';
+import { OrderItemUpdInlFieldDto } from './dto/order-item-upd-inl-field.dto';
+import { OrderItemUpdInlFieldQuery } from './query/order-item-upd-inl-field.query';
 import { processProcedureResultMutation } from 'src/core/procedure.result/process-procedure-result.mutation';
 
 @Injectable()
 export class OrderItemsService {
   constructor(private readonly dbService: DatabaseService) {}
+
+  async tskOrderItemUpdInlFieldV2(dataJsonDto: OrderItemUpdInlFieldDto) {
+    try {
+      const queryString = OrderItemUpdInlFieldQuery(dataJsonDto);
+
+      const resultData = (await this.dbService.selectExecute(
+        queryString,
+      )) as unknown as SpResultRecordUpdateType;
+
+      return processProcedureResultMutation(
+        resultData as unknown[],
+        'Order Item update field failed',
+      );
+    } catch (err) {
+      const errorMessage =
+        err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
+      return new ResultModel(100404, errorMessage, 0, []);
+    }
+  }
 
   async tskOrderItemsFindIdV2(dataJsonDto: OrderItemFindIdDto) {
     try {

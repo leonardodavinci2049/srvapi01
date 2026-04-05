@@ -13,6 +13,7 @@ import { OrderItemDeleteDto } from './dto/order-item-delete.dto';
 import { OrderItemUpdValueDto } from './dto/order-item-upd-value.dto';
 import { OrderItemUpdFreteVlDto } from './dto/order-item-upd-frete-vl.dto';
 import { OrderItemFindIdDto } from './dto/order-item-find-id.dto';
+import { OrderItemUpdInlFieldDto } from './dto/order-item-upd-inl-field.dto';
 
 @Controller('order-items')
 export class OrderItemsController {
@@ -31,6 +32,12 @@ export class OrderItemsController {
         auth: '/api/order-items',
       },
     };
+  }
+
+  @UseGuards(AuthGuard)
+  @Post('v2/order-items-upd-inl-field')
+  orderItemUpdInlFieldV2(@Body() dataJsonDto: OrderItemUpdInlFieldDto) {
+    return this.orderItemsService.tskOrderItemUpdInlFieldV2(dataJsonDto);
   }
 
   @UseGuards(AuthGuard)

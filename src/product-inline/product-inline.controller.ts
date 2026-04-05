@@ -10,6 +10,7 @@ import { ProductUpdInlStockMinV3Dto } from './dto/product-upd-inl-stock-min-v3.d
 import { ProductUpdInlStockV3Dto } from './dto/product-upd-inl-stock-v3.dto';
 import { ProductUpdInlTypeV3Dto } from './dto/product-upd-inl-type-v3.dto';
 import { ProductUpdInlVariouV3Dto } from './dto/product-upd-inl-variou-v3.dto';
+import { ProductUpdInlFieldDto } from './dto/product-upd-inl-field.dto';
 
 @Controller('product-inline')
 export class ProductInlineController {
@@ -27,6 +28,12 @@ export class ProductInlineController {
         auth: '/api/product-inline',
       },
     };
+  }
+
+  @UseGuards(AuthGuard)
+  @Post('v3/product-upd-inl-field')
+  productUpdInlFieldV3(@Body() dataJsonDto: ProductUpdInlFieldDto) {
+    return this.productInlineService.taskProductUpdInlFieldV3(dataJsonDto);
   }
 
   @UseGuards(AuthGuard)

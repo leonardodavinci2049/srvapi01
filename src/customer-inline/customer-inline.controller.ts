@@ -10,6 +10,7 @@ import { CustomerUpdInlTypeCustomerDto } from './dto/customer-upd-inl-type-custo
 import { CustomerUpdInlTypePersonDto } from './dto/customer-upd-inl-type-person.dto';
 import { CustomerUpdInlWhatsappDto } from './dto/customer-upd-inl-whatsapp.dto';
 import { AuthGuard } from 'src/core/guards/auth.guard';
+import { CustomerUpdInlFieldDto } from './dto/costumer-upd-inl-field.dto';
 
 @Controller('customer-inline')
 export class CustomerInlineController {
@@ -28,6 +29,12 @@ export class CustomerInlineController {
         auth: '/api/customer-inline',
       },
     };
+  }
+
+  @UseGuards(AuthGuard)
+  @Post('v2/customer-upd-inline-field')
+  CustomerUpdInlFieldV2(@Body() dataJsonDto: CustomerUpdInlFieldDto) {
+    return this.customerInlineService.TaskCustomerUpdInlField(dataJsonDto);
   }
 
   @UseGuards(AuthGuard)
