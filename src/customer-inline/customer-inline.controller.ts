@@ -37,7 +37,6 @@ export class CustomerInlineController {
     return this.customerInlineService.TaskCustomerUpdInlField(dataJsonDto);
   }
 
-
   @UseGuards(AuthGuard)
   @Post('v2/customer-upd-inline-email')
   CustomerUpdInlEmailV2(@Body() dataJsonDto: CustomerUpdInlEmailDto) {

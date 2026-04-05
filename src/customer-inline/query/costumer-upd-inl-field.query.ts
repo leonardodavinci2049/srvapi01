@@ -1,4 +1,4 @@
-import { CustomerUpdInlFieldDto } from "../dto/costumer-upd-inl-field.dto";
+import { CustomerUpdInlFieldDto } from '../dto/costumer-upd-inl-field.dto';
 
 export function CustomerUpdInlFieldQuery(
   dataJsonDto: CustomerUpdInlFieldDto,
@@ -17,8 +17,7 @@ export function CustomerUpdInlFieldQuery(
   const olValueStr = dataJsonDto.pe_value_str ?? '';
   const olValueInt = dataJsonDto.pe_value_int ?? 0;
   const olValueNumeric = dataJsonDto.pe_value_numeric ?? 0;
-  const olValueDate = dataJsonDto.pe_value_date ?? '';  
-
+  const olValueDate = dataJsonDto.pe_value_date ?? '';
 
   const queryString = ` call sp_customer_upd_inl_field_v2(
         ${olAppId},
@@ -41,7 +40,7 @@ export function CustomerUpdInlFieldQuery(
 
       ) `;
 
-    //   console.log('Generated Query:', queryString); // Log the generated query for debugging
+  //   console.log('Generated Query:', queryString); // Log the generated query for debugging
 
   return queryString;
 }

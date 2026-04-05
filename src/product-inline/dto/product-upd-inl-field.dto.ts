@@ -77,7 +77,6 @@ export class ProductUpdInlFieldDto {
   pe_value_date?: string;
 }
 
-
 /*
 # Sample JSON for testing in body endpoint:
 

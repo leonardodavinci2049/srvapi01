@@ -36,7 +36,7 @@ export class CustomerInlineService {
     return 'This action adds a new customerInline';
   }
 
-    async TaskCustomerUpdInlField(dataJsonDto: CustomerUpdInlFieldDto) {
+  async TaskCustomerUpdInlField(dataJsonDto: CustomerUpdInlFieldDto) {
     try {
       const queryString = CustomerUpdInlFieldQuery(dataJsonDto);
 
@@ -54,7 +54,6 @@ export class CustomerInlineService {
       return new ResultModel(100404, errorMessage, 0, []);
     }
   }
-
 
   async TaskCustomerUpdInlEmail(dataJsonDto: CustomerUpdInlEmailDto) {
     try {
