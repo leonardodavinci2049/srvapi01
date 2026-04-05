@@ -31,9 +31,9 @@ export class ProductInlineController {
   }
 
   @UseGuards(AuthGuard)
-  @Post('v2/product-upd-inl-field')
-  productUpdInlFieldV2(@Body() dataJsonDto: ProductUpdInlFieldDto) {
-    return this.productInlineService.taskProductUpdInlFieldV2(dataJsonDto);
+  @Post('v3/product-upd-inl-field')
+  productUpdInlFieldV3(@Body() dataJsonDto: ProductUpdInlFieldDto) {
+    return this.productInlineService.taskProductUpdInlFieldV3(dataJsonDto);
   }
 
   @UseGuards(AuthGuard)

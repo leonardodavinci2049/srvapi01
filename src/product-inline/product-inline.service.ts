@@ -35,7 +35,7 @@ export class ProductInlineService {
     return 'This action adds a new productInline';
   }
 
-  async taskProductUpdInlFieldV2(dataJsonDto: ProductUpdInlFieldDto) {
+  async taskProductUpdInlFieldV3(dataJsonDto: ProductUpdInlFieldDto) {
     try {
       const queryString = ProductUpdInlFieldQuery(dataJsonDto);
 

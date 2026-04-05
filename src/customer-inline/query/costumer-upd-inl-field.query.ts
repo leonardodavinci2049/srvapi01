@@ -14,10 +14,10 @@ export function CustomerUpdInlFieldQuery(
   const olRegisterId = dataJsonDto.pe_register_id;
   const olFieldType = dataJsonDto.pe_field_type;
   const olField = dataJsonDto.pe_field;
-  const olValueStr = dataJsonDto.pe_value_str ?? null;
-  const olValueInt = dataJsonDto.pe_value_int ?? null;
-  const olValueNumeric = dataJsonDto.pe_value_numeric ?? null;
-  const olValueDate = dataJsonDto.pe_value_date ?? null;  
+  const olValueStr = dataJsonDto.pe_value_str ?? '';
+  const olValueInt = dataJsonDto.pe_value_int ?? 0;
+  const olValueNumeric = dataJsonDto.pe_value_numeric ?? 0;
+  const olValueDate = dataJsonDto.pe_value_date ?? '';  
 
 
   const queryString = ` call sp_customer_upd_inl_field_v2(
@@ -34,12 +34,14 @@ export function CustomerUpdInlFieldQuery(
         ${olFieldType},
 
         '${olField}',
-        ${olValueStr},
+        '${olValueStr}',
         ${olValueInt},
         ${olValueNumeric},
-        ${olValueDate}	
+        '${olValueDate}'
 
       ) `;
+
+    //   console.log('Generated Query:', queryString); // Log the generated query for debugging
 
   return queryString;
 }

@@ -76,3 +76,96 @@ export class OrderItemUpdInlFieldDto {
   @IsOptional()
   pe_value_date?: string;
 }
+
+
+
+/*
+# Sample JSON for testing in body endpoint:
+
+## pe_field_type: 1
+
+{
+  "pe_app_id": 1,
+  "pe_system_client_id": 1,
+  "pe_store_id": 1,
+  "pe_organization_id": "ORG001",
+  "pe_user_id": "USER001",
+  "pe_user_name": "John Doe",
+  "pe_user_role": "saller",
+  "pe_person_id": 48814,
+  "pe_register_id": 729967,
+  "pe_field_type": 1,
+  "pe_field": "DESCRICAO",
+  "pe_value_str": "Item pedido atualizado 333",
+  "pe_value_int": 0,
+  "pe_value_numeric": 0,
+  "pe_value_date":  null
+
+}
+
+## pe_field_type: 2
+
+{
+  "pe_app_id": 1,
+  "pe_system_client_id": 1,
+  "pe_store_id": 1,
+  "pe_organization_id": "ORG001",
+  "pe_user_id": "USER001",
+  "pe_user_name": "John Doe",
+  "pe_user_role": "saller",
+  "pe_person_id": 48814,
+  "pe_register_id": 729967,
+  "pe_field_type": 2,
+  "pe_field": "QT",
+  "pe_value_str": "",
+  "pe_value_int": 33,
+  "pe_value_numeric": 0,
+  "pe_value_date":  null
+
+}
+
+## pe_field_type: 3
+
+{
+  "pe_app_id": 1,
+  "pe_system_client_id": 1,
+  "pe_store_id": 1,
+  "pe_organization_id": "ORG001",
+  "pe_user_id": "USER001",
+  "pe_user_name": "John Doe",
+  "pe_user_role": "saller",
+  "pe_person_id": 48814,
+  "pe_register_id": 729967,
+  "pe_field_type": 3,
+  "pe_field": "VL_UNITARIO",
+  "pe_value_str": "",
+  "pe_value_int": 0,
+  "pe_value_numeric": 5.55,
+  "pe_value_date":  null
+
+}
+
+## pe_field_type: 4
+
+{
+  "pe_app_id": 1,
+  "pe_system_client_id": 1,
+  "pe_store_id": 1,
+  "pe_organization_id": "ORG001",
+  "pe_user_id": "USER001",
+  "pe_user_name": "John Doe",
+  "pe_user_role": "saller",
+  "pe_person_id": 48814,
+  "pe_register_id": 729967,
+  "pe_field_type": 4,
+  "pe_field": "DT_EXPEDICAO",
+  "pe_value_str": "",
+  "pe_value_int": 0,
+  "pe_value_numeric": 0,
+  "pe_value_date":  "1990-01-01"
+
+}
+
+
+
+*/
