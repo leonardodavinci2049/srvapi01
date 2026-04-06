@@ -45,10 +45,12 @@ export interface TblOrderDetails extends RowDataPacket {
   STATUS_PEDIDO?: string;
   STATUS_FINANCEIRO?: string;
   STATUS_ENTREGA?: string;
+  STATUS_ESTOQUE?: string;
   DATA_PEDIDO?: string | null;
   DATA_VENDA?: string | null;
   DATA_RETIRADA?: string | null;
   DATA_ENTREGA?: string | null;
+  DATA_ESTOQUE?: string | null;
   DATADOCADASTRO?: string;
   ANOTACOES?: string;
 }
@@ -67,6 +69,10 @@ export interface TblOrderItems extends RowDataPacket {
   VL_UNITARIO?: string;
   VL_DESCONTO?: string;
   VL_DESCONTO_ADM?: string;
+
+  VL_ACRESCIMO?: string;
+  VL_SEGURO?: string;
+
   CODIGOP?: string | null;
   PROMOCAO?: number;
   ESTOQUE_LOJA1?: number;
