@@ -35,28 +35,33 @@ export class DatabaseService {
   }
 
   public connect() {
-    try {
-      const config: PoolOptions = {
-        host: envs.DATABASE_HOST,
-        port: envs.DATABASE_PORT,
-        database: envs.DATABASE_NAME,
-        user: envs.DATABASE_USER,
-        password: envs.DATABASE_PASSWORD,
-        waitForConnections: true,
-        connectionLimit: 10,
-        queueLimit: 0,
-        // Remova pool: true, pois não é necessário e não faz parte de PoolOptions
-      };
+    const config: PoolOptions = {
+      host: envs.DATABASE_HOST,
+      port: envs.DATABASE_PORT,
+      database: envs.DATABASE_NAME,
+      user: envs.DATABASE_USER,
+      password: envs.DATABASE_PASSWORD,
+      waitForConnections: true,
+      connectionLimit: 10,
+      queueLimit: 0,
+    };
 
-      this.poolConnection = createPool(config);
+    this.poolConnection = createPool(config);
 
-      this.logger.log('Conectado ao banco de dados MySQL');
-    } catch (error) {
-      this.logger.error(
-        'Erro ao conectar ao banco de dados MySQL com mysql2',
-        error,
-      );
-    }
+    // Testa a conexão real com o banco de dados
+    this.poolConnection
+      .getConnection()
+      .then((connection) => {
+        this.logger.log(
+          `Conectado ao banco de dados MySQL (${envs.DATABASE_HOST}:${envs.DATABASE_PORT})`,
+        );
+        connection.release();
+      })
+      .catch((error: Error) => {
+        this.logger.error(
+          `Falha ao conectar ao banco de dados MySQL (${envs.DATABASE_HOST}:${envs.DATABASE_PORT}): ${error.message}`,
+        );
+      });
   }
 
   // Método para SELECT (sem transação)
