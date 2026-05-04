@@ -16,25 +16,6 @@ import { resultQueryData } from 'src/core/utils/globalResult/global.result';
 import { MESSAGES } from 'src/core/utils/constants/globalConstants';
 import { ResultModel } from 'src/core/utils/result.model';
 
-import { FindCartItemsDto } from './dto/find-cart_items.dto';
-import { UpdateCartQtItemDto } from './dto/update-cart-qt-item.dto';
-import { DeleteCartItemDto } from './dto/delete-cart-item.dto';
-import { CreateCartOrderDto } from './dto/create-cart-order.dto';
-import { CartQuantityItemsDto } from './dto/cart-quantity-items.dto';
-import { CartViewCustomerDto } from './dto/cart-view-customer.dto';
-import { CartClearAllDto } from './dto/cart-clear-all.dto';
-import { CreateCartItemAddDto } from './dto/create-cart-item-Add.dto';
-
-import { FindCartItemsQuery } from './query/find-cart_items.query';
-import { UpdateCartQtItemQuery } from './query/update-cart-qt-item.query';
-import { DeleteCartItemQuery } from './query/delete-cart-item.query';
-import { CartViewCustomerQuery } from './query/cart-view-customer.query';
-import { CreateCartOrderQuery } from './query/create-cart-order.query';
-import { CreateCartItemAddQuery } from './query/create-cart-item-add.query';
-import { CartQuantityItemsQuery } from './query/cart-quantity-items.query';
-import { CartClearAllQuery } from './query/cart-clear-all.query';
-import { CartCheckCustomerQuery } from './query/cart-check-customer.query';
-import { CartCheckCustomerDto } from './dto/cart-check-customer.dto';
 
 @Injectable()
 export class CartService {
