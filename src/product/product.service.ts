@@ -222,6 +222,7 @@ export class ProductService {
     } catch (err) {
       const errorMessage =
         err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
+
       return new ResultModel(100404, errorMessage, 0, []);
     }
   }
@@ -250,7 +251,12 @@ export class ProductService {
       if (qtRecords === 0 && errorId === 0) {
         Feedback = 'Product not found';
       }
-
+      // console.error(
+      //   'tskProductWebFindV2 - Error ID:',
+      //   errorId,
+      //   'Feedback:',
+      //   Feedback,
+      // );
       return resultQueryData<SpProductWebFindDataType>(
         0,
         recordId,

@@ -43,5 +43,7 @@ export function webFindProductQuery(dataJsonDto: ProductWebFindDto): string {
     ${olOrderId}
       ) `;
 
+  // console.log('Generated Query:', queryString);
+
   return queryString;
 }

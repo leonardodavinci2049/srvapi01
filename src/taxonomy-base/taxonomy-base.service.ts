@@ -86,7 +86,7 @@ export class TaxonomyBaseService {
 
       return processProcedureResultMultiQuery(
         resultData as unknown[],
-        ['Taxonomy find Id'],
+        ['Taxonomy find Id', 'Taxonomy related'],
         'Taxonomy find Id not found',
       );
     } catch (err) {
