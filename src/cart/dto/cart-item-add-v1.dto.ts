@@ -82,7 +82,6 @@ export class CartItemAddV1Dto {
   pe_zip_code!: string;
 }
 
-
 /*
 Sample JSON for testing in body endpoint:
 

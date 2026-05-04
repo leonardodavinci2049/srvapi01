@@ -1,8 +1,6 @@
 import { CartUpdSendToV1Dto } from '../dto/cart-upd-send-to-v1.dto';
 
-export function CartUpdSendToV1Query(
-  dataJsonDto: CartUpdSendToV1Dto,
-): string {
+export function CartUpdSendToV1Query(dataJsonDto: CartUpdSendToV1Dto): string {
   const olAppId = dataJsonDto.pe_app_id ?? 1;
   const olSystemClientId = dataJsonDto.pe_system_client_id;
   const olStoreId = dataJsonDto.pe_store_id;
