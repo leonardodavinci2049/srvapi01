@@ -64,7 +64,8 @@ ecosystem.config.js
 .github/copilot-instructions.md
 /upload
 /flow
-/database
+/database-docs
+/scripts
 .github
 /schemas
 /json-response
