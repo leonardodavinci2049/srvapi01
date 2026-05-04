@@ -76,7 +76,7 @@ export interface TblCartFindAllV1 extends RowDataPacket {
   CREATEDAT?: string | null;
 }
 
-
+ 
 
 export type SpResultRecordCreateType = [SpDefaultFeedback[], SpOperationResult];
 export type SpResultRecordUpdateType = [SpDefaultFeedback[], SpOperationResult];

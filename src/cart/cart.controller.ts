@@ -2,17 +2,16 @@ import { Controller, Post, Body, UseGuards, Get } from '@nestjs/common';
 import { CartService } from './cart.service';
 
 import { AuthGuard } from 'src/core/guards/auth.guard';
+import { CartItemAddV1Dto } from './dto/cart-item-add-v1.dto';
+import { CartFindIdV1Dto } from './dto/cart-find-id-v1.dto';
+import { CartFindQtV1Dto } from './dto/cart-find-qt-v1.dto';
+import { CartFindAllV1Dto } from './dto/cart-find-ALL-v1.dto';
+import { CartUpdSendToV1Dto } from './dto/cart-upd-send-to-v1.dto';
+import { CartItemUpdQtV1Dto } from './dto/cart-item-upd-qt-v1.dto';
+import { CartClearAllV1Dto } from './dto/cart-clear-all-v1.dto';
+import { CartItemDeleteV1Dto } from './dto/cart-item-delete-v1.dto';
+import { CartCloseV1Dto } from './dto/cart-close-v1.dto';
 
-import { CreateCartItemAddDto } from './dto/create-cart-item-Add.dto';
-import { DeleteCartItemDto } from './dto/delete-cart-item.dto';
-
-import { UpdateCartQtItemDto } from './dto/update-cart-qt-item.dto';
-import { CreateCartOrderDto } from './dto/create-cart-order.dto';
-import { FindCartItemsDto } from './dto/find-cart_items.dto';
-import { CartClearAllDto } from './dto/cart-clear-all.dto';
-import { CartQuantityItemsDto } from './dto/cart-quantity-items.dto';
-import { CartViewCustomerDto } from './dto/cart-view-customer.dto';
-import { CartCheckCustomerDto } from './dto/cart-check-customer.dto';
 
 @Controller('cart')
 export class CartController {
@@ -34,57 +33,60 @@ export class CartController {
   }
   // https://wserpapp01.comsuporte.com.br/api/cart
 
+ 
   @UseGuards(AuthGuard)
   @Post('v1/cart-item-add')
-  cartItemAddV1(@Body() dataJsonDto: CreateCartItemAddDto) {
+cartItemAddV1(@Body() dataJsonDto: CartItemAddV1Dto)  {
     return this.cartService.tskCartItemAddV1(dataJsonDto);
   }
 
   @UseGuards(AuthGuard)
-  @Post('v1/cart-items-select')
-  cartItemSelectV1(@Body() dataJsonDto: FindCartItemsDto) {
-    return this.cartService.tskCartItemSelectV1(dataJsonDto);
+  @Post('v1/cart-find-id')
+ cartFindIdV1(@Body() dataJsonDto: CartFindIdV1Dto) {
+    return this.cartService.tskCartFindIdV1(dataJsonDto);
   }
 
   @UseGuards(AuthGuard)
-  @Post('v1/cart-item-qt-update')
-  cartItemQtUpdateV1(@Body() dataJsonDto: UpdateCartQtItemDto) {
-    return this.cartService.tskCartItemQtUpdateV1(dataJsonDto);
+  @Post('v1/cart-find-qt')
+ cartFindQtV1(@Body() dataJsonDto: CartFindQtV1Dto) {
+    return this.cartService.tskCartFindQtV1(dataJsonDto);
   }
 
   @UseGuards(AuthGuard)
-  @Post('v1/cart-item-delete')
-  cartItemDeleteV1(@Body() dataJsonDto: DeleteCartItemDto) {
-    return this.cartService.tskCartItemDeleteV1(dataJsonDto);
+  @Post('v1/cart-find-all')
+ cartFindAllV1(@Body() dataJsonDto: CartFindAllV1Dto) {
+    return this.cartService.tskCartFindAllV1(dataJsonDto);
   }
 
   @UseGuards(AuthGuard)
-  @Post('v1/cart-quantity-items')
-  CartQuantityItemsV1(@Body() dataJsonDto: CartQuantityItemsDto) {
-    return this.cartService.tskCartQuantityItemsV1(dataJsonDto);
+  @Post('v1/cart-upd-send-to')
+ cartUpdSendToV1(@Body() dataJsonDto: CartUpdSendToV1Dto) {
+    return this.cartService.tskCartUpdSendToV1(dataJsonDto);
+  }
+
+  @UseGuards(AuthGuard)
+  @Post('v1/cart-item-upd-qt')
+ cartItemUpdQtV1(@Body() dataJsonDto: CartItemUpdQtV1Dto) {
+    return this.cartService.tskCartItemUpdQtV1(dataJsonDto);
   }
 
   @UseGuards(AuthGuard)
   @Post('v1/cart-clear-all')
-  CartClearAllV1(@Body() dataJsonDto: CartClearAllDto) {
+ cartClearAllV1(@Body() dataJsonDto: CartClearAllV1Dto) {
     return this.cartService.tskCartClearAllV1(dataJsonDto);
   }
 
   @UseGuards(AuthGuard)
-  @Post('v1/cart-check-customer')
-  CartCheckCustomerV1(@Body() dataJsonDto: CartCheckCustomerDto) {
-    return this.cartService.tskCartCheckCustomerV1(dataJsonDto);
+  @Post('v1/cart-item-delete')
+ cartItemDeleteV1(@Body() dataJsonDto: CartItemDeleteV1Dto) {
+    return this.cartService.tskCartItemDeleteV1(dataJsonDto);
   }
 
-  @UseGuards(AuthGuard)
-  @Post('v1/cart-view-customer')
-  CartViewCustomerV1(@Body() dataJsonDto: CartViewCustomerDto) {
-    return this.cartService.tskCartViewCustomerV1(dataJsonDto);
-  }
 
   @UseGuards(AuthGuard)
-  @Post('v1/cart-order-create')
-  cartOrderCreateV1(@Body() dataJsonDto: CreateCartOrderDto) {
-    return this.cartService.tskCartOrderCreateV1(dataJsonDto);
+  @Post('v1/cart-close')
+ cartCloseV1(@Body() dataJsonDto: CartCloseV1Dto) {
+    return this.cartService.tskCartCloseV1(dataJsonDto);
   }
-}
+
+  }
