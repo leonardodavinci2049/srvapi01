@@ -18,13 +18,14 @@ import { CartItemDeleteV1Dto } from './dto/cart-item-delete-v1.dto';
 import { CartCloseV1Dto } from './dto/cart-close-v1.dto';
 import { CartItemAddV1Query } from './query/cart-item-add-v1.query';
 
-import { 
-  SpResultCartFindAllData, 
-  SpResultCartFindIdData, 
-  SpResultCartFindQtData, 
-  SpResultRecordCreateType, 
-  SpResultRecordDeleteType, 
-  SpResultRecordUpdateType } from './types/cart.type';
+import {
+  SpResultCartFindAllData,
+  SpResultCartFindIdData,
+  SpResultCartFindQtData,
+  SpResultRecordCreateType,
+  SpResultRecordDeleteType,
+  SpResultRecordUpdateType,
+} from './types/cart.type';
 
 import { CartFindIdV1Query } from './query/cart-find-id-v1.query';
 
@@ -36,11 +37,9 @@ import { CartClearAllV1Query } from './query/cart-clear-all-v1.query';
 import { CartItemDeleteV1Query } from './query/cart-item-delete-v1.query';
 import { CartCloseV1Query } from './query/cart-close-v1.query';
 
-
 @Injectable()
 export class CartService {
   constructor(private readonly dbService: DatabaseService) {}
-
 
   async tskCartItemAddV1(dataJsonDto: CartItemAddV1Dto) {
     try {
@@ -60,7 +59,7 @@ export class CartService {
       return new ResultModel(100404, errorMessage, 0, []);
     }
   }
-  async tskCartFindIdV1(dataJsonDto: CartFindIdV1Dto) { 
+  async tskCartFindIdV1(dataJsonDto: CartFindIdV1Dto) {
     try {
       const queryString = CartFindIdV1Query(dataJsonDto);
 
@@ -80,9 +79,7 @@ export class CartService {
     }
   }
 
-
-  async tskCartFindQtV1(dataJsonDto: CartFindQtV1Dto) { 
-
+  async tskCartFindQtV1(dataJsonDto: CartFindQtV1Dto) {
     try {
       const queryString = CartFindQtV1Query(dataJsonDto);
 
@@ -121,7 +118,6 @@ export class CartService {
     }
   }
 
-
   async tskCartUpdSendToV1(dataJsonDto: CartUpdSendToV1Dto) {
     try {
       const queryString = CartUpdSendToV1Query(dataJsonDto);
@@ -140,7 +136,6 @@ export class CartService {
       return new ResultModel(100404, errorMessage, 0, []);
     }
   }
-
 
   async tskCartItemUpdQtV1(dataJsonDto: CartItemUpdQtV1Dto) {
     try {
@@ -180,8 +175,7 @@ export class CartService {
     }
   }
 
-
-  async tskCartItemDeleteV1(dataJsonDto: CartItemDeleteV1Dto) { 
+  async tskCartItemDeleteV1(dataJsonDto: CartItemDeleteV1Dto) {
     try {
       const queryString = CartItemDeleteV1Query(dataJsonDto);
 
@@ -199,7 +193,7 @@ export class CartService {
       return new ResultModel(100404, errorMessage, 0, []);
     }
   }
-  async tskCartCloseV1(dataJsonDto: CartCloseV1Dto) { 
+  async tskCartCloseV1(dataJsonDto: CartCloseV1Dto) {
     try {
       const queryString = CartCloseV1Query(dataJsonDto);
 
@@ -217,5 +211,4 @@ export class CartService {
       return new ResultModel(100404, errorMessage, 0, []);
     }
   }
-
 }
