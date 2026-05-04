@@ -1,54 +1,76 @@
 import { Injectable } from '@nestjs/common';
 
 import { DatabaseService } from 'src/database/database.service';
-import {
-  SpCartCheckCustomerType,
-  SpCartClearAllV1Type,
-  SpCartItemAddV1Type,
-  SpCartItemDeleteV1Type,
-  SpCartItemQtUpdateV1Type,
-  SpCartItemsSelectV1Type,
-  SpCartOrderCreateV1Type,
-  SpCartQuantityItemsV1Type,
-  SpCartViewCustomerV1Type,
-} from './types/cart.type';
-import { resultQueryData } from 'src/core/utils/globalResult/global.result';
-import { MESSAGES } from 'src/core/utils/constants/globalConstants';
-import { ResultModel } from 'src/core/utils/result.model';
 
+import { ResultModel } from 'src/core/utils/result.model';
+import { MESSAGES } from 'src/core/utils/constants/globalConstants';
+import { processProcedureResultMutation } from 'src/core/procedure.result/process-procedure-result.mutation';
+import { processProcedureResultMultiQuery } from 'src/core/procedure.result/process-procedure-result.query';
+
+import { CartItemAddV1Dto } from './dto/cart-item-add-v1.dto';
+import { CartFindIdV1Dto } from './dto/cart-find-id-v1.dto';
+import { CartFindQtV1Dto } from './dto/cart-find-qt-v1.dto';
+import { CartFindAllV1Dto } from './dto/cart-find-ALL-v1.dto';
+import { CartUpdSendToV1Dto } from './dto/cart-upd-send-to-v1.dto';
+import { CartItemUpdQtV1Dto } from './dto/cart-item-upd-qt-v1.dto';
+import { CartClearAllV1Dto } from './dto/cart-clear-all-v1.dto';
+import { CartItemDeleteV1Dto } from './dto/cart-item-delete-v1.dto';
+import { CartCloseV1Dto } from './dto/cart-close-v1.dto';
+import { CartItemAddV1Query } from './query/cart-item-add-v1.query';
+
+import {
+  SpResultCartFindAllData,
+  SpResultCartFindIdData,
+  SpResultCartFindQtData,
+  SpResultRecordCreateType,
+  SpResultRecordDeleteType,
+  SpResultRecordUpdateType,
+} from './types/cart.type';
+
+import { CartFindIdV1Query } from './query/cart-find-id-v1.query';
+
+import { CartItemUpdQtV1Query } from './query/cart-item-upd-qt-v1.query';
+import { CartFindQtV1Query } from './query/cart-find-qt-v1.query';
+import { CartFindAllV1Query } from './query/cart-find-ALL-v1.query';
+import { CartUpdSendToV1Query } from './query/cart-upd-send-to-v1.query';
+import { CartClearAllV1Query } from './query/cart-clear-all-v1.query';
+import { CartItemDeleteV1Query } from './query/cart-item-delete-v1.query';
+import { CartCloseV1Query } from './query/cart-close-v1.query';
 
 @Injectable()
 export class CartService {
   constructor(private readonly dbService: DatabaseService) {}
 
-  async tskCartItemAddV1(dataJsonDto: CreateCartItemAddDto) {
+  async tskCartItemAddV1(dataJsonDto: CartItemAddV1Dto) {
     try {
-      const queryString = CreateCartItemAddQuery(dataJsonDto);
+      const queryString = CartItemAddV1Query(dataJsonDto);
 
       const resultData = (await this.dbService.selectExecute(
         queryString,
-      )) as unknown as SpCartItemAddV1Type;
+      )) as unknown as SpResultRecordCreateType;
 
-      const tblRecords = resultData[0];
+      return processProcedureResultMutation(
+        resultData as unknown[],
+        'Cart item add failed',
+      );
+    } catch (err) {
+      const errorMessage =
+        err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
+      return new ResultModel(100404, errorMessage, 0, []);
+    }
+  }
+  async tskCartFindIdV1(dataJsonDto: CartFindIdV1Dto) {
+    try {
+      const queryString = CartFindIdV1Query(dataJsonDto);
 
-      const qtRecords: number = tblRecords.length;
+      const resultData = (await this.dbService.selectExecute(
+        queryString,
+      )) as unknown as SpResultCartFindIdData;
 
-      const tblRecord = tblRecords[0] || 0;
-
-      const recordId: number = tblRecord?.ID_CARRINHO ?? 0;
-
-      if (recordId > 0) {
-        //TODO: Send instructions by email or WhatsApp
-      }
-
-      return resultQueryData<SpCartItemAddV1Type>(
-        0,
-        recordId,
-        0,
-        '',
-        resultData,
-        qtRecords,
-        '',
+      return processProcedureResultMultiQuery(
+        resultData as unknown[],
+        ['Cart Details', 'Cart Items'],
+        'Cart Items not found',
       );
     } catch (err) {
       const errorMessage =
@@ -57,34 +79,37 @@ export class CartService {
     }
   }
 
-  async tskCartItemSelectV1(dataJsonDto: FindCartItemsDto) {
+  async tskCartFindQtV1(dataJsonDto: CartFindQtV1Dto) {
     try {
-      const queryString = FindCartItemsQuery(dataJsonDto);
+      const queryString = CartFindQtV1Query(dataJsonDto);
 
       const resultData = (await this.dbService.selectExecute(
         queryString,
-      )) as unknown as SpCartItemsSelectV1Type;
+      )) as unknown as SpResultCartFindQtData;
 
-      const tblRecords = resultData[0];
+      return processProcedureResultMultiQuery(
+        resultData as unknown[],
+        ['Cart Quantity'],
+        'Cart Quantity not found',
+      );
+    } catch (err) {
+      const errorMessage =
+        err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
+      return new ResultModel(100404, errorMessage, 0, []);
+    }
+  }
+  async tskCartFindAllV1(dataJsonDto: CartFindAllV1Dto) {
+    try {
+      const queryString = CartFindAllV1Query(dataJsonDto);
 
-      const qtRecords: number = tblRecords.length;
+      const resultData = (await this.dbService.selectExecute(
+        queryString,
+      )) as unknown as SpResultCartFindAllData;
 
-      const tblRecord = tblRecords[0] || 0;
-
-      const recordId: number = tblRecord?.ID_CARRINHO ?? 0;
-
-      if (recordId > 0) {
-        //TODO: Send instructions by email or WhatsApp
-      }
-
-      return resultQueryData<SpCartItemsSelectV1Type>(
-        0,
-        recordId,
-        0,
-        '',
-        resultData,
-        qtRecords,
-        '',
+      return processProcedureResultMultiQuery(
+        resultData as unknown[],
+        ['Cart List'],
+        'Cart List not found',
       );
     } catch (err) {
       const errorMessage =
@@ -93,34 +118,17 @@ export class CartService {
     }
   }
 
-  async tskCartItemQtUpdateV1(dataJsonDto: UpdateCartQtItemDto) {
+  async tskCartUpdSendToV1(dataJsonDto: CartUpdSendToV1Dto) {
     try {
-      const queryString = UpdateCartQtItemQuery(dataJsonDto);
+      const queryString = CartUpdSendToV1Query(dataJsonDto);
 
       const resultData = (await this.dbService.selectExecute(
         queryString,
-      )) as unknown as SpCartItemQtUpdateV1Type;
+      )) as unknown as SpResultRecordUpdateType;
 
-      const tblRecords = resultData[0];
-
-      const qtRecords: number = tblRecords.length;
-
-      const tblRecord = tblRecords[0] || 0;
-
-      const recordId: number = tblRecord?.ID_CARRINHO ?? 0;
-
-      if (recordId > 0) {
-        //TODO: Send instructions by email or WhatsApp
-      }
-
-      return resultQueryData<SpCartItemQtUpdateV1Type>(
-        0,
-        recordId,
-        0,
-        '',
-        resultData,
-        qtRecords,
-        '',
+      return processProcedureResultMutation(
+        resultData as unknown[],
+        'Cart update field failed',
       );
     } catch (err) {
       const errorMessage =
@@ -129,33 +137,17 @@ export class CartService {
     }
   }
 
-  async tskCartItemDeleteV1(dataJsonDto: DeleteCartItemDto) {
+  async tskCartItemUpdQtV1(dataJsonDto: CartItemUpdQtV1Dto) {
     try {
-      const queryString = DeleteCartItemQuery(dataJsonDto);
+      const queryString = CartItemUpdQtV1Query(dataJsonDto);
 
       const resultData = (await this.dbService.selectExecute(
         queryString,
-      )) as unknown as SpCartItemDeleteV1Type;
+      )) as unknown as SpResultRecordUpdateType;
 
-      const tblRecords = resultData[0];
-
-      const qtRecords: number = tblRecords.length;
-
-      const tblRecord = tblRecords[0] || 0;
-
-      const recordId: number = tblRecord?.ID_CARRINHO ?? 0;
-
-      if (recordId > 0) {
-        //TODO: Send instructions by email or WhatsApp
-      }
-      return resultQueryData<SpCartItemDeleteV1Type>(
-        0,
-        recordId,
-        0,
-        '',
-        resultData,
-        qtRecords,
-        '',
+      return processProcedureResultMutation(
+        resultData as unknown[],
+        'Cart item update field failed',
       );
     } catch (err) {
       const errorMessage =
@@ -164,33 +156,17 @@ export class CartService {
     }
   }
 
-  async tskCartQuantityItemsV1(dataJsonDto: CartQuantityItemsDto) {
+  async tskCartClearAllV1(dataJsonDto: CartClearAllV1Dto) {
     try {
-      const queryString = CartQuantityItemsQuery(dataJsonDto);
+      const queryString = CartClearAllV1Query(dataJsonDto);
 
       const resultData = (await this.dbService.selectExecute(
         queryString,
-      )) as unknown as SpCartQuantityItemsV1Type;
+      )) as unknown as SpResultRecordUpdateType;
 
-      const tblRecords = resultData[0];
-
-      const qtRecords: number = tblRecords.length;
-
-      const tblRecord = tblRecords[0] || 0;
-
-      const recordId: number = tblRecord?.QT_ITEMS ?? 0;
-
-      if (recordId > 0) {
-        //TODO: Send instructions by email or WhatsApp
-      }
-      return resultQueryData<SpCartQuantityItemsV1Type>(
-        0,
-        recordId,
-        0,
-        '',
-        resultData,
-        qtRecords,
-        '',
+      return processProcedureResultMutation(
+        resultData as unknown[],
+        'Cart clear all failed',
       );
     } catch (err) {
       const errorMessage =
@@ -199,33 +175,17 @@ export class CartService {
     }
   }
 
-  async tskCartClearAllV1(dataJsonDto: CartClearAllDto) {
+  async tskCartItemDeleteV1(dataJsonDto: CartItemDeleteV1Dto) {
     try {
-      const queryString = CartClearAllQuery(dataJsonDto);
+      const queryString = CartItemDeleteV1Query(dataJsonDto);
 
       const resultData = (await this.dbService.selectExecute(
         queryString,
-      )) as unknown as SpCartClearAllV1Type;
+      )) as unknown as SpResultRecordDeleteType;
 
-      const tblRecords = resultData[0];
-
-      const qtRecords: number = tblRecords.length;
-
-      const tblRecord = tblRecords[0] || 0;
-
-      const recordId: number = tblRecord?.ID_CARRINHO ?? 0;
-
-      if (recordId > 0) {
-        //TODO: Send instructions by email or WhatsApp
-      }
-      return resultQueryData<SpCartClearAllV1Type>(
-        0,
-        recordId,
-        0,
-        '',
-        resultData,
-        qtRecords,
-        '',
+      return processProcedureResultMutation(
+        resultData as unknown[],
+        'Cart item delete failed',
       );
     } catch (err) {
       const errorMessage =
@@ -233,104 +193,17 @@ export class CartService {
       return new ResultModel(100404, errorMessage, 0, []);
     }
   }
-
-  async tskCartCheckCustomerV1(dataJsonDto: CartCheckCustomerDto) {
+  async tskCartCloseV1(dataJsonDto: CartCloseV1Dto) {
     try {
-      const queryString = CartCheckCustomerQuery(dataJsonDto);
+      const queryString = CartCloseV1Query(dataJsonDto);
 
       const resultData = (await this.dbService.selectExecute(
         queryString,
-      )) as unknown as SpCartCheckCustomerType;
+      )) as unknown as SpResultRecordUpdateType;
 
-      const tblRecords = resultData[0];
-      const DefaultFeedback = resultData[1];
-      const qtRecords: number = tblRecords.length;
-
-      const recordId: number = DefaultFeedback[0]?.pl_id_cadastro ?? 0;
-
-      if (recordId > 0) {
-        //TODO: Send instructions by email or WhatsApp
-      }
-      const Feedback = DefaultFeedback[0]?.pl_feedback || '';
-      return resultQueryData<SpCartCheckCustomerType>(
-        0,
-        recordId,
-        0,
-        Feedback,
-        resultData,
-        qtRecords,
-        '',
-      );
-    } catch (err) {
-      const errorMessage =
-        err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
-      return new ResultModel(100404, errorMessage, 0, []);
-    }
-  }
-
-  async tskCartViewCustomerV1(dataJsonDto: CartViewCustomerDto) {
-    try {
-      const queryString = CartViewCustomerQuery(dataJsonDto);
-
-      const resultData = (await this.dbService.selectExecute(
-        queryString,
-      )) as unknown as SpCartViewCustomerV1Type;
-
-      const tblRecords = resultData[0];
-
-      const qtRecords: number = tblRecords.length;
-
-      const tblRecord = tblRecords[0] || 0;
-
-      const recordId: number = tblRecord?.ID_CARRINHO ?? 0;
-
-      if (recordId > 0) {
-        //TODO: Send instructions by email or WhatsApp
-      }
-
-      return resultQueryData<SpCartViewCustomerV1Type>(
-        0,
-        recordId,
-        0,
-        '',
-        resultData,
-        qtRecords,
-        '',
-      );
-    } catch (err) {
-      const errorMessage =
-        err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
-      return new ResultModel(100404, errorMessage, 0, []);
-    }
-  }
-
-  async tskCartOrderCreateV1(dataJsonDto: CreateCartOrderDto) {
-    try {
-      const queryString = CreateCartOrderQuery(dataJsonDto);
-
-      const resultData = (await this.dbService.selectExecute(
-        queryString,
-      )) as unknown as SpCartOrderCreateV1Type;
-
-      const tblRecords = resultData[0];
-
-      const qtRecords: number = tblRecords.length;
-
-      const tblRecord = tblRecords[0] || 0;
-
-      const recordId: number = tblRecord?.ID_PEDIDO ?? 0;
-
-      if (recordId > 0) {
-        //TODO: Send instructions by email or WhatsApp
-      }
-      return resultQueryData<SpCartOrderCreateV1Type>(
-        0,
-        recordId,
-        0,
-        '',
-        resultData,
-        qtRecords,
-        '',
+      return processProcedureResultMutation(
+        resultData as unknown[],
+        'Cart close failed',
       );
     } catch (err) {
       const errorMessage =
