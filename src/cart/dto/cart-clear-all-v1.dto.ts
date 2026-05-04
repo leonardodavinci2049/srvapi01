@@ -47,7 +47,6 @@ export class CartClearAllV1Dto {
   pe_session_cart_id!: string;
 }
 
-
 /*
 Sample JSON for testing in body endpoint:
 

@@ -37,12 +37,12 @@ export interface TblTaxonomyFindId extends RowDataPacket {
   UPDATEDAT?: string;
 }
 export interface TblTaxonomyRelated extends RowDataPacket {
-            ID_TAXONOMY: number;
-            TAXONOMIA: string;
-            PATH_IMAGEM: string | null;
-            SLUG: string | null;
-            LEVEL: number | null;
-            ORDEM: number;
+  ID_TAXONOMY: number;
+  TAXONOMIA: string;
+  PATH_IMAGEM: string | null;
+  SLUG: string | null;
+  LEVEL: number | null;
+  ORDEM: number;
 }
 
 export interface TblTaxonomyFind extends RowDataPacket {

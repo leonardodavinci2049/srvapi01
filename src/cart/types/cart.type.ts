@@ -17,7 +17,6 @@ export interface SpOperationResult {
   changedRows: number;
 }
 
-
 export interface TblCartFindIdV1 extends RowDataPacket {
   ID_CARRINHO?: number;
   SESSION_CART_ID?: string | null;
@@ -51,10 +50,8 @@ export interface TblCartItemFindIdV1 extends RowDataPacket {
   SLUG?: string | null;
 }
 
-
 export interface TblCartFindQtV1 extends RowDataPacket {
   QT_ITEMS: number;
-
 }
 
 export interface TblCartFindAllV1 extends RowDataPacket {
@@ -76,12 +73,9 @@ export interface TblCartFindAllV1 extends RowDataPacket {
   CREATEDAT?: string | null;
 }
 
- 
-
 export type SpResultRecordCreateType = [SpDefaultFeedback[], SpOperationResult];
 export type SpResultRecordUpdateType = [SpDefaultFeedback[], SpOperationResult];
 export type SpResultRecordDeleteType = [SpDefaultFeedback[], SpOperationResult];
-
 
 export type SpResultCartFindIdData = [
   TblCartFindIdV1[],
