@@ -17,81 +17,60 @@ export interface SpOperationResult {
   changedRows: number;
 }
 
-export interface TblCartFindIdV1 extends RowDataPacket {
-  ID_CARRINHO?: number;
-  SESSION_CART_ID?: string | null;
-  TYPE_BUSINESS?: number | null;
-  PUBLIC_CODE?: string | null;
-  CEP?: string | null;
-  CUSTUMER_NAME?: string | null;
-  ID_STATUS?: number | null;
-  STATUS_CART?: string | null;
-  TIPO_FRETE?: string | null;
-  TIPO?: string | null;
-  PG_FORMA_ID?: number | null;
-  PG_FORMA?: string | null;
-  VL_FRETE?: string | null;
-  PRECO_TIPO?: string;
-  VL_DESCONTO?: string | null;
-  CREATEDAT?: string | null;
-}
-
-export interface TblCartItemFindIdV1 extends RowDataPacket {
-  ID_MOVIMENTO?: number;
-  ID_CARRINHO?: number | null;
-  SESSION_CART_ID?: string | null;
-  ID_PRODUTO?: number | null;
-  SKU?: number | null;
-  PRODUTO?: string | null;
-  QT?: number | null;
-  ESTOQUE?: number | null;
-  VL_UNITARIO?: string | null;
+export interface TblTaxonomyFindId extends RowDataPacket {
+  ID_TAXONOMY?: number;
+  PARENT_ID?: number;
+  TAXONOMIA?: string;
+  PARENT_CATEGORY?: string;
   PATH_IMAGEM?: string | null;
   SLUG?: string | null;
+  LEVEL?: number | null;
+  ORDEM?: number;
+  ID_IMAGEM?: number | null;
+  QT_RECORDS?: number | null;
+  INATIVO?: number;
+
+  META_TITLE?: string | null;
+  META_DESCRIPTION?: string | null;
+  ANOTACOES?: string | null;
+  CREATEDAT?: string;
+  UPDATEDAT?: string;
+}
+export interface TblTaxonomyRelated extends RowDataPacket {
+  ID_TAXONOMY: number;
+  TAXONOMIA: string;
+  PATH_IMAGEM: string | null;
+  SLUG: string | null;
+  LEVEL: number | null;
+  ORDEM: number;
 }
 
-export interface TblCartFindQtV1 extends RowDataPacket {
-  QT_ITEMS: number;
+export interface TblTaxonomyWebMenu extends RowDataPacket {
+  ID_TAXONOMY?: number;
+  PARENT_ID?: number;
+  TAXONOMIA?: string;
+  PATH_IMAGEM?: string | null;
+  SLUG?: string | null;
+  LEVEL?: number;
+  ORDEM?: number;
+  ID_IMAGEM?: number | null;
+  QT_RECORDS?: number | null;
 }
 
-export interface TblCartFindAllV1 extends RowDataPacket {
-  ID_CARRINHO?: number;
-  SESSION_CART_ID?: string | null;
-  TYPE_BUSINESS?: number | null;
-  PUBLIC_CODE?: string | null;
-  CEP?: string | null;
-  CUSTUMER_NAME?: string | null;
-  ID_STATUS?: number | null;
-  STATUS_CART?: string | null;
-  TIPO_FRETE?: string | null;
-  TIPO?: string | null;
-  PG_FORMA_ID?: number | null;
-  PG_FORMA?: string | null;
-  VL_FRETE?: string | null;
-  PRECO_TIPO?: string;
-  VL_DESCONTO?: string | null;
-  CREATEDAT?: string | null;
-}
 
 export type SpResultRecordCreateType = [SpDefaultFeedback[], SpOperationResult];
 export type SpResultRecordUpdateType = [SpDefaultFeedback[], SpOperationResult];
 export type SpResultRecordDeleteType = [SpDefaultFeedback[], SpOperationResult];
 
-export type SpResultCartFindIdData = [
-  TblCartFindIdV1[],
-  TblCartItemFindIdV1[],
+export type SpResultTaxonomyWebFindIdV3Data = [
+  TblTaxonomyFindId[],
+  TblTaxonomyRelated[],
   SpDefaultFeedback[],
   SpOperationResult,
 ];
 
-export type SpResultCartFindQtData = [
-  TblCartFindQtV1[],
-  SpDefaultFeedback[],
-  SpOperationResult,
-];
-
-export type SpResultCartFindAllData = [
-  TblCartFindAllV1[],
+export type SpResultTaxonomyWebMenuV3Data = [
+  TblTaxonomyWebMenu[],
   SpDefaultFeedback[],
   SpOperationResult,
 ];
