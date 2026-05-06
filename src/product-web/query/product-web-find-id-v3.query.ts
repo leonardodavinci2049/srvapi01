@@ -16,7 +16,7 @@ export function webFindIdProductQuery(
   const olProductId = dataJsonDto.pe_product_id;
   const olProductSlug = dataJsonDto.pe_product_slug ?? '';
 
-  const queryString = ` call sp_product_web_find_id_v2(
+  const queryString = ` call sp_product_web_find_id_v3(
     ${olAppId},
     ${olSystemClientId},
     ${olStoreId},

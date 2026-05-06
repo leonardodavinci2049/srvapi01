@@ -1,34 +1,36 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Post, Body, UseGuards, Get } from '@nestjs/common';
+
+import { AuthGuard } from 'src/core/guards/auth.guard';
 import { GeneralCallService } from './general-call.service';
-import { CreateGeneralCallDto } from './dto/create-general-call.dto';
-import { UpdateGeneralCallDto } from './dto/update-general-call.dto';
+import { GeneralUpdProcedureV1Dto } from './dto/general-upd-procedure-v1.dto';
+
 
 @Controller('general-call')
 export class GeneralCallController {
   constructor(private readonly generalCallService: GeneralCallService) {}
 
-  @Post()
-  create(@Body() createGeneralCallDto: CreateGeneralCallDto) {
-    return this.generalCallService.create(createGeneralCallDto);
-  }
-
+ 
   @Get()
-  findAll() {
-    return this.generalCallService.findAll();
+  getHello() {
+    return {
+      name: 'Wholesale API',
+      status: 'online',
+      version: '1.0.1',
+      documentation: '/',
+      timestamp: new Date().toISOString(),
+      endpoints: {
+        base: '/api',
+        auth: '/api/general-call',
+      },
+    };
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.generalCallService.findOne(+id);
+
+  @UseGuards(AuthGuard)
+  @Post('v1/general-upd-procedure')
+  generalUpdProcedureV1(@Body() dataJsonDto: GeneralUpdProcedureV1Dto) {
+    return this.generalCallService.tskGeneralUpdProcedureV1(dataJsonDto);
   }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateGeneralCallDto: UpdateGeneralCallDto) {
-    return this.generalCallService.update(+id, updateGeneralCallDto);
-  }
 
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.generalCallService.remove(+id);
-  }
 }
