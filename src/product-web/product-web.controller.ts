@@ -44,4 +44,3 @@ export class ProductWebController {
     return this.productWebService.tskProductWebSectionsV3(dataJsonDto);
   }
 }
-  
