@@ -139,7 +139,7 @@ export interface tblProductWebSections extends RowDataPacket {
   DATADOCADASTRO?: Date;
 }
 
-export interface tbltaxonomy extends RowDataPacket {
+export interface tbltaxonomyWebRelated extends RowDataPacket {
   ID_TAXONOMY?: number;
   PARENT_ID?: number;
   TAXONOMIA?: string | null;
@@ -154,14 +154,8 @@ export type SpResultRecordDeleteType = [SpDefaultFeedback[], SpOperationResult];
 
 export type SpProductWebFindIdDataType = [
   tblProductWebId[],
-  tbltaxonomy[],
+  tbltaxonomyWebRelated[],
   tblProductWebRelated[],
-  SpDefaultFeedback[],
-  SpOperationResult,
-];
-
-export type SpProductWebSectionsDataType = [
-  tblProductWebSections[],
   SpDefaultFeedback[],
   SpOperationResult,
 ];
@@ -171,3 +165,11 @@ export type SpProductWebFindDataType = [
   SpDefaultFeedback[],
   SpOperationResult,
 ];
+
+
+export type SpProductWebSectionsDataType = [
+  tblProductWebSections[],
+  SpDefaultFeedback[],
+  SpOperationResult,
+];
+

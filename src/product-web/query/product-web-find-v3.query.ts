@@ -1,47 +1,42 @@
-import { ProductWebFindDto } from '../dto/product-web-find.dto';
+import { ProductWebFindV3Dto } from '../dto/product-web-find-v3.dto';
 
-export function webFindProductQuery(dataJsonDto: ProductWebFindDto): string {
+export function webFindProductQuery(dataJsonDto: ProductWebFindV3Dto): string {
   const olAppId = dataJsonDto.pe_app_id ?? 1;
-  const olSystemClientId = dataJsonDto.pe_system_client_id ?? 1;
-  const olStoreId = dataJsonDto.pe_store_id ?? 1;
-  const olOrganizationId = dataJsonDto.pe_organization_id ?? '';
-  const olMemberId = dataJsonDto.pe_member_id ?? '';
-  const olUserId = dataJsonDto.pe_user_id ?? '';
-  const olPersonId = dataJsonDto.pe_person_id ?? 0;
+  const olSystemClientId = dataJsonDto.pe_system_client_id;
+  const olStoreId = dataJsonDto.pe_store_id;
+  const olOrganizationId = dataJsonDto.pe_organization_id;
+  const olUserId = dataJsonDto.pe_user_id;
+  const olUserName = dataJsonDto.pe_user_name;
+  const olUserRole = dataJsonDto.pe_user_role;
+  const olPersonId = dataJsonDto.pe_person_id;
 
-  const olIdTaxonomy = dataJsonDto.pe_id_taxonomy ?? 0;
-  const olSlugTaxonomy = dataJsonDto.pe_slug_taxonomy ?? '';
-  const olIdProduct = dataJsonDto.pe_id_produto ?? 0;
-  const olProduct = dataJsonDto.pe_produto ?? '';
-
-  const olIdMarca = dataJsonDto.pe_id_marca ?? 0;
-
-  const olFlagEstoque = dataJsonDto.pe_flag_estoque ?? 0;
-
-  const olQtRegistros = dataJsonDto.pe_qt_registros ?? 100;
-  const olPaginaId = dataJsonDto.pe_pagina_id ?? 1;
-  const olColunaId = dataJsonDto.pe_coluna_id ?? 1;
-  const olOrderId = dataJsonDto.pe_ordem_id ?? 1;
+  const olSearch = dataJsonDto.pe_search ?? '';
+  const olTaxonomyId = dataJsonDto.pe_taxonomy_id ?? 0;
+  const olBrandId = dataJsonDto.pe_brand_id ?? 0;
+  const olStockFlag = dataJsonDto.pe_stock_flag ?? 0;
+  const olRecordCount = dataJsonDto.pe_record_count ?? 100;
+  const olPageId = dataJsonDto.pe_page_id ?? 1;
+  const olColumnId = dataJsonDto.pe_column_id ?? 1;
+  const olOrderId = dataJsonDto.pe_order_id ?? 1;
 
   const queryString = ` call sp_product_web_find_v2(
     ${olAppId},
     ${olSystemClientId},
     ${olStoreId},
-    '${olOrganizationId}',
-    '${olMemberId}',
-    '${olUserId}',
+    '${olOrganizationId.replace(/'/g, "''")}',
+    '${olUserId.replace(/'/g, "''")}',
+    '${olUserName.replace(/'/g, "''")}',
+    '${olUserRole.replace(/'/g, "''")}',
     ${olPersonId},
-    ${olIdTaxonomy},
-    '${olSlugTaxonomy}',
-    ${olIdProduct},
-    '${olProduct}',
-    ${olIdMarca},
-    ${olFlagEstoque},
-    ${olQtRegistros},
-    ${olPaginaId},
-    ${olColunaId},
+    '${olSearch.replace(/'/g, "''")}',
+    ${olTaxonomyId},
+    ${olBrandId},
+    ${olStockFlag},
+    ${olRecordCount},
+    ${olPageId},
+    ${olColumnId},
     ${olOrderId}
-      ) `;
+  ) `;
 
   // console.log('Generated Query:', queryString);
 
