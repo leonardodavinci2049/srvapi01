@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsString, IsNotEmpty, IsNumber } from 'class-validator';
+import { IsString, IsNotEmpty, IsNumber, IsOptional } from 'class-validator';
 
 export class CartFindAllV1Dto {
   @ApiProperty({ description: 'App ID' })
@@ -43,22 +43,22 @@ export class CartFindAllV1Dto {
 
   @ApiProperty({ description: 'Search', maxLength: 200 })
   @IsString()
-  @IsNotEmpty()
+  @IsOptional()
   pe_search!: string;
 
   @ApiProperty({ description: 'Status ID' })
   @IsNumber()
-  @IsNotEmpty()
+  @IsOptional()
   pe_status_id!: number;
 
   @ApiProperty({ description: 'Start Date', maxLength: 10 })
   @IsString()
-  @IsNotEmpty()
+  @IsOptional()
   pe_start_date!: string;
 
   @ApiProperty({ description: 'End Date', maxLength: 10 })
   @IsString()
-  @IsNotEmpty()
+  @IsOptional()
   pe_end_date!: string;
 
   @ApiProperty({ description: 'Limit' })
@@ -79,10 +79,11 @@ Sample JSON for testing in body endpoint:
   "pe_user_name": "User Name",
   "pe_user_role": "saller",
   "pe_person_id": 29014,
-  "pe_search": "search term",
-  "pe_status_id": 1,
-  "pe_start_date": "2023-01-01",
-  "pe_end_date": "2023-12-31",
+
+  "pe_search": "",
+  "pe_status_id": 0,
+  "pe_start_date": "2026-01-01",
+  "pe_end_date": "2026-12-31",
   "pe_limit": 10  
 }
 

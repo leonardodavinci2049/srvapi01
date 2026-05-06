@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsString, IsNotEmpty, IsNumber } from 'class-validator';
+import { IsString, IsNotEmpty,   IsOptional, IsNumber } from 'class-validator';
 
 export class CartUpdSendToV1Dto {
   @ApiProperty({ description: 'App ID' })
@@ -48,7 +48,7 @@ export class CartUpdSendToV1Dto {
 
   @ApiProperty({ description: 'Customer Name', maxLength: 100 })
   @IsString()
-  @IsNotEmpty()
+  @IsOptional()
   pe_customer_name!: string;
 
   @ApiProperty({ description: 'Payment Form ID' })

@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsString, IsNotEmpty, IsNumber } from 'class-validator';
+import { IsString, IsNotEmpty, IsNumber, IsOptional } from 'class-validator';
 
 export class TaxonomyWebFindMenuV3Dto {
   @ApiProperty({ description: 'App ID' })
@@ -43,12 +43,12 @@ export class TaxonomyWebFindMenuV3Dto {
 
   @ApiProperty({ description: 'Taxonomy Type ID' })
   @IsNumber()
-  @IsNotEmpty()
+  @IsOptional()
   pe_type_id!: number;
 
   @ApiProperty({ description: 'Parent Taxonomy ID' })
   @IsNumber()
-  @IsNotEmpty()
+  @IsOptional()
   pe_parent_id!: number;
 }
 
