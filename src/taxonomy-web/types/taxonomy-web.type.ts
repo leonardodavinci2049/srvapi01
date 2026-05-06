@@ -57,7 +57,6 @@ export interface TblTaxonomyWebMenu extends RowDataPacket {
   QT_RECORDS?: number | null;
 }
 
-
 export type SpResultRecordCreateType = [SpDefaultFeedback[], SpOperationResult];
 export type SpResultRecordUpdateType = [SpDefaultFeedback[], SpOperationResult];
 export type SpResultRecordDeleteType = [SpDefaultFeedback[], SpOperationResult];

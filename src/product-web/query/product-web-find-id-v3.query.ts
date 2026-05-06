@@ -1,4 +1,4 @@
-import { ProductWebFindIdV3Dto } from "../dto/product-web-find-id-v3.dto";
+import { ProductWebFindIdV3Dto } from '../dto/product-web-find-id-v3.dto';
 
 export function webFindIdProductQuery(
   dataJsonDto: ProductWebFindIdV3Dto,

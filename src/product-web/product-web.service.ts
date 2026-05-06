@@ -32,7 +32,7 @@ export class ProductWebService {
 
       return processProcedureResultMultiQuery(
         resultData as unknown[],
-        ['Product Details',  'Category Related', 'Related Products', ],
+        ['Product Details', 'Category Related', 'Related Products'],
         'Product Details not found',
       );
     } catch (err) {

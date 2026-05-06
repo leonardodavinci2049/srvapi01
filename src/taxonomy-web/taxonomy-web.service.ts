@@ -7,14 +7,16 @@ import { MESSAGES } from 'src/core/utils/constants/globalConstants';
 
 import { processProcedureResultMultiQuery } from 'src/core/procedure.result/process-procedure-result.query';
 import { TaxonomyWebFindIdV3Dto } from './dto/taxonomy-web-find-id-v3.dto';
-import { SpResultTaxonomyWebFindIdV3Data, SpResultTaxonomyWebMenuV3Data } from './types/taxonomy-web.type';
+import {
+  SpResultTaxonomyWebFindIdV3Data,
+  SpResultTaxonomyWebMenuV3Data,
+} from './types/taxonomy-web.type';
 import { TaxonomyWebFindIdV3Query } from './query/taxonomy-web-find-id-v3.query';
 import { TaxonomyWebFindMenuV3Dto } from './dto/taxonomy-web-find-menu-v3.dto';
 import { TaxonomyWebFindMenuV3Query } from './query/taxonomy-web-find-menu-v3.query';
 
 @Injectable()
 export class TaxonomyWebService {
-
   constructor(private readonly dbService: DatabaseService) {}
 
   async taskTaxonomyWebFindIdV3(dataJsonDto: TaxonomyWebFindIdV3Dto) {
@@ -56,5 +58,4 @@ export class TaxonomyWebService {
       return new ResultModel(100404, errorMessage, 0, []);
     }
   }
-
 }
