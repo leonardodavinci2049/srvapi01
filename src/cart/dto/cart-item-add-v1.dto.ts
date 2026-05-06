@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsString, IsNotEmpty, IsNumber } from 'class-validator';
+import { IsString, IsNotEmpty, IsOptional, IsNumber } from 'class-validator';
 
 export class CartItemAddV1Dto {
   @ApiProperty({ description: 'App ID' })
@@ -39,11 +39,12 @@ export class CartItemAddV1Dto {
 
   @ApiProperty({ description: 'Person ID' })
   @IsNumber()
+  @IsOptional()
   pe_person_id!: number;
 
   @ApiProperty({ description: 'Session Cart ID', maxLength: 100 })
   @IsString()
-  @IsNotEmpty()
+  @IsOptional()
   pe_session_cart_id!: string;
 
   @ApiProperty({ description: 'Product ID' })
@@ -58,27 +59,27 @@ export class CartItemAddV1Dto {
 
   @ApiProperty({ description: 'Source URL', maxLength: 500 })
   @IsString()
-  @IsNotEmpty()
+  @IsOptional()
   pe_source_url!: string;
 
   @ApiProperty({ description: 'Business Type' })
   @IsNumber()
-  @IsNotEmpty()
+  @IsOptional()
   pe_business_type!: number;
 
   @ApiProperty({ description: 'Location ID' })
   @IsNumber()
-  @IsNotEmpty()
+  @IsOptional()
   pe_location_id!: number;
 
   @ApiProperty({ description: 'IP Address', maxLength: 100 })
   @IsString()
-  @IsNotEmpty()
+  @IsOptional()
   pe_ip_address!: string;
 
   @ApiProperty({ description: 'ZIP Code', maxLength: 100 })
   @IsString()
-  @IsNotEmpty()
+  @IsOptional()
   pe_zip_code!: string;
 }
 
@@ -101,8 +102,31 @@ Sample JSON for testing in body endpoint:
   "pe_source_url": "http://example.com/product/51373",
   "pe_business_type": 3,
   "pe_location_id": 7,
-  "pe_ip_address": "192.168.1.1",
-  "pe_zip_code": "12345"  
+  "pe_ip_address": "",
+  "pe_zip_code": ""  
+}
+
+*/
+
+
+/*
+*Sample JSON response for testing in body endpoint:
+
+
+{
+    "statusCode": 100200,
+    "message": "Produto adicionado com sucesso",
+    "recordId": 10,
+    "data": [
+        {
+            "sp_return_id": 10,
+            "sp_message": "Produto adicionado com sucesso",
+            "sp_error_id": 0
+        }
+    ],
+    "quantity": 1,
+    "errorId": 0,
+    "info1": ""
 }
 
 */
