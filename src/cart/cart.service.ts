@@ -22,6 +22,7 @@ import {
   SpResultCartFindAllData,
   SpResultCartFindIdData,
   SpResultCartFindQtData,
+  SpResultCartFindSessionData,
   SpResultRecordCreateType,
   SpResultRecordDeleteType,
   SpResultRecordUpdateType,
@@ -36,6 +37,8 @@ import { CartUpdSendToV1Query } from './query/cart-upd-send-to-v1.query';
 import { CartClearAllV1Query } from './query/cart-clear-all-v1.query';
 import { CartItemDeleteV1Query } from './query/cart-item-delete-v1.query';
 import { CartCloseV1Query } from './query/cart-close-v1.query';
+import { CartFindSessionV1Dto } from './dto/cart-find-session-v1.dto';
+import { CartFindSessionV1Query } from './query/cart-find-session-v1.query';
 
 @Injectable()
 export class CartService {
@@ -78,6 +81,27 @@ export class CartService {
       return new ResultModel(100404, errorMessage, 0, []);
     }
   }
+
+  async tskCartFindSessionV1(dataJsonDto: CartFindSessionV1Dto) {
+    try {
+      const queryString = CartFindSessionV1Query(dataJsonDto);
+
+      const resultData = (await this.dbService.selectExecute(
+        queryString,
+      )) as unknown as SpResultCartFindSessionData;
+
+      return processProcedureResultMultiQuery(
+        resultData as unknown[],
+        ['Cart Details', 'Cart Items'],
+        'Cart Items not found',
+      );
+    } catch (err) {
+      const errorMessage =
+        err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
+      return new ResultModel(100404, errorMessage, 0, []);
+    }
+  }
+
 
   async tskCartFindQtV1(dataJsonDto: CartFindQtV1Dto) {
     try {
