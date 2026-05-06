@@ -9,10 +9,8 @@ import { GeneralUpdProcedureV1Dto } from './dto/general-upd-procedure-v1.dto';
 import { generalUpdProcedureV1Query } from './query/general-upd-procedure-v1.query';
 import { SpResultRecordUpdateType } from './types/general-call.type';
 
-
 @Injectable()
 export class GeneralCallService {
-
   constructor(private readonly dbService: DatabaseService) {}
 
   async tskGeneralUpdProcedureV1(dataJsonDto: GeneralUpdProcedureV1Dto) {
@@ -33,5 +31,4 @@ export class GeneralCallService {
       return new ResultModel(100404, errorMessage, 0, []);
     }
   }
-
 }

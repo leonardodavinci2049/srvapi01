@@ -1,5 +1,4 @@
-import { TaxonomyWebFindIdV3Dto } from "../dto/taxonomy-web-find-id-v3.dto";
-
+import { TaxonomyWebFindIdV3Dto } from '../dto/taxonomy-web-find-id-v3.dto';
 
 export function TaxonomyWebFindIdV3Query(
   dataJsonDto: TaxonomyWebFindIdV3Dto,

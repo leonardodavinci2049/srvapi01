@@ -1,4 +1,4 @@
-import { TaxonomyWebFindMenuV3Dto } from "../dto/taxonomy-web-find-menu-v3.dto";
+import { TaxonomyWebFindMenuV3Dto } from '../dto/taxonomy-web-find-menu-v3.dto';
 
 export function TaxonomyWebFindMenuV3Query(
   dataJsonDto: TaxonomyWebFindMenuV3Dto,

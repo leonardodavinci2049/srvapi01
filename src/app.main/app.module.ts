@@ -33,6 +33,9 @@ import { ProductBaseModule } from 'src/product-base/product-base.module';
 import { TaxonomyRelModule } from 'src/taxonomy-rel/taxonomy-rel.module';
 import { TaxonomyBaseModule } from 'src/taxonomy-base/taxonomy-base.module';
 import { TaxonomyInlineModule } from 'src/taxonomy-inline/taxonomy-inline.module';
+import { GeneralCallModule } from 'src/general-call/general-call.module';
+import { ProductWebModule } from 'src/product-web/product-web.module';
+import { TaxonomyWebModule } from 'src/taxonomy-web/taxonomy-web.module';
 
 @Module({
   imports: [
@@ -59,6 +62,9 @@ import { TaxonomyInlineModule } from 'src/taxonomy-inline/taxonomy-inline.module
     TaxonomyInlineModule,
     TaxonomyRelModule,
     AccountModule,
+    GeneralCallModule,
+    ProductWebModule,
+    TaxonomyWebModule,
     CheckModule,
     BrandModule,
     CarrierModule,

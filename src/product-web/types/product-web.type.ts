@@ -17,8 +17,6 @@ export interface SpOperationResult {
   changedRows: number;
 }
 
-
-
 export interface tblProductWebId extends RowDataPacket {
   ID_PRODUTO: number;
   SKU?: number;
@@ -59,7 +57,6 @@ export interface tblProductWebId extends RowDataPacket {
   DATADOCADASTRO?: Date;
 }
 
-
 export interface tblProductWebRelated extends RowDataPacket {
   ID_TAXONOMY?: number;
   SKU?: number;
@@ -79,7 +76,6 @@ export interface tblProductWebRelated extends RowDataPacket {
   LANCAMENTO?: number;
   DATADOCADASTRO?: Date;
 }
-
 
 export interface tblProductWebFind extends RowDataPacket {
   ID_PRODUTO: number;
@@ -166,10 +162,8 @@ export type SpProductWebFindDataType = [
   SpOperationResult,
 ];
 
-
 export type SpProductWebSectionsDataType = [
   tblProductWebSections[],
   SpDefaultFeedback[],
   SpOperationResult,
 ];
-
