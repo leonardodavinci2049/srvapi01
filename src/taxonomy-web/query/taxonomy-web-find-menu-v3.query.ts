@@ -14,14 +14,14 @@ export function TaxonomyWebFindMenuV3Query(
   const olTypeId = dataJsonDto.pe_type_id;
   const olParentId = dataJsonDto.pe_parent_id;
 
-  const queryString = ` call sp_taxonomy_find_menu_v3(
+  const queryString = ` call sp_taxonomy_web_find_menu_v3(
         ${olAppId},
         ${olSystemClientId},
         ${olStoreId},
-        '${olOrganizationId}',
-        '${olUserId}',
-        '${olUserName}',
-        '${olUserRole}',
+        '${olOrganizationId.replace(/'/g, "''")}',
+        '${olUserId.replace(/'/g, "''")}',
+        '${olUserName.replace(/'/g, "''")}',
+        '${olUserRole.replace(/'/g, "''")}',
         ${olPersonId},
         ${olTypeId},
         ${olParentId}

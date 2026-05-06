@@ -20,7 +20,7 @@ export class TaxonomyWebController {
       timestamp: new Date().toISOString(),
       endpoints: {
         base: '/api',
-        auth: '/api/product-web',
+        auth: '/api/taxonomy-web',
       },
     };
   }

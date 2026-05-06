@@ -19,7 +19,7 @@ export function webFindProductQuery(dataJsonDto: ProductWebFindV3Dto): string {
   const olColumnId = dataJsonDto.pe_column_id ?? 1;
   const olOrderId = dataJsonDto.pe_order_id ?? 1;
 
-  const queryString = ` call sp_product_web_find_v2(
+  const queryString = ` call sp_product_web_find_v3(
     ${olAppId},
     ${olSystemClientId},
     ${olStoreId},

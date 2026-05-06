@@ -23,7 +23,7 @@ export function webFindProductSectionsQuery(
   const olColumnId = dataJsonDto.pe_column_id ?? 1;
   const olOrderId = dataJsonDto.pe_order_id ?? 1;
 
-  const queryString = ` call sp_product_web_sections_v2(
+  const queryString = ` call sp_product_web_sections_v3(
     ${olAppId},
     ${olSystemClientId},
     ${olStoreId},

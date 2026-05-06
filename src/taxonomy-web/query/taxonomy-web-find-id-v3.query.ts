@@ -14,14 +14,14 @@ export function TaxonomyWebFindIdV3Query(
   const olPersonId = dataJsonDto.pe_person_id;
   const olTaxonomyId = dataJsonDto.pe_taxonomy_id;
 
-  const queryString = ` call sp_taxonomy_find_id_v3(
+  const queryString = ` call sp_taxonomy_web_find_id_v3(
         ${olAppId},
         ${olSystemClientId},
         ${olStoreId},
-        '${olOrganizationId}',
-        '${olUserId}',
-        '${olUserName}',
-        '${olUserRole}',
+        '${olOrganizationId.replace(/'/g, "''")}',
+        '${olUserId.replace(/'/g, "''")}',
+        '${olUserName.replace(/'/g, "''")}',
+        '${olUserRole.replace(/'/g, "''")}',
         ${olPersonId},
         ${olTaxonomyId}
       ) `;
