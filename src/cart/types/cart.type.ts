@@ -50,6 +50,22 @@ export interface TblCartItemFindIdV1 extends RowDataPacket {
   SLUG?: string | null;
 }
 
+export interface TblCartItemFindSessionV1 extends RowDataPacket {
+  ID_MOVIMENTO?: number;
+  ID_CARRINHO?: number | null;
+  SESSION_CART_ID?: string | null;
+  ID_PRODUTO?: number | null;
+  SKU?: number | null;
+  PRODUTO?: string | null;
+  QT?: number | null;
+  ESTOQUE?: number | null;
+  VL_UNITARIO?: string | null;
+  PATH_IMAGEM?: string | null;
+  SLUG?: string | null;
+}
+
+
+
 export interface TblCartFindQtV1 extends RowDataPacket {
   QT_ITEMS: number;
 }
@@ -83,6 +99,15 @@ export type SpResultCartFindIdData = [
   SpDefaultFeedback[],
   SpOperationResult,
 ];
+
+export type SpResultCartFindSessionData = [
+  TblCartFindIdV1[],
+  TblCartItemFindSessionV1[],
+  SpDefaultFeedback[],
+  SpOperationResult,
+];
+
+
 
 export type SpResultCartFindQtData = [
   TblCartFindQtV1[],

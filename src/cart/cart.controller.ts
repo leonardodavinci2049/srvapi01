@@ -11,6 +11,7 @@ import { CartItemUpdQtV1Dto } from './dto/cart-item-upd-qt-v1.dto';
 import { CartClearAllV1Dto } from './dto/cart-clear-all-v1.dto';
 import { CartItemDeleteV1Dto } from './dto/cart-item-delete-v1.dto';
 import { CartCloseV1Dto } from './dto/cart-close-v1.dto';
+import { CartFindSessionV1Dto } from './dto/cart-find-session-v1.dto';
 
 @Controller('cart')
 export class CartController {
@@ -43,6 +44,13 @@ export class CartController {
   cartFindIdV1(@Body() dataJsonDto: CartFindIdV1Dto) {
     return this.cartService.tskCartFindIdV1(dataJsonDto);
   }
+
+    @UseGuards(AuthGuard)
+  @Post('v1/cart-find-session')
+  cartFindSessionV1(@Body() dataJsonDto: CartFindSessionV1Dto) {
+    return this.cartService.tskCartFindSessionV1(dataJsonDto);
+  }
+
 
   @UseGuards(AuthGuard)
   @Post('v1/cart-find-qt')
