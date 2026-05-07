@@ -21,7 +21,7 @@ export function CartFindIdV1Query(dataJsonDto: CartFindIdV1Dto): string {
         '${olUserName.replace(/'/g, "''")}',
         '${olUserRole.replace(/'/g, "''")}',
         ${olPersonId},
-        '${olCartId.replace(/'/g, "''")}',
+        ${olCartId},
         ${olBusinessType}
       ) `;
 

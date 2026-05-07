@@ -75,3 +75,28 @@ Sample JSON for testing in body endpoint:
 }
 
 */
+
+
+/* Sample response from the CartCloseV1Query:
+
+
+
+{
+    "statusCode": 100200,
+    "message": "Orçamento criado com sucesso. ID: 491097",
+    "recordId": 491097,
+    "data": [
+        {
+            "sp_return_id": 491097,
+            "sp_message": "Orçamento criado com sucesso. ID: 491097",
+            "sp_error_id": 0
+        }
+    ],
+    "quantity": 1,
+    "errorId": 0,
+    "info1": ""
+}
+
+
+
+*/
