@@ -27,5 +27,8 @@ export function CartCloseV1Query(dataJsonDto: CartCloseV1Dto): string {
         ${olSellerId}
       ) `;
 
+
+   //   console.log('Debug: CartCloseV1Query', queryString);
+
   return queryString;
 }

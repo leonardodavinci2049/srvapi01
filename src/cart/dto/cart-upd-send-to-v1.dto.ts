@@ -81,3 +81,25 @@ Sample JSON for testing in body endpoint:
 }
 
 */
+
+
+/* Sample response from the CartUpdSendToV1Query:
+
+{
+    "statusCode": 100200,
+    "message": "Cadastro atualizado com sucesso.",
+    "recordId": 5,
+    "data": [
+        {
+            "sp_return_id": 5,
+            "sp_message": "Cadastro atualizado com sucesso.",
+            "sp_error_id": 0
+        }
+    ],
+    "quantity": 1,
+    "errorId": 0,
+    "info1": ""
+}
+
+
+*/

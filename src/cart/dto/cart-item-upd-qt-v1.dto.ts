@@ -75,3 +75,42 @@ Sample JSON for testing in body endpoint:
 }
 
 */
+
+
+/* Sample response from the CartItemUpdQtV1Query:
+
+
+{
+    "statusCode": 100200,
+    "message": "Cadastro atualizado com sucesso.",
+    "recordId": 5,
+    "data": [
+        {
+            "sp_return_id": 5,
+            "sp_message": "Cadastro atualizado com sucesso.",
+            "sp_error_id": 0
+        }
+    ],
+    "quantity": 1,
+    "errorId": 0,
+    "info1": ""
+}
+
+// or, in case of an error (e.g., insufficient stock):
+
+{
+    "statusCode": 100422,
+    "message": "Erro! Estoque Insufiente",
+    "recordId": 0,
+    "data": [
+        {
+            "sp_return_id": 0,
+            "sp_message": "Erro! Estoque Insufiente",
+            "sp_error_id": 1
+        }
+    ],
+    "quantity": 1,
+    "errorId": 1
+}
+
+*/

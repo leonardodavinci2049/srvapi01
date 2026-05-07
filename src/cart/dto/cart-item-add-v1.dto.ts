@@ -129,4 +129,20 @@ Sample JSON for testing in body endpoint:
     "info1": ""
 }
 
+or  value in case of an error:
+{
+    "statusCode": 100422,
+    "message": "Erro! ITEM PRODUTO inválido",
+    "recordId": 0,
+    "data": [
+        {
+            "sp_return_id": 0,
+            "sp_message": "Erro! ITEM PRODUTO inválido",
+            "sp_error_id": 1
+        }
+    ],
+    "quantity": 1,
+    "errorId": 1
+}
+
 */
