@@ -53,6 +53,9 @@ export class TaxonomyWebFindMenuV3Dto {
 }
 
 /*
+
+
+
 Sample JSON for testing in body endpoint:
 {
   "pe_app_id": 1,
@@ -67,5 +70,61 @@ Sample JSON for testing in body endpoint:
   "pe_parent_id": 0
 
 }
+
+*/
+
+
+/*
+
+/*  Sample response from the ProductWebFindV3Query:
+
+{
+    "statusCode": 100200,
+    "message": "Dados carregados com sucesso.",
+    "recordId": 1,
+    "data": {
+        "Taxonomy find Menu": [
+            {
+                "ID_TAXONOMY": 3366,
+                "PARENT_ID": 3364,
+                "TAXONOMIA": "ACCESS POINT",
+                "PATH_IMAGEM": null,
+                "SLUG": "access-point",
+                "LEVEL": 3,
+                "ORDEM": 0,
+                "ID_IMAGEM": null,
+                "QT_RECORDS": 4
+            },
+            {
+                "ID_TAXONOMY": 365,
+                "PARENT_ID": 217,
+                "TAXONOMIA": "Acessórios",
+                "PATH_IMAGEM": null,
+                "SLUG": "acessorios",
+                "LEVEL": 3,
+                "ORDEM": 0,
+                "ID_IMAGEM": null,
+                "QT_RECORDS": 0
+            },
+            {
+                "ID_TAXONOMY": 914,
+                "PARENT_ID": 913,
+                "TAXONOMIA": "Acessórios",
+                "PATH_IMAGEM": null,
+                "SLUG": "acessorios-1",
+                "LEVEL": 3,
+                "ORDEM": 0,
+                "ID_IMAGEM": null,
+                "QT_RECORDS": 0
+            },
+ 
+        ]
+    },
+    "quantity": 290,
+    "errorId": 0,
+    "info1": ""
+}
+
+
 
 */
