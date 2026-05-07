@@ -92,9 +92,6 @@ export class CartController {
   @Post('v1/cart-close')
   cartCloseV1(@Body() dataJsonDto: CartCloseV1Dto) {
 
-      console.log('Debug: Received request to close cart with data', dataJsonDto);
-
-
     return this.cartService.tskCartCloseV1(dataJsonDto);
   }
 }
