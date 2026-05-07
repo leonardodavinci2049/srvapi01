@@ -102,7 +102,6 @@ export class CartService {
     }
   }
 
-
   async tskCartFindQtV1(dataJsonDto: CartFindQtV1Dto) {
     try {
       const queryString = CartFindQtV1Query(dataJsonDto);
@@ -226,8 +225,6 @@ export class CartService {
       const resultData = (await this.dbService.selectExecute(
         queryString,
       )) as unknown as SpResultRecordUpdateType;
-
-
 
       return processProcedureResultMutation(
         resultData as unknown[],
