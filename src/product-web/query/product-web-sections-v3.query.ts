@@ -1,5 +1,4 @@
-import { ProductWebSectionsV3Dto } from "../dto/product-web-sections-v3.dto";
-
+import { ProductWebSectionsV3Dto } from '../dto/product-web-sections-v3.dto';
 
 export function webFindProductSectionsQuery(
   dataJsonDto: ProductWebSectionsV3Dto,
@@ -50,7 +49,7 @@ export function webFindProductSectionsQuery(
     ${olOrderId}
   ) `;
 
-// console.log('Generated Query:', queryString);
+  // console.log('Generated Query:', queryString);
 
   return queryString;
 }

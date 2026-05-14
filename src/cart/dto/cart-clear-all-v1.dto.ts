@@ -66,7 +66,6 @@ Sample JSON for testing in body endpoint:
 
 */
 
-
 /* Sample response from the CartClearAllV1Query:
 
 {

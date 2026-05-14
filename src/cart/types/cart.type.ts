@@ -64,8 +64,6 @@ export interface TblCartItemFindSessionV1 extends RowDataPacket {
   SLUG?: string | null;
 }
 
-
-
 export interface TblCartFindQtV1 extends RowDataPacket {
   QT_ITEMS: number;
 }
@@ -106,8 +104,6 @@ export type SpResultCartFindSessionData = [
   SpDefaultFeedback[],
   SpOperationResult,
 ];
-
-
 
 export type SpResultCartFindQtData = [
   TblCartFindQtV1[],

@@ -3,7 +3,7 @@ import { IsOptional, IsString, IsNumber, IsNotEmpty } from 'class-validator';
 import { Type } from 'class-transformer';
 
 export class ProductWebSectionsV3Dto {
- @ApiProperty({ description: 'App ID' })
+  @ApiProperty({ description: 'App ID' })
   @IsNumber()
   @IsNotEmpty()
   pe_app_id!: number;
@@ -133,7 +133,6 @@ Sample JSON for testing:
   "pe_order_id": 1
 }
 */
-
 
 /*
 

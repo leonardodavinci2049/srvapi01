@@ -121,7 +121,6 @@ Sample JSON for testing:
 }
 */
 
-
 /* 
 
  Sample response from the ProductWebFindV3Query:

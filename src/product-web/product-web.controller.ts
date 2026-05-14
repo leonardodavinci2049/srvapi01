@@ -40,6 +40,6 @@ export class ProductWebController {
   @UseGuards(AuthGuard)
   @Post('v3/product-web-sections')
   findProductWebSectionsV3(@Body() dataJsonDto: ProductWebSectionsV3Dto) {
-   return this.productWebService.tskProductWebSectionsV3(dataJsonDto);
+    return this.productWebService.tskProductWebSectionsV3(dataJsonDto);
   }
 }

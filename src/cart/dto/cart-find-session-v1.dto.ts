@@ -50,7 +50,6 @@ export class CartFindSessionV1Dto {
   @IsNumber()
   @IsNotEmpty()
   pe_business_type!: number;
-
 }
 
 /*
