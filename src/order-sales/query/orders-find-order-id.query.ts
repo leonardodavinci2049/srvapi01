@@ -1,7 +1,7 @@
-import { OrdersFindDashboardIdDto } from '../dto/orders-find-dashboard-id.dto';
+import { OrdersFindOrderIdDto } from '../dto/orders-find-order-id.dto';
 
-export function OrdersFindDashboardIdQuery(
-  dataJsonDto: OrdersFindDashboardIdDto,
+export function OrdersFindOrderIdQuery(
+  dataJsonDto: OrdersFindOrderIdDto,
 ): string {
   const olAppId = dataJsonDto.pe_app_id ?? 1;
   const olSystemClientId = dataJsonDto.pe_system_client_id;
@@ -12,10 +12,10 @@ export function OrdersFindDashboardIdQuery(
   const olUserRole = dataJsonDto.pe_user_role;
   const olPersonId = dataJsonDto.pe_person_id;
   const olOrderId = dataJsonDto.pe_order_id;
-  const olSellerId = dataJsonDto.pe_id_seller;
+  const olCustomerId = dataJsonDto.pe_id_customer;
   const olTypeBusiness = dataJsonDto.pe_type_business;
 
-  const queryString = ` call sp_orders_find_dashboard_id_v2(
+  const queryString = ` call sp_orders_find_order_id_v2(
         ${olAppId},
         ${olSystemClientId},
         ${olStoreId},
@@ -25,7 +25,7 @@ export function OrdersFindDashboardIdQuery(
         '${olUserRole}',	
         ${olPersonId},
         ${olOrderId},
-        ${olSellerId},
+        ${olCustomerId},
         ${olTypeBusiness}
 
       ) `;

@@ -289,6 +289,25 @@ export type SpResultRecordCreateType = [SpDefaultFeedback[], SpOperationResult];
 export type SpResultRecordUpdateType = [SpDefaultFeedback[], SpOperationResult];
 export type SpResultRecordDeleteType = [SpDefaultFeedback[], SpOperationResult];
 
+export type SpResultOrderFindCartIdData = [
+  TblOrderSummary[],
+  TblOrderDetails[],
+  TblOrderItems[],
+  TblCustomerDetails[],
+  SpDefaultFeedback[],
+  SpOperationResult,
+];
+
+export type SpResultOrderFindOrderIdData = [
+  TblOrderSummary[],
+  TblOrderDetails[],
+  TblOrderItems[],
+  TblCustomerDetails[],
+  SpDefaultFeedback[],
+  SpOperationResult,
+];
+
+
 export type SpResultOrderFindDashboardIdData = [
   TblOrderSummary[],
   TblOrderDetails[],

@@ -31,6 +31,7 @@ import { OrderFindCoSellerIdQuery } from './query/order-find-co-seller-id.query'
 import { OrderFindCoSummaryIdQuery } from './query/order-find-co-summary-id.query';
 import { OrdersFindDashboardIdQuery } from './query/orders-find-dashboard-id.query';
 import {
+  SpResultOrderFindCartIdData,
   SpResultOrderFindCoCarrierIdData,
   SpResultOrderFindCoCustomerIdData,
   SpResultOrderFindCoDeliveryIdData,
@@ -40,10 +41,15 @@ import {
   SpResultOrderFindCoSellerIdData,
   SpResultOrderFindCoSummaryIdData,
   SpResultOrderFindEquipmentIdData,
+  SpResultOrderFindOrderIdData,
   SpResultOrderFindProtocolIdData,
 } from './types/order-sales.type';
 import { SpResultOrderFindCustomerAllData } from 'src/order-reports/types/order-reports.type';
 import { processProcedureResultMultiQuery } from 'src/core/procedure.result/process-procedure-result.query';
+import { OrdersFindCartIdQuery } from './query/orders-find-cart-id.query';
+import { OrdersFindCartIdDto } from './dto/orders-find-cart-id.dto';
+import { OrdersFindOrderIdDto } from './dto/orders-find-order-id.dto';
+import { OrdersFindOrderIdQuery } from './query/orders-find-order-id.query';
 
 @Injectable()
 export class OrderSalesService {
@@ -68,6 +74,49 @@ export class OrderSalesService {
       return new ResultModel(100404, errorMessage, 0, []);
     }
   }
+
+  
+  async taskOrdersFindOrderIdV2(dataJsonDto: OrdersFindOrderIdDto) {
+    try {
+      const queryString = OrdersFindOrderIdQuery(dataJsonDto);
+
+      const resultData = (await this.dbService.selectExecute(
+        queryString,
+      )) as unknown as SpResultOrderFindOrderIdData;
+
+      return processProcedureResultMultiQuery(
+        resultData as unknown[],
+        ['Order Summary', 'Order Details', 'Order Items', 'Customer Details'],
+        'Order Items not found',
+      );
+    } catch (err) {
+      const errorMessage =
+        err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
+      return new ResultModel(100404, errorMessage, 0, []);
+    }
+  }
+
+
+  async taskOrdersFindCartIdV2(dataJsonDto: OrdersFindCartIdDto) {
+    try {
+      const queryString = OrdersFindCartIdQuery(dataJsonDto);
+
+      const resultData = (await this.dbService.selectExecute(
+        queryString,
+      )) as unknown as SpResultOrderFindCartIdData;
+
+      return processProcedureResultMultiQuery(
+        resultData as unknown[],
+        ['Order Summary', 'Order Details', 'Order Items', 'Customer Details'],
+        'Order Items not found',
+      );
+    } catch (err) {
+      const errorMessage =
+        err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
+      return new ResultModel(100404, errorMessage, 0, []);
+    }
+  }
+
 
   async taskOrderFindCoSummaryIdV2(dataJsonDto: OrderFindCoSummaryIdDto) {
     try {
