@@ -11,9 +11,12 @@ export function webFindProductQuery(dataJsonDto: ProductWebFindV3Dto): string {
   const olPersonId = dataJsonDto.pe_person_id;
 
   const olSearch = dataJsonDto.pe_search ?? '';
+
   const olTaxonomyId = dataJsonDto.pe_taxonomy_id ?? 0;
   const olBrandId = dataJsonDto.pe_brand_id ?? 0;
+
   const olStockFlag = dataJsonDto.pe_stock_flag ?? 0;
+
   const olRecordCount = dataJsonDto.pe_record_count ?? 100;
   const olPageId = dataJsonDto.pe_page_id ?? 1;
   const olColumnId = dataJsonDto.pe_column_id ?? 1;

@@ -1,7 +1,7 @@
-import { TaxonomyFindMenuV3Dto } from '../dto/taxonomy-find-menu-v3.dto';
+import { OrdersFindOrderIdDto } from '../dto/orders-find-order-id.dto';
 
-export function TaxonomyFindMenuV3Query(
-  dataJsonDto: TaxonomyFindMenuV3Dto,
+export function OrdersFindOrderIdQuery(
+  dataJsonDto: OrdersFindOrderIdDto,
 ): string {
   const olAppId = dataJsonDto.pe_app_id ?? 1;
   const olSystemClientId = dataJsonDto.pe_system_client_id;
@@ -11,23 +11,26 @@ export function TaxonomyFindMenuV3Query(
   const olUserName = dataJsonDto.pe_user_name;
   const olUserRole = dataJsonDto.pe_user_role;
   const olPersonId = dataJsonDto.pe_person_id;
-  const olTypeId = dataJsonDto.pe_type_id;
-  const olParentId = dataJsonDto.pe_parent_id;
+  const olOrderId = dataJsonDto.pe_order_id;
+  const olCustomerId = dataJsonDto.pe_id_customer;
+  const olTypeBusiness = dataJsonDto.pe_type_business;
 
-  const queryString = ` call sp_taxonomy_find_menu_v3(
+  const queryString = ` call sp_orders_find_order_id_v2(
         ${olAppId},
         ${olSystemClientId},
         ${olStoreId},
         '${olOrganizationId}',
         '${olUserId}',
         '${olUserName}',
-        '${olUserRole}',
+        '${olUserRole}',	
         ${olPersonId},
-        ${olTypeId},
-        ${olParentId}
+        ${olOrderId},
+        ${olCustomerId},
+        ${olTypeBusiness}
+
       ) `;
 
-  // console.log('Query TaxonomyFindMenuV3Query: ', queryString);
+  // console.log('queryString', queryString);
 
   return queryString;
 }

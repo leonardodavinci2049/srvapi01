@@ -76,7 +76,6 @@ Sample JSON for testing in body endpoint:
 
 */
 
-
 /* Sample response from the CartItemUpdQtV1Query:
 
 

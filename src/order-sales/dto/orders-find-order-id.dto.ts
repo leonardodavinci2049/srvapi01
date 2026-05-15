@@ -1,7 +1,7 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsString, IsNotEmpty, IsNumber } from 'class-validator';
+import { IsNotEmpty, IsNumber, IsString, IsOptional } from 'class-validator';
 
-export class CartCloseV1Dto {
+export class OrdersFindOrderIdDto {
   @ApiProperty({ description: 'App ID' })
   @IsNumber()
   @IsNotEmpty()
@@ -41,61 +41,36 @@ export class CartCloseV1Dto {
   @IsNumber()
   pe_person_id!: number;
 
-  @ApiProperty({ description: 'Cart ID' })
+  @ApiProperty({ description: 'Order ID' })
   @IsNumber()
-  @IsNotEmpty()
-  pe_cart_id!: number;
+  @IsOptional()
+  pe_order_id!: number;
 
   @ApiProperty({ description: 'Customer ID' })
   @IsNumber()
-  @IsNotEmpty()
-  pe_customer_id!: number;
+  @IsOptional()
+  pe_id_customer!: number;
 
-  @ApiProperty({ description: 'Seller ID' })
+  @ApiProperty({ description: 'Business Type' })
   @IsNumber()
-  @IsNotEmpty()
-  pe_seller_id!: number;
+  @IsOptional()
+  pe_type_business!: number;
 }
 
 /*
 Sample JSON for testing in body endpoint:
-
 {
   "pe_app_id": 1,
   "pe_system_client_id": 1,
   "pe_store_id": 1,
-  "pe_organization_id": "ORG001",
-  "pe_user_id": "USER001",
-  "pe_user_name": "User Name",
-  "pe_user_role": "saller",
-  "pe_person_id": 29014,
-  "pe_cart_id": 0,
-  "pe_customer_id": 456,
-  "pe_seller_id": 789  
+  "pe_organization_id": "org123",
+  "pe_user_id": "user123",
+  "pe_user_name": "John Doe",
+  "pe_user_role": "admin",
+  "pe_person_id": 123,
+
+  "pe_order_id": 480670,
+  "pe_id_customer": 29014,
+  "pe_type_business": 1
 }
-
-*/
-
-/* Sample response from the CartCloseV1Query:
-
-
-
-{
-    "statusCode": 100200,
-    "message": "Orçamento criado com sucesso. ID: 491097",
-    "recordId": 491097,
-    "data": [
-        {
-            "sp_return_id": 491097,
-            "sp_message": "Orçamento criado com sucesso. ID: 491097",
-            "sp_error_id": 0
-        }
-    ],
-    "quantity": 1,
-    "errorId": 0,
-    "info1": ""
-}
-
-
-
 */

@@ -36,5 +36,7 @@ export function OrderOperCreateQuery(dataJsonDto: OrderOperCreateDto): string {
         '${olNotes.replace(/'/g, "''")}'
       ) `;
 
+  //console.log('queryString', queryString);
+
   return queryString;
 }

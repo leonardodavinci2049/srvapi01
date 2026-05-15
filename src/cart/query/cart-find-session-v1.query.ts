@@ -1,6 +1,8 @@
 import { CartFindSessionV1Dto } from '../dto/cart-find-session-v1.dto';
 
-export function CartFindSessionV1Query(dataJsonDto: CartFindSessionV1Dto): string {
+export function CartFindSessionV1Query(
+  dataJsonDto: CartFindSessionV1Dto,
+): string {
   const olAppId = dataJsonDto.pe_app_id ?? 1;
   const olSystemClientId = dataJsonDto.pe_system_client_id;
   const olStoreId = dataJsonDto.pe_store_id;

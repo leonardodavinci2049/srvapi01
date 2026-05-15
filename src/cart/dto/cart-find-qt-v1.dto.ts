@@ -65,7 +65,6 @@ Sample JSON for testing in body endpoint:
 
 */
 
-
 /* Sample response from the CartFindQtV1Query:
 
 {
