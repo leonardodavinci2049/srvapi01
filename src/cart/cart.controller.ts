@@ -45,12 +45,11 @@ export class CartController {
     return this.cartService.tskCartFindIdV1(dataJsonDto);
   }
 
-    @UseGuards(AuthGuard)
+  @UseGuards(AuthGuard)
   @Post('v1/cart-find-session')
   cartFindSessionV1(@Body() dataJsonDto: CartFindSessionV1Dto) {
     return this.cartService.tskCartFindSessionV1(dataJsonDto);
   }
-
 
   @UseGuards(AuthGuard)
   @Post('v1/cart-find-qt')
@@ -91,7 +90,6 @@ export class CartController {
   @UseGuards(AuthGuard)
   @Post('v1/cart-close')
   cartCloseV1(@Body() dataJsonDto: CartCloseV1Dto) {
-
     return this.cartService.tskCartCloseV1(dataJsonDto);
   }
 }

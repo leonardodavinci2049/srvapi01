@@ -13,6 +13,8 @@ import { OrderFindCoProtocolIdDto } from './dto/order-find-co-protocol-id.dto';
 import { OrderFindCoSellerIdDto } from './dto/order-find-co-seller-id.dto';
 import { OrderFindCoSummaryIdDto } from './dto/order-find-co-summary-id.dto';
 import { OrdersFindDashboardIdDto } from './dto/orders-find-dashboard-id.dto';
+import { OrdersFindCartIdDto } from './dto/orders-find-cart-id.dto';
+import { OrdersFindOrderIdDto } from './dto/orders-find-order-id.dto';
 
 @Controller('order-sales')
 export class OrderSalesController {
@@ -32,10 +34,23 @@ export class OrderSalesController {
       },
     };
   }
+
   @UseGuards(AuthGuard)
   @Post('v2/order-find-dashboard-id')
   OrderFindDashboardIdV2(@Body() dataJsonDto: OrdersFindDashboardIdDto) {
     return this.orderSalesService.taskOrdersFindDashboardIdV2(dataJsonDto);
+  }
+
+  @UseGuards(AuthGuard)
+  @Post('v2/order-find-order-id')
+  OrderFindOrderIdV2(@Body() dataJsonDto: OrdersFindOrderIdDto) {
+    return this.orderSalesService.taskOrdersFindOrderIdV2(dataJsonDto);
+  }
+
+  @UseGuards(AuthGuard)
+  @Post('v2/order-find-cart-id')
+  OrderFindCartIdV2(@Body() dataJsonDto: OrdersFindCartIdDto) {
+    return this.orderSalesService.taskOrdersFindCartIdV2(dataJsonDto);
   }
 
   @UseGuards(AuthGuard)

@@ -108,7 +108,6 @@ Sample JSON for testing in body endpoint:
 
 */
 
-
 /*
 *Sample JSON response for testing in body endpoint:
 

@@ -25,7 +25,6 @@ export class ProductWebController {
     };
   }
 
-  @Post()
   @UseGuards(AuthGuard)
   @Post('v3/product-web-find-id')
   findProductWebIdV3(@Body() dataJsonDto: ProductWebFindIdV3Dto) {
@@ -34,13 +33,13 @@ export class ProductWebController {
 
   @UseGuards(AuthGuard)
   @Post('v3/product-web-find')
-  findProductWebV3(@Body() dataJsonDto: ProductWebSectionsV3Dto) {
+  findProductWebV3(@Body() dataJsonDto: ProductWebFindV3Dto) {
     return this.productWebService.tskProductWebFindV3(dataJsonDto);
   }
 
   @UseGuards(AuthGuard)
   @Post('v3/product-web-sections')
-  findProductWebSectionsV3(@Body() dataJsonDto: ProductWebFindV3Dto) {
+  findProductWebSectionsV3(@Body() dataJsonDto: ProductWebSectionsV3Dto) {
     return this.productWebService.tskProductWebSectionsV3(dataJsonDto);
   }
 }
