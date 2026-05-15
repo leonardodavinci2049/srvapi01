@@ -47,7 +47,6 @@ export class OrderSalesController {
     return this.orderSalesService.taskOrdersFindOrderIdV2(dataJsonDto);
   }
 
-
   @UseGuards(AuthGuard)
   @Post('v2/order-find-cart-id')
   OrderFindCartIdV2(@Body() dataJsonDto: OrdersFindCartIdDto) {

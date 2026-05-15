@@ -75,7 +75,6 @@ export class OrderSalesService {
     }
   }
 
-  
   async taskOrdersFindOrderIdV2(dataJsonDto: OrdersFindOrderIdDto) {
     try {
       const queryString = OrdersFindOrderIdQuery(dataJsonDto);
@@ -96,7 +95,6 @@ export class OrderSalesService {
     }
   }
 
-
   async taskOrdersFindCartIdV2(dataJsonDto: OrdersFindCartIdDto) {
     try {
       const queryString = OrdersFindCartIdQuery(dataJsonDto);
@@ -116,7 +114,6 @@ export class OrderSalesService {
       return new ResultModel(100404, errorMessage, 0, []);
     }
   }
-
 
   async taskOrderFindCoSummaryIdV2(dataJsonDto: OrderFindCoSummaryIdDto) {
     try {

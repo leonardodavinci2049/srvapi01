@@ -307,7 +307,6 @@ export type SpResultOrderFindOrderIdData = [
   SpOperationResult,
 ];
 
-
 export type SpResultOrderFindDashboardIdData = [
   TblOrderSummary[],
   TblOrderDetails[],

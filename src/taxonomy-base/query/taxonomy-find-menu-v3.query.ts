@@ -27,9 +27,7 @@ export function TaxonomyFindMenuV3Query(
         ${olParentId}
       ) `;
 
-     // console.log('Query TaxonomyFindMenuV3Query: ', queryString);
+  // console.log('Query TaxonomyFindMenuV3Query: ', queryString);
 
   return queryString;
-
-  
 }
