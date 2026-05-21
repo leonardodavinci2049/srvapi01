@@ -43,9 +43,9 @@ export function OrdersFindSaleAllQuery(
         ${olInitialDate ? `'${olInitialDate}'` : 'NULL'},
         ${olFinalDate ? `'${olFinalDate}'` : 'NULL'},
         ${olLimit}
-
-
       ) `;
+
+      console.log('Generated Query 1:', queryString);
 
   return queryString;
 }
