@@ -31,7 +31,7 @@ export class ProductWebService {
       )) as unknown as SpProductWebFindIdDataType;
 
       return processProcedureResultMultiQuery(
-        resultData as unknown[],
+        resultData,
         ['Product Details', 'Category Related', 'Related Products'],
         'Product Details not found',
       );
@@ -50,7 +50,7 @@ export class ProductWebService {
       )) as unknown as SpProductWebFindDataType;
 
       return processProcedureResultMultiQuery(
-        resultData as unknown[],
+        resultData,
         ['Product List'],
         'Product List not found',
       );
@@ -70,7 +70,7 @@ export class ProductWebService {
       )) as unknown as SpProductWebSectionsDataType;
 
       return processProcedureResultMultiQuery(
-        resultData as unknown[],
+        resultData,
         ['Product Sections'],
         'Product Sections not found',
       );

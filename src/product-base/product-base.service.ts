@@ -42,7 +42,7 @@ export class ProductBaseService {
       )) as unknown as SpResultRecordCreateType;
 
       return processProcedureResultMutation(
-        resultData as unknown[],
+        resultData,
         'Product create failed',
       );
     } catch (err) {
@@ -61,7 +61,7 @@ export class ProductBaseService {
       )) as unknown as SpResultProductFindBaseAllV3Data;
 
       return processProcedureResultMultiQuery(
-        resultData as unknown[],
+        resultData,
         ['Product find All'],
         'Product find All not found',
       );
@@ -81,7 +81,7 @@ export class ProductBaseService {
       )) as unknown as SpResultProductFindPremiumV1Data;
 
       return processProcedureResultMultiQuery(
-        resultData as unknown[],
+        resultData,
         ['Product find Premium V1'],
         'Product find Premium V1 not found',
       );
@@ -92,8 +92,6 @@ export class ProductBaseService {
     }
   }
 
-
-
   async taskProductSearchAllV3(dataJsonDto: ProductFindSearchAllV3Dto) {
     try {
       const queryString = ProductFindSearchAllV3Query(dataJsonDto);
@@ -103,7 +101,7 @@ export class ProductBaseService {
       )) as unknown as SpResultProductFindBaseSearchAllV3Data;
 
       return processProcedureResultMultiQuery(
-        resultData as unknown[],
+        resultData,
         ['Product find All'],
         'Product find All not found',
       );
@@ -123,7 +121,7 @@ export class ProductBaseService {
       )) as unknown as SpResultProductFindBaseIdV3Data;
 
       return processProcedureResultMultiQuery(
-        resultData as unknown[],
+        resultData,
         [
           'Product find Id',
           'Product find Id categories',

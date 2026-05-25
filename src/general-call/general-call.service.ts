@@ -22,7 +22,7 @@ export class GeneralCallService {
       )) as unknown as SpResultRecordUpdateType;
 
       return processProcedureResultMutation(
-        resultData as unknown[],
+        resultData,
         'General update procedure failed',
       );
     } catch (err) {

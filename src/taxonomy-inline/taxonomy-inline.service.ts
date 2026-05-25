@@ -40,7 +40,7 @@ export class TaxonomyInlineService {
       )) as unknown as SpResultRecordUpdateType;
 
       return processProcedureResultMutation(
-        resultData as unknown[],
+        resultData,
         'Taxonomy update failed',
       );
     } catch (err) {
@@ -59,7 +59,7 @@ export class TaxonomyInlineService {
       )) as unknown as SpResultRecordUpdateType;
 
       return processProcedureResultMutation(
-        resultData as unknown[],
+        resultData,
         'Taxonomy update failed',
       );
     } catch (err) {
@@ -78,7 +78,7 @@ export class TaxonomyInlineService {
       )) as unknown as SpResultRecordUpdateType;
 
       return processProcedureResultMutation(
-        resultData as unknown[],
+        resultData,
         'Taxonomy update failed',
       );
     } catch (err) {
@@ -99,7 +99,7 @@ export class TaxonomyInlineService {
       )) as unknown as SpResultRecordUpdateType;
 
       return processProcedureResultMutation(
-        resultData as unknown[],
+        resultData,
         'Taxonomy update failed',
       );
     } catch (err) {
@@ -118,7 +118,7 @@ export class TaxonomyInlineService {
       )) as unknown as SpResultRecordUpdateType;
 
       return processProcedureResultMutation(
-        resultData as unknown[],
+        resultData,
         'Taxonomy update failed',
       );
     } catch (err) {
@@ -137,7 +137,7 @@ export class TaxonomyInlineService {
       )) as unknown as SpResultRecordUpdateType;
 
       return processProcedureResultMutation(
-        resultData as unknown[],
+        resultData,
         'Taxonomy update failed',
       );
     } catch (err) {
@@ -158,7 +158,7 @@ export class TaxonomyInlineService {
       )) as unknown as SpResultRecordUpdateType;
 
       return processProcedureResultMutation(
-        resultData as unknown[],
+        resultData,
         'Taxonomy update failed',
       );
     } catch (err) {
@@ -177,7 +177,7 @@ export class TaxonomyInlineService {
       )) as unknown as SpResultRecordUpdateType;
 
       return processProcedureResultMutation(
-        resultData as unknown[],
+        resultData,
         'Taxonomy update failed',
       );
     } catch (err) {

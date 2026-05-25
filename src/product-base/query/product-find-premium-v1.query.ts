@@ -1,4 +1,4 @@
-    import { ProductFindPremiumV1Dto } from '../dto/product-find-premium-v1.dto';
+import { ProductFindPremiumV1Dto } from '../dto/product-find-premium-v1.dto';
 
 export function ProductFindPremiumV1Query(
   dataJsonDto: ProductFindPremiumV1Dto,
@@ -24,7 +24,6 @@ export function ProductFindPremiumV1Query(
   const olPaginaId = dataJsonDto.pe_paginaId ?? null;
   const olColunaId = dataJsonDto.pe_colunaId ?? null;
   const olOrdemId = dataJsonDto.pe_ordemId ?? null;
-
 
   const queryString = ` call sp_product_find_premium_v1(
         ${olAppId},

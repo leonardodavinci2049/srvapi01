@@ -34,10 +34,7 @@ export class TaxonomyRelService {
         queryString,
       )) as unknown as SpResultRecordCreateType;
 
-      return processProcedureResultMutation(
-        resultData as unknown[],
-        'Brand create failed',
-      );
+      return processProcedureResultMutation(resultData, 'Brand create failed');
     } catch (err) {
       const errorMessage =
         err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
@@ -54,7 +51,7 @@ export class TaxonomyRelService {
       )) as unknown as SpResultTaxonomyRelProdutoV3Data;
 
       return processProcedureResultMultiQuery(
-        resultData as unknown[],
+        resultData,
         ['Brand find All'],
         'Brand find All not found',
       );
@@ -73,10 +70,7 @@ export class TaxonomyRelService {
         queryString,
       )) as unknown as SpResultRecordDeleteType;
 
-      return processProcedureResultMutation(
-        resultData as unknown[],
-        'Brand delete failed',
-      );
+      return processProcedureResultMutation(resultData, 'Brand delete failed');
     } catch (err) {
       const errorMessage =
         err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;

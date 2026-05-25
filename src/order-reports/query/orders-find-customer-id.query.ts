@@ -27,7 +27,7 @@ export function OrdersFindCustomerIdQuery(
         ${olTypeBusiness}
       ) `;
 
-//console.log('Generated Query 1:', queryString);
+  //console.log('Generated Query 1:', queryString);
 
   return queryString;
 }

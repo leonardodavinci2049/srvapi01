@@ -45,7 +45,7 @@ export class CustomerInlineService {
       )) as unknown as SpResultRecordUpdateType;
 
       return processProcedureResultMutation(
-        resultData as unknown[],
+        resultData,
         'Customer update field failed',
       );
     } catch (err) {
@@ -64,7 +64,7 @@ export class CustomerInlineService {
       )) as unknown as SpResultRecordUpdateType;
 
       return processProcedureResultMutation(
-        resultData as unknown[],
+        resultData,
         'Customer update email failed',
       );
     } catch (err) {
@@ -83,7 +83,7 @@ export class CustomerInlineService {
       )) as unknown as SpResultRecordUpdateType;
 
       return processProcedureResultMutation(
-        resultData as unknown[],
+        resultData,
         'Customer update name failed',
       );
     } catch (err) {
@@ -101,7 +101,7 @@ export class CustomerInlineService {
       )) as unknown as SpResultRecordUpdateType;
 
       return processProcedureResultMutation(
-        resultData as unknown[],
+        resultData,
         'Customer update notes failed',
       );
     } catch (err) {
@@ -119,7 +119,7 @@ export class CustomerInlineService {
       )) as unknown as SpResultRecordUpdateType;
 
       return processProcedureResultMutation(
-        resultData as unknown[],
+        resultData,
         'Customer update phone failed',
       );
     } catch (err) {
@@ -137,7 +137,7 @@ export class CustomerInlineService {
       )) as unknown as SpResultRecordUpdateType;
 
       return processProcedureResultMutation(
-        resultData as unknown[],
+        resultData,
         'Customer update seller ID failed',
       );
     } catch (err) {
@@ -157,7 +157,7 @@ export class CustomerInlineService {
       )) as unknown as SpResultRecordUpdateType;
 
       return processProcedureResultMutation(
-        resultData as unknown[],
+        resultData,
         'Customer update type customer failed',
       );
     } catch (err) {
@@ -176,7 +176,7 @@ export class CustomerInlineService {
       )) as unknown as SpResultRecordUpdateType;
 
       return processProcedureResultMutation(
-        resultData as unknown[],
+        resultData,
         'Customer update type person failed',
       );
     } catch (err) {
@@ -195,7 +195,7 @@ export class CustomerInlineService {
       )) as unknown as SpResultRecordUpdateType;
 
       return processProcedureResultMutation(
-        resultData as unknown[],
+        resultData,
         'Customer update WhatsApp failed',
       );
     } catch (err) {

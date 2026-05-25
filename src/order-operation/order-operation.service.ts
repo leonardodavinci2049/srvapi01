@@ -38,7 +38,7 @@ export class OrderOperationService {
       )) as unknown as SpResultRecordUpdateType;
 
       return processProcedureResultMutation(
-        resultData as unknown[],
+        resultData,
         'Order Oper create failed',
       );
     } catch (err) {
@@ -57,7 +57,7 @@ export class OrderOperationService {
       )) as unknown as SpResultRecordOperationType;
 
       return processProcedureResultMutation(
-        resultData as unknown[],
+        resultData,
         'Order Oper add item failed',
       );
     } catch (err) {
@@ -76,7 +76,7 @@ export class OrderOperationService {
       )) as unknown as SpResultRecordOperationType;
 
       return processProcedureResultMutation(
-        resultData as unknown[],
+        resultData,
         'Order Oper close id failed',
       );
     } catch (err) {
@@ -95,7 +95,7 @@ export class OrderOperationService {
       )) as unknown as SpResultRecordUpdateType;
 
       return processProcedureResultMutation(
-        resultData as unknown[],
+        resultData,
         'Order Oper reverse id failed',
       );
     } catch (err) {
@@ -116,7 +116,7 @@ export class OrderOperationService {
       )) as unknown as SpResultOrderOperSendingByEmailData;
 
       return processProcedureResultMultiQuery(
-        resultData as unknown[],
+        resultData,
         ['orderSummary', 'orderItems', 'customerDetails', 'sellerDetails'],
         'Order Oper sending by email not found',
       );

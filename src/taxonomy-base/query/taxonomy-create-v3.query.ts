@@ -36,7 +36,7 @@ export function TaxonomyCreateV3Query(
         ${olLevel}
       ) `;
 
-     // console.log('TaxonomyCreateV3Query', queryString);
+  // console.log('TaxonomyCreateV3Query', queryString);
 
   return queryString;
 }

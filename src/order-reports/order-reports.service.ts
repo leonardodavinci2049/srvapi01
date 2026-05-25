@@ -50,7 +50,7 @@ export class OrderReportsService {
       )) as unknown as SpResultOrderFindSaleAllData;
 
       return processProcedureResultMultiQuery(
-        resultData as unknown[],
+        resultData,
         ['Orders Sale All'],
         'Order Items not found',
       );
@@ -70,7 +70,7 @@ export class OrderReportsService {
       )) as unknown as SpResultOrderFindSaleIdData;
 
       return processProcedureResultMultiQuery(
-        resultData as unknown[],
+        resultData,
         [
           'Order Summary',
           'Order Items',
@@ -97,7 +97,7 @@ export class OrderReportsService {
       )) as unknown as SpResultOrderFindCustomerAllData;
 
       return processProcedureResultMultiQuery(
-        resultData as unknown[],
+        resultData,
         ['customer orders'],
         'Order Items not found',
       );
@@ -117,7 +117,7 @@ export class OrderReportsService {
       )) as unknown as SpResultOrderFindCustomerIdData;
 
       return processProcedureResultMultiQuery(
-        resultData as unknown[],
+        resultData,
         [
           'Customer Orders Summary',
           'Customer Order Items',
@@ -143,7 +143,7 @@ export class OrderReportsService {
       )) as unknown as SpResultOrderFindSellerAllData;
 
       return processProcedureResultMultiQuery(
-        resultData as unknown[],
+        resultData,
         ['seller orders'],
         'Order Items not found',
       );
@@ -163,7 +163,7 @@ export class OrderReportsService {
       )) as unknown as SpResultOrderFindSellerIdData;
 
       return processProcedureResultMultiQuery(
-        resultData as unknown[],
+        resultData,
         [
           'Seller Orders Summary',
           'Seller Order Items',
@@ -188,7 +188,7 @@ export class OrderReportsService {
       )) as unknown as SpResultOrderFindLatestAllData;
 
       return processProcedureResultMultiQuery(
-        resultData as unknown[],
+        resultData,
         ['Last orders'],
         'Order Items not found',
       );
@@ -208,7 +208,7 @@ export class OrderReportsService {
       )) as unknown as SpResultOrderFindLatestIdData;
 
       return processProcedureResultMultiQuery(
-        resultData as unknown[],
+        resultData,
         [
           'Latest Orders Summary',
           'Latest Order Items',

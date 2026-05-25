@@ -39,7 +39,7 @@ export class CarrierService {
       )) as unknown as SpResultRecordCreateType;
 
       return processProcedureResultMutation(
-        resultData as unknown[],
+        resultData,
         'Carrier create failed',
       );
     } catch (err) {
@@ -58,7 +58,7 @@ export class CarrierService {
       )) as unknown as SpResultCarrierFindAllData;
 
       return processProcedureResultMultiQuery(
-        resultData as unknown[],
+        resultData,
         ['Carrier find All'],
         'Carrier find All not found',
       );
@@ -78,7 +78,7 @@ export class CarrierService {
       )) as unknown as SpResultCarrierFindIdData;
 
       return processProcedureResultMultiQuery(
-        resultData as unknown[],
+        resultData,
         ['Carrier find Id'],
         'Carrier find Id not found',
       );
@@ -97,7 +97,7 @@ export class CarrierService {
       )) as unknown as SpResultRecordUpdateType;
 
       return processProcedureResultMutation(
-        resultData as unknown[],
+        resultData,
         'Carrier update failed',
       );
     } catch (err) {
@@ -116,7 +116,7 @@ export class CarrierService {
       )) as unknown as SpResultRecordDeleteType;
 
       return processProcedureResultMutation(
-        resultData as unknown[],
+        resultData,
         'Carrier delete failed',
       );
     } catch (err) {

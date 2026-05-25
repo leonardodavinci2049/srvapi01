@@ -105,7 +105,6 @@ export class ProductFindPremiumV1Dto {
   @IsNumber()
   @IsOptional()
   pe_ordemId?: number;
-
 }
 /*
 Sample JSON for testing in body endpoint:

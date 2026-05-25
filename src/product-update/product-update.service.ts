@@ -39,7 +39,7 @@ export class ProductUpdateService {
       )) as unknown as SpResultRecordUpdateType;
 
       return processProcedureResultMutation(
-        resultData as unknown[],
+        resultData,
         'Characteristics update failed',
       );
     } catch (err) {
@@ -57,10 +57,7 @@ export class ProductUpdateService {
         queryString,
       )) as unknown as SpResultRecordUpdateType;
 
-      return processProcedureResultMutation(
-        resultData as unknown[],
-        'Flags update failed',
-      );
+      return processProcedureResultMutation(resultData, 'Flags update failed');
     } catch (err) {
       const errorMessage =
         err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
@@ -77,7 +74,7 @@ export class ProductUpdateService {
       )) as unknown as SpResultRecordUpdateType;
 
       return processProcedureResultMutation(
-        resultData as unknown[],
+        resultData,
         'General update failed',
       );
     } catch (err) {
@@ -96,7 +93,7 @@ export class ProductUpdateService {
       )) as unknown as SpResultRecordUpdateType;
 
       return processProcedureResultMutation(
-        resultData as unknown[],
+        resultData,
         'Metadata update failed',
       );
     } catch (err) {
@@ -114,10 +111,7 @@ export class ProductUpdateService {
         queryString,
       )) as unknown as SpResultRecordUpdateType;
 
-      return processProcedureResultMutation(
-        resultData as unknown[],
-        'Price update failed',
-      );
+      return processProcedureResultMutation(resultData, 'Price update failed');
     } catch (err) {
       const errorMessage =
         err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
@@ -134,7 +128,7 @@ export class ProductUpdateService {
       )) as unknown as SpResultRecordUpdateType;
 
       return processProcedureResultMutation(
-        resultData as unknown[],
+        resultData,
         'Tax values update failed',
       );
     } catch (err) {

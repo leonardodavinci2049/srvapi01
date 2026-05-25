@@ -45,7 +45,7 @@ export class CheckService {
       )) as unknown as SpResultRecordCheckType;
 
       return processProcedureResultMutation(
-        resultData as unknown[],
+        resultData,
         'Check if CNPJ exists failed',
       );
     } catch (err) {
@@ -64,7 +64,7 @@ export class CheckService {
       )) as unknown as SpResultRecordCheckType;
 
       return processProcedureResultMutation(
-        resultData as unknown[],
+        resultData,
         'Check if CPF exists failed',
       );
     } catch (err) {
@@ -83,7 +83,7 @@ export class CheckService {
       )) as unknown as SpResultRecordCheckType;
 
       return processProcedureResultMutation(
-        resultData as unknown[],
+        resultData,
         'Check if email exists failed',
       );
     } catch (err) {
@@ -102,7 +102,7 @@ export class CheckService {
       )) as unknown as SpResultRecordCheckType;
 
       return processProcedureResultMutation(
-        resultData as unknown[],
+        resultData,
         'Check if product name exists failed',
       );
     } catch (err) {
@@ -121,7 +121,7 @@ export class CheckService {
       )) as unknown as SpResultRecordCheckType;
 
       return processProcedureResultMutation(
-        resultData as unknown[],
+        resultData,
         'Check if product slug exists failed',
       );
     } catch (err) {
@@ -140,7 +140,7 @@ export class CheckService {
       )) as unknown as SpResultRecordCheckType;
 
       return processProcedureResultMutation(
-        resultData as unknown[],
+        resultData,
         'Check if taxonomy name exists failed',
       );
     } catch (err) {
@@ -159,7 +159,7 @@ export class CheckService {
       )) as unknown as SpResultRecordCheckType;
 
       return processProcedureResultMutation(
-        resultData as unknown[],
+        resultData,
         'Check if taxonomy slug exists failed',
       );
     } catch (err) {

@@ -170,7 +170,6 @@ export interface TblRelatedProducts extends RowDataPacket {
   LANCAMENTO: number;
 }
 
-
 export interface TblProductFindPremiumV1 extends RowDataPacket {
   ID_PRODUTO: number;
   SKU: number;
@@ -208,10 +207,6 @@ export interface TblProductFindPremiumV1 extends RowDataPacket {
   DATADOCADASTRO: string;
 }
 
-
-
-
-
 export type SpResultProductFindBaseAllV3Data = [
   TblProductFindBaseAll[],
   SpDefaultFeedback[],
@@ -237,4 +232,4 @@ export type SpResultProductFindPremiumV1Data = [
   SpDefaultFeedback[],
   SpOperationResult,
 ];
-''
+('');
