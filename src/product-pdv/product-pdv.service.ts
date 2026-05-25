@@ -32,7 +32,7 @@ export class ProductPdvService {
       )) as unknown as SpResultProductFindPdvAllData;
 
       return processProcedureResultMultiQuery(
-        resultData as unknown[],
+        resultData,
         ['Product Pdv find All'],
         'Product Pdv find All not found',
       );
@@ -52,7 +52,7 @@ export class ProductPdvService {
       )) as unknown as SpResultProductFindPdvAllData;
 
       return processProcedureResultMultiQuery(
-        resultData as unknown[],
+        resultData,
         ['Product Pdv find Search'],
         'Product Pdv find Search not found',
       );
@@ -72,7 +72,7 @@ export class ProductPdvService {
       )) as unknown as SpResultProductFindPdvIdData;
 
       return processProcedureResultMultiQuery(
-        resultData as unknown[],
+        resultData,
         ['Product Pdv find Id', 'Related Categories', 'Related Products'],
         'Customer find Allnot found',
       );

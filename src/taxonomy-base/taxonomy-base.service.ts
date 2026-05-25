@@ -46,7 +46,7 @@ export class TaxonomyBaseService {
       )) as unknown as SpResultRecordCreateType;
 
       return processProcedureResultMutation(
-        resultData as unknown[],
+        resultData,
         'Taxonomy create failed',
       );
     } catch (err) {
@@ -65,7 +65,7 @@ export class TaxonomyBaseService {
       )) as unknown as SpResultTaxonomyFindAllV3Data;
 
       return processProcedureResultMultiQuery(
-        resultData as unknown[],
+        resultData,
         ['Taxonomy find All'],
         'Taxonomy find All not found',
       );
@@ -85,7 +85,7 @@ export class TaxonomyBaseService {
       )) as unknown as SpResultTaxonomyFindIdV3Data;
 
       return processProcedureResultMultiQuery(
-        resultData as unknown[],
+        resultData,
         ['Taxonomy find Id', 'Taxonomy related'],
         'Taxonomy find Id not found',
       );
@@ -105,7 +105,7 @@ export class TaxonomyBaseService {
       )) as unknown as SpResultTaxonomyFindMenuV3Data;
 
       return processProcedureResultMultiQuery(
-        resultData as unknown[],
+        resultData,
         ['Taxonomy find Menu'],
         'Taxonomy find Menu not found',
       );
@@ -125,7 +125,7 @@ export class TaxonomyBaseService {
       )) as unknown as SpResultTaxonomyWebMenuV3Data;
 
       return processProcedureResultMutation(
-        resultData as unknown[],
+        resultData,
         'Taxonomy update failed',
       );
     } catch (err) {
@@ -144,7 +144,7 @@ export class TaxonomyBaseService {
       )) as unknown as SpResultTaxonomyWebMenuV3Data;
 
       return processProcedureResultMutation(
-        resultData as unknown[],
+        resultData,
         'Taxonomy update failed',
       );
     } catch (err) {
@@ -163,7 +163,7 @@ export class TaxonomyBaseService {
       )) as unknown as SpResultRecordDeleteType;
 
       return processProcedureResultMutation(
-        resultData as unknown[],
+        resultData,
         'Taxonomy delete failed',
       );
     } catch (err) {

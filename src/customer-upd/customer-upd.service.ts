@@ -35,7 +35,7 @@ export class CustomerUpdService {
       )) as unknown as SpResultRecordUpdateType;
 
       return processProcedureResultMutation(
-        resultData as unknown[],
+        resultData,
         'Customer update address failed',
       );
     } catch (err) {
@@ -54,7 +54,7 @@ export class CustomerUpdService {
       )) as unknown as SpResultRecordUpdateType;
 
       return processProcedureResultMutation(
-        resultData as unknown[],
+        resultData,
         'Customer update business failed',
       );
     } catch (err) {
@@ -73,7 +73,7 @@ export class CustomerUpdService {
       )) as unknown as SpResultRecordUpdateType;
 
       return processProcedureResultMutation(
-        resultData as unknown[],
+        resultData,
         'Customer update flag failed',
       );
     } catch (err) {
@@ -92,7 +92,7 @@ export class CustomerUpdService {
       )) as unknown as SpResultRecordUpdateType;
 
       return processProcedureResultMutation(
-        resultData as unknown[],
+        resultData,
         'Customer update general failed',
       );
     } catch (err) {
@@ -111,7 +111,7 @@ export class CustomerUpdService {
       )) as unknown as SpResultRecordUpdateType;
 
       return processProcedureResultMutation(
-        resultData as unknown[],
+        resultData,
         'Customer update internet failed',
       );
     } catch (err) {
@@ -130,7 +130,7 @@ export class CustomerUpdService {
       )) as unknown as SpResultRecordUpdateType;
 
       return processProcedureResultMutation(
-        resultData as unknown[],
+        resultData,
         'Customer update personal failed',
       );
     } catch (err) {

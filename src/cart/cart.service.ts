@@ -52,10 +52,7 @@ export class CartService {
         queryString,
       )) as unknown as SpResultRecordCreateType;
 
-      return processProcedureResultMutation(
-        resultData as unknown[],
-        'Cart item add failed',
-      );
+      return processProcedureResultMutation(resultData, 'Cart item add failed');
     } catch (err) {
       const errorMessage =
         err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
@@ -71,7 +68,7 @@ export class CartService {
       )) as unknown as SpResultCartFindIdData;
 
       return processProcedureResultMultiQuery(
-        resultData as unknown[],
+        resultData,
         ['Cart Details', 'Cart Items'],
         'Cart Items not found',
       );
@@ -91,7 +88,7 @@ export class CartService {
       )) as unknown as SpResultCartFindSessionData;
 
       return processProcedureResultMultiQuery(
-        resultData as unknown[],
+        resultData,
         ['Cart Details', 'Cart Items'],
         'Cart Items not found',
       );
@@ -113,7 +110,7 @@ export class CartService {
       console.log('Debug: Result from CartFindQtV1Query', resultData);
 
       return processProcedureResultMultiQuery(
-        resultData as unknown[],
+        resultData,
         ['Cart Quantity'],
         'Cart Quantity not found',
       );
@@ -132,7 +129,7 @@ export class CartService {
       )) as unknown as SpResultCartFindAllData;
 
       return processProcedureResultMultiQuery(
-        resultData as unknown[],
+        resultData,
         ['Cart List'],
         'Cart List not found',
       );
@@ -152,7 +149,7 @@ export class CartService {
       )) as unknown as SpResultRecordUpdateType;
 
       return processProcedureResultMutation(
-        resultData as unknown[],
+        resultData,
         'Cart update field failed',
       );
     } catch (err) {
@@ -171,7 +168,7 @@ export class CartService {
       )) as unknown as SpResultRecordUpdateType;
 
       return processProcedureResultMutation(
-        resultData as unknown[],
+        resultData,
         'Cart item update field failed',
       );
     } catch (err) {
@@ -190,7 +187,7 @@ export class CartService {
       )) as unknown as SpResultRecordUpdateType;
 
       return processProcedureResultMutation(
-        resultData as unknown[],
+        resultData,
         'Cart clear all failed',
       );
     } catch (err) {
@@ -209,7 +206,7 @@ export class CartService {
       )) as unknown as SpResultRecordDeleteType;
 
       return processProcedureResultMutation(
-        resultData as unknown[],
+        resultData,
         'Cart item delete failed',
       );
     } catch (err) {
@@ -226,10 +223,7 @@ export class CartService {
         queryString,
       )) as unknown as SpResultRecordUpdateType;
 
-      return processProcedureResultMutation(
-        resultData as unknown[],
-        'Cart close failed',
-      );
+      return processProcedureResultMutation(resultData, 'Cart close failed');
     } catch (err) {
       const errorMessage =
         err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;

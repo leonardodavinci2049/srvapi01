@@ -28,7 +28,7 @@ export class TaxonomyWebService {
       )) as unknown as SpResultTaxonomyWebFindIdV3Data;
 
       return processProcedureResultMultiQuery(
-        resultData as unknown[],
+        resultData,
         ['Taxonomy find Id', 'Taxonomy related'],
         'Taxonomy find Id not found',
       );
@@ -48,7 +48,7 @@ export class TaxonomyWebService {
       )) as unknown as SpResultTaxonomyWebMenuV3Data;
 
       return processProcedureResultMultiQuery(
-        resultData as unknown[],
+        resultData,
         ['Taxonomy find Menu'],
         'Taxonomy find Menu not found',
       );

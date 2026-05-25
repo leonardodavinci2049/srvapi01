@@ -38,8 +38,7 @@ export class ProductBaseController {
     return this.productBaseService.taskProductFindPremiunV1(dataJsonDto);
   }
 
-
-    @UseGuards(AuthGuard)
+  @UseGuards(AuthGuard)
   @Post('v3/product-find-all')
   productFindAllV3(@Body() dataJsonDto: ProductFindAllV3Dto) {
     return this.productBaseService.taskProductFindAllV3(dataJsonDto);

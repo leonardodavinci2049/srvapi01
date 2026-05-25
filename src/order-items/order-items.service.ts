@@ -54,7 +54,7 @@ export class OrderItemsService {
       )) as unknown as SpResultRecordUpdateType;
 
       return processProcedureResultMutation(
-        resultData as unknown[],
+        resultData,
         'Order Item update field failed',
       );
     } catch (err) {
@@ -73,7 +73,7 @@ export class OrderItemsService {
       )) as unknown as SpResultOrderItemsFindIdData;
 
       return processProcedureResultMultiQuery(
-        resultData as unknown[],
+        resultData,
         ['orderItem'],
         'Order Items not found',
       );
@@ -93,7 +93,7 @@ export class OrderItemsService {
       )) as unknown as SpResultOrderItemsFindData;
 
       return processProcedureResultMultiQuery(
-        resultData as unknown[],
+        resultData,
         ['orderItems'],
         'Order Items not found',
       );
@@ -113,7 +113,7 @@ export class OrderItemsService {
       )) as unknown as SpResultRecordUpdateType;
 
       return processProcedureResultMutation(
-        resultData as unknown[],
+        resultData,
         'Order Item update failed',
       );
     } catch (err) {
@@ -132,7 +132,7 @@ export class OrderItemsService {
       )) as unknown as SpResultRecordUpdateType;
 
       return processProcedureResultMutation(
-        resultData as unknown[],
+        resultData,
         'Order Item update failed',
       );
     } catch (err) {
@@ -151,7 +151,7 @@ export class OrderItemsService {
       )) as unknown as SpResultRecordUpdateType;
 
       return processProcedureResultMutation(
-        resultData as unknown[],
+        resultData,
         'Order Item frete vl update failed',
       );
     } catch (err) {
@@ -170,7 +170,7 @@ export class OrderItemsService {
       )) as unknown as SpResultRecordUpdateType;
 
       return processProcedureResultMutation(
-        resultData as unknown[],
+        resultData,
         'Order Item update failed',
       );
     } catch (err) {
@@ -189,7 +189,7 @@ export class OrderItemsService {
       )) as unknown as SpResultRecordUpdateType;
 
       return processProcedureResultMutation(
-        resultData as unknown[],
+        resultData,
         'Order Item update failed',
       );
     } catch (err) {
@@ -208,7 +208,7 @@ export class OrderItemsService {
       )) as unknown as SpResultRecordUpdateType;
 
       return processProcedureResultMutation(
-        resultData as unknown[],
+        resultData,
         'Order Item update failed',
       );
     } catch (err) {
@@ -227,7 +227,7 @@ export class OrderItemsService {
       )) as unknown as SpResultRecordUpdateType;
 
       return processProcedureResultMutation(
-        resultData as unknown[],
+        resultData,
         'Order Item update failed',
       );
     } catch (err) {
@@ -246,7 +246,7 @@ export class OrderItemsService {
       )) as unknown as SpResultRecordDeleteType;
 
       return processProcedureResultMutation(
-        resultData as unknown[],
+        resultData,
         'Order Item delete failed',
       );
     } catch (err) {

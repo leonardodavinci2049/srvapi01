@@ -64,7 +64,7 @@ export class OrderSalesService {
       )) as unknown as SpResultOrderFindCustomerAllData;
 
       return processProcedureResultMultiQuery(
-        resultData as unknown[],
+        resultData,
         ['Order Summary', 'Order Details', 'Order Items', 'Customer Details'],
         'Order Items not found',
       );
@@ -84,7 +84,7 @@ export class OrderSalesService {
       )) as unknown as SpResultOrderFindOrderIdData;
 
       return processProcedureResultMultiQuery(
-        resultData as unknown[],
+        resultData,
         ['Order Summary', 'Order Details', 'Order Items', 'Customer Details'],
         'Order Items not found',
       );
@@ -104,7 +104,7 @@ export class OrderSalesService {
       )) as unknown as SpResultOrderFindCartIdData;
 
       return processProcedureResultMultiQuery(
-        resultData as unknown[],
+        resultData,
         ['Order Summary', 'Order Details', 'Order Items', 'Customer Details'],
         'Order Items not found',
       );
@@ -124,7 +124,7 @@ export class OrderSalesService {
       )) as unknown as SpResultOrderFindCoSummaryIdData;
 
       return processProcedureResultMultiQuery(
-        resultData as unknown[],
+        resultData,
         ['Order Summary'],
         'Order Items not found',
       );
@@ -144,7 +144,7 @@ export class OrderSalesService {
       )) as unknown as SpResultOrderFindCoCarrierIdData;
 
       return processProcedureResultMultiQuery(
-        resultData as unknown[],
+        resultData,
         ['Order Carrier'],
         'Order Items not found',
       );
@@ -164,7 +164,7 @@ export class OrderSalesService {
       )) as unknown as SpResultOrderFindCoCustomerIdData;
 
       return processProcedureResultMultiQuery(
-        resultData as unknown[],
+        resultData,
         ['Order Customer'],
         'Order Items not found',
       );
@@ -184,7 +184,7 @@ export class OrderSalesService {
       )) as unknown as SpResultOrderFindCoDeliveryIdData;
 
       return processProcedureResultMultiQuery(
-        resultData as unknown[],
+        resultData,
         ['Order Delivery'],
         'Order Items not found',
       );
@@ -204,7 +204,7 @@ export class OrderSalesService {
       )) as unknown as SpResultOrderFindEquipmentIdData;
 
       return processProcedureResultMultiQuery(
-        resultData as unknown[],
+        resultData,
         ['Order Equipment'],
         'Order Items not found',
       );
@@ -224,7 +224,7 @@ export class OrderSalesService {
       )) as unknown as SpResultOrderFindCoHistoryIdData;
 
       return processProcedureResultMultiQuery(
-        resultData as unknown[],
+        resultData,
         ['Order History'],
         'Order Items not found',
       );
@@ -243,7 +243,7 @@ export class OrderSalesService {
         queryString,
       )) as unknown as SpResultOrderFindCoNfIdData;
       return processProcedureResultMultiQuery(
-        resultData as unknown[],
+        resultData,
         ['Order Nf'],
         'Order Items not found',
       );
@@ -263,7 +263,7 @@ export class OrderSalesService {
       )) as unknown as SpResultOrderFindCoPgFormaIdData;
 
       return processProcedureResultMultiQuery(
-        resultData as unknown[],
+        resultData,
         ['Order Pg Forma'],
         'Order Items not found',
       );
@@ -283,7 +283,7 @@ export class OrderSalesService {
       )) as unknown as SpResultOrderFindProtocolIdData;
 
       return processProcedureResultMultiQuery(
-        resultData as unknown[],
+        resultData,
         ['Order Protocol'],
         'Order Items not found',
       );
@@ -303,7 +303,7 @@ export class OrderSalesService {
       )) as unknown as SpResultOrderFindCoSellerIdData;
 
       return processProcedureResultMultiQuery(
-        resultData as unknown[],
+        resultData,
         ['Order Seller'],
         'Order Items not found',
       );

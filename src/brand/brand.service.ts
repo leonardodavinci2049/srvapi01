@@ -35,10 +35,7 @@ export class BrandService {
         queryString,
       )) as unknown as SpResultRecordCreateType;
 
-      return processProcedureResultMutation(
-        resultData as unknown[],
-        'Brand create failed',
-      );
+      return processProcedureResultMutation(resultData, 'Brand create failed');
     } catch (err) {
       const errorMessage =
         err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
@@ -55,7 +52,7 @@ export class BrandService {
       )) as unknown as SpResultBrandFindAllData;
 
       return processProcedureResultMultiQuery(
-        resultData as unknown[],
+        resultData,
         ['Brand find All'],
         'Brand find All not found',
       );
@@ -75,7 +72,7 @@ export class BrandService {
       )) as unknown as SpResultBrandFindAllData;
 
       return processProcedureResultMultiQuery(
-        resultData as unknown[],
+        resultData,
         ['Brand find All'],
         'Brand find All not found',
       );
@@ -94,10 +91,7 @@ export class BrandService {
         queryString,
       )) as unknown as SpResultRecordUpdateType;
 
-      return processProcedureResultMutation(
-        resultData as unknown[],
-        'Brand update failed',
-      );
+      return processProcedureResultMutation(resultData, 'Brand update failed');
     } catch (err) {
       const errorMessage =
         err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
@@ -113,10 +107,7 @@ export class BrandService {
         queryString,
       )) as unknown as SpResultRecordUpdateType;
 
-      return processProcedureResultMutation(
-        resultData as unknown[],
-        'Brand delete failed',
-      );
+      return processProcedureResultMutation(resultData, 'Brand delete failed');
     } catch (err) {
       const errorMessage =
         err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;

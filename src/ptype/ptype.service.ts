@@ -40,10 +40,7 @@ export class PtypeService {
         queryString,
       )) as unknown as SpResultRecordCreateType;
 
-      return processProcedureResultMutation(
-        resultData as unknown[],
-        'Type create failed',
-      );
+      return processProcedureResultMutation(resultData, 'Type create failed');
     } catch (err) {
       const errorMessage =
         err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
@@ -60,7 +57,7 @@ export class PtypeService {
       )) as unknown as SpResultPTypeFindAllData;
 
       return processProcedureResultMultiQuery(
-        resultData as unknown[],
+        resultData,
         ['Type find All'],
         'Type find All not found',
       );
@@ -79,7 +76,7 @@ export class PtypeService {
       )) as unknown as SpResultPTypeFindIdData;
 
       return processProcedureResultMultiQuery(
-        resultData as unknown[],
+        resultData,
         ['Type find Id'],
         'Type find Id not found',
       );
@@ -98,10 +95,7 @@ export class PtypeService {
         queryString,
       )) as unknown as SpResultRecordUpdateType;
 
-      return processProcedureResultMutation(
-        resultData as unknown[],
-        'Type update failed',
-      );
+      return processProcedureResultMutation(resultData, 'Type update failed');
     } catch (err) {
       const errorMessage =
         err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
@@ -117,10 +111,7 @@ export class PtypeService {
         queryString,
       )) as unknown as SpResultRecordDeleteType;
 
-      return processProcedureResultMutation(
-        resultData as unknown[],
-        'Type delete failed',
-      );
+      return processProcedureResultMutation(resultData, 'Type delete failed');
     } catch (err) {
       const errorMessage =
         err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;

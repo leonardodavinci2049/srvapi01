@@ -44,7 +44,7 @@ export class ProductInlineService {
       )) as unknown as SpResultRecordUpdateType;
 
       return processProcedureResultMutation(
-        resultData as unknown[],
+        resultData,
         'Product update field failed',
       );
     } catch (err) {
@@ -62,10 +62,7 @@ export class ProductInlineService {
         queryString,
       )) as unknown as SpResultRecordUpdateType;
 
-      return processProcedureResultMutation(
-        resultData as unknown[],
-        'Brand update failed',
-      );
+      return processProcedureResultMutation(resultData, 'Brand update failed');
     } catch (err) {
       const errorMessage =
         err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
@@ -84,7 +81,7 @@ export class ProductInlineService {
       )) as unknown as SpResultRecordUpdateType;
 
       return processProcedureResultMutation(
-        resultData as unknown[],
+        resultData,
         'Description update failed',
       );
     } catch (err) {
@@ -102,10 +99,7 @@ export class ProductInlineService {
         queryString,
       )) as unknown as SpResultRecordUpdateType;
 
-      return processProcedureResultMutation(
-        resultData as unknown[],
-        'Name update failed',
-      );
+      return processProcedureResultMutation(resultData, 'Name update failed');
     } catch (err) {
       const errorMessage =
         err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
@@ -122,7 +116,7 @@ export class ProductInlineService {
       )) as unknown as SpResultRecordUpdateType;
 
       return processProcedureResultMutation(
-        resultData as unknown[],
+        resultData,
         'Path image update failed',
       );
     } catch (err) {
@@ -143,7 +137,7 @@ export class ProductInlineService {
       )) as unknown as SpResultRecordUpdateType;
 
       return processProcedureResultMutation(
-        resultData as unknown[],
+        resultData,
         'Short description update failed',
       );
     } catch (err) {
@@ -162,7 +156,7 @@ export class ProductInlineService {
       )) as unknown as SpResultRecordUpdateType;
 
       return processProcedureResultMutation(
-        resultData as unknown[],
+        resultData,
         'Stock min update failed',
       );
     } catch (err) {
@@ -180,10 +174,7 @@ export class ProductInlineService {
         queryString,
       )) as unknown as SpResultRecordUpdateType;
 
-      return processProcedureResultMutation(
-        resultData as unknown[],
-        'Stock update failed',
-      );
+      return processProcedureResultMutation(resultData, 'Stock update failed');
     } catch (err) {
       const errorMessage =
         err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
@@ -199,10 +190,7 @@ export class ProductInlineService {
         queryString,
       )) as unknown as SpResultRecordUpdateType;
 
-      return processProcedureResultMutation(
-        resultData as unknown[],
-        'Type update failed',
-      );
+      return processProcedureResultMutation(resultData, 'Type update failed');
     } catch (err) {
       const errorMessage =
         err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
@@ -219,7 +207,7 @@ export class ProductInlineService {
       )) as unknown as SpResultRecordUpdateType;
 
       return processProcedureResultMutation(
-        resultData as unknown[],
+        resultData,
         'Various update failed',
       );
     } catch (err) {

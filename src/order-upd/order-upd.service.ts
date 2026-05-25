@@ -38,7 +38,7 @@ export class OrderUpdService {
       )) as unknown as SpResultRecordUpdateType;
 
       return processProcedureResultMutation(
-        resultData as unknown[],
+        resultData,
         'Order update field failed',
       );
     } catch (err) {
@@ -57,7 +57,7 @@ export class OrderUpdService {
       )) as unknown as SpResultRecordUpdateType;
 
       return processProcedureResultMutation(
-        resultData as unknown[],
+        resultData,
         'Order Item update failed',
       );
     } catch (err) {
@@ -76,7 +76,7 @@ export class OrderUpdService {
       )) as unknown as SpResultRecordUpdateType;
 
       return processProcedureResultMutation(
-        resultData as unknown[],
+        resultData,
         'Order Item update failed',
       );
     } catch (err) {
@@ -95,7 +95,7 @@ export class OrderUpdService {
       )) as unknown as SpResultRecordUpdateType;
 
       return processProcedureResultMutation(
-        resultData as unknown[],
+        resultData,
         'Order Item update failed',
       );
     } catch (err) {
@@ -114,7 +114,7 @@ export class OrderUpdService {
       )) as unknown as SpResultRecordUpdateType;
 
       return processProcedureResultMutation(
-        resultData as unknown[],
+        resultData,
         'Order Item update failed',
       );
     } catch (err) {
@@ -133,7 +133,7 @@ export class OrderUpdService {
       )) as unknown as SpResultRecordUpdateType;
 
       return processProcedureResultMutation(
-        resultData as unknown[],
+        resultData,
         'Order Item update failed',
       );
     } catch (err) {
@@ -152,7 +152,7 @@ export class OrderUpdService {
       )) as unknown as SpResultRecordUpdateType;
 
       return processProcedureResultMutation(
-        resultData as unknown[],
+        resultData,
         'Order Item update failed',
       );
     } catch (err) {
@@ -171,7 +171,7 @@ export class OrderUpdService {
       )) as unknown as SpResultRecordUpdateType;
 
       return processProcedureResultMutation(
-        resultData as unknown[],
+        resultData,
         'Order Item update failed',
       );
     } catch (err) {

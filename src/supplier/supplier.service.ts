@@ -44,7 +44,7 @@ export class SupplierService {
       )) as unknown as SpResultRecordCreateType;
 
       return processProcedureResultMutation(
-        resultData as unknown[],
+        resultData,
         'Supplier create failed',
       );
     } catch (err) {
@@ -63,7 +63,7 @@ export class SupplierService {
       )) as unknown as SpResultRecordCreateType;
 
       return processProcedureResultMutation(
-        resultData as unknown[],
+        resultData,
         'Supplier relationship create failed',
       );
     } catch (err) {
@@ -82,7 +82,7 @@ export class SupplierService {
       )) as unknown as SpResultSupplierFindAllData;
 
       return processProcedureResultMultiQuery(
-        resultData as unknown[],
+        resultData,
         ['Supplier find All'],
         'Supplier find All not found',
       );
@@ -102,7 +102,7 @@ export class SupplierService {
       )) as unknown as SpResultSupplierFindAllData;
 
       return processProcedureResultMultiQuery(
-        resultData as unknown[],
+        resultData,
         ['Supplier relationship find All'],
         'Customer find Allnot found',
       );
@@ -122,7 +122,7 @@ export class SupplierService {
       )) as unknown as SpResultSupplierFindIdData;
 
       return processProcedureResultMultiQuery(
-        resultData as unknown[],
+        resultData,
         ['Supplier find Id'],
         'Supplier find Id not found',
       );
@@ -142,7 +142,7 @@ export class SupplierService {
       )) as unknown as SpResultRecordUpdateType;
 
       return processProcedureResultMutation(
-        resultData as unknown[],
+        resultData,
         'Supplier update failed',
       );
     } catch (err) {
@@ -161,7 +161,7 @@ export class SupplierService {
       )) as unknown as SpResultRecordDeleteType;
 
       return processProcedureResultMutation(
-        resultData as unknown[],
+        resultData,
         'Supplier relationship delete failed',
       );
     } catch (err) {
@@ -180,7 +180,7 @@ export class SupplierService {
       )) as unknown as SpResultRecordDeleteType;
 
       return processProcedureResultMutation(
-        resultData as unknown[],
+        resultData,
         'Supplier delete failed',
       );
     } catch (err) {

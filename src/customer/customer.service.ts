@@ -35,7 +35,7 @@ export class CustomerService {
       )) as unknown as SpResultRecordCreateType;
 
       return processProcedureResultMutation(
-        resultData as unknown[],
+        resultData,
         'Customer create failed',
       );
     } catch (err) {
@@ -54,7 +54,7 @@ export class CustomerService {
       )) as unknown as SpResultCustomerFindAllData;
 
       return processProcedureResultMultiQuery(
-        resultData as unknown[],
+        resultData,
         ['Customer find All'],
         'Customer find Allnot found',
       );
@@ -74,7 +74,7 @@ export class CustomerService {
       )) as unknown as SpResultCustomerFindIdData;
 
       return processProcedureResultMultiQuery(
-        resultData as unknown[],
+        resultData,
         ['Customer Information', 'Seller Information'],
         'Order Items not found',
       );
@@ -96,7 +96,7 @@ export class CustomerService {
       )) as unknown as SpResultCustomerLatestProductsFindAllData;
 
       return processProcedureResultMultiQuery(
-        resultData as unknown[],
+        resultData,
         ['Customer Latest Products'],
         'Customer Latest Products not found',
       );
