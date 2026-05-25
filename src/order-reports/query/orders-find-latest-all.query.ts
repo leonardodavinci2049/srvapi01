@@ -46,7 +46,7 @@ export function OrdersFindLatestAllQuery(
         ${olLimit}
       ) `;
 
-         console.log('Generated Query 1:', queryString);
+   // console.log('Generated Query 1:', queryString);
 
 
   return queryString;

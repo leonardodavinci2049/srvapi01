@@ -36,6 +36,7 @@ import { TaxonomyInlineModule } from 'src/taxonomy-inline/taxonomy-inline.module
 import { GeneralCallModule } from 'src/general-call/general-call.module';
 import { ProductWebModule } from 'src/product-web/product-web.module';
 import { TaxonomyWebModule } from 'src/taxonomy-web/taxonomy-web.module';
+import { OrderB2bModule } from 'src/order-b2b/order-b2b.module';
 
 @Module({
   imports: [
@@ -75,6 +76,7 @@ import { TaxonomyWebModule } from 'src/taxonomy-web/taxonomy-web.module';
     OrderReportsModule,
     OrderSalesModule,
     OrderUpdModule,
+    OrderB2bModule,
     ThrottlerModule.forRoot([
       // proteção conta ataque de força bruta
       {
