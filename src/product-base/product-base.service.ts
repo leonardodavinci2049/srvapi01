@@ -16,12 +16,15 @@ import {
   SpResultProductFindBaseAllV3Data,
   SpResultProductFindBaseIdV3Data,
   SpResultProductFindBaseSearchAllV3Data,
+  SpResultProductFindPremiumV1Data,
   SpResultRecordCreateType,
 } from './types/product-base.type';
 import { ProductFindAllV3Query } from './query/product-find-all-v3.query';
 import { ProductFindIdV3Query } from './query/product-find-id-v3.query';
 import { ProductFindSearchAllV3Dto } from './dto/product-find-search-all-v3.dto';
 import { ProductFindSearchAllV3Query } from './query/product-find-search-all-v3.query';
+import { ProductFindPremiumV1Query } from './query/product-find-premium-v1.query';
+import { ProductFindPremiumV1Dto } from './dto/product-find-premium-v1.dto';
 
 @Injectable()
 export class ProductBaseService {
@@ -68,6 +71,28 @@ export class ProductBaseService {
       return new ResultModel(100404, errorMessage, 0, []);
     }
   }
+
+  async taskProductFindPremiunV1(dataJsonDto: ProductFindPremiumV1Dto) {
+    try {
+      const queryString = ProductFindPremiumV1Query(dataJsonDto);
+
+      const resultData = (await this.dbService.selectExecute(
+        queryString,
+      )) as unknown as SpResultProductFindPremiumV1Data;
+
+      return processProcedureResultMultiQuery(
+        resultData as unknown[],
+        ['Product find Premium V1'],
+        'Product find Premium V1 not found',
+      );
+    } catch (err) {
+      const errorMessage =
+        err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
+      return new ResultModel(100404, errorMessage, 0, []);
+    }
+  }
+
+
 
   async taskProductSearchAllV3(dataJsonDto: ProductFindSearchAllV3Dto) {
     try {
