@@ -5,6 +5,7 @@ import { ProductCreateV3Dto } from './dto/product-create-v3.dto';
 import { ProductFindAllV3Dto } from './dto/product-find-all-v3.dto';
 import { ProductFindIdV3Dto } from './dto/product-find-id-v3.dto';
 import { ProductFindSearchAllV3Dto } from './dto/product-find-search-all-v3.dto';
+import { ProductFindPremiumV1Dto } from './dto/product-find-premium-v1.dto';
 
 @Controller('product-base')
 export class ProductBaseController {
@@ -32,6 +33,13 @@ export class ProductBaseController {
   }
 
   @UseGuards(AuthGuard)
+  @Post('v1/product-premium')
+  productFindPremiumV1(@Body() dataJsonDto: ProductFindPremiumV1Dto) {
+    return this.productBaseService.taskProductFindPremiunV1(dataJsonDto);
+  }
+
+
+    @UseGuards(AuthGuard)
   @Post('v3/product-find-all')
   productFindAllV3(@Body() dataJsonDto: ProductFindAllV3Dto) {
     return this.productBaseService.taskProductFindAllV3(dataJsonDto);

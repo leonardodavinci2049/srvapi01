@@ -170,6 +170,48 @@ export interface TblRelatedProducts extends RowDataPacket {
   LANCAMENTO: number;
 }
 
+
+export interface TblProductFindPremiumV1 extends RowDataPacket {
+  ID_PRODUTO: number;
+  SKU: number;
+  PRODUTO: string;
+  ESTOQUE_LOJA: number;
+  TIPO_VALOR: string;
+  VALOR_PRODUTO: string;
+  VL_ATACADO: string;
+  VL_CORPORATIVO: string;
+  VL_VAREJO: string;
+  DESCRICAO_TAB: string;
+  ETIQUETA: string;
+  REF: string;
+  MODELO: string;
+  ID_TIPO: number;
+  TIPO: string;
+  ID_MARCA: number;
+  MARCA: string;
+  PATH_IMAGEM_MARCA: string;
+  ID_IMAGEM: number;
+  PATH_IMAGEM: string;
+  PATH_PAGE: string;
+  SLUG: string;
+  TX_PRODUTO_LOJA: string;
+  OURO: string;
+  PRATA: string;
+  BRONZE: string;
+  DECONTO: string;
+  TEMPODEGARANTIA_MES: number;
+  TEMPODEGARANTIA_DIA: number;
+  DESCRICAO_VENDA: string | null;
+  IMPORTADO: number;
+  PROMOCAO: number;
+  LANCAMENTO: number;
+  DATADOCADASTRO: string;
+}
+
+
+
+
+
 export type SpResultProductFindBaseAllV3Data = [
   TblProductFindBaseAll[],
   SpDefaultFeedback[],
@@ -189,3 +231,10 @@ export type SpResultProductFindBaseIdV3Data = [
   TblRelatedProducts[],
   SpOperationResult,
 ];
+
+export type SpResultProductFindPremiumV1Data = [
+  TblProductFindPremiumV1[],
+  SpDefaultFeedback[],
+  SpOperationResult,
+];
+''

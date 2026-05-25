@@ -30,7 +30,7 @@ export function OrdersFindOrderIdQuery(
 
       ) `;
 
-  // console.log('queryString', queryString);
+ console.log('queryString', queryString);
 
   return queryString;
 }
