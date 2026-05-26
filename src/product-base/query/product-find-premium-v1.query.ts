@@ -12,18 +12,18 @@ export function ProductFindPremiumV1Query(
   const olUserRole = dataJsonDto.pe_user_role;
   const olPersonId = dataJsonDto.pe_person_id;
   const olSearch = dataJsonDto.pe_search ?? '';
-  const olIdTaxonomy = dataJsonDto.pe_idTaxonomy ?? null;
-  const olIdTipo = dataJsonDto.pe_idTipo ?? null;
-  const olIdMarca = dataJsonDto.pe_idMarca ?? null;
-  const olFlagEstoque = dataJsonDto.pe_flagEstoque ?? null;
-  const olFlagServico = dataJsonDto.pe_flagServico ?? null;
-  const olFlagPromotions = dataJsonDto.pe_flagPromotions ?? null;
-  const olFlagHighlight = dataJsonDto.pe_flagHighlight ?? null;
-  const olFlagLancamento = dataJsonDto.pe_flagLancamento ?? null;
-  const olQtRegistros = dataJsonDto.pe_qtRegistros ?? null;
-  const olPaginaId = dataJsonDto.pe_paginaId ?? null;
-  const olColunaId = dataJsonDto.pe_colunaId ?? null;
-  const olOrdemId = dataJsonDto.pe_ordemId ?? null;
+  const olTaxonomyId = dataJsonDto.pe_taxonomy_id ?? null;
+  const olTypeId = dataJsonDto.pe_Type_id ?? null;
+  const olBrandId = dataJsonDto.pe_brand_id ?? null;
+  const olStockFlag = dataJsonDto.pe_stock_flag ?? null;
+  const olServiceFlag = dataJsonDto.pe_flag_Service ?? null;
+  const olPromotionsFlag = dataJsonDto.pe_flag_Promotions ?? null;
+  const olFlagHighlight = dataJsonDto.pe_flag_Highlight ?? null;
+  const olFlagLaunch = dataJsonDto.pe_flag_Launch ?? null;
+  const olRecordsQuantity = dataJsonDto.pe_records_quantity ?? null;
+  const olPageId = dataJsonDto.pe_pageId ?? null;
+  const olColumnId = dataJsonDto.pe_columnId ?? null;
+  const olOrderId = dataJsonDto.pe_orderId ?? null;
 
   const queryString = ` call sp_product_find_premium_v1(
         ${olAppId},
@@ -35,18 +35,18 @@ export function ProductFindPremiumV1Query(
         '${olUserRole}',
         ${olPersonId},
         '${olSearch}',
-        ${olIdTaxonomy},
-        ${olIdTipo},
-        ${olIdMarca},
-        ${olFlagEstoque},
-        ${olFlagServico},
-        ${olFlagPromotions},
+        ${olTaxonomyId},
+        ${olTypeId},
+        ${olBrandId},
+        ${olStockFlag},
+        ${olServiceFlag},
+        ${olPromotionsFlag},
         ${olFlagHighlight},
-        ${olFlagLancamento},
-        ${olQtRegistros},
-        ${olPaginaId},
-        ${olColunaId},
-        ${olOrdemId},
+        ${olFlagLaunch},
+        ${olRecordsQuantity},
+        ${olPageId},
+        ${olColumnId},
+        ${olOrderId}
     ) `;
   // console.log('Generated Query:', queryString);
 

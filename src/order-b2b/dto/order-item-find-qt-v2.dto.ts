@@ -48,10 +48,6 @@ export class OrderItemFindQtV2Dto {
   @IsNumber()
   @IsOptional()
   pe_person_id!: number;
-  @ApiProperty({ description: 'Order ID' })
-  @IsNumber()
-  @IsNotEmpty()
-  pe_order_id!: number;
 
   @ApiProperty({ description: 'Customer ID' })
   @IsNumber()
@@ -70,7 +66,26 @@ export class OrderItemFindQtV2Dto {
   "pe_user_name": "John Doe",
   "pe_user_role": "admin",
   "pe_person_id": 29014,
-  "pe_order_id": 12345,
-  "pe_customer_id": 12345
+  "pe_customer_id": 33407
+} 
+*/
 
+/*Sample JSON for testing in body endpoint:
+
+
+{
+    "statusCode": 100200,
+    "message": "Informações processadas com sucesso",
+    "recordId": 1,
+    "data": {
+        "Qt Items": [
+            {
+                "QT_ITEMS": 1
+            }
+        ]
+    },
+    "quantity": 1,
+    "errorId": 0,
+    "info1": ""
+} 
 */
