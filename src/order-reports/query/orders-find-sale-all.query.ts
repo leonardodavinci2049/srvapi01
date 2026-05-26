@@ -45,7 +45,5 @@ export function OrdersFindSaleAllQuery(
         ${olLimit}
       ) `;
 
-  //  console.log('Generated Query 1:', queryString);
-
   return queryString;
 }
