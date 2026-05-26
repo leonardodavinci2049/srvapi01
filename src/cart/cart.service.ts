@@ -107,8 +107,6 @@ export class CartService {
         queryString,
       )) as unknown as SpResultCartFindQtData;
 
-      console.log('Debug: Result from CartFindQtV1Query', resultData);
-
       return processProcedureResultMultiQuery(
         resultData,
         ['Cart Quantity'],

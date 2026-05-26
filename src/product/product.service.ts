@@ -152,8 +152,6 @@ export class ProductService {
         queryString,
       )) as unknown as SpProductFindDataType;
 
-      // console.log('resultData', resultData);
-
       const tblRecords = resultData[0];
 
       const qtRecords: number = tblRecords.length;
@@ -234,7 +232,6 @@ export class ProductService {
         queryString,
       )) as unknown as SpProductWebFindDataType;
 
-      // console.log('resultData', resultData);
 
       const tblRecords = resultData[0];
 

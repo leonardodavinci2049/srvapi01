@@ -30,7 +30,5 @@ export function OrdersFindCartIdQuery(
 
       ) `;
 
-  // console.log('queryString', queryString);
-
   return queryString;
 }
