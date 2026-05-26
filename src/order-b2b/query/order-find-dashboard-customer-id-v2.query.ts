@@ -1,5 +1,4 @@
-import { OrderFindDashboardCustomerIdV2Dto } from "../dto/order-find-dashboard-customer-id-v2.dto";
-
+import { OrderFindDashboardCustomerIdV2Dto } from '../dto/order-find-dashboard-customer-id-v2.dto';
 
 export function OrderFindDashboardCustomerIdV2Query(
   dataJsonDto: OrderFindDashboardCustomerIdV2Dto,

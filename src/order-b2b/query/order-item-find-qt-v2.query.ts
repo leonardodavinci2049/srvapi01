@@ -1,5 +1,4 @@
-import { OrderItemFindQtV2Dto } from "../dto/order-item-find-qt-v2.dto";
-
+import { OrderItemFindQtV2Dto } from '../dto/order-item-find-qt-v2.dto';
 
 export function OrderItemFindQtV2Query(
   dataJsonDto: OrderItemFindQtV2Dto,
@@ -12,8 +11,7 @@ export function OrderItemFindQtV2Query(
   const olUserName = dataJsonDto.pe_user_name;
   const olUserRole = dataJsonDto.pe_user_role;
   const olPersonId = dataJsonDto.pe_person_id;
-  const olCustomerId = dataJsonDto.pe_customer_id;  
-
+  const olCustomerId = dataJsonDto.pe_customer_id;
 
   const queryString = ` call sp_order_item_find_qt_v2(
         ${olAppId},
