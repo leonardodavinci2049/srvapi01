@@ -70,22 +70,3 @@ export class OrderItemFindQtV2Dto {
 } 
 */
 
-/*Sample JSON for testing in body endpoint:
-
-
-{
-    "statusCode": 100200,
-    "message": "Informações processadas com sucesso",
-    "recordId": 1,
-    "data": {
-        "Qt Items": [
-            {
-                "QT_ITEMS": 1
-            }
-        ]
-    },
-    "quantity": 1,
-    "errorId": 0,
-    "info1": ""
-} 
-*/
