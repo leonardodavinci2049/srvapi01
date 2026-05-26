@@ -13,7 +13,6 @@ export function OrderFindBudgetCustomerIdV2Query(
   const olUserRole = dataJsonDto.pe_user_role;
   const olPersonId = dataJsonDto.pe_person_id;
   const olCustomerId = dataJsonDto.pe_customer_id;
-  const olTypeBusiness = dataJsonDto.pe_type_business ?? null;
 
 
   const queryString = ` call sp_order_find_budget_customer_id_v2(
@@ -25,9 +24,7 @@ export function OrderFindBudgetCustomerIdV2Query(
         '${olUserName}',
         '${olUserRole}',	
         ${olPersonId},
-        ${olCustomerId},
-        ${olTypeBusiness},
-
+        ${olCustomerId}
       ) `;
 
   return queryString;

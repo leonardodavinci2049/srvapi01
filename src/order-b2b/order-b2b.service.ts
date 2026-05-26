@@ -38,7 +38,13 @@ export class OrderB2bService {
 
       return processProcedureResultMultiQuery(
         resultData,
-        ['Order Summary', 'Order Details', 'Order Items', 'Customer Details, Seller Details'],
+        [
+          'Order Summary',
+          'Order Details',
+          'Order Items',
+          'Customer Details',
+          'Seller Details',
+        ],
         'Order Items not found',
       );
     } catch (err) {
@@ -60,7 +66,13 @@ export class OrderB2bService {
 
       return processProcedureResultMultiQuery(
         resultData,
-        ['Order Summary', 'Order Details', 'Order Items', 'Customer Details'],
+        [
+          'Order Summary',
+          'Order Details',
+          'Order Items',
+          'Customer Details',
+          'Seller Details',
+        ],
         'Order Items not found',
       );
     } catch (err) {

@@ -14,8 +14,6 @@ export function OrderFindDashboardCustomerIdV2Query(
   const olPersonId = dataJsonDto.pe_person_id;
   const olOrderId = dataJsonDto.pe_order_id;
   const olCustomerId = dataJsonDto.pe_customer_id;
-  const olTypeBusiness = dataJsonDto.pe_type_business ?? null;
-
 
   const queryString = ` call sp_order_find_dashboard_customer_id_v2(
         ${olAppId},
@@ -27,9 +25,7 @@ export function OrderFindDashboardCustomerIdV2Query(
         '${olUserRole}',	
         ${olPersonId},
         ${olOrderId},
-        ${olCustomerId},
-        ${olTypeBusiness},
-
+        ${olCustomerId}
       ) `;
 
   return queryString;
