@@ -1,12 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import {
-  IsNotEmpty,
-  IsNumber,
-  IsString,
-  IsOptional,
-  Min,
-} from 'class-validator';
-import { Type } from 'class-transformer';
+import { IsNotEmpty, IsNumber, IsString, IsOptional } from 'class-validator';
 
 export class OrderFindBudgetCustomerIdV2Dto {
   @ApiProperty({ description: 'App ID' })
@@ -53,7 +46,6 @@ export class OrderFindBudgetCustomerIdV2Dto {
   @IsNumber()
   @IsNotEmpty()
   pe_customer_id!: number;
-
 }
 
 /*Sample JSON for testing in body endpoint:
@@ -69,5 +61,3 @@ export class OrderFindBudgetCustomerIdV2Dto {
   "pe_customer_id": 33407
 }
 */
-
-

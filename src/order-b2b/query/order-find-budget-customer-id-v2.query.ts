@@ -1,5 +1,4 @@
-import { OrderFindBudgetCustomerIdV2Dto } from "../dto/order-find-budget-customer-id-v2.dto";
-
+import { OrderFindBudgetCustomerIdV2Dto } from '../dto/order-find-budget-customer-id-v2.dto';
 
 export function OrderFindBudgetCustomerIdV2Query(
   dataJsonDto: OrderFindBudgetCustomerIdV2Dto,
@@ -13,7 +12,6 @@ export function OrderFindBudgetCustomerIdV2Query(
   const olUserRole = dataJsonDto.pe_user_role;
   const olPersonId = dataJsonDto.pe_person_id;
   const olCustomerId = dataJsonDto.pe_customer_id;
-
 
   const queryString = ` call sp_order_find_budget_customer_id_v2(
         ${olAppId},

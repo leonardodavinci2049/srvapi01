@@ -4,7 +4,7 @@ import { OrderB2bController } from './order-b2b.controller';
 import { DatabaseModule } from 'src/database/database.module';
 
 @Module({
-   imports: [DatabaseModule],
+  imports: [DatabaseModule],
   controllers: [OrderB2bController],
   providers: [OrderB2bService],
 })

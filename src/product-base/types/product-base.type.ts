@@ -232,4 +232,3 @@ export type SpResultProductFindPremiumV1Data = [
   SpDefaultFeedback[],
   SpOperationResult,
 ];
-('');

@@ -16,7 +16,6 @@ export interface SpOperationResult {
   changedRows: number;
 }
 
-
 export interface TblOrderSummary extends RowDataPacket {
   ID_PEDIDO?: number;
   QT_ITENS?: number;
@@ -88,7 +87,6 @@ export interface TblOrderItems extends RowDataPacket {
   ANOTACOES?: string;
 }
 
-
 export interface TblCustomerDetails extends RowDataPacket {
   ID_CLIENTE?: number;
   NOME_CLIENTE?: string;
@@ -136,11 +134,9 @@ export interface TblQtItems extends RowDataPacket {
   QT_ITEMS?: number;
 }
 
-
 export type SpResultRecordCreateType = [SpDefaultFeedback[], SpOperationResult];
 export type SpResultRecordUpdateType = [SpDefaultFeedback[], SpOperationResult];
 export type SpResultRecordDeleteType = [SpDefaultFeedback[], SpOperationResult];
-
 
 export type SpResultOrderFindBudgetCustomerIdV2Data = [
   TblOrderSummary[],
@@ -152,7 +148,6 @@ export type SpResultOrderFindBudgetCustomerIdV2Data = [
   SpOperationResult,
 ];
 
-
 export type SpResultOrderFindDashboardCustomerIdV2Data = [
   TblOrderSummary[],
   TblOrderDetails[],
@@ -162,7 +157,6 @@ export type SpResultOrderFindDashboardCustomerIdV2Data = [
   SpDefaultFeedback[],
   SpOperationResult,
 ];
-
 
 export type SpResultOrderItemFindQtV2Data = [
   TblQtItems[],
