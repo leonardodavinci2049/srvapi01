@@ -54,11 +54,9 @@ export class OrderB2bController {
     return this.orderB2bService.taskOrdersFindLatestV2(dataJsonDto);
   }
 
-
   @UseGuards(AuthGuard)
   @Post('v2/order-statistics-customer')
   orderStatisticsCustomer(@Body() dataJsonDto: OrdersStatisticsCustomerV2Dto) {
     return this.orderB2bService.taskOrdersStatisticsCustomerV2(dataJsonDto);
   }
-
 }
