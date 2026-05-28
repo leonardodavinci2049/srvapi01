@@ -25,5 +25,7 @@ export function ordersFindLatestV2Query(
         ${olCustomerId}
       ) `;
 
+  // console.log('Generated Query:', queryString); // Debug log to check the generated query
+
   return queryString;
 }
