@@ -43,7 +43,7 @@ export class OrderB2bController {
   }
 
   @UseGuards(AuthGuard)
-  @Post('v2/ordert')
+  @Post('v2/order-item-find-qt')
   orderItemFindQt(@Body() dataJsonDto: OrderItemFindQtV2Dto) {
     return this.orderB2bService.taskOrderItemFindQtV2(dataJsonDto);
   }

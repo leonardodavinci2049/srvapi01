@@ -64,24 +64,3 @@ Sample JSON for testing in body endpoint:
 }
 
 */
-
-/* Sample response from the CartFindQtV1Query:
-
-{
-    "statusCode": 100200,
-    "message": "Informações processadas com sucesso",
-    "recordId": 2,
-    "data": {
-        "Cart Quantity": [
-            {
-                "QT_ITEMS": 2
-            }
-        ]
-    },
-    "quantity": 1,
-    "errorId": 0,
-    "info1": ""
-}
-
-
-*/
