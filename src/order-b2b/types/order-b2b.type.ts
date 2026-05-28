@@ -130,15 +130,12 @@ export interface TblSellerDetails extends RowDataPacket {
   EMAIL_VENDEDOR?: string;
 }
 
-
 export interface TblQtItems extends RowDataPacket {
   QT_ITEMS?: number;
 }
 
-
-
 export interface TblOrdersFindLatestV2 extends RowDataPacket {
-  DATA_PEDIDO?: string | null;  
+  DATA_PEDIDO?: string | null;
   ID_PEDIDO?: number;
   ID_CLIENTE?: number;
   CLIENTE?: string;
@@ -157,11 +154,7 @@ export interface TblOrdersFindLatestV2 extends RowDataPacket {
   VL_TOTAL?: number;
 }
 
-
-
-
 export interface TblOrdersStatisticsCustomerV2 extends RowDataPacket {
-
   ID_CLIENTE?: number;
   CLIENTE?: string;
 
@@ -173,10 +166,6 @@ export interface TblOrdersStatisticsCustomerV2 extends RowDataPacket {
   QT_ITENS?: number;
   TICKET_MEDIO?: number;
 }
-
-
-
-
 
 export type SpResultRecordCreateType = [SpDefaultFeedback[], SpOperationResult];
 export type SpResultRecordUpdateType = [SpDefaultFeedback[], SpOperationResult];
@@ -208,13 +197,11 @@ export type ResultOrderItemFindQtV2Data = [
   SpOperationResult,
 ];
 
-
 export type ResultOrdersFindLatestV2Data = [
   TblOrdersFindLatestV2[],
   SpDefaultFeedback[],
   SpOperationResult,
 ];
-
 
 export type ResultOrdersStatisticsCustomerV2Data = [
   TblOrdersStatisticsCustomerV2[],

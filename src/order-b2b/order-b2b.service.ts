@@ -110,7 +110,6 @@ export class OrderB2bService {
     }
   }
 
-
   async taskOrdersFindLatestV2(dataJsonDto: OrdersFindLatestV2Dto) {
     try {
       const queryString = ordersFindLatestV2Query(dataJsonDto);
@@ -131,9 +130,9 @@ export class OrderB2bService {
     }
   }
 
-
-
-  async taskOrdersStatisticsCustomerV2(dataJsonDto: OrdersStatisticsCustomerV2Dto) {
+  async taskOrdersStatisticsCustomerV2(
+    dataJsonDto: OrdersStatisticsCustomerV2Dto,
+  ) {
     try {
       const queryString = ordersStatisticsCustomerV2Query(dataJsonDto);
 
@@ -152,8 +151,4 @@ export class OrderB2bService {
       return new ResultModel(100404, errorMessage, 0, []);
     }
   }
-
-
-
-
 }

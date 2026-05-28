@@ -58,7 +58,7 @@ export class OrdersStatisticsCustomerV2Dto {
   "pe_user_name": "John Doe",
   "pe_user_role": "admin",
   "pe_person_id": 29014,
-  "pe_customer_id": 33407
+  "pe_customer_id": 43965
 }
 
 */
