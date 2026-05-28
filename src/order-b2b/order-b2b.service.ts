@@ -17,10 +17,18 @@ import { OrderFindDashboardCustomerIdV2Query } from './query/order-find-dashboar
 import { OrderItemFindQtV2Query } from './query/order-item-find-qt-v2.query';
 
 import {
-  SpResultOrderFindBudgetCustomerIdV2Data,
-  SpResultOrderFindDashboardCustomerIdV2Data,
-  SpResultOrderItemFindQtV2Data,
+  ResultOrderFindBudgetCustomerIdV2Data,
+  ResultOrderFindDashboardCustomerIdV2Data,
+  ResultOrderItemFindQtV2Data,
+  ResultOrdersFindLatestV2Data,
+  ResultOrdersStatisticsCustomerV2Data,
 } from './types/order-b2b.type';
+
+import { OrdersFindLatestV2Dto } from './dto/orders-find-latest-v2.dto';
+import { OrdersStatisticsCustomerV2Dto } from './dto/orders-statistics-customer-v2.dto';
+
+import { ordersFindLatestV2Query } from './query/orders-find-latest-v2.query';
+import { ordersStatisticsCustomerV2Query } from './query/orders-statistics-customer-v2.query';
 
 @Injectable()
 export class OrderB2bService {
@@ -34,7 +42,7 @@ export class OrderB2bService {
 
       const resultData = (await this.dbService.selectExecute(
         queryString,
-      )) as unknown as SpResultOrderFindBudgetCustomerIdV2Data;
+      )) as unknown as ResultOrderFindBudgetCustomerIdV2Data;
 
       return processProcedureResultMultiQuery(
         resultData,
@@ -62,7 +70,7 @@ export class OrderB2bService {
 
       const resultData = (await this.dbService.selectExecute(
         queryString,
-      )) as unknown as SpResultOrderFindDashboardCustomerIdV2Data;
+      )) as unknown as ResultOrderFindDashboardCustomerIdV2Data;
 
       return processProcedureResultMultiQuery(
         resultData,
@@ -88,7 +96,7 @@ export class OrderB2bService {
 
       const resultData = (await this.dbService.selectExecute(
         queryString,
-      )) as unknown as SpResultOrderItemFindQtV2Data;
+      )) as unknown as ResultOrderItemFindQtV2Data;
 
       return processProcedureResultMultiQuery(
         resultData,
@@ -101,4 +109,51 @@ export class OrderB2bService {
       return new ResultModel(100404, errorMessage, 0, []);
     }
   }
+
+
+  async taskOrdersFindLatestV2(dataJsonDto: OrdersFindLatestV2Dto) {
+    try {
+      const queryString = ordersFindLatestV2Query(dataJsonDto);
+
+      const resultData = (await this.dbService.selectExecute(
+        queryString,
+      )) as unknown as ResultOrdersFindLatestV2Data;
+
+      return processProcedureResultMultiQuery(
+        resultData,
+        ['Orders Find Latest'],
+        'Order Items not found',
+      );
+    } catch (err) {
+      const errorMessage =
+        err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
+      return new ResultModel(100404, errorMessage, 0, []);
+    }
+  }
+
+
+
+  async taskOrdersStatisticsCustomerV2(dataJsonDto: OrdersStatisticsCustomerV2Dto) {
+    try {
+      const queryString = ordersStatisticsCustomerV2Query(dataJsonDto);
+
+      const resultData = (await this.dbService.selectExecute(
+        queryString,
+      )) as unknown as ResultOrdersStatisticsCustomerV2Data;
+
+      return processProcedureResultMultiQuery(
+        resultData,
+        ['Orders Statistics Customer'],
+        'Order Items not found',
+      );
+    } catch (err) {
+      const errorMessage =
+        err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
+      return new ResultModel(100404, errorMessage, 0, []);
+    }
+  }
+
+
+
+
 }
