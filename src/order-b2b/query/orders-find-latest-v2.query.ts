@@ -1,4 +1,3 @@
-
 import { OrdersFindLatestV2Dto } from '../dto/orders-find-latest-v2.dto';
 
 export function ordersFindLatestV2Query(

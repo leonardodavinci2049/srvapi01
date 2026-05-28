@@ -43,7 +43,7 @@ export class OrderB2bController {
   }
 
   @UseGuards(AuthGuard)
-  @Post('v2/ordert')
+  @Post('v2/order-item-find-qt')
   orderItemFindQt(@Body() dataJsonDto: OrderItemFindQtV2Dto) {
     return this.orderB2bService.taskOrderItemFindQtV2(dataJsonDto);
   }
@@ -54,11 +54,9 @@ export class OrderB2bController {
     return this.orderB2bService.taskOrdersFindLatestV2(dataJsonDto);
   }
 
-
   @UseGuards(AuthGuard)
   @Post('v2/order-statistics-customer')
   orderStatisticsCustomer(@Body() dataJsonDto: OrdersStatisticsCustomerV2Dto) {
     return this.orderB2bService.taskOrdersStatisticsCustomerV2(dataJsonDto);
   }
-
 }
