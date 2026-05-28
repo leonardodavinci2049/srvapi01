@@ -157,14 +157,10 @@ export interface TblOrdersFindLatestV2 extends RowDataPacket {
 export interface TblOrdersStatisticsCustomerV2 extends RowDataPacket {
   ID_CLIENTE?: number;
   CLIENTE?: string;
-
-  ID_STATUS_PEDIDO?: number;
-  ID_STATUS_FINANCEIRO?: number;
-  ID_STATUS_ENTREGA?: number;
-
   QT_PEDIDOS?: string;
   QT_ITENS?: number;
   TICKET_MEDIO?: number;
+  TOTAL_GERAL?: number;
 }
 
 export type SpResultRecordCreateType = [SpDefaultFeedback[], SpOperationResult];
