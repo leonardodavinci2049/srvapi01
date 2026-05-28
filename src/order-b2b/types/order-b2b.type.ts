@@ -130,15 +130,59 @@ export interface TblSellerDetails extends RowDataPacket {
   EMAIL_VENDEDOR?: string;
 }
 
+
 export interface TblQtItems extends RowDataPacket {
   QT_ITEMS?: number;
 }
+
+
+
+export interface TblOrdersFindLatestV2 extends RowDataPacket {
+  DATA_PEDIDO?: string | null;  
+  ID_PEDIDO?: number;
+  ID_CLIENTE?: number;
+  CLIENTE?: string;
+
+  ID_STATUS_PEDIDO?: number;
+  ID_STATUS_FINANCEIRO?: number;
+  ID_STATUS_ENTREGA?: number;
+
+  STATUS_PEDIDO?: string;
+  STATUS_FINANCEIRO?: string;
+  STATUS_ENTREGA?: string;
+
+  QT_ITENS?: number;
+  VL_FRETE?: number;
+  VL_DESCONTO?: number;
+  VL_TOTAL?: number;
+}
+
+
+
+
+export interface TblOrdersStatisticsCustomerV2 extends RowDataPacket {
+
+  ID_CLIENTE?: number;
+  CLIENTE?: string;
+
+  ID_STATUS_PEDIDO?: number;
+  ID_STATUS_FINANCEIRO?: number;
+  ID_STATUS_ENTREGA?: number;
+
+  QT_PEDIDOS?: string;
+  QT_ITENS?: number;
+  TICKET_MEDIO?: number;
+}
+
+
+
+
 
 export type SpResultRecordCreateType = [SpDefaultFeedback[], SpOperationResult];
 export type SpResultRecordUpdateType = [SpDefaultFeedback[], SpOperationResult];
 export type SpResultRecordDeleteType = [SpDefaultFeedback[], SpOperationResult];
 
-export type SpResultOrderFindBudgetCustomerIdV2Data = [
+export type ResultOrderFindBudgetCustomerIdV2Data = [
   TblOrderSummary[],
   TblOrderDetails[],
   TblOrderItems[],
@@ -148,7 +192,7 @@ export type SpResultOrderFindBudgetCustomerIdV2Data = [
   SpOperationResult,
 ];
 
-export type SpResultOrderFindDashboardCustomerIdV2Data = [
+export type ResultOrderFindDashboardCustomerIdV2Data = [
   TblOrderSummary[],
   TblOrderDetails[],
   TblOrderItems[],
@@ -158,8 +202,22 @@ export type SpResultOrderFindDashboardCustomerIdV2Data = [
   SpOperationResult,
 ];
 
-export type SpResultOrderItemFindQtV2Data = [
+export type ResultOrderItemFindQtV2Data = [
   TblQtItems[],
+  SpDefaultFeedback[],
+  SpOperationResult,
+];
+
+
+export type ResultOrdersFindLatestV2Data = [
+  TblOrdersFindLatestV2[],
+  SpDefaultFeedback[],
+  SpOperationResult,
+];
+
+
+export type ResultOrdersStatisticsCustomerV2Data = [
+  TblOrdersStatisticsCustomerV2[],
   SpDefaultFeedback[],
   SpOperationResult,
 ];
