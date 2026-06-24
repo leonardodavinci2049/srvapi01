@@ -42,11 +42,10 @@ export class PhysicalProductWarrantyIdV2Dto {
   @IsOptional()
   pe_person_id!: number;
 
-@ApiProperty({ description: 'Physical ID' })
+  @ApiProperty({ description: 'Physical ID' })
   @IsNumber()
   @IsOptional()
   pe_physical_id!: number;
-
 }
 
 /*Sample JSON for testing in body endpoint:

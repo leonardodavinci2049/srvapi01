@@ -51,8 +51,6 @@ export class OrderItemFindIdCustomerV2Dto {
   @IsNumber()
   @IsOptional()
   pe_movement_id!: number;
-
-
 }
 
 /*Sample JSON for testing in body endpoint:
