@@ -70,3 +70,8 @@ ecosystem.config.js
 /schemas
 /json-response
 /docs-database
+
+# project generated files
+/scripts
+/docs
+database-objects/
