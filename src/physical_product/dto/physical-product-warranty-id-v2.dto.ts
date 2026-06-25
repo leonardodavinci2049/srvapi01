@@ -58,6 +58,6 @@ export class PhysicalProductWarrantyIdV2Dto {
   "pe_user_name": "John Doe",
   "pe_user_role": "admin",
   "pe_person_id": 29014,
-  "pe_physical_id": 35384
+  "pe_physical_id": 1364853
 }
 */

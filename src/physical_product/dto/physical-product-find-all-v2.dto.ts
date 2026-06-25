@@ -68,8 +68,8 @@ export class PhysicalProductFindAllV2Dto {
   "pe_user_name": "John Doe",
   "pe_user_role": "admin",
   "pe_person_id": 29014,
-  "pe_product_id": 2629,
+  "pe_product_id": 54580,
   "pe_stock_flag": 1,
-  "pe_limit": 10
+  "pe_limit": 2
 }
 */
