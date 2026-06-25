@@ -1,13 +1,13 @@
 ---
 name: test-controller-endpoints
-description: Test endpoints from a NestJS controller in this repository with curl and generate the required Markdown report. Use when the user asks to test, validate, exercise, or generate a report for all HTTP endpoints of a specific controller file, especially files like src/**/**.controller.ts that use DTO sample JSON comments and AuthGuard/API_KEY from .env.
+description: Test POST endpoints from a NestJS controller in this repository with curl and generate the required Markdown report. Use when the user asks to test, validate, exercise, or generate a report for POST consumption methods of a specific controller file, especially files like src/**/**.controller.ts that use DTO sample JSON comments and AuthGuard/API_KEY from .env.
 ---
 
 # Test Controller Endpoints
 
 ## Overview
 
-Use this skill to test every HTTP endpoint declared in a NestJS controller via `curl` and write a Markdown report beside the controller.
+Use this skill to test every `@Post(...)` consumption endpoint declared in a NestJS controller via `curl` and write a Markdown report under `API-documentation/<module-folder>`. Ignore non-POST methods such as health, info, or metadata endpoints.
 
 This repository uses:
 
@@ -16,7 +16,7 @@ This repository uses:
 - Port: read `APP_PORT` from `.env`, fallback `3000`.
 - API key: read `API_KEY` from `.env`.
 - Auth headers: prefer `Authorization: Bearer <API_KEY>`.
-- DTO test bodies: only use JSON from comments beginning with `Sample JSON for testing in body endpoint:`.
+- DTO test bodies: for each controller method with `@Body()`, resolve the DTO class through the controller import and use only the JSON object from that DTO file's comment beginning with `Sample JSON for testing in body endpoint:`.
 
 ## Workflow
 
@@ -38,13 +38,11 @@ python3 .agents/skills/test-controller-endpoints/scripts/test_controller_endpoin
 
 ## Required Behavior
 
-Discover methods decorated with:
+Discover only methods decorated with:
 
-- `@Get(...)`
 - `@Post(...)`
-- `@Put(...)`
-- `@Patch(...)`
-- `@Delete(...)`
+
+Ignore `@Get(...)`, `@Put(...)`, `@Patch(...)`, and `@Delete(...)` methods; they must not appear in the report totals or details.
 
 For each discovered endpoint, record:
 
@@ -54,24 +52,27 @@ For each discovered endpoint, record:
 - Final endpoint path using `/api/<controller-route>/<method-route>`.
 - Final URL using `http://localhost:<APP_PORT>`.
 - DTO from `@Body()`, when present.
-- DTO file resolved from the controller import.
+- DTO file resolved from the controller import exactly as written, preserving dotted filenames such as `./dto/example-v2.dto` -> `example-v2.dto.ts`; do not derive the path by removing `.dto` or guessing from the class name.
+- Request body extracted from the first balanced JSON object after `Sample JSON for testing in body endpoint:` inside the resolved DTO file.
 - Whether `AuthGuard` is present on the controller or method.
 
-If the controller has no `@Controller(...)`, stop and report a clear error. If a method has `@Body()` but the DTO sample JSON block is missing, mark that endpoint as `SKIPPED` and do not call it. Never invent request bodies.
+If the controller has no `@Controller(...)`, stop and report a clear error. If a method has `@Body()` but the imported DTO file cannot be resolved, or the DTO sample JSON block is missing, mark that endpoint as `SKIPPED` and do not call it. Never invent request bodies.
 
 ## Report Rules
 
-The report must be overwritten on each run and saved beside the controller:
+The report must be overwritten on each run and saved under the repository root in:
 
 ```text
-<controller-file-name>.md
+API-documentation/<module-folder>/<controller-file-stem>-test.md
 ```
+
+Use the controller parent folder name as `<module-folder>`. Create `API-documentation` and the module folder when they do not exist.
 
 Example:
 
 ```text
 src/physical_product/physical_product.controller.ts
-src/physical_product/physical_product.controller.md
+API-documentation/physical_product/physical_product.controller-test.md
 ```
 
 The report must include:

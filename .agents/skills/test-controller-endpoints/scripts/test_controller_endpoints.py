@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Test all endpoints from a NestJS controller and generate a Markdown report."""
+"""Test POST endpoints from a NestJS controller and generate a Markdown report."""
 
 from __future__ import annotations
 
@@ -17,11 +17,7 @@ from typing import Optional
 
 
 HTTP_DECORATORS = {
-    "Get": "GET",
     "Post": "POST",
-    "Put": "PUT",
-    "Patch": "PATCH",
-    "Delete": "DELETE",
 }
 
 
@@ -104,11 +100,12 @@ def resolve_import_path(source: str, controller_path: Path, repo_root: Path) -> 
     else:
         base = (repo_root / source).resolve()
 
-    candidates = [base, base.with_suffix(".ts"), base / "index.ts"]
+    ts_candidate = base if base.suffix == ".ts" else Path(f"{base}.ts")
+    candidates = [base, ts_candidate, base / "index.ts"]
     for candidate in candidates:
         if candidate.exists():
             return candidate
-    return base.with_suffix(".ts")
+    return ts_candidate
 
 
 def extract_balanced_json(text: str, marker: str) -> Optional[str]:
@@ -212,7 +209,7 @@ def discover_endpoints(controller_path: Path, repo_root: Path, base_url: str) ->
     endpoints: list[Endpoint] = []
 
     for decorators, signature in collect_decorator_groups(controller_text.splitlines(keepends=True)):
-        http_match = re.search(r"@(Get|Post|Put|Patch|Delete)\s*\((.*?)\)", decorators, flags=re.S)
+        http_match = re.search(r"@(Post)\s*\((.*?)\)", decorators, flags=re.S)
         if not http_match:
             continue
 
@@ -337,8 +334,17 @@ def markdown_code_block(language: str, value: str) -> str:
     return f"```{language}\n{value.rstrip()}\n```"
 
 
-def write_report(controller_path: Path, controller_name: str, base_url: str, endpoints: list[Endpoint]) -> Path:
-    report_path = controller_path.with_suffix(".md")
+def write_report(
+    repo_root: Path,
+    controller_path: Path,
+    controller_name: str,
+    base_url: str,
+    endpoints: list[Endpoint],
+) -> Path:
+    module_folder = controller_path.parent.name
+    report_dir = repo_root / "API-documentation" / module_folder
+    report_dir.mkdir(parents=True, exist_ok=True)
+    report_path = report_dir / f"{controller_path.stem}-test.md"
     total = len(endpoints)
     executed = sum(1 for endpoint in endpoints if endpoint.status in {"OK", "ERROR"})
     ok = sum(1 for endpoint in endpoints if endpoint.status == "OK")
@@ -468,7 +474,7 @@ def main() -> int:
             continue
         run_endpoint(endpoint, api_key)
 
-    report_path = write_report(controller_path, controller_name, base_url, endpoints)
+    report_path = write_report(repo_root, controller_path, controller_name, base_url, endpoints)
     print(f"Report written: {report_path}")
     print(
         "Totals: "
