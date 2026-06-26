@@ -12,6 +12,7 @@ export function PhysicalProductWarrantyMovV2Query(
   const olUserRole = dataJsonDto.pe_user_role;
   const olPersonId = dataJsonDto.pe_person_id;
   const olMovementId = dataJsonDto.pe_movement_id;
+  const olProductId = dataJsonDto.pe_product_id;
   const olLimit = dataJsonDto.pe_limit;
 
   const queryString = ` call sp_physical_product_warranty_mov_v2(
@@ -24,6 +25,7 @@ export function PhysicalProductWarrantyMovV2Query(
         '${olUserRole.replace(/'/g, "''")}',
         ${olPersonId},
         ${olMovementId},
+        ${olProductId},
         ${olLimit}
       ) `;
 

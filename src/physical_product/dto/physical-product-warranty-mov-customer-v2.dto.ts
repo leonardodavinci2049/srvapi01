@@ -51,6 +51,11 @@ export class PhysicalProductWarrantyMovCustomerV2Dto {
   @IsNumber()
   @IsOptional()
   pe_movement_id!: number;
+  
+  @ApiProperty({ description: 'Product ID' })
+  @IsNumber()
+  @IsOptional()
+  pe_product_id!: number;
 
   @ApiProperty({ description: 'Limit' })
   @IsNumber()
