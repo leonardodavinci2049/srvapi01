@@ -13,6 +13,7 @@ export function PhysicalProductWarrantyMovCustomerV2Query(
   const olPersonId = dataJsonDto.pe_person_id;
   const olCustomerId = dataJsonDto.pe_customer_id;
   const olMovementId = dataJsonDto.pe_movement_id;
+  const olProductId = dataJsonDto.pe_product_id;
   const olLimit = dataJsonDto.pe_limit;
 
   const queryString = ` call sp_physical_product_warranty_mov_customer_v2(
@@ -26,6 +27,7 @@ export function PhysicalProductWarrantyMovCustomerV2Query(
         ${olPersonId},
         ${olCustomerId},
         ${olMovementId},
+        ${olProductId},
         ${olLimit}
       ) `;
 
