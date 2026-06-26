@@ -4,7 +4,7 @@ import { PhysicalProductController } from './physical_product.controller';
 import { DatabaseModule } from 'src/database/database.module';
 
 @Module({
-   imports: [DatabaseModule],
+  imports: [DatabaseModule],
   controllers: [PhysicalProductController],
   providers: [PhysicalProductService],
 })

@@ -12,7 +12,6 @@ import { PhysicalProductWarrantyIdCustomerV2Dto } from './dto/physical-product-w
 import { PhysicalProductWarrantyMovV2Dto } from './dto/physical-product-warranty-mov-v2.dto';
 import { PhysicalProductWarrantyMovCustomerV2Dto } from './dto/physical-product-warranty-mov-customer-v2.dto';
 
-
 import { OrderItemFindAllCustomerV2Query } from './query/order-item-find-all-customer-v2.query';
 import { OrderItemFindIdCustomerV2Query } from './query/order-item-find-id-customer-v2.query';
 import { PhysicalProductFindAllV2Query } from './query/physical-product-find-all-v2.query';
@@ -20,16 +19,24 @@ import { PhysicalProductWarrantyIdCustomerV2Query } from './query/physical-produ
 import { PhysicalProductWarrantyIdV2Query } from './query/physical-product-warranty-id-v2.query';
 import { PhysicalProductWarrantyMovCustomerV2Query } from './query/physical-product-warranty-mov-customer-v2.query';
 import { PhysicalProductWarrantyMovV2Query } from './query/physical-product-warranty-mov-v2.query';
-import { SpOrderItemFindAllCustomerV2DataType, SpOrderItemFindIdCustomerV2DataType, SpPhysicalProductFindAllV2DataType, SpPhysicalProductWarrantyIdCustomerV2DataType, SpPhysicalProductWarrantyIdV2DataType, SpPhysicalProductWarrantyMovCustomerV2DataType, SpPhysicalProductWarrantyMovV2DataType } from './types/physical_product.type';
+import {
+  SpOrderItemFindAllCustomerV2DataType,
+  SpOrderItemFindIdCustomerV2DataType,
+  SpPhysicalProductFindAllV2DataType,
+  SpPhysicalProductWarrantyIdCustomerV2DataType,
+  SpPhysicalProductWarrantyIdV2DataType,
+  SpPhysicalProductWarrantyMovCustomerV2DataType,
+  SpPhysicalProductWarrantyMovV2DataType,
+} from './types/physical_product.type';
 import { processProcedureResultMultiQuery } from 'src/core/procedure.result/process-procedure-result.query';
-
 
 @Injectable()
 export class PhysicalProductService {
-
   constructor(private readonly dbService: DatabaseService) {}
 
-  async taskOrderItemFindAllCustomerV2(dataJsonDto: OrderItemFindAllCustomerV2Dto) {
+  async taskOrderItemFindAllCustomerV2(
+    dataJsonDto: OrderItemFindAllCustomerV2Dto,
+  ) {
     try {
       const queryString = OrderItemFindAllCustomerV2Query(dataJsonDto);
 
@@ -49,7 +56,9 @@ export class PhysicalProductService {
     }
   }
 
-  async taskOrderItemFindIdCustomerV2(dataJsonDto: OrderItemFindIdCustomerV2Dto) {
+  async taskOrderItemFindIdCustomerV2(
+    dataJsonDto: OrderItemFindIdCustomerV2Dto,
+  ) {
     try {
       const queryString = OrderItemFindIdCustomerV2Query(dataJsonDto);
 
@@ -89,7 +98,9 @@ export class PhysicalProductService {
     }
   }
 
-  async taskPhysicalProductWarrantyIdCustomerV2(dataJsonDto: PhysicalProductWarrantyIdCustomerV2Dto) {
+  async taskPhysicalProductWarrantyIdCustomerV2(
+    dataJsonDto: PhysicalProductWarrantyIdCustomerV2Dto,
+  ) {
     try {
       const queryString = PhysicalProductWarrantyIdCustomerV2Query(dataJsonDto);
 
@@ -109,7 +120,9 @@ export class PhysicalProductService {
     }
   }
 
-  async taskPhysicalProductWarrantyIdV2(dataJsonDto: PhysicalProductWarrantyIdV2Dto) {
+  async taskPhysicalProductWarrantyIdV2(
+    dataJsonDto: PhysicalProductWarrantyIdV2Dto,
+  ) {
     try {
       const queryString = PhysicalProductWarrantyIdV2Query(dataJsonDto);
 
@@ -129,9 +142,12 @@ export class PhysicalProductService {
     }
   }
 
-  async taskPhysicalProductWarrantyMovCustomerV2(dataJsonDto: PhysicalProductWarrantyMovCustomerV2Dto) {
+  async taskPhysicalProductWarrantyMovCustomerV2(
+    dataJsonDto: PhysicalProductWarrantyMovCustomerV2Dto,
+  ) {
     try {
-      const queryString = PhysicalProductWarrantyMovCustomerV2Query(dataJsonDto);
+      const queryString =
+        PhysicalProductWarrantyMovCustomerV2Query(dataJsonDto);
 
       const resultData = (await this.dbService.selectExecute(
         queryString,
@@ -148,7 +164,9 @@ export class PhysicalProductService {
       return new ResultModel(100404, errorMessage, 0, []);
     }
   }
-  async taskPhysicalProductWarrantyMovV2(dataJsonDto: PhysicalProductWarrantyMovV2Dto) {
+  async taskPhysicalProductWarrantyMovV2(
+    dataJsonDto: PhysicalProductWarrantyMovV2Dto,
+  ) {
     try {
       const queryString = PhysicalProductWarrantyMovV2Query(dataJsonDto);
 
@@ -167,5 +185,4 @@ export class PhysicalProductService {
       return new ResultModel(100404, errorMessage, 0, []);
     }
   }
-
 }

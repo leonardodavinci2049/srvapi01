@@ -277,7 +277,6 @@ export type SpResultRecordCreateType = [SpDefaultFeedback[], SpOperationResult];
 export type SpResultRecordUpdateType = [SpDefaultFeedback[], SpOperationResult];
 export type SpResultRecordDeleteType = [SpDefaultFeedback[], SpOperationResult];
 
-
 export type SpOrderItemFindAllCustomerV2DataType = [
   tblOrderItemFindAllCustomerV2[],
   SpDefaultFeedback[],
@@ -290,15 +289,11 @@ export type SpOrderItemFindIdCustomerV2DataType = [
   SpOperationResult,
 ];
 
-
 export type SpPhysicalProductFindAllV2DataType = [
   tblPhysicalProductFindAllV2[],
   SpDefaultFeedback[],
   SpOperationResult,
 ];
-
-
-
 
 export type SpPhysicalProductWarrantyMovCustomerV2DataType = [
   tblPhysicalProductWarrantyMovCustomerV2[],
