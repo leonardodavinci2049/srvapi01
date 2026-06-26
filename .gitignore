@@ -67,6 +67,7 @@ ecosystem.config.js
 /database-docs
 /scripts
 .github
+.agents
 /schemas
 /json-response
 /docs-database
@@ -74,4 +75,5 @@ ecosystem.config.js
 # project generated files
 /scripts
 /docs
+API-documentation/
 database-objects/

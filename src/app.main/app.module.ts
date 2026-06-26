@@ -37,6 +37,7 @@ import { GeneralCallModule } from 'src/general-call/general-call.module';
 import { ProductWebModule } from 'src/product-web/product-web.module';
 import { TaxonomyWebModule } from 'src/taxonomy-web/taxonomy-web.module';
 import { OrderB2bModule } from 'src/order-b2b/order-b2b.module';
+import { PhysicalProductModule } from 'src/physical_product/physical_product.module';
 
 @Module({
   imports: [
@@ -54,6 +55,7 @@ import { OrderB2bModule } from 'src/order-b2b/order-b2b.module';
     ProductBaseModule,
     ProductInlineModule,
     ProductUpdateModule,
+    PhysicalProductModule,
     CartModule, // Importando o módulo de carrinho
     CustomerModule, // Importando o módulo de clientes
     CustomerInlineModule, // Importando o módulo de atualização inline de clientes
