@@ -63,7 +63,7 @@ export class PhysicalProductWarrantyMovV2Dto {
   "pe_user_name": "John Doe",
   "pe_user_role": "admin",
   "pe_person_id": 29014,
-  "pe_movement_id": 20871,
-  "pe_limit": 10
+  "pe_movement_id": 757119,
+  "pe_limit": 2
 }
 */

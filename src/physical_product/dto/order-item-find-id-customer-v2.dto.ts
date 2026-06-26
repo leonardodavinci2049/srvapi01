@@ -63,6 +63,8 @@ export class OrderItemFindIdCustomerV2Dto {
   "pe_user_name": "John Doe",
   "pe_user_role": "admin",
   "pe_person_id": 29014,
-  "pe_movement_id": 20871
+   "pe_customer_id": 2967,
+  "pe_movement_id": 757119
+
 }
 */
