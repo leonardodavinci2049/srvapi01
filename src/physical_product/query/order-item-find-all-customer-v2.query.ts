@@ -29,7 +29,5 @@ export function OrderItemFindAllCustomerV2Query(
         ${olLimit}
       ) `;
 
-
-
   return queryString;
 }

@@ -27,8 +27,5 @@ export function OrderItemFindIdCustomerV2Query(
         ${olMovementId}
       ) `;
 
-
-
-
   return queryString;
 }
