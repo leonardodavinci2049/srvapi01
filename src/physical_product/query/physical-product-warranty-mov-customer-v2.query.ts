@@ -20,16 +20,20 @@ export function PhysicalProductWarrantyMovCustomerV2Query(
         ${olAppId},
         ${olSystemClientId},
         ${olStoreId},
+
         '${olOrganizationId.replace(/'/g, "''")}',
         '${olUserId.replace(/'/g, "''")}',
         '${olUserName.replace(/'/g, "''")}',
         '${olUserRole.replace(/'/g, "''")}',
+        
         ${olPersonId},
         ${olCustomerId},
         ${olMovementId},
         ${olProductId},
         ${olLimit}
       ) `;
+
+      console.log('OrderItemFindAllCustomerV2Query: ', queryString);
 
   return queryString;
 }
