@@ -47,6 +47,11 @@ export class OrderItemFindAllCustomerV2Dto {
   @IsNotEmpty()
   pe_customer_id!: number;
 
+  @ApiProperty({ description: 'Search term', maxLength: 300 })
+  @IsString()
+  pe_search!: string;
+
+
   @ApiProperty({ description: 'Limit' })
   @IsNumber()
   @IsOptional()
