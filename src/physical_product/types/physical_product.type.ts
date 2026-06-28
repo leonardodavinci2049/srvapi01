@@ -147,6 +147,7 @@ export interface tblOrderItemFindIdCustomerV2 extends RowDataPacket {
 
 export interface tblPhysicalProductWarrantyMovCustomerV2 extends RowDataPacket {
   GARANTIA_ID?: number;
+  ID_PRODUTO?: number;
   PRODUTO?: string | null;
   ID_TIPO?: number;
   TIPO?: string | null;
@@ -179,6 +180,7 @@ export interface tblPhysicalProductWarrantyMovCustomerV2 extends RowDataPacket {
 
 export interface tblPhysicalProductWarrantyIdCustomerV2 extends RowDataPacket {
   GARANTIA_ID?: number;
+  ID_PRODUTO?: number;
   PRODUTO?: string | null;
   ID_TIPO?: number;
   TIPO?: string | null;
@@ -211,6 +213,7 @@ export interface tblPhysicalProductWarrantyIdCustomerV2 extends RowDataPacket {
 
 export interface tblPhysicalProductWarrantyIdV2 extends RowDataPacket {
   GARANTIA_ID?: number;
+  ID_PRODUTO?: number;
   PRODUTO?: string | null;
   ID_TIPO?: number;
   TIPO?: string | null;
@@ -243,6 +246,7 @@ export interface tblPhysicalProductWarrantyIdV2 extends RowDataPacket {
 
 export interface tblPhysicalProductWarrantyMovV2 extends RowDataPacket {
   GARANTIA_ID?: number;
+  ID_PRODUTO?: number;
   PRODUTO?: string | null;
   ID_TIPO?: number;
   TIPO?: string | null;
