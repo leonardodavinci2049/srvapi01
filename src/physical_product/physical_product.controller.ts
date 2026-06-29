@@ -10,6 +10,7 @@ import { PhysicalProductWarrantyIdV2Dto } from './dto/physical-product-warranty-
 import { PhysicalProductWarrantyMovCustomerV2Dto } from './dto/physical-product-warranty-mov-customer-v2.dto';
 import { PhysicalProductWarrantyMovV2Dto } from './dto/physical-product-warranty-mov-v2.dto';
 import { OrderItemFindIdCustomerV2Dto } from './dto/order-item-find-id-customer-v2.dto';
+import { PhysicalProductWarrantySearchV2Dto } from './dto/physical-product-warranty-search-v2.dto';
 
 @Controller('physical-product')
 export class PhysicalProductController {
@@ -84,6 +85,8 @@ export class PhysicalProductController {
       dataJsonDto,
     );
   }
+
+
   @UseGuards(AuthGuard)
   @Post('v2/physical-product-warranty-mov')
   PhysicalProductWarrantyMovV2(
@@ -93,4 +96,17 @@ export class PhysicalProductController {
       dataJsonDto,
     );
   }
+
+  @UseGuards(AuthGuard)
+  @Post('v2/physical-product-warranty-search')
+  PhysicalProductWarrantySearchV2(
+    @Body() dataJsonDto: PhysicalProductWarrantySearchV2Dto,
+  ) {
+    return this.physicalProductService.taskPhysicalProductWarrantySearchV2(
+      dataJsonDto,
+    );
+  }
+
+  
+
 }

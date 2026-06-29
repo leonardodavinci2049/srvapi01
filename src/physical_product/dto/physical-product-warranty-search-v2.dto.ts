@@ -1,7 +1,7 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IsNotEmpty, IsNumber, IsString, IsOptional } from 'class-validator';
 
-export class PhysicalProductWarrantyMovV2Dto {
+export class PhysicalProductWarrantySearchV2Dto {
   @ApiProperty({ description: 'App ID' })
   @IsNumber()
   @IsNotEmpty()
@@ -45,12 +45,12 @@ export class PhysicalProductWarrantyMovV2Dto {
   @ApiProperty({ description: 'Movement ID' })
   @IsNumber()
   @IsOptional()
-  pe_movement_id!: number;
+  pe_customer_id!: number;
 
   @ApiProperty({ description: 'Product ID' })
   @IsNumber()
   @IsOptional()
-  pe_product_id!: number;
+  PE_search!: number;
 
   @ApiProperty({ description: 'Limit' })
   @IsNumber()
@@ -68,8 +68,8 @@ export class PhysicalProductWarrantyMovV2Dto {
   "pe_user_name": "John Doe",
   "pe_user_role": "admin",
   "pe_person_id": 29014,
-  "pe_movement_id": 0,
-  "pe_product_id": 0,
+  "pe_customer_id": 0,
+  "PE_search": 44639,
   "pe_limit": 2
 }
 */
