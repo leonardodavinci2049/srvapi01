@@ -1,7 +1,7 @@
-import { PhysicalProductWarrantyMovCustomerV2Dto } from '../dto/physical-product-warranty-mov-customer-v2.dto';
+import { PhysicalProductWarrantySearchV2Dto } from '../dto/physical-product-warranty-search-v2.dto';
 
-export function PhysicalProductWarrantyMovCustomerV2Query(
-  dataJsonDto: PhysicalProductWarrantyMovCustomerV2Dto,
+export function PhysicalProductWarrantySearchV2Query(
+  dataJsonDto: PhysicalProductWarrantySearchV2Dto,
 ): string {
   const olAppId = dataJsonDto.pe_app_id ?? 1;
   const olSystemClientId = dataJsonDto.pe_system_client_id;
@@ -12,28 +12,24 @@ export function PhysicalProductWarrantyMovCustomerV2Query(
   const olUserRole = dataJsonDto.pe_user_role;
   const olPersonId = dataJsonDto.pe_person_id;
   const olCustomerId = dataJsonDto.pe_customer_id;
-  const olMovementId = dataJsonDto.pe_movement_id;
-  const olProductId = dataJsonDto.pe_product_id;
+  const olSearch = dataJsonDto.PE_search;
   const olLimit = dataJsonDto.pe_limit;
 
-  const queryString = ` call sp_physical_product_warranty_mov_customer_v2(
+  const queryString = ` call sp_physical_product_warranty_search_v2(
         ${olAppId},
         ${olSystemClientId},
         ${olStoreId},
-
         '${olOrganizationId.replace(/'/g, "''")}',
         '${olUserId.replace(/'/g, "''")}',
         '${olUserName.replace(/'/g, "''")}',
         '${olUserRole.replace(/'/g, "''")}',
-        
         ${olPersonId},
         ${olCustomerId},
-        ${olMovementId},
-        ${olProductId},
+        ${olSearch},
         ${olLimit}
       ) `;
 
-  // console.log('OrderItemFindAllCustomerV2Query: ', queryString);
+ // console.log('PhysicalProductWarrantySearchV2Query: ', queryString);
 
   return queryString;
 }
