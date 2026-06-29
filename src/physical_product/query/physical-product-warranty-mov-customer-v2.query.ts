@@ -33,7 +33,7 @@ export function PhysicalProductWarrantyMovCustomerV2Query(
         ${olLimit}
       ) `;
 
-  console.log('OrderItemFindAllCustomerV2Query: ', queryString);
+  // console.log('OrderItemFindAllCustomerV2Query: ', queryString);
 
   return queryString;
 }

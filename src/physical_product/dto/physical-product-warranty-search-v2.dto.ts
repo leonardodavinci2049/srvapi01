@@ -68,8 +68,8 @@ export class PhysicalProductWarrantySearchV2Dto {
   "pe_user_name": "John Doe",
   "pe_user_role": "admin",
   "pe_person_id": 29014,
-  "pe_customer_id": 757119,
-  "PE_search": 0,
+  "pe_customer_id": 0,
+  "PE_search": 44639,
   "pe_limit": 2
 }
 */
