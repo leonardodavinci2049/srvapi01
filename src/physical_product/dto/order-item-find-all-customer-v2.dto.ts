@@ -68,6 +68,7 @@ export class OrderItemFindAllCustomerV2Dto {
   "pe_user_role": "admin",
   "pe_person_id": 29014,
   "pe_customer_id": 2967,
+  "pe_search": "search term",
   "pe_limit": 2
 
 }

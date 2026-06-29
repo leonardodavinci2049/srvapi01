@@ -277,6 +277,41 @@ export interface tblPhysicalProductWarrantyMovV2 extends RowDataPacket {
   STATUS_GARANTIA?: string;
 }
 
+export interface tblPhysicalProductWarrantySearchV2 extends RowDataPacket {
+  GARANTIA_ID?: number;
+  ID_PRODUTO?: number;
+  PRODUTO?: string | null;
+  ID_TIPO?: number;
+  TIPO?: string | null;
+  ID_MARCA?: number | null;
+  MARCA?: string | null;
+  TEMPODEGARANTIA_DIA?: number;
+  ETIQUETA?: string | null;
+  N_SERIE?: string | null;
+  COD_BARRAS?: string | null;
+  LOCATION?: string | null;
+  DATA_PEDIDO?: Date | null;
+  ID_PEDIDO?: number | null;
+  ID_MOVIMENTO?: number;
+  ID_STATUS_PEDIDO?: number;
+  STATUS_PEDIDO?: string;
+  ID_STATUS_FINANCEIRO?: number;
+  STATUS_FINANCEIRO?: string | null;
+  ID_CLIENTE?: number;
+  CLIENTE?: string | null;
+  ID_PESSOA_TIPO?: number;
+  ACCOUNT_TIPO?: string;
+  ID_TIPO_CLIENTE?: number | null;
+  ACCOUNT_STATUS?: string;
+  VENDEDOR?: string | null;
+  VL_VENDA?: number | null;
+  DT_RETIRADA?: Date | null;
+  GARANTIA_LIMITE?: Date | null;
+  STATUS_GARANTIA?: string;
+}
+
+
+
 export type SpResultRecordCreateType = [SpDefaultFeedback[], SpOperationResult];
 export type SpResultRecordUpdateType = [SpDefaultFeedback[], SpOperationResult];
 export type SpResultRecordDeleteType = [SpDefaultFeedback[], SpOperationResult];
@@ -319,6 +354,12 @@ export type SpPhysicalProductWarrantyIdV2DataType = [
 
 export type SpPhysicalProductWarrantyMovV2DataType = [
   tblPhysicalProductWarrantyMovV2[],
+  SpDefaultFeedback[],
+  SpOperationResult,
+];
+
+export type SpPhysicalProductWarrantySearchV2DataType = [
+  tblPhysicalProductWarrantySearchV2[],
   SpDefaultFeedback[],
   SpOperationResult,
 ];

@@ -27,8 +27,11 @@ import {
   SpPhysicalProductWarrantyIdV2DataType,
   SpPhysicalProductWarrantyMovCustomerV2DataType,
   SpPhysicalProductWarrantyMovV2DataType,
+  SpPhysicalProductWarrantySearchV2DataType,
 } from './types/physical_product.type';
 import { processProcedureResultMultiQuery } from 'src/core/procedure.result/process-procedure-result.query';
+import { PhysicalProductWarrantySearchV2Dto } from './dto/physical-product-warranty-search-v2.dto';
+import { PhysicalProductWarrantySearchV2Query } from './query/physical-product-warranty-search-v2.query';
 
 @Injectable()
 export class PhysicalProductService {
@@ -164,6 +167,7 @@ export class PhysicalProductService {
       return new ResultModel(100404, errorMessage, 0, []);
     }
   }
+
   async taskPhysicalProductWarrantyMovV2(
     dataJsonDto: PhysicalProductWarrantyMovV2Dto,
   ) {
@@ -185,4 +189,29 @@ export class PhysicalProductService {
       return new ResultModel(100404, errorMessage, 0, []);
     }
   }
+
+   async taskPhysicalProductWarrantySearchV2(
+    dataJsonDto: PhysicalProductWarrantySearchV2Dto,
+  ) {
+    try {
+      const queryString = PhysicalProductWarrantySearchV2Query(dataJsonDto);
+
+      const resultData = (await this.dbService.selectExecute(
+        queryString,
+      )) as unknown as SpPhysicalProductWarrantySearchV2DataType;
+
+      return processProcedureResultMultiQuery(
+        resultData,
+        ['Warranty search'],
+        'Warranty search not found',
+      );
+    } catch (err) {
+      const errorMessage =
+        err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
+      return new ResultModel(100404, errorMessage, 0, []);
+    }
+  }
+  
+
+
 }
