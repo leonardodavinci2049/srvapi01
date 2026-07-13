@@ -60,11 +60,10 @@ Sample JSON for testing in body endpoint:
   "pe_organization_id": "ORG001",
   "pe_user_id": "USER001",
   "pe_user_name": "John Doe",
-  "pe_user_role": "admin",
+  "pe_user_role": "saller",
   "pe_person_id": 29014,
   "pe_type_business": 1,
-  "pe_product_id": 1
-
+  "pe_product_id": 55251
 }
 
 */

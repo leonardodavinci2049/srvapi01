@@ -5,6 +5,15 @@
 
 ---
 
+## Scope and Precedence
+
+- This file applies to the entire repository.
+- A nested `AGENTS.md` may add or override instructions for files in its directory tree. The closest file to the edited file takes precedence.
+- Explicit user instructions take precedence over every `AGENTS.md` file.
+- When instructions conflict or the required environment is unavailable, report the limitation instead of silently skipping validation.
+
+---
+
 ## Project Overview
 
 **srvapi01** is a multi-tenant **wholesale / B2B e-commerce REST API** built with NestJS 11 and TypeScript. It exposes versioned business endpoints for catalog management, shopping cart, customers, carriers, and the full order lifecycle — all backed by a MySQL/MariaDB database using **raw SQL and Stored Procedures** (no ORM).
@@ -15,7 +24,7 @@
 
 | Layer          | Technology                                              |
 | -------------- | ------------------------------------------------------ |
-| Runtime        | Node.js `>= 20`                                        |
+| Runtime        | Node.js `>= 20` (declared in `package.json`)           |
 | Language       | TypeScript (target `ES2023`, `nodenext` modules)       |
 | Framework      | NestJS 11                                              |
 | Database       | MySQL / MariaDB (`mysql2`)                             |
@@ -24,7 +33,7 @@
 | API docs       | `@nestjs/swagger`                                      |
 | Config         | `@nestjs/config` + `zod`                               |
 | Rate limiting  | `@nestjs/throttler`                                    |
-| Package manager| `pnpm`                                                 |
+| Package manager| `pnpm 11.10.0` (declared in `package.json`)            |
 | Testing        | Jest (`ts-jest`)                                       |
 | Linting        | ESLint (flat config) + Prettier                        |
 
@@ -32,9 +41,16 @@
 
 ## Commands
 
+### Prerequisites
+
+- Node.js `>= 20` and pnpm `11.10.0`.
+- Install dependencies from the lockfile with `pnpm install --frozen-lockfile`.
+- Running the application, E2E tests, and endpoint tests requires a local `.env` containing all variables listed below and access to the configured MariaDB database.
+- Never create, display, or commit real credentials. Ask the user for missing environment access when it is required.
+
 ```bash
 # Dependencies
-pnpm install
+pnpm install --frozen-lockfile
 
 # Development
 pnpm run dev              # nest start --watch
@@ -44,8 +60,10 @@ pnpm run build            # nest build → dist/
 pnpm run start:prod       # node dist/main
 
 # Lint & format
+pnpm run lint:check       # ESLint validation without changing files
+pnpm run format:check     # Prettier validation without changing files
 pnpm run lint             # ESLint with --fix
-pnpm run format           # Prettier (single quotes, trailing commas)
+pnpm run format           # Prettier with --write
 
 # Testing (scripts exist, but tests are not actively used in this project)
 pnpm run test             # Jest unit tests
@@ -55,8 +73,7 @@ pnpm run test -- src/path/to/file.spec.ts   # Single file
 pnpm run test:e2e         # End-to-end (test/jest-e2e.json)
 ```
 
-> **Before committing:** ensure `pnpm run lint` and `pnpm run format` pass.
-> Tests are not part of the workflow — only the default Jest boilerplate exists.
+Use `lint` and `format` while implementing fixes. Use the non-mutating `lint:check` and `format:check` commands for final validation.
 
 ---
 
@@ -206,7 +223,7 @@ const rows = (await db.selectExecute<TblRow[]>(
 )) as unknown as TblRow[];
 
 // INSERT / UPDATE / DELETE
-const result = await db.modifyExecute(queryString, params); // → ResultSetHeader
+const result = await db.ModifyExecute(queryString, params); // → ResultSetHeader
 
 // Stored procedure returning multiple result sets
 const sets = await db.chamarProcedimento<TblRow>(spName, params);
@@ -290,7 +307,7 @@ All validated with `zod` at startup (`src/core/config/envs.ts`). The app fails f
 
 | Variable            | Description                        |
 | ------------------- | ---------------------------------- |
-| `APP_PORT`          | HTTP server port (default 3000)    |
+| `APP_PORT`          | Required HTTP server port          |
 | `APP_API_URL`       | Public base URL                    |
 | `APP_SWAGGER_URL`   | Swagger UI URL                     |
 | `APP_JWT_SECRET`    | JWT signing secret                 |
@@ -305,11 +322,26 @@ All validated with `zod` at startup (`src/core/config/envs.ts`). The app fails f
 
 ## Testing
 
-> **Tests are not part of the workflow** — only the default Jest boilerplate exists (`app.controller.spec.ts`, `database.service.spec.ts`, `app.e2e-spec.ts`). The scripts are wired up but not actively used.
+The Jest suite currently consists primarily of generated smoke-test boilerplate, including app, account, database, and E2E specs. Do not assume it provides meaningful business coverage.
 
 - Jest is configured: unit specs next to source (`*.spec.ts`, `rootDir: src`), E2E in `test/` (`jest-e2e.json`).
-- For validating endpoints, use the **`test-controller-endpoints`** skill instead of unit tests — it exercises real POST endpoints via curl and generates a Markdown report.
+- For validating POST endpoints, prefer the **`test-controller-endpoints`** skill — it exercises real endpoints via curl and generates a Markdown report.
+- Endpoint and E2E tests require the application dependencies, environment variables, and database to be available. Report missing prerequisites instead of fabricating results.
 - Controller DTOs include sample JSON comments for manual `curl` testing.
+
+### Validation by change type
+
+Run the smallest relevant set first, followed by the required final checks:
+
+| Change type | Required validation |
+| ----------- | ------------------- |
+| TypeScript source | `pnpm run build`, `pnpm run lint:check`, and `pnpm run format:check` |
+| POST endpoint behavior | TypeScript checks plus `test-controller-endpoints` when the application and database are available |
+| Unit-test change | Targeted `pnpm run test -- src/path/to/file.spec.ts`, then TypeScript checks |
+| Stored procedure | Follow the `save-stored-procedure` skill; never deploy unless the user requested it |
+| Documentation only | Review the rendered Markdown and verify referenced paths and commands; TypeScript build is not required |
+
+Do not claim validation passed when a required command could not run. State exactly what ran, what failed, and whether the failure appears related to the change.
 
 ---
 
@@ -345,12 +377,12 @@ Use these proactively when the task matches.
 - Guard business endpoints with `@UseGuards(AuthGuard)`.
 - Keep query functions pure (no side effects, no DB calls).
 - Process SP results through `src/core/procedure.result/` helpers.
-- Run `pnpm run lint && pnpm run format` before considering work complete.
+- Run the validation required for the change type before considering work complete.
 
 ### Don't
 
 - **Don't** use Prisma or any ORM.
-- **Don't** add comments unless explicitly asked.
+- **Don't** add explanatory comments unless explicitly asked. Required DTO sample JSON comments are an exception.
 - **Don't** introduce new dependencies without checking `package.json` first.
 - **Don't** hardcode credentials, API keys, or connection strings.
 - **Don't** skip the `try/catch` in service methods.
