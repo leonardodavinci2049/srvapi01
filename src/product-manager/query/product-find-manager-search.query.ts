@@ -1,7 +1,7 @@
-import { ProductFindPdvSearchV2Dto } from '../dto/product-find-Pdv-search.dto';
+import { ProductFindManagerSearchV2Dto } from '../dto/product-find-manager-search.dto';
 
-export function ProductFindPdvSearchV2Query(
-  dataJsonDto: ProductFindPdvSearchV2Dto,
+export function ProductFindManagerSearchV2Query(
+  dataJsonDto: ProductFindManagerSearchV2Dto,
 ): string {
   const olAppId = dataJsonDto.pe_app_id ?? 1;
   const olSystemClientId = dataJsonDto.pe_system_client_id;
@@ -16,7 +16,7 @@ export function ProductFindPdvSearchV2Query(
   const olFlagStock = dataJsonDto.pe_flag_stock;
   const olLimit = dataJsonDto.pe_limit;
 
-  const queryString = ` call sp_product_find_pdv_search_v2(
+  const queryString = ` call sp_product_find_manager_search_v2(
         ${olAppId},
         ${olSystemClientId},
         ${olStoreId},

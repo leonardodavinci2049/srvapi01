@@ -4,37 +4,37 @@ import { ResultModel } from 'src/core/utils/result.model';
 import { MESSAGES } from 'src/core/utils/constants/globalConstants';
 
 import { DatabaseService } from 'src/database/database.service';
-import { ProductFindPdvAllV2Dto } from './dto/product-find-pdv-all-v2.dto';
-import { ProductFindPdvIdV2Dto } from './dto/product-find-pdv-id-v2.dto';
+import { ProductFindManagerAllV2Dto } from './dto/product-find-manager-all-v2.dto';
+import { ProductFindManagerIdV2Dto } from './dto/product-find-manager-id-v2.dto';
 import {
-  SpResultProductFindPdvAllData,
-  SpResultProductFindPdvIdData,
+  SpResultProductFindManagerAllData,
+  SpResultProductFindManagerIdData,
 } from './types/produtct-type.type';
-import { ProductFindPdvAllV2Query } from './query/product-find-pdv-all-v2.query';
+import { ProductFindManagerAllV2Query } from './query/product-find-manager-all-v2.query';
 import { processProcedureResultMultiQuery } from 'src/core/procedure.result/process-procedure-result.query';
-import { ProductFindPdvIdV2Query } from './query/product-find-pdv-id-v2.query';
-import { ProductFindPdvSearchV2Dto } from './dto/product-find-Pdv-search.dto';
-import { ProductFindPdvSearchV2Query } from './query/product-find-Pdv-search.query';
+import { ProductFindManagerIdV2Query } from './query/product-find-manager-id-v2.query';
+import { ProductFindManagerSearchV2Dto } from './dto/product-find-manager-search.dto';
+import { ProductFindManagerSearchV2Query } from './query/product-find-manager-search.query';
 
 @Injectable()
-export class ProductPdvService {
+export class ProductManagerService {
   constructor(private readonly dbService: DatabaseService) {}
   create() {
-    return 'This action adds a new productPdv';
+    return 'This action adds a new productManager';
   }
 
-  async taskProductFindPdvAllV2(dataJsonDto: ProductFindPdvAllV2Dto) {
+  async taskProductFindManagerAllV2(dataJsonDto: ProductFindManagerAllV2Dto) {
     try {
-      const queryString = ProductFindPdvAllV2Query(dataJsonDto);
+      const queryString = ProductFindManagerAllV2Query(dataJsonDto);
 
       const resultData = (await this.dbService.selectExecute(
         queryString,
-      )) as unknown as SpResultProductFindPdvAllData;
+      )) as unknown as SpResultProductFindManagerAllData;
 
       return processProcedureResultMultiQuery(
         resultData,
-        ['Product Pdv find All'],
-        'Product Pdv find All not found',
+        ['Product Manager find All'],
+        'Product Manager find All not found',
       );
     } catch (err) {
       const errorMessage =
@@ -43,18 +43,20 @@ export class ProductPdvService {
     }
   }
 
-  async taskProductFindPdvSearchV2(dataJsonDto: ProductFindPdvSearchV2Dto) {
+  async taskProductFindManagerSearchV2(
+    dataJsonDto: ProductFindManagerSearchV2Dto,
+  ) {
     try {
-      const queryString = ProductFindPdvSearchV2Query(dataJsonDto);
+      const queryString = ProductFindManagerSearchV2Query(dataJsonDto);
 
       const resultData = (await this.dbService.selectExecute(
         queryString,
-      )) as unknown as SpResultProductFindPdvAllData;
+      )) as unknown as SpResultProductFindManagerAllData;
 
       return processProcedureResultMultiQuery(
         resultData,
-        ['Product Pdv find Search'],
-        'Product Pdv find Search not found',
+        ['Product Manager find Search'],
+        'Product Manager find Search not found',
       );
     } catch (err) {
       const errorMessage =
@@ -63,17 +65,17 @@ export class ProductPdvService {
     }
   }
 
-  async taskProductFindPdvIdV2(dataJsonDto: ProductFindPdvIdV2Dto) {
+  async taskProductFindManagerIdV2(dataJsonDto: ProductFindManagerIdV2Dto) {
     try {
-      const queryString = ProductFindPdvIdV2Query(dataJsonDto);
+      const queryString = ProductFindManagerIdV2Query(dataJsonDto);
 
       const resultData = (await this.dbService.selectExecute(
         queryString,
-      )) as unknown as SpResultProductFindPdvIdData;
+      )) as unknown as SpResultProductFindManagerIdData;
 
       return processProcedureResultMultiQuery(
         resultData,
-        ['Product Pdv find Id', 'Related Categories', 'Related Products'],
+        ['Product Manager find Id', 'Related Categories', 'Related Products'],
         'Customer find Allnot found',
       );
     } catch (err) {

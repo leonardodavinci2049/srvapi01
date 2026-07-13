@@ -1,7 +1,7 @@
-import { ProductFindPdvIdV2Dto } from '../dto/product-find-pdv-id-v2.dto';
+import { ProductFindManagerIdV2Dto } from '../dto/product-find-manager-id-v2.dto';
 
-export function ProductFindPdvIdV2Query(
-  dataJsonDto: ProductFindPdvIdV2Dto,
+export function ProductFindManagerIdV2Query(
+  dataJsonDto: ProductFindManagerIdV2Dto,
 ): string {
   const olAppId = dataJsonDto.pe_app_id ?? 1;
   const olSystemClientId = dataJsonDto.pe_system_client_id;
@@ -14,7 +14,7 @@ export function ProductFindPdvIdV2Query(
   const olTypeBusiness = dataJsonDto.pe_type_business;
   const olProductId = dataJsonDto.pe_product_id;
 
-  const queryString = ` call sp_product_find_pdv_id_v2(
+  const queryString = ` call sp_product_find_manager_id_v2(
         ${olAppId},
         ${olSystemClientId},
         ${olStoreId},

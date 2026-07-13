@@ -1,7 +1,7 @@
-import { ProductFindPdvAllV2Dto } from '../dto/product-find-pdv-all-v2.dto';
+import { ProductFindManagerAllV2Dto } from '../dto/product-find-manager-all-v2.dto';
 
-export function ProductFindPdvAllV2Query(
-  dataJsonDto: ProductFindPdvAllV2Dto,
+export function ProductFindManagerAllV2Query(
+  dataJsonDto: ProductFindManagerAllV2Dto,
 ): string {
   const olAppId = dataJsonDto.pe_app_id ?? 1;
   const olSystemClientId = dataJsonDto.pe_system_client_id;
@@ -23,7 +23,7 @@ export function ProductFindPdvAllV2Query(
   const olColumnId = dataJsonDto.pe_column_id;
   const olOrderId = dataJsonDto.pe_order_id;
 
-  const queryString = ` call sp_product_find_pdv_all_v2(
+  const queryString = ` call sp_product_find_manager_all_v2(
         ${olAppId},
         ${olSystemClientId},
         ${olStoreId},
@@ -44,7 +44,7 @@ export function ProductFindPdvAllV2Query(
         ${olOrderId}
       ) `;
 
-  // console.log('Query ProductFindPdvAllV2Query: ', queryString);
-  
+  // console.log('Query ProductFindManagerAllV2Query: ', queryString);
+
   return queryString;
 }
