@@ -21,7 +21,7 @@ export type SpResultRecordCreateType = [SpDefaultFeedback[], SpOperationResult];
 export type SpResultRecordUpdateType = [SpDefaultFeedback[], SpOperationResult];
 export type SpResultRecordDeleteType = [SpDefaultFeedback[], SpOperationResult];
 
-export interface TblProductFindPdvAll extends RowDataPacket {
+export interface TblProductFindManagerAll extends RowDataPacket {
   ID_PRODUTO: number;
   SKU: number;
   PRODUTO: string;
@@ -57,7 +57,7 @@ export interface TblProductFindPdvAll extends RowDataPacket {
   DATADOCADASTRO: string;
 }
 
-export interface TblProductFindPdvSearch extends RowDataPacket {
+export interface TblProductFindManagerSearch extends RowDataPacket {
   ID_PRODUTO: number;
   SKU: number;
   PRODUTO: string;
@@ -94,7 +94,7 @@ export interface TblProductFindPdvSearch extends RowDataPacket {
   DATADOCADASTRO: string;
 }
 
-export interface TblProductFindPdvId extends RowDataPacket {
+export interface TblProductFindManagerId extends RowDataPacket {
   ID_PRODUTO: number;
   SKU: number;
   PRODUTO: string;
@@ -170,20 +170,20 @@ export interface TblRelatedProducts extends RowDataPacket {
   LANCAMENTO: number;
 }
 
-export type SpResultProductFindPdvAllData = [
-  TblProductFindPdvAll[],
+export type SpResultProductFindManagerAllData = [
+  TblProductFindManagerAll[],
   SpDefaultFeedback[],
   SpOperationResult,
 ];
 
-export type SpResultProductFindPdvSearchData = [
-  TblProductFindPdvSearch[],
+export type SpResultProductFindManagerSearchData = [
+  TblProductFindManagerSearch[],
   SpDefaultFeedback[],
   SpOperationResult,
 ];
 
-export type SpResultProductFindPdvIdData = [
-  TblProductFindPdvId[],
+export type SpResultProductFindManagerIdData = [
+  TblProductFindManagerId[],
   SpDefaultFeedback[],
   TblRelatedCategories[],
   TblRelatedProducts[],
