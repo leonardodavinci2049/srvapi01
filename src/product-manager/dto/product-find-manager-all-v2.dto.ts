@@ -92,18 +92,23 @@ Sample JSON for testing in body endpoint:
   "pe_organization_id": "ORG001",
   "pe_user_id": "USER001",
   "pe_user_name": "John Doe",
-  "pe_user_role": "admin",
+  "pe_user_role": "saller",
   "pe_person_id": 29014,
-  "pe_search": "search term",
-  "pe_taxonomy_id": 10,
-  "pe_type_id": 20,
-  "pe_brand_id": 30,
-  "pe_flag_stock": 1,
-  "pe_flag_service": 0,     
-  "pe_records_quantity": 100,
-  "pe_page_id": 1,
+
+
+  "pe_search": "54219",
+
+  "pe_taxonomy_id":0,
+  "pe_type_id": 0,
+  "pe_brand_id": 0,
+
+  "pe_flag_stock": 0,
+  "pe_flag_service": 0,
+
+  "pe_records_quantity": 2,
+  "pe_page_id": 0,
   "pe_column_id": 1,
-  "pe_order_id": 1
+  "pe_order_id": 2
   }
 
 */
