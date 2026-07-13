@@ -38,6 +38,7 @@ import { ProductWebModule } from 'src/product-web/product-web.module';
 import { TaxonomyWebModule } from 'src/taxonomy-web/taxonomy-web.module';
 import { OrderB2bModule } from 'src/order-b2b/order-b2b.module';
 import { PhysicalProductModule } from 'src/physical_product/physical_product.module';
+import { ProductManagerModule } from 'src/product-manager/product-manager.module';
 
 @Module({
   imports: [
@@ -52,6 +53,7 @@ import { PhysicalProductModule } from 'src/physical_product/physical_product.mod
 
     ProductModule, // Importando o módulo de produtos
     ProductPdvModule, // Importando o módulo de produtos para PDV
+    ProductManagerModule,
     ProductBaseModule,
     ProductInlineModule,
     ProductUpdateModule,
