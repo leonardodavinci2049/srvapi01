@@ -45,6 +45,6 @@ export function ProductFindPdvAllV2Query(
       ) `;
 
   // console.log('Query ProductFindPdvAllV2Query: ', queryString);
-  
+
   return queryString;
 }

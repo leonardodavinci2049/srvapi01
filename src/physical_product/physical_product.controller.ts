@@ -86,7 +86,6 @@ export class PhysicalProductController {
     );
   }
 
-
   @UseGuards(AuthGuard)
   @Post('v2/physical-product-warranty-mov')
   PhysicalProductWarrantyMovV2(
@@ -106,7 +105,4 @@ export class PhysicalProductController {
       dataJsonDto,
     );
   }
-
-  
-
 }

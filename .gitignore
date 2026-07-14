@@ -76,4 +76,5 @@ ecosystem.config.js
 /scripts
 /docs
 API-documentation/
-database-objects/
+/stored-procedures
+

@@ -29,7 +29,7 @@ export function PhysicalProductWarrantySearchV2Query(
         ${olLimit}
       ) `;
 
- // console.log('PhysicalProductWarrantySearchV2Query: ', queryString);
+  // console.log('PhysicalProductWarrantySearchV2Query: ', queryString);
 
   return queryString;
 }
