@@ -57,7 +57,7 @@ export function CostumerCreateQuery(dataJsonDto: CostumerCreateDto): string {
         '${olNotes}'
       ) `;
 
-  console.log('queryString', queryString);
+  // console.log('queryString', queryString);
 
   return queryString;
 }
