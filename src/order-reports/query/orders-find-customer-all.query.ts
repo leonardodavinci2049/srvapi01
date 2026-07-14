@@ -47,8 +47,7 @@ export function OrdersFindCustomerAllQuery(
 
       ) `;
 
- // console.log('queryString', queryString);
-
+  // console.log('queryString', queryString);
 
   return queryString;
 }

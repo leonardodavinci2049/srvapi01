@@ -190,7 +190,7 @@ export class PhysicalProductService {
     }
   }
 
-   async taskPhysicalProductWarrantySearchV2(
+  async taskPhysicalProductWarrantySearchV2(
     dataJsonDto: PhysicalProductWarrantySearchV2Dto,
   ) {
     try {
@@ -211,7 +211,4 @@ export class PhysicalProductService {
       return new ResultModel(100404, errorMessage, 0, []);
     }
   }
-  
-
-
 }

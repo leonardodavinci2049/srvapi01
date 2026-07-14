@@ -310,8 +310,6 @@ export interface tblPhysicalProductWarrantySearchV2 extends RowDataPacket {
   STATUS_GARANTIA?: string;
 }
 
-
-
 export type SpResultRecordCreateType = [SpDefaultFeedback[], SpOperationResult];
 export type SpResultRecordUpdateType = [SpDefaultFeedback[], SpOperationResult];
 export type SpResultRecordDeleteType = [SpDefaultFeedback[], SpOperationResult];
