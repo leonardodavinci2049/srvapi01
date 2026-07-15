@@ -38,6 +38,10 @@ export interface TblProductFindManagerAll extends RowDataPacket {
   PATH_IMAGEM: string;
   PATH_PAGE: string;
   SLUG: string;
+  QT_VENDAS_MES: number;
+  QT_VENDAS_3MESES: number;
+  QT_VENDAS_ANO: number;
+  QT_VENDAS_ALL: number;
   ESTOQUE_LOJA: number;
   VL_ATACADO: string;
   VL_CORPORATIVO: string;
@@ -46,7 +50,7 @@ export interface TblProductFindManagerAll extends RowDataPacket {
   OURO: string;
   PRATA: string;
   BRONZE: string;
-  DECONTO: string;
+  DESCONTO: string;
   TEMPODEGARANTIA_MES: number;
   TEMPODEGARANTIA_DIA: number;
   DESCRICAO_VENDA: string | null;
@@ -84,7 +88,8 @@ export interface TblProductFindManagerSearch extends RowDataPacket {
   OURO: string;
   PRATA: string;
   BRONZE: string;
-  DECONTO: string;
+  DESCONTO: string;
+
   TEMPODEGARANTIA_MES: number;
   TEMPODEGARANTIA_DIA: number;
   DESCRICAO_VENDA: string | null;
@@ -117,6 +122,10 @@ export interface TblProductFindManagerId extends RowDataPacket {
   PRATA: string;
   BRONZE: string;
   ESTOQUE_LOJA: number;
+  QT_VENDAS_MES: number;
+  QT_VENDAS_3MESES: number;
+  QT_VENDAS_ANO: number;
+  QT_VENDAS_ALL: number;
   TEMPODEGARANTIA_DIA: number;
   PESO_GR: number;
   COMPRIMENTO_MM: number;

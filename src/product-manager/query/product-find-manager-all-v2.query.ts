@@ -37,6 +37,10 @@ export function ProductFindManagerAllV2Query(
   const olFlagConsignment = dataJsonDto.pe_flag_consignment;
   const olFlagDiscontinued = dataJsonDto.pe_flag_discontinued;
   const olFlagNoInventory = dataJsonDto.pe_flag_no_inventory;
+  //pe_flag_Website_Off
+  const olFlagWebsiteOff = dataJsonDto.pe_flag_Website_Off; 
+//pe_flag_Premium
+  const olFlagPremium = dataJsonDto.pe_flag_Premium;
   const olFlagStock = dataJsonDto.pe_flag_stock;
   const olFlagService = dataJsonDto.pe_flag_service;
   const olFlagRegistration = dataJsonDto.pe_flag_registration;
@@ -81,6 +85,8 @@ export function ProductFindManagerAllV2Query(
         ${olFlagConsignment},
         ${olFlagDiscontinued},
         ${olFlagNoInventory},
+        ${olFlagWebsiteOff},
+        ${olFlagPremium},
         ${olFlagStock},
         ${olFlagService},
         ${olFlagRegistration},

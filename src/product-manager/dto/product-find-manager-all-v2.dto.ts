@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsString, IsNotEmpty, IsNumber } from 'class-validator';
+import { IsString, IsNotEmpty, IsNumber, IsOptional } from 'class-validator';
 
 export class ProductFindManagerAllV2Dto {
   @ApiProperty({ description: 'App ID' })
@@ -141,6 +141,16 @@ export class ProductFindManagerAllV2Dto {
   @IsNumber()
   pe_flag_no_inventory!: number;
 
+  @ApiProperty({ description: 'No website off flag' })
+  @IsNumber()
+  @IsOptional()
+  pe_flag_Website_Off!: number;
+
+  @ApiProperty({ description: 'No premium flag' })
+  @IsNumber()
+  @IsOptional()
+  pe_flag_Premium!: number;
+
   @ApiProperty({ description: 'Stock flag' })
   @IsNumber()
   pe_flag_stock!: number;
@@ -215,6 +225,8 @@ Sample JSON for testing in body endpoint:
   "pe_flag_consignment": 0,
   "pe_flag_discontinued": 0,
   "pe_flag_no_inventory": 0,
+  "pe_flag_Website_Off": 0,
+  "pe_flag_Premium": 0,
   "pe_flag_stock": 0,
   "pe_flag_service": 0,
   "pe_flag_registration": 0,
