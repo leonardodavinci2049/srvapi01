@@ -42,6 +42,7 @@ export interface TblProductFindManagerAll extends RowDataPacket {
   QT_VENDAS_3MESES: number;
   QT_VENDAS_ANO: number;
   QT_VENDAS_ALL: number;
+  DATA_ULT_VENDA: string;
   ESTOQUE_LOJA: number;
   VL_ATACADO: string;
   VL_CORPORATIVO: string;
@@ -126,6 +127,7 @@ export interface TblProductFindManagerId extends RowDataPacket {
   QT_VENDAS_3MESES: number;
   QT_VENDAS_ANO: number;
   QT_VENDAS_ALL: number;
+  DATA_ULT_VENDA: string;
   TEMPODEGARANTIA_DIA: number;
   PESO_GR: number;
   COMPRIMENTO_MM: number;
