@@ -12,9 +12,10 @@ export function ProductFindManagerAllV2Query(
   const olUserRole = dataJsonDto.pe_user_role;
   const olPersonId = dataJsonDto.pe_person_id;
   const olSearch = dataJsonDto.pe_search ? dataJsonDto.pe_search : '';
-  const olEan = dataJsonDto.pe_ean;
-  const olReference = dataJsonDto.pe_reference;
-  const olModel = dataJsonDto.pe_model;
+
+  const olEan = dataJsonDto.pe_ean? dataJsonDto.pe_ean : '';
+  const olReference = dataJsonDto.pe_reference? dataJsonDto.pe_reference : '';
+  const olModel = dataJsonDto.pe_model? dataJsonDto.pe_model : '';
 
   const olTaxonomyId = dataJsonDto.pe_taxonomy_id;
   const olTypeId = dataJsonDto.pe_type_id;
@@ -98,7 +99,7 @@ export function ProductFindManagerAllV2Query(
         ${olOrderId}
       ) `;
 
-  // console.log('Query ProductFindManagerAllV2Query: ', queryString);
+ // console.log('Query ProductFindManagerAllV2Query: ', queryString);
 
   return queryString;
 }
