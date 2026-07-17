@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsString, IsNotEmpty, IsNumber, IsOptional } from 'class-validator';
+import { IsString, IsNotEmpty, IsNumber } from 'class-validator';
 
 export class ProductFindManagerAllV2Dto {
   @ApiProperty({ description: 'App ID' })
@@ -49,14 +49,6 @@ export class ProductFindManagerAllV2Dto {
   @IsString()
   pe_ean!: string;
 
-  @ApiProperty({ description: 'Reference', maxLength: 200 })
-  @IsString()
-  pe_reference!: string;
-
-  @ApiProperty({ description: 'Model', maxLength: 200 })
-  @IsString()
-  pe_model!: string;
-
   @ApiProperty({ description: 'Taxonomy ID' })
   @IsNumber()
   pe_taxonomy_id!: number;
@@ -77,29 +69,19 @@ export class ProductFindManagerAllV2Dto {
   @IsNumber()
   pe_physical_id!: number;
 
-  @ApiProperty({ description: 'Best sellers flag' })
+  @ApiProperty({
+    description:
+      'Sales list: 0 all, 1 best sellers, 2 lowest selling, 3 stalled',
+  })
   @IsNumber()
-  pe_flag_best_sellers!: number;
+  pe_flag_sales_list!: number;
 
-  @ApiProperty({ description: 'Lowest selling flag' })
+  @ApiProperty({
+    description:
+      'Stock list: 0 all, 1 in stock, 2 stock up to 2, 3 latest arrivals',
+  })
   @IsNumber()
-  pe_flag_lowest_selling!: number;
-
-  @ApiProperty({ description: 'Stalled product flag' })
-  @IsNumber()
-  pe_flag_stalled_product!: number;
-
-  @ApiProperty({ description: 'Latest arrivals flag' })
-  @IsNumber()
-  pe_flag_latest_arrivals!: number;
-
-  @ApiProperty({ description: 'Price less than one flag' })
-  @IsNumber()
-  pe_flag_price_less_than!: number;
-
-  @ApiProperty({ description: 'Low stock quantity' })
-  @IsNumber()
-  pe_flag_low_stock!: number;
+  pe_flag_stock_list!: number;
 
   @ApiProperty({ description: 'No image flag' })
   @IsNumber()
@@ -113,55 +95,37 @@ export class ProductFindManagerAllV2Dto {
   @IsNumber()
   pe_flag_no_sales_copy!: number;
 
-  @ApiProperty({ description: 'Promotion flag' })
+  @ApiProperty({
+    description: 'Advanced filter: 0 all, 1 wholesale price below 1, 2 service',
+  })
   @IsNumber()
-  pe_flag_promotion!: number;
-
-  @ApiProperty({ description: 'Featured flag' })
-  @IsNumber()
-  pe_flag_featured!: number;
-
-  @ApiProperty({ description: 'Imported flag' })
-  @IsNumber()
-  pe_flag_imported!: number;
+  pe_flag_advanced!: number;
 
   @ApiProperty({ description: 'Inactive flag' })
   @IsNumber()
   pe_flag_inactive!: number;
 
-  @ApiProperty({ description: 'Consignment flag' })
+  @ApiProperty({ description: 'Imported flag' })
   @IsNumber()
-  pe_flag_consignment!: number;
+  pe_flag_imported!: number;
 
-  @ApiProperty({ description: 'Discontinued flag' })
+  @ApiProperty({ description: 'Premium flag: 0 all, 1 premium' })
   @IsNumber()
-  pe_flag_discontinued!: number;
+  pe_flag_premium!: number;
 
-  @ApiProperty({ description: 'No inventory control flag' })
+  @ApiProperty({
+    description:
+      'Various lists: 0 all, 1 promotion, 2 featured, 3 consignment, 4 discontinued, 5 no inventory control, 6 website off',
+  })
   @IsNumber()
-  pe_flag_no_inventory!: number;
+  pe_flag_various_lists!: number;
 
-  @ApiProperty({ description: 'No website off flag' })
+  @ApiProperty({
+    description:
+      'Operation list: 0 ignore period, 1 filter by registration date',
+  })
   @IsNumber()
-  @IsOptional()
-  pe_flag_Website_Off!: number;
-
-  @ApiProperty({ description: 'No premium flag' })
-  @IsNumber()
-  @IsOptional()
-  pe_flag_Premium!: number;
-
-  @ApiProperty({ description: 'Stock flag' })
-  @IsNumber()
-  pe_flag_stock!: number;
-
-  @ApiProperty({ description: 'Service flag' })
-  @IsNumber()
-  pe_flag_service!: number;
-
-  @ApiProperty({ description: 'Registration period flag' })
-  @IsNumber()
-  pe_flag_registration!: number;
+  pe_flag_operation_list!: number;
 
   @ApiProperty({ description: 'Registration start date', maxLength: 300 })
   @IsString()
@@ -202,34 +166,22 @@ Sample JSON for testing in body endpoint:
   "pe_person_id": 29014,
   "pe_search": "",
   "pe_ean": "",
-  "pe_reference": "",
-  "pe_model": "",
   "pe_taxonomy_id": 0,
   "pe_type_id": 0,
   "pe_brand_id": 0,
   "pe_supplier_id": 0,
   "pe_physical_id": 0,
-  "pe_flag_best_sellers": 0,
-  "pe_flag_lowest_selling": 0,
-  "pe_flag_stalled_product": 0,
-  "pe_flag_latest_arrivals": 0,
-  "pe_flag_price_less_than": 0,
-  "pe_flag_low_stock": 0,
+  "pe_flag_sales_list": 0,
+  "pe_flag_stock_list": 0,
   "pe_flag_no_image": 0,
   "pe_flag_no_description": 0,
   "pe_flag_no_sales_copy": 0,
-  "pe_flag_promotion": 0,
-  "pe_flag_featured": 0,
-  "pe_flag_imported": 0,
+  "pe_flag_advanced": 0,
   "pe_flag_inactive": 0,
-  "pe_flag_consignment": 0,
-  "pe_flag_discontinued": 0,
-  "pe_flag_no_inventory": 0,
-  "pe_flag_Website_Off": 0,
-  "pe_flag_Premium": 0,
-  "pe_flag_stock": 0,
-  "pe_flag_service": 0,
-  "pe_flag_registration": 0,
+  "pe_flag_imported": 0,
+  "pe_flag_premium": 0,
+  "pe_flag_various_lists": 0,
+  "pe_flag_operation_list": 0,
   "pe_start_date": "",
   "pe_end_date": "",
   "pe_records_quantity": 2,

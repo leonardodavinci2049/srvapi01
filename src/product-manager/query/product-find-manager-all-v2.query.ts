@@ -13,38 +13,24 @@ export function ProductFindManagerAllV2Query(
   const olPersonId = dataJsonDto.pe_person_id;
   const olSearch = dataJsonDto.pe_search ? dataJsonDto.pe_search : '';
 
-  const olEan = dataJsonDto.pe_ean? dataJsonDto.pe_ean : '';
-  const olReference = dataJsonDto.pe_reference? dataJsonDto.pe_reference : '';
-  const olModel = dataJsonDto.pe_model? dataJsonDto.pe_model : '';
+  const olEan = dataJsonDto.pe_ean ? dataJsonDto.pe_ean : '';
 
   const olTaxonomyId = dataJsonDto.pe_taxonomy_id;
   const olTypeId = dataJsonDto.pe_type_id;
   const olBrandId = dataJsonDto.pe_brand_id;
   const olSupplierId = dataJsonDto.pe_supplier_id;
   const olPhysicalId = dataJsonDto.pe_physical_id;
-  const olFlagBestSellers = dataJsonDto.pe_flag_best_sellers;
-  const olFlagLowestSelling = dataJsonDto.pe_flag_lowest_selling;
-  const olFlagStalledProduct = dataJsonDto.pe_flag_stalled_product;
-  const olFlagLatestArrivals = dataJsonDto.pe_flag_latest_arrivals;
-  const olFlagPriceLessThan = dataJsonDto.pe_flag_price_less_than;
-  const olFlagLowStock = dataJsonDto.pe_flag_low_stock;
+  const olFlagSalesList = dataJsonDto.pe_flag_sales_list;
+  const olFlagStockList = dataJsonDto.pe_flag_stock_list;
   const olFlagNoImage = dataJsonDto.pe_flag_no_image;
   const olFlagNoDescription = dataJsonDto.pe_flag_no_description;
   const olFlagNoSalesCopy = dataJsonDto.pe_flag_no_sales_copy;
-  const olFlagPromotion = dataJsonDto.pe_flag_promotion;
-  const olFlagFeatured = dataJsonDto.pe_flag_featured;
-  const olFlagImported = dataJsonDto.pe_flag_imported;
+  const olFlagAdvanced = dataJsonDto.pe_flag_advanced;
   const olFlagInactive = dataJsonDto.pe_flag_inactive;
-  const olFlagConsignment = dataJsonDto.pe_flag_consignment;
-  const olFlagDiscontinued = dataJsonDto.pe_flag_discontinued;
-  const olFlagNoInventory = dataJsonDto.pe_flag_no_inventory;
-  //pe_flag_Website_Off
-  const olFlagWebsiteOff = dataJsonDto.pe_flag_Website_Off; 
-//pe_flag_Premium
-  const olFlagPremium = dataJsonDto.pe_flag_Premium;
-  const olFlagStock = dataJsonDto.pe_flag_stock;
-  const olFlagService = dataJsonDto.pe_flag_service;
-  const olFlagRegistration = dataJsonDto.pe_flag_registration;
+  const olFlagImported = dataJsonDto.pe_flag_imported;
+  const olFlagPremium = dataJsonDto.pe_flag_premium;
+  const olFlagVariousLists = dataJsonDto.pe_flag_various_lists;
+  const olFlagOperationList = dataJsonDto.pe_flag_operation_list;
   const olStartDate = dataJsonDto.pe_start_date;
   const olEndDate = dataJsonDto.pe_end_date;
   const olRecordsQuantity = dataJsonDto.pe_records_quantity;
@@ -59,38 +45,26 @@ export function ProductFindManagerAllV2Query(
         '${olOrganizationId}',
         '${olUserId}',
         '${olUserName}',
-        '${olUserRole}',	
+        '${olUserRole}',
         ${olPersonId},
         '${olSearch}',
         '${olEan}',
-        '${olReference}',
-        '${olModel}',
         ${olTaxonomyId},
         ${olTypeId},
         ${olBrandId},
         ${olSupplierId},
         ${olPhysicalId},
-        ${olFlagBestSellers},
-        ${olFlagLowestSelling},
-        ${olFlagStalledProduct},
-        ${olFlagLatestArrivals},
-        ${olFlagPriceLessThan},
-        ${olFlagLowStock},
+        ${olFlagSalesList},
+        ${olFlagStockList},
         ${olFlagNoImage},
         ${olFlagNoDescription},
         ${olFlagNoSalesCopy},
-        ${olFlagPromotion},
-        ${olFlagFeatured},
-        ${olFlagImported},
+        ${olFlagAdvanced},
         ${olFlagInactive},
-        ${olFlagConsignment},
-        ${olFlagDiscontinued},
-        ${olFlagNoInventory},
-        ${olFlagWebsiteOff},
+        ${olFlagImported},
         ${olFlagPremium},
-        ${olFlagStock},
-        ${olFlagService},
-        ${olFlagRegistration},
+        ${olFlagVariousLists},
+        ${olFlagOperationList},
         '${olStartDate}',
         '${olEndDate}',
         ${olRecordsQuantity},
@@ -98,8 +72,6 @@ export function ProductFindManagerAllV2Query(
         ${olColumnId},
         ${olOrderId}
       ) `;
-
- // console.log('Query ProductFindManagerAllV2Query: ', queryString);
 
   return queryString;
 }
