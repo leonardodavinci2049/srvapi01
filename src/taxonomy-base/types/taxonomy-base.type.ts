@@ -93,6 +93,35 @@ export interface TblTaxonomyRelProduto extends RowDataPacket {
   LEVEL?: number;
 }
 
+export interface TblTaxnomyProductManager extends RowDataPacket {
+  ID_PRODUTO: number;
+  SKU: number;
+  PRODUTO: string;
+  REF: string | null;
+  MODELO: string | null;
+  PATH_IMAGEM: string | null;
+  PATH_PAGE: string | null;
+  SLUG: string | null;
+  CATEGORIAS: string;
+  DATADOCADASTRO: string;
+}
+
+export interface TblTaxonomyFindMenuNanager extends RowDataPacket {
+  ID_TAXONOMY: number;
+  PARENT_ID: number;
+  TAXONOMIA: string;
+  PATH_IMAGEM: string | null;
+  SLUG: string | null;
+  LEVEL: number | null;
+  ORDEM: number;
+  INATIVO: number;
+  QTY_PRODUCTS: number;
+}
+
+export interface TblTaxonomyNanagerQuantity extends RowDataPacket {
+  QTY_TAXONOMIES: number;
+}
+
 export type SpResultRecordCreateType = [SpDefaultFeedback[], SpOperationResult];
 export type SpResultRecordUpdateType = [SpDefaultFeedback[], SpOperationResult];
 export type SpResultRecordDeleteType = [SpDefaultFeedback[], SpOperationResult];
@@ -121,6 +150,24 @@ export type SpResultTaxonomyRelProdutoV3Data = [
 
 export type SpResultTaxonomyWebMenuV3Data = [
   TblTaxonomyWebMenu[],
+  SpDefaultFeedback[],
+  SpOperationResult,
+];
+
+export type SpResultTaxnomyProductManagerV2Data = [
+  TblTaxnomyProductManager[],
+  SpDefaultFeedback[],
+  SpOperationResult,
+];
+
+export type SpResultTaxonomyFindMenuNanagerV3Data = [
+  TblTaxonomyFindMenuNanager[],
+  TblTaxonomyNanagerQuantity[],
+  SpDefaultFeedback[],
+  SpOperationResult,
+];
+
+export type SpResultTaxonomyRelCreateBulkV3Data = [
   SpDefaultFeedback[],
   SpOperationResult,
 ];

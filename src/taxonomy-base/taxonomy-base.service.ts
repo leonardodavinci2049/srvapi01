@@ -11,23 +11,32 @@ import { TaxonomyDeleteV3Dto } from './dto/taxonomy-delete-v3.dto';
 import { TaxonomyFindAllV3Dto } from './dto/taxonomy-find-all-v3.dto';
 import { TaxonomyFindIdV3Dto } from './dto/taxonomy-find-id-v3.dto';
 import { TaxonomyFindMenuV3Dto } from './dto/taxonomy-find-menu-v3.dto';
+import { SpTaxnomyProductManagerV2Dto } from './dto/sp-taxnomy-product-manager-v2.dto';
+import { SpTaxonomyFindMenuNanagerV3Dto } from './dto/sp-taxonomy-find-menu-nanager-v3.dto';
+import { SpTaxonomyRelCreateBulkV3Dto } from './dto/sp-taxonomy-rel-create-Bulk-v3.dto';
+import { TaxonomyUpdMetadataV3Dto } from './dto/taxonomy-upd-metadata-v3.dto';
 import { TaxonomyUpdateV3Dto } from './dto/taxonomy-update-v3.dto';
+import { SpTaxnomyProductManagerV2Query } from './query/sp-taxnomy-product-manager-v2.query';
+import { SpTaxonomyFindMenuNanagerV3Query } from './query/sp-taxonomy-find-menu-nanager-v3.query';
+import { SpTaxonomyRelCreateBulkV3Query } from './query/sp-taxonomy-rel-create-Bulk-v3.query';
 import { TaxonomyCreateV3Query } from './query/taxonomy-create-v3.query';
-import {
-  SpResultRecordCreateType,
-  SpResultRecordDeleteType,
-  SpResultTaxonomyFindAllV3Data,
-  SpResultTaxonomyFindIdV3Data,
-  SpResultTaxonomyFindMenuV3Data,
-  SpResultTaxonomyWebMenuV3Data,
-} from './types/taxonomy-base.type';
+import { TaxonomyDeleteV3Query } from './query/taxonomy-delete-v3.query';
 import { TaxonomyFindAllV3Query } from './query/taxonomy-find-all-v3.query';
 import { TaxonomyFindIdV3Query } from './query/taxonomy-find-id-v3.query';
 import { TaxonomyFindMenuV3Query } from './query/taxonomy-find-menu-v3.query';
-import { TaxonomyUpdateV3Query } from './query/taxonomy-update-v3.query';
-import { TaxonomyDeleteV3Query } from './query/taxonomy-delete-v3.query';
-import { TaxonomyUpdMetadataV3Dto } from './dto/taxonomy-upd-metadata-v3.dto';
 import { TaxonomyUpdMetadataV3Query } from './query/taxonomy-upd-metadata-v3.query';
+import { TaxonomyUpdateV3Query } from './query/taxonomy-update-v3.query';
+import {
+  SpResultRecordCreateType,
+  SpResultRecordDeleteType,
+  SpResultTaxnomyProductManagerV2Data,
+  SpResultTaxonomyFindAllV3Data,
+  SpResultTaxonomyFindIdV3Data,
+  SpResultTaxonomyFindMenuNanagerV3Data,
+  SpResultTaxonomyFindMenuV3Data,
+  SpResultTaxonomyRelCreateBulkV3Data,
+  SpResultTaxonomyWebMenuV3Data,
+} from './types/taxonomy-base.type';
 
 @Injectable()
 export class TaxonomyBaseService {
@@ -165,6 +174,67 @@ export class TaxonomyBaseService {
       return processProcedureResultMutation(
         resultData,
         'Taxonomy delete failed',
+      );
+    } catch (err) {
+      const errorMessage =
+        err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
+      return new ResultModel(100404, errorMessage, 0, []);
+    }
+  }
+
+  async taskTaxnomyProductManagerV2(dataJsonDto: SpTaxnomyProductManagerV2Dto) {
+    try {
+      const queryString = SpTaxnomyProductManagerV2Query(dataJsonDto);
+
+      const resultData = (await this.dbService.selectExecute(
+        queryString,
+      )) as unknown as SpResultTaxnomyProductManagerV2Data;
+
+      return processProcedureResultMultiQuery(
+        resultData,
+        ['Taxnomy product manager'],
+        'Taxnomy product manager not found',
+      );
+    } catch (err) {
+      const errorMessage =
+        err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
+      return new ResultModel(100404, errorMessage, 0, []);
+    }
+  }
+
+  async taskTaxonomyFindMenuNanagerV3(
+    dataJsonDto: SpTaxonomyFindMenuNanagerV3Dto,
+  ) {
+    try {
+      const queryString = SpTaxonomyFindMenuNanagerV3Query(dataJsonDto);
+
+      const resultData = (await this.dbService.selectExecute(
+        queryString,
+      )) as unknown as SpResultTaxonomyFindMenuNanagerV3Data;
+
+      return processProcedureResultMultiQuery(
+        resultData,
+        ['Taxonomy find menu nanager', 'Taxonomy quantity'],
+        'Taxonomy find menu nanager not found',
+      );
+    } catch (err) {
+      const errorMessage =
+        err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
+      return new ResultModel(100404, errorMessage, 0, []);
+    }
+  }
+
+  async taskTaxonomyRelCreateBulkV3(dataJsonDto: SpTaxonomyRelCreateBulkV3Dto) {
+    try {
+      const queryString = SpTaxonomyRelCreateBulkV3Query(dataJsonDto);
+
+      const resultData = (await this.dbService.selectExecute(
+        queryString,
+      )) as unknown as SpResultTaxonomyRelCreateBulkV3Data;
+
+      return processProcedureResultMutation(
+        resultData,
+        'Taxonomy relationship bulk create failed',
       );
     } catch (err) {
       const errorMessage =
