@@ -1,7 +1,16 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsString, IsNotEmpty, IsNumber } from 'class-validator';
+import {
+  IsNotEmpty,
+  IsNumber,
+  IsOptional,
+  IsString,
+  Max,
+  MaxLength,
+  Min,
+  MinLength,
+} from 'class-validator';
 
-export class TaxonomyFindMenuV3Dto {
+export class SpTaxonomyRelCreateBulkV3Dto {
   @ApiProperty({ description: 'App ID' })
   @IsNumber()
   @IsNotEmpty()
@@ -23,8 +32,8 @@ export class TaxonomyFindMenuV3Dto {
   pe_organization_id!: string;
 
   @ApiProperty({ description: 'User ID', maxLength: 200 })
-  @IsNotEmpty()
   @IsString()
+  @IsNotEmpty()
   pe_user_id!: string;
 
   @ApiProperty({ description: 'User Name', maxLength: 200 })
@@ -41,19 +50,32 @@ export class TaxonomyFindMenuV3Dto {
   @IsNumber()
   pe_person_id!: number;
 
-  @ApiProperty({ description: 'Taxonomy Type ID' })
+  @ApiProperty({ description: 'Taxonomy ID' })
   @IsNumber()
-  @IsNotEmpty()
-  pe_type_id!: number;
+  @Min(1)
+  pe_id_taxonomy!: number;
 
-  @ApiProperty({ description: 'Parent Taxonomy ID' })
+  @ApiProperty({
+    description: 'Product search term',
+    minLength: 3,
+    maxLength: 200,
+  })
+  @IsString()
+  @MinLength(3)
+  @MaxLength(200)
+  pe_filter_keyword!: string;
+
+  @ApiProperty({ description: 'Taxonomy relationship level', required: false })
   @IsNumber()
-  @IsNotEmpty()
-  pe_parent_id!: number;
+  @IsOptional()
+  @Min(0)
+  @Max(32767)
+  pe_level?: number;
 }
 
 /*
 Sample JSON for testing in body endpoint:
+
 {
   "pe_app_id": 1,
   "pe_system_client_id": 1,
@@ -63,9 +85,8 @@ Sample JSON for testing in body endpoint:
   "pe_user_name": "John Doe",
   "pe_user_role": "saller",
   "pe_person_id": 29014,
-  "pe_type_id": 1,
-  "pe_parent_id": 0
-
+  "pe_id_taxonomy": 187,
+  "pe_filter_keyword": "HD SATA SSD",
+  "pe_level": 1
 }
-
 */
