@@ -12,12 +12,12 @@ import { TaxonomyFindAllV3Dto } from './dto/taxonomy-find-all-v3.dto';
 import { TaxonomyFindIdV3Dto } from './dto/taxonomy-find-id-v3.dto';
 import { TaxonomyFindMenuV3Dto } from './dto/taxonomy-find-menu-v3.dto';
 import { SpTaxonomyProductManagerV2Dto } from './dto/sp-taxonomy-product-manager-v2.dto';
-import { SpTaxonomyFindMenuNanagerV3Dto } from './dto/sp-taxonomy-find-menu-nanager-v3.dto';
+import { SpTaxonomyFindMenuManagerV3Dto } from './dto/sp-taxonomy-find-menu-manager-v3.dto';
 import { SpTaxonomyRelCreateBulkV3Dto } from './dto/sp-taxonomy-rel-create-Bulk-v3.dto';
 import { TaxonomyUpdMetadataV3Dto } from './dto/taxonomy-upd-metadata-v3.dto';
 import { TaxonomyUpdateV3Dto } from './dto/taxonomy-update-v3.dto';
 
-import { SpTaxonomyFindMenuNanagerV3Query } from './query/sp-taxonomy-find-menu-nanager-v3.query';
+import { SpTaxonomyFindMenuManagerV3Query } from './query/sp-taxonomy-find-menu-manager-v3.query';
 import { SpTaxonomyRelCreateBulkV3Query } from './query/sp-taxonomy-rel-create-Bulk-v3.query';
 import { TaxonomyCreateV3Query } from './query/taxonomy-create-v3.query';
 import { TaxonomyDeleteV3Query } from './query/taxonomy-delete-v3.query';
@@ -203,11 +203,11 @@ export class TaxonomyBaseService {
     }
   }
 
-  async taskTaxonomyFindMenuNanagerV3(
-    dataJsonDto: SpTaxonomyFindMenuNanagerV3Dto,
+  async taskTaxonomyFindMenuManagerV3(
+    dataJsonDto: SpTaxonomyFindMenuManagerV3Dto,
   ) {
     try {
-      const queryString = SpTaxonomyFindMenuNanagerV3Query(dataJsonDto);
+      const queryString = SpTaxonomyFindMenuManagerV3Query(dataJsonDto);
 
       console.log('Query TaxonomyFindMenuV3Query: ', queryString);
 
