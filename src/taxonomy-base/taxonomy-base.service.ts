@@ -208,7 +208,9 @@ export class TaxonomyBaseService {
   ) {
     try {
       const queryString = SpTaxonomyFindMenuNanagerV3Query(dataJsonDto);
-  console.log('Query TaxonomyFindMenuV3Query: ', queryString);
+
+      console.log('Query TaxonomyFindMenuV3Query: ', queryString);
+
       const resultData = (await this.dbService.selectExecute(
         queryString,
       )) as unknown as SpResultTaxonomyFindMenuManagerV3Data;
