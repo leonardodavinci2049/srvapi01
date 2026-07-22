@@ -11,12 +11,12 @@ import { TaxonomyDeleteV3Dto } from './dto/taxonomy-delete-v3.dto';
 import { TaxonomyFindAllV3Dto } from './dto/taxonomy-find-all-v3.dto';
 import { TaxonomyFindIdV3Dto } from './dto/taxonomy-find-id-v3.dto';
 import { TaxonomyFindMenuV3Dto } from './dto/taxonomy-find-menu-v3.dto';
-import { SpTaxnomyProductManagerV2Dto } from './dto/sp-taxnomy-product-manager-v2.dto';
+import { SpTaxonomyProductManagerV2Dto } from './dto/sp-taxonomy-product-manager-v2.dto';
 import { SpTaxonomyFindMenuNanagerV3Dto } from './dto/sp-taxonomy-find-menu-nanager-v3.dto';
 import { SpTaxonomyRelCreateBulkV3Dto } from './dto/sp-taxonomy-rel-create-Bulk-v3.dto';
 import { TaxonomyUpdMetadataV3Dto } from './dto/taxonomy-upd-metadata-v3.dto';
 import { TaxonomyUpdateV3Dto } from './dto/taxonomy-update-v3.dto';
-import { SpTaxnomyProductManagerV2Query } from './query/sp-taxnomy-product-manager-v2.query';
+
 import { SpTaxonomyFindMenuNanagerV3Query } from './query/sp-taxonomy-find-menu-nanager-v3.query';
 import { SpTaxonomyRelCreateBulkV3Query } from './query/sp-taxonomy-rel-create-Bulk-v3.query';
 import { TaxonomyCreateV3Query } from './query/taxonomy-create-v3.query';
@@ -29,14 +29,15 @@ import { TaxonomyUpdateV3Query } from './query/taxonomy-update-v3.query';
 import {
   SpResultRecordCreateType,
   SpResultRecordDeleteType,
-  SpResultTaxnomyProductManagerV2Data,
+  SpResultTaxonomyProductManagerV2Data,
   SpResultTaxonomyFindAllV3Data,
   SpResultTaxonomyFindIdV3Data,
-  SpResultTaxonomyFindMenuNanagerV3Data,
+  SpResultTaxonomyFindMenuManagerV3Data,
   SpResultTaxonomyFindMenuV3Data,
   SpResultTaxonomyRelCreateBulkV3Data,
   SpResultTaxonomyWebMenuV3Data,
 } from './types/taxonomy-base.type';
+import { SpTaxonomyProductManagerV2Query } from './query/sp-taxonomy-product-manager-v2.query';
 
 @Injectable()
 export class TaxonomyBaseService {
@@ -182,18 +183,18 @@ export class TaxonomyBaseService {
     }
   }
 
-  async taskTaxnomyProductManagerV2(dataJsonDto: SpTaxnomyProductManagerV2Dto) {
+  async taskTaxonomyProductManagerV2(dataJsonDto: SpTaxonomyProductManagerV2Dto) {
     try {
-      const queryString = SpTaxnomyProductManagerV2Query(dataJsonDto);
+      const queryString = SpTaxonomyProductManagerV2Query(dataJsonDto);
 
       const resultData = (await this.dbService.selectExecute(
         queryString,
-      )) as unknown as SpResultTaxnomyProductManagerV2Data;
+      )) as unknown as SpResultTaxonomyProductManagerV2Data;
 
       return processProcedureResultMultiQuery(
         resultData,
-        ['Taxnomy product manager'],
-        'Taxnomy product manager not found',
+        ['Taxonomy product manager'],
+        'Taxonomy product manager not found',
       );
     } catch (err) {
       const errorMessage =
@@ -207,15 +208,15 @@ export class TaxonomyBaseService {
   ) {
     try {
       const queryString = SpTaxonomyFindMenuNanagerV3Query(dataJsonDto);
-
+  console.log('Query TaxonomyFindMenuV3Query: ', queryString);
       const resultData = (await this.dbService.selectExecute(
         queryString,
-      )) as unknown as SpResultTaxonomyFindMenuNanagerV3Data;
+      )) as unknown as SpResultTaxonomyFindMenuManagerV3Data;
 
       return processProcedureResultMultiQuery(
         resultData,
-        ['Taxonomy find menu nanager', 'Taxonomy quantity'],
-        'Taxonomy find menu nanager not found',
+        ['Taxonomy find menu manager', 'Taxonomy quantity'],
+        'Taxonomy find menu manager not found',
       );
     } catch (err) {
       const errorMessage =

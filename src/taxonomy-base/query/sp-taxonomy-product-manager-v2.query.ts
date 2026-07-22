@@ -1,11 +1,11 @@
 import { escape } from 'mysql2';
 
-import { SpTaxnomyProductManagerV2Dto } from '../dto/sp-taxnomy-product-manager-v2.dto';
+import { SpTaxonomyProductManagerV2Dto } from '../dto/sp-taxonomy-product-manager-v2.dto';
 
-export function SpTaxnomyProductManagerV2Query(
-  dataJsonDto: SpTaxnomyProductManagerV2Dto,
+export function SpTaxonomyProductManagerV2Query(
+  dataJsonDto: SpTaxonomyProductManagerV2Dto,
 ): string {
-  return `CALL sp_taxnomy_product_manager_v2(
+  return `CALL sp_taxonomy_product_manager_v2(
     ${escape(dataJsonDto.pe_app_id ?? 1)},
     ${escape(dataJsonDto.pe_system_client_id)},
     ${escape(dataJsonDto.pe_store_id)},

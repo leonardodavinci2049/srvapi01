@@ -9,7 +9,7 @@ import {
   Min,
 } from 'class-validator';
 
-export class SpTaxnomyProductManagerV2Dto {
+export class SpTaxonomyProductManagerV2Dto {
   @ApiProperty({ description: 'App ID' })
   @IsNumber()
   @IsNotEmpty()
