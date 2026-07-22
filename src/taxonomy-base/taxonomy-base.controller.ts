@@ -9,7 +9,7 @@ import { TaxonomyFindMenuV3Dto } from './dto/taxonomy-find-menu-v3.dto';
 import { TaxonomyUpdateV3Dto } from './dto/taxonomy-update-v3.dto';
 import { TaxonomyUpdMetadataV3Dto } from './dto/taxonomy-upd-metadata-v3.dto';
 import { SpTaxonomyProductManagerV2Dto } from './dto/sp-taxonomy-product-manager-v2.dto';
-import { SpTaxonomyFindMenuNanagerV3Dto } from './dto/sp-taxonomy-find-menu-nanager-v3.dto';
+import { SpTaxonomyFindMenuManagerV3Dto } from './dto/sp-taxonomy-find-menu-manager-v3.dto';
 import { SpTaxonomyRelCreateBulkV3Dto } from './dto/sp-taxonomy-rel-create-Bulk-v3.dto';
 
 @Controller('taxonomy-base')
@@ -74,17 +74,17 @@ export class TaxonomyBaseController {
   }
 
   @UseGuards(AuthGuard)
-  @Post('v2/taxonomy-product-manager')
+  @Post('v3/taxonomy-product-manager')
   taxonomyProductManagerV2(@Body() dataJsonDto: SpTaxonomyProductManagerV2Dto) {
     return this.taxonomyBaseService.taskTaxonomyProductManagerV2(dataJsonDto);
   }
 
   @UseGuards(AuthGuard)
-  @Post('v3/taxonomy-find-menu-nanager')
-  taxonomyFindMenuNanagerV3(
-    @Body() dataJsonDto: SpTaxonomyFindMenuNanagerV3Dto,
+  @Post('v3/taxonomy-find-menu-manager')
+  taxonomyFindMenuManagerV3(
+    @Body() dataJsonDto: SpTaxonomyFindMenuManagerV3Dto,
   ) {
-    return this.taxonomyBaseService.taskTaxonomyFindMenuNanagerV3(dataJsonDto);
+    return this.taxonomyBaseService.taskTaxonomyFindMenuManagerV3(dataJsonDto);
   }
 
   @UseGuards(AuthGuard)
