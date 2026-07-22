@@ -93,7 +93,7 @@ export interface TblTaxonomyRelProduto extends RowDataPacket {
   LEVEL?: number;
 }
 
-export interface TblTaxnomyProductManager extends RowDataPacket {
+export interface TblTaxonomyProductManager extends RowDataPacket {
   ID_PRODUTO: number;
   SKU: number;
   PRODUTO: string;
@@ -106,7 +106,7 @@ export interface TblTaxnomyProductManager extends RowDataPacket {
   DATADOCADASTRO: string;
 }
 
-export interface TblTaxonomyFindMenuNanager extends RowDataPacket {
+export interface TblTaxonomyFindMenuManager extends RowDataPacket {
   ID_TAXONOMY: number;
   PARENT_ID: number;
   TAXONOMIA: string;
@@ -118,7 +118,7 @@ export interface TblTaxonomyFindMenuNanager extends RowDataPacket {
   QTY_PRODUCTS: number;
 }
 
-export interface TblTaxonomyNanagerQuantity extends RowDataPacket {
+export interface TblTaxonomyManagerQuantity  extends RowDataPacket {
   QTY_TAXONOMIES: number;
 }
 
@@ -154,15 +154,15 @@ export type SpResultTaxonomyWebMenuV3Data = [
   SpOperationResult,
 ];
 
-export type SpResultTaxnomyProductManagerV2Data = [
-  TblTaxnomyProductManager[],
+export type SpResultTaxonomyProductManagerV2Data = [
+  TblTaxonomyProductManager[],
   SpDefaultFeedback[],
   SpOperationResult,
 ];
 
-export type SpResultTaxonomyFindMenuNanagerV3Data = [
-  TblTaxonomyFindMenuNanager[],
-  TblTaxonomyNanagerQuantity[],
+export type SpResultTaxonomyFindMenuManagerV3Data = [
+  TblTaxonomyFindMenuManager[],
+  TblTaxonomyManagerQuantity[],
   SpDefaultFeedback[],
   SpOperationResult,
 ];
