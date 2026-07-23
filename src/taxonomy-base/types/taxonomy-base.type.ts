@@ -118,7 +118,7 @@ export interface TblTaxonomyFindMenuManager extends RowDataPacket {
   QTY_PRODUCTS: number;
 }
 
-export interface TblTaxonomyManagerQuantity  extends RowDataPacket {
+export interface TblTaxonomyManagerQuantity extends RowDataPacket {
   QTY_TAXONOMIES: number;
 }
 
