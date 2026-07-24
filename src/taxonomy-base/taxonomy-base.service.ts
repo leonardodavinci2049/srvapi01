@@ -183,9 +183,13 @@ export class TaxonomyBaseService {
     }
   }
 
-  async taskTaxonomyProductManagerV2(dataJsonDto: SpTaxonomyProductManagerV2Dto) {
+  async taskTaxonomyProductManagerV2(
+    dataJsonDto: SpTaxonomyProductManagerV2Dto,
+  ) {
     try {
       const queryString = SpTaxonomyProductManagerV2Query(dataJsonDto);
+
+      // console.log('Query TaxonomyFindMenuV3Query: ', queryString);
 
       const resultData = (await this.dbService.selectExecute(
         queryString,
@@ -208,8 +212,6 @@ export class TaxonomyBaseService {
   ) {
     try {
       const queryString = SpTaxonomyFindMenuManagerV3Query(dataJsonDto);
-
-      console.log('Query TaxonomyFindMenuV3Query: ', queryString);
 
       const resultData = (await this.dbService.selectExecute(
         queryString,
