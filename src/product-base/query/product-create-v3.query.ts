@@ -80,5 +80,8 @@ export function ProductCreateV3Query(dataJsonDto: ProductCreateV3Dto): string {
         ${olFlagImportado},
         '${olInfo}'
       ) `;
+
+  console.log('ProductCreateV3Query: ', queryString);
+  
   return queryString;
 }
