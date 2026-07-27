@@ -1,13 +1,8 @@
 import { ApiProperty } from '@nestjs/swagger';
-import {
-  IsString,
-  IsNotEmpty,
-  IsNumber,
-  IsOptional,
-  Min,
-} from 'class-validator';
+import { IsString, IsNotEmpty, IsNumber, IsOptional } from 'class-validator';
 
 import { EndpointContextDto } from 'src/core/dto/endpoint-context.dto';
+import { IsGreaterThanZero } from 'src/core/validators/is-greater-than-zero';
 
 export class ProductCreateV3Dto extends EndpointContextDto {
   // Product
@@ -68,22 +63,19 @@ export class ProductCreateV3Dto extends EndpointContextDto {
   @IsNumber()
   pe_brand_id!: number;
 
-  @ApiProperty({ description: 'Product Family ID' })
+  @ApiProperty({ description: 'Product Family ID', required: false })
+  @IsOptional()
   @IsNumber()
-  @IsNotEmpty()
-  @Min(1)
   pe_family_id!: number;
 
-  @ApiProperty({ description: 'Product Group ID' })
+  @ApiProperty({ description: 'Product Group ID', required: false })
+  @IsOptional()
   @IsNumber()
-  @IsNotEmpty()
-  @Min(1)
   pe_group_id!: number;
 
-  @ApiProperty({ description: 'Product Subgroup ID' })
+  @ApiProperty({ description: 'Product Subgroup ID', required: false })
+  @IsOptional()
   @IsNumber()
-  @IsNotEmpty()
-  @Min(1)
   pe_subgroup_id!: number;
 
   // Characteristics
@@ -118,19 +110,22 @@ export class ProductCreateV3Dto extends EndpointContextDto {
   pe_warranty_period_days!: number;
 
   // Price
-  @ApiProperty({ description: 'Wholesale sale price', required: false })
-  @IsOptional()
+  @ApiProperty({ description: 'Wholesale sale price' })
   @IsNumber()
+  @IsNotEmpty()
+  @IsGreaterThanZero()
   pe_wholesale_price!: number;
 
-  @ApiProperty({ description: 'Retail sale price', required: false })
-  @IsOptional()
+  @ApiProperty({ description: 'Retail sale price' })
   @IsNumber()
+  @IsNotEmpty()
+  @IsGreaterThanZero()
   pe_retail_price!: number;
 
-  @ApiProperty({ description: 'Corporate price', required: false })
-  @IsOptional()
+  @ApiProperty({ description: 'Corporate price' })
   @IsNumber()
+  @IsNotEmpty()
+  @IsGreaterThanZero()
   pe_corporate_price!: number;
 
   // Stock
