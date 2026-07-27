@@ -1,5 +1,11 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsString, IsNotEmpty, IsNumber, IsOptional } from 'class-validator';
+import {
+  IsString,
+  IsNotEmpty,
+  IsNumber,
+  IsOptional,
+  Min,
+} from 'class-validator';
 
 import { EndpointContextDto } from 'src/core/dto/endpoint-context.dto';
 
@@ -62,6 +68,24 @@ export class ProductCreateV3Dto extends EndpointContextDto {
   @IsNumber()
   pe_brand_id!: number;
 
+  @ApiProperty({ description: 'Product Family ID' })
+  @IsNumber()
+  @IsNotEmpty()
+  @Min(1)
+  pe_family_id!: number;
+
+  @ApiProperty({ description: 'Product Group ID' })
+  @IsNumber()
+  @IsNotEmpty()
+  @Min(1)
+  pe_group_id!: number;
+
+  @ApiProperty({ description: 'Product Subgroup ID' })
+  @IsNumber()
+  @IsNotEmpty()
+  @Min(1)
+  pe_subgroup_id!: number;
+
   // Characteristics
   @ApiProperty({ description: 'Weight in grams', required: false })
   @IsOptional()
@@ -116,15 +140,35 @@ export class ProductCreateV3Dto extends EndpointContextDto {
   pe_stock_quantity!: number;
 
   // flags
-  @ApiProperty({ description: 'Website off flag (0/1)', required: false })
-  @IsOptional()
-  @IsNumber()
-  pe_website_off_flag!: number;
-
   @ApiProperty({ description: 'Imported flag (0/1)', required: false })
   @IsOptional()
   @IsNumber()
   pe_imported_flag!: number;
+
+  @ApiProperty({ description: 'Service flag (0/1)', required: false })
+  @IsOptional()
+  @IsNumber()
+  pe_service_flag!: number;
+
+  @ApiProperty({ description: 'Physical control flag (0/1)', required: false })
+  @IsOptional()
+  @IsNumber()
+  pe_physical_control_flag!: number;
+
+  @ApiProperty({ description: 'Stock control flag (0/1)', required: false })
+  @IsOptional()
+  @IsNumber()
+  pe_stock_control_flag!: number;
+
+  @ApiProperty({ description: 'Consigned flag (0/1)', required: false })
+  @IsOptional()
+  @IsNumber()
+  pe_consigned_flag!: number;
+
+  @ApiProperty({ description: 'Website off flag (0/1)', required: false })
+  @IsOptional()
+  @IsNumber()
+  pe_website_off_flag!: number;
 
   // notes
   @ApiProperty({ description: 'Additional info', required: false })
@@ -157,6 +201,9 @@ Sample JSON for testing in body endpoint:
 
   "pe_product_type_id": 1,
   "pe_brand_id": 1,
+  "pe_family_id": 187,
+  "pe_group_id": 1327,
+  "pe_subgroup_id": 3305,
 
   "pe_weight_gr": 500,
   "pe_length_mm": 200,
@@ -172,8 +219,12 @@ Sample JSON for testing in body endpoint:
 
   "pe_stock_quantity": 100,
 
-  "pe_website_off_flag": 0,
   "pe_imported_flag": 1,
+  "pe_service_flag": 0,
+  "pe_physical_control_flag": 1,
+  "pe_stock_control_flag": 1,
+  "pe_consigned_flag": 0,
+  "pe_website_off_flag": 0,
   
   "pe_additional_info": "This is a sample product for testing."
 }

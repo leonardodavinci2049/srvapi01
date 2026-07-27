@@ -23,6 +23,9 @@ export function ProductCreateV3Query(dataJsonDto: ProductCreateV3Dto): string {
   const olSupplierId = dataJsonDto.pe_supplier_id ?? 0;
   const olProductTypeId = dataJsonDto.pe_product_type_id ?? 0;
   const olBrandId = dataJsonDto.pe_brand_id ?? 0;
+  const olFamilyId = dataJsonDto.pe_family_id;
+  const olGroupId = dataJsonDto.pe_group_id;
+  const olSubgroupId = dataJsonDto.pe_subgroup_id;
 
   const olWeightGr = dataJsonDto.pe_weight_gr ?? 0;
   const olLengthMm = dataJsonDto.pe_length_mm ?? 0;
@@ -36,8 +39,12 @@ export function ProductCreateV3Query(dataJsonDto: ProductCreateV3Dto): string {
   const olCorporatePrice = dataJsonDto.pe_corporate_price ?? 0;
 
   const olStockQuantity = dataJsonDto.pe_stock_quantity ?? 0;
-  const olFlagWebsiteOff = dataJsonDto.pe_website_off_flag ?? 0;
   const olFlagImportado = dataJsonDto.pe_imported_flag ?? 0;
+  const olServiceFlag = dataJsonDto.pe_service_flag ?? 0;
+  const olPhysicalControlFlag = dataJsonDto.pe_physical_control_flag ?? 0;
+  const olStockControlFlag = dataJsonDto.pe_stock_control_flag ?? 0;
+  const olConsignedFlag = dataJsonDto.pe_consigned_flag ?? 0;
+  const olFlagWebsiteOff = dataJsonDto.pe_website_off_flag ?? 0;
   const olInfo = dataJsonDto.pe_additional_info ?? '';
 
   const queryString = ` call sp_product_create_v3(
@@ -63,6 +70,10 @@ export function ProductCreateV3Query(dataJsonDto: ProductCreateV3Dto): string {
         ${olProductTypeId},
         ${olBrandId},
 
+        ${olFamilyId},
+        ${olGroupId},
+        ${olSubgroupId},
+
         ${olWeightGr},
         ${olLengthMm},
         ${olWidthMm},
@@ -76,12 +87,16 @@ export function ProductCreateV3Query(dataJsonDto: ProductCreateV3Dto): string {
 
         ${olStockQuantity},
 
-        ${olFlagWebsiteOff},
         ${olFlagImportado},
+        ${olServiceFlag},
+        ${olPhysicalControlFlag},
+        ${olStockControlFlag},
+        ${olConsignedFlag},
+        ${olFlagWebsiteOff},
         '${olInfo}'
       ) `;
 
   console.log('ProductCreateV3Query: ', queryString);
-  
+
   return queryString;
 }
