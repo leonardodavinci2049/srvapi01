@@ -29,10 +29,9 @@ Sample JSON for testing in body endpoint:
   "pe_user_name": "John Doe",
   "pe_user_role": "saller",
   "pe_person_id": 29014,
-  "pe_search": "search term",
+  "pe_search": "",
   "pe_inactive": 0,
   "pe_limit": 10
-
 }
 
 */

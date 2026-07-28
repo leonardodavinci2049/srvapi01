@@ -20,7 +20,6 @@ export class BrandCreateV2Dto extends EndpointContextDto {
 
 /*
 Sample JSON for testing in body endpoint:
-
 {
   "pe_app_id": 1,
   "pe_system_client_id": 1,
@@ -34,6 +33,7 @@ Sample JSON for testing in body endpoint:
   "pe_image_path": "path/to/image",
   "pe_notes": "Some notes"
 }
+
 
 
 
