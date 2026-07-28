@@ -14,7 +14,7 @@ import { TypeFindIdV2Dto } from './dto/type-find-id-v2.dto';
 import { TypeUpdateV2Dto } from './dto/type-update-v2.dto';
 import { TypeDeleteV2Dto } from './dto/type-delete-v2.dto';
 import { TypeCreateV2Query } from './query/type-create-v2.query';
-import { processProcedureResultMutation } from 'src/core/procedure.result/process-procedure-result.mutation';
+import { processProcedureResultMutation } from 'src/core/process-result/process-procedure-result.mutation';
 import {
   SpResultPTypeFindAllData,
   SpResultPTypeFindIdData,
@@ -23,7 +23,7 @@ import {
   SpResultRecordUpdateType,
 } from './types/ptype.type';
 import { TypeFindAllV2Query } from './query/type-find-all-v2.query';
-import { processProcedureResultMultiQuery } from 'src/core/procedure.result/process-procedure-result.query';
+import { processProcedureResultMultiQuery } from 'src/core/process-result/process-procedure-result.query';
 import { TypeFindIdV2Query } from './query/type-find-id-v2.query';
 import { TypeUpdateV2Query } from './query/type-update-v2.query';
 import { TypeDeleteV2Query } from './query/type-delete-v2.query';

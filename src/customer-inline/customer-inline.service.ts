@@ -14,7 +14,7 @@ import { CustomerUpdInlTypeCustomerDto } from './dto/customer-upd-inl-type-custo
 import { CustomerUpdInlTypePersonDto } from './dto/customer-upd-inl-type-person.dto';
 import { CustomerUpdInlWhatsappDto } from './dto/customer-upd-inl-whatsapp.dto';
 import { SpResultRecordUpdateType } from './types/costumer-inline.type';
-import { processProcedureResultMutation } from 'src/core/procedure.result/process-procedure-result.mutation';
+import { processProcedureResultMutation } from 'src/core/process-result/process-procedure-result.mutation';
 
 import { CustomerUpdInlEmailQuery } from './query/customer-upd-inl-email.query';
 import { CustomerUpdInlNameQuery } from './query/customer-upd-inl-name.query';

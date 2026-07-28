@@ -23,7 +23,7 @@ import { OrderUpdFreteIdQuery } from './query/order-upd-frete-id.query';
 import { OrderUpdNotesIdQuery } from './query/order-upd-notes-id.query';
 import { OrderUpdInlFieldDto } from './dto/order-upd-inl-field.dto';
 import { OrderUpdInlFieldQuery } from './query/order-upd-inl-field.query';
-import { processProcedureResultMutation } from 'src/core/procedure.result/process-procedure-result.mutation';
+import { processProcedureResultMutation } from 'src/core/process-result/process-procedure-result.mutation';
 
 @Injectable()
 export class OrderUpdService {

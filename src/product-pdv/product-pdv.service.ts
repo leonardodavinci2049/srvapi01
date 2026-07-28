@@ -11,7 +11,7 @@ import {
   SpResultProductFindPdvIdData,
 } from './types/produtct-type.type';
 import { ProductFindPdvAllV2Query } from './query/product-find-pdv-all-v2.query';
-import { processProcedureResultMultiQuery } from 'src/core/procedure.result/process-procedure-result.query';
+import { processProcedureResultMultiQuery } from 'src/core/process-result/process-procedure-result.query';
 import { ProductFindPdvIdV2Query } from './query/product-find-pdv-id-v2.query';
 import { ProductFindPdvSearchV2Dto } from './dto/product-find-Pdv-search.dto';
 import { ProductFindPdvSearchV2Query } from './query/product-find-Pdv-search.query';

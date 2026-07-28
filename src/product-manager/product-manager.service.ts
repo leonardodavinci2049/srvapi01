@@ -11,7 +11,7 @@ import {
   SpResultProductFindManagerIdData,
 } from './types/produtct-type.type';
 import { ProductFindManagerAllV2Query } from './query/product-find-manager-all-v2.query';
-import { processProcedureResultMultiQuery } from 'src/core/procedure.result/process-procedure-result.query';
+import { processProcedureResultMultiQuery } from 'src/core/process-result/process-procedure-result.query';
 import { ProductFindManagerIdV2Query } from './query/product-find-manager-id-v2.query';
 import { ProductFindManagerSearchV2Dto } from './dto/product-find-manager-search.dto';
 import { ProductFindManagerSearchV2Query } from './query/product-find-manager-search.query';

@@ -45,7 +45,7 @@ import {
   SpResultOrderFindProtocolIdData,
 } from './types/order-sales.type';
 import { SpResultOrderFindCustomerAllData } from 'src/order-reports/types/order-reports.type';
-import { processProcedureResultMultiQuery } from 'src/core/procedure.result/process-procedure-result.query';
+import { processProcedureResultMultiQuery } from 'src/core/process-result/process-procedure-result.query';
 import { OrdersFindCartIdQuery } from './query/orders-find-cart-id.query';
 import { OrdersFindCartIdDto } from './dto/orders-find-cart-id.dto';
 import { OrdersFindOrderIdDto } from './dto/orders-find-order-id.dto';

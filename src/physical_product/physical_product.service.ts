@@ -29,7 +29,7 @@ import {
   SpPhysicalProductWarrantyMovV2DataType,
   SpPhysicalProductWarrantySearchV2DataType,
 } from './types/physical_product.type';
-import { processProcedureResultMultiQuery } from 'src/core/procedure.result/process-procedure-result.query';
+import { processProcedureResultMultiQuery } from 'src/core/process-result/process-procedure-result.query';
 import { PhysicalProductWarrantySearchV2Dto } from './dto/physical-product-warranty-search-v2.dto';
 import { PhysicalProductWarrantySearchV2Query } from './query/physical-product-warranty-search-v2.query';
 

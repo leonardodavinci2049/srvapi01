@@ -5,7 +5,7 @@ import { DatabaseService } from 'src/database/database.service';
 import { ResultModel } from 'src/core/utils/result.model';
 import { MESSAGES } from 'src/core/utils/constants/globalConstants';
 
-import { processProcedureResultMultiQuery } from 'src/core/procedure.result/process-procedure-result.query';
+import { processProcedureResultMultiQuery } from 'src/core/process-result/process-procedure-result.query';
 import { ProductWebFindIdV3Dto } from './dto/product-web-find-id-v3.dto';
 import { ProductWebFindV3Dto } from './dto/product-web-find-v3.dto';
 import { ProductWebSectionsV3Dto } from './dto/product-web-sections-v3.dto';
