@@ -17,9 +17,9 @@ import {
   SpResultRecordDeleteType,
   SpResultRecordUpdateType,
 } from './types/carrier.type';
-import { processProcedureResultMutation } from 'src/core/procedure.result/process-procedure-result.mutation';
+import { processProcedureResultMutation } from 'src/core/process-result/process-procedure-result.mutation';
 import { CarrierFindAllV2Query } from './query/carrier-find-all-v2.query';
-import { processProcedureResultMultiQuery } from 'src/core/procedure.result/process-procedure-result.query';
+import { processProcedureResultMultiQuery } from 'src/core/process-result/process-procedure-result.query';
 import { CarrierFindIdV2Query } from './query/carrier-find-id-v2.query';
 import { CarrierUpdateV2Query } from './query/carrier-update-v2.query';
 import { CarrierDeleteV2Query } from './query/carrier-delete-v2.query';

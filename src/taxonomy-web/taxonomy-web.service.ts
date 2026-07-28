@@ -5,7 +5,7 @@ import { DatabaseService } from 'src/database/database.service';
 import { ResultModel } from 'src/core/utils/result.model';
 import { MESSAGES } from 'src/core/utils/constants/globalConstants';
 
-import { processProcedureResultMultiQuery } from 'src/core/procedure.result/process-procedure-result.query';
+import { processProcedureResultMultiQuery } from 'src/core/process-result/process-procedure-result.query';
 import { TaxonomyWebFindIdV3Dto } from './dto/taxonomy-web-find-id-v3.dto';
 import {
   SpResultTaxonomyWebFindIdV3Data,

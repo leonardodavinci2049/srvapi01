@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 
 import { ResultModel } from 'src/core/utils/result.model';
 import { MESSAGES } from 'src/core/utils/constants/globalConstants';
-import { processProcedureResultMutation } from 'src/core/procedure.result/process-procedure-result.mutation';
+import { processProcedureResultMutation } from 'src/core/process-result/process-procedure-result.mutation';
 
 import { DatabaseService } from 'src/database/database.service';
 
