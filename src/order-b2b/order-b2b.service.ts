@@ -5,7 +5,7 @@ import { MESSAGES } from 'src/core/utils/constants/globalConstants';
 
 import { DatabaseService } from 'src/database/database.service';
 
-import { processProcedureResultMultiQuery } from 'src/core/procedure.result/process-procedure-result.query';
+import { processProcedureResultMultiQuery } from 'src/core/process-result/process-procedure-result.query';
 
 import { OrderFindBudgetCustomerIdV2Dto } from './dto/order-find-budget-customer-id-v2.dto';
 import { OrderFindDashboardCustomerIdV2Dto } from './dto/order-find-dashboard-customer-id-v2.dto';

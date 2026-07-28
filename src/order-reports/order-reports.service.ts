@@ -29,7 +29,7 @@ import { OrdersFindSellerIdQuery } from './query/orders-find-seller-id.query';
 
 import { OrdersFindCustomerIdQuery } from './query/orders-find-customer-id.query';
 import { OrdersFindCustomerAllQuery } from './query/orders-find-customer-all.query';
-import { processProcedureResultMultiQuery } from 'src/core/procedure.result/process-procedure-result.query';
+import { processProcedureResultMultiQuery } from 'src/core/process-result/process-procedure-result.query';
 
 import { OrdersFindLatestAllQuery } from './query/orders-find-latest-all.query';
 import { OrdersFindLatestIdQuery } from './query/orders-find-latest-id.query';

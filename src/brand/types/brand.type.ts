@@ -30,6 +30,15 @@ export interface TblBrandFindALL extends RowDataPacket {
   DATADOCADASTRO: Date;
 }
 
+export interface TblBrandFindSearch extends RowDataPacket {
+  ID_MARCA: number;
+  MARCA: string;
+  SLUG: string;
+  PATH_IMAGEM: string;
+  INATIVO: number;
+  DATADOCADASTRO: Date;
+}
+
 export interface TblBrandFindId extends RowDataPacket {
   ID_MARCA: number;
   MARCA: string;
@@ -43,6 +52,12 @@ export interface TblBrandFindId extends RowDataPacket {
 
 export type SpResultBrandFindAllData = [
   TblBrandFindALL[],
+  SpDefaultFeedback[],
+  SpOperationResult,
+];
+
+export type SpResultBrandFindSearchData = [
+  TblBrandFindSearch[],
   SpDefaultFeedback[],
   SpOperationResult,
 ];

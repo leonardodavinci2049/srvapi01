@@ -22,7 +22,7 @@ import { CheckIfProductSlugExistsQuery } from './query/check-if-product-slug.que
 import { CheckIfTaxomomyNameExistsQuery } from './query/check-if-taxonomy-name.query';
 import { CheckIfTaxomomySlugExistsQuery } from './query/check-if-taxonomy-slug.query';
 import { CheckIfExistsV3Dto } from './dto/check-if-exists-v3.dto';
-import { processProcedureResultMutation } from 'src/core/procedure.result/process-procedure-result.mutation';
+import { processProcedureResultMutation } from 'src/core/process-result/process-procedure-result.mutation';
 
 import { CheckIfCnpjExistsV3Query } from './query/check-if-cnpj-exists-v3.query';
 import { CheckIfCpfExistsV3Query } from './query/check-if-cpf-exists-v3.query';

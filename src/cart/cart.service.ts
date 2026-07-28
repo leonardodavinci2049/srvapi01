@@ -4,8 +4,8 @@ import { DatabaseService } from 'src/database/database.service';
 
 import { ResultModel } from 'src/core/utils/result.model';
 import { MESSAGES } from 'src/core/utils/constants/globalConstants';
-import { processProcedureResultMutation } from 'src/core/procedure.result/process-procedure-result.mutation';
-import { processProcedureResultMultiQuery } from 'src/core/procedure.result/process-procedure-result.query';
+import { processProcedureResultMutation } from 'src/core/process-result/process-procedure-result.mutation';
+import { processProcedureResultMultiQuery } from 'src/core/process-result/process-procedure-result.query';
 
 import { CartItemAddV1Dto } from './dto/cart-item-add-v1.dto';
 import { CartFindIdV1Dto } from './dto/cart-find-id-v1.dto';

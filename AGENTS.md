@@ -48,7 +48,7 @@ Verification order before opening a PR: `pnpm run build && pnpm run format && pn
 - **No ORM/Prisma.** All DB access goes through `src/database/database.service.ts`:
   `selectExecute` / `selectQuery` (reads), `ModifyExecute` / `ModifyQuery` (writes), `runInTransaction` for multi-statement work. Cast SP rows with `as unknown as T`; row interfaces extend `mysql2` `RowDataPacket`.
 - **Multi-tenancy is mandatory:** every query/SP call must include `pe_system_client_id` and `pe_store_id`.
-- Process SP results via helpers in `src/core/procedure.result/` (`processProcedureResultMutation`, `processProcedureResultMultiQuery`). Services return `ResultModel` (`src/core/utils/result.model.ts`) with codes from `src/core/utils/constants/globalConstants` (e.g. `100200` success, `100404` not found, `100422` process failed). Wrap service bodies in try/catch.
+- Process SP results via helpers in `src/core/process-result/` (`processProcedureResultMutation`, `processProcedureResultMultiQuery`). Services return `ResultModel` (`src/core/utils/result.model.ts`) with codes from `src/core/utils/constants/globalConstants` (e.g. `100200` success, `100404` not found, `100422` process failed). Wrap service bodies in try/catch.
 - Feature module layout: `controller -> service -> query -> dto -> types`. `query/*` are pure functions that return the `CALL sp_...` string.
 - Naming: files `kebab-case`; controller method `<feature><Action>V2`; service method `task<Feature><Action>V2`; SPs `sp_*_v2`; table/param prefixes `tbl_*` / `pe_*`.
 - Business routes are `@Post('v2/...')` guarded by `@UseGuards(AuthGuard)`; API key via `Authorization: Bearer <API_KEY>` or `x-api-key`.

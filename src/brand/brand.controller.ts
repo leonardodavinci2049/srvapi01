@@ -8,6 +8,7 @@ import { BrandFindAllV2Dto } from './dto/brand-find-all-v2.dto';
 import { BrandFindIdV2Dto } from './dto/brand-find-id-v2.dto';
 import { BrandUpdateV2Dto } from './dto/brand-update-v2.dto';
 import { BrandDeleteV2Dto } from './dto/brand-delete-v2.dto';
+import { BrandFindSearchV2Dto } from './dto/brand-find-search-v2.dto';
 
 @Controller('brand')
 export class BrandController {
@@ -38,6 +39,12 @@ export class BrandController {
   @Post('v2/brand-find-all')
   brandFindAllV2(@Body() dataJsonDto: BrandFindAllV2Dto) {
     return this.brandService.taskBrandFindAllV2(dataJsonDto);
+  }
+
+  @UseGuards(AuthGuard)
+  @Post('v2/brand-search-all')
+  brandSearchAllV2(@Body() dataJsonDto: BrandFindSearchV2Dto) {
+    return this.brandService.taskBrandSearchAllV2(dataJsonDto);
   }
 
   @UseGuards(AuthGuard)

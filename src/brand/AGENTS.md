@@ -28,7 +28,7 @@ O módulo `Brand` segue o padrão de arquitetura v2 do projeto, utilizando Store
 2. **Nomenclatura de Métodos:**
    - No Service: `taskBrand[Ação]V2`.
    - No Controller: `brand[Ação]V2`.
-3. **Retornos:** Utilize sempre as funções auxiliares de `src/core/procedure.result/` para processar os resultados das SPs.
+3. **Retornos:** Utilize sempre as funções auxiliares de `src/core/process-result/` para processar os resultados das SPs.
 
 ## Exemplo de Fluxo (v2)
 

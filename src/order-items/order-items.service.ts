@@ -7,7 +7,7 @@ import { DatabaseService } from 'src/database/database.service';
 
 import { OrderItemFindAllDto } from './dto/order-item-find-all.dto';
 import { OrderItemFindAllQuery } from './query/order-item-find-all.query';
-import { processProcedureResultMultiQuery } from 'src/core/procedure.result/process-procedure-result.query';
+import { processProcedureResultMultiQuery } from 'src/core/process-result/process-procedure-result.query';
 
 import {
   SpResultOrderItemsFindData,
@@ -39,7 +39,7 @@ import { OrderItemUpdDiscountAdmQuery } from './query/order-item-upd-discount-ad
 import { OrderItemUpdFreteVlDto } from './dto/order-item-upd-frete-vl.dto';
 import { OrderItemUpdInlFieldDto } from './dto/order-item-upd-inl-field.dto';
 import { OrderItemUpdInlFieldQuery } from './query/order-item-upd-inl-field.query';
-import { processProcedureResultMutation } from 'src/core/procedure.result/process-procedure-result.mutation';
+import { processProcedureResultMutation } from 'src/core/process-result/process-procedure-result.mutation';
 
 @Injectable()
 export class OrderItemsService {

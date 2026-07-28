@@ -12,10 +12,10 @@ import {
   SpResultCustomerLatestProductsFindAllData,
   SpResultRecordCreateType,
 } from './types/costumer.type';
-import { processProcedureResultMutation } from 'src/core/procedure.result/process-procedure-result.mutation';
+import { processProcedureResultMutation } from 'src/core/process-result/process-procedure-result.mutation';
 import { CostumerFindAllDto } from './dto/costumer-find-all.dto';
 import { CostumerFindAllQuery } from './query/costumer-find-all.query';
-import { processProcedureResultMultiQuery } from 'src/core/procedure.result/process-procedure-result.query';
+import { processProcedureResultMultiQuery } from 'src/core/process-result/process-procedure-result.query';
 
 import { CostumerFindIdDto } from './dto/costumer-find-id.dto';
 import { CostumerFindIdQuery } from './query/costumer-find-id.query';

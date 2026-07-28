@@ -4,7 +4,7 @@ import { DatabaseService } from 'src/database/database.service';
 
 import { ResultModel } from 'src/core/utils/result.model';
 import { MESSAGES } from 'src/core/utils/constants/globalConstants';
-import { processProcedureResultMutation } from 'src/core/procedure.result/process-procedure-result.mutation';
+import { processProcedureResultMutation } from 'src/core/process-result/process-procedure-result.mutation';
 import { GeneralUpdProcedureV1Dto } from './dto/general-upd-procedure-v1.dto';
 import { generalUpdProcedureV1Query } from './query/general-upd-procedure-v1.query';
 import { SpResultRecordUpdateType } from './types/general-call.type';

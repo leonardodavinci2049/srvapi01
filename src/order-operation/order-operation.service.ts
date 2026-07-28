@@ -10,8 +10,8 @@ import {
   SpResultRecordUpdateType,
 } from './types/order-operation.type';
 
-import { processProcedureResultMultiQuery } from 'src/core/procedure.result/process-procedure-result.query';
-import { processProcedureResultMutation } from 'src/core/procedure.result/process-procedure-result.mutation';
+import { processProcedureResultMultiQuery } from 'src/core/process-result/process-procedure-result.query';
+import { processProcedureResultMutation } from 'src/core/process-result/process-procedure-result.mutation';
 
 import { OrderOperAddItemQuery } from './query/order-oper-add-item.query';
 import { OrderOperReverseIdQuery } from './query/order-oper-reverse-id.query';
