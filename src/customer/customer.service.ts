@@ -9,13 +9,16 @@ import { CostumerCreateQuery } from './query/costumer-create.query';
 import {
   SpResultCustomerFindAllData,
   SpResultCustomerFindIdData,
+  SpResultCustomerFindManagerAllData,
   SpResultCustomerLatestProductsFindAllData,
   SpResultRecordCreateType,
 } from './types/costumer.type';
 import { processProcedureResultMutation } from 'src/core/process-result/process-procedure-result.mutation';
 import { CostumerFindAllDto } from './dto/costumer-find-all.dto';
+import { CostumerFindManagerAllV2Dto } from './dto/costumer-find-manager-all-v2.dto';
 import { CostumerFindAllQuery } from './query/costumer-find-all.query';
 import { processProcedureResultMultiQuery } from 'src/core/process-result/process-procedure-result.query';
+import { CostumerFindManagerAllV2Query } from './query/costumer-find-manager-all-v2.query';
 
 import { CostumerFindIdDto } from './dto/costumer-find-id.dto';
 import { CostumerFindIdQuery } from './query/costumer-find-id.query';
@@ -57,6 +60,26 @@ export class CustomerService {
         resultData,
         ['Customer find All'],
         'Customer find Allnot found',
+      );
+    } catch (err) {
+      const errorMessage =
+        err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
+      return new ResultModel(100404, errorMessage, 0, []);
+    }
+  }
+
+  async taskCustomerFindManagerAllV2(dataJsonDto: CostumerFindManagerAllV2Dto) {
+    try {
+      const queryString = CostumerFindManagerAllV2Query(dataJsonDto);
+
+      const resultData = (await this.dbService.selectExecute(
+        queryString,
+      )) as unknown as SpResultCustomerFindManagerAllData;
+
+      return processProcedureResultMultiQuery(
+        resultData,
+        ['Customer find manager All'],
+        'Customer find manager All not found',
       );
     } catch (err) {
       const errorMessage =

@@ -39,6 +39,7 @@ import { TaxonomyWebModule } from 'src/taxonomy-web/taxonomy-web.module';
 import { OrderB2bModule } from 'src/order-b2b/order-b2b.module';
 import { PhysicalProductModule } from 'src/physical_product/physical_product.module';
 import { ProductManagerModule } from 'src/product-manager/product-manager.module';
+import { SellerModule } from 'src/seller/seller.module';
 
 @Module({
   imports: [
@@ -75,6 +76,7 @@ import { ProductManagerModule } from 'src/product-manager/product-manager.module
     CarrierModule,
     PtypeModule,
     SupplierModule,
+    SellerModule,
     OrderItemsModule,
     OrderOperationModule,
     OrderReportsModule,

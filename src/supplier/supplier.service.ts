@@ -9,12 +9,14 @@ import {
   SpResultRecordUpdateType,
   SpResultSupplierFindAllData,
   SpResultSupplierFindIdData,
+  SpResultSupplierFindManagerAllData,
 } from './types/supplier.type';
 
 import { DatabaseService } from 'src/database/database.service';
 import { SupplierCreateV2Dto } from './dto/supplier-create-v2.dto';
 import { SupplierRelCreateV2Dto } from './dto/supplier-rel-create-v2.dto';
 import { SupplierFindAllV2Dto } from './dto/supplier-find-all-v2.dto';
+import { SupplierFindManagerAllV2Dto } from './dto/supplier-find-manager-all-v2.dto';
 import { SupplierRelFindProdAllV2Dto } from './dto/supplier-rel-find-prod-all-v2.dto';
 import { SupplierFindIdV2Dto } from './dto/supplier-find-id-v2.dto';
 import { SupplierUpdateV2Dto } from './dto/supplier-update-v2.dto';
@@ -24,6 +26,7 @@ import { processProcedureResultMutation } from 'src/core/process-result/process-
 import { SupplierRelCreateV2Query } from './query/supplier-rel-create-v2.query';
 import { SupplierFindAllV2Query } from './query/supplier-find-all-v2.query';
 import { processProcedureResultMultiQuery } from 'src/core/process-result/process-procedure-result.query';
+import { SupplierFindManagerAllV2Query } from './query/supplier-find-manager-all-v2.query';
 import { SupplierRelFindProdAllV2Query } from './query/supplier-rel-find-prod-all-v2.query';
 import { SupplierFindIdV2Query } from './query/supplier-find-id-v2.query';
 import { SupplierUpdateV2Query } from './query/supplier-update-v2.query';
@@ -85,6 +88,26 @@ export class SupplierService {
         resultData,
         ['Supplier find All'],
         'Supplier find All not found',
+      );
+    } catch (err) {
+      const errorMessage =
+        err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
+      return new ResultModel(100404, errorMessage, 0, []);
+    }
+  }
+
+  async taskSupplierFindManagerAllV2(dataJsonDto: SupplierFindManagerAllV2Dto) {
+    try {
+      const queryString = SupplierFindManagerAllV2Query(dataJsonDto);
+
+      const resultData = (await this.dbService.selectExecute(
+        queryString,
+      )) as unknown as SpResultSupplierFindManagerAllData;
+
+      return processProcedureResultMultiQuery(
+        resultData,
+        ['Supplier find manager All'],
+        'Supplier find manager All not found',
       );
     } catch (err) {
       const errorMessage =

@@ -10,6 +10,7 @@ import { TypeFindAllQuery } from './query/type-find-all.query';
 
 import { TypeCreateV2Dto } from './dto/type-create-v2.dto';
 import { TypeFindAllV2Dto } from './dto/type-find-all-v2.dto';
+import { TypeFindManagerAllV2Dto } from './dto/type-find-manager-all-v2.dto';
 import { TypeFindIdV2Dto } from './dto/type-find-id-v2.dto';
 import { TypeUpdateV2Dto } from './dto/type-update-v2.dto';
 import { TypeDeleteV2Dto } from './dto/type-delete-v2.dto';
@@ -18,12 +19,14 @@ import { processProcedureResultMutation } from 'src/core/process-result/process-
 import {
   SpResultPTypeFindAllData,
   SpResultPTypeFindIdData,
+  SpResultPTypeFindManagerAllData,
   SpResultRecordCreateType,
   SpResultRecordDeleteType,
   SpResultRecordUpdateType,
 } from './types/ptype.type';
 import { TypeFindAllV2Query } from './query/type-find-all-v2.query';
 import { processProcedureResultMultiQuery } from 'src/core/process-result/process-procedure-result.query';
+import { TypeFindManagerAllV2Query } from './query/type-find-manager-all-v2.query';
 import { TypeFindIdV2Query } from './query/type-find-id-v2.query';
 import { TypeUpdateV2Query } from './query/type-update-v2.query';
 import { TypeDeleteV2Query } from './query/type-delete-v2.query';
@@ -60,6 +63,25 @@ export class PtypeService {
         resultData,
         ['Type find All'],
         'Type find All not found',
+      );
+    } catch (err) {
+      const errorMessage =
+        err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
+      return new ResultModel(100404, errorMessage, 0, []);
+    }
+  }
+  async taskTypeFindManagerAllV2(dataJsonDto: TypeFindManagerAllV2Dto) {
+    try {
+      const queryString = TypeFindManagerAllV2Query(dataJsonDto);
+
+      const resultData = (await this.dbService.selectExecute(
+        queryString,
+      )) as unknown as SpResultPTypeFindManagerAllData;
+
+      return processProcedureResultMultiQuery(
+        resultData,
+        ['Type find manager All'],
+        'Type find manager All not found',
       );
     } catch (err) {
       const errorMessage =

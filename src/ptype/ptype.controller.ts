@@ -4,6 +4,7 @@ import { PtypeService } from './ptype.service';
 import { AuthGuard } from 'src/core/guards/auth.guard';
 
 import { TypeFindAllV2Dto } from './dto/type-find-all-v2.dto';
+import { TypeFindManagerAllV2Dto } from './dto/type-find-manager-all-v2.dto';
 import { TypeCreateV2Dto } from './dto/type-create-v2.dto';
 import { TypeFindIdV2Dto } from './dto/type-find-id-v2.dto';
 import { TypeUpdateV2Dto } from './dto/type-update-v2.dto';
@@ -38,6 +39,12 @@ export class PtypeController {
   @Post('v2/ptype-find-all')
   ptypeFindAllV2(@Body() dataJsonDto: TypeFindAllV2Dto) {
     return this.ptypeService.taskTypeFindAllV2(dataJsonDto);
+  }
+
+  @UseGuards(AuthGuard)
+  @Post('v2/ptype-find-manager-all')
+  ptypeFindManagerAllV2(@Body() dataJsonDto: TypeFindManagerAllV2Dto) {
+    return this.ptypeService.taskTypeFindManagerAllV2(dataJsonDto);
   }
 
   @UseGuards(AuthGuard)
