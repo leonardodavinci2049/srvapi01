@@ -7,6 +7,7 @@ import { CarrierFindManagerAllV2Dto } from './dto/carrier-find-manager-all-v2.dt
 import { CarrierFindIdV2Dto } from './dto/carrier-find-id-v2.dto';
 import { CarrierUpdateV2Dto } from './dto/carrier-update-v2.dto';
 import { CarrierDeleteV2Dto } from './dto/carrier-delete-v2.dto';
+import { CarrierFindSearchV2Dto } from './dto/carrier-find-search-v2.dto';
 
 @Controller('carrier')
 export class CarrierController {
@@ -22,6 +23,12 @@ export class CarrierController {
   @Post('v2/carrier-find-all')
   carrierFindAllV2(@Body() dataJsonDto: CarrierFindAllV2Dto) {
     return this.carrierService.taskCarrierFindAllV2(dataJsonDto);
+  }
+
+  @UseGuards(AuthGuard)
+  @Post('v2/carrier-search-all')
+  carrierSearchAllV2(@Body() dataJsonDto: CarrierFindSearchV2Dto) {
+    return this.carrierService.taskCarrierSearchAllV2(dataJsonDto);
   }
 
   @UseGuards(AuthGuard)

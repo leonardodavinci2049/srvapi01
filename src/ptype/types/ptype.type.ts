@@ -31,6 +31,13 @@ export interface TblPTypeFindManagerAll extends RowDataPacket {
   TIPO: string;
 }
 
+export interface TblPTypeFindSearch extends RowDataPacket {
+  ID_TIPO: number;
+  TIPO: string;
+}
+
+export type SpResultPTypeFindSearchData = TblPTypeFindSearch[];
+
 export type SpResultPTypeFindAllData = [
   TblPTypeFindALL[],
   SpDefaultFeedback[],

@@ -9,6 +9,7 @@ import { TypeCreateV2Dto } from './dto/type-create-v2.dto';
 import { TypeFindIdV2Dto } from './dto/type-find-id-v2.dto';
 import { TypeUpdateV2Dto } from './dto/type-update-v2.dto';
 import { TypeDeleteV2Dto } from './dto/type-delete-v2.dto';
+import { TypeFindSearchV2Dto } from './dto/type-find-search-v2.dto';
 
 @Controller('ptype')
 export class PtypeController {
@@ -39,6 +40,12 @@ export class PtypeController {
   @Post('v2/ptype-find-all')
   ptypeFindAllV2(@Body() dataJsonDto: TypeFindAllV2Dto) {
     return this.ptypeService.taskTypeFindAllV2(dataJsonDto);
+  }
+
+  @UseGuards(AuthGuard)
+  @Post('v2/ptype-search-all')
+  ptypeSearchAllV2(@Body() dataJsonDto: TypeFindSearchV2Dto) {
+    return this.ptypeService.taskTypeSearchAllV2(dataJsonDto);
   }
 
   @UseGuards(AuthGuard)

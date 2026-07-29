@@ -6,6 +6,7 @@ import { CostumerFindAllDto } from './dto/costumer-find-all.dto';
 import { CostumerFindManagerAllV2Dto } from './dto/costumer-find-manager-all-v2.dto';
 import { CostumerFindIdDto } from './dto/costumer-find-id.dto';
 import { CustomerFindLatestProductsDto } from './dto/customer-find-latest-products.dto';
+import { CustomerFindSearchV2Dto } from './dto/customer-find-search-v2.dto';
 
 @Controller('customer')
 export class CustomerController {
@@ -35,6 +36,12 @@ export class CustomerController {
   @Post('v2/customer-find-all')
   CustomerFindAllV2(@Body() dataJsonDto: CostumerFindAllDto) {
     return this.customerService.taskCustomerFindAllV2(dataJsonDto);
+  }
+
+  @UseGuards(AuthGuard)
+  @Post('v2/customer-search-all')
+  customerSearchAllV2(@Body() dataJsonDto: CustomerFindSearchV2Dto) {
+    return this.customerService.taskCustomerSearchAllV2(dataJsonDto);
   }
 
   @UseGuards(AuthGuard)

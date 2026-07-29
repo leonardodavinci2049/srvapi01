@@ -10,6 +10,7 @@ import {
   SpResultSupplierFindAllData,
   SpResultSupplierFindIdData,
   SpResultSupplierFindManagerAllData,
+  TblSupplierFindSearch,
 } from './types/supplier.type';
 
 import { DatabaseService } from 'src/database/database.service';
@@ -33,6 +34,9 @@ import { SupplierUpdateV2Query } from './query/supplier-update-v2.query';
 import { SupplierRelDeleteV2Query } from './query/supplier-rel-delete-v2.query';
 import { SupplierDeleteV2Query } from './query/supplier-delete-v2.query';
 import { SupplierDeleteV2Dto } from './dto/supplier-delete-v2.dto';
+import { SupplierFindSearchV2Dto } from './dto/supplier-find-search-v2.dto';
+import { SupplierFindSearchV2Query } from './query/supplier-find-search-v2.query';
+import { processSqlResultQuery } from 'src/core/process-result/process-sql-result.query';
 
 @Injectable()
 export class SupplierService {
@@ -88,6 +92,30 @@ export class SupplierService {
         resultData,
         ['Supplier find All'],
         'Supplier find All not found',
+      );
+    } catch (err) {
+      const errorMessage =
+        err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
+      return new ResultModel(100404, errorMessage, 0, []);
+    }
+  }
+
+  async taskSupplierSearchAllV2(dataJsonDto: SupplierFindSearchV2Dto) {
+    try {
+      const { queryString, queryParams } =
+        SupplierFindSearchV2Query(dataJsonDto);
+
+      const resultData =
+        await this.dbService.selectExecute<TblSupplierFindSearch>(
+          queryString,
+          queryParams,
+        );
+
+      return processSqlResultQuery(
+        resultData,
+        'Supplier find All',
+        'Supplier find All not found',
+        'Dados carregados com sucesso.',
       );
     } catch (err) {
       const errorMessage =

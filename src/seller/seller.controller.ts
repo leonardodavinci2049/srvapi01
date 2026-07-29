@@ -3,10 +3,17 @@ import { Controller, Post, Body, UseGuards } from '@nestjs/common';
 import { SellerService } from './seller.service';
 import { AuthGuard } from 'src/core/guards/auth.guard';
 import { SellerFindManagerAllV2Dto } from './dto/seller-find-manager-all-v2.dto';
+import { SellerFindSearchV2Dto } from './dto/seller-find-search-v2.dto';
 
 @Controller('seller')
 export class SellerController {
   constructor(private readonly sellerService: SellerService) {}
+
+  @UseGuards(AuthGuard)
+  @Post('v2/seller-search-all')
+  sellerSearchAllV2(@Body() dataJsonDto: SellerFindSearchV2Dto) {
+    return this.sellerService.taskSellerSearchAllV2(dataJsonDto);
+  }
 
   @UseGuards(AuthGuard)
   @Post('v2/seller-find-manager-all')

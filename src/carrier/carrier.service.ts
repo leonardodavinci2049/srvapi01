@@ -18,6 +18,7 @@ import {
   SpResultRecordCreateType,
   SpResultRecordDeleteType,
   SpResultRecordUpdateType,
+  TblCarrierFindSearch,
 } from './types/carrier.type';
 import { processProcedureResultMutation } from 'src/core/process-result/process-procedure-result.mutation';
 import { CarrierFindAllV2Query } from './query/carrier-find-all-v2.query';
@@ -26,6 +27,10 @@ import { CarrierFindManagerAllV2Query } from './query/carrier-find-manager-all-v
 import { CarrierFindIdV2Query } from './query/carrier-find-id-v2.query';
 import { CarrierUpdateV2Query } from './query/carrier-update-v2.query';
 import { CarrierDeleteV2Query } from './query/carrier-delete-v2.query';
+import { CarrierFindSearchV2Dto } from './dto/carrier-find-search-v2.dto';
+import { CarrierFindSearchV2Query } from './query/carrier-find-search-v2.query';
+import { processSqlResultQuery } from 'src/core/process-result/process-sql-result.query';
+
 @Injectable()
 export class CarrierService {
   constructor(private readonly dbService: DatabaseService) {}
@@ -64,6 +69,30 @@ export class CarrierService {
         resultData,
         ['Carrier find All'],
         'Carrier find All not found',
+      );
+    } catch (err) {
+      const errorMessage =
+        err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
+      return new ResultModel(100404, errorMessage, 0, []);
+    }
+  }
+
+  async taskCarrierSearchAllV2(dataJsonDto: CarrierFindSearchV2Dto) {
+    try {
+      const { queryString, queryParams } =
+        CarrierFindSearchV2Query(dataJsonDto);
+
+      const resultData =
+        await this.dbService.selectExecute<TblCarrierFindSearch>(
+          queryString,
+          queryParams,
+        );
+
+      return processSqlResultQuery(
+        resultData,
+        'Carrier find All',
+        'Carrier find All not found',
+        'Dados carregados com sucesso.',
       );
     } catch (err) {
       const errorMessage =
