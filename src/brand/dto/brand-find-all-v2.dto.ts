@@ -12,9 +12,27 @@ export class BrandFindAllV2Dto extends EndpointContextDto {
   @IsNumber()
   pe_inactive!: number;
 
-  @ApiProperty({ description: 'Limit' })
+  @ApiProperty({
+    description: 'Record quantity (default: 100, maximum: 1000)',
+  })
   @IsNumber()
-  pe_limit!: number;
+  pe_qt_records!: number;
+
+  @ApiProperty({ description: 'Page ID (0 = first page)' })
+  @IsNumber()
+  pe_page_id!: number;
+
+  @ApiProperty({
+    description: 'Column ID (1 = brand name, 2 = brand ID)',
+  })
+  @IsNumber()
+  pe_column_id!: number;
+
+  @ApiProperty({
+    description: 'Order ID (1 = ascending, 2 = descending)',
+  })
+  @IsNumber()
+  pe_order_id!: number;
 }
 
 /*
@@ -31,7 +49,10 @@ Sample JSON for testing in body endpoint:
   "pe_person_id": 29014,
   "pe_search": "",
   "pe_inactive": 0,
-  "pe_limit": 2
+  "pe_qt_records": 2,
+  "pe_page_id": 0,
+  "pe_column_id": 2,
+  "pe_order_id": 2
 }
 
 */
