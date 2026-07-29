@@ -23,6 +23,7 @@ import {
   SpResultRecordCreateType,
   SpResultRecordDeleteType,
   SpResultRecordUpdateType,
+  TblPTypeFindSearch,
 } from './types/ptype.type';
 import { TypeFindAllV2Query } from './query/type-find-all-v2.query';
 import { processProcedureResultMultiQuery } from 'src/core/process-result/process-procedure-result.query';
@@ -30,6 +31,9 @@ import { TypeFindManagerAllV2Query } from './query/type-find-manager-all-v2.quer
 import { TypeFindIdV2Query } from './query/type-find-id-v2.query';
 import { TypeUpdateV2Query } from './query/type-update-v2.query';
 import { TypeDeleteV2Query } from './query/type-delete-v2.query';
+import { TypeFindSearchV2Dto } from './dto/type-find-search-v2.dto';
+import { TypeFindSearchV2Query } from './query/type-find-search-v2.query';
+import { processSqlResultQuery } from 'src/core/process-result/process-sql-result.query';
 
 @Injectable()
 export class PtypeService {
@@ -70,6 +74,29 @@ export class PtypeService {
       return new ResultModel(100404, errorMessage, 0, []);
     }
   }
+
+  async taskTypeSearchAllV2(dataJsonDto: TypeFindSearchV2Dto) {
+    try {
+      const { queryString, queryParams } = TypeFindSearchV2Query(dataJsonDto);
+
+      const resultData = await this.dbService.selectExecute<TblPTypeFindSearch>(
+        queryString,
+        queryParams,
+      );
+
+      return processSqlResultQuery(
+        resultData,
+        'Type find All',
+        'Type find All not found',
+        'Dados carregados com sucesso.',
+      );
+    } catch (err) {
+      const errorMessage =
+        err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
+      return new ResultModel(100404, errorMessage, 0, []);
+    }
+  }
+
   async taskTypeFindManagerAllV2(dataJsonDto: TypeFindManagerAllV2Dto) {
     try {
       const queryString = TypeFindManagerAllV2Query(dataJsonDto);

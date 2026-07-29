@@ -12,6 +12,7 @@ import {
   SpResultCustomerFindManagerAllData,
   SpResultCustomerLatestProductsFindAllData,
   SpResultRecordCreateType,
+  TblCustomerFindSearch,
 } from './types/costumer.type';
 import { processProcedureResultMutation } from 'src/core/process-result/process-procedure-result.mutation';
 import { CostumerFindAllDto } from './dto/costumer-find-all.dto';
@@ -24,6 +25,9 @@ import { CostumerFindIdDto } from './dto/costumer-find-id.dto';
 import { CostumerFindIdQuery } from './query/costumer-find-id.query';
 import { CustomerFindLatestProductsQuery } from './query/customer-find-latest-products.query';
 import { CustomerFindLatestProductsDto } from './dto/customer-find-latest-products.dto';
+import { CustomerFindSearchV2Dto } from './dto/customer-find-search-v2.dto';
+import { CustomerFindSearchV2Query } from './query/customer-find-search-v2.query';
+import { processSqlResultQuery } from 'src/core/process-result/process-sql-result.query';
 
 @Injectable()
 export class CustomerService {
@@ -60,6 +64,30 @@ export class CustomerService {
         resultData,
         ['Customer find All'],
         'Customer find Allnot found',
+      );
+    } catch (err) {
+      const errorMessage =
+        err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
+      return new ResultModel(100404, errorMessage, 0, []);
+    }
+  }
+
+  async taskCustomerSearchAllV2(dataJsonDto: CustomerFindSearchV2Dto) {
+    try {
+      const { queryString, queryParams } =
+        CustomerFindSearchV2Query(dataJsonDto);
+
+      const resultData =
+        await this.dbService.selectExecute<TblCustomerFindSearch>(
+          queryString,
+          queryParams,
+        );
+
+      return processSqlResultQuery(
+        resultData,
+        'Customer find All',
+        'Customer find All not found',
+        'Dados carregados com sucesso.',
       );
     } catch (err) {
       const errorMessage =

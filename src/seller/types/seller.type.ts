@@ -36,6 +36,27 @@ export interface TblSellerFindManagerAll extends RowDataPacket {
   DATA_CADASTRO: Date | null;
 }
 
+export interface TblSellerFindSearch extends RowDataPacket {
+  ID_CUSTOMER: number;
+  ID_TIPO_CLIENTE: number;
+  ID_PESSOA_TIPO: number;
+  NOME: string;
+  FONE1: string | null;
+  WHATAPP1: string | null;
+  RAZAO_SOCIAL: string | null;
+  CIDADE: string | null;
+  CPF: string | null;
+  CNPJ: string | null;
+  TIPO_CLIENTE: string;
+  TIPO_PESSOA: string;
+  EMAIL: string | null;
+  PATH_IMAGEM: string | null;
+  ULTIMA_COMPRA: Date | null;
+  DATA_CADASTRO: Date | null;
+}
+
+export type SpResultSellerFindSearchData = TblSellerFindSearch[];
+
 export type SpResultSellerFindManagerAllData = [
   TblSellerFindManagerAll[],
   SpDefaultFeedback[],

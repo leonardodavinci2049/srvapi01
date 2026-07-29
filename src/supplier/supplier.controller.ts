@@ -12,6 +12,7 @@ import { SupplierFindIdV2Dto } from './dto/supplier-find-id-v2.dto';
 import { SupplierUpdateV2Dto } from './dto/supplier-update-v2.dto';
 import { SupplierRelDeleteV2Dto } from './dto/supplier-rel-delete-v2.dto';
 import { SupplierDeleteV2Dto } from './dto/supplier-delete-v2.dto';
+import { SupplierFindSearchV2Dto } from './dto/supplier-find-search-v2.dto';
 
 @Controller('supplier')
 export class SupplierController {
@@ -48,6 +49,12 @@ export class SupplierController {
   @Post('v2/supplier-find-all')
   supplierFindAllV2(@Body() dataJsonDto: SupplierFindAllV2Dto) {
     return this.supplierService.taskSupplierFindAllV2(dataJsonDto);
+  }
+
+  @UseGuards(AuthGuard)
+  @Post('v2/supplier-search-all')
+  supplierSearchAllV2(@Body() dataJsonDto: SupplierFindSearchV2Dto) {
+    return this.supplierService.taskSupplierSearchAllV2(dataJsonDto);
   }
 
   @UseGuards(AuthGuard)
