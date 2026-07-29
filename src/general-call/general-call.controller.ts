@@ -3,6 +3,7 @@ import { Controller, Post, Body, UseGuards, Get } from '@nestjs/common';
 import { AuthGuard } from 'src/core/guards/auth.guard';
 import { GeneralCallService } from './general-call.service';
 import { GeneralUpdProcedureV1Dto } from './dto/general-upd-procedure-v1.dto';
+import { GeneralTableUpdInlFieldV2Dto } from './dto/general_table_upd_inl_field_v2.dto';
 
 @Controller('general-call')
 export class GeneralCallController {
@@ -27,5 +28,11 @@ export class GeneralCallController {
   @Post('v1/general-upd-procedure')
   generalUpdProcedureV1(@Body() dataJsonDto: GeneralUpdProcedureV1Dto) {
     return this.generalCallService.tskGeneralUpdProcedureV1(dataJsonDto);
+  }
+
+  @UseGuards(AuthGuard)
+  @Post('v2/general-table-upd-inl-field')
+  generalTableUpdInlFieldV2(@Body() dataJsonDto: GeneralTableUpdInlFieldV2Dto) {
+    return this.generalCallService.tskGeneralTableUpdInlFieldV2(dataJsonDto);
   }
 }
