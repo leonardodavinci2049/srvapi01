@@ -5,6 +5,7 @@ import { AuthGuard } from 'src/core/guards/auth.guard';
 import { SupplierCreateV2Dto } from './dto/supplier-create-v2.dto';
 import { SupplierRelCreateV2Dto } from './dto/supplier-rel-create-v2.dto';
 import { SupplierFindAllV2Dto } from './dto/supplier-find-all-v2.dto';
+import { SupplierFindManagerAllV2Dto } from './dto/supplier-find-manager-all-v2.dto';
 import { SupplierRelFindProdAllV2Dto } from './dto/supplier-rel-find-prod-all-v2.dto';
 import { SupplierFindIdV2Dto } from './dto/supplier-find-id-v2.dto';
 
@@ -47,6 +48,12 @@ export class SupplierController {
   @Post('v2/supplier-find-all')
   supplierFindAllV2(@Body() dataJsonDto: SupplierFindAllV2Dto) {
     return this.supplierService.taskSupplierFindAllV2(dataJsonDto);
+  }
+
+  @UseGuards(AuthGuard)
+  @Post('v2/supplier-find-manager-all')
+  supplierFindManagerAllV2(@Body() dataJsonDto: SupplierFindManagerAllV2Dto) {
+    return this.supplierService.taskSupplierFindManagerAllV2(dataJsonDto);
   }
 
   @UseGuards(AuthGuard)

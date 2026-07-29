@@ -26,6 +26,28 @@ export interface TblSupplierFindALL extends RowDataPacket {
   FORNECEDOR: string;
 }
 
+export interface TblSupplierFindManagerAll extends RowDataPacket {
+  ID_FORNECEDOR: number;
+  FORNECEDOR: string;
+  FONE1: string | null;
+  WHATAPP1: string | null;
+  RAZAO_SOCIAL: string | null;
+  CPF: string | null;
+  CNPJ: string | null;
+  EMAIL: string | null;
+  ID_IMAGEM: number | null;
+  ULTIMA_COMPRA: Date | null;
+  UF: string | null;
+  CIDADE: string | null;
+  DATA_CADASTRO: Date | null;
+}
+
+export type SpResultSupplierFindManagerAllData = [
+  TblSupplierFindManagerAll[],
+  SpDefaultFeedback[],
+  SpOperationResult,
+];
+
 export type SpResultSupplierFindAllData = [
   TblSupplierFindALL[],
   SpDefaultFeedback[],

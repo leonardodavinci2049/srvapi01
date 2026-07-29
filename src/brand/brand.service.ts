@@ -7,12 +7,14 @@ import { DatabaseService } from 'src/database/database.service';
 
 import {
   SpResultBrandFindAllData,
+  SpResultBrandFindManagerAllData,
   SpResultRecordCreateType,
   SpResultRecordUpdateType,
   TblBrandFindSearch,
 } from './types/brand.type';
 import { BrandCreateV2Dto } from './dto/brand-create-v2.dto';
 import { BrandFindAllV2Dto } from './dto/brand-find-all-v2.dto';
+import { BrandFindManagerAllV2Dto } from './dto/brand-find-manager-all-v2.dto';
 import { BrandFindIdV2Dto } from './dto/brand-find-id-v2.dto';
 import { BrandUpdateV2Dto } from './dto/brand-update-v2.dto';
 import { BrandDeleteV2Dto } from './dto/brand-delete-v2.dto';
@@ -20,6 +22,7 @@ import { BrandCreateV2Query } from './query/brand-create-v2.query';
 import { processProcedureResultMutation } from 'src/core/process-result/process-procedure-result.mutation';
 import { BrandFindAllV2Query } from './query/brand-find-all-v2.query';
 import { processProcedureResultMultiQuery } from 'src/core/process-result/process-procedure-result.query';
+import { BrandFindManagerAllV2Query } from './query/brand-find-manager-all-v2.query';
 import { BrandFindIdV2Query } from './query/brand-find-id-v2.query';
 import { BrandUpdateV2Query } from './query/brand-update-v2.query';
 import { BrandDeleteV2Query } from './query/brand-delete-v2.query';
@@ -81,6 +84,26 @@ export class BrandService {
         resultData,
         ['Brand find All'],
         'Brand find All not found',
+      );
+    } catch (err) {
+      const errorMessage =
+        err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
+      return new ResultModel(100404, errorMessage, 0, []);
+    }
+  }
+
+  async taskBrandFindManagerAllV2(dataJsonDto: BrandFindManagerAllV2Dto) {
+    try {
+      const queryString = BrandFindManagerAllV2Query(dataJsonDto);
+
+      const resultData = (await this.dbService.selectExecute(
+        queryString,
+      )) as unknown as SpResultBrandFindManagerAllData;
+
+      return processProcedureResultMultiQuery(
+        resultData,
+        ['Brand find manager All'],
+        'Brand find manager All not found',
       );
     } catch (err) {
       const errorMessage =

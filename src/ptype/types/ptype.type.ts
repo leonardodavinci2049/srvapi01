@@ -26,8 +26,19 @@ export interface TblPTypeFindALL extends RowDataPacket {
   TIPO: string;
 }
 
+export interface TblPTypeFindManagerAll extends RowDataPacket {
+  ID_TIPO: number;
+  TIPO: string;
+}
+
 export type SpResultPTypeFindAllData = [
   TblPTypeFindALL[],
+  SpDefaultFeedback[],
+  SpOperationResult,
+];
+
+export type SpResultPTypeFindManagerAllData = [
+  TblPTypeFindManagerAll[],
   SpDefaultFeedback[],
   SpOperationResult,
 ];

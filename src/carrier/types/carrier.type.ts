@@ -37,6 +37,29 @@ export interface TblCarrierFindId extends RowDataPacket {
   TIPO: string;
 }
 
+export interface TblCarrierFindManagerAll extends RowDataPacket {
+  ID_TRANSPORTADORA: number;
+  ID_PESSOA_TIPO: number;
+  TIPO_PESSOA: string;
+  NOME: string;
+  FONE1: string | null;
+  WHATAPP1: string | null;
+  EMAIL1: string | null;
+  WEBSITE: string | null;
+  CNPJ: string | null;
+  RAZAO_SOCIAL: string | null;
+  NOME_RESPONSAVEL: string | null;
+  CPF: string | null;
+  PATH_IMAGEM: string | null;
+  CREATEDAT: Date;
+}
+
+export type SpResultCarrierFindManagerAllData = [
+  TblCarrierFindManagerAll[],
+  SpDefaultFeedback[],
+  SpOperationResult,
+];
+
 export type SpResultCarrierFindIdData = [
   TblCarrierFindId[],
   SpDefaultFeedback[],
