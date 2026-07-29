@@ -13,7 +13,10 @@ export function BrandFindAllV2Query(dataJsonDto: BrandFindAllV2Dto): string {
   const olSearch = dataJsonDto.pe_search;
 
   const olInactive = dataJsonDto.pe_inactive;
-  const olLimit = dataJsonDto.pe_limit;
+  const olQtRecords = dataJsonDto.pe_qt_records;
+  const olPageId = dataJsonDto.pe_page_id;
+  const olColumnId = dataJsonDto.pe_column_id;
+  const olOrderId = dataJsonDto.pe_order_id;
 
   const queryString = ` call sp_brand_find_all_v2(
         ${olAppId},
@@ -26,7 +29,11 @@ export function BrandFindAllV2Query(dataJsonDto: BrandFindAllV2Dto): string {
         ${olPersonId},
         '${olSearch}',
         ${olInactive},
-        ${olLimit}      ) `;
+        ${olQtRecords},
+        ${olPageId},
+        ${olColumnId},
+        ${olOrderId}
+      ) `;
 
   return queryString;
 }
