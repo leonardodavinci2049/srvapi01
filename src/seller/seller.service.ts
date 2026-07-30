@@ -9,11 +9,14 @@ import { SellerFindManagerAllV2Query } from './query/seller-find-manager-all-v2.
 import { processProcedureResultMultiQuery } from 'src/core/process-result/process-procedure-result.query';
 import {
   SpResultSellerFindManagerAllData,
+  TblSellerFindId,
   TblSellerFindSearch,
 } from './types/seller.type';
 import { SellerFindSearchV2Dto } from './dto/seller-find-search-v2.dto';
 import { SellerFindSearchV2Query } from './query/seller-find-search-v2.query';
 import { processSqlResultQuery } from 'src/core/process-result/process-sql-result.query';
+import { SellerFindIdDto } from './dto/seller-find-id.dto';
+import { SellerFindIdQuery } from './query/seller-find-id.query';
 
 @Injectable()
 export class SellerService {
@@ -33,6 +36,26 @@ export class SellerService {
         resultData,
         'Seller find All',
         'Seller find All not found',
+        'Dados carregados com sucesso.',
+      );
+    } catch (err) {
+      const errorMessage =
+        err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
+      return new ResultModel(100404, errorMessage, 0, []);
+    }
+  }
+
+  async taskSellerFindIdV2(dataJsonDto: SellerFindIdDto) {
+    try {
+      const queryString = SellerFindIdQuery(dataJsonDto);
+
+      const resultData =
+        await this.dbService.selectExecute<TblSellerFindId>(queryString);
+
+      return processSqlResultQuery(
+        resultData,
+        'Seller find ID',
+        'Seller find ID not found',
         'Dados carregados com sucesso.',
       );
     } catch (err) {
