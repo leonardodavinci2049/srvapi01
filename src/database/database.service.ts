@@ -12,14 +12,7 @@ import { envs } from 'src/core/config/envs';
 
 // Tipos compatíveis com mysql2 v3.18+
 type SqlParam =
-  | string
-  | number
-  | bigint
-  | boolean
-  | Date
-  | null
-  | Buffer
-  | Uint8Array;
+  string | number | bigint | boolean | Date | null | Buffer | Uint8Array;
 type QueryParams = SqlParam[] | { [key: string]: SqlParam };
 
 @Injectable()
