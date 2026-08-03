@@ -1,5 +1,5 @@
-import { CostumerCreateDto } from '../dto/costumer-create.dto';
 import { v4 as UuidV4 } from 'uuid';
+import { CostumerCreateDto } from '../dto/costumer-create.dto';
 export function CostumerCreateQuery(dataJsonDto: CostumerCreateDto): string {
   const OlUuid = UuidV4();
   const olAppId = dataJsonDto.pe_app_id ?? 1;

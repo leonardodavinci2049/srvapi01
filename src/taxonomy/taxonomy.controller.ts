@@ -1,22 +1,22 @@
-import { Controller, Post, Body, UseGuards, Get } from '@nestjs/common';
-import { TaxonomyService } from './taxonomy.service';
-import { TaxonomyCreateDto } from './dto/taxonomy-create.dto';
-import { TaxonomyRelCreateDto } from './dto/taxonomy-rel-create.dto';
-import { TaxonomyFindIdDto } from './dto/taxonomy-find-id.dto';
-import { TaxonomyFindDto } from './dto/taxonomy-find.dto';
-import { TaxonomyFindMenuDto } from './dto/taxonomy-find-menu.dto';
-import { TaxonomyRelProdutoDto } from './dto/taxonomy-rel-produto.dto';
-import { TaxonomyUpdateDto } from './dto/taxonomy-update.dto';
-import { TaxonomyDeleteDto } from './dto/taxonomy-delete.dto';
-import { TaxonomyRelDeleteDto } from './dto/taxonomy-rel-delete.dto';
+import { Body, Controller, Get, Post, UseGuards } from '@nestjs/common';
 import { AuthGuard } from 'src/core/guards/auth.guard';
-import { TaxonomyUpdNameDto } from './dto/taxonomy-upd-name.dto';
-import { TaxonomyUpdParentIdDto } from './dto/taxonomy-upd-parent-id.dto';
-import { TaxonomyUpdOrdemDto } from './dto/taxonomy-upd-ordem.dto';
+import { TaxonomyCreateDto } from './dto/taxonomy-create.dto';
+import { TaxonomyDeleteDto } from './dto/taxonomy-delete.dto';
+import { TaxonomyFindDto } from './dto/taxonomy-find.dto';
+import { TaxonomyFindIdDto } from './dto/taxonomy-find-id.dto';
+import { TaxonomyFindMenuDto } from './dto/taxonomy-find-menu.dto';
+import { TaxonomyRelCreateDto } from './dto/taxonomy-rel-create.dto';
+import { TaxonomyRelDeleteDto } from './dto/taxonomy-rel-delete.dto';
+import { TaxonomyRelProdutoDto } from './dto/taxonomy-rel-produto.dto';
 import { TaxonomyUpdInactiveDto } from './dto/taxonomy-upd-inactive.dto';
 import { TaxonomyUpdMetadataDto } from './dto/taxonomy-upd-metadata.dto';
+import { TaxonomyUpdNameDto } from './dto/taxonomy-upd-name.dto';
+import { TaxonomyUpdOrdemDto } from './dto/taxonomy-upd-ordem.dto';
+import { TaxonomyUpdParentIdDto } from './dto/taxonomy-upd-parent-id.dto';
 import { TaxonomyUpdPathImageDto } from './dto/taxonomy-upd-path_image.dto';
+import { TaxonomyUpdateDto } from './dto/taxonomy-update.dto';
 import { TaxonomyWebMenuDto } from './dto/taxonomy-web-menu.dto';
+import { TaxonomyService } from './taxonomy.service';
 
 @Controller('taxonomy')
 export class TaxonomyController {

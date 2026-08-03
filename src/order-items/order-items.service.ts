@@ -1,45 +1,39 @@
 import { Injectable } from '@nestjs/common';
-
-import { ResultModel } from 'src/core/utils/result.model';
-import { MESSAGES } from 'src/core/utils/constants/globalConstants';
-
-import { DatabaseService } from 'src/database/database.service';
-
-import { OrderItemFindAllDto } from './dto/order-item-find-all.dto';
-import { OrderItemFindAllQuery } from './query/order-item-find-all.query';
+import { processProcedureResultMutation } from 'src/core/process-result/process-procedure-result.mutation';
 import { processProcedureResultMultiQuery } from 'src/core/process-result/process-procedure-result.query';
+import { MESSAGES } from 'src/core/utils/constants/globalConstants';
+import { ResultModel } from 'src/core/utils/result.model';
+import { DatabaseService } from 'src/database/database.service';
+import { OrderItemDeleteDto } from './dto/order-item-delete.dto';
+import { OrderItemFindAllDto } from './dto/order-item-find-all.dto';
+import { OrderItemFindIdDto } from './dto/order-item-find-id.dto';
+import { OrderItemUpdDiscountDto } from './dto/order-item-upd-discount.dto';
 
+import { OrderItemUpdDiscountAdmDto } from './dto/order-item-upd-discount-adm.dto';
+import { OrderItemUpdFreteVlDto } from './dto/order-item-upd-frete-vl.dto';
+import { OrderItemUpdInlFieldDto } from './dto/order-item-upd-inl-field.dto';
+import { OrderItemUpdInsuranceVlDto } from './dto/order-item-upd-insurance-vl.dto';
+import { OrderItemUpdNotesDto } from './dto/order-item-upd-notes.dto';
+import { OrderItemUpdQtDto } from './dto/order-item-upd-qt.dto';
+import { OrderItemUpdValueDto } from './dto/order-item-upd-value.dto';
+
+import { OrderItemDeleteQuery } from './query/order-item-delete.query';
+import { OrderItemFindAllQuery } from './query/order-item-find-all.query';
+import { OrderItemFindIdQuery } from './query/order-item-find-id.query';
+import { OrderItemUpdDiscountQuery } from './query/order-item-upd-discount.query';
+import { OrderItemUpdDiscountAdmQuery } from './query/order-item-upd-discount-adm.query';
+import { OrderItemUpdFreteVlQuery } from './query/order-item-upd-frete-vl.query';
+import { OrderItemUpdInlFieldQuery } from './query/order-item-upd-inl-field.query';
+import { OrderItemUpdInsuranceVlQuery } from './query/order-item-upd-insurance-vl.query';
+import { OrderItemUpdNotesQuery } from './query/order-item-upd-notes.query';
+import { OrderItemUpdQtQuery } from './query/order-item-upd-qt.query';
+import { OrderItemUpdValueQuery } from './query/order-item-upd-value.query';
 import {
   SpResultOrderItemsFindData,
   SpResultOrderItemsFindIdData,
   SpResultRecordDeleteType,
   SpResultRecordUpdateType,
 } from './types/order-items.type';
-import { OrderItemFindIdQuery } from './query/order-item-find-id.query';
-import { OrderItemFindIdDto } from './dto/order-item-find-id.dto';
-
-import { OrderItemUpdDiscountAdmDto } from './dto/order-item-upd-discount-adm.dto';
-import { OrderItemUpdDiscountDto } from './dto/order-item-upd-discount.dto';
-import { OrderItemDeleteDto } from './dto/order-item-delete.dto';
-
-import { OrderItemUpdQtDto } from './dto/order-item-upd-qt.dto';
-import { OrderItemUpdInsuranceVlDto } from './dto/order-item-upd-insurance-vl.dto';
-import { OrderItemUpdNotesDto } from './dto/order-item-upd-notes.dto';
-import { OrderItemUpdValueDto } from './dto/order-item-upd-value.dto';
-
-import { OrderItemDeleteQuery } from './query/order-item-delete.query';
-import { OrderItemUpdValueQuery } from './query/order-item-upd-value.query';
-import { OrderItemUpdQtQuery } from './query/order-item-upd-qt.query';
-import { OrderItemUpdNotesQuery } from './query/order-item-upd-notes.query';
-import { OrderItemUpdInsuranceVlQuery } from './query/order-item-upd-insurance-vl.query';
-import { OrderItemUpdFreteVlQuery } from './query/order-item-upd-frete-vl.query';
-import { OrderItemUpdDiscountQuery } from './query/order-item-upd-discount.query';
-
-import { OrderItemUpdDiscountAdmQuery } from './query/order-item-upd-discount-adm.query';
-import { OrderItemUpdFreteVlDto } from './dto/order-item-upd-frete-vl.dto';
-import { OrderItemUpdInlFieldDto } from './dto/order-item-upd-inl-field.dto';
-import { OrderItemUpdInlFieldQuery } from './query/order-item-upd-inl-field.query';
-import { processProcedureResultMutation } from 'src/core/process-result/process-procedure-result.mutation';
 
 @Injectable()
 export class OrderItemsService {

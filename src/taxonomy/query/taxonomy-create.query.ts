@@ -1,5 +1,5 @@
-import { TaxonomyCreateDto } from '../dto/taxonomy-create.dto';
 import { v4 as UuidV4 } from 'uuid';
+import { TaxonomyCreateDto } from '../dto/taxonomy-create.dto';
 
 export function createTaxonomyQuery(dataJsonDto: TaxonomyCreateDto): string {
   const OlUuid = UuidV4();

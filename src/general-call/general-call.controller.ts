@@ -1,9 +1,9 @@
-import { Controller, Post, Body, UseGuards, Get } from '@nestjs/common';
+import { Body, Controller, Get, Post, UseGuards } from '@nestjs/common';
 
 import { AuthGuard } from 'src/core/guards/auth.guard';
-import { GeneralCallService } from './general-call.service';
-import { GeneralUpdProcedureV1Dto } from './dto/general-upd-procedure-v1.dto';
 import { GeneralTableUpdInlFieldV2Dto } from './dto/general_table_upd_inl_field_v2.dto';
+import { GeneralUpdProcedureV1Dto } from './dto/general-upd-procedure-v1.dto';
+import { GeneralCallService } from './general-call.service';
 
 @Controller('general-call')
 export class GeneralCallController {

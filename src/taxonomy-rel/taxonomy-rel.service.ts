@@ -1,22 +1,21 @@
 import { Injectable } from '@nestjs/common';
-
-import { ResultModel } from 'src/core/utils/result.model';
-import { MESSAGES } from 'src/core/utils/constants/globalConstants';
 import { processProcedureResultMutation } from 'src/core/process-result/process-procedure-result.mutation';
 import { processProcedureResultMultiQuery } from 'src/core/process-result/process-procedure-result.query';
+import { MESSAGES } from 'src/core/utils/constants/globalConstants';
+import { ResultModel } from 'src/core/utils/result.model';
 import { DatabaseService } from 'src/database/database.service';
 
 import { TaxonomyRelCreateV3Dto } from './dto/taxonomy-rel-create-v3.dto';
 import { TaxonomyRelDeleteV3Dto } from './dto/taxonomy-rel-delete-v3.dto';
 import { TaxonomyRelProdutoAllV3Dto } from './dto/taxonomy-rel-produto-all-v3.dto';
 import { TaxonomyRelCreateV3Query } from './query/taxonomy-rel-create-v3.query';
+import { TaxonomyRelDeleteV3Query } from './query/taxonomy-rel-delete-v3.query';
+import { TaxonomyRelProdutoAllV3Query } from './query/taxonomy-rel-produto-all-v3.query';
 import {
   SpResultRecordCreateType,
   SpResultRecordDeleteType,
   SpResultTaxonomyRelProdutoV3Data,
 } from './types/taxonomy-rel.type';
-import { TaxonomyRelProdutoAllV3Query } from './query/taxonomy-rel-produto-all-v3.query';
-import { TaxonomyRelDeleteV3Query } from './query/taxonomy-rel-delete-v3.query';
 
 @Injectable()
 export class TaxonomyRelService {

@@ -3,9 +3,9 @@ import {
   createPool,
   Pool,
   PoolConnection,
+  PoolOptions,
   ResultSetHeader,
   RowDataPacket,
-  PoolOptions,
   // Add this import
 } from 'mysql2/promise';
 import { envs } from 'src/core/config/envs';

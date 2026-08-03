@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
-import { PtypeService } from './ptype.service';
-import { PtypeController } from './ptype.controller';
 import { DatabaseModule } from 'src/database/database.module';
+import { PtypeController } from './ptype.controller';
+import { PtypeService } from './ptype.service';
 
 @Module({
   imports: [DatabaseModule],

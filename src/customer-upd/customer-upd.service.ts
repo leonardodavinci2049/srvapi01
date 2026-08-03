@@ -1,8 +1,7 @@
 import { Injectable } from '@nestjs/common';
-
-import { ResultModel } from 'src/core/utils/result.model';
-import { MESSAGES } from 'src/core/utils/constants/globalConstants';
 import { processProcedureResultMutation } from 'src/core/process-result/process-procedure-result.mutation';
+import { MESSAGES } from 'src/core/utils/constants/globalConstants';
+import { ResultModel } from 'src/core/utils/result.model';
 
 import { DatabaseService } from 'src/database/database.service';
 
@@ -12,15 +11,13 @@ import { CustomerUpdFlagDto } from './dto/customer-upd-flag.dto';
 import { CustomerUpdGeneralDto } from './dto/customer-upd-general.dto';
 import { CustomerUpdInternetDto } from './dto/customer-upd-internet.dto';
 import { CustomerUpdPersonalDto } from './dto/customer-upd-personal.dto';
-
-import { SpResultRecordUpdateType } from './types/costumer-upd.type';
-
 import { CustomerUpdAddressQuery } from './query/customer-upd-address.query';
 import { CustomerUpdBusinessQuery } from './query/customer-upd-business.query';
 import { CustomerUpdFlagQuery } from './query/customer-upd-flag.query';
 import { CustomerUpdGeneralQuery } from './query/customer-upd-general.query';
 import { CustomerUpdInternetQuery } from './query/customer-upd-internet.query';
 import { CustomerUpdPersonalQuery } from './query/customer-upd-personal.query';
+import { SpResultRecordUpdateType } from './types/costumer-upd.type';
 
 @Injectable()
 export class CustomerUpdService {

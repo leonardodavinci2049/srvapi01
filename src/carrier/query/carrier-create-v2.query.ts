@@ -1,5 +1,5 @@
-import { CarrierCreateV2Dto } from '../dto/carrier-create-v2.dto';
 import { v4 as UuidV4 } from 'uuid';
+import { CarrierCreateV2Dto } from '../dto/carrier-create-v2.dto';
 
 export function CarrierCreateV2Query(dataJsonDto: CarrierCreateV2Dto): string {
   const OlUuid = UuidV4();

@@ -1,20 +1,18 @@
 import { Injectable } from '@nestjs/common';
-
-import { ResultModel } from 'src/core/utils/result.model';
+import { processProcedureResultMultiQuery } from 'src/core/process-result/process-procedure-result.query';
 import { MESSAGES } from 'src/core/utils/constants/globalConstants';
-
+import { ResultModel } from 'src/core/utils/result.model';
 import { DatabaseService } from 'src/database/database.service';
 import { ProductFindManagerAllV2Dto } from './dto/product-find-manager-all-v2.dto';
 import { ProductFindManagerIdV2Dto } from './dto/product-find-manager-id-v2.dto';
+import { ProductFindManagerSearchV2Dto } from './dto/product-find-manager-search.dto';
+import { ProductFindManagerAllV2Query } from './query/product-find-manager-all-v2.query';
+import { ProductFindManagerIdV2Query } from './query/product-find-manager-id-v2.query';
+import { ProductFindManagerSearchV2Query } from './query/product-find-manager-search.query';
 import {
   SpResultProductFindManagerAllData,
   SpResultProductFindManagerIdData,
 } from './types/produtct-type.type';
-import { ProductFindManagerAllV2Query } from './query/product-find-manager-all-v2.query';
-import { processProcedureResultMultiQuery } from 'src/core/process-result/process-procedure-result.query';
-import { ProductFindManagerIdV2Query } from './query/product-find-manager-id-v2.query';
-import { ProductFindManagerSearchV2Dto } from './dto/product-find-manager-search.dto';
-import { ProductFindManagerSearchV2Query } from './query/product-find-manager-search.query';
 
 @Injectable()
 export class ProductManagerService {

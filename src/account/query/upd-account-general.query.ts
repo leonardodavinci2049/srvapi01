@@ -1,4 +1,3 @@
-import { Console } from 'console';
 import { UpdAccountGeneralDto } from '../dto/upd-account-general.dto';
 
 export function UpdAccountGeneralQuery(

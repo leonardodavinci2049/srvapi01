@@ -6,11 +6,11 @@ import {
   Post,
   UseGuards,
 } from '@nestjs/common';
-import { ProductManagerService } from './product-manager.service';
 import { AuthGuard } from 'src/core/guards/auth.guard';
 import { ProductFindManagerAllV2Dto } from './dto/product-find-manager-all-v2.dto';
 import { ProductFindManagerIdV2Dto } from './dto/product-find-manager-id-v2.dto';
 import { ProductFindManagerSearchV2Dto } from './dto/product-find-manager-search.dto';
+import { ProductManagerService } from './product-manager.service';
 
 @Controller('product-manager')
 export class ProductManagerController {

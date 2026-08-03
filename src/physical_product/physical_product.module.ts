@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
-import { PhysicalProductService } from './physical_product.service';
-import { PhysicalProductController } from './physical_product.controller';
 import { DatabaseModule } from 'src/database/database.module';
+import { PhysicalProductController } from './physical_product.controller';
+import { PhysicalProductService } from './physical_product.service';
 
 @Module({
   imports: [DatabaseModule],

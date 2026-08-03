@@ -1,9 +1,9 @@
-import { Controller, Post, Body, UseGuards } from '@nestjs/common';
-import { ProductPdvService } from './product-pdv.service';
+import { Body, Controller, Post, UseGuards } from '@nestjs/common';
 import { AuthGuard } from 'src/core/guards/auth.guard';
+import { ProductFindPdvSearchV2Dto } from './dto/product-find-Pdv-search.dto';
 import { ProductFindPdvAllV2Dto } from './dto/product-find-pdv-all-v2.dto';
 import { ProductFindPdvIdV2Dto } from './dto/product-find-pdv-id-v2.dto';
-import { ProductFindPdvSearchV2Dto } from './dto/product-find-Pdv-search.dto';
+import { ProductPdvService } from './product-pdv.service';
 
 @Controller('product-pdv')
 export class ProductPdvController {

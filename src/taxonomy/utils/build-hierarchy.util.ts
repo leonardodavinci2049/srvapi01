@@ -2,7 +2,8 @@ import { TblTaxonomyFindMenu } from '../types/taxonomy.type';
 
 // Interface para categoria hierárquica
 export interface HierarchicalCategory extends TblTaxonomyFindMenu {
-  children?: HierarchicalCategory[];
+  ID_TAXONOMY: number;
+  children: HierarchicalCategory[];
 }
 
 /**
@@ -18,12 +19,29 @@ export function buildHierarchy(
 
   // Primeiro, criar um mapa de todas as categorias
   categories.forEach((category) => {
-    categoryMap.set(category.ID_TAXONOMY!, { ...category, children: [] });
+    const categoryId = category.ID_TAXONOMY;
+    if (categoryId === undefined) {
+      return;
+    }
+
+    categoryMap.set(categoryId, {
+      ...category,
+      ID_TAXONOMY: categoryId,
+      children: [],
+    });
   });
 
   // Depois, construir a hierarquia
   categories.forEach((category) => {
-    const categoryNode = categoryMap.get(category.ID_TAXONOMY!);
+    const categoryId = category.ID_TAXONOMY;
+    if (categoryId === undefined) {
+      return;
+    }
+
+    const categoryNode = categoryMap.get(categoryId);
+    if (!categoryNode) {
+      return;
+    }
 
     if (
       category.PARENT_ID === 0 ||
@@ -31,12 +49,12 @@ export function buildHierarchy(
       category.PARENT_ID === undefined
     ) {
       // É uma categoria raiz
-      rootCategories.push(categoryNode!);
+      rootCategories.push(categoryNode);
     } else {
       // É uma categoria filha
       const parentNode = categoryMap.get(category.PARENT_ID);
       if (parentNode) {
-        parentNode.children!.push(categoryNode!);
+        parentNode.children.push(categoryNode);
       }
     }
   });

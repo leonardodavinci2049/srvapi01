@@ -1,6 +1,6 @@
 import { generateSlug } from 'src/core/utils/generators/generate-slug';
-import { BrandCreateV2Dto } from '../dto/brand-create-v2.dto';
 import { v4 as UuidV4 } from 'uuid';
+import { BrandCreateV2Dto } from '../dto/brand-create-v2.dto';
 
 export function BrandCreateV2Query(dataJsonDto: BrandCreateV2Dto): string {
   const OlUuid = UuidV4();

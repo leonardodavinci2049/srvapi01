@@ -1,24 +1,23 @@
 import { Injectable } from '@nestjs/common';
-import { ResultModel } from 'src/core/utils/result.model';
+import { processProcedureResultMultiQuery } from 'src/core/process-result/process-procedure-result.query';
 import { MESSAGES } from 'src/core/utils/constants/globalConstants';
-
+import { ResultModel } from 'src/core/utils/result.model';
 import { DatabaseService } from 'src/database/database.service';
-
-import { OrderFindCoSellerIdDto } from './dto/order-find-co-seller-id.dto';
-import { OrderFindCoDeliveryIdDto } from './dto/order-find-co-delivery-id.dto';
-import { OrderFindCoCustomerIdDto } from './dto/order-find-co-customer-id.dto';
+import { SpResultOrderFindCustomerAllData } from 'src/order-reports/types/order-reports.type';
 import { OrderFindCoCarrierIdDto } from './dto/order-find-co-carrier-id.dto';
+import { OrderFindCoCustomerIdDto } from './dto/order-find-co-customer-id.dto';
+import { OrderFindCoDeliveryIdDto } from './dto/order-find-co-delivery-id.dto';
 import { OrderFindCoEquipmentIdDto } from './dto/order-find-co-equipment-id.dto';
 import { OrderFindCoHistoryIdDto } from './dto/order-find-co-history-id.dto';
 import { OrderFindCoNfIdDto } from './dto/order-find-co-nf-id.dto';
 import { OrderFindCoPgFormaIdDto } from './dto/order-find-co-pg-forma-id.dto';
 import { OrderFindCoProtocolIdDto } from './dto/order-find-co-protocol-id.dto';
-
+import { OrderFindCoSellerIdDto } from './dto/order-find-co-seller-id.dto';
 import { OrderFindCoSummaryIdDto } from './dto/order-find-co-summary-id.dto';
+import { OrdersFindCartIdDto } from './dto/orders-find-cart-id.dto';
 import { OrdersFindDashboardIdDto } from './dto/orders-find-dashboard-id.dto';
-
+import { OrdersFindOrderIdDto } from './dto/orders-find-order-id.dto';
 import { OrderFindCoCarrierIdQuery } from './query/order-find-co-carrier-id.query';
-
 import { OrderFindCoCustomerIdQuery } from './query/order-find-co-customer-id.query';
 import { OrderFindCoDeliveryIdQuery } from './query/order-find-co-delivery-id.query';
 import { OrderFindCoEquipmentIdQuery } from './query/order-find-co-equipment-id.query';
@@ -26,10 +25,11 @@ import { OrderFindCoHistoryIdQuery } from './query/order-find-co-history-id.quer
 import { OrderFindCoNfIdQuery } from './query/order-find-co-nf-id.query';
 import { OrderFindCoPgFormaIdQuery } from './query/order-find-co-pg-forma-id.query';
 import { OrderFindCoProtocolIdQuery } from './query/order-find-co-protocol-id.query';
-
 import { OrderFindCoSellerIdQuery } from './query/order-find-co-seller-id.query';
 import { OrderFindCoSummaryIdQuery } from './query/order-find-co-summary-id.query';
+import { OrdersFindCartIdQuery } from './query/orders-find-cart-id.query';
 import { OrdersFindDashboardIdQuery } from './query/orders-find-dashboard-id.query';
+import { OrdersFindOrderIdQuery } from './query/orders-find-order-id.query';
 import {
   SpResultOrderFindCartIdData,
   SpResultOrderFindCoCarrierIdData,
@@ -44,12 +44,6 @@ import {
   SpResultOrderFindOrderIdData,
   SpResultOrderFindProtocolIdData,
 } from './types/order-sales.type';
-import { SpResultOrderFindCustomerAllData } from 'src/order-reports/types/order-reports.type';
-import { processProcedureResultMultiQuery } from 'src/core/process-result/process-procedure-result.query';
-import { OrdersFindCartIdQuery } from './query/orders-find-cart-id.query';
-import { OrdersFindCartIdDto } from './dto/orders-find-cart-id.dto';
-import { OrdersFindOrderIdDto } from './dto/orders-find-order-id.dto';
-import { OrdersFindOrderIdQuery } from './query/orders-find-order-id.query';
 
 @Injectable()
 export class OrderSalesService {

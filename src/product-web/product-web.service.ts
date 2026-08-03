@@ -1,22 +1,19 @@
 import { Injectable } from '@nestjs/common';
-
-import { DatabaseService } from 'src/database/database.service';
-
-import { ResultModel } from 'src/core/utils/result.model';
-import { MESSAGES } from 'src/core/utils/constants/globalConstants';
-
 import { processProcedureResultMultiQuery } from 'src/core/process-result/process-procedure-result.query';
+import { MESSAGES } from 'src/core/utils/constants/globalConstants';
+import { ResultModel } from 'src/core/utils/result.model';
+import { DatabaseService } from 'src/database/database.service';
 import { ProductWebFindIdV3Dto } from './dto/product-web-find-id-v3.dto';
 import { ProductWebFindV3Dto } from './dto/product-web-find-v3.dto';
 import { ProductWebSectionsV3Dto } from './dto/product-web-sections-v3.dto';
+import { webFindIdProductQuery } from './query/product-web-find-id-v3.query';
+import { webFindProductQuery } from './query/product-web-find-v3.query';
+import { webFindProductSectionsQuery } from './query/product-web-sections-v3.query';
 import {
   SpProductWebFindDataType,
   SpProductWebFindIdDataType,
   SpProductWebSectionsDataType,
 } from './types/product-web.type';
-import { webFindIdProductQuery } from './query/product-web-find-id-v3.query';
-import { webFindProductQuery } from './query/product-web-find-v3.query';
-import { webFindProductSectionsQuery } from './query/product-web-sections-v3.query';
 
 @Injectable()
 export class ProductWebService {

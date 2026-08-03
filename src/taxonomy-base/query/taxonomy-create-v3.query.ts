@@ -1,5 +1,5 @@
-import { TaxonomyCreateV3Dto } from '../dto/taxonomy-create-v3.dto';
 import { v4 as UuidV4 } from 'uuid';
+import { TaxonomyCreateV3Dto } from '../dto/taxonomy-create-v3.dto';
 
 export function TaxonomyCreateV3Query(
   dataJsonDto: TaxonomyCreateV3Dto,

@@ -1,23 +1,29 @@
 import { Injectable } from '@nestjs/common';
-
-import { DatabaseService } from 'src/database/database.service';
-
-import { ResultModel } from 'src/core/utils/result.model';
-import { MESSAGES } from 'src/core/utils/constants/globalConstants';
 import { processProcedureResultMutation } from 'src/core/process-result/process-procedure-result.mutation';
 import { processProcedureResultMultiQuery } from 'src/core/process-result/process-procedure-result.query';
-
-import { CartItemAddV1Dto } from './dto/cart-item-add-v1.dto';
+import { MESSAGES } from 'src/core/utils/constants/globalConstants';
+import { ResultModel } from 'src/core/utils/result.model';
+import { DatabaseService } from 'src/database/database.service';
+import { CartClearAllV1Dto } from './dto/cart-clear-all-v1.dto';
+import { CartCloseV1Dto } from './dto/cart-close-v1.dto';
+import { CartFindAllV1Dto } from './dto/cart-find-ALL-v1.dto';
 import { CartFindIdV1Dto } from './dto/cart-find-id-v1.dto';
 import { CartFindQtV1Dto } from './dto/cart-find-qt-v1.dto';
-import { CartFindAllV1Dto } from './dto/cart-find-ALL-v1.dto';
-import { CartUpdSendToV1Dto } from './dto/cart-upd-send-to-v1.dto';
-import { CartItemUpdQtV1Dto } from './dto/cart-item-upd-qt-v1.dto';
-import { CartClearAllV1Dto } from './dto/cart-clear-all-v1.dto';
+import { CartFindSessionV1Dto } from './dto/cart-find-session-v1.dto';
+import { CartItemAddV1Dto } from './dto/cart-item-add-v1.dto';
 import { CartItemDeleteV1Dto } from './dto/cart-item-delete-v1.dto';
-import { CartCloseV1Dto } from './dto/cart-close-v1.dto';
+import { CartItemUpdQtV1Dto } from './dto/cart-item-upd-qt-v1.dto';
+import { CartUpdSendToV1Dto } from './dto/cart-upd-send-to-v1.dto';
+import { CartClearAllV1Query } from './query/cart-clear-all-v1.query';
+import { CartCloseV1Query } from './query/cart-close-v1.query';
+import { CartFindAllV1Query } from './query/cart-find-ALL-v1.query';
+import { CartFindIdV1Query } from './query/cart-find-id-v1.query';
+import { CartFindQtV1Query } from './query/cart-find-qt-v1.query';
+import { CartFindSessionV1Query } from './query/cart-find-session-v1.query';
 import { CartItemAddV1Query } from './query/cart-item-add-v1.query';
-
+import { CartItemDeleteV1Query } from './query/cart-item-delete-v1.query';
+import { CartItemUpdQtV1Query } from './query/cart-item-upd-qt-v1.query';
+import { CartUpdSendToV1Query } from './query/cart-upd-send-to-v1.query';
 import {
   SpResultCartFindAllData,
   SpResultCartFindIdData,
@@ -27,18 +33,6 @@ import {
   SpResultRecordDeleteType,
   SpResultRecordUpdateType,
 } from './types/cart.type';
-
-import { CartFindIdV1Query } from './query/cart-find-id-v1.query';
-
-import { CartItemUpdQtV1Query } from './query/cart-item-upd-qt-v1.query';
-import { CartFindQtV1Query } from './query/cart-find-qt-v1.query';
-import { CartFindAllV1Query } from './query/cart-find-ALL-v1.query';
-import { CartUpdSendToV1Query } from './query/cart-upd-send-to-v1.query';
-import { CartClearAllV1Query } from './query/cart-clear-all-v1.query';
-import { CartItemDeleteV1Query } from './query/cart-item-delete-v1.query';
-import { CartCloseV1Query } from './query/cart-close-v1.query';
-import { CartFindSessionV1Dto } from './dto/cart-find-session-v1.dto';
-import { CartFindSessionV1Query } from './query/cart-find-session-v1.query';
 
 @Injectable()
 export class CartService {

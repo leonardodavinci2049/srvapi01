@@ -1,10 +1,10 @@
-import { Controller, Get, Post, Body, UseGuards } from '@nestjs/common';
-import { CustomerService } from './customer.service';
+import { Body, Controller, Get, Post, UseGuards } from '@nestjs/common';
 import { AuthGuard } from 'src/core/guards/auth.guard';
+import { CustomerService } from './customer.service';
 import { CostumerCreateDto } from './dto/costumer-create.dto';
 import { CostumerFindAllDto } from './dto/costumer-find-all.dto';
-import { CostumerFindManagerAllV2Dto } from './dto/costumer-find-manager-all-v2.dto';
 import { CostumerFindIdDto } from './dto/costumer-find-id.dto';
+import { CostumerFindManagerAllV2Dto } from './dto/costumer-find-manager-all-v2.dto';
 import { CustomerFindLatestProductsDto } from './dto/customer-find-latest-products.dto';
 import { CustomerFindSearchV2Dto } from './dto/customer-find-search-v2.dto';
 

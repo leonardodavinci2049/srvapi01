@@ -1,20 +1,18 @@
 import { Injectable } from '@nestjs/common';
-
-import { ResultModel } from 'src/core/utils/result.model';
+import { processProcedureResultMultiQuery } from 'src/core/process-result/process-procedure-result.query';
 import { MESSAGES } from 'src/core/utils/constants/globalConstants';
-
+import { ResultModel } from 'src/core/utils/result.model';
 import { DatabaseService } from 'src/database/database.service';
+import { ProductFindPdvSearchV2Dto } from './dto/product-find-Pdv-search.dto';
 import { ProductFindPdvAllV2Dto } from './dto/product-find-pdv-all-v2.dto';
 import { ProductFindPdvIdV2Dto } from './dto/product-find-pdv-id-v2.dto';
+import { ProductFindPdvSearchV2Query } from './query/product-find-Pdv-search.query';
+import { ProductFindPdvAllV2Query } from './query/product-find-pdv-all-v2.query';
+import { ProductFindPdvIdV2Query } from './query/product-find-pdv-id-v2.query';
 import {
   SpResultProductFindPdvAllData,
   SpResultProductFindPdvIdData,
 } from './types/produtct-type.type';
-import { ProductFindPdvAllV2Query } from './query/product-find-pdv-all-v2.query';
-import { processProcedureResultMultiQuery } from 'src/core/process-result/process-procedure-result.query';
-import { ProductFindPdvIdV2Query } from './query/product-find-pdv-id-v2.query';
-import { ProductFindPdvSearchV2Dto } from './dto/product-find-Pdv-search.dto';
-import { ProductFindPdvSearchV2Query } from './query/product-find-Pdv-search.query';
 
 @Injectable()
 export class ProductPdvService {

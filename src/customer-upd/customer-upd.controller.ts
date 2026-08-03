@@ -1,8 +1,7 @@
-import { Controller, Post, Body, UseGuards, Get } from '@nestjs/common';
-import { CustomerUpdService } from './customer-upd.service';
-
-import { CustomerUpdAddressDto } from './dto/customer-upd-address.dto';
+import { Body, Controller, Get, Post, UseGuards } from '@nestjs/common';
 import { AuthGuard } from 'src/core/guards/auth.guard';
+import { CustomerUpdService } from './customer-upd.service';
+import { CustomerUpdAddressDto } from './dto/customer-upd-address.dto';
 import { CustomerUpdBusinessDto } from './dto/customer-upd-business.dto';
 import { CustomerUpdFlagDto } from './dto/customer-upd-flag.dto';
 import { CustomerUpdGeneralDto } from './dto/customer-upd-general.dto';

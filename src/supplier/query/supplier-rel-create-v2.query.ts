@@ -1,5 +1,5 @@
-import { SupplierRelCreateV2Dto } from '../dto/supplier-rel-create-v2.dto';
 import { v4 as UuidV4 } from 'uuid';
+import { SupplierRelCreateV2Dto } from '../dto/supplier-rel-create-v2.dto';
 
 export function SupplierRelCreateV2Query(
   dataJsonDto: SupplierRelCreateV2Dto,

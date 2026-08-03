@@ -36,7 +36,7 @@ export class FieldValidations {
     value: string | any[] | null | undefined,
     message: string,
   ): void => {
-    if (!value || !value.length) {
+    if (!value?.length) {
       this.errors.push(message);
     }
   };

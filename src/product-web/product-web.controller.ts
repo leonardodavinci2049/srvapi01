@@ -1,10 +1,10 @@
-import { Controller, Post, Body, UseGuards, Get } from '@nestjs/common';
+import { Body, Controller, Get, Post, UseGuards } from '@nestjs/common';
 
 import { AuthGuard } from 'src/core/guards/auth.guard';
-import { ProductWebService } from './product-web.service';
 import { ProductWebFindIdV3Dto } from './dto/product-web-find-id-v3.dto';
 import { ProductWebFindV3Dto } from './dto/product-web-find-v3.dto';
 import { ProductWebSectionsV3Dto } from './dto/product-web-sections-v3.dto';
+import { ProductWebService } from './product-web.service';
 
 @Controller('product-web')
 export class ProductWebController {

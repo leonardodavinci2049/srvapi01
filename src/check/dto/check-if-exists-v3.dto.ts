@@ -1,10 +1,10 @@
 import { ApiProperty } from '@nestjs/swagger';
 import {
-  IsString,
   IsNotEmpty,
   IsNumber,
-  MinLength,
   IsOptional,
+  IsString,
+  MinLength,
 } from 'class-validator';
 
 export class CheckIfExistsV3Dto {

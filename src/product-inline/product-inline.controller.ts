@@ -1,8 +1,8 @@
 import { Body, Controller, Get, Post, UseGuards } from '@nestjs/common';
-import { ProductInlineService } from './product-inline.service';
 import { AuthGuard } from 'src/core/guards/auth.guard';
-import { ProductUpdInlDescriptionV3Dto } from './dto/product-upd-inl-description-v3.dto';
 import { ProductUpdInlBrandV3Dto } from './dto/product-upd-inl-brand-v3.dto';
+import { ProductUpdInlDescriptionV3Dto } from './dto/product-upd-inl-description-v3.dto';
+import { ProductUpdInlFieldDto } from './dto/product-upd-inl-field.dto';
 import { ProductUpdInlNameV3Dto } from './dto/product-upd-inl-name-v3.dto';
 import { ProductUpdInlPathImageV3Dto } from './dto/product-upd-inl-path-image-v3.dto';
 import { ProductUpdInlShortDescriptionV3Dto } from './dto/product-upd-inl-Short-description-v3.dto';
@@ -10,7 +10,7 @@ import { ProductUpdInlStockMinV3Dto } from './dto/product-upd-inl-stock-min-v3.d
 import { ProductUpdInlStockV3Dto } from './dto/product-upd-inl-stock-v3.dto';
 import { ProductUpdInlTypeV3Dto } from './dto/product-upd-inl-type-v3.dto';
 import { ProductUpdInlVariouV3Dto } from './dto/product-upd-inl-variou-v3.dto';
-import { ProductUpdInlFieldDto } from './dto/product-upd-inl-field.dto';
+import { ProductInlineService } from './product-inline.service';
 
 @Controller('product-inline')
 export class ProductInlineController {

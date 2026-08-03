@@ -1,21 +1,27 @@
 import { Injectable } from '@nestjs/common';
-
+import { processProcedureResultMutation } from 'src/core/process-result/process-procedure-result.mutation';
+import { processProcedureResultMultiQuery } from 'src/core/process-result/process-procedure-result.query';
+import { processSqlResultQuery } from 'src/core/process-result/process-sql-result.query';
+import { MESSAGES } from 'src/core/utils/constants/globalConstants';
 import { resultQueryData } from 'src/core/utils/globalResult/global.result';
 import { ResultModel } from 'src/core/utils/result.model';
-import { MESSAGES } from 'src/core/utils/constants/globalConstants';
-
 import { DatabaseService } from 'src/database/database.service';
-import { TypeFindAllDto } from './dto/type-find-all.dto';
-import { TypeFindAllQuery } from './query/type-find-all.query';
-
 import { TypeCreateV2Dto } from './dto/type-create-v2.dto';
-import { TypeFindAllV2Dto } from './dto/type-find-all-v2.dto';
-import { TypeFindManagerAllV2Dto } from './dto/type-find-manager-all-v2.dto';
-import { TypeFindIdV2Dto } from './dto/type-find-id-v2.dto';
-import { TypeUpdateV2Dto } from './dto/type-update-v2.dto';
 import { TypeDeleteV2Dto } from './dto/type-delete-v2.dto';
+import { TypeFindAllDto } from './dto/type-find-all.dto';
+import { TypeFindAllV2Dto } from './dto/type-find-all-v2.dto';
+import { TypeFindIdV2Dto } from './dto/type-find-id-v2.dto';
+import { TypeFindManagerAllV2Dto } from './dto/type-find-manager-all-v2.dto';
+import { TypeFindSearchV2Dto } from './dto/type-find-search-v2.dto';
+import { TypeUpdateV2Dto } from './dto/type-update-v2.dto';
 import { TypeCreateV2Query } from './query/type-create-v2.query';
-import { processProcedureResultMutation } from 'src/core/process-result/process-procedure-result.mutation';
+import { TypeDeleteV2Query } from './query/type-delete-v2.query';
+import { TypeFindAllQuery } from './query/type-find-all.query';
+import { TypeFindAllV2Query } from './query/type-find-all-v2.query';
+import { TypeFindIdV2Query } from './query/type-find-id-v2.query';
+import { TypeFindManagerAllV2Query } from './query/type-find-manager-all-v2.query';
+import { TypeFindSearchV2Query } from './query/type-find-search-v2.query';
+import { TypeUpdateV2Query } from './query/type-update-v2.query';
 import {
   SpResultPTypeFindAllData,
   SpResultPTypeFindIdData,
@@ -25,15 +31,6 @@ import {
   SpResultRecordUpdateType,
   TblPTypeFindSearch,
 } from './types/ptype.type';
-import { TypeFindAllV2Query } from './query/type-find-all-v2.query';
-import { processProcedureResultMultiQuery } from 'src/core/process-result/process-procedure-result.query';
-import { TypeFindManagerAllV2Query } from './query/type-find-manager-all-v2.query';
-import { TypeFindIdV2Query } from './query/type-find-id-v2.query';
-import { TypeUpdateV2Query } from './query/type-update-v2.query';
-import { TypeDeleteV2Query } from './query/type-delete-v2.query';
-import { TypeFindSearchV2Dto } from './dto/type-find-search-v2.dto';
-import { TypeFindSearchV2Query } from './query/type-find-search-v2.query';
-import { processSqlResultQuery } from 'src/core/process-result/process-sql-result.query';
 
 @Injectable()
 export class PtypeService {

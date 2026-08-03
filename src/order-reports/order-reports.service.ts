@@ -1,18 +1,24 @@
 import { Injectable } from '@nestjs/common';
-import { ResultModel } from 'src/core/utils/result.model';
+import { processProcedureResultMultiQuery } from 'src/core/process-result/process-procedure-result.query';
 import { MESSAGES } from 'src/core/utils/constants/globalConstants';
-
+import { ResultModel } from 'src/core/utils/result.model';
 import { DatabaseService } from 'src/database/database.service';
-
 import { OrdersFindCustomerAllDto } from './dto/orders-find-customer-all.dto';
 import { OrdersFindCustomerIdDto } from './dto/orders-find-customer-id.dto';
-
-import { OrdersFindSellerAllDto } from './dto/orders-find-seller-all.dto';
-import { OrdersFindSellerIdDto } from './dto/orders-find-seller-id.dto';
-import { OrdersFindSaleAllDto } from './dto/orders-find-sale-all.dto';
-import { OrdersFindSaleIdDto } from './dto/orders-find-sale-id.dto';
 import { OrdersFindLatestAllDto } from './dto/orders-find-latest-all.dto';
 import { OrdersFindLatestIdDto } from './dto/orders-find-latest-id.dto';
+import { OrdersFindSaleAllDto } from './dto/orders-find-sale-all.dto';
+import { OrdersFindSaleIdDto } from './dto/orders-find-sale-id.dto';
+import { OrdersFindSellerAllDto } from './dto/orders-find-seller-all.dto';
+import { OrdersFindSellerIdDto } from './dto/orders-find-seller-id.dto';
+import { OrdersFindCustomerAllQuery } from './query/orders-find-customer-all.query';
+import { OrdersFindCustomerIdQuery } from './query/orders-find-customer-id.query';
+import { OrdersFindLatestAllQuery } from './query/orders-find-latest-all.query';
+import { OrdersFindLatestIdQuery } from './query/orders-find-latest-id.query';
+import { OrdersFindSaleAllQuery } from './query/orders-find-sale-all.query';
+import { OrdersFindSaleIdQuery } from './query/orders-find-sale-id.query';
+import { OrdersFindSellerAllQuery } from './query/orders-find-seller-all.query';
+import { OrdersFindSellerIdQuery } from './query/orders-find-seller-id.query';
 import {
   SpResultOrderFindCustomerAllData,
   SpResultOrderFindCustomerIdData,
@@ -23,19 +29,6 @@ import {
   SpResultOrderFindSellerAllData,
   SpResultOrderFindSellerIdData,
 } from './types/order-reports.type';
-
-import { OrdersFindSellerAllQuery } from './query/orders-find-seller-all.query';
-import { OrdersFindSellerIdQuery } from './query/orders-find-seller-id.query';
-
-import { OrdersFindCustomerIdQuery } from './query/orders-find-customer-id.query';
-import { OrdersFindCustomerAllQuery } from './query/orders-find-customer-all.query';
-import { processProcedureResultMultiQuery } from 'src/core/process-result/process-procedure-result.query';
-
-import { OrdersFindLatestAllQuery } from './query/orders-find-latest-all.query';
-import { OrdersFindLatestIdQuery } from './query/orders-find-latest-id.query';
-import { OrdersFindSaleAllQuery } from './query/orders-find-sale-all.query';
-
-import { OrdersFindSaleIdQuery } from './query/orders-find-sale-id.query';
 
 @Injectable()
 export class OrderReportsService {
