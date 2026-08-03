@@ -1,50 +1,51 @@
 import { Injectable } from '@nestjs/common';
-import { DatabaseService } from 'src/database/database.service';
-// ---- DTSs ---
-import { FindAccountStatisticsDto } from './dto/find-account-statistics.dto';
-import { FindAccountOrdersSummaryDto } from './dto/find-account-orders-summary.dto';
-import { FindAccountSummaryDto } from './dto/find-account-summary.dto';
-import { FindAccountProfileDto } from './dto/find-account-profile.dto';
-import { FindAccountOrdersListDto } from './dto/find-account-orders-list.dto';
-import { FindAccountPromotionDto } from './dto/find-account-promotion.dto';
-import { FindAccountServicesDto } from './dto/find-account_services.dto';
-import { FindAccountConfigDto } from './dto/find-account-config.dto';
-import { UpdAccountGeneralDto } from './dto/upd-account-general.dto';
-import { UpdAccountTypeDto } from './dto/upd-account-type.dto';
-import { UpdAccountBusinessDto } from './dto/upd-account-business.dto';
-import { UpdAccountPersonalDto } from './dto/upd-account-personal.dto';
-import { UpdAccountAddressDto } from './dto/upd-account-address.dto';
-import { UpdAccountInternetDto } from './dto/upd-account-internet.dto';
-import { UpdAccountNotificationDto } from './dto/upd-account-notification.dto';
-import { UpdAccountEmailDto } from './dto/upd-account-email.dto';
-import { UpdAccountPasswordDto } from './dto/upd-account-password.dto';
-import { UpdAccountThemeDto } from './dto/upd-account-theme.dto';
-import { FindAccountOrdersLatestDto } from './dto/find-account-orders-latest.dto';
+import { MESSAGES } from 'src/core/utils/constants/globalConstants';
 // ---- xxxx ---
 import { resultQueryData } from 'src/core/utils/globalResult/global.result';
 import { ResultModel } from 'src/core/utils/result.model';
-import { MESSAGES } from 'src/core/utils/constants/globalConstants';
+import { DatabaseService } from 'src/database/database.service';
+import { FindAccountServicesDto } from './dto/find-account_services.dto';
+import { FindAccountConfigDto } from './dto/find-account-config.dto';
+import { FindAccountOrdersLatestDto } from './dto/find-account-orders-latest.dto';
+import { FindAccountOrdersListDto } from './dto/find-account-orders-list.dto';
+import { FindAccountOrdersSummaryDto } from './dto/find-account-orders-summary.dto';
+import { FindAccountProfileDto } from './dto/find-account-profile.dto';
+import { FindAccountPromotionDto } from './dto/find-account-promotion.dto';
+// ---- DTSs ---
+import { FindAccountStatisticsDto } from './dto/find-account-statistics.dto';
+import { FindAccountSummaryDto } from './dto/find-account-summary.dto';
+import { UpdAccountAddressDto } from './dto/upd-account-address.dto';
+import { UpdAccountBusinessDto } from './dto/upd-account-business.dto';
+import { UpdAccountEmailDto } from './dto/upd-account-email.dto';
+import { UpdAccountGeneralDto } from './dto/upd-account-general.dto';
+import { UpdAccountInternetDto } from './dto/upd-account-internet.dto';
+import { UpdAccountNotificationDto } from './dto/upd-account-notification.dto';
+import { UpdAccountPasswordDto } from './dto/upd-account-password.dto';
+import { UpdAccountPersonalDto } from './dto/upd-account-personal.dto';
+import { UpdAccountThemeDto } from './dto/upd-account-theme.dto';
+import { UpdAccountTypeDto } from './dto/upd-account-type.dto';
+
 // ---- query ---
 
-import { FindAccountStatisticsQuery } from './query/find-account-statistics.query';
+import { FindAccountConfigQuery } from './query/find-account-config.query';
 import { FindAccountOrdersLatestQuery } from './query/find-account-orders-latest.query';
-import { FindAccountSummaryQuery } from './query/find-account-summary.query';
-import { FindAccountProfileQuery } from './query/find-account-profile.query';
 import { FindAccountOrdersListQuery } from './query/find-account-orders-list.query';
 import { FindAccountOrdersSummaryQuery } from './query/find-account-orders-summary.query';
+import { FindAccountProfileQuery } from './query/find-account-profile.query';
 import { FindAccountPromotionQuery } from './query/find-account-promotion.query';
 import { FindAccountServiceQuery } from './query/find-account-service.query';
-import { FindAccountConfigQuery } from './query/find-account-config.query';
-import { UpdAccountGeneralQuery } from './query/upd-account-general.query';
-import { UpdAccountTypeQuery } from './query/upd-account-type.query';
-import { UpdAccountBusinessQuery } from './query/upd-account-business.query';
-import { UpdAccountPersonalQuery } from './query/upd-account-personal.query';
+import { FindAccountStatisticsQuery } from './query/find-account-statistics.query';
+import { FindAccountSummaryQuery } from './query/find-account-summary.query';
 import { UpdAccountAddressQuery } from './query/upd-account-address.query';
-import { UpdAccountInternetQuery } from './query/upd-account-internet.query';
-import { UpdAccountThemeQuery } from './query/upd-account-theme.query';
-import { UpdAccountNotificationQuery } from './query/upd-account-notification.query';
+import { UpdAccountBusinessQuery } from './query/upd-account-business.query';
 import { UpdAccountEmailQuery } from './query/upd-account-email.query';
+import { UpdAccountGeneralQuery } from './query/upd-account-general.query';
+import { UpdAccountInternetQuery } from './query/upd-account-internet.query';
+import { UpdAccountNotificationQuery } from './query/upd-account-notification.query';
 import { UpdAccountPasswordQuery } from './query/upd-account-password.query';
+import { UpdAccountPersonalQuery } from './query/upd-account-personal.query';
+import { UpdAccountThemeQuery } from './query/upd-account-theme.query';
+import { UpdAccountTypeQuery } from './query/upd-account-type.query';
 import {
   SpResultAccountAddressUpdType,
   SpResultAccountBusinessUpdType,

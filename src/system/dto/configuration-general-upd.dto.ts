@@ -1,13 +1,13 @@
 import { ApiProperty } from '@nestjs/swagger';
+import { Type } from 'class-transformer';
 import {
+  IsEmail,
   IsNotEmpty,
   IsNumber,
-  IsString,
   IsOptional,
+  IsString,
   MaxLength,
-  IsEmail,
 } from 'class-validator';
-import { Type } from 'class-transformer';
 
 export class ConfigurationGeneralUpdDto {
   @ApiProperty({ description: 'App ID' })

@@ -1,9 +1,9 @@
 import { Body, Controller, Get, Post, UseGuards } from '@nestjs/common';
-import { TaxonomyRelService } from './taxonomy-rel.service';
 import { AuthGuard } from 'src/core/guards/auth.guard';
 import { TaxonomyRelCreateV3Dto } from './dto/taxonomy-rel-create-v3.dto';
 import { TaxonomyRelDeleteV3Dto } from './dto/taxonomy-rel-delete-v3.dto';
 import { TaxonomyRelProdutoAllV3Dto } from './dto/taxonomy-rel-produto-all-v3.dto';
+import { TaxonomyRelService } from './taxonomy-rel.service';
 
 @Controller('taxonomy-rel')
 export class TaxonomyRelController {

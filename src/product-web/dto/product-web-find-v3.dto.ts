@@ -1,6 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsOptional, IsString, IsNotEmpty, IsNumber } from 'class-validator';
 import { Type } from 'class-transformer';
+import { IsNotEmpty, IsNumber, IsOptional, IsString } from 'class-validator';
 
 export class ProductWebFindV3Dto {
   @ApiProperty({ description: 'App ID' })

@@ -1,5 +1,4 @@
 import { Body, Controller, Get, Post, UseGuards } from '@nestjs/common';
-import { OrderSalesService } from './order-sales.service';
 import { AuthGuard } from 'src/core/guards/auth.guard';
 import { OrderFindCoCarrierIdDto } from './dto/order-find-co-carrier-id.dto';
 import { OrderFindCoCustomerIdDto } from './dto/order-find-co-customer-id.dto';
@@ -9,12 +8,12 @@ import { OrderFindCoHistoryIdDto } from './dto/order-find-co-history-id.dto';
 import { OrderFindCoNfIdDto } from './dto/order-find-co-nf-id.dto';
 import { OrderFindCoPgFormaIdDto } from './dto/order-find-co-pg-forma-id.dto';
 import { OrderFindCoProtocolIdDto } from './dto/order-find-co-protocol-id.dto';
-
 import { OrderFindCoSellerIdDto } from './dto/order-find-co-seller-id.dto';
 import { OrderFindCoSummaryIdDto } from './dto/order-find-co-summary-id.dto';
-import { OrdersFindDashboardIdDto } from './dto/orders-find-dashboard-id.dto';
 import { OrdersFindCartIdDto } from './dto/orders-find-cart-id.dto';
+import { OrdersFindDashboardIdDto } from './dto/orders-find-dashboard-id.dto';
 import { OrdersFindOrderIdDto } from './dto/orders-find-order-id.dto';
+import { OrderSalesService } from './order-sales.service';
 
 @Controller('order-sales')
 export class OrderSalesController {

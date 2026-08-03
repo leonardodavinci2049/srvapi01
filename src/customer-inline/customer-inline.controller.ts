@@ -1,16 +1,15 @@
-import { Controller, Post, Body, UseGuards, Get } from '@nestjs/common';
+import { Body, Controller, Get, Post, UseGuards } from '@nestjs/common';
+import { AuthGuard } from 'src/core/guards/auth.guard';
 import { CustomerInlineService } from './customer-inline.service';
+import { CustomerUpdInlFieldDto } from './dto/costumer-upd-inl-field.dto';
 import { CustomerUpdInlEmailDto } from './dto/customer-upd-inl-email.dto';
 import { CustomerUpdInlNameDto } from './dto/customer-upd-inl-name.dto';
 import { CustomerUpdInlNotesDto } from './dto/customer-upd-inl-notes.dto';
 import { CustomerUpdInlPhoneDto } from './dto/customer-upd-inl-phone.dto';
-
 import { CustomerUpdInlSellerIdDto } from './dto/customer-upd-inl-seller-id.dto';
 import { CustomerUpdInlTypeCustomerDto } from './dto/customer-upd-inl-type-customer.dto';
 import { CustomerUpdInlTypePersonDto } from './dto/customer-upd-inl-type-person.dto';
 import { CustomerUpdInlWhatsappDto } from './dto/customer-upd-inl-whatsapp.dto';
-import { AuthGuard } from 'src/core/guards/auth.guard';
-import { CustomerUpdInlFieldDto } from './dto/costumer-upd-inl-field.dto';
 
 @Controller('customer-inline')
 export class CustomerInlineController {

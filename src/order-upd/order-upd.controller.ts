@@ -1,16 +1,14 @@
 import { Body, Controller, Get, Post, UseGuards } from '@nestjs/common';
-import { OrderUpdService } from './order-upd.service';
 import { AuthGuard } from 'src/core/guards/auth.guard';
-
 import { OrderUpdCustomerIdDto } from './dto/order-upd-customer-id.dto';
-
+import { OrderUpdDiscountIdDto } from './dto/order-upd-discount-id.dto';
+import { OrderUpdFreteIdDto } from './dto/order-upd-frete-id.dto';
+import { OrderUpdInlFieldDto } from './dto/order-upd-inl-field.dto';
+import { OrderUpdNotesIdDto } from './dto/order-upd-notes-id.dto';
 import { OrderUpdPgMethodIdDto } from './dto/order-upd-pg-method-id.dto';
 import { OrderUpdSellerIdDto } from './dto/order-upd-seller-id.dto';
 import { OrderUpdStatusIdDto } from './dto/order-upd-status-id.dto';
-import { OrderUpdDiscountIdDto } from './dto/order-upd-discount-id.dto';
-import { OrderUpdFreteIdDto } from './dto/order-upd-frete-id.dto';
-import { OrderUpdNotesIdDto } from './dto/order-upd-notes-id.dto';
-import { OrderUpdInlFieldDto } from './dto/order-upd-inl-field.dto';
+import { OrderUpdService } from './order-upd.service';
 
 @Controller('order-upd')
 export class OrderUpdController {

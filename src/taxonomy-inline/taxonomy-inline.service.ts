@@ -1,8 +1,7 @@
 import { Injectable } from '@nestjs/common';
-
-import { ResultModel } from 'src/core/utils/result.model';
-import { MESSAGES } from 'src/core/utils/constants/globalConstants';
 import { processProcedureResultMutation } from 'src/core/process-result/process-procedure-result.mutation';
+import { MESSAGES } from 'src/core/utils/constants/globalConstants';
+import { ResultModel } from 'src/core/utils/result.model';
 
 import { DatabaseService } from 'src/database/database.service';
 import { TaxonomyUpdInlImagePathV3Dto } from './dto/taxonomy-upd-inl-image-path-v3.dto';
@@ -13,16 +12,15 @@ import { TaxonomyUpdInlOrderV3Dto } from './dto/taxonomy-upd-inl-order-v3.dto';
 import { TaxonomyUpdInlParentIdV3Dto } from './dto/taxonomy-upd-inl-parent-id-v3.dto';
 import { TaxonomyUpdInlQtProductsV3Dto } from './dto/taxonomy-upd-inl-qt-products-v3.dto';
 import { TaxonomyUpdInlSlugV3Dto } from './dto/taxonomy-upd-inl-slug-v3.dto';
-
-import { SpResultRecordUpdateType } from './types/taxonomy-inline.type';
 import { TaxonomyUpdInlImagePathV3Query } from './query/taxonomy-upd-inl-image-path-v3.query';
-import { TaxonomyUpdInlParentIdV3Query } from './query/taxonomy-upd-inl-parent-id-v3.query';
-import { TaxonomyUpdInlNotesV3Query } from './query/taxonomy-upd-inl-notes-v3.query';
-import { TaxonomyUpdInlNameV3Query } from './query/taxonomy-upd-inl-name-v3.query';
 import { TaxonomyUpdInlInactiveV3Query } from './query/taxonomy-upd-inl-inactive-v3.query';
+import { TaxonomyUpdInlNameV3Query } from './query/taxonomy-upd-inl-name-v3.query';
+import { TaxonomyUpdInlNotesV3Query } from './query/taxonomy-upd-inl-notes-v3.query';
 import { TaxonomyUpdInlOrderV3Query } from './query/taxonomy-upd-inl-order-v3.query';
+import { TaxonomyUpdInlParentIdV3Query } from './query/taxonomy-upd-inl-parent-id-v3.query';
 import { TaxonomyUpdInlQtProductsV3Query } from './query/taxonomy-upd-inl-qt-products-v3.query';
 import { TaxonomyUpdInlSlugV3Query } from './query/taxonomy-upd-inl-slug-v3.query';
+import { SpResultRecordUpdateType } from './types/taxonomy-inline.type';
 
 @Injectable()
 export class TaxonomyInlineService {

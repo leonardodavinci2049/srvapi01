@@ -1,26 +1,25 @@
 import { Body, Controller, Get, Post, UseGuards } from '@nestjs/common';
-import { AccountService } from './account.service';
 import { AuthGuard } from 'src/core/guards/auth.guard';
-import { FindAccountOrdersSummaryDto } from './dto/find-account-orders-summary.dto';
-import { FindAccountStatisticsDto } from './dto/find-account-statistics.dto';
-import { FindAccountSummaryDto } from './dto/find-account-summary.dto';
-import { FindAccountProfileDto } from './dto/find-account-profile.dto';
-import { FindAccountOrdersListDto } from './dto/find-account-orders-list.dto';
-import { FindAccountPromotionDto } from './dto/find-account-promotion.dto';
+import { AccountService } from './account.service';
 import { FindAccountServicesDto } from './dto/find-account_services.dto';
 import { FindAccountConfigDto } from './dto/find-account-config.dto';
-import { UpdAccountGeneralDto } from './dto/upd-account-general.dto';
-import { UpdAccountTypeDto } from './dto/upd-account-type.dto';
-import { UpdAccountBusinessDto } from './dto/upd-account-business.dto';
-import { UpdAccountPersonalDto } from './dto/upd-account-personal.dto';
+import { FindAccountOrdersLatestDto } from './dto/find-account-orders-latest.dto';
+import { FindAccountOrdersListDto } from './dto/find-account-orders-list.dto';
+import { FindAccountOrdersSummaryDto } from './dto/find-account-orders-summary.dto';
+import { FindAccountProfileDto } from './dto/find-account-profile.dto';
+import { FindAccountPromotionDto } from './dto/find-account-promotion.dto';
+import { FindAccountStatisticsDto } from './dto/find-account-statistics.dto';
+import { FindAccountSummaryDto } from './dto/find-account-summary.dto';
 import { UpdAccountAddressDto } from './dto/upd-account-address.dto';
-import { UpdAccountInternetDto } from './dto/upd-account-internet.dto';
-import { UpdAccountThemeDto } from './dto/upd-account-theme.dto';
-
+import { UpdAccountBusinessDto } from './dto/upd-account-business.dto';
 import { UpdAccountEmailDto } from './dto/upd-account-email.dto';
+import { UpdAccountGeneralDto } from './dto/upd-account-general.dto';
+import { UpdAccountInternetDto } from './dto/upd-account-internet.dto';
 import { UpdAccountNotificationDto } from './dto/upd-account-notification.dto';
 import { UpdAccountPasswordDto } from './dto/upd-account-password.dto';
-import { FindAccountOrdersLatestDto } from './dto/find-account-orders-latest.dto';
+import { UpdAccountPersonalDto } from './dto/upd-account-personal.dto';
+import { UpdAccountThemeDto } from './dto/upd-account-theme.dto';
+import { UpdAccountTypeDto } from './dto/upd-account-type.dto';
 
 @Controller('account')
 export class AccountController {

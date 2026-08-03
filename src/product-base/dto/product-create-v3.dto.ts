@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsString, IsNotEmpty, IsNumber, IsOptional } from 'class-validator';
+import { IsNotEmpty, IsNumber, IsOptional, IsString } from 'class-validator';
 
 import { EndpointContextDto } from 'src/core/dto/endpoint-context.dto';
 import { IsGreaterThanZero } from 'src/core/validators/is-greater-than-zero';

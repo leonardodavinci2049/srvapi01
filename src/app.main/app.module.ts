@@ -1,45 +1,43 @@
+import { join } from 'node:path';
+import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { APP_GUARD } from '@nestjs/core';
-import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
-
-import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
 import { ServeStaticModule } from '@nestjs/serve-static';
-import { join } from 'path';
-import { ProductModule } from 'src/product/product.module';
+import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
+import { AccountModule } from 'src/account/account.module';
+import { BrandModule } from 'src/brand/brand.module';
+import { CarrierModule } from 'src/carrier/carrier.module';
 
 import { CartModule } from 'src/cart/cart.module';
-import { CustomerModule } from 'src/customer/customer.module';
-import { AccountModule } from 'src/account/account.module';
 import { CheckModule } from 'src/check/check.module';
-import { TaxonomyModule } from 'src/taxonomy/taxonomy.module';
-
-import { BrandModule } from 'src/brand/brand.module';
-import { PtypeModule } from 'src/ptype/ptype.module';
-import { SupplierModule } from 'src/supplier/supplier.module';
+import { CustomerModule } from 'src/customer/customer.module';
+import { CustomerInlineModule } from 'src/customer-inline/customer-inline.module';
+import { CustomerUpdModule } from 'src/customer-upd/customer-upd.module';
+import { GeneralCallModule } from 'src/general-call/general-call.module';
+import { OrderB2bModule } from 'src/order-b2b/order-b2b.module';
 import { OrderItemsModule } from 'src/order-items/order-items.module';
 import { OrderOperationModule } from 'src/order-operation/order-operation.module';
 import { OrderReportsModule } from 'src/order-reports/order-reports.module';
 import { OrderSalesModule } from 'src/order-sales/order-sales.module';
 import { OrderUpdModule } from 'src/order-upd/order-upd.module';
-import { CustomerInlineModule } from 'src/customer-inline/customer-inline.module';
-import { CustomerUpdModule } from 'src/customer-upd/customer-upd.module';
-import { CarrierModule } from 'src/carrier/carrier.module';
+import { PhysicalProductModule } from 'src/physical_product/physical_product.module';
+import { ProductModule } from 'src/product/product.module';
+import { ProductBaseModule } from 'src/product-base/product-base.module';
+import { ProductInlineModule } from 'src/product-inline/product-inline.module';
+import { ProductManagerModule } from 'src/product-manager/product-manager.module';
 import { ProductPdvModule } from 'src/product-pdv/product-pdv.module';
 import { ProductUpdateModule } from 'src/product-update/product-update.module';
-import { ProductInlineModule } from 'src/product-inline/product-inline.module';
-import { ProductBaseModule } from 'src/product-base/product-base.module';
-import { TaxonomyRelModule } from 'src/taxonomy-rel/taxonomy-rel.module';
+import { ProductWebModule } from 'src/product-web/product-web.module';
+import { PtypeModule } from 'src/ptype/ptype.module';
+import { SellerModule } from 'src/seller/seller.module';
+import { SupplierModule } from 'src/supplier/supplier.module';
+import { TaxonomyModule } from 'src/taxonomy/taxonomy.module';
 import { TaxonomyBaseModule } from 'src/taxonomy-base/taxonomy-base.module';
 import { TaxonomyInlineModule } from 'src/taxonomy-inline/taxonomy-inline.module';
-import { GeneralCallModule } from 'src/general-call/general-call.module';
-import { ProductWebModule } from 'src/product-web/product-web.module';
+import { TaxonomyRelModule } from 'src/taxonomy-rel/taxonomy-rel.module';
 import { TaxonomyWebModule } from 'src/taxonomy-web/taxonomy-web.module';
-import { OrderB2bModule } from 'src/order-b2b/order-b2b.module';
-import { PhysicalProductModule } from 'src/physical_product/physical_product.module';
-import { ProductManagerModule } from 'src/product-manager/product-manager.module';
-import { SellerModule } from 'src/seller/seller.module';
+import { AppController } from './app.controller';
+import { AppService } from './app.service';
 
 @Module({
   imports: [

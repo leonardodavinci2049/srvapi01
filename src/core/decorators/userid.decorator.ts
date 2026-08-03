@@ -6,7 +6,7 @@ import {
 import { Request } from 'express';
 
 export const UserIdDecorator = createParamDecorator(
-  (filter: string, context: ExecutionContext) => {
+  (_filter: string, context: ExecutionContext) => {
     // console.log('UserIdDecorator filter: ' + JSON.stringify(filter));
     interface RequestWithTokenPayload extends Request {
       tokenPayload?: { id?: string };
@@ -20,8 +20,8 @@ export const UserIdDecorator = createParamDecorator(
       'tokenPayload: ' + JSON.stringify({ userID: request.tokenPayload }),
     );
  */
-    if (request.tokenPayload && request.tokenPayload.id) {
-      const userId = parseInt(request.tokenPayload.id); //
+    if (request.tokenPayload?.id) {
+      const userId = parseInt(request.tokenPayload.id, 10); //
 
       return { id: userId };
     } else {

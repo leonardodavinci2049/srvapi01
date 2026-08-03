@@ -1,5 +1,5 @@
-import { OrderOperCreateDto } from '../dto/order-oper-create.dto';
 import { v4 as UuidV4 } from 'uuid';
+import { OrderOperCreateDto } from '../dto/order-oper-create.dto';
 
 export function OrderOperCreateQuery(dataJsonDto: OrderOperCreateDto): string {
   const OlUuid = UuidV4();

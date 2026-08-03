@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
-import { GeneralCallService } from './general-call.service';
-import { GeneralCallController } from './general-call.controller';
 import { DatabaseModule } from 'src/database/database.module';
+import { GeneralCallController } from './general-call.controller';
+import { GeneralCallService } from './general-call.service';
 
 @Module({
   imports: [DatabaseModule],

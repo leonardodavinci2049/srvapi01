@@ -1,5 +1,5 @@
-import { TypeCreateV2Dto } from '../dto/type-create-v2.dto';
 import { v4 as UuidV4 } from 'uuid';
+import { TypeCreateV2Dto } from '../dto/type-create-v2.dto';
 
 export function TypeCreateV2Query(dataJsonDto: TypeCreateV2Dto): string {
   const OlUuid = UuidV4();

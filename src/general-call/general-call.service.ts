@@ -1,14 +1,12 @@
 import { Injectable } from '@nestjs/common';
-
-import { DatabaseService } from 'src/database/database.service';
-
-import { ResultModel } from 'src/core/utils/result.model';
-import { MESSAGES } from 'src/core/utils/constants/globalConstants';
 import { processProcedureResultMutation } from 'src/core/process-result/process-procedure-result.mutation';
-import { GeneralUpdProcedureV1Dto } from './dto/general-upd-procedure-v1.dto';
+import { MESSAGES } from 'src/core/utils/constants/globalConstants';
+import { ResultModel } from 'src/core/utils/result.model';
+import { DatabaseService } from 'src/database/database.service';
 import { GeneralTableUpdInlFieldV2Dto } from './dto/general_table_upd_inl_field_v2.dto';
-import { generalUpdProcedureV1Query } from './query/general-upd-procedure-v1.query';
+import { GeneralUpdProcedureV1Dto } from './dto/general-upd-procedure-v1.dto';
 import { generalTableUpdInlFieldV2Query } from './query/general_table_upd_inl_field_v2.query';
+import { generalUpdProcedureV1Query } from './query/general-upd-procedure-v1.query';
 import { SpResultRecordUpdateType } from './types/general-call.type';
 
 @Injectable()

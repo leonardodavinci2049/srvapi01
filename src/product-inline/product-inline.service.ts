@@ -1,13 +1,13 @@
 import { Injectable } from '@nestjs/common';
-
-import { ResultModel } from 'src/core/utils/result.model';
-import { MESSAGES } from 'src/core/utils/constants/globalConstants';
 import { processProcedureResultMutation } from 'src/core/process-result/process-procedure-result.mutation';
+import { MESSAGES } from 'src/core/utils/constants/globalConstants';
+import { ResultModel } from 'src/core/utils/result.model';
 
 import { DatabaseService } from 'src/database/database.service';
 
 import { ProductUpdInlBrandV3Dto } from './dto/product-upd-inl-brand-v3.dto';
 import { ProductUpdInlDescriptionV3Dto } from './dto/product-upd-inl-description-v3.dto';
+import { ProductUpdInlFieldDto } from './dto/product-upd-inl-field.dto';
 import { ProductUpdInlNameV3Dto } from './dto/product-upd-inl-name-v3.dto';
 import { ProductUpdInlPathImageV3Dto } from './dto/product-upd-inl-path-image-v3.dto';
 import { ProductUpdInlShortDescriptionV3Dto } from './dto/product-upd-inl-Short-description-v3.dto';
@@ -17,7 +17,7 @@ import { ProductUpdInlTypeV3Dto } from './dto/product-upd-inl-type-v3.dto';
 import { ProductUpdInlVariouV3Dto } from './dto/product-upd-inl-variou-v3.dto';
 import { ProductUpdInlBrandV3Query } from './query/product-upd-inl-brand-v3.query';
 import { ProductUpdInlDescriptionV3Query } from './query/product-upd-inl-description-v3.query';
-import { SpResultRecordUpdateType } from './types/product-inline.type';
+import { ProductUpdInlFieldQuery } from './query/product-upd-inl-field.query';
 import { ProductUpdInlNameV3Query } from './query/product-upd-inl-name-v3.query';
 import { ProductUpdInlPathImageV3Query } from './query/product-upd-inl-path-image-v3.query';
 import { ProductUpdInlShortDescriptionV3Query } from './query/product-upd-inl-Short-description-v3.query';
@@ -25,8 +25,7 @@ import { ProductUpdInlStockMinV3Query } from './query/product-upd-inl-stock-min-
 import { ProductUpdInlStockV3Query } from './query/product-upd-inl-stock-v3.query';
 import { ProductUpdInlTypeV3Query } from './query/product-upd-inl-type-v3.query';
 import { ProductUpdInlVariouV3Query } from './query/product-upd-inl-variou-v3.query';
-import { ProductUpdInlFieldDto } from './dto/product-upd-inl-field.dto';
-import { ProductUpdInlFieldQuery } from './query/product-upd-inl-field.query';
+import { SpResultRecordUpdateType } from './types/product-inline.type';
 
 @Injectable()
 export class ProductInlineService {
