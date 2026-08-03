@@ -1,11 +1,11 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { Type } from 'class-transformer';
 import {
-  IsNotEmpty,
-  IsString,
-  IsNumber,
   IsInt,
+  IsNotEmpty,
+  IsNumber,
   IsOptional,
+  IsString,
 } from 'class-validator';
 
 export class ProductWebFindIdV3Dto {

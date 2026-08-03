@@ -1,17 +1,16 @@
 import { Injectable } from '@nestjs/common';
-
-import { DatabaseService } from 'src/database/database.service';
-
-import { ResultModel } from 'src/core/utils/result.model';
+import { processProcedureResultMultiQuery } from 'src/core/process-result/process-procedure-result.query';
 import { MESSAGES } from 'src/core/utils/constants/globalConstants';
-import { PhysicalProductFindAllV2Dto } from './dto/physical-product-find-all-v2.dto';
-import { OrderItemFindIdCustomerV2Dto } from './dto/order-item-find-id-customer-v2.dto';
+import { ResultModel } from 'src/core/utils/result.model';
+import { DatabaseService } from 'src/database/database.service';
 import { OrderItemFindAllCustomerV2Dto } from './dto/order-item-find-all-customer-v2.dto';
-import { PhysicalProductWarrantyIdV2Dto } from './dto/physical-product-warranty-id-v2.dto';
+import { OrderItemFindIdCustomerV2Dto } from './dto/order-item-find-id-customer-v2.dto';
+import { PhysicalProductFindAllV2Dto } from './dto/physical-product-find-all-v2.dto';
 import { PhysicalProductWarrantyIdCustomerV2Dto } from './dto/physical-product-warranty-id-customer-v2.dto';
-import { PhysicalProductWarrantyMovV2Dto } from './dto/physical-product-warranty-mov-v2.dto';
+import { PhysicalProductWarrantyIdV2Dto } from './dto/physical-product-warranty-id-v2.dto';
 import { PhysicalProductWarrantyMovCustomerV2Dto } from './dto/physical-product-warranty-mov-customer-v2.dto';
-
+import { PhysicalProductWarrantyMovV2Dto } from './dto/physical-product-warranty-mov-v2.dto';
+import { PhysicalProductWarrantySearchV2Dto } from './dto/physical-product-warranty-search-v2.dto';
 import { OrderItemFindAllCustomerV2Query } from './query/order-item-find-all-customer-v2.query';
 import { OrderItemFindIdCustomerV2Query } from './query/order-item-find-id-customer-v2.query';
 import { PhysicalProductFindAllV2Query } from './query/physical-product-find-all-v2.query';
@@ -19,6 +18,7 @@ import { PhysicalProductWarrantyIdCustomerV2Query } from './query/physical-produ
 import { PhysicalProductWarrantyIdV2Query } from './query/physical-product-warranty-id-v2.query';
 import { PhysicalProductWarrantyMovCustomerV2Query } from './query/physical-product-warranty-mov-customer-v2.query';
 import { PhysicalProductWarrantyMovV2Query } from './query/physical-product-warranty-mov-v2.query';
+import { PhysicalProductWarrantySearchV2Query } from './query/physical-product-warranty-search-v2.query';
 import {
   SpOrderItemFindAllCustomerV2DataType,
   SpOrderItemFindIdCustomerV2DataType,
@@ -29,9 +29,6 @@ import {
   SpPhysicalProductWarrantyMovV2DataType,
   SpPhysicalProductWarrantySearchV2DataType,
 } from './types/physical_product.type';
-import { processProcedureResultMultiQuery } from 'src/core/process-result/process-procedure-result.query';
-import { PhysicalProductWarrantySearchV2Dto } from './dto/physical-product-warranty-search-v2.dto';
-import { PhysicalProductWarrantySearchV2Query } from './query/physical-product-warranty-search-v2.query';
 
 @Injectable()
 export class PhysicalProductService {

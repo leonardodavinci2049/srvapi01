@@ -1,36 +1,29 @@
 import { Injectable } from '@nestjs/common';
-import { DatabaseService } from 'src/database/database.service';
-
+import { processProcedureResultMutation } from 'src/core/process-result/process-procedure-result.mutation';
+import { MESSAGES } from 'src/core/utils/constants/globalConstants';
 import { resultQueryData } from 'src/core/utils/globalResult/global.result';
 import { ResultModel } from 'src/core/utils/result.model';
-import { MESSAGES } from 'src/core/utils/constants/globalConstants';
-
+import { DatabaseService } from 'src/database/database.service';
 import { CheckIfExistsDto } from './dto/check-if-exists.dto';
-
+import { CheckIfExistsV3Dto } from './dto/check-if-exists-v3.dto';
+import { CheckIfCnpjExistsQuery } from './query/check-if-cnpj-exists.query';
+import { CheckIfCnpjExistsV3Query } from './query/check-if-cnpj-exists-v3.query';
+import { CheckIfCpfExistsQuery } from './query/check-if-cpf-exists.query';
+import { CheckIfCpfExistsV3Query } from './query/check-if-cpf-exists-v3.query';
+import { CheckIfEmailExistsQuery } from './query/check-if-email-exists.query';
+import { CheckIfEmailExistsV3Query } from './query/check-if-email-exists-v3.query';
+import { CheckIfProductNameExistsQuery } from './query/check-if-product-name.query';
+import { CheckIfProductNameExistV3Query } from './query/check-if-product-name-exist-v3.query';
+import { CheckIfProductSlugExistsQuery } from './query/check-if-product-slug.query';
+import { CheckIfProductSlugExistV3Query } from './query/check-if-product-slug-exist-v3.query';
+import { CheckIfTaxomomyNameExistsQuery } from './query/check-if-taxonomy-name.query';
+import { CheckIfTaxonomyNameExistsV3Query } from './query/check-if-taxonomy-name-exists-v3.query';
+import { CheckIfTaxomomySlugExistsQuery } from './query/check-if-taxonomy-slug.query';
+import { CheckIfTaxonomySlugExistsV3Query } from './query/check-if-taxonomy-slug-exists-v3.query';
 import {
   SpCheckIfExistType,
   SpResultRecordCheckType,
 } from './types/check.type';
-
-import { CheckIfEmailExistsQuery } from './query/check-if-email-exists.query';
-import { CheckIfCpfExistsQuery } from './query/check-if-cpf-exists.query';
-import { CheckIfCnpjExistsQuery } from './query/check-if-cnpj-exists.query';
-
-import { CheckIfProductNameExistsQuery } from './query/check-if-product-name.query';
-import { CheckIfProductSlugExistsQuery } from './query/check-if-product-slug.query';
-
-import { CheckIfTaxomomyNameExistsQuery } from './query/check-if-taxonomy-name.query';
-import { CheckIfTaxomomySlugExistsQuery } from './query/check-if-taxonomy-slug.query';
-import { CheckIfExistsV3Dto } from './dto/check-if-exists-v3.dto';
-import { processProcedureResultMutation } from 'src/core/process-result/process-procedure-result.mutation';
-
-import { CheckIfCnpjExistsV3Query } from './query/check-if-cnpj-exists-v3.query';
-import { CheckIfCpfExistsV3Query } from './query/check-if-cpf-exists-v3.query';
-import { CheckIfEmailExistsV3Query } from './query/check-if-email-exists-v3.query';
-import { CheckIfProductNameExistV3Query } from './query/check-if-product-name-exist-v3.query';
-import { CheckIfProductSlugExistV3Query } from './query/check-if-product-slug-exist-v3.query';
-import { CheckIfTaxonomySlugExistsV3Query } from './query/check-if-taxonomy-slug-exists-v3.query';
-import { CheckIfTaxonomyNameExistsV3Query } from './query/check-if-taxonomy-name-exists-v3.query';
 
 @Injectable()
 export class CheckService {

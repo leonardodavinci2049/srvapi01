@@ -1,17 +1,21 @@
 import { Injectable } from '@nestjs/common';
-
-import { ResultModel } from 'src/core/utils/result.model';
-import { MESSAGES } from 'src/core/utils/constants/globalConstants';
 import { processProcedureResultMutation } from 'src/core/process-result/process-procedure-result.mutation';
 import { processProcedureResultMultiQuery } from 'src/core/process-result/process-procedure-result.query';
+import { MESSAGES } from 'src/core/utils/constants/globalConstants';
+import { ResultModel } from 'src/core/utils/result.model';
 
 import { DatabaseService } from 'src/database/database.service';
 
 import { ProductCreateV3Dto } from './dto/product-create-v3.dto';
 import { ProductFindAllV3Dto } from './dto/product-find-all-v3.dto';
 import { ProductFindIdV3Dto } from './dto/product-find-id-v3.dto';
-
+import { ProductFindPremiumV1Dto } from './dto/product-find-premium-v1.dto';
+import { ProductFindSearchAllV3Dto } from './dto/product-find-search-all-v3.dto';
 import { ProductCreateV3Query } from './query/product-create-v3.query';
+import { ProductFindAllV3Query } from './query/product-find-all-v3.query';
+import { ProductFindIdV3Query } from './query/product-find-id-v3.query';
+import { ProductFindPremiumV1Query } from './query/product-find-premium-v1.query';
+import { ProductFindSearchAllV3Query } from './query/product-find-search-all-v3.query';
 import {
   SpResultProductFindBaseAllV3Data,
   SpResultProductFindBaseIdV3Data,
@@ -19,12 +23,6 @@ import {
   SpResultProductFindPremiumV1Data,
   SpResultRecordCreateType,
 } from './types/product-base.type';
-import { ProductFindAllV3Query } from './query/product-find-all-v3.query';
-import { ProductFindIdV3Query } from './query/product-find-id-v3.query';
-import { ProductFindSearchAllV3Dto } from './dto/product-find-search-all-v3.dto';
-import { ProductFindSearchAllV3Query } from './query/product-find-search-all-v3.query';
-import { ProductFindPremiumV1Query } from './query/product-find-premium-v1.query';
-import { ProductFindPremiumV1Dto } from './dto/product-find-premium-v1.dto';
 
 @Injectable()
 export class ProductBaseService {

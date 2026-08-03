@@ -1,12 +1,12 @@
 import { ApiProperty } from '@nestjs/swagger';
+import { Type } from 'class-transformer';
 import {
   IsNotEmpty,
   IsNumber,
-  IsString,
   IsOptional,
+  IsString,
   MaxLength,
 } from 'class-validator';
-import { Type } from 'class-transformer';
 
 export class OrderUpdNotesIdDto {
   @ApiProperty({ description: 'App ID' })

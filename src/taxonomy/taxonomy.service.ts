@@ -1,19 +1,40 @@
 import { Injectable } from '@nestjs/common';
-
+import { MESSAGES } from 'src/core/utils/constants/globalConstants';
 import { resultQueryData } from 'src/core/utils/globalResult/global.result';
 import { ResultModel } from 'src/core/utils/result.model';
-import { MESSAGES } from 'src/core/utils/constants/globalConstants';
-
+import { DatabaseService } from 'src/database/database.service';
 import { TaxonomyCreateDto } from './dto/taxonomy-create.dto';
-import { TaxonomyRelCreateDto } from './dto/taxonomy-rel-create.dto';
-import { TaxonomyFindIdDto } from './dto/taxonomy-find-id.dto';
-import { TaxonomyFindDto } from './dto/taxonomy-find.dto';
-import { TaxonomyFindMenuDto } from './dto/taxonomy-find-menu.dto';
-import { TaxonomyRelProdutoDto } from './dto/taxonomy-rel-produto.dto';
-import { TaxonomyUpdateDto } from './dto/taxonomy-update.dto';
 import { TaxonomyDeleteDto } from './dto/taxonomy-delete.dto';
+import { TaxonomyFindDto } from './dto/taxonomy-find.dto';
+import { TaxonomyFindIdDto } from './dto/taxonomy-find-id.dto';
+import { TaxonomyFindMenuDto } from './dto/taxonomy-find-menu.dto';
+import { TaxonomyRelCreateDto } from './dto/taxonomy-rel-create.dto';
 import { TaxonomyRelDeleteDto } from './dto/taxonomy-rel-delete.dto';
-
+import { TaxonomyRelProdutoDto } from './dto/taxonomy-rel-produto.dto';
+import { TaxonomyUpdInactiveDto } from './dto/taxonomy-upd-inactive.dto';
+import { TaxonomyUpdMetadataDto } from './dto/taxonomy-upd-metadata.dto';
+import { TaxonomyUpdNameDto } from './dto/taxonomy-upd-name.dto';
+import { TaxonomyUpdOrdemDto } from './dto/taxonomy-upd-ordem.dto';
+import { TaxonomyUpdParentIdDto } from './dto/taxonomy-upd-parent-id.dto';
+import { TaxonomyUpdPathImageDto } from './dto/taxonomy-upd-path_image.dto';
+import { TaxonomyUpdateDto } from './dto/taxonomy-update.dto';
+import { TaxonomyWebMenuDto } from './dto/taxonomy-web-menu.dto';
+import { createTaxonomyQuery } from './query/taxonomy-create.query';
+import { deleteTaxonomyQuery } from './query/taxonomy-delete.query';
+import { findTaxonomyQuery } from './query/taxonomy-find.query';
+import { findTaxonomyIdQuery } from './query/taxonomy-find-id.query';
+import { findTaxonomyMenuQuery } from './query/taxonomy-find-menu.query';
+import { createTaxonomyRelQuery } from './query/taxonomy-rel-create.query';
+import { deleteTaxonomyRelQuery } from './query/taxonomy-rel-delete.query';
+import { findTaxonomyRelProdutoQuery } from './query/taxonomy-rel-produto.query';
+import { taxonomyUpdInactiveQuery } from './query/taxonomy-upd-inactive.query';
+import { taxonomyUpdMetadataQuery } from './query/taxonomy-upd-metadata.query';
+import { taxonomyUpdNameQuery } from './query/taxonomy-upd-name.query';
+import { taxonomyUpdOrdemQuery } from './query/taxonomy-upd-ordem.query';
+import { taxonomyUpdParentIdQuery } from './query/taxonomy-upd-parent-id.query';
+import { taxonomyUpdPathImageQuery } from './query/taxonomy-upd-path-image.query';
+import { updateTaxonomyQuery } from './query/taxonomy-update.query';
+import { findTaxonomyWebMenuQuery } from './query/taxonomy-web-menu.query';
 import {
   SpResultRecordCreateType,
   SpResultRecordDeleteType,
@@ -24,33 +45,7 @@ import {
   SpResultTaxonomyRelProdutoData,
   SpResultTaxonomyWebMenuData,
 } from './types/taxonomy.type';
-
-import { createTaxonomyQuery } from './query/taxonomy-create.query';
-import { DatabaseService } from 'src/database/database.service';
-import { createTaxonomyRelQuery } from './query/taxonomy-rel-create.query';
-import { updateTaxonomyQuery } from './query/taxonomy-update.query';
-import { deleteTaxonomyQuery } from './query/taxonomy-delete.query';
 import { buildHierarchy } from './utils/build-hierarchy.util';
-import { deleteTaxonomyRelQuery } from './query/taxonomy-rel-delete.query';
-import { findTaxonomyIdQuery } from './query/taxonomy-find-id.query';
-
-import { findTaxonomyQuery } from './query/taxonomy-find.query';
-import { findTaxonomyMenuQuery } from './query/taxonomy-find-menu.query';
-import { findTaxonomyRelProdutoQuery } from './query/taxonomy-rel-produto.query';
-import { TaxonomyUpdNameDto } from './dto/taxonomy-upd-name.dto';
-import { TaxonomyUpdParentIdDto } from './dto/taxonomy-upd-parent-id.dto';
-import { TaxonomyUpdOrdemDto } from './dto/taxonomy-upd-ordem.dto';
-import { TaxonomyUpdInactiveDto } from './dto/taxonomy-upd-inactive.dto';
-import { TaxonomyUpdMetadataDto } from './dto/taxonomy-upd-metadata.dto';
-import { taxonomyUpdNameQuery } from './query/taxonomy-upd-name.query';
-import { taxonomyUpdParentIdQuery } from './query/taxonomy-upd-parent-id.query';
-import { taxonomyUpdOrdemQuery } from './query/taxonomy-upd-ordem.query';
-import { taxonomyUpdInactiveQuery } from './query/taxonomy-upd-inactive.query';
-import { taxonomyUpdMetadataQuery } from './query/taxonomy-upd-metadata.query';
-import { TaxonomyUpdPathImageDto } from './dto/taxonomy-upd-path_image.dto';
-import { taxonomyUpdPathImageQuery } from './query/taxonomy-upd-path-image.query';
-import { TaxonomyWebMenuDto } from './dto/taxonomy-web-menu.dto';
-import { findTaxonomyWebMenuQuery } from './query/taxonomy-web-menu.query';
 
 @Injectable()
 export class TaxonomyService {

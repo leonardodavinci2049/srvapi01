@@ -1,11 +1,11 @@
 import { Body, Controller, Get, Post, UseGuards } from '@nestjs/common';
-import { ProductBaseService } from './product-base.service';
 import { AuthGuard } from 'src/core/guards/auth.guard';
 import { ProductCreateV3Dto } from './dto/product-create-v3.dto';
 import { ProductFindAllV3Dto } from './dto/product-find-all-v3.dto';
 import { ProductFindIdV3Dto } from './dto/product-find-id-v3.dto';
-import { ProductFindSearchAllV3Dto } from './dto/product-find-search-all-v3.dto';
 import { ProductFindPremiumV1Dto } from './dto/product-find-premium-v1.dto';
+import { ProductFindSearchAllV3Dto } from './dto/product-find-search-all-v3.dto';
+import { ProductBaseService } from './product-base.service';
 
 @Controller('product-base')
 export class ProductBaseController {

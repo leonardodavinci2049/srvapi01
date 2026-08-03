@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
-import { TaxonomyWebService } from './taxonomy-web.service';
-import { TaxonomyWebController } from './taxonomy-web.controller';
 import { DatabaseModule } from 'src/database/database.module';
+import { TaxonomyWebController } from './taxonomy-web.controller';
+import { TaxonomyWebService } from './taxonomy-web.service';
 
 @Module({
   imports: [DatabaseModule],

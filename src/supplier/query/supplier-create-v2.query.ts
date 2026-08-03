@@ -1,5 +1,5 @@
-import { SupplierCreateV2Dto } from '../dto/supplier-create-v2.dto';
 import { v4 as UuidV4 } from 'uuid';
+import { SupplierCreateV2Dto } from '../dto/supplier-create-v2.dto';
 
 // 36960
 export function SupplierCreateV2Query(

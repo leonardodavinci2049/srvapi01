@@ -1,29 +1,24 @@
 import { Injectable } from '@nestjs/common';
-import { ResultModel } from 'src/core/utils/result.model';
-import { MESSAGES } from 'src/core/utils/constants/globalConstants';
-
-import { DatabaseService } from 'src/database/database.service';
-
-import {
-  SpResultOrderOperSendingByEmailData,
-  SpResultRecordOperationType,
-  SpResultRecordUpdateType,
-} from './types/order-operation.type';
-
-import { processProcedureResultMultiQuery } from 'src/core/process-result/process-procedure-result.query';
 import { processProcedureResultMutation } from 'src/core/process-result/process-procedure-result.mutation';
-
-import { OrderOperAddItemQuery } from './query/order-oper-add-item.query';
-import { OrderOperReverseIdQuery } from './query/order-oper-reverse-id.query';
-import { OrderOperCloseIdQuery } from './query/order-oper-close-id.query';
-import { OrderOperCreateQuery } from './query/order-oper-create.query';
-import { OrderOperSendingByEmailIdQuery } from './query/order-oper-sending-by-email-id.query';
-
+import { processProcedureResultMultiQuery } from 'src/core/process-result/process-procedure-result.query';
+import { MESSAGES } from 'src/core/utils/constants/globalConstants';
+import { ResultModel } from 'src/core/utils/result.model';
+import { DatabaseService } from 'src/database/database.service';
 import { OrderOperAddItemDto } from './dto/order-oper-add-item.dto';
 import { OrderOperCloseIdDto } from './dto/order-oper-close-id.dto';
 import { OrderOperCreateDto } from './dto/order-oper-create.dto';
 import { OrderOperReverseIdDto } from './dto/order-oper-reverse-id.dto';
 import { OrderOperSendingByEmailIdDto } from './dto/order-oper-sending-by-email-id.dto';
+import { OrderOperAddItemQuery } from './query/order-oper-add-item.query';
+import { OrderOperCloseIdQuery } from './query/order-oper-close-id.query';
+import { OrderOperCreateQuery } from './query/order-oper-create.query';
+import { OrderOperReverseIdQuery } from './query/order-oper-reverse-id.query';
+import { OrderOperSendingByEmailIdQuery } from './query/order-oper-sending-by-email-id.query';
+import {
+  SpResultOrderOperSendingByEmailData,
+  SpResultRecordOperationType,
+  SpResultRecordUpdateType,
+} from './types/order-operation.type';
 
 @Injectable()
 export class OrderOperationService {

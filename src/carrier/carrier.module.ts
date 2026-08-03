@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
-import { CarrierService } from './carrier.service';
-import { CarrierController } from './carrier.controller';
 import { DatabaseModule } from 'src/database/database.module';
+import { CarrierController } from './carrier.controller';
+import { CarrierService } from './carrier.service';
 
 @Module({
   imports: [DatabaseModule],

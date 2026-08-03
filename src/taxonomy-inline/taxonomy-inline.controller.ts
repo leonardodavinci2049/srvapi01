@@ -1,8 +1,5 @@
-import { Controller, Get, Post, Body, UseGuards } from '@nestjs/common';
-import { TaxonomyInlineService } from './taxonomy-inline.service';
-
+import { Body, Controller, Get, Post, UseGuards } from '@nestjs/common';
 import { AuthGuard } from 'src/core/guards/auth.guard';
-
 import { TaxonomyUpdInlImagePathV3Dto } from './dto/taxonomy-upd-inl-image-path-v3.dto';
 import { TaxonomyUpdInlInactiveV3Dto } from './dto/taxonomy-upd-inl-inactive-v3.dto';
 import { TaxonomyUpdInlNameV3Dto } from './dto/taxonomy-upd-inl-name-v3.dto';
@@ -11,6 +8,7 @@ import { TaxonomyUpdInlOrderV3Dto } from './dto/taxonomy-upd-inl-order-v3.dto';
 import { TaxonomyUpdInlParentIdV3Dto } from './dto/taxonomy-upd-inl-parent-id-v3.dto';
 import { TaxonomyUpdInlQtProductsV3Dto } from './dto/taxonomy-upd-inl-qt-products-v3.dto';
 import { TaxonomyUpdInlSlugV3Dto } from './dto/taxonomy-upd-inl-slug-v3.dto';
+import { TaxonomyInlineService } from './taxonomy-inline.service';
 
 @Controller('taxonomy-inline')
 export class TaxonomyInlineController {

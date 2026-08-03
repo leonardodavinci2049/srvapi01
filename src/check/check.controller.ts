@@ -1,7 +1,6 @@
-import { Controller, Get, Post, Body, UseGuards } from '@nestjs/common';
-import { CheckService } from './check.service';
-
+import { Body, Controller, Get, Post, UseGuards } from '@nestjs/common';
 import { AuthGuard } from 'src/core/guards/auth.guard';
+import { CheckService } from './check.service';
 import { CheckIfExistsDto } from './dto/check-if-exists.dto';
 import { CheckIfExistsV3Dto } from './dto/check-if-exists-v3.dto';
 

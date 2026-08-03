@@ -1,10 +1,9 @@
 import { Injectable } from '@nestjs/common';
-
-import { ResultModel } from 'src/core/utils/result.model';
+import { processProcedureResultMutation } from 'src/core/process-result/process-procedure-result.mutation';
 import { MESSAGES } from 'src/core/utils/constants/globalConstants';
-
+import { ResultModel } from 'src/core/utils/result.model';
 import { DatabaseService } from 'src/database/database.service';
-
+import { CustomerUpdInlFieldDto } from './dto/costumer-upd-inl-field.dto';
 import { CustomerUpdInlEmailDto } from './dto/customer-upd-inl-email.dto';
 import { CustomerUpdInlNameDto } from './dto/customer-upd-inl-name.dto';
 import { CustomerUpdInlNotesDto } from './dto/customer-upd-inl-notes.dto';
@@ -13,20 +12,16 @@ import { CustomerUpdInlSellerIdDto } from './dto/customer-upd-inl-seller-id.dto'
 import { CustomerUpdInlTypeCustomerDto } from './dto/customer-upd-inl-type-customer.dto';
 import { CustomerUpdInlTypePersonDto } from './dto/customer-upd-inl-type-person.dto';
 import { CustomerUpdInlWhatsappDto } from './dto/customer-upd-inl-whatsapp.dto';
-import { SpResultRecordUpdateType } from './types/costumer-inline.type';
-import { processProcedureResultMutation } from 'src/core/process-result/process-procedure-result.mutation';
-
+import { CustomerUpdInlFieldQuery } from './query/costumer-upd-inl-field.query';
 import { CustomerUpdInlEmailQuery } from './query/customer-upd-inl-email.query';
 import { CustomerUpdInlNameQuery } from './query/customer-upd-inl-name.query';
-
 import { CustomerUpdInlNotesQuery } from './query/customer-upd-inl-notes.query';
 import { CustomerUpdInlPhoneQuery } from './query/customer-upd-inl-phone.query';
 import { CustomerUpdInlSellerIdQuery } from './query/customer-upd-inl-seller-id.query';
 import { CustomerUpdInlTypeCustomerQuery } from './query/customer-upd-inl-type-customer.query';
 import { CustomerUpdInlTypePersonQuery } from './query/customer-upd-inl-type-person.query';
 import { CustomerUpdInlWhatsappQuery } from './query/customer-upd-inl-whatsapp.query';
-import { CustomerUpdInlFieldQuery } from './query/costumer-upd-inl-field.query';
-import { CustomerUpdInlFieldDto } from './dto/costumer-upd-inl-field.dto';
+import { SpResultRecordUpdateType } from './types/costumer-inline.type';
 
 @Injectable()
 export class CustomerInlineService {

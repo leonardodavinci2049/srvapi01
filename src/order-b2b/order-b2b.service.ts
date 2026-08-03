@@ -1,21 +1,19 @@
 import { Injectable } from '@nestjs/common';
-
-import { ResultModel } from 'src/core/utils/result.model';
-import { MESSAGES } from 'src/core/utils/constants/globalConstants';
-
-import { DatabaseService } from 'src/database/database.service';
-
 import { processProcedureResultMultiQuery } from 'src/core/process-result/process-procedure-result.query';
+import { MESSAGES } from 'src/core/utils/constants/globalConstants';
+import { ResultModel } from 'src/core/utils/result.model';
+import { DatabaseService } from 'src/database/database.service';
 
 import { OrderFindBudgetCustomerIdV2Dto } from './dto/order-find-budget-customer-id-v2.dto';
 import { OrderFindDashboardCustomerIdV2Dto } from './dto/order-find-dashboard-customer-id-v2.dto';
 import { OrderItemFindQtV2Dto } from './dto/order-item-find-qt-v2.dto';
-
+import { OrdersFindLatestV2Dto } from './dto/orders-find-latest-v2.dto';
+import { OrdersStatisticsCustomerV2Dto } from './dto/orders-statistics-customer-v2.dto';
 import { OrderFindBudgetCustomerIdV2Query } from './query/order-find-budget-customer-id-v2.query';
 import { OrderFindDashboardCustomerIdV2Query } from './query/order-find-dashboard-customer-id-v2.query';
-
 import { OrderItemFindQtV2Query } from './query/order-item-find-qt-v2.query';
-
+import { ordersFindLatestV2Query } from './query/orders-find-latest-v2.query';
+import { ordersStatisticsCustomerV2Query } from './query/orders-statistics-customer-v2.query';
 import {
   ResultOrderFindBudgetCustomerIdV2Data,
   ResultOrderFindDashboardCustomerIdV2Data,
@@ -23,12 +21,6 @@ import {
   ResultOrdersFindLatestV2Data,
   ResultOrdersStatisticsCustomerV2Data,
 } from './types/order-b2b.type';
-
-import { OrdersFindLatestV2Dto } from './dto/orders-find-latest-v2.dto';
-import { OrdersStatisticsCustomerV2Dto } from './dto/orders-statistics-customer-v2.dto';
-
-import { ordersFindLatestV2Query } from './query/orders-find-latest-v2.query';
-import { ordersStatisticsCustomerV2Query } from './query/orders-statistics-customer-v2.query';
 
 @Injectable()
 export class OrderB2bService {

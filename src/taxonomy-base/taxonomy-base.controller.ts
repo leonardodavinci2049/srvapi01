@@ -1,16 +1,16 @@
 import { Body, Controller, Get, Post, UseGuards } from '@nestjs/common';
-import { TaxonomyBaseService } from './taxonomy-base.service';
 import { AuthGuard } from 'src/core/guards/auth.guard';
+import { SpTaxonomyFindMenuManagerV3Dto } from './dto/sp-taxonomy-find-menu-manager-v3.dto';
+import { SpTaxonomyProductManagerV2Dto } from './dto/sp-taxonomy-product-manager-v2.dto';
+import { SpTaxonomyRelCreateBulkV3Dto } from './dto/sp-taxonomy-rel-create-Bulk-v3.dto';
 import { TaxonomyCreateV3Dto } from './dto/taxonomy-create-v3.dto';
 import { TaxonomyDeleteV3Dto } from './dto/taxonomy-delete-v3.dto';
 import { TaxonomyFindAllV3Dto } from './dto/taxonomy-find-all-v3.dto';
 import { TaxonomyFindIdV3Dto } from './dto/taxonomy-find-id-v3.dto';
 import { TaxonomyFindMenuV3Dto } from './dto/taxonomy-find-menu-v3.dto';
-import { TaxonomyUpdateV3Dto } from './dto/taxonomy-update-v3.dto';
 import { TaxonomyUpdMetadataV3Dto } from './dto/taxonomy-upd-metadata-v3.dto';
-import { SpTaxonomyProductManagerV2Dto } from './dto/sp-taxonomy-product-manager-v2.dto';
-import { SpTaxonomyFindMenuManagerV3Dto } from './dto/sp-taxonomy-find-menu-manager-v3.dto';
-import { SpTaxonomyRelCreateBulkV3Dto } from './dto/sp-taxonomy-rel-create-Bulk-v3.dto';
+import { TaxonomyUpdateV3Dto } from './dto/taxonomy-update-v3.dto';
+import { TaxonomyBaseService } from './taxonomy-base.service';
 
 @Controller('taxonomy-base')
 export class TaxonomyBaseController {

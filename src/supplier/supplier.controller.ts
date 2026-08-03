@@ -1,18 +1,16 @@
-import { Controller, Get, Post, Body, UseGuards } from '@nestjs/common';
-import { SupplierService } from './supplier.service';
+import { Body, Controller, Get, Post, UseGuards } from '@nestjs/common';
 import { AuthGuard } from 'src/core/guards/auth.guard';
-
 import { SupplierCreateV2Dto } from './dto/supplier-create-v2.dto';
-import { SupplierRelCreateV2Dto } from './dto/supplier-rel-create-v2.dto';
-import { SupplierFindAllV2Dto } from './dto/supplier-find-all-v2.dto';
-import { SupplierFindManagerAllV2Dto } from './dto/supplier-find-manager-all-v2.dto';
-import { SupplierRelFindProdAllV2Dto } from './dto/supplier-rel-find-prod-all-v2.dto';
-import { SupplierFindIdV2Dto } from './dto/supplier-find-id-v2.dto';
-
-import { SupplierUpdateV2Dto } from './dto/supplier-update-v2.dto';
-import { SupplierRelDeleteV2Dto } from './dto/supplier-rel-delete-v2.dto';
 import { SupplierDeleteV2Dto } from './dto/supplier-delete-v2.dto';
+import { SupplierFindAllV2Dto } from './dto/supplier-find-all-v2.dto';
+import { SupplierFindIdV2Dto } from './dto/supplier-find-id-v2.dto';
+import { SupplierFindManagerAllV2Dto } from './dto/supplier-find-manager-all-v2.dto';
 import { SupplierFindSearchV2Dto } from './dto/supplier-find-search-v2.dto';
+import { SupplierRelCreateV2Dto } from './dto/supplier-rel-create-v2.dto';
+import { SupplierRelDeleteV2Dto } from './dto/supplier-rel-delete-v2.dto';
+import { SupplierRelFindProdAllV2Dto } from './dto/supplier-rel-find-prod-all-v2.dto';
+import { SupplierUpdateV2Dto } from './dto/supplier-update-v2.dto';
+import { SupplierService } from './supplier.service';
 
 @Controller('supplier')
 export class SupplierController {

@@ -1,22 +1,20 @@
 import { Injectable } from '@nestjs/common';
-
-import { ResultModel } from 'src/core/utils/result.model';
-import { MESSAGES } from 'src/core/utils/constants/globalConstants';
-
-import { DatabaseService } from 'src/database/database.service';
-import { SellerFindManagerAllV2Dto } from './dto/seller-find-manager-all-v2.dto';
-import { SellerFindManagerAllV2Query } from './query/seller-find-manager-all-v2.query';
 import { processProcedureResultMultiQuery } from 'src/core/process-result/process-procedure-result.query';
+import { processSqlResultQuery } from 'src/core/process-result/process-sql-result.query';
+import { MESSAGES } from 'src/core/utils/constants/globalConstants';
+import { ResultModel } from 'src/core/utils/result.model';
+import { DatabaseService } from 'src/database/database.service';
+import { SellerFindIdDto } from './dto/seller-find-id.dto';
+import { SellerFindManagerAllV2Dto } from './dto/seller-find-manager-all-v2.dto';
+import { SellerFindSearchV2Dto } from './dto/seller-find-search-v2.dto';
+import { SellerFindIdQuery } from './query/seller-find-id.query';
+import { SellerFindManagerAllV2Query } from './query/seller-find-manager-all-v2.query';
+import { SellerFindSearchV2Query } from './query/seller-find-search-v2.query';
 import {
   SpResultSellerFindManagerAllData,
   TblSellerFindId,
   TblSellerFindSearch,
 } from './types/seller.type';
-import { SellerFindSearchV2Dto } from './dto/seller-find-search-v2.dto';
-import { SellerFindSearchV2Query } from './query/seller-find-search-v2.query';
-import { processSqlResultQuery } from 'src/core/process-result/process-sql-result.query';
-import { SellerFindIdDto } from './dto/seller-find-id.dto';
-import { SellerFindIdQuery } from './query/seller-find-id.query';
 
 @Injectable()
 export class SellerService {

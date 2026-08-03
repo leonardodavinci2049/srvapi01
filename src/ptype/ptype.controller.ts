@@ -1,15 +1,13 @@
-import { Controller, Get, Post, Body, UseGuards } from '@nestjs/common';
-
-import { PtypeService } from './ptype.service';
+import { Body, Controller, Get, Post, UseGuards } from '@nestjs/common';
 import { AuthGuard } from 'src/core/guards/auth.guard';
-
-import { TypeFindAllV2Dto } from './dto/type-find-all-v2.dto';
-import { TypeFindManagerAllV2Dto } from './dto/type-find-manager-all-v2.dto';
 import { TypeCreateV2Dto } from './dto/type-create-v2.dto';
-import { TypeFindIdV2Dto } from './dto/type-find-id-v2.dto';
-import { TypeUpdateV2Dto } from './dto/type-update-v2.dto';
 import { TypeDeleteV2Dto } from './dto/type-delete-v2.dto';
+import { TypeFindAllV2Dto } from './dto/type-find-all-v2.dto';
+import { TypeFindIdV2Dto } from './dto/type-find-id-v2.dto';
+import { TypeFindManagerAllV2Dto } from './dto/type-find-manager-all-v2.dto';
 import { TypeFindSearchV2Dto } from './dto/type-find-search-v2.dto';
+import { TypeUpdateV2Dto } from './dto/type-update-v2.dto';
+import { PtypeService } from './ptype.service';
 
 @Controller('ptype')
 export class PtypeController {

@@ -1,4 +1,4 @@
-document.getElementById('login-form').addEventListener('submit', function (e) {
+document.getElementById('login-form').addEventListener('submit', (e) => {
   e.preventDefault();
 
   // Exibir mensagem de erro

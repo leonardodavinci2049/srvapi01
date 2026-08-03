@@ -1,5 +1,4 @@
-import { Controller, Get, Post, Body, UseGuards } from '@nestjs/common';
-import { ProductUpdateService } from './product-update.service';
+import { Body, Controller, Get, Post, UseGuards } from '@nestjs/common';
 import { AuthGuard } from 'src/core/guards/auth.guard';
 import { ProductUpdCharacteristicsV3Dto } from './dto/product-upd-characteristics-v3.dto';
 import { ProductUpdFlagsV3Dto } from './dto/product-upd-flags-v3.dto';
@@ -7,6 +6,7 @@ import { ProductUpdGeneralV3Dto } from './dto/product-upd-general-v3.dto';
 import { ProductUpdMetadataV3Dto } from './dto/product-upd-metadata-v3.dto';
 import { ProductUpdPriceV3Dto } from './dto/product-upd-price-v3.dto';
 import { ProductUpdTaxValuesV3Dto } from './dto/product-upd-tax-values-v3.dto';
+import { ProductUpdateService } from './product-update.service';
 
 @Controller('product-update')
 export class ProductUpdateController {

@@ -1,17 +1,14 @@
 import { Body, Controller, Get, Post, UseGuards } from '@nestjs/common';
-import { OrderReportsService } from './order-reports.service';
 import { AuthGuard } from 'src/core/guards/auth.guard';
-
 import { OrdersFindCustomerAllDto } from './dto/orders-find-customer-all.dto';
 import { OrdersFindCustomerIdDto } from './dto/orders-find-customer-id.dto';
-
-import { OrdersFindSellerAllDto } from './dto/orders-find-seller-all.dto';
-import { OrdersFindSellerIdDto } from './dto/orders-find-seller-id.dto';
-
 import { OrdersFindLatestAllDto } from './dto/orders-find-latest-all.dto';
 import { OrdersFindLatestIdDto } from './dto/orders-find-latest-id.dto';
 import { OrdersFindSaleAllDto } from './dto/orders-find-sale-all.dto';
 import { OrdersFindSaleIdDto } from './dto/orders-find-sale-id.dto';
+import { OrdersFindSellerAllDto } from './dto/orders-find-seller-all.dto';
+import { OrdersFindSellerIdDto } from './dto/orders-find-seller-id.dto';
+import { OrderReportsService } from './order-reports.service';
 
 @Controller('order-reports')
 export class OrderReportsController {

@@ -1,6 +1,6 @@
 import { generateSlug } from 'src/core/utils/generators/generate-slug';
-import { ProductCreateV3Dto } from '../dto/product-create-v3.dto';
 import { v4 as UuidV4 } from 'uuid';
+import { ProductCreateV3Dto } from '../dto/product-create-v3.dto';
 
 export function ProductCreateV3Query(dataJsonDto: ProductCreateV3Dto): string {
   const OlUuid = UuidV4();

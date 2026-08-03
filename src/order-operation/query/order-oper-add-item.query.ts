@@ -1,5 +1,5 @@
-import { OrderOperAddItemDto } from '../dto/order-oper-add-item.dto';
 import { v4 as UuidV4 } from 'uuid';
+import { OrderOperAddItemDto } from '../dto/order-oper-add-item.dto';
 
 export function OrderOperAddItemQuery(
   dataJsonDto: OrderOperAddItemDto,

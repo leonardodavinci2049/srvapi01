@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
-import { TaxonomyBaseService } from './taxonomy-base.service';
-import { TaxonomyBaseController } from './taxonomy-base.controller';
 import { DatabaseModule } from 'src/database/database.module';
+import { TaxonomyBaseController } from './taxonomy-base.controller';
+import { TaxonomyBaseService } from './taxonomy-base.service';
 
 @Module({
   imports: [DatabaseModule],

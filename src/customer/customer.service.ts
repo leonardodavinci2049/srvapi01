@@ -1,11 +1,22 @@
 import { Injectable } from '@nestjs/common';
-
-import { ResultModel } from 'src/core/utils/result.model';
+import { processProcedureResultMutation } from 'src/core/process-result/process-procedure-result.mutation';
+import { processProcedureResultMultiQuery } from 'src/core/process-result/process-procedure-result.query';
+import { processSqlResultQuery } from 'src/core/process-result/process-sql-result.query';
 import { MESSAGES } from 'src/core/utils/constants/globalConstants';
-
+import { ResultModel } from 'src/core/utils/result.model';
 import { DatabaseService } from 'src/database/database.service';
 import { CostumerCreateDto } from './dto/costumer-create.dto';
+import { CostumerFindAllDto } from './dto/costumer-find-all.dto';
+import { CostumerFindIdDto } from './dto/costumer-find-id.dto';
+import { CostumerFindManagerAllV2Dto } from './dto/costumer-find-manager-all-v2.dto';
+import { CustomerFindLatestProductsDto } from './dto/customer-find-latest-products.dto';
+import { CustomerFindSearchV2Dto } from './dto/customer-find-search-v2.dto';
 import { CostumerCreateQuery } from './query/costumer-create.query';
+import { CostumerFindAllQuery } from './query/costumer-find-all.query';
+import { CostumerFindIdQuery } from './query/costumer-find-id.query';
+import { CostumerFindManagerAllV2Query } from './query/costumer-find-manager-all-v2.query';
+import { CustomerFindLatestProductsQuery } from './query/customer-find-latest-products.query';
+import { CustomerFindSearchV2Query } from './query/customer-find-search-v2.query';
 import {
   SpResultCustomerFindAllData,
   SpResultCustomerFindIdData,
@@ -14,20 +25,6 @@ import {
   SpResultRecordCreateType,
   TblCustomerFindSearch,
 } from './types/costumer.type';
-import { processProcedureResultMutation } from 'src/core/process-result/process-procedure-result.mutation';
-import { CostumerFindAllDto } from './dto/costumer-find-all.dto';
-import { CostumerFindManagerAllV2Dto } from './dto/costumer-find-manager-all-v2.dto';
-import { CostumerFindAllQuery } from './query/costumer-find-all.query';
-import { processProcedureResultMultiQuery } from 'src/core/process-result/process-procedure-result.query';
-import { CostumerFindManagerAllV2Query } from './query/costumer-find-manager-all-v2.query';
-
-import { CostumerFindIdDto } from './dto/costumer-find-id.dto';
-import { CostumerFindIdQuery } from './query/costumer-find-id.query';
-import { CustomerFindLatestProductsQuery } from './query/customer-find-latest-products.query';
-import { CustomerFindLatestProductsDto } from './dto/customer-find-latest-products.dto';
-import { CustomerFindSearchV2Dto } from './dto/customer-find-search-v2.dto';
-import { CustomerFindSearchV2Query } from './query/customer-find-search-v2.query';
-import { processSqlResultQuery } from 'src/core/process-result/process-sql-result.query';
 
 @Injectable()
 export class CustomerService {

@@ -1,23 +1,22 @@
 import { Injectable } from '@nestjs/common';
-
-import { ResultModel } from 'src/core/utils/result.model';
-import { MESSAGES } from 'src/core/utils/constants/globalConstants';
 import { processProcedureResultMutation } from 'src/core/process-result/process-procedure-result.mutation';
 import { processProcedureResultMultiQuery } from 'src/core/process-result/process-procedure-result.query';
+import { MESSAGES } from 'src/core/utils/constants/globalConstants';
+import { ResultModel } from 'src/core/utils/result.model';
 import { DatabaseService } from 'src/database/database.service';
-
+import { SpTaxonomyFindMenuManagerV3Dto } from './dto/sp-taxonomy-find-menu-manager-v3.dto';
+import { SpTaxonomyProductManagerV2Dto } from './dto/sp-taxonomy-product-manager-v2.dto';
+import { SpTaxonomyRelCreateBulkV3Dto } from './dto/sp-taxonomy-rel-create-Bulk-v3.dto';
 import { TaxonomyCreateV3Dto } from './dto/taxonomy-create-v3.dto';
 import { TaxonomyDeleteV3Dto } from './dto/taxonomy-delete-v3.dto';
 import { TaxonomyFindAllV3Dto } from './dto/taxonomy-find-all-v3.dto';
 import { TaxonomyFindIdV3Dto } from './dto/taxonomy-find-id-v3.dto';
 import { TaxonomyFindMenuV3Dto } from './dto/taxonomy-find-menu-v3.dto';
-import { SpTaxonomyProductManagerV2Dto } from './dto/sp-taxonomy-product-manager-v2.dto';
-import { SpTaxonomyFindMenuManagerV3Dto } from './dto/sp-taxonomy-find-menu-manager-v3.dto';
-import { SpTaxonomyRelCreateBulkV3Dto } from './dto/sp-taxonomy-rel-create-Bulk-v3.dto';
 import { TaxonomyUpdMetadataV3Dto } from './dto/taxonomy-upd-metadata-v3.dto';
 import { TaxonomyUpdateV3Dto } from './dto/taxonomy-update-v3.dto';
 
 import { SpTaxonomyFindMenuManagerV3Query } from './query/sp-taxonomy-find-menu-manager-v3.query';
+import { SpTaxonomyProductManagerV2Query } from './query/sp-taxonomy-product-manager-v2.query';
 import { SpTaxonomyRelCreateBulkV3Query } from './query/sp-taxonomy-rel-create-Bulk-v3.query';
 import { TaxonomyCreateV3Query } from './query/taxonomy-create-v3.query';
 import { TaxonomyDeleteV3Query } from './query/taxonomy-delete-v3.query';
@@ -29,15 +28,14 @@ import { TaxonomyUpdateV3Query } from './query/taxonomy-update-v3.query';
 import {
   SpResultRecordCreateType,
   SpResultRecordDeleteType,
-  SpResultTaxonomyProductManagerV2Data,
   SpResultTaxonomyFindAllV3Data,
   SpResultTaxonomyFindIdV3Data,
   SpResultTaxonomyFindMenuManagerV3Data,
   SpResultTaxonomyFindMenuV3Data,
+  SpResultTaxonomyProductManagerV2Data,
   SpResultTaxonomyRelCreateBulkV3Data,
   SpResultTaxonomyWebMenuV3Data,
 } from './types/taxonomy-base.type';
-import { SpTaxonomyProductManagerV2Query } from './query/sp-taxonomy-product-manager-v2.query';
 
 @Injectable()
 export class TaxonomyBaseService {
