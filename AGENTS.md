@@ -9,10 +9,10 @@ Most conventions are documented in `README.md`; this file captures what is easy 
 pnpm install            # package manager is pnpm (declared in package.json)
 pnpm run dev            # nest start --watch (needs a reachable DB + valid .env)
 pnpm run build          # typecheck + compile to dist/ (there is NO separate typecheck script)
-pnpm run lint           # ESLint with --fix (type-aware, rewrites files)
+pnpm run lint           # Biome lint with safe fixes (rewrites files)
 pnpm run lint:check     # same lint, no fixes
-pnpm run format         # Prettier write (single quotes, trailingComma all)
-pnpm run format:check   # Prettier check only
+pnpm run format         # Biome format write (single quotes, trailingComma all)
+pnpm run format:check   # Biome format check only
 ```
 
 > **No tests are implemented.** This app has no unit/integration test coverage — don't rely on a test suite for verification and don't assume specs exist for new code.

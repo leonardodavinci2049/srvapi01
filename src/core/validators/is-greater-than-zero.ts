@@ -6,7 +6,9 @@ import {
 } from 'class-validator';
 
 @ValidatorConstraint({ name: 'isGreaterThanZero', async: false })
-export class IsGreaterThanZeroConstraint implements ValidatorConstraintInterface {
+export class IsGreaterThanZeroConstraint
+  implements ValidatorConstraintInterface
+{
   validate(value: number): boolean {
     return typeof value === 'number' && value > 0;
   }
@@ -19,7 +21,7 @@ export class IsGreaterThanZeroConstraint implements ValidatorConstraintInterface
 export function IsGreaterThanZero(
   validationOptions?: ValidationOptions,
 ): PropertyDecorator {
-  return function (object: object, propertyName: string) {
+  return (object: object, propertyName: string) => {
     registerDecorator({
       target: object.constructor,
       propertyName: propertyName,
