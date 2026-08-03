@@ -5,6 +5,7 @@ import { TypeDeleteV2Dto } from './dto/type-delete-v2.dto';
 import { TypeFindAllV2Dto } from './dto/type-find-all-v2.dto';
 import { TypeFindIdV2Dto } from './dto/type-find-id-v2.dto';
 import { TypeFindManagerAllV2Dto } from './dto/type-find-manager-all-v2.dto';
+import { TypeFindManagerIdV2Dto } from './dto/type-find-manager-id-v2.dto';
 import { TypeFindSearchV2Dto } from './dto/type-find-search-v2.dto';
 import { TypeUpdateV2Dto } from './dto/type-update-v2.dto';
 import { PtypeService } from './ptype.service';
@@ -50,6 +51,12 @@ export class PtypeController {
   @Post('v2/ptype-find-manager-all')
   ptypeFindManagerAllV2(@Body() dataJsonDto: TypeFindManagerAllV2Dto) {
     return this.ptypeService.taskTypeFindManagerAllV2(dataJsonDto);
+  }
+
+  @UseGuards(AuthGuard)
+  @Post('v2/ptype-find-manager-id')
+  ptypeFindManagerIdV2(@Body() dataJsonDto: TypeFindManagerIdV2Dto) {
+    return this.ptypeService.taskTypeFindManagerIdV2(dataJsonDto);
   }
 
   @UseGuards(AuthGuard)

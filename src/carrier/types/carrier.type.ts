@@ -71,7 +71,50 @@ export interface TblCarrierFindSearch extends RowDataPacket {
   CREATEDAT: Date;
 }
 
+export interface TblCarrierFindManagerId extends RowDataPacket {
+  ID_TRANSPORTADORA: number;
+  NOME: string | null;
+  ID_PESSOA_TIPO: number | null;
+  TIPO_PESSOA: string;
+  FONE1: string | null;
+  WHATAPP1: string | null;
+  CONTATO1: string | null;
+  EMAIL1: string | null;
+  PATH_IMAGEM: string | null;
+  RAZAO_SOCIAL: string | null;
+  CNPJ: string | null;
+  DATA_CNPJ: Date | null;
+  INSC_ESTADUAL: string | null;
+  INSC_MUNICIPAL: string | null;
+  NOME_FANTASIA: string | null;
+  NOME_RESPONSAVEL: string | null;
+  CARGO: string | null;
+  CPF: string | null;
+  RG: string | null;
+  CEP: string | null;
+  ENDERECO: string | null;
+  ENDERECO_NUMERO: string | null;
+  COMPLEMENTO: string | null;
+  BAIRRO: string | null;
+  CIDADE: string | null;
+  UF: string | null;
+  REGIAO_PAIS: string | null;
+  PAIS: string | null;
+  COD_MUNICIPIO: number | null;
+  COD_UF: number | null;
+  WEBSITE: string | null;
+  FACEBOOK: string | null;
+  TWITTER: string | null;
+  FRETADOR: number | null;
+  DT_ULTIMA_COMPRA: Date | null;
+  ANOTACOES: string | null;
+  INATIVO: number | null;
+  DATADOCADASTRO: Date | null;
+}
+
 export type SpResultCarrierFindSearchData = TblCarrierFindSearch[];
+
+export type SpResultCarrierFindManagerIdData = TblCarrierFindManagerId[];
 
 export type SpResultCarrierFindManagerAllData = [
   TblCarrierFindManagerAll[],

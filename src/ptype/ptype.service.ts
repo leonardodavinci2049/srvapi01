@@ -12,6 +12,7 @@ import { TypeFindAllDto } from './dto/type-find-all.dto';
 import { TypeFindAllV2Dto } from './dto/type-find-all-v2.dto';
 import { TypeFindIdV2Dto } from './dto/type-find-id-v2.dto';
 import { TypeFindManagerAllV2Dto } from './dto/type-find-manager-all-v2.dto';
+import { TypeFindManagerIdV2Dto } from './dto/type-find-manager-id-v2.dto';
 import { TypeFindSearchV2Dto } from './dto/type-find-search-v2.dto';
 import { TypeUpdateV2Dto } from './dto/type-update-v2.dto';
 import { TypeCreateV2Query } from './query/type-create-v2.query';
@@ -20,6 +21,7 @@ import { TypeFindAllQuery } from './query/type-find-all.query';
 import { TypeFindAllV2Query } from './query/type-find-all-v2.query';
 import { TypeFindIdV2Query } from './query/type-find-id-v2.query';
 import { TypeFindManagerAllV2Query } from './query/type-find-manager-all-v2.query';
+import { TypeFindManagerIdV2Query } from './query/type-find-manager-id-v2.query';
 import { TypeFindSearchV2Query } from './query/type-find-search-v2.query';
 import { TypeUpdateV2Query } from './query/type-update-v2.query';
 import {
@@ -29,6 +31,7 @@ import {
   SpResultRecordCreateType,
   SpResultRecordDeleteType,
   SpResultRecordUpdateType,
+  TblPTypeFindManagerId,
   TblPTypeFindSearch,
 } from './types/ptype.type';
 
@@ -106,6 +109,30 @@ export class PtypeService {
         resultData,
         ['Type find manager All'],
         'Type find manager All not found',
+      );
+    } catch (err) {
+      const errorMessage =
+        err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
+      return new ResultModel(100404, errorMessage, 0, []);
+    }
+  }
+
+  async taskTypeFindManagerIdV2(dataJsonDto: TypeFindManagerIdV2Dto) {
+    try {
+      const { queryString, queryParams } =
+        TypeFindManagerIdV2Query(dataJsonDto);
+
+      const resultData =
+        await this.dbService.selectExecute<TblPTypeFindManagerId>(
+          queryString,
+          queryParams,
+        );
+
+      return processSqlResultQuery(
+        resultData,
+        'Type find manager Id',
+        'Type find manager Id not found',
+        'Dados carregados com sucesso.',
       );
     } catch (err) {
       const errorMessage =
