@@ -1,9 +1,9 @@
+import { join } from 'node:path';
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { APP_GUARD } from '@nestjs/core';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
-import { join } from 'node:path';
 import { AccountModule } from 'src/account/account.module';
 import { BrandModule } from 'src/brand/brand.module';
 import { CarrierModule } from 'src/carrier/carrier.module';
