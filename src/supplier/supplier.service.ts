@@ -10,6 +10,7 @@ import { SupplierDeleteV2Dto } from './dto/supplier-delete-v2.dto';
 import { SupplierFindAllV2Dto } from './dto/supplier-find-all-v2.dto';
 import { SupplierFindIdV2Dto } from './dto/supplier-find-id-v2.dto';
 import { SupplierFindManagerAllV2Dto } from './dto/supplier-find-manager-all-v2.dto';
+import { SupplierFindManagerIdV2Dto } from './dto/supplier-find-manager-id-v2.dto';
 import { SupplierFindSearchV2Dto } from './dto/supplier-find-search-v2.dto';
 import { SupplierRelCreateV2Dto } from './dto/supplier-rel-create-v2.dto';
 import { SupplierRelDeleteV2Dto } from './dto/supplier-rel-delete-v2.dto';
@@ -20,6 +21,7 @@ import { SupplierDeleteV2Query } from './query/supplier-delete-v2.query';
 import { SupplierFindAllV2Query } from './query/supplier-find-all-v2.query';
 import { SupplierFindIdV2Query } from './query/supplier-find-id-v2.query';
 import { SupplierFindManagerAllV2Query } from './query/supplier-find-manager-all-v2.query';
+import { SupplierFindManagerIdV2Query } from './query/supplier-find-manager-id-v2.query';
 import { SupplierFindSearchV2Query } from './query/supplier-find-search-v2.query';
 import { SupplierRelCreateV2Query } from './query/supplier-rel-create-v2.query';
 import { SupplierRelDeleteV2Query } from './query/supplier-rel-delete-v2.query';
@@ -32,6 +34,7 @@ import {
   SpResultSupplierFindAllData,
   SpResultSupplierFindIdData,
   SpResultSupplierFindManagerAllData,
+  TblSupplierFindManagerId,
   TblSupplierFindSearch,
 } from './types/supplier.type';
 
@@ -133,6 +136,30 @@ export class SupplierService {
         resultData,
         ['Supplier find manager All'],
         'Supplier find manager All not found',
+      );
+    } catch (err) {
+      const errorMessage =
+        err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
+      return new ResultModel(100404, errorMessage, 0, []);
+    }
+  }
+
+  async taskSupplierFindManagerIdV2(dataJsonDto: SupplierFindManagerIdV2Dto) {
+    try {
+      const { queryString, queryParams } =
+        SupplierFindManagerIdV2Query(dataJsonDto);
+
+      const resultData =
+        await this.dbService.selectExecute<TblSupplierFindManagerId>(
+          queryString,
+          queryParams,
+        );
+
+      return processSqlResultQuery(
+        resultData,
+        'Supplier find manager Id',
+        'Supplier find manager Id not found',
+        'Dados carregados com sucesso.',
       );
     } catch (err) {
       const errorMessage =

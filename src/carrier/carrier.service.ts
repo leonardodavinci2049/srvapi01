@@ -10,6 +10,7 @@ import { CarrierDeleteV2Dto } from './dto/carrier-delete-v2.dto';
 import { CarrierFindAllV2Dto } from './dto/carrier-find-all-v2.dto';
 import { CarrierFindIdV2Dto } from './dto/carrier-find-id-v2.dto';
 import { CarrierFindManagerAllV2Dto } from './dto/carrier-find-manager-all-v2.dto';
+import { CarrierFindManagerIdV2Dto } from './dto/carrier-find-manager-id-v2.dto';
 import { CarrierFindSearchV2Dto } from './dto/carrier-find-search-v2.dto';
 import { CarrierUpdateV2Dto } from './dto/carrier-update-v2.dto';
 import { CarrierCreateV2Query } from './query/carrier-create-v2.query';
@@ -17,6 +18,7 @@ import { CarrierDeleteV2Query } from './query/carrier-delete-v2.query';
 import { CarrierFindAllV2Query } from './query/carrier-find-all-v2.query';
 import { CarrierFindIdV2Query } from './query/carrier-find-id-v2.query';
 import { CarrierFindManagerAllV2Query } from './query/carrier-find-manager-all-v2.query';
+import { CarrierFindManagerIdV2Query } from './query/carrier-find-manager-id-v2.query';
 import { CarrierFindSearchV2Query } from './query/carrier-find-search-v2.query';
 import { CarrierUpdateV2Query } from './query/carrier-update-v2.query';
 import {
@@ -26,6 +28,7 @@ import {
   SpResultRecordCreateType,
   SpResultRecordDeleteType,
   SpResultRecordUpdateType,
+  TblCarrierFindManagerId,
   TblCarrierFindSearch,
 } from './types/carrier.type';
 
@@ -111,6 +114,30 @@ export class CarrierService {
         resultData,
         ['Carrier find manager All'],
         'Carrier find manager All not found',
+      );
+    } catch (err) {
+      const errorMessage =
+        err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
+      return new ResultModel(100404, errorMessage, 0, []);
+    }
+  }
+
+  async taskCarrierFindManagerIdV2(dataJsonDto: CarrierFindManagerIdV2Dto) {
+    try {
+      const { queryString, queryParams } =
+        CarrierFindManagerIdV2Query(dataJsonDto);
+
+      const resultData =
+        await this.dbService.selectExecute<TblCarrierFindManagerId>(
+          queryString,
+          queryParams,
+        );
+
+      return processSqlResultQuery(
+        resultData,
+        'Carrier find manager Id',
+        'Carrier find manager Id not found',
+        'Dados carregados com sucesso.',
       );
     } catch (err) {
       const errorMessage =

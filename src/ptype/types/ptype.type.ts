@@ -36,7 +36,21 @@ export interface TblPTypeFindSearch extends RowDataPacket {
   TIPO: string;
 }
 
+export interface TblPTypeFindManagerId extends RowDataPacket {
+  ID_TIPO: number;
+  TIPO: string | null;
+  PATH_IMAGEM: string | null;
+  INATIVO: number | null;
+  ANOTACOES: string | null;
+  FLAG_CADASTRO_PRODUTO: number | null;
+  TX_COMISSAO_VARE: string | null;
+  TX_COMISSAO_ATAC: string | null;
+  DT_CADASTRO: Date | null;
+}
+
 export type SpResultPTypeFindSearchData = TblPTypeFindSearch[];
+
+export type SpResultPTypeFindManagerIdData = TblPTypeFindManagerId[];
 
 export type SpResultPTypeFindAllData = [
   TblPTypeFindALL[],
