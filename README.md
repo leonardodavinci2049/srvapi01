@@ -171,8 +171,8 @@ DATABASE_NAME=wholesale_db
 | `pnpm run start`       | Start from source (`nest start`)                       |
 | `pnpm run start:prod`  | Run the compiled app (`node dist/main`)                |
 | `pnpm run start:debug` | Start in debug mode                                    |
-| `pnpm run lint`        | Lint and auto-fix with ESLint                          |
-| `pnpm run format`      | Format sources with Prettier                           |
+| `pnpm run lint`        | Lint and auto-fix with Biome                           |
+| `pnpm run format`      | Format sources with Biome                              |
 | `pnpm run test`        | Run unit tests (Jest)                                  |
 | `pnpm run test:watch`  | Run tests in watch mode                                |
 | `pnpm run test:cov`    | Run tests with coverage report                         |
@@ -255,8 +255,8 @@ pnpm run test -- <path/to/file.spec.ts>
 ## Linting & Formatting
 
 ```bash
-pnpm run lint     # ESLint with auto-fix
-pnpm run format   # Prettier (single quotes, trailing commas, semicolons)
+pnpm run lint     # Biome lint with safe fixes
+pnpm run format   # Biome formatter (single quotes, trailing commas, semicolons)
 ```
 
 Always run `pnpm run format` before committing.
