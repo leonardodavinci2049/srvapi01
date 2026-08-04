@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { processProcedureResultMultiQuery } from 'src/core/process-result/process-procedure-result.query';
+import { processSqlResultQuery } from 'src/core/process-result/process-sql-result.query';
 import { MESSAGES } from 'src/core/utils/constants/globalConstants';
 import { ResultModel } from 'src/core/utils/result.model';
 import { DatabaseService } from 'src/database/database.service';
@@ -14,6 +15,7 @@ import { OrderFindCoPgFormaIdDto } from './dto/order-find-co-pg-forma-id.dto';
 import { OrderFindCoProtocolIdDto } from './dto/order-find-co-protocol-id.dto';
 import { OrderFindCoSellerIdDto } from './dto/order-find-co-seller-id.dto';
 import { OrderFindCoSummaryIdDto } from './dto/order-find-co-summary-id.dto';
+import { OrderFindCoTipoFreteDto } from './dto/order-find-co-tipo-frete.dto';
 import { OrdersFindCartIdDto } from './dto/orders-find-cart-id.dto';
 import { OrdersFindDashboardIdDto } from './dto/orders-find-dashboard-id.dto';
 import { OrdersFindOrderIdDto } from './dto/orders-find-order-id.dto';
@@ -27,6 +29,7 @@ import { OrderFindCoPgFormaIdQuery } from './query/order-find-co-pg-forma-id.que
 import { OrderFindCoProtocolIdQuery } from './query/order-find-co-protocol-id.query';
 import { OrderFindCoSellerIdQuery } from './query/order-find-co-seller-id.query';
 import { OrderFindCoSummaryIdQuery } from './query/order-find-co-summary-id.query';
+import { OrderFindCoTipoFreteQuery } from './query/order-find-co-tipo-frete.query';
 import { OrdersFindCartIdQuery } from './query/orders-find-cart-id.query';
 import { OrdersFindDashboardIdQuery } from './query/orders-find-dashboard-id.query';
 import { OrdersFindOrderIdQuery } from './query/orders-find-order-id.query';
@@ -43,6 +46,7 @@ import {
   SpResultOrderFindEquipmentIdData,
   SpResultOrderFindOrderIdData,
   SpResultOrderFindProtocolIdData,
+  TblOrderFindCoTipoFrete,
 } from './types/order-sales.type';
 
 @Injectable()
@@ -300,6 +304,28 @@ export class OrderSalesService {
         resultData,
         ['Order Seller'],
         'Order Items not found',
+      );
+    } catch (err) {
+      const errorMessage =
+        err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
+      return new ResultModel(100404, errorMessage, 0, []);
+    }
+  }
+
+  async taskOrderFindCoTipoFreteV2(dataJsonDto: OrderFindCoTipoFreteDto) {
+    try {
+      const queryString = OrderFindCoTipoFreteQuery(dataJsonDto);
+
+      const resultData =
+        await this.dbService.selectExecute<TblOrderFindCoTipoFrete>(
+          queryString,
+        );
+
+      return processSqlResultQuery(
+        resultData,
+        'Order Tipo Frete',
+        'Order Tipo Frete not found',
+        'Dados carregados com sucesso.',
       );
     } catch (err) {
       const errorMessage =
