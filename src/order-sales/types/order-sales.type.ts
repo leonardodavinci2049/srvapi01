@@ -93,6 +93,8 @@ export interface TblCustomerDetails extends RowDataPacket {
   PATH_IMAGEM?: string;
   DATADOCADASTRO?: Date;
   DT_ULTIMA_COMPRA?: Date;
+  FLAG_FRETE_GRATIS?: number;
+  VL_PP_DESCONTO?: number;
   FONE1?: string;
   WHATAPP1?: string;
   EMAIL?: string;
@@ -141,6 +143,8 @@ export interface TblOrderFindCoCustomerId extends RowDataPacket {
   PATH_IMAGEM?: string;
   DATADOCADASTRO?: Date;
   DT_ULTIMA_COMPRA?: Date;
+  FLAG_FRETE_GRATIS?: number;
+  VL_PP_DESCONTO?: number;
   FONE1?: string;
   WHATAPP1?: string;
   EMAIL?: string;
@@ -283,6 +287,12 @@ export interface TblOrderFindCoSummaryId extends RowDataPacket {
   VL_SEGURO?: string;
   VL_DESCONTO?: string;
   VL_TOTAL_PEDIDO?: string;
+}
+
+export interface TblOrderFindCoTipoFrete extends RowDataPacket {
+  ID_TIPO_FRETE?: number;
+  TIPO_FRETE?: string;
+  VALOR_PADRAO?: string;
 }
 
 export type SpResultRecordCreateType = [SpDefaultFeedback[], SpOperationResult];

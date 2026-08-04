@@ -10,6 +10,7 @@ import { OrderFindCoPgFormaIdDto } from './dto/order-find-co-pg-forma-id.dto';
 import { OrderFindCoProtocolIdDto } from './dto/order-find-co-protocol-id.dto';
 import { OrderFindCoSellerIdDto } from './dto/order-find-co-seller-id.dto';
 import { OrderFindCoSummaryIdDto } from './dto/order-find-co-summary-id.dto';
+import { OrderFindCoTipoFreteDto } from './dto/order-find-co-tipo-frete.dto';
 import { OrdersFindCartIdDto } from './dto/orders-find-cart-id.dto';
 import { OrdersFindDashboardIdDto } from './dto/orders-find-dashboard-id.dto';
 import { OrdersFindOrderIdDto } from './dto/orders-find-order-id.dto';
@@ -108,5 +109,11 @@ export class OrderSalesController {
   @Post('v2/order-find-co-seller-id')
   OrderFindCoSellerIdV2(@Body() dataJsonDto: OrderFindCoSellerIdDto) {
     return this.orderSalesService.taskOrderFindCoSellerIdV2(dataJsonDto);
+  }
+
+  @UseGuards(AuthGuard)
+  @Post('v2/order-find-co-tipo-frete')
+  OrderFindCoTipoFreteV2(@Body() dataJsonDto: OrderFindCoTipoFreteDto) {
+    return this.orderSalesService.taskOrderFindCoTipoFreteV2(dataJsonDto);
   }
 }

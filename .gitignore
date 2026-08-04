@@ -75,6 +75,6 @@ ecosystem.config.js
 # project generated files
 /scripts
 /docs
-API-documentation/
+/API-documentation/
 /stored-procedures
 
