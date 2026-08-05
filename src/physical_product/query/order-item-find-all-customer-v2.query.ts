@@ -29,5 +29,7 @@ export function OrderItemFindAllCustomerV2Query(
         ${olLimit}
       ) `;
 
+ // console.log('Generated Query 1:', queryString);
+
   return queryString;
 }

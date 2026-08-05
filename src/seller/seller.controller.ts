@@ -12,6 +12,7 @@ export class SellerController {
   @UseGuards(AuthGuard)
   @Post('v2/seller-search-all')
   sellerSearchAllV2(@Body() dataJsonDto: SellerFindSearchV2Dto) {
+  
     return this.sellerService.taskSellerSearchAllV2(dataJsonDto);
   }
 
