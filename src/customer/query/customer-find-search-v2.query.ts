@@ -8,6 +8,9 @@ interface CustomerFindSearchV2QueryResult {
 export function CustomerFindSearchV2Query(
   dataJsonDto: CustomerFindSearchV2Dto,
 ): CustomerFindSearchV2QueryResult {
+
+
+
   const queryString = `
     SELECT
       tbl_pessoa.ID_TBL_PESSOA AS ID_CUSTOMER,

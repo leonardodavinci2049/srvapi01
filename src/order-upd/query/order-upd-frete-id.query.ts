@@ -10,7 +10,7 @@ export function OrderUpdFreteIdQuery(dataJsonDto: OrderUpdFreteIdDto): string {
   const olUserRole = dataJsonDto.pe_user_role;
   const olPersonId = dataJsonDto.pe_person_id;
   const olOrderId = dataJsonDto.pe_order_id;
-  const olFreteValue = dataJsonDto.pe_frete_value;
+  const olShippingTypeId   = dataJsonDto.pe_shipping_type_id;
 
   const queryString = ` call sp_order_upd_frete_id_v2(
         ${olAppId},
@@ -22,7 +22,7 @@ export function OrderUpdFreteIdQuery(dataJsonDto: OrderUpdFreteIdDto): string {
         '${olUserRole}',
         ${olPersonId},
         ${olOrderId},
-        ${olFreteValue}
+        ${olShippingTypeId}
 
       ) `;
 

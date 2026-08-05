@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsNotEmpty, IsNumber, IsString } from 'class-validator';
+import { IsNotEmpty, IsNumber, IsOptional, IsString } from 'class-validator';
 
 export class CostumerCreateDto {
   @ApiProperty({ description: 'App ID' })
@@ -95,6 +95,7 @@ export class CostumerCreateDto {
 
   @ApiProperty({ description: 'Complement', maxLength: 100 })
   @IsString()
+  @IsOptional()
   pe_complement!: string;
 
   @ApiProperty({ description: 'Neighborhood', maxLength: 300 })

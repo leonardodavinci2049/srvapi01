@@ -52,7 +52,7 @@ export class OrderUpdFreteIdDto {
   @IsNumber()
   @IsNotEmpty()
   @Type(() => Number)
-  pe_frete_value!: number;
+  pe_shipping_type_id!: number;
 }
 /*Sample JSON for testing in body endpoint:
 {
@@ -65,6 +65,6 @@ export class OrderUpdFreteIdDto {
   "pe_user_role": "admin",  
   "pe_person_id": 123,
   "pe_order_id": 480669,
-  "pe_frete_value": 15.75
+  "pe_shipping_type_id": 1
 }
 */
