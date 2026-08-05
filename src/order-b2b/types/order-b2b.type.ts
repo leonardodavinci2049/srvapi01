@@ -93,6 +93,8 @@ export interface TblCustomerDetails extends RowDataPacket {
   PATH_IMAGEM?: string;
   DATADOCADASTRO?: Date;
   DT_ULTIMA_COMPRA?: Date;
+  FLAG_FRETE_GRATIS?: number;
+  VL_PP_DESCONTO?: number; 
   FONE1?: string;
   WHATAPP1?: string;
   EMAIL?: string;
