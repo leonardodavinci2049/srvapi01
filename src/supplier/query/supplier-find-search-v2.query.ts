@@ -19,6 +19,7 @@ export function SupplierFindSearchV2Query(
       tbl_fornecedor.CNPJ,
       tbl_fornecedor.EMAIL1 AS EMAIL,
       tbl_fornecedor.ID_IMAGEM,
+      tbl_fornecedor.PATH_IMAGEM,
       CASE
         WHEN tbl_fornecedor.DT_ULTIMA_COMPRA >= '2020-01-01'
           THEN tbl_fornecedor.DT_ULTIMA_COMPRA
