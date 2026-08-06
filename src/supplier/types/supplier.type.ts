@@ -36,6 +36,7 @@ export interface TblSupplierFindManagerAll extends RowDataPacket {
   CNPJ: string | null;
   EMAIL: string | null;
   ID_IMAGEM: number | null;
+  PATH_IMAGEM?: string | null;
   ULTIMA_COMPRA: Date | null;
   UF: string | null;
   CIDADE: string | null;
@@ -48,6 +49,7 @@ export interface TblSupplierFindSearch extends RowDataPacket {
   FONE1: string | null;
   WHATAPP1: string | null;
   RAZAO_SOCIAL: string | null;
+  PATH_IMAGEM?: string | null;
   CPF: string | null;
   CNPJ: string | null;
   EMAIL: string | null;
@@ -67,7 +69,7 @@ export interface TblSupplierFindManagerId extends RowDataPacket {
   CONTATO1: string | null;
   SETOR1: string | null;
   EMAIL1: string | null;
-  PATH_IMAGEM: string | null;
+  PATH_IMAGEM?: string | null;
   ID_PESSOA_TIPO: number | null;
   TIPO_PESSOA: string;
   RAZAO_SOCIAL: string | null;
