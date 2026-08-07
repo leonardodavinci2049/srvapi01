@@ -5,6 +5,8 @@ import { CostumerCreateDto } from './dto/costumer-create.dto';
 import { CostumerFindAllDto } from './dto/costumer-find-all.dto';
 import { CostumerFindIdDto } from './dto/costumer-find-id.dto';
 import { CostumerFindManagerAllV2Dto } from './dto/costumer-find-manager-all-v2.dto';
+import { CostumerFindManagerIdDto } from './dto/costumer-find-manager-id.dto';
+import { CostumerFindPdvIdDto } from './dto/costumer-find-pdv-id.dto';
 import { CustomerFindLatestProductsDto } from './dto/customer-find-latest-products.dto';
 import { CustomerFindSearchV2Dto } from './dto/customer-find-search-v2.dto';
 
@@ -48,6 +50,18 @@ export class CustomerController {
   @Post('v2/customer-find-manager-all')
   CustomerFindManagerAllV2(@Body() dataJsonDto: CostumerFindManagerAllV2Dto) {
     return this.customerService.taskCustomerFindManagerAllV2(dataJsonDto);
+  }
+
+  @UseGuards(AuthGuard)
+  @Post('v2/customer-find-manager-id')
+  CustomerFindManagerIdV2(@Body() dataJsonDto: CostumerFindManagerIdDto) {
+    return this.customerService.taskCustomerFindManagerIdV2(dataJsonDto);
+  }
+
+  @UseGuards(AuthGuard)
+  @Post('v2/customer-find-pdv-id')
+  CustomerFindPdvIdV2(@Body() dataJsonDto: CostumerFindPdvIdDto) {
+    return this.customerService.taskCustomerFindPdvIdV2(dataJsonDto);
   }
 
   @UseGuards(AuthGuard)

@@ -9,18 +9,24 @@ import { CostumerCreateDto } from './dto/costumer-create.dto';
 import { CostumerFindAllDto } from './dto/costumer-find-all.dto';
 import { CostumerFindIdDto } from './dto/costumer-find-id.dto';
 import { CostumerFindManagerAllV2Dto } from './dto/costumer-find-manager-all-v2.dto';
+import { CostumerFindManagerIdDto } from './dto/costumer-find-manager-id.dto';
+import { CostumerFindPdvIdDto } from './dto/costumer-find-pdv-id.dto';
 import { CustomerFindLatestProductsDto } from './dto/customer-find-latest-products.dto';
 import { CustomerFindSearchV2Dto } from './dto/customer-find-search-v2.dto';
 import { CostumerCreateQuery } from './query/costumer-create.query';
 import { CostumerFindAllQuery } from './query/costumer-find-all.query';
 import { CostumerFindIdQuery } from './query/costumer-find-id.query';
 import { CostumerFindManagerAllV2Query } from './query/costumer-find-manager-all-v2.query';
+import { CostumerFindManagerIdQuery } from './query/costumer-find-manager-id.query';
+import { CostumerFindPdvIdQuery } from './query/costumer-find-pdv-id.query';
 import { CustomerFindLatestProductsQuery } from './query/customer-find-latest-products.query';
 import { CustomerFindSearchV2Query } from './query/customer-find-search-v2.query';
 import {
   SpResultCustomerFindAllData,
   SpResultCustomerFindIdData,
   SpResultCustomerFindManagerAllData,
+  SpResultCustomerFindManagerIdData,
+  SpResultCustomerFindPdvIdData,
   SpResultCustomerLatestProductsFindAllData,
   SpResultRecordCreateType,
   TblCustomerFindSearch,
@@ -105,6 +111,46 @@ export class CustomerService {
         resultData,
         ['Customer find manager All'],
         'Customer find manager All not found',
+      );
+    } catch (err) {
+      const errorMessage =
+        err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
+      return new ResultModel(100404, errorMessage, 0, []);
+    }
+  }
+
+  async taskCustomerFindManagerIdV2(dataJsonDto: CostumerFindManagerIdDto) {
+    try {
+      const queryString = CostumerFindManagerIdQuery(dataJsonDto);
+
+      const resultData = (await this.dbService.selectExecute(
+        queryString,
+      )) as unknown as SpResultCustomerFindManagerIdData;
+
+      return processProcedureResultMultiQuery(
+        resultData,
+        ['Customer Information', 'Seller Information'],
+        'Customer Information not found',
+      );
+    } catch (err) {
+      const errorMessage =
+        err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
+      return new ResultModel(100404, errorMessage, 0, []);
+    }
+  }
+
+  async taskCustomerFindPdvIdV2(dataJsonDto: CostumerFindPdvIdDto) {
+    try {
+      const queryString = CostumerFindPdvIdQuery(dataJsonDto);
+
+      const resultData = (await this.dbService.selectExecute(
+        queryString,
+      )) as unknown as SpResultCustomerFindPdvIdData;
+
+      return processProcedureResultMultiQuery(
+        resultData,
+        ['Customer Information', 'Seller Information'],
+        'Customer Information not found',
       );
     } catch (err) {
       const errorMessage =
