@@ -127,6 +127,8 @@ export interface TblCustomerFindManagerId extends RowDataPacket {
   APROVADO: string | null;
   EMAIL_MKT: number | null;
   RESTRICAO: number | null;
+  FLAG_FRETE_GRATIS: number | null;
+  VL_PP_DESCONTO: number | null;
   DT_ULTIMA_COMPRA: Date | null;
   ANOTACOES: string | null;
   DATADOCADASTRO: Date | null;
@@ -192,6 +194,10 @@ export interface TblCustomerFindManagerAll extends RowDataPacket {
   TIPO_PESSOA: string;
   EMAIL: string | null;
   PATH_IMAGEM: string | null;
+  INATIVO: number | null;
+  EMAIL_MKT: number | null;
+  VENDEDOR: number | null;
+  FLAG_FRETE_GRATIS: number | null;
   APROVADO: string | null;
   GENERO: string | null;
   RESTRICAO: number;
