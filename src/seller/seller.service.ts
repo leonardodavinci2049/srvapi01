@@ -6,12 +6,15 @@ import { ResultModel } from 'src/core/utils/result.model';
 import { DatabaseService } from 'src/database/database.service';
 import { SellerFindIdDto } from './dto/seller-find-id.dto';
 import { SellerFindManagerAllV2Dto } from './dto/seller-find-manager-all-v2.dto';
+import { SellerFindManagerIdV2Dto } from './dto/seller-find-manager-id-v2.dto';
 import { SellerFindSearchV2Dto } from './dto/seller-find-search-v2.dto';
 import { SellerFindIdQuery } from './query/seller-find-id.query';
 import { SellerFindManagerAllV2Query } from './query/seller-find-manager-all-v2.query';
+import { SellerFindManagerIdV2Query } from './query/seller-find-manager-id-v2.query';
 import { SellerFindSearchV2Query } from './query/seller-find-search-v2.query';
 import {
   SpResultSellerFindManagerAllData,
+  SpResultSellerFindManagerIdData,
   TblSellerFindId,
   TblSellerFindSearch,
 } from './types/seller.type';
@@ -23,7 +26,6 @@ export class SellerService {
   async taskSellerSearchAllV2(dataJsonDto: SellerFindSearchV2Dto) {
     try {
       const { queryString, queryParams } = SellerFindSearchV2Query(dataJsonDto);
-
 
       const resultData =
         await this.dbService.selectExecute<TblSellerFindSearch>(
@@ -76,6 +78,28 @@ export class SellerService {
         resultData,
         ['Seller find manager All'],
         'Seller find manager All not found',
+      );
+    } catch (err) {
+      const errorMessage =
+        err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
+      return new ResultModel(100404, errorMessage, 0, []);
+    }
+  }
+
+  async taskSellerFindManagerIdV2(dataJsonDto: SellerFindManagerIdV2Dto) {
+    try {
+      const { queryString, queryParams } =
+        SellerFindManagerIdV2Query(dataJsonDto);
+
+      const resultData = (await this.dbService.selectExecute(
+        queryString,
+        queryParams,
+      )) as unknown as SpResultSellerFindManagerIdData;
+
+      return processProcedureResultMultiQuery(
+        resultData,
+        ['Seller Information'],
+        'Seller Information not found',
       );
     } catch (err) {
       const errorMessage =
