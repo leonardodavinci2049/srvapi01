@@ -24,7 +24,7 @@ export function OrderItemFindIdQuery(dataJsonDto: OrderItemFindIdDto): string {
 
       ) `;
 
-     //   console.log('Generated Query 1:', queryString);
+  //   console.log('Generated Query 1:', queryString);
 
   return queryString;
 }

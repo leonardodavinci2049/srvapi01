@@ -10,7 +10,7 @@ export function CostumerCreateQuery(dataJsonDto: CostumerCreateDto): string {
   const olUserName = dataJsonDto.pe_user_name;
   const olUserRole = dataJsonDto.pe_user_role;
   const olPersonId = dataJsonDto.pe_person_id;
-  
+
   const olName = dataJsonDto.pe_name;
   const olEmail = dataJsonDto.pe_email;
   const olPersonTypeId = dataJsonDto.pe_person_type_id;
