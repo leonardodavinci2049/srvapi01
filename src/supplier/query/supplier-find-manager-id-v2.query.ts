@@ -11,14 +11,17 @@ export function SupplierFindManagerIdV2Query(
   const queryString = `
     SELECT
       tbl_fornecedor.ID_FORNECEDOR,
+
       tbl_fornecedor.NOME,
       tbl_fornecedor.FISIJURI,
+      tbl_fornecedor.PATH_IMAGEM,
+
       tbl_fornecedor.FONE1,
       tbl_fornecedor.WHATAPP1,
       tbl_fornecedor.CONTATO1,
       tbl_fornecedor.SETOR1,
       tbl_fornecedor.EMAIL1,
-      tbl_fornecedor.PATH_IMAGEM,
+
       tbl_fornecedor.ID_PESSOA_TIPO,
       CASE
         WHEN tbl_fornecedor.ID_PESSOA_TIPO = 1 THEN 'PESSOA FÍSICA'
@@ -52,6 +55,7 @@ export function SupplierFindManagerIdV2Query(
       tbl_fornecedor.INATIVO,
       tbl_fornecedor.DT_ULTIMA_COMPRA,
       tbl_fornecedor.DATADOCADASTRO,
+      tbl_fornecedor.DT_UPDATE,
       tbl_fornecedor.ANOTACOES
     FROM
       tbl_fornecedor

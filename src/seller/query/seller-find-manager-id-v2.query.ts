@@ -34,5 +34,6 @@ export function SellerFindManagerIdV2Query(
     dataJsonDto.pe_seller_id,
   ];
 
+
   return { queryString, queryParams };
 }
