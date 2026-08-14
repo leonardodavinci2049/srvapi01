@@ -12,12 +12,14 @@ export function TypeFindManagerIdV2Query(
     SELECT
       tbl_produto_tipo.ID_TIPO,
       tbl_produto_tipo.TIPO,
+      tbl_produto_tipo.SLUG,
       tbl_produto_tipo.PATH_IMAGEM,
       tbl_produto_tipo.INATIVO,
       tbl_produto_tipo.ANOTACOES,
       tbl_produto_tipo.FLAG_CADASTRO_PRODUTO,
       tbl_produto_tipo.TX_COMISSAO_VARE,
       tbl_produto_tipo.TX_COMISSAO_ATAC,
+      tbl_produto_tipo.DT_UPDATE,
       tbl_produto_tipo.DT_CADASTRO
     FROM
       tbl_produto_tipo
