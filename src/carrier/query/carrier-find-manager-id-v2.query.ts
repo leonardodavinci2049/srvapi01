@@ -32,6 +32,7 @@ export function CarrierFindManagerIdV2Query(
       tbl_transportadora.CARGO,
       tbl_transportadora.CPF,
       tbl_transportadora.RG,
+      tbl_transportadora.DATADONASCIMENTO,
       tbl_transportadora.CEP,
       tbl_transportadora.ENDERECO,
       tbl_transportadora.ENDERECO_NUMERO,
@@ -50,6 +51,7 @@ export function CarrierFindManagerIdV2Query(
       tbl_transportadora.DT_ULTIMA_COMPRA,
       tbl_transportadora.ANOTACOES,
       tbl_transportadora.INATIVO,
+      tbl_transportadora.DT_UPDATE,
       tbl_transportadora.DATADOCADASTRO
     FROM
       tbl_transportadora
