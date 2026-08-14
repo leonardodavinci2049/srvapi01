@@ -91,6 +91,7 @@ export interface TblCarrierFindManagerId extends RowDataPacket {
   CARGO: string | null;
   CPF: string | null;
   RG: string | null;
+  DATADONASCIMENTO: Date | null;
   CEP: string | null;
   ENDERECO: string | null;
   ENDERECO_NUMERO: string | null;
@@ -109,6 +110,7 @@ export interface TblCarrierFindManagerId extends RowDataPacket {
   DT_ULTIMA_COMPRA: Date | null;
   ANOTACOES: string | null;
   INATIVO: number | null;
+  DT_UPDATE: Date | null;
   DATADOCADASTRO: Date | null;
 }
 

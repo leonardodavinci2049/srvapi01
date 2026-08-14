@@ -83,6 +83,7 @@ export interface TblSupplierFindManagerId extends RowDataPacket {
   CPF: string | null;
   RG: string | null;
   CEP: string | null;
+  DATADONASCIMENTO: Date | null;
   ENDERECO: string | null;
   ENDERECO_NUMERO: string | null;
   COMPLEMENTO: string | null;
@@ -98,7 +99,9 @@ export interface TblSupplierFindManagerId extends RowDataPacket {
   TWITTER: string | null;
   FRETADOR: number | null;
   INATIVO: number | null;
+
   DT_ULTIMA_COMPRA: Date | null;
+  DT_UPDATE: Date | null;
   DATADOCADASTRO: Date | null;
   ANOTACOES: string | null;
 }
