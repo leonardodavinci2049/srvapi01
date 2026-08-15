@@ -1,18 +1,18 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsNumber, IsOptional } from 'class-validator';
+import { IsNumber, IsOptional, IsString } from 'class-validator';
 
 import { EndpointContextDto } from 'src/core/dto/endpoint-context.dto';
 
 export class PhysicalProductWarrantySearchV2Dto extends EndpointContextDto {
-  @ApiProperty({ description: 'Movement ID' })
+  @ApiProperty({ description: 'Customer ID' })
   @IsNumber()
   @IsOptional()
   pe_customer_id!: number;
 
-  @ApiProperty({ description: 'Product ID' })
-  @IsNumber()
+  @ApiProperty({ description: 'Search' })
+  @IsString()
   @IsOptional()
-  pe_search!: number;
+  pe_search!: string;
 
   @ApiProperty({ description: 'Limit' })
   @IsNumber()
