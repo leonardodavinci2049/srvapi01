@@ -12,7 +12,7 @@ export function PhysicalProductWarrantySearchV2Query(
   const olUserRole = dataJsonDto.pe_user_role;
   const olPersonId = dataJsonDto.pe_person_id;
   const olCustomerId = dataJsonDto.pe_customer_id;
-  const olSearch = dataJsonDto.PE_search;
+  const olSearch = dataJsonDto.pe_search;
   const olLimit = dataJsonDto.pe_limit;
 
   const queryString = ` call sp_physical_product_warranty_search_v2(

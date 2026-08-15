@@ -1,47 +1,9 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsNotEmpty, IsNumber, IsOptional, IsString } from 'class-validator';
+import { IsNumber, IsOptional } from 'class-validator';
 
-export class PhysicalProductWarrantySearchV2Dto {
-  @ApiProperty({ description: 'App ID' })
-  @IsNumber()
-  @IsNotEmpty()
-  pe_app_id!: number;
+import { EndpointContextDto } from 'src/core/dto/endpoint-context.dto';
 
-  @ApiProperty({ description: 'System Client ID' })
-  @IsNumber()
-  @IsNotEmpty()
-  pe_system_client_id!: number;
-
-  @ApiProperty({ description: 'Store ID' })
-  @IsNumber()
-  @IsNotEmpty()
-  pe_store_id!: number;
-
-  @ApiProperty({ description: 'Organization ID', maxLength: 200 })
-  @IsString()
-  @IsNotEmpty()
-  pe_organization_id!: string;
-
-  @ApiProperty({ description: 'User ID', maxLength: 200 })
-  @IsNotEmpty()
-  @IsString()
-  pe_user_id!: string;
-
-  @ApiProperty({ description: 'User Name', maxLength: 200 })
-  @IsString()
-  @IsNotEmpty()
-  pe_user_name!: string;
-
-  @ApiProperty({ description: 'User Role', maxLength: 200 })
-  @IsString()
-  @IsNotEmpty()
-  pe_user_role!: string;
-
-  @ApiProperty({ description: 'Person ID' })
-  @IsNumber()
-  @IsOptional()
-  pe_person_id!: number;
-
+export class PhysicalProductWarrantySearchV2Dto extends EndpointContextDto {
   @ApiProperty({ description: 'Movement ID' })
   @IsNumber()
   @IsOptional()
@@ -50,7 +12,7 @@ export class PhysicalProductWarrantySearchV2Dto {
   @ApiProperty({ description: 'Product ID' })
   @IsNumber()
   @IsOptional()
-  PE_search!: number;
+  pe_search!: number;
 
   @ApiProperty({ description: 'Limit' })
   @IsNumber()
@@ -69,7 +31,7 @@ export class PhysicalProductWarrantySearchV2Dto {
   "pe_user_role": "admin",
   "pe_person_id": 29014,
   "pe_customer_id": 0,
-  "PE_search": 44639,
+  "pe_search": 44639,
   "pe_limit": 2
 }
 */
