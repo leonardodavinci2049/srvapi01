@@ -1,46 +1,9 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsNotEmpty, IsNumber, IsString } from 'class-validator';
+import { IsNumber, IsString } from 'class-validator';
 
-export class OrderOperAddItemDto {
-  @ApiProperty({ description: 'App ID' })
-  @IsNumber()
-  @IsNotEmpty()
-  pe_app_id!: number;
+import { EndpointContextDto } from 'src/core/dto/endpoint-context.dto';
 
-  @ApiProperty({ description: 'System Client ID' })
-  @IsNumber()
-  @IsNotEmpty()
-  pe_system_client_id!: number;
-
-  @ApiProperty({ description: 'Store ID' })
-  @IsNumber()
-  @IsNotEmpty()
-  pe_store_id!: number;
-
-  @ApiProperty({ description: 'Organization ID', maxLength: 200 })
-  @IsString()
-  @IsNotEmpty()
-  pe_organization_id!: string;
-
-  @ApiProperty({ description: 'User ID', maxLength: 200 })
-  @IsNotEmpty()
-  @IsString()
-  pe_user_id!: string;
-
-  @ApiProperty({ description: 'User Name', maxLength: 200 })
-  @IsString()
-  @IsNotEmpty()
-  pe_user_name!: string;
-
-  @ApiProperty({ description: 'User Role', maxLength: 200 })
-  @IsString()
-  @IsNotEmpty()
-  pe_user_role!: string;
-
-  @ApiProperty({ description: 'Person ID' })
-  @IsNumber()
-  pe_person_id!: number;
-
+export class OrderOperAddItemDto extends EndpointContextDto {
   @ApiProperty({ description: 'Order ID' })
   @IsNumber()
   pe_order_id!: number;
@@ -93,7 +56,6 @@ Sample JSON for testing in body endpoint:
   "pe_product_quantity": 2,
   "pe_business_type": 1,
   "pe_notes": "PDV ONLINE - please handle with care."
-
 
 }
 */
