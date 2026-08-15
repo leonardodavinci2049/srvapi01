@@ -4,7 +4,6 @@ import { ConfigModule } from '@nestjs/config';
 import { APP_GUARD } from '@nestjs/core';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
-import { AccountModule } from 'src/account/account.module';
 import { BrandModule } from 'src/brand/brand.module';
 import { CarrierModule } from 'src/carrier/carrier.module';
 
@@ -65,7 +64,6 @@ import { AppService } from './app.service';
     TaxonomyBaseModule,
     TaxonomyInlineModule,
     TaxonomyRelModule,
-    AccountModule,
     GeneralCallModule,
     ProductWebModule,
     TaxonomyWebModule,
