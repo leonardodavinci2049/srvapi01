@@ -1,0 +1,66 @@
+# AGENTS.md — srvapi01
+
+## Language
+
+- Code, comments, file names, and documentation: US English. User-facing API messages/labels: Brazilian Portuguese.
+
+## Project
+
+Multi-tenant B2B REST API: NestJS 11, TypeScript (`nodenext`, `strict: false` but `strictNullChecks: true` — avoid introducing new `any`), MySQL/MariaDB via raw SQL + Stored Procedures over `mysql2`, **no ORM**. Package manager: `pnpm`. Trust `package.json`, `biome.json`, `tsconfig.json`, and code over `README.md` (parts are stale, e.g. it mentions ESLint/Prettier; the repo uses Biome).
+
+Nested instruction files supplement/override this one — read the closest `AGENTS.md` first (e.g. `src/brand/AGENTS.md`).
+
+## Commands
+
+```bash
+pnpm install
+pnpm run dev              # nest start --watch; port from APP_PORT in .env
+pnpm run build            # compile + type checking; there is NO separate typecheck script
+pnpm run lint:check       # Biome lint (pnpm run lint writes fixes)
+pnpm run format:check     # Biome format (pnpm run format writes)
+pnpm run test             # single file: pnpm run test -- <path/to/file.spec.ts>
+pnpm run test:e2e
+```
+
+- Prefer `:check` variants; use write modes only on task-scope files and review the diff.
+- `dev`, tests, and HTTP checks require a valid `.env` (usually a reachable DB); don't confuse environment failure with code failure.
+- Coverage is minimal (2 unit specs + 1 E2E spec); a green suite is weak evidence. For endpoints, a successful build does not replace an authenticated HTTP test against the development database.
+
+## Environment
+
+Variables are Zod-validated at boot in `src/core/config/envs.ts` (fails fast): `APP_API_URL`, `APP_SWAGGER_URL`, `APP_JWT_SECRET`, `APP_PORT`, `API_KEY`, `DATABASE_HOST/PORT/USER/PASSWORD/NAME`. `.env` is gitignored and machine-local. Never expose its values in commands, logs, docs, or reports.
+
+## Architecture
+
+```
+HTTP POST /api/<feature>/v2/<action>
+  -> Controller (@UseGuards(AuthGuard), DTO validation)
+  -> Service (orchestration, error handling, ResultModel)
+  -> Query (pure function returning queryString + queryParams)
+  -> DatabaseService (mysql2 pool)
+```
+
+- Feature module layout: `*.module.ts`, `*.controller.ts`, `*.service.ts`, `dto/`, `query/`, `types/`, plus `entities/` when adopted. Register new modules in `src/app.main/app.module.ts`; import `DatabaseModule` where `DatabaseService` is used.
+- Controllers hold HTTP/DTO concerns only — no SQL or business rules.
+- Imports: absolute `src/...` for shared code; relative within a module.
+- Global in `src/main.ts`: prefix `/api`, `ValidationPipe` with `whitelist`/`forbidNonWhitelisted`/`transform`/implicit conversion, CORS; `ThrottlerGuard` global. Do not weaken auth, validation, or rate limiting without documented impact analysis.
+
+## Database & Stored Procedures
+
+- All access via `src/database/database.service.ts`: `selectQuery`/`selectExecute` (reads), `ModifyExecute`/`ModifyQuery` (mutations), `runInTransaction` (atomic multi-step, rollback + connection release).
+- Queries always use `?` placeholders — never concatenate or interpolate DTO data into SQL. Legacy interpolated queries exist: don't copy them or migrate them beyond the requested scope.
+- Every tenant-bound operation must preserve `pe_system_client_id` and `pe_store_id`; never remove tenant filters.
+- SP definitions live in the sibling repo symlinked at `database-objects` (`../erp-database-sql-procedures`). Before changing/exposing a procedure, verify signature, parameter order, and result sets there.
+- Row interfaces extend `RowDataPacket` (mysql2); keep `as unknown as ...` casts at the mysql2 boundary; multi-result-set SPs need explicit tuples.
+- Reuse processors from `src/core/process-result/`, the `ResultModel` envelope, and `RESPONSE_CODES`/`MESSAGES` from `src/core/utils/constants/globalConstants.ts` — no new response formats, no magic codes.
+- No `DROP`, `TRUNCATE`, mass deletion, destructive DDL, or data corrections without explicit authorization; show target and expected impact before any DB write.
+
+## HTTP contracts
+
+- Auth: `Authorization: Bearer <API_KEY>` or `x-api-key` header. All business routes are `POST` with JSON bodies validated by `class-validator` DTOs that match the real contract.
+- Preserve field names, types, codes, messages, and result-set shape for existing consumers. Never return raw DB errors, SQL with data, credentials, or stack traces.
+
+
+## Verification
+
+Proportional to risk: Biome checks on changed files, then as applicable `pnpm run build`, `pnpm run test`, `git diff --check`. Distinguish static checks, unit/E2E tests, and authenticated HTTP tests against the dev DB. If a check fails from a pre-existing issue or unavailable environment, record the command and limitation; don't modify unrelated files to make it pass. Review the task diff before finishing; confirm no secrets leaked.
