@@ -9,39 +9,13 @@ import {
   MaxLength,
 } from 'class-validator';
 
-export class ConfigurationGeneralUpdDto {
-  @ApiProperty({ description: 'App ID' })
-  @IsNumber()
-  @IsNotEmpty()
-  pe_app_id!: number;
+import { EndpointContextDto } from 'src/core/dto/endpoint-context.dto';
 
-  @ApiProperty({ description: 'System Client ID' })
-  @IsNumber()
-  @IsNotEmpty()
-  pe_system_client_id!: number;
-
-  @ApiProperty({ description: 'Store ID' })
-  @IsNumber()
-  @IsNotEmpty()
-  pe_store_id!: number;
-
-  @ApiProperty({ description: 'Organization ID', maxLength: 200 })
-  @IsString()
-  @IsNotEmpty()
-  pe_organization_id!: string;
-
+export class ConfigurationGeneralUpdDto extends EndpointContextDto {
   @ApiProperty({ description: 'Member ID', maxLength: 200 })
   @IsString()
   @IsNotEmpty()
   pe_member_id!: string;
-
-  @ApiProperty({ description: 'User ID', maxLength: 200 })
-  @IsString()
-  pe_user_id!: string;
-
-  @ApiProperty({ description: 'Person ID' })
-  @IsNumber()
-  pe_person_id!: number;
 
   @ApiProperty({ description: 'Configuration ID' })
   @IsNumber()
