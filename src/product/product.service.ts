@@ -1,50 +1,17 @@
 import { Injectable } from '@nestjs/common';
-import { MESSAGES } from 'src/core/utils/constants/globalConstants';
+
+import { findProductQuery } from './query/product_find.query';
+import { DatabaseService } from 'src/database/database.service';
+
 import { resultQueryData } from 'src/core/utils/globalResult/global.result';
 import { ResultModel } from 'src/core/utils/result.model';
-import { DatabaseService } from 'src/database/database.service';
-import { ProductCreateDto } from './dto/product-create.dto';
+import { MESSAGES } from 'src/core/utils/constants/globalConstants';
+
+import { findProductIdQuery } from './query/product-find-id.query';
 import { ProductFindDto } from './dto/product-find.dto';
 import { ProductFindIdDto } from './dto/product-find_id.dto';
-import { ProductPdvFindDto } from './dto/product-pdv-find.dto';
-import { ProductUpdTaxValuesDto } from './dto/product-upd_tax-values.dto';
-import { ProductUpdBrandDto } from './dto/product-upd-brand.dto';
-import { ProductUpdCaracteristicsDto } from './dto/product-upd-caracteristics.dto';
-import { ProductUpdDescriptionDto } from './dto/product-upd-description.dto';
-import { ProductFlagsDto } from './dto/product-upd-flags.dto';
-import { ProductUpdGeneralDto } from './dto/product-upd-general.dto';
-import { ProductUpdMetadataDto } from './dto/product-upd-metadata.dto';
-import { ProductUpdNameDto } from './dto/product-upd-name.dto';
-import { ProductUpdPathImageDto } from './dto/product-upd-path-image.dto';
-import { ProductUpdPriceDto } from './dto/product-upd-price.dto';
-import { ProductUpdShortDescriptionDto } from './dto/product-upd-Short-description.dto';
-import { ProductUpdStockDto } from './dto/product-upd-stock.dto';
-import { ProductUpdTypeDto } from './dto/product-upd-type.dto';
-import { ProductUpdVariouDto } from './dto/product-upd-variou.dto';
-import { ProductWebFindDto } from './dto/product-web-find.dto';
-import { ProductWebFindIdDto } from './dto/product-web-find-id.dto';
-import { ProductWebSectionsDto } from './dto/product-web-sections.dto';
-import { findProductQuery } from './query/product_find.query';
+import { ProductCreateDto } from './dto/product-create.dto';
 import { createProductQuery } from './query/product-create.query';
-import { findProductIdQuery } from './query/product-find-id.query';
-import { pdvFindProductQuery } from './query/product-pdv-find.query';
-import { updBrandProductQuery } from './query/product-upd-brand.query';
-import { updCaracteristicsProductQuery } from './query/product-upd-caracteristics.query';
-import { updDescriptionProductQuery } from './query/product-upd-description.query';
-import { updFlagsProductQuery } from './query/product-upd-flags.query';
-import { updGeneralProductQuery } from './query/product-upd-general.query';
-import { ProductUpdMetadataQuery } from './query/product-upd-metadata.query';
-import { updNameProductQuery } from './query/product-upd-name.query';
-import { updPathImageProductQuery } from './query/product-upd-path-image';
-import { updPriceProductQuery } from './query/product-upd-price.query';
-import { ProductUpdShortDescriptionQuery } from './query/product-upd-Short-description.query';
-import { updStockProductQuery } from './query/product-upd-stock.query';
-import { updTaxValuesProductQuery } from './query/product-upd-tax-values.query';
-import { updTypeProductQuery } from './query/product-upd-type.query';
-import { updVariouProductQuery } from './query/product-upd-variou.query';
-import { webFindProductQuery } from './query/product-web-find.query';
-import { webFindIdProductQuery } from './query/product-web-find-id.query';
-import { webFindProductSectionsQuery } from './query/product-web-sections.query';
 import {
   SpProductFindDataType,
   SpProductFindIdDataType,
@@ -55,6 +22,45 @@ import {
   SpResultRecordCreateType,
   SpResultRecordUpdateType,
 } from './types/product.type';
+
+import { ProductWebFindIdDto } from './dto/product-web-find-id.dto';
+import { ProductWebFindDto } from './dto/product-web-find.dto';
+import { ProductPdvFindDto } from './dto/product-pdv-find.dto';
+import { ProductUpdGeneralDto } from './dto/product-upd-general.dto';
+import { ProductUpdNameDto } from './dto/product-upd-name.dto';
+import { ProductUpdTypeDto } from './dto/product-upd-type.dto';
+import { ProductUpdBrandDto } from './dto/product-upd-brand.dto';
+import { ProductUpdPriceDto } from './dto/product-upd-price.dto';
+import { ProductUpdStockDto } from './dto/product-upd-stock.dto';
+import { ProductFlagsDto } from './dto/product-upd-flags.dto';
+import { ProductUpdTaxValuesDto } from './dto/product-upd_tax-values.dto';
+import { ProductUpdDescriptionDto } from './dto/product-upd-description.dto';
+import { ProductUpdCaracteristicsDto } from './dto/product-upd-caracteristics.dto';
+import { ProductUpdShortDescriptionDto } from './dto/product-upd-Short-description.dto';
+import { ProductUpdVariouDto } from './dto/product-upd-variou.dto';
+
+import { webFindIdProductQuery } from './query/product-web-find-id.query';
+import { webFindProductQuery } from './query/product-web-find.query';
+import { pdvFindProductQuery } from './query/product-pdv-find.query';
+import { updGeneralProductQuery } from './query/product-upd-general.query';
+import { updNameProductQuery } from './query/product-upd-name.query';
+import { updTypeProductQuery } from './query/product-upd-type.query';
+import { updBrandProductQuery } from './query/product-upd-brand.query';
+import { updStockProductQuery } from './query/product-upd-stock.query';
+import { updPriceProductQuery } from './query/product-upd-price.query';
+import { updFlagsProductQuery } from './query/product-upd-flags.query';
+import { updCaracteristicsProductQuery } from './query/product-upd-caracteristics.query';
+import { updTaxValuesProductQuery } from './query/product-upd-tax-values.query';
+import { ProductUpdShortDescriptionQuery } from './query/product-upd-Short-description.query';
+import { updVariouProductQuery } from './query/product-upd-variou.query';
+import { updDescriptionProductQuery } from './query/product-upd-description.query';
+import { ProductUpdPathImageDto } from './dto/product-upd-path-image.dto';
+import { updPathImageProductQuery } from './query/product-upd-path-image';
+
+import { ProductUpdMetadataDto } from './dto/product-upd-metadata.dto';
+import { ProductUpdMetadataQuery } from './query/product-upd-metadata.query';
+import { webFindProductSectionsQuery } from './query/product-web-sections.query';
+import { ProductWebSectionsDto } from './dto/product-web-sections.dto';
 
 @Injectable()
 export class ProductService {
