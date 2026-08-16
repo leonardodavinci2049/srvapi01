@@ -5,7 +5,7 @@ export function SupplierFindAllQuery(dataJsonDto: SupplierFindAllDto): string {
   const olSystemClientId = dataJsonDto.pe_system_client_id;
   const olStoreId = dataJsonDto.pe_store_id;
   const olOrganizationId = dataJsonDto.pe_organization_id;
-  const olMemberId = dataJsonDto.pe_member_id;
+  const olUserName = dataJsonDto.pe_user_name;
   const olUserId = dataJsonDto.pe_user_id;
   const olPersonId = dataJsonDto.pe_person_id;
 
@@ -18,7 +18,7 @@ export function SupplierFindAllQuery(dataJsonDto: SupplierFindAllDto): string {
         ${olSystemClientId},
         ${olStoreId},
         '${olOrganizationId}',
-        '${olMemberId}',
+        '${olUserName}',
         '${olUserId}',
         ${olPersonId},
         ${olIdSupplier},
