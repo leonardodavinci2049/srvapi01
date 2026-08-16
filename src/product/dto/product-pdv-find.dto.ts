@@ -1,10 +1,36 @@
 import { ApiProperty } from '@nestjs/swagger';
+import { IsOptional, IsString, IsNumber, IsNotEmpty } from 'class-validator';
 import { Type } from 'class-transformer';
-import { IsNumber, IsOptional, IsString } from 'class-validator';
 
-import { EndpointContextDto } from 'src/core/dto/endpoint-context.dto';
+export class ProductPdvFindDto {
+  @ApiProperty({ description: 'App ID', example: 1, required: false })
+  @IsOptional()
+  @IsNumber()
+  @Type(() => Number)
+  pe_app_id?: number;
 
-export class ProductPdvFindDto extends EndpointContextDto {
+  @ApiProperty({ description: 'System Client ID', example: 1, required: false })
+  @IsNotEmpty()
+  @IsNumber()
+  @Type(() => Number)
+  pe_system_client_id?: number;
+
+  @ApiProperty({ description: 'Store ID', example: 1, required: false })
+  @IsNotEmpty()
+  @IsNumber()
+  @Type(() => Number)
+  pe_store_id?: number;
+
+  @ApiProperty({
+    description: 'Organization ID',
+    maxLength: 200,
+    example: 'ORG001',
+    required: false,
+  })
+  @IsOptional()
+  @IsString()
+  pe_organization_id?: string;
+
   @ApiProperty({
     description: 'Member ID',
     maxLength: 200,
@@ -14,6 +40,22 @@ export class ProductPdvFindDto extends EndpointContextDto {
   @IsOptional()
   @IsString()
   pe_member_id?: string;
+
+  @ApiProperty({
+    description: 'User ID',
+    maxLength: 200,
+    example: 'USER001',
+    required: false,
+  })
+  @IsOptional()
+  @IsString()
+  pe_user_id?: string;
+
+  @ApiProperty({ description: 'Person ID', example: 1, required: false })
+  @IsOptional()
+  @IsNumber()
+  @Type(() => Number)
+  pe_person_id?: number;
 
   @ApiProperty({ description: 'Taxonomy ID', example: 1, required: false })
   @IsOptional()

@@ -43,6 +43,4 @@ export function pdvFindProductQuery(dataJsonDto: ProductPdvFindDto): string {
       ) `;
 
   return queryString;
-
-  // console.log('queryString', queryString);
 }
