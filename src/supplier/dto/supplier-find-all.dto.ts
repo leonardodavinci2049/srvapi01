@@ -1,6 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { Type } from 'class-transformer';
-import { IsNotEmpty, IsNumber, IsOptional, IsString } from 'class-validator';
+import { IsNumber, IsOptional, IsString } from 'class-validator';
 import { EndpointContextDto } from 'src/core/dto/endpoint-context.dto';
 
 export class SupplierFindAllDto extends EndpointContextDto {

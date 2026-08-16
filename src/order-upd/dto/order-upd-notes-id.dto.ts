@@ -1,7 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { Type } from 'class-transformer';
-import { EndpointContextDto } from 'src/core/dto/endpoint-context.dto';
-
 import {
   IsNotEmpty,
   IsNumber,
@@ -9,6 +7,7 @@ import {
   IsString,
   MaxLength,
 } from 'class-validator';
+import { EndpointContextDto } from 'src/core/dto/endpoint-context.dto';
 
 export class OrderUpdNotesIdDto extends EndpointContextDto {
   @ApiProperty({ description: 'Order ID' })

@@ -1,9 +1,9 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { Type } from 'class-transformer';
-import {  IsNumber, IsOptional, IsString } from 'class-validator';
+import { IsNumber, IsOptional, IsString } from 'class-validator';
 import { EndpointContextDto } from 'src/core/dto/endpoint-context.dto';
 
-export class TypeFindAllDto extends EndpointContextDto {  
+export class TypeFindAllDto extends EndpointContextDto {
   @ApiProperty({ description: 'Type ID', required: false })
   @IsNumber()
   @IsOptional()
