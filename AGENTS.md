@@ -41,6 +41,14 @@ Variables are Zod-validated at boot in `src/core/config/envs.ts` (fails fast): `
 
 ## Architecture
 
+```text
+HTTP request -> controller -> service -> query -> DatabaseService
+                                |           |
+                                v           v
+                         result helpers  MySQL/MariaDB
+```
+
+
 ```
 HTTP POST /api/<feature>/v2/<action>
   -> Controller (@UseGuards(AuthGuard), DTO validation)
