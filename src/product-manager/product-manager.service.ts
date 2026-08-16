@@ -71,7 +71,7 @@ export class ProductManagerService {
       dataJsonDto.pe_user_id,
       dataJsonDto.pe_user_name,
       dataJsonDto.pe_user_role,
-      dataJsonDto.pe_person_id,
+      dataJsonDto.pe_person_id ?? null,
       dataJsonDto.pe_search || '',
       dataJsonDto.pe_ean,
       dataJsonDto.pe_taxonomy_id,

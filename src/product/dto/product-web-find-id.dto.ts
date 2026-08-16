@@ -1,42 +1,12 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsInt, IsNotEmpty, IsString } from 'class-validator';
+import { IsInt, IsString } from 'class-validator';
 
-export class ProductWebFindIdDto {
-  @ApiProperty({ description: 'App ID', example: 1 })
-  @IsNotEmpty()
-  @IsInt()
-  pe_app_id!: number;
+import { EndpointContextDto } from 'src/core/dto/endpoint-context.dto';
 
-  @ApiProperty({ description: 'System Client ID', example: 1 })
-  @IsNotEmpty()
-  @IsInt()
-  pe_system_client_id!: number;
-
-  @ApiProperty({ description: 'Store ID', example: 1 })
-  @IsNotEmpty()
-  @IsInt()
-  pe_store_id!: number;
-
-  @ApiProperty({
-    description: 'Organization ID',
-    maxLength: 200,
-    example: 'ORG001',
-  })
-  @IsNotEmpty()
-  @IsString()
-  pe_organization_id!: string;
-
+export class ProductWebFindIdDto extends EndpointContextDto {
   @ApiProperty({ description: 'Member ID', maxLength: 200, example: 'MEM001' })
   @IsString()
   pe_member_id!: string;
-
-  @ApiProperty({ description: 'User ID', maxLength: 200, example: 'USER001' })
-  @IsString()
-  pe_user_id!: string;
-
-  @ApiProperty({ description: 'Person ID', example: 1 })
-  @IsInt()
-  pe_person_id!: number;
 
   @ApiProperty({ description: 'Type Business', example: 1 })
   @IsInt()
