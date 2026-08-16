@@ -10,6 +10,15 @@ Multi-tenant B2B REST API: NestJS 11, TypeScript (`nodenext`, `strict: false` bu
 
 Nested instruction files supplement/override this one — read the closest `AGENTS.md` first (e.g. `src/brand/AGENTS.md`).
 
+## Git workflow
+
+- The project follows **git flow**.
+- The source of truth for project versioning is the `"version"` property in `package.json` (e.g. `"version": "1.1.2"`). The patch value must be incremented on each release and assigned to the release name, e.g. `release/1.8.0`, `hotfix/1.8.1`.
+- The base branch is `develop` — never work on `main`.
+- For every requested task that results in file changes, create a feature branch in the current folder based on `develop` before starting.
+- If the task is the implementation of an action plan, ask whether to create a worktree in another folder.
+- If `develop` has uncommitted changes, ask for them to be committed first before starting a new task on a new branch.
+
 ## Commands
 
 ```bash
@@ -24,7 +33,7 @@ pnpm run test:e2e
 
 - Prefer `:check` variants; use write modes only on task-scope files and review the diff.
 - `dev`, tests, and HTTP checks require a valid `.env` (usually a reachable DB); don't confuse environment failure with code failure.
-- Coverage is minimal (2 unit specs + 1 E2E spec); a green suite is weak evidence. For endpoints, a successful build does not replace an authenticated HTTP test against the development database.
+- The project currently does not work with tests — don't require test runs as part of task verification. Prefer `pnpm run build`, Biome checks, and authenticated HTTP tests against the development database to validate changes.
 
 ## Environment
 
