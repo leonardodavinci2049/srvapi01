@@ -1,9 +1,42 @@
 import { v4 as UuidV4 } from 'uuid';
 import { CostumerCreateManagerDto } from '../dto/costumer-create-manager.dto';
 
+interface CostumerCreateManagerQueryResult {
+  queryString: string;
+  queryParams: [
+    string,
+    number,
+    number,
+    number,
+    string,
+    string,
+    string,
+    string,
+    number | null,
+    number,
+    string,
+    string,
+    number,
+    string,
+    string,
+    string,
+    string,
+    string,
+    string,
+    string,
+    string,
+    string,
+    string | null,
+    string,
+    string,
+    string,
+    string,
+  ];
+}
+
 export function CostumerCreateManagerQuery(
   dataJsonDto: CostumerCreateManagerDto,
-): string {
+): CostumerCreateManagerQueryResult {
   const OlUuid = UuidV4();
   const olAppId = dataJsonDto.pe_app_id ?? 1;
   const olSystemClientId = dataJsonDto.pe_system_client_id;
@@ -12,9 +45,9 @@ export function CostumerCreateManagerQuery(
   const olUserId = dataJsonDto.pe_user_id;
   const olUserName = dataJsonDto.pe_user_name;
   const olUserRole = dataJsonDto.pe_user_role;
-  const olPersonId = dataJsonDto.pe_person_id;
-
+  const olPersonId = dataJsonDto.pe_person_id ?? null;
   const olSellerId = dataJsonDto.pe_seller_id;
+
   const olName = dataJsonDto.pe_name;
   const olEmail = dataJsonDto.pe_email;
   const olPersonTypeId = dataJsonDto.pe_person_type_id;
@@ -27,43 +60,71 @@ export function CostumerCreateManagerQuery(
   const olZipCode = dataJsonDto.pe_zip_code;
   const olAddress = dataJsonDto.pe_address;
   const olAddressNumber = dataJsonDto.pe_address_number;
-  const olComplement = dataJsonDto.pe_complement;
+  const olComplement = dataJsonDto.pe_complement ?? null;
   const olNeighborhood = dataJsonDto.pe_neighborhood;
   const olCity = dataJsonDto.pe_city;
   const olState = dataJsonDto.pe_state;
   const olNotes = dataJsonDto.pe_notes;
 
-  const queryString = ` call sp_costumer_create_manager_v2(
-        '${OlUuid}',
-        ${olAppId},
-        ${olSystemClientId},
-        ${olStoreId},
-        '${olOrganizationId}',
-        '${olUserId}',
-        '${olUserName}',
-        '${olUserRole}',	
-        ${olPersonId},
-        ${olSellerId},      
-        '${olName}',
-        '${olEmail}',
-        ${olPersonTypeId},
-        '${olCnpj}',
-        '${olCompanyName}',
-        '${olCpf}',
-        '${olPhone}',
-        '${olWhatsapp}',
-        '${olImage}',
-        '${olZipCode}',
-        '${olAddress}',
-        '${olAddressNumber}',
-        '${olComplement}',
-        '${olNeighborhood}',
-        '${olCity}',
-        '${olState}',
-        '${olNotes}'
-      ) `;
+  const queryString = `call sp_costumer_create_manager_v2(
+        ?,
+        ?,
+        ?,
+        ?,
+        ?,
+        ?,
+        ?,
+        ?,
+        ?,
+        ?,
+        ?,
+        ?,
+        ?,
+        ?,
+        ?,
+        ?,
+        ?,
+        ?,
+        ?,
+        ?,
+        ?,
+        ?,
+        ?,
+        ?,
+        ?,
+        ?,
+        ?
+      )`;
 
-  // console.log('queryString', queryString);
+  const queryParams: CostumerCreateManagerQueryResult['queryParams'] = [
+    OlUuid,
+    olAppId,
+    olSystemClientId,
+    olStoreId,
+    olOrganizationId,
+    olUserId,
+    olUserName,
+    olUserRole,
+    olPersonId,
+    olSellerId,
+    olName,
+    olEmail,
+    olPersonTypeId,
+    olCnpj,
+    olCompanyName,
+    olCpf,
+    olPhone,
+    olWhatsapp,
+    olImage,
+    olZipCode,
+    olAddress,
+    olAddressNumber,
+    olComplement,
+    olNeighborhood,
+    olCity,
+    olState,
+    olNotes,
+  ];
 
-  return queryString;
+  return { queryString, queryParams };
 }

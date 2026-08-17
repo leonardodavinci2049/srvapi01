@@ -59,10 +59,12 @@ export class CustomerService {
 
   async taskCustomerCreateManagerV2(dataJsonDto: CostumerCreateManagerDto) {
     try {
-      const queryString = CostumerCreateManagerQuery(dataJsonDto);
+      const { queryString, queryParams } =
+        CostumerCreateManagerQuery(dataJsonDto);
 
       const resultData = (await this.dbService.selectExecute(
         queryString,
+        queryParams,
       )) as unknown as SpResultRecordCreateType;
 
       return processProcedureResultMutation(
