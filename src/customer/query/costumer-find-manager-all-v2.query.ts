@@ -57,6 +57,5 @@ export function CostumerFindManagerAllV2Query(
         ${olColumnId},
         ${olOrderId}
       ) `;
-
   return queryString;
 }

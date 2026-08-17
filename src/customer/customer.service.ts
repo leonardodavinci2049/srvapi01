@@ -61,7 +61,8 @@ export class CustomerService {
     try {
       const { queryString, queryParams } =
         CostumerCreateManagerQuery(dataJsonDto);
-
+      //  console.log('queryString: '+ queryString);
+      //  console.log('queryParams: '+ queryParams);
       const resultData = (await this.dbService.selectExecute(
         queryString,
         queryParams,
