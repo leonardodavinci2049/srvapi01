@@ -7,15 +7,18 @@ import { DatabaseService } from 'src/database/database.service';
 import { OrderOperAddItemDto } from './dto/order-oper-add-item.dto';
 import { OrderOperCloseIdDto } from './dto/order-oper-close-id.dto';
 import { OrderOperCreateDto } from './dto/order-oper-create.dto';
+import { OrderOperCreateManagerDto } from './dto/order-oper-create-manager.dto';
 import { OrderOperReverseIdDto } from './dto/order-oper-reverse-id.dto';
 import { OrderOperSendingByEmailIdDto } from './dto/order-oper-sending-by-email-id.dto';
 import { OrderOperAddItemQuery } from './query/order-oper-add-item.query';
 import { OrderOperCloseIdQuery } from './query/order-oper-close-id.query';
 import { OrderOperCreateQuery } from './query/order-oper-create.query';
+import { OrderOperCreateManagerQuery } from './query/order-oper-create-manager.query';
 import { OrderOperReverseIdQuery } from './query/order-oper-reverse-id.query';
 import { OrderOperSendingByEmailIdQuery } from './query/order-oper-sending-by-email-id.query';
 import {
   SpResultOrderOperSendingByEmailData,
+  SpResultRecordCreateType,
   SpResultRecordOperationType,
   SpResultRecordUpdateType,
 } from './types/order-operation.type';
@@ -35,6 +38,27 @@ export class OrderOperationService {
       return processProcedureResultMutation(
         resultData,
         'Order Oper create failed',
+      );
+    } catch (err) {
+      const errorMessage =
+        err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
+      return new ResultModel(100404, errorMessage, 0, []);
+    }
+  }
+
+  async taskOrderOperCreateManagerV2(dataJsonDto: OrderOperCreateManagerDto) {
+    try {
+      const { queryString, queryParams } =
+        OrderOperCreateManagerQuery(dataJsonDto);
+
+      const resultData = (await this.dbService.selectExecute(
+        queryString,
+        queryParams,
+      )) as unknown as SpResultRecordCreateType;
+
+      return processProcedureResultMutation(
+        resultData,
+        'Order Oper create manager failed',
       );
     } catch (err) {
       const errorMessage =

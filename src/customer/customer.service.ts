@@ -6,6 +6,7 @@ import { MESSAGES } from 'src/core/utils/constants/globalConstants';
 import { ResultModel } from 'src/core/utils/result.model';
 import { DatabaseService } from 'src/database/database.service';
 import { CostumerCreateDto } from './dto/costumer-create.dto';
+import { CostumerCreateManagerDto } from './dto/costumer-create-manager.dto';
 import { CostumerFindAllDto } from './dto/costumer-find-all.dto';
 import { CostumerFindIdDto } from './dto/costumer-find-id.dto';
 import { CostumerFindManagerAllV2Dto } from './dto/costumer-find-manager-all-v2.dto';
@@ -14,6 +15,7 @@ import { CostumerFindPdvIdDto } from './dto/costumer-find-pdv-id.dto';
 import { CustomerFindLatestProductsDto } from './dto/customer-find-latest-products.dto';
 import { CustomerFindSearchV2Dto } from './dto/customer-find-search-v2.dto';
 import { CostumerCreateQuery } from './query/costumer-create.query';
+import { CostumerCreateManagerQuery } from './query/costumer-create-manager.query';
 import { CostumerFindAllQuery } from './query/costumer-find-all.query';
 import { CostumerFindIdQuery } from './query/costumer-find-id.query';
 import { CostumerFindManagerAllV2Query } from './query/costumer-find-manager-all-v2.query';
@@ -47,6 +49,25 @@ export class CustomerService {
       return processProcedureResultMutation(
         resultData,
         'Customer create failed',
+      );
+    } catch (err) {
+      const errorMessage =
+        err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
+      return new ResultModel(100404, errorMessage, 0, []);
+    }
+  }
+
+  async taskCustomerCreateManagerV2(dataJsonDto: CostumerCreateManagerDto) {
+    try {
+      const queryString = CostumerCreateManagerQuery(dataJsonDto);
+
+      const resultData = (await this.dbService.selectExecute(
+        queryString,
+      )) as unknown as SpResultRecordCreateType;
+
+      return processProcedureResultMutation(
+        resultData,
+        'Customer create manager failed',
       );
     } catch (err) {
       const errorMessage =
