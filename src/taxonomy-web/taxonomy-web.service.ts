@@ -1,20 +1,16 @@
 import { Injectable } from '@nestjs/common';
-
-import { DatabaseService } from 'src/database/database.service';
-
-import { ResultModel } from 'src/core/utils/result.model';
+import { processProcedureResultMultiQuery } from 'src/core/process-result/process-procedure-result.query';
 import { MESSAGES } from 'src/core/utils/constants/globalConstants';
-
-
+import { ResultModel } from 'src/core/utils/result.model';
+import { DatabaseService } from 'src/database/database.service';
 import { TaxonomyWebFindIdV3Dto } from './dto/taxonomy-web-find-id-v3.dto';
+import { TaxonomyWebFindMenuV3Dto } from './dto/taxonomy-web-find-menu-v3.dto';
+import { TaxonomyWebFindIdV3Query } from './query/taxonomy-web-find-id-v3.query';
+import { TaxonomyWebFindMenuV3Query } from './query/taxonomy-web-find-menu-v3.query';
 import {
   SpResultTaxonomyWebFindIdV3Data,
   SpResultTaxonomyWebMenuV3Data,
 } from './types/taxonomy-web.type';
-import { TaxonomyWebFindIdV3Query } from './query/taxonomy-web-find-id-v3.query';
-import { TaxonomyWebFindMenuV3Dto } from './dto/taxonomy-web-find-menu-v3.dto';
-import { TaxonomyWebFindMenuV3Query } from './query/taxonomy-web-find-menu-v3.query';
-import { processProcedureResultMultiQuery } from 'src/core/process-result/process-procedure-result.query';
 
 @Injectable()
 export class TaxonomyWebService {

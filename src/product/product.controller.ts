@@ -1,30 +1,27 @@
-import { Controller, Post, Body, UseGuards, Get } from '@nestjs/common';
-import { ProductService } from './product.service';
-
+import { Body, Controller, Get, Post, UseGuards } from '@nestjs/common';
 import { AuthGuard } from 'src/core/guards/auth.guard';
-
-import { ProductFindIdDto } from './dto/product-find_id.dto';
 import { ProductCreateDto } from './dto/product-create.dto';
 import { ProductFindDto } from './dto/product-find.dto';
-import { ProductWebFindIdDto } from './dto/product-web-find-id.dto';
-import { ProductWebFindDto } from './dto/product-web-find.dto';
+import { ProductFindIdDto } from './dto/product-find_id.dto';
 import { ProductPdvFindDto } from './dto/product-pdv-find.dto';
-import { ProductUpdGeneralDto } from './dto/product-upd-general.dto';
-import { ProductUpdNameDto } from './dto/product-upd-name.dto';
-import { ProductUpdStockDto } from './dto/product-upd-stock.dto';
-import { ProductUpdPriceDto } from './dto/product-upd-price.dto';
-import { ProductFlagsDto } from './dto/product-upd-flags.dto';
-import { ProductUpdCaracteristicsDto } from './dto/product-upd-caracteristics.dto';
 import { ProductUpdTaxValuesDto } from './dto/product-upd_tax-values.dto';
-import { ProductUpdShortDescriptionDto } from './dto/product-upd-Short-description.dto';
-import { ProductUpdDescriptionDto } from './dto/product-upd-description.dto';
-import { ProductUpdVariouDto } from './dto/product-upd-variou.dto';
-import { ProductUpdTypeDto } from './dto/product-upd-type.dto';
 import { ProductUpdBrandDto } from './dto/product-upd-brand.dto';
-import { ProductUpdPathImageDto } from './dto/product-upd-path-image.dto';
-
+import { ProductUpdCaracteristicsDto } from './dto/product-upd-caracteristics.dto';
+import { ProductUpdDescriptionDto } from './dto/product-upd-description.dto';
+import { ProductFlagsDto } from './dto/product-upd-flags.dto';
+import { ProductUpdGeneralDto } from './dto/product-upd-general.dto';
 import { ProductUpdMetadataDto } from './dto/product-upd-metadata.dto';
+import { ProductUpdNameDto } from './dto/product-upd-name.dto';
+import { ProductUpdPathImageDto } from './dto/product-upd-path-image.dto';
+import { ProductUpdPriceDto } from './dto/product-upd-price.dto';
+import { ProductUpdShortDescriptionDto } from './dto/product-upd-Short-description.dto';
+import { ProductUpdStockDto } from './dto/product-upd-stock.dto';
+import { ProductUpdTypeDto } from './dto/product-upd-type.dto';
+import { ProductUpdVariouDto } from './dto/product-upd-variou.dto';
+import { ProductWebFindDto } from './dto/product-web-find.dto';
+import { ProductWebFindIdDto } from './dto/product-web-find-id.dto';
 import { ProductWebSectionsDto } from './dto/product-web-sections.dto';
+import { ProductService } from './product.service';
 
 @Controller('product')
 export class ProductController {
