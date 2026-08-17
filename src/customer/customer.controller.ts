@@ -2,6 +2,7 @@ import { Body, Controller, Get, Post, UseGuards } from '@nestjs/common';
 import { AuthGuard } from 'src/core/guards/auth.guard';
 import { CustomerService } from './customer.service';
 import { CostumerCreateDto } from './dto/costumer-create.dto';
+import { CostumerCreateManagerDto } from './dto/costumer-create-manager.dto';
 import { CostumerFindAllDto } from './dto/costumer-find-all.dto';
 import { CostumerFindIdDto } from './dto/costumer-find-id.dto';
 import { CostumerFindManagerAllV2Dto } from './dto/costumer-find-manager-all-v2.dto';
@@ -32,6 +33,12 @@ export class CustomerController {
   @Post('v2/customer-create')
   CustomerCreateV2(@Body() dataJsonDto: CostumerCreateDto) {
     return this.customerService.taskCustomerCreateV2(dataJsonDto);
+  }
+
+  @UseGuards(AuthGuard)
+  @Post('v2/customer-create-manager')
+  CustomerCreateManagerV2(@Body() dataJsonDto: CostumerCreateManagerDto) {
+    return this.customerService.taskCustomerCreateManagerV2(dataJsonDto);
   }
 
   @UseGuards(AuthGuard)
