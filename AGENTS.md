@@ -67,7 +67,7 @@ HTTP POST /api/<feature>/v2/<action>
 - All access via `src/database/database.service.ts`: `selectQuery`/`selectExecute` (reads), `ModifyExecute`/`ModifyQuery` (mutations), `runInTransaction` (atomic multi-step, rollback + connection release).
 - Queries always use `?` placeholders — never concatenate or interpolate DTO data into SQL. Legacy interpolated queries exist: don't copy them or migrate them beyond the requested scope.
 - Every tenant-bound operation must preserve `pe_system_client_id` and `pe_store_id`; never remove tenant filters.
-- SP definitions live in the sibling repo symlinked at `database-objects` (`../erp-database-sql-procedures`). Before changing/exposing a procedure, verify signature, parameter order, and result sets there.
+- SP definitions live in the `stored-procedures` symlink to `/home/leomer/projects/mercury-projects/erp-database-sql-procedures/stored-procedures`. Before changing/exposing a procedure, verify signature, parameter order, and result sets there.
 - Row interfaces extend `RowDataPacket` (mysql2); keep `as unknown as ...` casts at the mysql2 boundary; multi-result-set SPs need explicit tuples.
 - Reuse processors from `src/core/process-result/`, the `ResultModel` envelope, and `RESPONSE_CODES`/`MESSAGES` from `src/core/utils/constants/globalConstants.ts` — no new response formats, no magic codes.
 - No `DROP`, `TRUNCATE`, mass deletion, destructive DDL, or data corrections without explicit authorization; show target and expected impact before any DB write.
