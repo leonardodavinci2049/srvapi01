@@ -17,6 +17,7 @@ export function OrderFindCoTipoFreteQuery(
       AND tbl_pedido_tipo_frete.ID_SYSTEM_CLIENTE = ${olSystemClientId}
       AND tbl_pedido_tipo_frete.ID_LOJA = ${olStoreId}
       AND tbl_pedido_tipo_frete.INATIVO = 0
+      AND tbl_pedido_tipo_frete.FLAG_WEB_OFF = 0    
     ORDER BY tbl_pedido_tipo_frete.TIPO_FRETE ASC
     LIMIT 10
   `;
