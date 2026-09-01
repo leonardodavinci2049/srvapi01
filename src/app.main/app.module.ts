@@ -12,6 +12,7 @@ import { CheckModule } from 'src/check/check.module';
 import { CustomerModule } from 'src/customer/customer.module';
 import { CustomerInlineModule } from 'src/customer-inline/customer-inline.module';
 import { CustomerUpdModule } from 'src/customer-upd/customer-upd.module';
+import { EntryItemModule } from 'src/entry-item/entry-item.module';
 import { EntryModule } from 'src/entry/entry.module';
 import { GeneralCallModule } from 'src/general-call/general-call.module';
 import { OrderB2bModule } from 'src/order-b2b/order-b2b.module';
@@ -62,6 +63,7 @@ import { AppService } from './app.service';
     CustomerInlineModule, // Importando o módulo de atualização inline de clientes
     CustomerUpdModule,
     EntryModule,
+    EntryItemModule,
     TaxonomyModule,
     TaxonomyBaseModule,
     TaxonomyInlineModule,
