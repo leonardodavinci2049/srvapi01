@@ -1,0 +1,34 @@
+import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
+import { Type } from 'class-transformer';
+import { IsNotEmpty, IsNumber, IsOptional } from 'class-validator';
+
+import { EndpointContextDto } from 'src/core/dto/endpoint-context.dto';
+
+export class EntryItemFindEntryIdV2Dto extends EndpointContextDto {
+  @ApiProperty({ description: 'Entry ID' })
+  @IsNumber()
+  @IsNotEmpty()
+  @Type(() => Number)
+  pe_entry_id!: number;
+
+  @ApiPropertyOptional({ description: 'Max records (default 100; max 1000)' })
+  @IsNumber()
+  @IsOptional()
+  @Type(() => Number)
+  pe_limit?: number;
+}
+/*
+Sample JSON for testing in body endpoint:
+{
+  "pe_app_id": 1,
+  "pe_system_client_id": 1,
+  "pe_store_id": 1,
+  "pe_organization_id": "ORG001",
+  "pe_user_id": "USER001",
+  "pe_user_name": "John Doe",
+  "pe_user_role": "admin",
+  "pe_person_id": 29014,
+  "pe_entry_id": 29451,
+  "pe_limit": 100
+}
+*/
