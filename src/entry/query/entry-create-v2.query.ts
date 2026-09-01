@@ -29,7 +29,7 @@ interface EntryCreateV2QueryResult {
     number,
     number,
     number,
-    string,
+    number,
     string,
   ];
 }
@@ -49,7 +49,7 @@ export function EntryCreateV2Query(
   const olPersonId = dataJsonDto.pe_person_id ?? null;
   const olSupplierId = dataJsonDto.pe_supplier_id;
   const olCarrierId = dataJsonDto.pe_carrier_id;
-  const olCompanyId = dataJsonDto.pe_company_id;
+  const olCategoryId = dataJsonDto.pe_category_id;
   const olInvoiceNumber = dataJsonDto.pe_invoice_number;
   const olModel = dataJsonDto.pe_model;
   const olTotalInvoiceValue = dataJsonDto.pe_total_invoice_value;
@@ -57,12 +57,12 @@ export function EntryCreateV2Query(
   const olFreightValue = dataJsonDto.pe_freight_value;
   const olFreightRate = dataJsonDto.pe_freight_rate;
   const olExchangeRate = dataJsonDto.pe_exchange_rate;
-  const olIpi = dataJsonDto.pe_ipi;
-  const olIcms = dataJsonDto.pe_icms;
-  const olStock = dataJsonDto.pe_stock;
-  const olPhysical = dataJsonDto.pe_physical;
-  const olLabel = dataJsonDto.pe_label;
-  const olDescription = dataJsonDto.pe_description;
+  const olVlIcms = dataJsonDto.pe_vl_icms;
+  const olVlIpi = dataJsonDto.pe_vl_ipi;
+  const olVlPis = dataJsonDto.pe_vl_pis;
+  const olVlConfins = dataJsonDto.pe_vl_confins;
+  const olVlIbs = dataJsonDto.pe_vl_ibs;
+  const olVlCbs = dataJsonDto.pe_vl_cbs;
   const olNotes = dataJsonDto.pe_notes;
 
   const queryString = `call sp_entry_create_v2(
@@ -108,7 +108,7 @@ export function EntryCreateV2Query(
     olPersonId,
     olSupplierId,
     olCarrierId,
-    olCompanyId,
+    olCategoryId,
     olInvoiceNumber,
     olModel,
     olTotalInvoiceValue,
@@ -116,12 +116,12 @@ export function EntryCreateV2Query(
     olFreightValue,
     olFreightRate,
     olExchangeRate,
-    olIpi,
-    olIcms,
-    olStock,
-    olPhysical,
-    olLabel,
-    olDescription,
+    olVlIcms,
+    olVlIpi,
+    olVlPis,
+    olVlConfins,
+    olVlIbs,
+    olVlCbs,
     olNotes,
   ];
 
