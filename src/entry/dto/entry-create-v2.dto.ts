@@ -118,14 +118,17 @@ Sample JSON for testing in body endpoint:
   "pe_system_client_id": 1,
   "pe_store_id": 1,
   "pe_organization_id": "ORG001",
+  "pe_member_id": "MEMBER001",
   "pe_user_id": "USER001",
   "pe_user_name": "John Doe",
   "pe_user_role": "admin",
   "pe_person_id": 29014,
-  "pe_member_id": "MEMBER001",
+
+
   "pe_supplier_id": 36923,
   "pe_carrier_id": 15822,
   "pe_company_id": 28470,
+  
   "pe_invoice_number": "7685",
   "pe_model": "IMPORTADO",
   "pe_total_invoice_value": 100,
