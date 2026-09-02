@@ -41,11 +41,6 @@ export class EntryUpdMainDto extends EndpointContextDto {
   @IsNotEmpty()
   @Type(() => Number)
   pe_exchange_rate!: number;
-
-  @ApiProperty({ description: 'Description', maxLength: 300 })
-  @IsString()
-  @IsNotEmpty()
-  pe_description!: string;
 }
 /*
 Sample JSON for testing in body endpoint:
@@ -63,7 +58,6 @@ Sample JSON for testing in body endpoint:
   "pe_model": "IMPORTADO",
   "pe_freight_value": 22,
   "pe_freight_rate": 10,
-  "pe_exchange_rate": 5.12,
-  "pe_description": "Entrada de teste"
+  "pe_exchange_rate": 5.12
 }
 */
