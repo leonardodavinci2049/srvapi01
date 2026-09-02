@@ -16,8 +16,7 @@ interface EntryUpdMainQueryResult {
     string,
     number,
     number,
-    number,
-    string,
+    number
   ];
 }
 
@@ -37,11 +36,9 @@ export function EntryUpdMainQuery(
   const olModel = dataJsonDto.pe_model;
   const olFreightValue = dataJsonDto.pe_freight_value;
   const olFreightRate = dataJsonDto.pe_freight_rate;
-  const olExchangeRate = dataJsonDto.pe_exchange_rate;
-  const olDescription = dataJsonDto.pe_description;
+  const olExchangeRate = dataJsonDto.pe_exchange_rate
 
   const queryString = `call sp_entry_upd_main_v2(
-        ?,
         ?,
         ?,
         ?,
@@ -72,8 +69,7 @@ export function EntryUpdMainQuery(
     olModel,
     olFreightValue,
     olFreightRate,
-    olExchangeRate,
-    olDescription,
+    olExchangeRate
   ];
 
   return { queryString, queryParams };
