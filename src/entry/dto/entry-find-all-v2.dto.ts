@@ -6,6 +6,38 @@ import { EndpointContextDto } from 'src/core/dto/endpoint-context.dto';
 
 export class EntryFindAllV2Dto extends EndpointContextDto {
   @ApiPropertyOptional({
+    description: 'Supplier ID (null/0 returns all)',
+  })
+  @IsNumber()
+  @IsOptional()
+  @Type(() => Number)
+  pe_supplier_id?: number | null;
+
+  @ApiPropertyOptional({
+    description: 'Carrier ID (null/0 returns all)',
+  })
+  @IsNumber()
+  @IsOptional()
+  @Type(() => Number)
+  pe_carrier_id?: number | null;
+
+  @ApiPropertyOptional({
+    description: 'Entry model: 1=national; 2=imported; null/0 returns all',
+  })
+  @IsNumber()
+  @IsOptional()
+  @Type(() => Number)
+  pe_modelo_id?: number | null;
+
+  @ApiPropertyOptional({
+    description: 'Category ID',
+  })
+  @IsNumber()
+  @IsOptional()
+  @Type(() => Number)
+  pe_category_id?: number | null;
+
+  @ApiPropertyOptional({
     description: 'Search term (null/empty returns all)',
     maxLength: 300,
   })
@@ -79,6 +111,10 @@ Sample JSON for testing in body endpoint:
   "pe_user_name": "John Doe",
   "pe_user_role": "admin",
   "pe_person_id": 29014,
+  "pe_supplier_id": null,
+  "pe_carrier_id": null,
+  "pe_modelo_id": null,
+  "pe_category_id": null,
   "pe_search": "",
   "pe_flag_operation_list": 0,
   "pe_start_date": null,
