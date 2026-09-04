@@ -96,7 +96,7 @@ export function ProductCreateV3Query(dataJsonDto: ProductCreateV3Dto): string {
         '${olInfo}'
       ) `;
 
-  console.log('ProductCreateV3Query: ', queryString);
+  // console.log('ProductCreateV3Query: ', queryString);
 
   return queryString;
 }
