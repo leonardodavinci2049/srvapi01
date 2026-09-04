@@ -42,8 +42,6 @@ export interface TblEntryFindAll extends RowDataPacket {
   TX_FRETE: string | null;
   VL_TOTAL_NOTA: string | null;
   VL_TOTAL_PRODUTO: string | null;
-  IPI: string | null;
-  ICMS: string | null;
   VL_ICMS: string | null;
   VL_IPI: string | null;
   VL_PIS: string | null;
@@ -79,8 +77,6 @@ export interface TblEntryFindId extends RowDataPacket {
   TX_FRETE: string | null;
   VL_TOTAL_NOTA: string | null;
   VL_TOTAL_PRODUTO: string | null;
-  IPI: string | null;
-  ICMS: string | null;
   VL_ICMS: string | null;
   VL_IPI: string | null;
   VL_PIS: string | null;
@@ -125,8 +121,6 @@ export interface TblEntryFindSearch extends RowDataPacket {
   VL_TOTAL_NOTA: string | null;
   VL_FRETE: string | null;
   VL_TOTAL_PRODUTO: string | null;
-  IPI: string | null;
-  ICMS: string | null;
   ESTOQUE: number | null;
   FISICO: number | null;
   ETIQUETA: number | null;
