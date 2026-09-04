@@ -11,6 +11,10 @@ interface EntryFindAllV2QueryResult {
     string,
     string,
     number | null,
+    number | null,
+    number | null,
+    number | null,
+    number | null,
     string | null,
     number | null,
     string | null,
@@ -33,6 +37,10 @@ export function EntryFindAllV2Query(
   const olUserName = dataJsonDto.pe_user_name;
   const olUserRole = dataJsonDto.pe_user_role;
   const olPersonId = dataJsonDto.pe_person_id ?? null;
+  const olSupplierId = dataJsonDto.pe_supplier_id ?? null;
+  const olCarrierId = dataJsonDto.pe_carrier_id ?? null;
+  const olModeloId = dataJsonDto.pe_modelo_id ?? null;
+  const olCategoryId = dataJsonDto.pe_category_id ?? null;
   const olSearch = dataJsonDto.pe_search ?? null;
   const olFlagOperationList = dataJsonDto.pe_flag_operation_list ?? null;
   const olStartDate = dataJsonDto.pe_start_date ?? null;
@@ -43,6 +51,10 @@ export function EntryFindAllV2Query(
   const olOrderId = dataJsonDto.pe_order_id ?? null;
 
   const queryString = `call sp_entry_find_all_v2(
+        ?,
+        ?,
+        ?,
+        ?,
         ?,
         ?,
         ?,
@@ -70,6 +82,10 @@ export function EntryFindAllV2Query(
     olUserName,
     olUserRole,
     olPersonId,
+    olSupplierId,
+    olCarrierId,
+    olModeloId,
+    olCategoryId,
     olSearch,
     olFlagOperationList,
     olStartDate,
