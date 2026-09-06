@@ -12,7 +12,7 @@ import { ProductFindManagerSearchV2Query } from './query/product-find-manager-se
 import {
   SpResultProductFindManagerAllData,
   SpResultProductFindManagerIdData,
-} from './types/produtct-type.type';
+} from './types/product-manager.type';
 
 @Injectable()
 export class ProductManagerService {
