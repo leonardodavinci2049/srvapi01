@@ -30,6 +30,7 @@ import { ProductPdvModule } from 'src/product-pdv/product-pdv.module';
 import { ProductUpdateModule } from 'src/product-update/product-update.module';
 import { ProductWebModule } from 'src/product-web/product-web.module';
 import { PtypeModule } from 'src/ptype/ptype.module';
+import { PurchasingModule } from 'src/purchasing/purchasing.module';
 import { SellerModule } from 'src/seller/seller.module';
 import { SupplierModule } from 'src/supplier/supplier.module';
 import { TaxonomyModule } from 'src/taxonomy/taxonomy.module';
@@ -75,6 +76,7 @@ import { AppService } from './app.service';
     BrandModule,
     CarrierModule,
     PtypeModule,
+    PurchasingModule,
     SupplierModule,
     SellerModule,
     OrderItemsModule,

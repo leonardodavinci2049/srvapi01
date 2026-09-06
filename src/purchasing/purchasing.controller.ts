@@ -1,6 +1,9 @@
-import { Controller, Get, Post, } from '@nestjs/common';
+import { Body, Controller, Get, Post, UseGuards } from '@nestjs/common';
+import { AuthGuard } from 'src/core/guards/auth.guard';
 import { PurchasingService } from './purchasing.service';
 
+import { PurchasingFindManagerAllDto } from './dto/purchasing-find-manager-all.dto';
+import { PurchasingFindManagerIdDto } from './dto/purchasing-find-manager-id.dto';
 
 @Controller('purchasing')
 export class PurchasingController {
@@ -21,12 +24,15 @@ export class PurchasingController {
     };
   }
 
-
-  @Post()
- findAll() {
-    return this.purchasingService.findAll();
+  @UseGuards(AuthGuard)
+  @Post('v2/purchasing-find-manager-all')
+  purchasingFindManagerAll(@Body() dataJsonDto: PurchasingFindManagerAllDto) {
+    return this.purchasingService.taskPurchasingFindManagerAll(dataJsonDto);
   }
 
-
- 
+  @UseGuards(AuthGuard)
+  @Post('v2/purchasing-find-manager-id')
+  purchasingFindManagerId(@Body() dataJsonDto: PurchasingFindManagerIdDto) {
+    return this.purchasingService.taskPurchasingFindManagerId(dataJsonDto);
+  }
 }

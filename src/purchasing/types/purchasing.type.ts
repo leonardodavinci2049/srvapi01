@@ -17,10 +17,6 @@ export interface SpOperationResult {
   changedRows: number;
 }
 
-export type SpResultRecordCreateType = [SpDefaultFeedback[], SpOperationResult];
-export type SpResultRecordUpdateType = [SpDefaultFeedback[], SpOperationResult];
-export type SpResultRecordDeleteType = [SpDefaultFeedback[], SpOperationResult];
-
 export interface TblProductFindManagerAll extends RowDataPacket {
   ID_PRODUTO: number;
   SKU: number;
@@ -29,23 +25,28 @@ export interface TblProductFindManagerAll extends RowDataPacket {
   ETIQUETA: string;
   REF: string;
   MODELO: string;
+  ID_FORNECEDOR: number | null;
+  FORNECEDOR: string | null;
+  TEMPO_ENTREGA_DIA: number | null;
+  TEMPO_ENTREGA_HORA: number | null;
   ID_TIPO: number;
   TIPO: string;
   ID_MARCA: number;
   MARCA: string;
-  PATH_IMAGEM_MARCA: string;
   ID_IMAGEM: number;
+  PATH_IMAGEM_MARCA: string;
   PATH_IMAGEM: string;
   PATH_PAGE: string;
   SLUG: string;
 
-  QT_VENDAS_HA_DOIS_MESES: number;
-  QT_VENDAS_MES_ANTERIOR: number; 
-  QT_VENDAS_MES_ATUAL: number; 
-  QT_VENDAS_30_DIAS: number;                              
-  QT_VENDAS_HOJE: number;
+  QT_VENDAS_HA_DOIS_MESES: number | null;
+  QT_VENDAS_MES_ANTERIOR: number | null;
+  QT_VENDAS_MES_ATUAL: number | null;
+  QT_VENDAS_30_DIAS: number | null;
+  QT_VENDAS_HOJE: number | null;
 
-  DATA_ULT_VENDA: string;
+  DATA_ULT_VENDA: Date | string | null;
+  CRITICALITY_LEVEL: string | null;
   ESTOQUE_LOJA: number;
   VL_ATACADO: string;
   VL_CORPORATIVO: string;
@@ -62,10 +63,8 @@ export interface TblProductFindManagerAll extends RowDataPacket {
   PROMOCAO: number;
   LANCAMENTO: number;
   CATEGORIAS: string;
-  DATADOCADASTRO: string;
+  DATADOCADASTRO: Date | string;
 }
-
-
 
 export interface TblProductFindManagerId extends RowDataPacket {
   ID_PRODUTO: number;
@@ -78,6 +77,10 @@ export interface TblProductFindManagerId extends RowDataPacket {
   PATH_IMAGEM: string;
   PATH_PAGE: string;
   SLUG: string;
+  ID_FORNECEDOR: number | null;
+  FORNECEDOR: string | null;
+  TEMPO_ENTREGA_DIA: number | null;
+  TEMPO_ENTREGA_HORA: number | null;
   ID_TIPO: number;
   TIPO: string;
   ID_MARCA: number;
@@ -90,12 +93,13 @@ export interface TblProductFindManagerId extends RowDataPacket {
   PRATA: string;
   BRONZE: string;
   ESTOQUE_LOJA: number;
-  QT_VENDAS_HA_DOIS_MESES: number;
-  QT_VENDAS_MES_ANTERIOR: number; 
-  QT_VENDAS_MES_ATUAL: number; 
-  QT_VENDAS_30_DIAS: number;                              
-  QT_VENDAS_HOJE: number;
-  DATA_ULT_VENDA: string;
+  QT_VENDAS_HA_DOIS_MESES: number | null;
+  QT_VENDAS_MES_ANTERIOR: number | null;
+  QT_VENDAS_MES_ATUAL: number | null;
+  QT_VENDAS_30_DIAS: number | null;
+  QT_VENDAS_HOJE: number | null;
+  DATA_ULT_VENDA: Date | string | null;
+  CRITICALITY_LEVEL: string | null;
   TEMPODEGARANTIA_DIA: number;
   PESO_GR: number;
   COMPRIMENTO_MM: number;
@@ -115,51 +119,45 @@ export interface TblProductFindManagerId extends RowDataPacket {
   IMPORTADO: number;
   META_TITLE: string | null;
   META_DESCRIPTION: string | null;
+  DT_UPDATE: Date | string | null;
   DESCRICAO_VENDA: string | null;
   ANOTACOES: string | null;
-  DATADOCADASTRO: string;
-  DT_UPDATE: string;
+  DATADOCADASTRO: Date | string;
 }
 
 export interface TblRelatedCategories extends RowDataPacket {
   ID_TAXONOMY: number;
-  PARENT_ID: number;
+  PARENT_ID: number | null;
   TAXONOMIA: string;
   SLUG: string;
   ORDEM: number;
   LEVEL: number;
 }
 
-export interface TblRelatedProducts extends RowDataPacket {
-  ID_TAXONOMY: number;
-  SKU: number;
-  PRODUTO: string;
-  DESCRICAO_TAB: string;
-  ETIQUETA: string;
-  REF: string;
-  MODELO: string;
+export interface TblRelatedSuppliers extends RowDataPacket {
+  ID_FORNECEDOR: number;
+  FORNECEDOR: string;
   PATH_IMAGEM: string;
-  SLUG: string;
-  ESTOQUE_LOJA: number;
-  VL_ATACADO: string;
-  VL_CORPORATIVO: string;
-  VL_VAREJO: string;
-  IMPORTADO: number;
-  PROMOCAO: number;
-  LANCAMENTO: number;
+  REF_PRODUTO: string;
+  WHATSAPP: string;
+  FONE: string;
+  EMAIL: string;
+  WEBSITE: string;
+  REF_FORNECEDOR: string;
+  DT_ATUALIZACAOO: Date | string | null;
+  QT_REGISTER: number;
 }
 
-export type SpResultProductFindManagerAllData = [
+export type SpResultPurchasingFindManagerAllData = [
   TblProductFindManagerAll[],
   SpDefaultFeedback[],
   SpOperationResult,
 ];
 
-
-export type SpResultProductFindManagerIdData = [
+export type SpResultPurchasingFindManagerIdData = [
   TblProductFindManagerId[],
-  SpDefaultFeedback[],
   TblRelatedCategories[],
-  TblRelatedProducts[],
+  TblRelatedSuppliers[],
+  SpDefaultFeedback[],
   SpOperationResult,
 ];
