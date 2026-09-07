@@ -12,9 +12,10 @@ import { CheckModule } from 'src/check/check.module';
 import { CustomerModule } from 'src/customer/customer.module';
 import { CustomerInlineModule } from 'src/customer-inline/customer-inline.module';
 import { CustomerUpdModule } from 'src/customer-upd/customer-upd.module';
-import { EntryItemModule } from 'src/entry-item/entry-item.module';
 import { EntryModule } from 'src/entry/entry.module';
+import { EntryItemModule } from 'src/entry-item/entry-item.module';
 import { GeneralCallModule } from 'src/general-call/general-call.module';
+import { OrderManagerModule } from 'src/order_manager/order_manager.module';
 import { OrderB2bModule } from 'src/order-b2b/order-b2b.module';
 import { OrderItemsModule } from 'src/order-items/order-items.module';
 import { OrderOperationModule } from 'src/order-operation/order-operation.module';
@@ -85,6 +86,7 @@ import { AppService } from './app.service';
     OrderSalesModule,
     OrderUpdModule,
     OrderB2bModule,
+    OrderManagerModule,
     ThrottlerModule.forRoot([
       // proteção conta ataque de força bruta
       {
