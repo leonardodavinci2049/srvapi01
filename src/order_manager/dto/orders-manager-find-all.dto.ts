@@ -6,14 +6,6 @@ import { EndpointContextDto } from 'src/core/dto/endpoint-context.dto';
 
 export class OrdersManagerFindAllDto extends EndpointContextDto {
   @ApiPropertyOptional({
-    description: 'Order ID (null/0 returns all)',
-  })
-  @IsNumber()
-  @IsOptional()
-  @Type(() => Number)
-  pe_order_id?: number | null;
-
-  @ApiPropertyOptional({
     description: 'Customer ID (null/0 returns all)',
   })
   @IsNumber()
@@ -28,6 +20,15 @@ export class OrdersManagerFindAllDto extends EndpointContextDto {
   @IsOptional()
   @Type(() => Number)
   pe_seller_id?: number | null;
+
+  @ApiPropertyOptional({
+    description:
+      'Free-text search: matches order ID (when numeric), customer name or seller name (null/empty returns all)',
+    maxLength: 300,
+  })
+  @IsString()
+  @IsOptional()
+  pe_search?: string | null;
 
   @ApiPropertyOptional({
     description: 'Order status ID (null/0 returns all)',
@@ -121,9 +122,9 @@ Sample JSON for testing in body endpoint:
   "pe_user_name": "John Doe",
   "pe_user_role": "orders_manager",
   "pe_person_id": 1937,
-  "pe_order_id": 0,
   "pe_customer_id": 0,
   "pe_seller_id": 0,
+  "pe_search": "Hpsite",
   "pe_order_status_id": 0,
   "pe_financial_status_id": 0,
   "pe_delivery_status_id": 0,

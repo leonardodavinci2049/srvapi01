@@ -13,7 +13,7 @@ interface OrdersManagerFindAllQueryResult {
     number | null,
     number | null,
     number | null,
-    number | null,
+    string | null,
     number | null,
     number | null,
     number | null,
@@ -38,9 +38,9 @@ export function OrdersManagerFindAllQuery(
   const olUserName = dataJsonDto.pe_user_name;
   const olUserRole = dataJsonDto.pe_user_role;
   const olPersonId = dataJsonDto.pe_person_id ?? null;
-  const olOrderId = dataJsonDto.pe_order_id ?? null;
   const olCustomerId = dataJsonDto.pe_customer_id ?? null;
   const olSellerId = dataJsonDto.pe_seller_id ?? null;
+  const olSearch = dataJsonDto.pe_search?.trim() || null;
   const olOrderStatusId = dataJsonDto.pe_order_status_id ?? null;
   const olFinancialStatusId = dataJsonDto.pe_financial_status_id ?? null;
   const olDeliveryStatusId = dataJsonDto.pe_delivery_status_id ?? null;
@@ -85,9 +85,9 @@ export function OrdersManagerFindAllQuery(
     olUserName,
     olUserRole,
     olPersonId,
-    olOrderId,
     olCustomerId,
     olSellerId,
+    olSearch,
     olOrderStatusId,
     olFinancialStatusId,
     olDeliveryStatusId,
