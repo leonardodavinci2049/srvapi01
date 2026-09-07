@@ -21,6 +21,9 @@ export class PurchasingService {
       const { queryString, queryParams } =
         PurchasingFindManagerAllQuery(dataJsonDto);
 
+
+      //console.log('queryParams', queryParams);
+
       const resultData = (await this.dbService.selectExecute(
         queryString,
         queryParams,
