@@ -11,6 +11,7 @@ import { EntryFindIdV2Dto } from './dto/entry-find-id-v2.dto';
 import { EntryFindSearchV2Dto } from './dto/entry-find-search-v2.dto';
 import { EntryProcessInventoryV2Dto } from './dto/entry-process-inventory-v2.dto';
 import { EntryUpdCarrierIdDto } from './dto/entry-upd-carrier-id.dto';
+import { EntryUpdDollarValueDto } from './dto/entry-upd-dollar-value.dto';
 import { EntryUpdGeneralFieldDto } from './dto/entry-upd-general-field.dto';
 import { EntryUpdMainDto } from './dto/entry-upd-main.dto';
 import { EntryUpdNotesDto } from './dto/entry-upd-notes.dto';
@@ -23,6 +24,7 @@ import { EntryFindIdV2Query } from './query/entry-find-id-v2.query';
 import { EntryFindSearchV2Query } from './query/entry-find-search-v2.query';
 import { EntryProcessInventoryV2Query } from './query/entry-process-inventory-v2.query';
 import { EntryUpdCarrierIdQuery } from './query/entry-upd-carrier-id.query';
+import { EntryUpdDollarValueQuery } from './query/entry-upd-dollar-value.query';
 import { EntryUpdGeneralFieldQuery } from './query/entry-upd-general-field.query';
 import { EntryUpdMainQuery } from './query/entry-upd-main.query';
 import { EntryUpdNotesQuery } from './query/entry-upd-notes.query';
@@ -172,6 +174,27 @@ export class EntryService {
       return processProcedureResultMutation(
         resultData,
         'Entry notes update failed',
+      );
+    } catch (err) {
+      const errorMessage =
+        err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
+      return new ResultModel(100404, errorMessage, 0, []);
+    }
+  }
+
+  async taskEntryUpdDollarValueV2(dataJsonDto: EntryUpdDollarValueDto) {
+    try {
+      const { queryString, queryParams } =
+        EntryUpdDollarValueQuery(dataJsonDto);
+
+      const resultData = (await this.dbService.selectExecute(
+        queryString,
+        queryParams,
+      )) as unknown as SpResultRecordUpdateType;
+
+      return processProcedureResultMutation(
+        resultData,
+        'Entry dollar value update failed',
       );
     } catch (err) {
       const errorMessage =
