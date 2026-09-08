@@ -63,9 +63,18 @@ export class OrdersManagerFindAllDto extends EndpointContextDto {
   @Type(() => Number)
   pe_location_id?: number | null;
 
+  @ApiPropertyOptional({
+    description:
+      'Operation date filter column: 0/others=order registration date DATADOCADASTRO (default); 1=order date DATA_PEDIDO; 2=delivery date DATA_ENTREGA',
+  })
+  @IsNumber()
+  @IsOptional()
+  @Type(() => Number)
+  pe_flag_operation_date?: number | null;
+
   @ApiProperty({
     description:
-      'Order registration start date (filter on tbl_pedido.DATADOCADASTRO; format YYYY-MM-DD)',
+      'Period start date (filter column defined by pe_flag_operation_date; format YYYY-MM-DD)',
     maxLength: 300,
   })
   @IsString()
@@ -73,7 +82,7 @@ export class OrdersManagerFindAllDto extends EndpointContextDto {
 
   @ApiProperty({
     description:
-      'Order registration end date (filter on tbl_pedido.DATADOCADASTRO; format YYYY-MM-DD)',
+      'Period end date, inclusive (filter column defined by pe_flag_operation_date; format YYYY-MM-DD)',
     maxLength: 300,
   })
   @IsString()
@@ -129,6 +138,7 @@ Sample JSON for testing in body endpoint:
   "pe_financial_status_id": 0,
   "pe_delivery_status_id": 0,
   "pe_location_id": 0,
+  "pe_flag_operation_date": 0,
   "pe_start_date": "2026-06-01",
   "pe_end_date": "2026-09-01",
   "pe_records_per_page": 2,
