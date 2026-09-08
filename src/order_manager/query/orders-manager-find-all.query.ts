@@ -18,6 +18,7 @@ interface OrdersManagerFindAllQueryResult {
     number | null,
     number | null,
     number | null,
+    number | null,
     string,
     string,
     number | null,
@@ -45,6 +46,7 @@ export function OrdersManagerFindAllQuery(
   const olFinancialStatusId = dataJsonDto.pe_financial_status_id ?? null;
   const olDeliveryStatusId = dataJsonDto.pe_delivery_status_id ?? null;
   const olLocationId = dataJsonDto.pe_location_id ?? null;
+  const olFlagOperationDate = dataJsonDto.pe_flag_operation_date ?? null;
   const olStartDate = dataJsonDto.pe_start_date;
   const olEndDate = dataJsonDto.pe_end_date;
   const olRecordsPerPage = dataJsonDto.pe_records_per_page ?? null;
@@ -53,6 +55,7 @@ export function OrdersManagerFindAllQuery(
   const olSortOrderId = dataJsonDto.pe_sort_order_id ?? null;
 
   const queryString = `call sp_orders_manager_find_all_v2(
+        ?,
         ?,
         ?,
         ?,
@@ -92,6 +95,7 @@ export function OrdersManagerFindAllQuery(
     olFinancialStatusId,
     olDeliveryStatusId,
     olLocationId,
+    olFlagOperationDate,
     olStartDate,
     olEndDate,
     olRecordsPerPage,

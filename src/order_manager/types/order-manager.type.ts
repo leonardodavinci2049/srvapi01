@@ -35,6 +35,7 @@ export interface TblOrdersManagerFindAll extends RowDataPacket {
   FLAG_COMISSAO: number;
   FLAG_VENDA_ATACADO: number;
   QT_ITENS: number;
+  QT_PRODUTOS_VENDIDOS: number;
   VL_SUBTOTAL: string;
   VL_SEGURO: string;
   VL_ACRESCIMO: string;
