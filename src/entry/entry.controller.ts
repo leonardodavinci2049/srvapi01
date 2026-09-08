@@ -9,6 +9,7 @@ import { EntryFindIdV2Dto } from './dto/entry-find-id-v2.dto';
 import { EntryFindSearchV2Dto } from './dto/entry-find-search-v2.dto';
 import { EntryProcessInventoryV2Dto } from './dto/entry-process-inventory-v2.dto';
 import { EntryUpdCarrierIdDto } from './dto/entry-upd-carrier-id.dto';
+import { EntryUpdDollarValueDto } from './dto/entry-upd-dollar-value.dto';
 import { EntryUpdGeneralFieldDto } from './dto/entry-upd-general-field.dto';
 import { EntryUpdMainDto } from './dto/entry-upd-main.dto';
 import { EntryUpdNotesDto } from './dto/entry-upd-notes.dto';
@@ -74,6 +75,12 @@ export class EntryController {
   @Post('v2/entry-upd-notes')
   entryUpdNotesV2(@Body() dataJsonDto: EntryUpdNotesDto) {
     return this.entryService.taskEntryUpdNotesV2(dataJsonDto);
+  }
+
+  @UseGuards(AuthGuard)
+  @Post('v2/entry-upd-dollar-value')
+  entryUpdDollarValueV2(@Body() dataJsonDto: EntryUpdDollarValueDto) {
+    return this.entryService.taskEntryUpdDollarValueV2(dataJsonDto);
   }
 
   @UseGuards(AuthGuard)
