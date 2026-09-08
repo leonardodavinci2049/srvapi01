@@ -71,7 +71,6 @@ export interface TblEntryFindId extends RowDataPacket {
   TRANSPORTADORA: string | null;
   NUMERODANOTA: string | null;
   MODELO: string | null;
-  DESCRICAO: string | null;
   CAMBIO: string | null;
   VL_FRETE: string | null;
   TX_FRETE: string | null;
@@ -89,6 +88,7 @@ export interface TblEntryFindId extends RowDataPacket {
   STATUS_FISICO: string;
   ETIQUETA: number | null;
   STATUS_ETIQUETA: string;
+  DESCRICAO: string | null;
   ANOTACOES: string | null;
   DATA_ENTRADA_ESTOQUE: Date | string | null;
   HORA_ENTRADA_ESTOQUE: string | null;

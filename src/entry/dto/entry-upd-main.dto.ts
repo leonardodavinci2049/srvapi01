@@ -1,6 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { Type } from 'class-transformer';
-import { IsNotEmpty, IsNumber, IsString } from 'class-validator';
+import { IsNotEmpty, IsNumber, IsString, MaxLength } from 'class-validator';
 
 import { EndpointContextDto } from 'src/core/dto/endpoint-context.dto';
 
@@ -36,11 +36,23 @@ export class EntryUpdMainDto extends EndpointContextDto {
   @Type(() => Number)
   pe_freight_rate!: number;
 
-  @ApiProperty({ description: 'Exchange rate' })
+  @ApiProperty({ description: 'Invoice total' })
   @IsNumber()
   @IsNotEmpty()
   @Type(() => Number)
-  pe_exchange_rate!: number;
+  pe_invoice_total!: number;
+
+  @ApiProperty({ description: 'Product total' })
+  @IsNumber()
+  @IsNotEmpty()
+  @Type(() => Number)
+  pe_product_total!: number;
+
+  @ApiProperty({ description: 'Entry description' })
+  @IsString()
+  @IsNotEmpty()
+  @MaxLength(300)
+  pe_description!: string;
 }
 /*
 Sample JSON for testing in body endpoint:
@@ -58,6 +70,8 @@ Sample JSON for testing in body endpoint:
   "pe_model": "IMPORTADO",
   "pe_freight_value": 22,
   "pe_freight_rate": 10,
-  "pe_exchange_rate": 5.12
+  "pe_invoice_total": 1500.5,
+  "pe_product_total": 1468.5,
+  "pe_description": "Entrada de mercadoria importada"
 }
 */
