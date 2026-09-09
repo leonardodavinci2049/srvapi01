@@ -46,6 +46,8 @@ export interface TblProductFindManagerAll extends RowDataPacket {
   QT_VENDAS_HOJE: number | null;
 
   DATA_ULT_VENDA: Date | string | null;
+  CRITICALITY_ID: number | null;
+  
   CRITICALITY_LEVEL: string | null;
   ESTOQUE_LOJA: number;
   VL_ATACADO: string;
@@ -99,6 +101,7 @@ export interface TblProductFindManagerId extends RowDataPacket {
   QT_VENDAS_30_DIAS: number | null;
   QT_VENDAS_HOJE: number | null;
   DATA_ULT_VENDA: Date | string | null;
+  CRITICALITY_ID: number | null;
   CRITICALITY_LEVEL: string | null;
   TEMPODEGARANTIA_DIA: number;
   PESO_GR: number;
