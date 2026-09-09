@@ -62,7 +62,7 @@ export function CarrierFindSearchV2Query(
         )
       )
     ORDER BY
-      tbl_transportadora.ID_TRANSPORTADORA DESC
+      tbl_transportadora.NOME
     LIMIT 20
   `;
 
