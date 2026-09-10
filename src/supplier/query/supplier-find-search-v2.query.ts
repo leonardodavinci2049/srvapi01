@@ -63,7 +63,7 @@ export function SupplierFindSearchV2Query(
         OR tbl_fornecedor.EMAIL1 LIKE CONCAT('%', query_params.pe_search, '%')
       )
     ORDER BY
-      tbl_fornecedor.ID_FORNECEDOR DESC
+      tbl_fornecedor.NOME
     LIMIT 20
   `;
 

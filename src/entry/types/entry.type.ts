@@ -48,6 +48,7 @@ export interface TblEntryFindAll extends RowDataPacket {
   VL_CONFINS: string | null;
   VL_IBS: string | null;
   VL_CBS: string | null;
+  VL_TOTAL_IMPOSTOS: string;
   QT_MOVIMENTO: number;
   VL_TOTAL_REAL: string;
   VL_TOTAL_DOLAR: string;
@@ -82,6 +83,7 @@ export interface TblEntryFindId extends RowDataPacket {
   VL_CONFINS: string | null;
   VL_IBS: string | null;
   VL_CBS: string | null;
+  VL_TOTAL_IMPOSTOS: string;
   ESTOQUE: number | null;
   STATUS_ESTOQUE: string;
   FISICO: number | null;
@@ -101,8 +103,9 @@ export interface TblEntryFindId extends RowDataPacket {
 export interface TblEntrySummary extends RowDataPacket {
   ID_ENTRADA: number;
   QT_MOVIMENTO: number;
-  VL_TOTAL_REAL: string;
-  VL_TOTAL_DOLAR: string;
+  VL_TOTAL_PRODUTO_REAL: string;
+  VL_TOTAL_PRODUTO_DOLAR: string;
+  VL_TOTAL_PRODUTO_IMPOSTOS: string;
 }
 
 export interface TblEntryFindSearch extends RowDataPacket {

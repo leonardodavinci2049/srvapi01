@@ -76,7 +76,7 @@ export function CustomerFindSearchV2Query(
         )
       )
     ORDER BY
-      tbl_pessoa.ID_TBL_PESSOA DESC
+      tbl_pessoa.NOME
     LIMIT 20
   `;
 
