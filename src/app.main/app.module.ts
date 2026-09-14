@@ -4,6 +4,7 @@ import { ConfigModule } from '@nestjs/config';
 import { APP_GUARD } from '@nestjs/core';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
+import { AppConfigModule } from 'src/app-config/app-config.module';
 import { BrandModule } from 'src/brand/brand.module';
 import { CarrierModule } from 'src/carrier/carrier.module';
 
@@ -74,6 +75,7 @@ import { AppService } from './app.service';
     ProductWebModule,
     TaxonomyWebModule,
     CheckModule,
+    AppConfigModule,
     BrandModule,
     CarrierModule,
     PtypeModule,
