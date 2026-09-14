@@ -1,34 +1,32 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post } from '@nestjs/common';
 import { ProductWholesaleService } from './product-wholesale.service';
-import { CreateProductWholesaleDto } from './dto/create-product-wholesale.dto';
-import { UpdateProductWholesaleDto } from './dto/update-product-wholesale.dto';
+
 
 @Controller('product-wholesale')
 export class ProductWholesaleController {
-  constructor(private readonly productWholesaleService: ProductWholesaleService) {}
-
-  @Post()
-  create(@Body() createProductWholesaleDto: CreateProductWholesaleDto) {
-    return this.productWholesaleService.create(createProductWholesaleDto);
-  }
+  constructor(
+    private readonly productWholesaleService: ProductWholesaleService,
+  ) {}
 
   @Get()
-  findAll() {
-    return this.productWholesaleService.findAll();
+  getHello() {
+    return {
+      name: 'Product Wholesale API',
+      status: 'online',
+      version: '1.0.1',
+      documentation: '/',
+      timestamp: new Date().toISOString(),
+      endpoints: {
+        base: '/api',
+        auth: '/api/product-wholesale',
+      },
+    };
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.productWholesaleService.findOne(+id);
+  @Post()
+  create() {
+    return this.productWholesaleService.create();
   }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateProductWholesaleDto: UpdateProductWholesaleDto) {
-    return this.productWholesaleService.update(+id, updateProductWholesaleDto);
-  }
 
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.productWholesaleService.remove(+id);
-  }
 }
