@@ -1,9 +1,11 @@
 import { Controller, Get, Post } from '@nestjs/common';
-import { AppMenuService } from './app-menu.service';
+import { AppConfigService } from './app-config.service';
 
-@Controller('app-menu')
-export class AppMenuController {
-  constructor(private readonly appMenuService: AppMenuService) {}
+
+@Controller('app-config')
+export class AppConfigController {
+  constructor(private readonly appConfigService: AppConfigService) {}
+
 
   @Get()
   getHello() {
@@ -19,10 +21,9 @@ export class AppMenuController {
       },
     };
   }
-
   @Post()
   create() {
-    return this.appMenuService.create();
+    return this.appConfigService.create();
   }
 
 
