@@ -1,34 +1,29 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post } from '@nestjs/common';
 import { AppMenuService } from './app-menu.service';
-import { CreateAppMenuDto } from './dto/create-app-menu.dto';
-import { UpdateAppMenuDto } from './dto/update-app-menu.dto';
 
 @Controller('app-menu')
 export class AppMenuController {
   constructor(private readonly appMenuService: AppMenuService) {}
 
-  @Post()
-  create(@Body() createAppMenuDto: CreateAppMenuDto) {
-    return this.appMenuService.create(createAppMenuDto);
-  }
-
   @Get()
-  findAll() {
-    return this.appMenuService.findAll();
+  getHello() {
+    return {
+      name: 'App Menu API',
+      status: 'online',
+      version: '1.0.1',
+      documentation: '/',
+      timestamp: new Date().toISOString(),
+      endpoints: {
+        base: '/api',
+        auth: '/api/app-menu',
+      },
+    };
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.appMenuService.findOne(+id);
+  @Post()
+  create() {
+    return this.appMenuService.create();
   }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateAppMenuDto: UpdateAppMenuDto) {
-    return this.appMenuService.update(+id, updateAppMenuDto);
-  }
 
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.appMenuService.remove(+id);
-  }
 }
