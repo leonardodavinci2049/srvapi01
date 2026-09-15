@@ -18,8 +18,8 @@ import { AppMenuFindTypeV2Query } from './query/app-menu-find-type-v2.query';
 import {
   SpResultAppConfigFindAllData,
   SpResultAppConfigFindIdData,
-  SpResultAppConfigUpdateData,
   SpResultAppMenuFindTypeData,
+  SpResultRecordUpdateType,
 } from './types/app-config.type';
 
 @Injectable()
@@ -37,7 +37,7 @@ export class AppConfigService {
 
       return processProcedureResultMultiQuery(
         resultData,
-        ['App Config', 'App Menu'],
+        ['App Config'],
         'Configurações da aplicação não encontradas',
       );
     } catch {
@@ -108,19 +108,16 @@ export class AppConfigService {
       const resultData = (await this.dbService.selectExecute(
         queryString,
         queryParams,
-      )) as unknown as SpResultAppConfigUpdateData;
+      )) as unknown as SpResultRecordUpdateType;
 
       return processProcedureResultMutation(
         resultData,
-        'Não foi possível atualizar a configuração da aplicação',
+        'App config field update failed',
       );
-    } catch {
-      return new ResultModel(
-        RESPONSE_CODES.INTERNAL_ERROR,
-        MESSAGES.UNKNOWN_ERROR,
-        0,
-        [],
-      );
+    } catch (err) {
+      const errorMessage =
+        err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
+      return new ResultModel(100404, errorMessage, 0, []);
     }
   }
 }
