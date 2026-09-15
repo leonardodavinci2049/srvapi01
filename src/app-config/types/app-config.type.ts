@@ -76,3 +76,28 @@ export type SpResultAppMenuFindTypeData = [
   SpDefaultFeedback[],
   SpOperationResult,
 ];
+
+export interface TblAppConfigFindId extends RowDataPacket {
+  ID: number;
+  APP_NAME: string | null;
+  CLIENT_NAME: string | null;
+  SECTION_JSON: string | null;
+  BRAND_JSON: string | null;
+  COMPANY_JSON: string | null;
+  PAYMENT_METHOD_JSON: string | null;
+  HOME_CATEGORY_JSON: string | null;
+  HOME_MENU_JSON: string | null;
+  HOME_HERO: string | null;
+  UPDATEDAT: Date | null;
+}
+
+export type SpResultAppConfigFindIdData = [
+  TblAppConfigFindId[],
+  SpDefaultFeedback[],
+  SpOperationResult,
+];
+
+export type SpResultAppConfigUpdateData = [
+  SpDefaultFeedback[],
+  SpOperationResult,
+];
