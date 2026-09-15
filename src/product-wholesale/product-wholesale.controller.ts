@@ -1,6 +1,10 @@
-import { Controller, Get, Post } from '@nestjs/common';
-import { ProductWholesaleService } from './product-wholesale.service';
+import { Body, Controller, Get, Post, UseGuards } from '@nestjs/common';
 
+import { AuthGuard } from 'src/core/guards/auth.guard';
+import { ProductWholesaleFindAllV2Dto } from './dto/product-wholesale-find-all-v2.dto';
+import { ProductWholesaleFindIdV2Dto } from './dto/product-wholesale-find-id-v2.dto';
+import { ProductWholesaleSectionsV2Dto } from './dto/product-wholesale-sections-v2.dto';
+import { ProductWholesaleService } from './product-wholesale.service';
 
 @Controller('product-wholesale')
 export class ProductWholesaleController {
@@ -23,10 +27,29 @@ export class ProductWholesaleController {
     };
   }
 
-  @Post()
-  create() {
-    return this.productWholesaleService.create();
+  @UseGuards(AuthGuard)
+  @Post('v2/product-wholesale-find-all')
+  productWholesaleFindAllV2(@Body() dataJsonDto: ProductWholesaleFindAllV2Dto) {
+    return this.productWholesaleService.tskProductWholesaleFindAllV2(
+      dataJsonDto,
+    );
   }
 
+  @UseGuards(AuthGuard)
+  @Post('v2/product-wholesale-find-id')
+  productWholesaleFindIdV2(@Body() dataJsonDto: ProductWholesaleFindIdV2Dto) {
+    return this.productWholesaleService.tskProductWholesaleFindIdV2(
+      dataJsonDto,
+    );
+  }
 
+  @UseGuards(AuthGuard)
+  @Post('v2/product-wholesale-sections')
+  productWholesaleSectionsV2(
+    @Body() dataJsonDto: ProductWholesaleSectionsV2Dto,
+  ) {
+    return this.productWholesaleService.tskProductWholesaleSectionsV2(
+      dataJsonDto,
+    );
+  }
 }

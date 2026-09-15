@@ -31,6 +31,7 @@ import { ProductManagerModule } from 'src/product-manager/product-manager.module
 import { ProductPdvModule } from 'src/product-pdv/product-pdv.module';
 import { ProductUpdateModule } from 'src/product-update/product-update.module';
 import { ProductWebModule } from 'src/product-web/product-web.module';
+import { ProductWholesaleModule } from 'src/product-wholesale/product-wholesale.module';
 import { PtypeModule } from 'src/ptype/ptype.module';
 import { PurchasingModule } from 'src/purchasing/purchasing.module';
 import { SellerModule } from 'src/seller/seller.module';
@@ -73,6 +74,7 @@ import { AppService } from './app.service';
     TaxonomyRelModule,
     GeneralCallModule,
     ProductWebModule,
+    ProductWholesaleModule,
     TaxonomyWebModule,
     CheckModule,
     AppConfigModule,
