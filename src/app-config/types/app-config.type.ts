@@ -23,7 +23,7 @@ export interface TblAppConfigFindAll extends RowDataPacket {
   SECTION_JSON: string | null;
   BRAND_JSON: string | null;
   COMPANY_JSON: string | null;
-  PAGAMENT_METHOD_JSON: string | null;
+  PAYMENT_METHOD_JSON: string | null;
   HOME_CATEGORY_JSON: string | null;
   HOME_MENU_JSON: string | null;
   HOME_HERO: string | null;
