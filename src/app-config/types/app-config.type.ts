@@ -29,23 +29,6 @@ export interface TblAppConfigFindAll extends RowDataPacket {
   HOME_HERO: string | null;
   UPDATEDAT: Date | null;
 }
-
-export interface TblAppConfigMenu extends RowDataPacket {
-  ID: number;
-  PARENT_ID: number | null;
-  NAME: string | null;
-  SLUG: string | null;
-  URL: string | null;
-  TYPE: string | null;
-  ICON: string | null;
-  IMAGE_URL: string | null;
-  CSS_CLASS: string | null;
-  SORT_ORDER: number | null;
-  IS_ACTIVE: number | null;
-  NOTES: string | null;
-  UPDATEDAT: Date | null;
-}
-
 export interface TblAppMenuFindType extends RowDataPacket {
   ID: number;
   APP_ID: number | null;
@@ -64,19 +47,6 @@ export interface TblAppMenuFindType extends RowDataPacket {
   UPDATEDAT: Date | null;
 }
 
-export type SpResultAppConfigFindAllData = [
-  TblAppConfigFindAll[],
-  TblAppConfigMenu[],
-  SpDefaultFeedback[],
-  SpOperationResult,
-];
-
-export type SpResultAppMenuFindTypeData = [
-  TblAppMenuFindType[],
-  SpDefaultFeedback[],
-  SpOperationResult,
-];
-
 export interface TblAppConfigFindId extends RowDataPacket {
   ID: number;
   APP_NAME: string | null;
@@ -91,13 +61,26 @@ export interface TblAppConfigFindId extends RowDataPacket {
   UPDATEDAT: Date | null;
 }
 
-export type SpResultAppConfigFindIdData = [
-  TblAppConfigFindId[],
+export type SpResultRecordCreateType = [SpDefaultFeedback[], SpOperationResult];
+export type SpResultRecordUpdateType = [SpDefaultFeedback[], SpOperationResult];
+export type SpResultRecordDeleteType = [SpDefaultFeedback[], SpOperationResult];
+
+
+export type SpResultAppConfigFindAllData = [
+  TblAppConfigFindAll[],
   SpDefaultFeedback[],
   SpOperationResult,
 ];
 
-export type SpResultAppConfigUpdateData = [
+export type SpResultAppMenuFindTypeData = [
+  TblAppMenuFindType[],
+  SpDefaultFeedback[],
+  SpOperationResult,
+];
+
+
+export type SpResultAppConfigFindIdData = [
+  TblAppConfigFindId[],
   SpDefaultFeedback[],
   SpOperationResult,
 ];
