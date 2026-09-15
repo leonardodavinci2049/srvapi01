@@ -1,10 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { processProcedureResultMutation } from 'src/core/process-result/process-procedure-result.mutation';
 import { processProcedureResultMultiQuery } from 'src/core/process-result/process-procedure-result.query';
-import {
-  MESSAGES,
-  RESPONSE_CODES,
-} from 'src/core/utils/constants/globalConstants';
+import { MESSAGES } from 'src/core/utils/constants/globalConstants';
 import { ResultModel } from 'src/core/utils/result.model';
 import { DatabaseService } from 'src/database/database.service';
 import { AppConfigFindAllV2Dto } from './dto/app-config-find-all-v2.dto';
@@ -40,37 +37,10 @@ export class AppConfigService {
         ['App Config'],
         'Configurações da aplicação não encontradas',
       );
-    } catch {
-      return new ResultModel(
-        RESPONSE_CODES.INTERNAL_ERROR,
-        MESSAGES.UNKNOWN_ERROR,
-        0,
-        [],
-      );
-    }
-  }
-
-  async taskAppMenuFindTypeV2(dataJsonDto: AppMenuFindTypeV2Dto) {
-    try {
-      const { queryString, queryParams } = AppMenuFindTypeV2Query(dataJsonDto);
-
-      const resultData = (await this.dbService.selectExecute(
-        queryString,
-        queryParams,
-      )) as unknown as SpResultAppMenuFindTypeData;
-
-      return processProcedureResultMultiQuery(
-        resultData,
-        ['App Menu'],
-        'Menus da aplicação não encontrados',
-      );
-    } catch {
-      return new ResultModel(
-        RESPONSE_CODES.INTERNAL_ERROR,
-        MESSAGES.UNKNOWN_ERROR,
-        0,
-        [],
-      );
+    } catch (err) {
+      const errorMessage =
+        err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
+      return new ResultModel(100404, errorMessage, 0, []);
     }
   }
 
@@ -88,15 +58,34 @@ export class AppConfigService {
         ['App Config'],
         'Configuração da aplicação não encontrada',
       );
-    } catch {
-      return new ResultModel(
-        RESPONSE_CODES.INTERNAL_ERROR,
-        MESSAGES.UNKNOWN_ERROR,
-        0,
-        [],
-      );
+    } catch (err) {
+      const errorMessage =
+        err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
+      return new ResultModel(100404, errorMessage, 0, []);
     }
   }
+  
+  async taskAppMenuFindTypeV2(dataJsonDto: AppMenuFindTypeV2Dto) {
+    try {
+      const { queryString, queryParams } = AppMenuFindTypeV2Query(dataJsonDto);
+
+      const resultData = (await this.dbService.selectExecute(
+        queryString,
+        queryParams,
+      )) as unknown as SpResultAppMenuFindTypeData;
+
+      return processProcedureResultMultiQuery(
+        resultData,
+        ['App Menu'],
+        'Menus da aplicação não encontrados',
+      );
+    } catch (err) {
+      const errorMessage =
+        err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
+      return new ResultModel(100404, errorMessage, 0, []);
+    }
+  }
+
 
   async taskAppConfigUpdGeneralFieldV2(
     dataJsonDto: AppConfigUpdGeneralFieldV2Dto,
