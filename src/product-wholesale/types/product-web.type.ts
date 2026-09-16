@@ -144,6 +144,22 @@ export interface tbltaxonomyWebRelated extends RowDataPacket {
   LEVEL?: number;
 }
 
+export interface TblProductWholesaleTaxonomyFindMenu extends RowDataPacket {
+  ID_TAXONOMY: number;
+  PARENT_ID: number;
+  TAXONOMIA: string;
+  PATH_IMAGEM: string | null;
+  SLUG: string | null;
+  LEVEL: number | null;
+  ORDEM: number;
+  INATIVO: number;
+  QTY_PRODUCTS: number;
+}
+
+export interface TblProductWholesaleTaxonomyQuantity extends RowDataPacket {
+  QTY_TAXONOMIES: number;
+}
+
 export type SpResultRecordCreateType = [SpDefaultFeedback[], SpOperationResult];
 export type SpResultRecordUpdateType = [SpDefaultFeedback[], SpOperationResult];
 export type SpResultRecordDeleteType = [SpDefaultFeedback[], SpOperationResult];
@@ -164,6 +180,13 @@ export type SpProductWebFindDataType = [
 
 export type SpProductWebSectionsDataType = [
   tblProductWebSections[],
+  SpDefaultFeedback[],
+  SpOperationResult,
+];
+
+export type SpProductWholesaleTaxonomyFindMenuDataType = [
+  TblProductWholesaleTaxonomyFindMenu[],
+  TblProductWholesaleTaxonomyQuantity[],
   SpDefaultFeedback[],
   SpOperationResult,
 ];
