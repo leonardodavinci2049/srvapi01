@@ -4,6 +4,7 @@ import { AuthGuard } from 'src/core/guards/auth.guard';
 import { ProductWholesaleFindAllV2Dto } from './dto/product-wholesale-find-all-v2.dto';
 import { ProductWholesaleFindIdV2Dto } from './dto/product-wholesale-find-id-v2.dto';
 import { ProductWholesaleSectionsV2Dto } from './dto/product-wholesale-sections-v2.dto';
+import { ProductWholesaleTaxonomyFindIdV2Dto } from './dto/product-wholesale-taxonomy-find-id-v2.dto';
 import { ProductWholesaleTaxonomyFindMenuV2Dto } from './dto/product-wholesale-taxonomy-find-menu-v2.dto';
 import { ProductWholesaleService } from './product-wholesale.service';
 
@@ -60,6 +61,16 @@ export class ProductWholesaleController {
     @Body() dataJsonDto: ProductWholesaleTaxonomyFindMenuV2Dto,
   ) {
     return this.productWholesaleService.tskProductWholesaleTaxonomyFindMenuV2(
+      dataJsonDto,
+    );
+  }
+
+  @UseGuards(AuthGuard)
+  @Post('v2/product-wholesale-taxonomy-find-id')
+  productWholesaleTaxonomyFindIdV2(
+    @Body() dataJsonDto: ProductWholesaleTaxonomyFindIdV2Dto,
+  ) {
+    return this.productWholesaleService.tskProductWholesaleTaxonomyFindIdV2(
       dataJsonDto,
     );
   }

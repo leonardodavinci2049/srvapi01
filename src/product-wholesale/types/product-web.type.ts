@@ -160,6 +160,34 @@ export interface TblProductWholesaleTaxonomyQuantity extends RowDataPacket {
   QTY_TAXONOMIES: number;
 }
 
+export interface TblProductWholesaleTaxonomyFindId extends RowDataPacket {
+  ID_TAXONOMY: number;
+  PARENT_ID: number | null;
+  TAXONOMIA: string | null;
+  PARENT_CATEGORY: string | null;
+  PATH_IMAGEM: string | null;
+  SLUG: string | null;
+  LEVEL: number | null;
+  ORDEM: number | null;
+  ID_IMAGEM: number | null;
+  QT_RECORDS: number;
+  INATIVO: number | null;
+  META_TITLE: string | null;
+  META_DESCRIPTION: string | null;
+  ANOTACOES: string | null;
+  CREATEDAT: Date | null;
+  UPDATEDAT: Date | null;
+}
+
+export interface TblProductWholesaleTaxonomyRelated extends RowDataPacket {
+  ID_TAXONOMY: number;
+  TAXONOMIA: string | null;
+  PATH_IMAGEM: string | null;
+  SLUG: string | null;
+  LEVEL: number | null;
+  ORDEM: number | null;
+}
+
 export type SpResultRecordCreateType = [SpDefaultFeedback[], SpOperationResult];
 export type SpResultRecordUpdateType = [SpDefaultFeedback[], SpOperationResult];
 export type SpResultRecordDeleteType = [SpDefaultFeedback[], SpOperationResult];
@@ -187,6 +215,13 @@ export type SpProductWebSectionsDataType = [
 export type SpProductWholesaleTaxonomyFindMenuDataType = [
   TblProductWholesaleTaxonomyFindMenu[],
   TblProductWholesaleTaxonomyQuantity[],
+  SpDefaultFeedback[],
+  SpOperationResult,
+];
+
+export type SpProductWholesaleTaxonomyFindIdDataType = [
+  TblProductWholesaleTaxonomyFindId[],
+  TblProductWholesaleTaxonomyRelated[],
   SpDefaultFeedback[],
   SpOperationResult,
 ];

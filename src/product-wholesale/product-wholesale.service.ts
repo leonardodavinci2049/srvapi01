@@ -6,15 +6,18 @@ import { DatabaseService } from 'src/database/database.service';
 import { ProductWholesaleFindAllV2Dto } from './dto/product-wholesale-find-all-v2.dto';
 import { ProductWholesaleFindIdV2Dto } from './dto/product-wholesale-find-id-v2.dto';
 import { ProductWholesaleSectionsV2Dto } from './dto/product-wholesale-sections-v2.dto';
+import { ProductWholesaleTaxonomyFindIdV2Dto } from './dto/product-wholesale-taxonomy-find-id-v2.dto';
 import { ProductWholesaleTaxonomyFindMenuV2Dto } from './dto/product-wholesale-taxonomy-find-menu-v2.dto';
 import { ProductWholesaleFindAllV2Query } from './query/product-wholesale-find-all-v2.query';
 import { ProductWholesaleFindIdV2Query } from './query/product-wholesale-find-id-v2.query';
 import { ProductWholesaleSectionsV2Query } from './query/product-wholesale-sections-v2.query';
+import { ProductWholesaleTaxonomyFindIdV2Query } from './query/product-wholesale-taxonomy-find-id-v2.query';
 import { ProductWholesaleTaxonomyFindMenuV2Query } from './query/product-wholesale-taxonomy-find-menu-v2.query';
 import {
   SpProductWebFindDataType,
   SpProductWebFindIdDataType,
   SpProductWebSectionsDataType,
+  SpProductWholesaleTaxonomyFindIdDataType,
   SpProductWholesaleTaxonomyFindMenuDataType,
 } from './types/product-web.type';
 
@@ -108,6 +111,30 @@ export class ProductWholesaleService {
         resultData,
         ['Taxonomy find menu wholesale', 'Taxonomy quantity'],
         'Taxonomy find menu wholesale not found',
+      );
+    } catch (err) {
+      const errorMessage =
+        err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
+      return new ResultModel(100404, errorMessage, 0, []);
+    }
+  }
+
+  async tskProductWholesaleTaxonomyFindIdV2(
+    dataJsonDto: ProductWholesaleTaxonomyFindIdV2Dto,
+  ) {
+    try {
+      const { queryString, queryParams } =
+        ProductWholesaleTaxonomyFindIdV2Query(dataJsonDto);
+
+      const resultData = (await this.dbService.selectExecute(
+        queryString,
+        queryParams,
+      )) as unknown as SpProductWholesaleTaxonomyFindIdDataType;
+
+      return processProcedureResultMultiQuery(
+        resultData,
+        ['Taxonomy details wholesale', 'Taxonomy related wholesale'],
+        'Taxonomy details wholesale not found',
       );
     } catch (err) {
       const errorMessage =
