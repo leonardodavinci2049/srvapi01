@@ -8,6 +8,16 @@ Nested instruction files supplement/override this one — read the closest `AGEN
 
 ## Main technologies and dependencies
 
+- **NestJS v11.1.28** (`@nestjs/common`, `@nestjs/core`) for the REST API framework and application lifecycle.
+- **NestJS Platform Express v11.1.28** (`@nestjs/platform-express`) for the HTTP server adapter.
+- **NestJS Config v4.0.4** (`@nestjs/config`) for environment and application configuration.
+- **NestJS Swagger v11.4.6** (`@nestjs/swagger`) for OpenAPI documentation.
+- **NestJS Throttler v6.5.0** (`@nestjs/throttler`) for request rate limiting.
+- **MySQL2 v3.23.2** (`mysql2`) for local DB access through the singleton pool in `DatabaseService`.
+- **Zod v4.4.3** (`zod`) for runtime validation of environment variables and application data.
+- **Biome v2.5.6** (`@biomejs/biome`) for linting and formatting.
+- **TypeScript v6.0.3** (`typescript`) for static typing and compilation.
+
 ## Build and Development Commands
 
 All scripts wrap through `dotenv -e .env` — **never** run `next` directly.
