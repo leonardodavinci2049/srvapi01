@@ -1,25 +1,28 @@
 # AGENTS.md — srvapi01
 
-## Language
-
-- Code, comments, file names, and documentation: US English. User-facing API messages/labels: Brazilian Portuguese.
-
 ## Project
 
 Multi-tenant B2B REST API: NestJS 11, TypeScript (`nodenext`, `strict: false` but `strictNullChecks: true` — avoid introducing new `any`), MySQL/MariaDB via raw SQL + Stored Procedures over `mysql2`, **no ORM**. Package manager: `pnpm`. Trust `package.json`, `biome.json`, `tsconfig.json`, and code over `README.md` (parts are stale, e.g. it mentions ESLint/Prettier; the repo uses Biome).
 
 Nested instruction files supplement/override this one — read the closest `AGENTS.md` first (e.g. `src/brand/AGENTS.md`).
 
-## Git workflow
+## Main technologies and dependencies
 
-- The project follows **git flow**.
-- The source of truth for project versioning is the `"version"` property in `package.json` (e.g. `"version": "1.1.2"`). The patch value must be incremented on each release and assigned to the release name, e.g. `release/1.8.0`, `hotfix/1.8.1`.
-- The base branch is `develop` — never work on `main`.
-- For every requested task that results in file changes, create a feature branch in the current folder based on `develop` before starting.
-- If the task is the implementation of an action plan, ask whether to create a worktree in another folder.
-- If `develop` has uncommitted changes, ask for them to be committed first before starting a new task on a new branch.
+- **NestJS v11.1.28** (`@nestjs/common`, `@nestjs/core`) for the REST API framework and application lifecycle.
+- **NestJS Platform Express v11.1.28** (`@nestjs/platform-express`) for the HTTP server adapter.
+- **NestJS Config v4.0.4** (`@nestjs/config`) for environment and application configuration.
+- **NestJS Swagger v11.4.6** (`@nestjs/swagger`) for OpenAPI documentation.
+- **NestJS Throttler v6.5.0** (`@nestjs/throttler`) for request rate limiting.
+- **MySQL2 v3.23.2** (`mysql2`) for local DB access through the singleton pool in `DatabaseService`.
+- **Zod v4.4.3** (`zod`) for runtime validation of environment variables and application data.
+- **Biome v2.5.6** (`@biomejs/biome`) for linting and formatting.
+- **TypeScript v6.0.3** (`typescript`) for static typing and compilation.
 
-## Commands
+## Build and Development Commands
+
+All scripts wrap through `dotenv -e .env` — **never** run `next` directly.
+
+The port used by the project when running `pnpm dev` is defined by the `APP_PORT` environment variable.
 
 ```bash
 pnpm install
@@ -27,29 +30,42 @@ pnpm run dev              # nest start --watch; port from APP_PORT in .env
 pnpm run build            # compile + type checking; there is NO separate typecheck script
 pnpm run lint:check       # Biome lint (pnpm run lint writes fixes)
 pnpm run format:check     # Biome format (pnpm run format writes)
-pnpm run test             # single file: pnpm run test -- <path/to/file.spec.ts>
-pnpm run test:e2e
+
 ```
 
 - Prefer `:check` variants; use write modes only on task-scope files and review the diff.
 - `dev`, tests, and HTTP checks require a valid `.env` (usually a reachable DB); don't confuse environment failure with code failure.
 - The project currently does not work with tests — don't require test runs as part of task verification. Prefer `pnpm run build`, Biome checks, and authenticated HTTP tests against the development database to validate changes.
 
+## Git workflow
+
+- The project follows **git flow**.
+- The base branch is `develop` — never work on `main`.
+- For every new task that results in file changes, create a feature branch from a clean, up-to-date `develop` before editing files.
+- If the user provides a branch name or task number, use it when it is compatible with the `feature/` prefix (for example, `feature/featr-NNN`).
+- If the user does not provide a branch name or task number, do not stop only to ask for one. Derive a concise, descriptive kebab-case name from the task and create `feature/<task-slug>` (for example, `feature/use-manager-create-services`).
+- Analysis-only work, continuation of an existing feature, or an explicit user instruction to work on the current branch are exceptions to automatic branch creation.
+- If `develop` has uncommitted changes from previous work, do not stash, move, discard, or include them in a new feature. Ask the user to commit or otherwise resolve them before creating the branch.
+- Do not merge, finish, delete, or push branches without explicit user authorization.
+- The source of truth for project versioning is the `"version"` property in `package.json` (e.g. `"version": "1.1.2"`). The patch value must be incremented on each release and assigned to the release name, e.g. `release/1.8.0`, `hotfix/1.8.1`.
+
+## Before committing
+
+1. `pnpm lint` (Biome check — will auto-organize imports)
+2. `pnpm build` (catches type errors — no separate typecheck command)
+
 ## Environment
 
 Variables are Zod-validated at boot in `src/core/config/envs.ts` (fails fast): `APP_API_URL`, `APP_SWAGGER_URL`, `APP_JWT_SECRET`, `APP_PORT`, `API_KEY`, `DATABASE_HOST/PORT/USER/PASSWORD/NAME`. `.env` is gitignored and machine-local. Never expose its values in commands, logs, docs, or reports.
 
-## Architecture
+### Directory and fluxo map
 
 ```text
 HTTP request -> controller -> service -> query -> DatabaseService
                                 |           |
                                 v           v
                          result helpers  MySQL/MariaDB
-```
 
-
-```
 HTTP POST /api/<feature>/v2/<action>
   -> Controller (@UseGuards(AuthGuard), DTO validation)
   -> Service (orchestration, error handling, ResultModel)
@@ -77,7 +93,16 @@ HTTP POST /api/<feature>/v2/<action>
 - Auth: `Authorization: Bearer <API_KEY>` or `x-api-key` header. All business routes are `POST` with JSON bodies validated by `class-validator` DTOs that match the real contract.
 - Preserve field names, types, codes, messages, and result-set shape for existing consumers. Never return raw DB errors, SQL with data, credentials, or stack traces.
 
-
 ## Verification
 
 Proportional to risk: Biome checks on changed files, then as applicable `pnpm run build`, `pnpm run test`, `git diff --check`. Distinguish static checks, unit/E2E tests, and authenticated HTTP tests against the dev DB. If a check fails from a pre-existing issue or unavailable environment, record the command and limitation; don't modify unrelated files to make it pass. Review the task diff before finishing; confirm no secrets leaked.
+
+## Important Constraints
+
+- The default development language is US English. Code comments, error messages, documentation, and file names should use English.
+- User-facing messages, labels, and interface text: Brazilian Portuguese (Brazilian audience).
+- A closer `AGENTS.md`/`AGENTS.override.md` may supplement or override these rules; read the most specific instructions first.
+
+## Communication and Delivery
+
+- After completing a task, suggest one to three related follow-up tasks that represent the natural next steps. Do not execute these additional tasks without my authorization.
