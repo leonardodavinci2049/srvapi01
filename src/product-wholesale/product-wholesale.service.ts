@@ -78,6 +78,9 @@ export class ProductWholesaleService {
       const { queryString, queryParams } =
         ProductWholesaleSectionsV2Query(dataJsonDto);
 
+     //   console.log('queryString', queryString);
+    //   console.log('queryParams', queryParams);
+
       const resultData = (await this.dbService.selectExecute(
         queryString,
         queryParams,
