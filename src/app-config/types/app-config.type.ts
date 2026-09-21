@@ -28,6 +28,7 @@ export interface TblAppConfigFindAll extends RowDataPacket {
   COMPANY_FAQ_JSON: string | null;
   COMPANY_LINKS_JSON: string | null;
   PAYMENT_METHOD_JSON: string | null;
+  HOME_INFO_JSON: string | null;
   HOME_BRAND_JSON: string | null;
   HOME_CATEGORY_JSON: string | null;
   HOME_SECTION_JSON: string | null;
@@ -49,6 +50,7 @@ export interface TblAppConfigFindId extends RowDataPacket {
   COMPANY_FAQ_JSON: string | null;
   COMPANY_LINKS_JSON: string | null;
   PAYMENT_METHOD_JSON: string | null;
+  HOME_INFO_JSON: string | null;
   HOME_BRAND_JSON: string | null;
   HOME_CATEGORY_JSON: string | null;
   HOME_SECTION_JSON: string | null;
