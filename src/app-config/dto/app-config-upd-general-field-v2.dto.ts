@@ -14,13 +14,19 @@ import { EndpointContextDto } from 'src/core/dto/endpoint-context.dto';
 export const APP_CONFIG_UPDATABLE_FIELDS = [
   'APP_NAME',
   'CLIENT_NAME',
-  'SECTION_JSON',
-  'BRAND_JSON',
-  'COMPANY_JSON',
+  'GENERAL_CONFIG_JSON',
+  'COMPANY_INFO_JSON',
+  'COMPANY_ABOUT_JSON',
+  'COMPANY_ADDRESS_JSON',
+  'COMPANY_SEO_JSON',
+  'COMPANY_FAQ_JSON',
+  'COMPANY_LINKS_JSON',
   'PAYMENT_METHOD_JSON',
+  'HOME_BRAND_JSON',
   'HOME_CATEGORY_JSON',
+  'HOME_SECTION_JSON',
   'HOME_MENU_JSON',
-  'HOME_HERO',
+  'HOME_HERO_JSON',
 ] as const;
 
 export type AppConfigUpdatableField =
