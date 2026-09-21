@@ -20,13 +20,20 @@ export interface TblAppConfigFindAll extends RowDataPacket {
   ID: number;
   APP_NAME: string | null;
   CLIENT_NAME: string | null;
-  SECTION_JSON: string | null;
-  BRAND_JSON: string | null;
-  COMPANY_JSON: string | null;
+  GENERAL_CONFIG_JSON: string | null;
+  COMPANY_INFO_JSON: string | null;
+  COMPANY_ABOUT_JSON: string | null;
+  COMPANY_ADDRESS_JSON: string | null;
+  COMPANY_SEO_JSON: string | null;
+  COMPANY_FAQ_JSON: string | null;
+  COMPANY_LINKS_JSON: string | null;
   PAYMENT_METHOD_JSON: string | null;
+  HOME_BRAND_JSON: string | null;
   HOME_CATEGORY_JSON: string | null;
+  HOME_SECTION_JSON: string | null;
   HOME_MENU_JSON: string | null;
-  HOME_HERO: string | null;
+  HOME_HERO_JSON: string | null;
+  IS_ACTIVE: number | null;
   UPDATEDAT: Date | null;
 }
 
@@ -34,13 +41,20 @@ export interface TblAppConfigFindId extends RowDataPacket {
   ID: number;
   APP_NAME: string | null;
   CLIENT_NAME: string | null;
-  SECTION_JSON: string | null;
-  BRAND_JSON: string | null;
-  COMPANY_JSON: string | null;
+  GENERAL_CONFIG_JSON: string | null;
+  COMPANY_INFO_JSON: string | null;
+  COMPANY_ABOUT_JSON: string | null;
+  COMPANY_ADDRESS_JSON: string | null;
+  COMPANY_SEO_JSON: string | null;
+  COMPANY_FAQ_JSON: string | null;
+  COMPANY_LINKS_JSON: string | null;
   PAYMENT_METHOD_JSON: string | null;
+  HOME_BRAND_JSON: string | null;
   HOME_CATEGORY_JSON: string | null;
+  HOME_SECTION_JSON: string | null;
   HOME_MENU_JSON: string | null;
-  HOME_HERO: string | null;
+  HOME_HERO_JSON: string | null;
+  IS_ACTIVE: number | null;
   UPDATEDAT: Date | null;
 }
 
