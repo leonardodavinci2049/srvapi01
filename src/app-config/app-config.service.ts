@@ -53,7 +53,6 @@ export class AppConfigService {
         queryParams,
       )) as unknown as SpResultAppConfigFindIdData;
 
-
       return processProcedureResultMultiQuery(
         resultData,
         ['App Config'],
@@ -65,7 +64,7 @@ export class AppConfigService {
       return new ResultModel(100404, errorMessage, 0, []);
     }
   }
-  
+
   async taskAppMenuFindTypeV2(dataJsonDto: AppMenuFindTypeV2Dto) {
     try {
       const { queryString, queryParams } = AppMenuFindTypeV2Query(dataJsonDto);
@@ -86,7 +85,6 @@ export class AppConfigService {
       return new ResultModel(100404, errorMessage, 0, []);
     }
   }
-
 
   async taskAppConfigUpdGeneralFieldV2(
     dataJsonDto: AppConfigUpdGeneralFieldV2Dto,
