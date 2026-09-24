@@ -19,21 +19,9 @@ export interface SpOperationResult {
 export interface TblAppConfigFindAll extends RowDataPacket {
   ID: number;
   APP_NAME: string | null;
-  CLIENT_NAME: string | null;
-  GENERAL_CONFIG_JSON: string | null;
-  COMPANY_INFO_JSON: string | null;
-  COMPANY_ABOUT_JSON: string | null;
-  COMPANY_ADDRESS_JSON: string | null;
-  COMPANY_SEO_JSON: string | null;
-  COMPANY_FAQ_JSON: string | null;
-  COMPANY_LINKS_JSON: string | null;
-  PAYMENT_METHOD_JSON: string | null;
-  HOME_INFO_JSON: string | null;
-  HOME_BRAND_JSON: string | null;
-  HOME_CATEGORY_JSON: string | null;
-  HOME_SECTION_JSON: string | null;
-  HOME_MENU_JSON: string | null;
-  HOME_HERO_JSON: string | null;
+  DOMINIO: string | null;
+  PATH_IMAGEM: string | null;
+  FLAG_MAINTENANCE: number | null;
   IS_ACTIVE: number | null;
   UPDATEDAT: Date | null;
 }
@@ -41,7 +29,8 @@ export interface TblAppConfigFindAll extends RowDataPacket {
 export interface TblAppConfigFindId extends RowDataPacket {
   ID: number;
   APP_NAME: string | null;
-  CLIENT_NAME: string | null;
+  DOMINIO: string | null;
+  PATH_IMAGEM: string | null;
   GENERAL_CONFIG_JSON: string | null;
   COMPANY_INFO_JSON: string | null;
   COMPANY_ABOUT_JSON: string | null;
@@ -56,8 +45,11 @@ export interface TblAppConfigFindId extends RowDataPacket {
   HOME_SECTION_JSON: string | null;
   HOME_MENU_JSON: string | null;
   HOME_HERO_JSON: string | null;
+  FLAG_MAINTENANCE: number | null;
   IS_ACTIVE: number | null;
+  NOTES: string | null;
   UPDATEDAT: Date | null;
+  CREATEDAT: Date | null;
 }
 
 export interface TblAppMenuFindType extends RowDataPacket {

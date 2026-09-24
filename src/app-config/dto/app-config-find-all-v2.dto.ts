@@ -1,12 +1,29 @@
-import { ApiProperty } from '@nestjs/swagger';
-import { IsNumber } from 'class-validator';
+import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
+import {
+  IsNotEmpty,
+  IsInt,
+  IsOptional,
+  IsString,
+  MaxLength,
+} from 'class-validator';
 
 import { EndpointContextDto } from 'src/core/dto/endpoint-context.dto';
 
 export class AppConfigFindAllV2Dto extends EndpointContextDto {
-  @ApiProperty({ description: 'Customer ID' })
-  @IsNumber()
-  pe_customer_id!: number;
+  @ApiPropertyOptional({
+    description:
+      'Search term: numeric matches ID or APP_NAME, text matches APP_NAME; empty returns all',
+    maxLength: 100,
+  })
+  @IsOptional()
+  @IsString()
+  @MaxLength(100)
+  pe_search?: string;
+
+  @ApiProperty({ description: 'Maximum number of records to return' })
+  @IsInt()
+  @IsNotEmpty()
+  pe_limit!: number;
 }
 
 /*
@@ -21,7 +38,8 @@ Sample JSON for testing in body endpoint:
   "pe_user_name": "API Test",
   "pe_user_role": "admin",
   "pe_person_id": 29014,
-  "pe_customer_id": 123
+  "pe_search": "",
+  "pe_limit": 50
 }
 
 */

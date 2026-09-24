@@ -11,6 +11,7 @@ interface AppConfigFindAllV2QueryResult {
     string,
     string,
     number | null,
+    string | null,
     number,
   ];
 }
@@ -26,9 +27,11 @@ export function AppConfigFindAllV2Query(
   const olUserName = dataJsonDto.pe_user_name;
   const olUserRole = dataJsonDto.pe_user_role;
   const olPersonId = dataJsonDto.pe_person_id ?? null;
-  const olCustomerId = dataJsonDto.pe_customer_id;
+  const olSearch = dataJsonDto.pe_search ?? null;
+  const olLimit = dataJsonDto.pe_limit;
 
   const queryString = `call sp_app_config_find_all_v1(
+        ?,
         ?,
         ?,
         ?,
@@ -49,7 +52,8 @@ export function AppConfigFindAllV2Query(
     olUserName,
     olUserRole,
     olPersonId,
-    olCustomerId,
+    olSearch,
+    olLimit,
   ];
 
   return { queryString, queryParams };

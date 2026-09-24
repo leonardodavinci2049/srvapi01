@@ -35,4 +35,4 @@ CREATE TABLE `tbl_produto_filter_log` (
   `QUERYSTRING` text DEFAULT NULL,
   `CREATEDAT` datetime DEFAULT current_timestamp(),
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=759 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=784 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;

@@ -1,11 +1,11 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsNotEmpty, IsNumber } from 'class-validator';
+import { IsInt, IsNotEmpty } from 'class-validator';
 
 import { EndpointContextDto } from 'src/core/dto/endpoint-context.dto';
 
 export class AppConfigFindIdV2Dto extends EndpointContextDto {
   @ApiProperty({ description: 'App configuration ID' })
-  @IsNumber()
+  @IsInt()
   @IsNotEmpty()
   pe_config_id!: number;
 }
