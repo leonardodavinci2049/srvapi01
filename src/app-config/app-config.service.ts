@@ -53,8 +53,6 @@ export class AppConfigService {
         queryParams,
       )) as unknown as SpResultAppConfigFindIdData;
 
-      console.log('queryString', resultData);
-      console.log('queryParams[0]', queryParams);
 
       return processProcedureResultMultiQuery(
         resultData,
