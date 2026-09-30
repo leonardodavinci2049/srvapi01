@@ -32,6 +32,8 @@ export interface TblTaxonomyFindId extends RowDataPacket {
 
   META_TITLE?: string | null;
   META_DESCRIPTION?: string | null;
+  META_KEYWORDS?: string | null;
+  
   ANOTACOES?: string | null;
   CREATEDAT?: string;
   UPDATEDAT?: string;
