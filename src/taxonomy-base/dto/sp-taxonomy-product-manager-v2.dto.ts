@@ -1,6 +1,7 @@
 import { ApiProperty } from '@nestjs/swagger';
 import {
   IsIn,
+  IsInt,
   IsNumber,
   IsOptional,
   IsString,
@@ -15,6 +16,17 @@ export class SpTaxonomyProductManagerV2Dto extends EndpointContextDto {
   @IsString()
   @IsOptional()
   pe_search?: string;
+
+  @ApiProperty({
+    description:
+      'Optional destination to exclude. Enables active bulk candidates: literal search by name, SKU, EAN, reference, model or brand; page size up to 50.',
+    required: false,
+    minimum: 1,
+  })
+  @IsOptional()
+  @IsInt()
+  @Min(1)
+  pe_exclude_taxonomy_id?: number;
 
   @ApiProperty({ description: 'Taxonomy ID; zero selects all taxonomies' })
   @IsNumber()
