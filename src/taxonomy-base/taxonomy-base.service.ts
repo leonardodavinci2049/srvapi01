@@ -1,7 +1,11 @@
-import { Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable, Logger } from '@nestjs/common';
 import { processProcedureResultMutation } from 'src/core/process-result/process-procedure-result.mutation';
 import { processProcedureResultMultiQuery } from 'src/core/process-result/process-procedure-result.query';
-import { MESSAGES } from 'src/core/utils/constants/globalConstants';
+import { ResultModel as ProcedureResultModel } from 'src/core/process-result/result.model';
+import {
+  MESSAGES,
+  RESPONSE_CODES,
+} from 'src/core/utils/constants/globalConstants';
 import { ResultModel } from 'src/core/utils/result.model';
 import { DatabaseService } from 'src/database/database.service';
 import { SpTaxonomyFindMenuManagerV3Dto } from './dto/sp-taxonomy-find-menu-manager-v3.dto';
@@ -39,7 +43,23 @@ import {
 
 @Injectable()
 export class TaxonomyBaseService {
+  private readonly logger = new Logger(TaxonomyBaseService.name);
+
   constructor(private readonly dbService: DatabaseService) {}
+
+  private hasCandidatesContract(resultData: unknown[]): boolean {
+    return resultData.some(
+      (resultSet) =>
+        Array.isArray(resultSet) &&
+        resultSet.some(
+          (row: unknown) =>
+            typeof row === 'object' &&
+            row !== null &&
+            'sp_contract_version' in row &&
+            row.sp_contract_version === 1,
+        ),
+    );
+  }
 
   create() {
     return 'This action adds a new taxonomyBase';
@@ -184,24 +204,56 @@ export class TaxonomyBaseService {
   async taskTaxonomyProductManagerV2(
     dataJsonDto: SpTaxonomyProductManagerV2Dto,
   ) {
+    const candidates = dataJsonDto.pe_exclude_taxonomy_id != null;
+    const term = dataJsonDto.pe_search?.trim() ?? '';
+    if (
+      candidates &&
+      (!Number.isInteger(dataJsonDto.pe_system_client_id) ||
+        dataJsonDto.pe_system_client_id < 1 ||
+        term.length < 3 ||
+        term.length > 200 ||
+        dataJsonDto.pe_id_taxonomy !== 0 ||
+        dataJsonDto.pe_flag_no_family !== 0 ||
+        dataJsonDto.pe_flag_no_group !== 0 ||
+        dataJsonDto.pe_flag_no_subgroup !== 0 ||
+        !Number.isInteger(dataJsonDto.pe_qt_registros) ||
+        dataJsonDto.pe_qt_registros > 50 ||
+        !Number.isInteger(dataJsonDto.pe_pagina_id))
+    ) {
+      throw new BadRequestException(
+        'Parâmetros inválidos para a prévia do lote.',
+      );
+    }
     try {
-      const queryString = SpTaxonomyProductManagerV2Query(dataJsonDto);
-
-      // console.log('Query TaxonomyFindMenuV3Query: ', queryString);
-
+      const { queryString, queryParams } =
+        SpTaxonomyProductManagerV2Query(dataJsonDto);
       const resultData = (await this.dbService.selectExecute(
         queryString,
+        queryParams,
       )) as unknown as SpResultTaxonomyProductManagerV2Data;
-
-      return processProcedureResultMultiQuery(
+      if (candidates && !this.hasCandidatesContract(resultData)) {
+        throw new Error('Candidates procedure contract is unavailable');
+      }
+      const result = processProcedureResultMultiQuery(
         resultData,
         ['Taxonomy product manager'],
         'Taxonomy product manager not found',
       );
+      if (candidates) result.info1 = 'taxonomy-bulk-candidates-v1';
+      return result;
     } catch (err) {
-      const errorMessage =
-        err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
-      return new ResultModel(100404, errorMessage, 0, []);
+      this.logger.error(
+        'Failed to load taxonomy products',
+        err instanceof Error ? err.message : 'Unknown error',
+      );
+      return new ProcedureResultModel(
+        candidates ? RESPONSE_CODES.INTERNAL_ERROR : RESPONSE_CODES.NOT_FOUND,
+        MESSAGES.PROCESSING_FAILURE,
+        '0',
+        candidates ? {} : [],
+        0,
+        1,
+      );
     }
   }
 
@@ -228,21 +280,50 @@ export class TaxonomyBaseService {
   }
 
   async taskTaxonomyRelCreateBulkV3(dataJsonDto: SpTaxonomyRelCreateBulkV3Dto) {
+    const candidates = dataJsonDto.pe_eligibility_version === 1;
+    const term = dataJsonDto.pe_filter_keyword.trim();
+    if (
+      candidates &&
+      (!Number.isInteger(dataJsonDto.pe_system_client_id) ||
+        dataJsonDto.pe_system_client_id < 1 ||
+        !Number.isInteger(dataJsonDto.pe_id_taxonomy) ||
+        term.length < 3 ||
+        term.length > 200 ||
+        dataJsonDto.pe_level != null)
+    ) {
+      throw new BadRequestException(
+        'Parâmetros inválidos para vincular produtos em massa.',
+      );
+    }
     try {
-      const queryString = SpTaxonomyRelCreateBulkV3Query(dataJsonDto);
-
+      const { queryString, queryParams } =
+        SpTaxonomyRelCreateBulkV3Query(dataJsonDto);
       const resultData = (await this.dbService.selectExecute(
         queryString,
+        queryParams,
       )) as unknown as SpResultTaxonomyRelCreateBulkV3Data;
-
-      return processProcedureResultMutation(
+      if (candidates && !this.hasCandidatesContract(resultData)) {
+        throw new Error('Bulk candidates procedure contract is unavailable');
+      }
+      const result = processProcedureResultMutation(
         resultData,
         'Taxonomy relationship bulk create failed',
       );
+      if (candidates) result.info1 = 'taxonomy-bulk-candidates-v1';
+      return result;
     } catch (err) {
-      const errorMessage =
-        err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
-      return new ResultModel(100404, errorMessage, 0, []);
+      this.logger.error(
+        'Failed to create taxonomy bulk links',
+        err instanceof Error ? err.message : 'Unknown error',
+      );
+      return new ProcedureResultModel(
+        candidates ? RESPONSE_CODES.INTERNAL_ERROR : RESPONSE_CODES.NOT_FOUND,
+        MESSAGES.PROCESSING_FAILURE,
+        '0',
+        [],
+        0,
+        1,
+      );
     }
   }
 }

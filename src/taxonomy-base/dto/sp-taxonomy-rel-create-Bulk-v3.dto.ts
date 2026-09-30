@@ -1,5 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
 import {
+  IsIn,
   IsNumber,
   IsOptional,
   IsString,
@@ -33,6 +34,16 @@ export class SpTaxonomyRelCreateBulkV3Dto extends EndpointContextDto {
   @Min(0)
   @Max(32767)
   pe_level?: number;
+
+  @ApiProperty({
+    description:
+      'Opt into active bulk candidates v1. Searches six fields, excludes only destination links, derives the level from the taxonomy. Requires the candidates procedure.',
+    required: false,
+    enum: [1],
+  })
+  @IsOptional()
+  @IsIn([1])
+  pe_eligibility_version?: 1;
 }
 
 /*
