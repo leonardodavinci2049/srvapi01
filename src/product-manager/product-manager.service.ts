@@ -1,14 +1,25 @@
 import { Injectable } from '@nestjs/common';
 import { processProcedureResultMultiQuery } from 'src/core/process-result/process-procedure-result.query';
-import { MESSAGES } from 'src/core/utils/constants/globalConstants';
+import { ResultModel as ProcedureResultModel } from 'src/core/process-result/result.model';
+import {
+  MESSAGES,
+  RESPONSE_CODES,
+} from 'src/core/utils/constants/globalConstants';
 import { ResultModel } from 'src/core/utils/result.model';
 import { DatabaseService } from 'src/database/database.service';
 import { ProductFindManagerAllV2Dto } from './dto/product-find-manager-all-v2.dto';
 import { ProductFindManagerIdV2Dto } from './dto/product-find-manager-id-v2.dto';
 import { ProductFindManagerSearchV2Dto } from './dto/product-find-manager-search.dto';
+import { ProductFindTaxonomyCandidatesV2Dto } from './dto/product-find-taxonomy-candidates-v2.dto';
+import { ProductFindTaxonomyIdV2Dto } from './dto/product-find-taxonomy-id-v2.dto';
+import { ProductFindTaxonomyOutsideAllV2Dto } from './dto/product-find-taxonomy-outside-all-v2.dto';
 import { ProductFindManagerAllV2Query } from './query/product-find-manager-all-v2.query';
 import { ProductFindManagerIdV2Query } from './query/product-find-manager-id-v2.query';
 import { ProductFindManagerSearchV2Query } from './query/product-find-manager-search.query';
+import { ProductFindTaxonomyCandidatesV2Query } from './query/product-find-taxonomy-candidates-v2.query';
+import { ProductFindTaxonomyIdV2Query } from './query/product-find-taxonomy-id-v2.query';
+import { ProductFindTaxonomyOutsideAllV2Query } from './query/product-find-taxonomy-outside-all-v2.query';
+import { SpResultProductFindTaxonomyData } from './types/product-find-taxonomy-v2.type';
 import {
   SpResultProductFindManagerAllData,
   SpResultProductFindManagerIdData,
@@ -161,6 +172,93 @@ export class ProductManagerService {
       const errorMessage =
         err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
       return new ResultModel(100404, errorMessage, 0, []);
+    }
+  }
+
+  async taskProductFindTaxonomyIdV2(
+    dataJsonDto: ProductFindTaxonomyIdV2Dto,
+  ): Promise<ProcedureResultModel> {
+    try {
+      const { queryString, queryParams } =
+        ProductFindTaxonomyIdV2Query(dataJsonDto);
+
+      const resultData = (await this.dbService.selectExecute(
+        queryString,
+        queryParams,
+      )) as unknown as SpResultProductFindTaxonomyData;
+
+      return processProcedureResultMultiQuery(
+        resultData,
+        ['Product Manager find Taxonomy Id'],
+        MESSAGES.SEARCH_NO_RESULTS,
+      );
+    } catch {
+      return new ProcedureResultModel(
+        RESPONSE_CODES.INTERNAL_ERROR,
+        MESSAGES.UNKNOWN_ERROR,
+        '0',
+        { 'Product Manager find Taxonomy Id': [] },
+        0,
+        1,
+      );
+    }
+  }
+
+  async taskProductFindTaxonomyOutsideAllV2(
+    dataJsonDto: ProductFindTaxonomyOutsideAllV2Dto,
+  ): Promise<ProcedureResultModel> {
+    try {
+      const { queryString, queryParams } =
+        ProductFindTaxonomyOutsideAllV2Query(dataJsonDto);
+
+      const resultData = (await this.dbService.selectExecute(
+        queryString,
+        queryParams,
+      )) as unknown as SpResultProductFindTaxonomyData;
+
+      return processProcedureResultMultiQuery(
+        resultData,
+        ['Product Manager find Taxonomy Outside All'],
+        MESSAGES.SEARCH_NO_RESULTS,
+      );
+    } catch {
+      return new ProcedureResultModel(
+        RESPONSE_CODES.INTERNAL_ERROR,
+        MESSAGES.UNKNOWN_ERROR,
+        '0',
+        { 'Product Manager find Taxonomy Outside All': [] },
+        0,
+        1,
+      );
+    }
+  }
+
+  async taskProductFindTaxonomyCandidatesV2(
+    dataJsonDto: ProductFindTaxonomyCandidatesV2Dto,
+  ): Promise<ProcedureResultModel> {
+    try {
+      const { queryString, queryParams } =
+        ProductFindTaxonomyCandidatesV2Query(dataJsonDto);
+
+      const resultData = (await this.dbService.selectExecute(
+        queryString,
+        queryParams,
+      )) as unknown as SpResultProductFindTaxonomyData;
+
+      return processProcedureResultMultiQuery(
+        resultData,
+        ['Product Manager find Taxonomy Candidates'],
+        MESSAGES.SEARCH_NO_RESULTS,
+      );
+    } catch {
+      return new ProcedureResultModel(
+        RESPONSE_CODES.INTERNAL_ERROR,
+        MESSAGES.UNKNOWN_ERROR,
+        '0',
+        { 'Product Manager find Taxonomy Candidates': [] },
+        0,
+        1,
+      );
     }
   }
 }
