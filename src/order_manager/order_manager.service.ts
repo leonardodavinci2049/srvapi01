@@ -49,6 +49,8 @@ export class OrderManagerService {
         queryParams,
       )) as unknown as SpResultOrdersManagerFindIdData;
 
+   //console.log('resultData: ', resultData);
+
       return processProcedureResultMultiQuery(
         resultData,
         [
