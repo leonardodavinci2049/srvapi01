@@ -48,10 +48,14 @@ export class AppConfigService {
     try {
       const { queryString, queryParams } = AppConfigFindIdV2Query(dataJsonDto);
 
+      //console.log('queryParams: ', queryParams);
+
       const resultData = (await this.dbService.selectExecute(
         queryString,
         queryParams,
       )) as unknown as SpResultAppConfigFindIdData;
+
+      // console.log('resultData: ', resultData);
 
       return processProcedureResultMultiQuery(
         resultData,

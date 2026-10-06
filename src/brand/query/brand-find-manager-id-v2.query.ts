@@ -11,7 +11,7 @@ export function BrandFindManagerIdV2Query(
   const queryString = `
     SELECT
       tbl_produto_marca.ID_MARCA,     
-      tbl_produto_marca.MARCA, 
+      COALESCE(NULLIF(tbl_produto_marca.MARCA, ''), tbl_produto_marca.NOME) AS MARCA, 
       tbl_produto_marca.SLUG,
       tbl_produto_marca.PATH_IMAGEM,
       tbl_produto_marca.ANOTACOES,          
