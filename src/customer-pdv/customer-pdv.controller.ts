@@ -1,10 +1,10 @@
 import { Controller, Get, Post} from '@nestjs/common';
-import { CostumerPdvService } from './costumer-pdv.service';
+import { customerPdvService } from './customer-pdv.service';
 
 
-@Controller('costumer-pdv')
-export class CostumerPdvController {
-  constructor(private readonly costumerPdvService: CostumerPdvService) {}
+@Controller('customer-pdv')
+export class customerPdvController {
+  constructor(private readonly customerPdvService: customerPdvService) {}
 
   @Get()
   getHello() {
@@ -16,13 +16,13 @@ export class CostumerPdvController {
       timestamp: new Date().toISOString(),
       endpoints: {
         base: '/api',
-        auth: '/api/costumer-pdv',
+        auth: '/api/customer-pdv',
       },
     };
   }
 
   @Post()
   create() {
-    return this.costumerPdvService.create();
+    return this.customerPdvService.create();
   }
 }
