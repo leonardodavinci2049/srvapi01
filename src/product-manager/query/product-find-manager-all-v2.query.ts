@@ -72,6 +72,6 @@ export function ProductFindManagerAllV2Query(
         ${olColumnId},
         ${olOrderId}
       ) `;
-
-  return queryString;
+       
+  return queryString;  
 }
