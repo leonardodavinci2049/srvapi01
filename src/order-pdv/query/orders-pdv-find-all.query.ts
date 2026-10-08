@@ -1,0 +1,108 @@
+import { OrdersPdvFindAllDto } from '../dto/orders-pdv-find-all.dto';
+
+interface OrdersPdvFindAllQueryResult {
+  queryString: string;
+  queryParams: [
+    number,
+    number,
+    number,
+    string,
+    string,
+    string,
+    string,
+    number | null,
+    number | null,
+    number | null,
+    string | null,
+    number | null,
+    number | null,
+    number | null,
+    number | null,
+    number | null,
+    string,
+    string,
+    number | null,
+    number | null,
+    number | null,
+    number | null,
+  ];
+}
+
+export function OrdersPdvFindAllQuery(
+  dataJsonDto: OrdersPdvFindAllDto,
+): OrdersPdvFindAllQueryResult {
+  const olAppId = dataJsonDto.pe_app_id;
+  const olSystemClientId = dataJsonDto.pe_system_client_id;
+  const olStoreId = dataJsonDto.pe_store_id;
+  const olOrganizationId = dataJsonDto.pe_organization_id;
+  const olUserId = dataJsonDto.pe_user_id;
+  const olUserName = dataJsonDto.pe_user_name;
+  const olUserRole = dataJsonDto.pe_user_role;
+  const olPersonId = dataJsonDto.pe_person_id ?? null;
+  const olCustomerId = dataJsonDto.pe_customer_id ?? null;
+  const olSellerId = dataJsonDto.pe_seller_id ?? null;
+  const olSearch = dataJsonDto.pe_search ?? null;
+  const olOrderStatusId = dataJsonDto.pe_order_status_id ?? null;
+  const olFinancialStatusId = dataJsonDto.pe_financial_status_id ?? null;
+  const olDeliveryStatusId = dataJsonDto.pe_delivery_status_id ?? null;
+  const olLocationId = dataJsonDto.pe_location_id ?? null;
+  const olFlagOperationDate = dataJsonDto.pe_flag_operation_date ?? null;
+  const olStartDate = dataJsonDto.pe_start_date;
+  const olEndDate = dataJsonDto.pe_end_date;
+  const olRecordsPerPage = dataJsonDto.pe_records_per_page ?? null;
+  const olPageId = dataJsonDto.pe_page_id ?? null;
+  const olSortColumnId = dataJsonDto.pe_sort_column_id ?? null;
+  const olSortOrderId = dataJsonDto.pe_sort_order_id ?? null;
+
+  const queryString = `call sp_orders_pdv_find_all_v2(
+    ?,
+    ?,
+    ?,
+    ?,
+    ?,
+    ?,
+    ?,
+    ?,
+    ?,
+    ?,
+    ?,
+    ?,
+    ?,
+    ?,
+    ?,
+    ?,
+    ?,
+    ?,
+    ?,
+    ?,
+    ?,
+    ?
+  )`;
+
+  const queryParams: OrdersPdvFindAllQueryResult['queryParams'] = [
+    olAppId,
+    olSystemClientId,
+    olStoreId,
+    olOrganizationId,
+    olUserId,
+    olUserName,
+    olUserRole,
+    olPersonId,
+    olCustomerId,
+    olSellerId,
+    olSearch,
+    olOrderStatusId,
+    olFinancialStatusId,
+    olDeliveryStatusId,
+    olLocationId,
+    olFlagOperationDate,
+    olStartDate,
+    olEndDate,
+    olRecordsPerPage,
+    olPageId,
+    olSortColumnId,
+    olSortOrderId,
+  ];
+
+  return { queryString, queryParams };
+}

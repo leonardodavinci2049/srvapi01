@@ -12,6 +12,7 @@ import { CartModule } from 'src/cart/cart.module';
 import { CheckModule } from 'src/check/check.module';
 import { CustomerModule } from 'src/customer/customer.module';
 import { CustomerInlineModule } from 'src/customer-inline/customer-inline.module';
+import { CustomerPdvModule } from 'src/customer-pdv/customer-pdv.module';
 import { CustomerUpdModule } from 'src/customer-upd/customer-upd.module';
 import { EntryModule } from 'src/entry/entry.module';
 import { EntryItemModule } from 'src/entry-item/entry-item.module';
@@ -20,6 +21,7 @@ import { OrderManagerModule } from 'src/order_manager/order_manager.module';
 import { OrderB2bModule } from 'src/order-b2b/order-b2b.module';
 import { OrderItemsModule } from 'src/order-items/order-items.module';
 import { OrderOperationModule } from 'src/order-operation/order-operation.module';
+import { OrderPdvModule } from 'src/order-pdv/order-pdv.module';
 import { OrderReportsModule } from 'src/order-reports/order-reports.module';
 import { OrderSalesModule } from 'src/order-sales/order-sales.module';
 import { OrderUpdModule } from 'src/order-upd/order-upd.module';
@@ -64,6 +66,7 @@ import { AppService } from './app.service';
     PhysicalProductModule,
     CartModule, // Importando o módulo de carrinho
     CustomerModule, // Importando o módulo de clientes
+    CustomerPdvModule,
     CustomerInlineModule, // Importando o módulo de atualização inline de clientes
     CustomerUpdModule,
     EntryModule,
@@ -85,6 +88,7 @@ import { AppService } from './app.service';
     SupplierModule,
     SellerModule,
     OrderItemsModule,
+    OrderPdvModule,
     OrderOperationModule,
     OrderReportsModule,
     OrderSalesModule,
