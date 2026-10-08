@@ -263,7 +263,6 @@ export class EntryService {
     }
   }
 
-  
   async taskEntryUpdGeneralFieldV2(dataJsonDto: EntryUpdGeneralFieldDto) {
     try {
       const { queryString, queryParams } =

@@ -42,7 +42,7 @@ export function OrdersManagerFindAllQuery(
 
   const olCustomerId = dataJsonDto.pe_customer_id ?? null;
   const olSellerId = dataJsonDto.pe_seller_id ?? null;
-  
+
   const olSearch = dataJsonDto.pe_search?.trim() || null;
   const olOrderStatusId = dataJsonDto.pe_order_status_id ?? null;
   const olFinancialStatusId = dataJsonDto.pe_financial_status_id ?? null;

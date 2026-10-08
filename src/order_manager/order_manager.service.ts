@@ -21,8 +21,8 @@ export class OrderManagerService {
       const { queryString, queryParams } =
         OrdersManagerFindAllQuery(dataJsonDto);
 
-     //console.log('queryString: ', queryString);
-     // console.log('queryParams: ', queryParams);
+      //console.log('queryString: ', queryString);
+      // console.log('queryParams: ', queryParams);
 
       const resultData = (await this.dbService.selectExecute(
         queryString,
@@ -51,7 +51,7 @@ export class OrderManagerService {
         queryParams,
       )) as unknown as SpResultOrdersManagerFindIdData;
 
-   //console.log('resultData: ', resultData);
+      //console.log('resultData: ', resultData);
 
       return processProcedureResultMultiQuery(
         resultData,

@@ -40,9 +40,9 @@ export interface TblProductFindManagerAll extends RowDataPacket {
   SLUG: string;
 
   QT_VENDAS_HA_DOIS_MESES: number;
-  QT_VENDAS_MES_ANTERIOR: number; 
-  QT_VENDAS_MES_ATUAL: number; 
-  QT_VENDAS_30_DIAS: number;                              
+  QT_VENDAS_MES_ANTERIOR: number;
+  QT_VENDAS_MES_ATUAL: number;
+  QT_VENDAS_30_DIAS: number;
   QT_VENDAS_HOJE: number;
 
   DATA_ULT_VENDA: string;
@@ -127,9 +127,9 @@ export interface TblProductFindManagerId extends RowDataPacket {
   BRONZE: string;
   ESTOQUE_LOJA: number;
   QT_VENDAS_HA_DOIS_MESES: number;
-  QT_VENDAS_MES_ANTERIOR: number; 
-  QT_VENDAS_MES_ATUAL: number; 
-  QT_VENDAS_30_DIAS: number;                              
+  QT_VENDAS_MES_ANTERIOR: number;
+  QT_VENDAS_MES_ATUAL: number;
+  QT_VENDAS_30_DIAS: number;
   QT_VENDAS_HOJE: number;
   DATA_ULT_VENDA: string;
   TEMPODEGARANTIA_DIA: number;

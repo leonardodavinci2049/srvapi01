@@ -10,7 +10,7 @@ interface CustomerPdvFindAllV2QueryResult {
     string,
     string,
     string,
-    number,
+    number | null,
     number,
     string,
     number,
@@ -42,7 +42,7 @@ export function CustomerPdvFindAllV2Query(
   const olUserId = dataJsonDto.pe_user_id;
   const olUserName = dataJsonDto.pe_user_name;
   const olUserRole = dataJsonDto.pe_user_role;
-  const olCustomerId = dataJsonDto.pe_customer_id;
+  const olPersonId = dataJsonDto.pe_person_id ?? null;
   const olSellerId = dataJsonDto.pe_seller_id;
   const olSearch = dataJsonDto.pe_search;
   const olCategoryId = dataJsonDto.pe_category_id;
@@ -99,7 +99,7 @@ export function CustomerPdvFindAllV2Query(
     olUserId,
     olUserName,
     olUserRole,
-    olCustomerId,
+    olPersonId,
     olSellerId,
     olSearch,
     olCategoryId,

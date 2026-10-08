@@ -25,14 +25,13 @@ export class AppConfigController {
     };
   }
 
-
   @UseGuards(AuthGuard)
   @Post('v2/app-config-find-all')
   appConfigFindAllV2(@Body() dataJsonDto: AppConfigFindAllV2Dto) {
     return this.appConfigService.taskAppConfigFindAllV2(dataJsonDto);
   }
 
-    @UseGuards(AuthGuard)
+  @UseGuards(AuthGuard)
   @Post('v2/app-config-find-id')
   appConfigFindIdV2(@Body() dataJsonDto: AppConfigFindIdV2Dto) {
     return this.appConfigService.taskAppConfigFindIdV2(dataJsonDto);

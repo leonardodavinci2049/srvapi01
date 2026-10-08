@@ -12,7 +12,7 @@ export function TaxonomyUpdateV3Query(
   const olUserRole = dataJsonDto.pe_user_role;
   const olPersonId = dataJsonDto.pe_person_id;
   const olTaxonomyId = dataJsonDto.pe_taxonomy_id;
-  
+
   const olParentId = dataJsonDto.pe_parent_id;
   const olTaxonomyName = dataJsonDto.pe_taxonomy_name;
   const olSlug = dataJsonDto.pe_slug;

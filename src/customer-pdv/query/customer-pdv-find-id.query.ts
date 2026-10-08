@@ -27,8 +27,8 @@ export function CustomerPdvFindIdQuery(
   const olUserName = dataJsonDto.pe_user_name;
   const olUserRole = dataJsonDto.pe_user_role;
   const olPersonId = dataJsonDto.pe_person_id ?? null;
-  const olCustomerId = dataJsonDto.pe_customer_id;
   const olSellerId = dataJsonDto.pe_seller_id;
+  const olCustomerId = dataJsonDto.pe_customer_id;
 
   const queryString = `call sp_customer_pdv_find_id_v2(
     ?,
@@ -52,8 +52,8 @@ export function CustomerPdvFindIdQuery(
     olUserName,
     olUserRole,
     olPersonId,
-    olCustomerId,
     olSellerId,
+    olCustomerId,
   ];
 
   return { queryString, queryParams };
