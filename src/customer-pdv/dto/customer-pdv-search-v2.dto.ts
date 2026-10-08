@@ -3,6 +3,14 @@ import { IsInt, IsString, MaxLength } from 'class-validator';
 import { EndpointContextDto } from 'src/core/dto/endpoint-context.dto';
 
 export class CustomerPdvSearchV2Dto extends EndpointContextDto {
+  @ApiProperty({
+    description:
+      'Seller ID (required equality filter on tbl_pessoa.ID_VENDEDOR; 0 is not all sellers)',
+    example: 5,
+  })
+  @IsInt()
+  pe_seller_id!: number;
+
   @ApiProperty({ description: 'Search term', example: '47723', maxLength: 200 })
   @IsString()
   @MaxLength(200)
@@ -43,6 +51,7 @@ Sample JSON for testing in body endpoint:
   "pe_user_name": "Test User",
   "pe_user_role": "admin",
   "pe_person_id": 1937,
+  "pe_seller_id": 5,
   "pe_search": "47723",
   "pe_qt_registros": 100,
   "pe_pagina_id": 0,

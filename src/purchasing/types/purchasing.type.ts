@@ -47,7 +47,7 @@ export interface TblProductFindManagerAll extends RowDataPacket {
 
   DATA_ULT_VENDA: Date | string | null;
   CRITICALITY_ID: number | null;
-  
+
   CRITICALITY_LEVEL: string | null;
   ESTOQUE_LOJA: number;
   VL_ATACADO: string;

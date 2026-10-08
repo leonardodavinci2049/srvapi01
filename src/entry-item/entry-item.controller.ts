@@ -1,7 +1,5 @@
 import { Body, Controller, Get, Post, UseGuards } from '@nestjs/common';
 import { AuthGuard } from 'src/core/guards/auth.guard';
-import { EntryItemService } from './entry-item.service';
-
 import { EntryItemCreateV2Dto } from './dto/entry-item-create-v2.dto';
 import { EntryItemDeleteV2Dto } from './dto/entry-item-delete-v2.dto';
 import { EntryItemFindAllV2Dto } from './dto/entry-item-find-all-v2.dto';
@@ -17,6 +15,7 @@ import { EntryItemUpdProductCostDto } from './dto/entry-item-upd-product-cost.dt
 import { EntryItemUpdProductPriceDto } from './dto/entry-item-upd-product-price.dto';
 import { EntryItemUpdTaxCodesDto } from './dto/entry-item-upd-tax-codes.dto';
 import { EntryItemUpdTaxRatesDto } from './dto/entry-item-upd-tax-rates.dto';
+import { EntryItemService } from './entry-item.service';
 
 @Controller('entry-item')
 export class EntryItemController {

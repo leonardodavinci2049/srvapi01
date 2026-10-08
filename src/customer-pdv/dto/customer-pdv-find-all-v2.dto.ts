@@ -4,15 +4,9 @@ import { EndpointContextDto } from 'src/core/dto/endpoint-context.dto';
 
 export class CustomerPdvFindAllV2Dto extends EndpointContextDto {
   @ApiProperty({
-    description: 'Customer ID (reserved and unused by this procedure)',
-    example: 1937,
-  })
-  @IsInt()
-  pe_customer_id!: number;
-
-  @ApiProperty({
-    description: 'Seller ID (reserved and unused by this procedure)',
-    example: 0,
+    description:
+      'Seller ID (required equality filter on tbl_pessoa.ID_VENDEDOR; 0 is not all sellers)',
+    example: 5,
   })
   @IsInt()
   pe_seller_id!: number;
@@ -142,8 +136,8 @@ Sample JSON for testing in body endpoint:
   "pe_user_id": "USER001",
   "pe_user_name": "Test User",
   "pe_user_role": "admin",
-  "pe_customer_id": 1937,
-  "pe_seller_id": 0,
+  "pe_person_id": 1937,
+  "pe_seller_id": 5,
   "pe_search": "47723",
   "pe_category_id": 0,
   "pe_client_type": 0,

@@ -1,7 +1,5 @@
 import { Body, Controller, Get, Post, UseGuards } from '@nestjs/common';
 import { AuthGuard } from 'src/core/guards/auth.guard';
-import { EntryService } from './entry.service';
-
 import { EntryCreateV2Dto } from './dto/entry-create-v2.dto';
 import { EntryDeleteV2Dto } from './dto/entry-delete-v2.dto';
 import { EntryFindAllV2Dto } from './dto/entry-find-all-v2.dto';
@@ -15,6 +13,7 @@ import { EntryUpdMainDto } from './dto/entry-upd-main.dto';
 import { EntryUpdNotesDto } from './dto/entry-upd-notes.dto';
 import { EntryUpdSupplierIdDto } from './dto/entry-upd-supplier-id.dto';
 import { EntryUpdTaxRatesDto } from './dto/entry-upd-tax-rates.dto';
+import { EntryService } from './entry.service';
 
 @Controller('entry')
 export class EntryController {

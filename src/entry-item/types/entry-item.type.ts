@@ -46,9 +46,9 @@ export interface TblEntryItemFindAll extends RowDataPacket {
   VL_UNIT_REAL: string;
   VL_FRETE_REAL: string;
   VL_NOTA: number;
-  CAMBIO: number;        
+  CAMBIO: number;
   VL_UNIT_DOLAR: number;
-  VL_FRETE_DOLAR: number; 
+  VL_FRETE_DOLAR: number;
   VL_ICMS: string;
   VL_IPI: string;
   VL_ST: string;
@@ -88,9 +88,9 @@ export interface TblEntryItemFindEntryId extends RowDataPacket {
   VL_UNIT_REAL: string;
   VL_FRETE_REAL: string;
   VL_NOTA: number;
-  CAMBIO: number;        
+  CAMBIO: number;
   VL_UNIT_DOLAR: number;
-  VL_FRETE_DOLAR: number; 
+  VL_FRETE_DOLAR: number;
   ESTOQUE_LOJA: number | null;
   VL_ATACADO: string | null;
   VL_CORPORATIVO: string | null;
@@ -139,9 +139,9 @@ export interface TblEntryItemFindId extends RowDataPacket {
   VL_UNIT_REAL: string;
   VL_FRETE_REAL: string;
   VL_NOTA: number;
-  CAMBIO: number;        
+  CAMBIO: number;
   VL_UNIT_DOLAR: number;
-  VL_FRETE_DOLAR: number; 
+  VL_FRETE_DOLAR: number;
   ESTOQUE_LOJA: number | null;
   VL_ATACADO: string | null;
   VL_CORPORATIVO: string | null;

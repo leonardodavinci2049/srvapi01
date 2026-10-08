@@ -11,6 +11,7 @@ interface CustomerPdvSearchV2QueryResult {
     string,
     string,
     number | null,
+    number,
     string,
     number,
     number,
@@ -30,6 +31,7 @@ export function CustomerPdvSearchV2Query(
   const olUserName = dataJsonDto.pe_user_name;
   const olUserRole = dataJsonDto.pe_user_role;
   const olPersonId = dataJsonDto.pe_person_id ?? null;
+  const olSellerId = dataJsonDto.pe_seller_id;
   const olSearch = dataJsonDto.pe_search;
   const olQtRegistros = dataJsonDto.pe_qt_registros;
   const olPaginaId = dataJsonDto.pe_pagina_id;
@@ -37,6 +39,7 @@ export function CustomerPdvSearchV2Query(
   const olOrdemId = dataJsonDto.pe_ordem_id;
 
   const queryString = `call sp_customer_pdv_search_v2(
+    ?,
     ?,
     ?,
     ?,
@@ -61,6 +64,7 @@ export function CustomerPdvSearchV2Query(
     olUserName,
     olUserRole,
     olPersonId,
+    olSellerId,
     olSearch,
     olQtRegistros,
     olPaginaId,
