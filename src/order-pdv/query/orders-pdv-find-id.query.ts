@@ -1,6 +1,6 @@
-import { OrdersManagerFindIdDto } from '../dto/orders-manager-find-id.dto';
+import { OrdersPdvFindIdDto } from '../dto/orders-pdv-find-id.dto';
 
-interface OrdersManagerFindIdQueryResult {
+interface OrdersPdvFindIdQueryResult {
   queryString: string;
   queryParams: [
     number,
@@ -12,13 +12,15 @@ interface OrdersManagerFindIdQueryResult {
     string,
     number | null,
     number,
+    number,
+    number,
   ];
 }
 
-export function OrdersManagerFindIdQuery(
-  dataJsonDto: OrdersManagerFindIdDto,
-): OrdersManagerFindIdQueryResult {
-  const olAppId = dataJsonDto.pe_app_id ?? 1;
+export function OrdersPdvFindIdQuery(
+  dataJsonDto: OrdersPdvFindIdDto,
+): OrdersPdvFindIdQueryResult {
+  const olAppId = dataJsonDto.pe_app_id;
   const olSystemClientId = dataJsonDto.pe_system_client_id;
   const olStoreId = dataJsonDto.pe_store_id;
   const olOrganizationId = dataJsonDto.pe_organization_id;
@@ -26,21 +28,25 @@ export function OrdersManagerFindIdQuery(
   const olUserName = dataJsonDto.pe_user_name;
   const olUserRole = dataJsonDto.pe_user_role;
   const olPersonId = dataJsonDto.pe_person_id ?? null;
-  const olIdPedido = dataJsonDto.pe_order_id;
+  const olCustomerId = dataJsonDto.pe_customer_id;
+  const olSellerId = dataJsonDto.pe_seller_id;
+  const olOrderId = dataJsonDto.pe_order_id;
 
-  const queryString = `call sp_orders_manager_find_id_v2(
-        ?,
-        ?,
-        ?,
-        ?,
-        ?,
-        ?,
-        ?,
-        ?,
-        ?
-      )`;
+  const queryString = `call sp_orders_pdv_find_id_v2(
+    ?,
+    ?,
+    ?,
+    ?,
+    ?,
+    ?,
+    ?,
+    ?,
+    ?,
+    ?,
+    ?
+  )`;
 
-  const queryParams: OrdersManagerFindIdQueryResult['queryParams'] = [
+  const queryParams: OrdersPdvFindIdQueryResult['queryParams'] = [
     olAppId,
     olSystemClientId,
     olStoreId,
@@ -49,7 +55,9 @@ export function OrdersManagerFindIdQuery(
     olUserName,
     olUserRole,
     olPersonId,
-    olIdPedido,
+    olCustomerId,
+    olSellerId,
+    olOrderId,
   ];
 
   return { queryString, queryParams };

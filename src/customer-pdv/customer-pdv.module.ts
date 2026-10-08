@@ -1,9 +1,11 @@
 import { Module } from '@nestjs/common';
-import { customerPdvService } from './customer-pdv.service';
-import { customerPdvController } from './customer-pdv.controller';
+import { DatabaseModule } from 'src/database/database.module';
+import { CustomerPdvController } from './customer-pdv.controller';
+import { CustomerPdvService } from './customer-pdv.service';
 
 @Module({
-  controllers: [customerPdvController],
-  providers: [customerPdvService],
+  imports: [DatabaseModule],
+  controllers: [CustomerPdvController],
+  providers: [CustomerPdvService],
 })
-export class customerPdvModule {}
+export class CustomerPdvModule {}

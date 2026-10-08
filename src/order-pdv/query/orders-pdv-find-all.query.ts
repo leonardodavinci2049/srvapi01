@@ -1,4 +1,4 @@
-import { OrdersPdvFindAllDto } from "../dto/orders-pdv-find-all.dto";
+import { OrdersPdvFindAllDto } from '../dto/orders-pdv-find-all.dto';
 
 interface OrdersPdvFindAllQueryResult {
   queryString: string;
@@ -31,7 +31,7 @@ interface OrdersPdvFindAllQueryResult {
 export function OrdersPdvFindAllQuery(
   dataJsonDto: OrdersPdvFindAllDto,
 ): OrdersPdvFindAllQueryResult {
-  const olAppId = dataJsonDto.pe_app_id ?? 1;
+  const olAppId = dataJsonDto.pe_app_id;
   const olSystemClientId = dataJsonDto.pe_system_client_id;
   const olStoreId = dataJsonDto.pe_store_id;
   const olOrganizationId = dataJsonDto.pe_organization_id;
@@ -39,11 +39,9 @@ export function OrdersPdvFindAllQuery(
   const olUserName = dataJsonDto.pe_user_name;
   const olUserRole = dataJsonDto.pe_user_role;
   const olPersonId = dataJsonDto.pe_person_id ?? null;
-
   const olCustomerId = dataJsonDto.pe_customer_id ?? null;
   const olSellerId = dataJsonDto.pe_seller_id ?? null;
-  
-  const olSearch = dataJsonDto.pe_search?.trim() || null;
+  const olSearch = dataJsonDto.pe_search ?? null;
   const olOrderStatusId = dataJsonDto.pe_order_status_id ?? null;
   const olFinancialStatusId = dataJsonDto.pe_financial_status_id ?? null;
   const olDeliveryStatusId = dataJsonDto.pe_delivery_status_id ?? null;
@@ -56,30 +54,30 @@ export function OrdersPdvFindAllQuery(
   const olSortColumnId = dataJsonDto.pe_sort_column_id ?? null;
   const olSortOrderId = dataJsonDto.pe_sort_order_id ?? null;
 
-  const queryString = `call sp_orders_Pdv_find_all_v2(
-        ?,
-        ?,
-        ?,
-        ?,
-        ?,
-        ?,
-        ?,
-        ?,
-        ?,
-        ?,
-        ?,
-        ?,
-        ?,
-        ?,
-        ?,
-        ?,
-        ?,
-        ?,
-        ?,
-        ?,
-        ?,
-        ?
-      )`;
+  const queryString = `call sp_orders_pdv_find_all_v2(
+    ?,
+    ?,
+    ?,
+    ?,
+    ?,
+    ?,
+    ?,
+    ?,
+    ?,
+    ?,
+    ?,
+    ?,
+    ?,
+    ?,
+    ?,
+    ?,
+    ?,
+    ?,
+    ?,
+    ?,
+    ?,
+    ?
+  )`;
 
   const queryParams: OrdersPdvFindAllQueryResult['queryParams'] = [
     olAppId,
