@@ -21,8 +21,8 @@ export class OrderManagerService {
       const { queryString, queryParams } =
         OrdersManagerFindAllQuery(dataJsonDto);
 
-      console.log('queryString: ', queryString);
-     console.log('queryParams: ', queryParams);
+     //console.log('queryString: ', queryString);
+     // console.log('queryParams: ', queryParams);
 
       const resultData = (await this.dbService.selectExecute(
         queryString,
