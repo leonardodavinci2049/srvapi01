@@ -1,6 +1,7 @@
 import { Body, Controller, Get, Post, UseGuards } from '@nestjs/common';
 import { AuthGuard } from 'src/core/guards/auth.guard';
 import { CustomerPdvService } from './customer-pdv.service';
+import { CustomerPdvCreateV2Dto } from './dto/customer-pdv-create-v2.dto';
 import { CustomerPdvFindAllV2Dto } from './dto/customer-pdv-find-all-v2.dto';
 import { CustomerPdvFindIdDto } from './dto/customer-pdv-find-id.dto';
 import { CustomerPdvSearchV2Dto } from './dto/customer-pdv-search-v2.dto';
@@ -19,6 +20,12 @@ export class CustomerPdvController {
       timestamp: new Date().toISOString(),
       endpoints: { base: '/api', auth: '/api/customer-pdv' },
     };
+  }
+
+  @UseGuards(AuthGuard)
+  @Post('v2/customer-pdv-create')
+  customerPdvCreateV2(@Body() dataJsonDto: CustomerPdvCreateV2Dto) {
+    return this.service.taskCustomerPdvCreateV2(dataJsonDto);
   }
 
   @UseGuards(AuthGuard)

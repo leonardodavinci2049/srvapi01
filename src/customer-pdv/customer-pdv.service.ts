@@ -1,4 +1,5 @@
 import { Injectable } from '@nestjs/common';
+import { processProcedureResultMutation } from 'src/core/process-result/process-procedure-result.mutation';
 import { processProcedureResultMultiQuery } from 'src/core/process-result/process-procedure-result.query';
 import { ResultModel } from 'src/core/process-result/result.model';
 import {
@@ -6,13 +7,16 @@ import {
   RESPONSE_CODES,
 } from 'src/core/utils/constants/globalConstants';
 import { DatabaseService } from 'src/database/database.service';
+import { CustomerPdvCreateV2Dto } from './dto/customer-pdv-create-v2.dto';
 import { CustomerPdvFindAllV2Dto } from './dto/customer-pdv-find-all-v2.dto';
 import { CustomerPdvFindIdDto } from './dto/customer-pdv-find-id.dto';
 import { CustomerPdvSearchV2Dto } from './dto/customer-pdv-search-v2.dto';
+import { CustomerPdvCreateV2Query } from './query/customer-pdv-create-v2.query';
 import { CustomerPdvFindAllV2Query } from './query/customer-pdv_find-all-v2.query';
 import { CustomerPdvFindIdQuery } from './query/customer-pdv-find-id.query';
 import { CustomerPdvSearchV2Query } from './query/customer-pdv-search-v2.query';
 import {
+  SpResultCustomerPdvCreateData,
   SpResultCustomerPdvFindAllData,
   SpResultCustomerPdvFindIdData,
   SpResultCustomerPdvSearchData,
@@ -21,6 +25,33 @@ import {
 @Injectable()
 export class CustomerPdvService {
   constructor(private readonly dbService: DatabaseService) {}
+
+  async taskCustomerPdvCreateV2(
+    dataJsonDto: CustomerPdvCreateV2Dto,
+  ): Promise<ResultModel> {
+    try {
+      const { queryString, queryParams } =
+        CustomerPdvCreateV2Query(dataJsonDto);
+      const resultData = (await this.dbService.selectExecute(
+        queryString,
+        queryParams,
+      )) as unknown as SpResultCustomerPdvCreateData;
+
+      return processProcedureResultMutation(
+        resultData,
+        'Customer PDV create failed',
+      );
+    } catch {
+      return new ResultModel(
+        RESPONSE_CODES.INTERNAL_ERROR,
+        MESSAGES.UNKNOWN_ERROR,
+        '0',
+        [],
+        0,
+        1,
+      );
+    }
+  }
 
   async taskCustomerPdvFindAllV2(
     dataJsonDto: CustomerPdvFindAllV2Dto,
