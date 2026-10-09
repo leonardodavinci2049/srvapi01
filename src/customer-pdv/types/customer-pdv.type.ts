@@ -133,3 +133,18 @@ export interface CustomerPdvSearchRow extends RowDataPacket {
 export type SpResultCustomerPdvSearchData =
   | [CustomerPdvSearchRow[], SpDefaultFeedback[], ResultSetHeader]
   | SpFeedbackResult;
+
+export interface SpOperationResult {
+  fieldCount: number;
+  affectedRows: number;
+  insertId: number;
+  info: string;
+  serverStatus: number;
+  warningStatus: number;
+  changedRows: number;
+}
+
+export type SpResultCustomerPdvCreateData = [
+  SpDefaultFeedback[],
+  SpOperationResult,
+];
