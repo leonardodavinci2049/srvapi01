@@ -42,8 +42,9 @@ export class DatabaseService {
       user: envs.DATABASE_USER,
       password: envs.DATABASE_PASSWORD,
       waitForConnections: true,
-      connectionLimit: 10,
-      queueLimit: 0,
+      connectionLimit: envs.DATABASE_POOL_CONNECTION_LIMIT,
+      queueLimit: envs.DATABASE_POOL_QUEUE_LIMIT,
+      connectTimeout: envs.DATABASE_CONNECT_TIMEOUT_MS,
     };
 
     this.poolConnection = createPool(config);

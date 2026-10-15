@@ -16,6 +16,23 @@ const envsSchema = z
     DATABASE_USER: z.string().min(1),
     DATABASE_PASSWORD: z.string().min(1),
     DATABASE_NAME: z.string().min(1),
+    DATABASE_POOL_CONNECTION_LIMIT: z.coerce
+      .number()
+      .int()
+      .positive()
+      .default(10),
+    DATABASE_POOL_QUEUE_LIMIT: z
+      .string()
+      .trim()
+      .min(1)
+      .transform(Number)
+      .pipe(z.number().int().nonnegative())
+      .default(100),
+    DATABASE_CONNECT_TIMEOUT_MS: z.coerce
+      .number()
+      .int()
+      .positive()
+      .default(10000),
   })
   .passthrough();
 
@@ -43,4 +60,7 @@ export const envs = {
   DATABASE_USER: envVars.DATABASE_USER,
   DATABASE_PASSWORD: envVars.DATABASE_PASSWORD,
   DATABASE_NAME: envVars.DATABASE_NAME,
+  DATABASE_POOL_CONNECTION_LIMIT: envVars.DATABASE_POOL_CONNECTION_LIMIT,
+  DATABASE_POOL_QUEUE_LIMIT: envVars.DATABASE_POOL_QUEUE_LIMIT,
+  DATABASE_CONNECT_TIMEOUT_MS: envVars.DATABASE_CONNECT_TIMEOUT_MS,
 };
