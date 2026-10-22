@@ -1,9 +1,13 @@
 import { Injectable } from '@nestjs/common';
 import { processProcedureResultMutation } from 'src/core/process-result/process-procedure-result.mutation';
 import { processProcedureResultMultiQuery } from 'src/core/process-result/process-procedure-result.query';
-import { MESSAGES } from 'src/core/utils/constants/globalConstants';
+import {
+  MESSAGES,
+  RESPONSE_CODES,
+} from 'src/core/utils/constants/globalConstants';
 import { ResultModel } from 'src/core/utils/result.model';
 import { DatabaseService } from 'src/database/database.service';
+import { WebhookService } from 'src/webhook/webhook.service';
 
 import { TaxonomyRelCreateV3Dto } from './dto/taxonomy-rel-create-v3.dto';
 import { TaxonomyRelDeleteV3Dto } from './dto/taxonomy-rel-delete-v3.dto';
@@ -19,7 +23,10 @@ import {
 
 @Injectable()
 export class TaxonomyRelService {
-  constructor(private readonly dbService: DatabaseService) {}
+  constructor(
+    private readonly dbService: DatabaseService,
+    private readonly webhookService: WebhookService,
+  ) {}
 
   create() {
     return 'This action adds a new taxonomyRel';
@@ -33,7 +40,23 @@ export class TaxonomyRelService {
         queryString,
       )) as unknown as SpResultRecordCreateType;
 
-      return processProcedureResultMutation(resultData, 'Brand create failed');
+      const result = processProcedureResultMutation(
+        resultData,
+        'Brand create failed',
+      );
+
+      // Notify only after successful persistence; delivery must not delay the response.
+      if (
+        result.statusCode === RESPONSE_CODES.SUCCESS &&
+        result.errorId === 0 &&
+        (result.quantity ?? 0) > 0
+      ) {
+        this.webhookService.notifyTaxonomyAllInBackground(
+          dataJsonDto.pe_system_client_id,
+        );
+      }
+
+      return result;
     } catch (err) {
       const errorMessage =
         err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
@@ -69,7 +92,23 @@ export class TaxonomyRelService {
         queryString,
       )) as unknown as SpResultRecordDeleteType;
 
-      return processProcedureResultMutation(resultData, 'Brand delete failed');
+      const result = processProcedureResultMutation(
+        resultData,
+        'Brand delete failed',
+      );
+
+      // Notify only after successful persistence; delivery must not delay the response.
+      if (
+        result.statusCode === RESPONSE_CODES.SUCCESS &&
+        result.errorId === 0 &&
+        (result.quantity ?? 0) > 0
+      ) {
+        this.webhookService.notifyTaxonomyAllInBackground(
+          dataJsonDto.pe_system_client_id,
+        );
+      }
+
+      return result;
     } catch (err) {
       const errorMessage =
         err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
