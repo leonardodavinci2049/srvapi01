@@ -48,6 +48,11 @@ export class WebhookService {
     });
   }
 
+  /** Fire-and-forget app-config revalidation for request flows. */
+  notifyAppConfigAllInBackground(systemClientId?: number | null): void {
+    this.dispatchInBackground(this.notifyAppConfigAll(systemClientId));
+  }
+
   async notifyTaxonomyAll(
     systemClientId?: number | null,
   ): Promise<WebhookTestTriggerResponse> {
