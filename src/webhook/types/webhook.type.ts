@@ -28,3 +28,9 @@ export interface WebhookTestTriggerResponse {
   message: string;
   results: WebhookDispatchResult[];
 }
+
+/** Supported outbound modules always invalidate their complete cache scope. */
+export interface WebhookRevalidationPayload {
+  readonly module: 'products' | 'app-config' | 'taxonomy';
+  readonly scope: 'all';
+}
