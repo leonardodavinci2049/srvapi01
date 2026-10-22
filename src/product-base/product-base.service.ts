@@ -1,10 +1,14 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Logger } from '@nestjs/common';
 import { processProcedureResultMutation } from 'src/core/process-result/process-procedure-result.mutation';
 import { processProcedureResultMultiQuery } from 'src/core/process-result/process-procedure-result.query';
-import { MESSAGES } from 'src/core/utils/constants/globalConstants';
+import {
+  MESSAGES,
+  RESPONSE_CODES,
+} from 'src/core/utils/constants/globalConstants';
 import { ResultModel } from 'src/core/utils/result.model';
 
 import { DatabaseService } from 'src/database/database.service';
+import { WebhookService } from 'src/webhook/webhook.service';
 
 import { ProductCreateV3Dto } from './dto/product-create-v3.dto';
 import { ProductFindAllV3Dto } from './dto/product-find-all-v3.dto';
@@ -26,7 +30,12 @@ import {
 
 @Injectable()
 export class ProductBaseService {
-  constructor(private readonly dbService: DatabaseService) {}
+  private readonly logger = new Logger(ProductBaseService.name);
+
+  constructor(
+    private readonly dbService: DatabaseService,
+    private readonly webhookService: WebhookService,
+  ) {}
   create() {
     return 'This action adds a new productBase';
   }
@@ -39,10 +48,30 @@ export class ProductBaseService {
         queryString,
       )) as unknown as SpResultRecordCreateType;
 
-      return processProcedureResultMutation(
+      const result = processProcedureResultMutation(
         resultData,
         'Product create failed',
       );
+
+      // Notify only after successful persistence; delivery must not delay the response.
+      if (
+        result.statusCode === RESPONSE_CODES.SUCCESS &&
+        result.errorId === 0 &&
+        (result.quantity ?? 0) > 0
+      ) {
+        void this.webhookService
+          .notifyProductsAll(dataJsonDto.pe_system_client_id)
+          .then((delivery) => {
+            if (!delivery.success) {
+              this.logger.warn('Cache revalidation webhook delivery failed');
+            }
+          })
+          .catch(() => {
+            this.logger.warn('Cache revalidation webhook delivery failed');
+          });
+      }
+
+      return result;
     } catch (err) {
       const errorMessage =
         err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;

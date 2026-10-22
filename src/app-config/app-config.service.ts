@@ -1,10 +1,14 @@
-import { Injectable } from '@nestjs/common';
+import { forwardRef, Inject, Injectable, Logger } from '@nestjs/common';
 import { processProcedureResultMutation } from 'src/core/process-result/process-procedure-result.mutation';
 import { processProcedureResultMultiQuery } from 'src/core/process-result/process-procedure-result.query';
 import { processSqlResultQuery } from 'src/core/process-result/process-sql-result.query';
-import { MESSAGES } from 'src/core/utils/constants/globalConstants';
+import {
+  MESSAGES,
+  RESPONSE_CODES,
+} from 'src/core/utils/constants/globalConstants';
 import { ResultModel } from 'src/core/utils/result.model';
 import { DatabaseService } from 'src/database/database.service';
+import { WebhookService } from 'src/webhook/webhook.service';
 import { AppConfigFindAllV2Dto } from './dto/app-config-find-all-v2.dto';
 import { AppConfigFindIdV2Dto } from './dto/app-config-find-id-v2.dto';
 import { AppConfigFindWebhookIdV2Dto } from './dto/app-config-find-webhook-id-v2.dto';
@@ -25,7 +29,13 @@ import {
 
 @Injectable()
 export class AppConfigService {
-  constructor(private readonly dbService: DatabaseService) {}
+  private readonly logger = new Logger(AppConfigService.name);
+
+  constructor(
+    private readonly dbService: DatabaseService,
+    @Inject(forwardRef(() => WebhookService))
+    private readonly webhookService: WebhookService,
+  ) {}
 
   async taskAppConfigFindAllV2(dataJsonDto: AppConfigFindAllV2Dto) {
     try {
@@ -129,10 +139,30 @@ export class AppConfigService {
         queryParams,
       )) as unknown as SpResultRecordUpdateType;
 
-      return processProcedureResultMutation(
+      const result = processProcedureResultMutation(
         resultData,
         'App config field update failed',
       );
+
+      // Notify only after successful persistence; delivery must not delay the response.
+      if (
+        result.statusCode === RESPONSE_CODES.SUCCESS &&
+        result.errorId === 0 &&
+        (result.quantity ?? 0) > 0
+      ) {
+        void this.webhookService
+          .notifyAppConfigAll(dataJsonDto.pe_system_client_id)
+          .then((delivery) => {
+            if (!delivery.success) {
+              this.logger.warn('Cache revalidation webhook delivery failed');
+            }
+          })
+          .catch(() => {
+            this.logger.warn('Cache revalidation webhook delivery failed');
+          });
+      }
+
+      return result;
     } catch (err) {
       const errorMessage =
         err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
