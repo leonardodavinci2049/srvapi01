@@ -373,7 +373,7 @@ export class TaxonomyBaseService {
         result.errorId === 0 &&
         (result.quantity ?? 0) > 0
       ) {
-        this.webhookService.notifyTaxonomyAllInBackground(
+        this.webhookService.notifyTaxonomyRelInBackground(
           dataJsonDto.pe_system_client_id,
         );
       }

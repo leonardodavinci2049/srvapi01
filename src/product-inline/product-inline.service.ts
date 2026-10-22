@@ -1,9 +1,13 @@
 import { Injectable } from '@nestjs/common';
 import { processProcedureResultMutation } from 'src/core/process-result/process-procedure-result.mutation';
-import { MESSAGES } from 'src/core/utils/constants/globalConstants';
+import {
+  MESSAGES,
+  RESPONSE_CODES,
+} from 'src/core/utils/constants/globalConstants';
 import { ResultModel } from 'src/core/utils/result.model';
 
 import { DatabaseService } from 'src/database/database.service';
+import { WebhookService } from 'src/webhook/webhook.service';
 
 import { ProductUpdInlBrandV3Dto } from './dto/product-upd-inl-brand-v3.dto';
 import { ProductUpdInlDescriptionV3Dto } from './dto/product-upd-inl-description-v3.dto';
@@ -29,7 +33,10 @@ import { SpResultRecordUpdateType } from './types/product-inline.type';
 
 @Injectable()
 export class ProductInlineService {
-  constructor(private readonly dbService: DatabaseService) {}
+  constructor(
+    private readonly dbService: DatabaseService,
+    private readonly webhookService: WebhookService,
+  ) {}
   create() {
     return 'This action adds a new productInline';
   }
@@ -42,10 +49,23 @@ export class ProductInlineService {
         queryString,
       )) as unknown as SpResultRecordUpdateType;
 
-      return processProcedureResultMutation(
+      const result = processProcedureResultMutation(
         resultData,
         'Product update field failed',
       );
+
+      // Notify only after successful persistence; delivery must not delay the response.
+      if (
+        result.statusCode === RESPONSE_CODES.SUCCESS &&
+        result.errorId === 0 &&
+        (result.quantity ?? 0) > 0
+      ) {
+        this.webhookService.notifyProductsAllInBackground(
+          dataJsonDto.pe_system_client_id,
+        );
+      }
+
+      return result;
     } catch (err) {
       const errorMessage =
         err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
@@ -61,7 +81,23 @@ export class ProductInlineService {
         queryString,
       )) as unknown as SpResultRecordUpdateType;
 
-      return processProcedureResultMutation(resultData, 'Brand update failed');
+      const result = processProcedureResultMutation(
+        resultData,
+        'Brand update failed',
+      );
+
+      // Notify only after successful persistence; delivery must not delay the response.
+      if (
+        result.statusCode === RESPONSE_CODES.SUCCESS &&
+        result.errorId === 0 &&
+        (result.quantity ?? 0) > 0
+      ) {
+        this.webhookService.notifyProductsAllInBackground(
+          dataJsonDto.pe_system_client_id,
+        );
+      }
+
+      return result;
     } catch (err) {
       const errorMessage =
         err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
@@ -79,10 +115,23 @@ export class ProductInlineService {
         queryString,
       )) as unknown as SpResultRecordUpdateType;
 
-      return processProcedureResultMutation(
+      const result = processProcedureResultMutation(
         resultData,
         'Description update failed',
       );
+
+      // Notify only after successful persistence; delivery must not delay the response.
+      if (
+        result.statusCode === RESPONSE_CODES.SUCCESS &&
+        result.errorId === 0 &&
+        (result.quantity ?? 0) > 0
+      ) {
+        this.webhookService.notifyProductsAllInBackground(
+          dataJsonDto.pe_system_client_id,
+        );
+      }
+
+      return result;
     } catch (err) {
       const errorMessage =
         err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
@@ -98,7 +147,23 @@ export class ProductInlineService {
         queryString,
       )) as unknown as SpResultRecordUpdateType;
 
-      return processProcedureResultMutation(resultData, 'Name update failed');
+      const result = processProcedureResultMutation(
+        resultData,
+        'Name update failed',
+      );
+
+      // Notify only after successful persistence; delivery must not delay the response.
+      if (
+        result.statusCode === RESPONSE_CODES.SUCCESS &&
+        result.errorId === 0 &&
+        (result.quantity ?? 0) > 0
+      ) {
+        this.webhookService.notifyProductsAllInBackground(
+          dataJsonDto.pe_system_client_id,
+        );
+      }
+
+      return result;
     } catch (err) {
       const errorMessage =
         err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
@@ -114,10 +179,23 @@ export class ProductInlineService {
         queryString,
       )) as unknown as SpResultRecordUpdateType;
 
-      return processProcedureResultMutation(
+      const result = processProcedureResultMutation(
         resultData,
         'Path image update failed',
       );
+
+      // Notify only after successful persistence; delivery must not delay the response.
+      if (
+        result.statusCode === RESPONSE_CODES.SUCCESS &&
+        result.errorId === 0 &&
+        (result.quantity ?? 0) > 0
+      ) {
+        this.webhookService.notifyProductsAllInBackground(
+          dataJsonDto.pe_system_client_id,
+        );
+      }
+
+      return result;
     } catch (err) {
       const errorMessage =
         err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
@@ -135,10 +213,23 @@ export class ProductInlineService {
         queryString,
       )) as unknown as SpResultRecordUpdateType;
 
-      return processProcedureResultMutation(
+      const result = processProcedureResultMutation(
         resultData,
         'Short description update failed',
       );
+
+      // Notify only after successful persistence; delivery must not delay the response.
+      if (
+        result.statusCode === RESPONSE_CODES.SUCCESS &&
+        result.errorId === 0 &&
+        (result.quantity ?? 0) > 0
+      ) {
+        this.webhookService.notifyProductsAllInBackground(
+          dataJsonDto.pe_system_client_id,
+        );
+      }
+
+      return result;
     } catch (err) {
       const errorMessage =
         err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
@@ -154,10 +245,23 @@ export class ProductInlineService {
         queryString,
       )) as unknown as SpResultRecordUpdateType;
 
-      return processProcedureResultMutation(
+      const result = processProcedureResultMutation(
         resultData,
         'Stock min update failed',
       );
+
+      // Notify only after successful persistence; delivery must not delay the response.
+      if (
+        result.statusCode === RESPONSE_CODES.SUCCESS &&
+        result.errorId === 0 &&
+        (result.quantity ?? 0) > 0
+      ) {
+        this.webhookService.notifyProductsAllInBackground(
+          dataJsonDto.pe_system_client_id,
+        );
+      }
+
+      return result;
     } catch (err) {
       const errorMessage =
         err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
@@ -173,7 +277,23 @@ export class ProductInlineService {
         queryString,
       )) as unknown as SpResultRecordUpdateType;
 
-      return processProcedureResultMutation(resultData, 'Stock update failed');
+      const result = processProcedureResultMutation(
+        resultData,
+        'Stock update failed',
+      );
+
+      // Notify only after successful persistence; delivery must not delay the response.
+      if (
+        result.statusCode === RESPONSE_CODES.SUCCESS &&
+        result.errorId === 0 &&
+        (result.quantity ?? 0) > 0
+      ) {
+        this.webhookService.notifyProductsAllInBackground(
+          dataJsonDto.pe_system_client_id,
+        );
+      }
+
+      return result;
     } catch (err) {
       const errorMessage =
         err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
@@ -189,7 +309,23 @@ export class ProductInlineService {
         queryString,
       )) as unknown as SpResultRecordUpdateType;
 
-      return processProcedureResultMutation(resultData, 'Type update failed');
+      const result = processProcedureResultMutation(
+        resultData,
+        'Type update failed',
+      );
+
+      // Notify only after successful persistence; delivery must not delay the response.
+      if (
+        result.statusCode === RESPONSE_CODES.SUCCESS &&
+        result.errorId === 0 &&
+        (result.quantity ?? 0) > 0
+      ) {
+        this.webhookService.notifyProductsAllInBackground(
+          dataJsonDto.pe_system_client_id,
+        );
+      }
+
+      return result;
     } catch (err) {
       const errorMessage =
         err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
@@ -205,10 +341,23 @@ export class ProductInlineService {
         queryString,
       )) as unknown as SpResultRecordUpdateType;
 
-      return processProcedureResultMutation(
+      const result = processProcedureResultMutation(
         resultData,
         'Various update failed',
       );
+
+      // Notify only after successful persistence; delivery must not delay the response.
+      if (
+        result.statusCode === RESPONSE_CODES.SUCCESS &&
+        result.errorId === 0 &&
+        (result.quantity ?? 0) > 0
+      ) {
+        this.webhookService.notifyProductsAllInBackground(
+          dataJsonDto.pe_system_client_id,
+        );
+      }
+
+      return result;
     } catch (err) {
       const errorMessage =
         err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
