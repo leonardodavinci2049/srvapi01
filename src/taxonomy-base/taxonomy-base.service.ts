@@ -88,16 +88,9 @@ export class TaxonomyBaseService {
         result.errorId === 0 &&
         (result.quantity ?? 0) > 0
       ) {
-        void this.webhookService
-          .notifyTaxonomyAll(dataJsonDto.pe_system_client_id)
-          .then((delivery) => {
-            if (!delivery.success) {
-              this.logger.warn('Cache revalidation webhook delivery failed');
-            }
-          })
-          .catch(() => {
-            this.logger.warn('Cache revalidation webhook delivery failed');
-          });
+        this.webhookService.notifyTaxonomyAllInBackground(
+          dataJsonDto.pe_system_client_id,
+        );
       }
 
       return result;
@@ -187,16 +180,9 @@ export class TaxonomyBaseService {
         result.errorId === 0 &&
         (result.quantity ?? 0) > 0
       ) {
-        void this.webhookService
-          .notifyTaxonomyAll(dataJsonDto.pe_system_client_id)
-          .then((delivery) => {
-            if (!delivery.success) {
-              this.logger.warn('Cache revalidation webhook delivery failed');
-            }
-          })
-          .catch(() => {
-            this.logger.warn('Cache revalidation webhook delivery failed');
-          });
+        this.webhookService.notifyTaxonomyAllInBackground(
+          dataJsonDto.pe_system_client_id,
+        );
       }
 
       return result;
@@ -226,16 +212,9 @@ export class TaxonomyBaseService {
         result.errorId === 0 &&
         (result.quantity ?? 0) > 0
       ) {
-        void this.webhookService
-          .notifyTaxonomyAll(dataJsonDto.pe_system_client_id)
-          .then((delivery) => {
-            if (!delivery.success) {
-              this.logger.warn('Cache revalidation webhook delivery failed');
-            }
-          })
-          .catch(() => {
-            this.logger.warn('Cache revalidation webhook delivery failed');
-          });
+        this.webhookService.notifyTaxonomyAllInBackground(
+          dataJsonDto.pe_system_client_id,
+        );
       }
 
       return result;
@@ -265,16 +244,9 @@ export class TaxonomyBaseService {
         result.errorId === 0 &&
         (result.quantity ?? 0) > 0
       ) {
-        void this.webhookService
-          .notifyTaxonomyAll(dataJsonDto.pe_system_client_id)
-          .then((delivery) => {
-            if (!delivery.success) {
-              this.logger.warn('Cache revalidation webhook delivery failed');
-            }
-          })
-          .catch(() => {
-            this.logger.warn('Cache revalidation webhook delivery failed');
-          });
+        this.webhookService.notifyTaxonomyAllInBackground(
+          dataJsonDto.pe_system_client_id,
+        );
       }
 
       return result;
@@ -401,16 +373,9 @@ export class TaxonomyBaseService {
         result.errorId === 0 &&
         (result.quantity ?? 0) > 0
       ) {
-        void this.webhookService
-          .notifyTaxonomyAll(dataJsonDto.pe_system_client_id)
-          .then((delivery) => {
-            if (!delivery.success) {
-              this.logger.warn('Cache revalidation webhook delivery failed');
-            }
-          })
-          .catch(() => {
-            this.logger.warn('Cache revalidation webhook delivery failed');
-          });
+        this.webhookService.notifyTaxonomyAllInBackground(
+          dataJsonDto.pe_system_client_id,
+        );
       }
       return result;
     } catch (err) {

@@ -1,9 +1,13 @@
 import { Injectable } from '@nestjs/common';
 import { processProcedureResultMutation } from 'src/core/process-result/process-procedure-result.mutation';
-import { MESSAGES } from 'src/core/utils/constants/globalConstants';
+import {
+  MESSAGES,
+  RESPONSE_CODES,
+} from 'src/core/utils/constants/globalConstants';
 import { ResultModel } from 'src/core/utils/result.model';
 
 import { DatabaseService } from 'src/database/database.service';
+import { WebhookService } from 'src/webhook/webhook.service';
 import { TaxonomyUpdInlImagePathV3Dto } from './dto/taxonomy-upd-inl-image-path-v3.dto';
 import { TaxonomyUpdInlInactiveV3Dto } from './dto/taxonomy-upd-inl-inactive-v3.dto';
 import { TaxonomyUpdInlNameV3Dto } from './dto/taxonomy-upd-inl-name-v3.dto';
@@ -24,7 +28,10 @@ import { SpResultRecordUpdateType } from './types/taxonomy-inline.type';
 
 @Injectable()
 export class TaxonomyInlineService {
-  constructor(private readonly dbService: DatabaseService) {}
+  constructor(
+    private readonly dbService: DatabaseService,
+    private readonly webhookService: WebhookService,
+  ) {}
   create() {
     return 'This action adds a new taxonomyInline';
   }
@@ -37,10 +44,23 @@ export class TaxonomyInlineService {
         queryString,
       )) as unknown as SpResultRecordUpdateType;
 
-      return processProcedureResultMutation(
+      const result = processProcedureResultMutation(
         resultData,
         'Taxonomy update failed',
       );
+
+      // Notify only after successful persistence; delivery must not delay the response.
+      if (
+        result.statusCode === RESPONSE_CODES.SUCCESS &&
+        result.errorId === 0 &&
+        (result.quantity ?? 0) > 0
+      ) {
+        this.webhookService.notifyTaxonomyAllInBackground(
+          dataJsonDto.pe_system_client_id,
+        );
+      }
+
+      return result;
     } catch (err) {
       const errorMessage =
         err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
@@ -56,10 +76,23 @@ export class TaxonomyInlineService {
         queryString,
       )) as unknown as SpResultRecordUpdateType;
 
-      return processProcedureResultMutation(
+      const result = processProcedureResultMutation(
         resultData,
         'Taxonomy update failed',
       );
+
+      // Notify only after successful persistence; delivery must not delay the response.
+      if (
+        result.statusCode === RESPONSE_CODES.SUCCESS &&
+        result.errorId === 0 &&
+        (result.quantity ?? 0) > 0
+      ) {
+        this.webhookService.notifyTaxonomyAllInBackground(
+          dataJsonDto.pe_system_client_id,
+        );
+      }
+
+      return result;
     } catch (err) {
       const errorMessage =
         err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
@@ -75,10 +108,23 @@ export class TaxonomyInlineService {
         queryString,
       )) as unknown as SpResultRecordUpdateType;
 
-      return processProcedureResultMutation(
+      const result = processProcedureResultMutation(
         resultData,
         'Taxonomy update failed',
       );
+
+      // Notify only after successful persistence; delivery must not delay the response.
+      if (
+        result.statusCode === RESPONSE_CODES.SUCCESS &&
+        result.errorId === 0 &&
+        (result.quantity ?? 0) > 0
+      ) {
+        this.webhookService.notifyTaxonomyAllInBackground(
+          dataJsonDto.pe_system_client_id,
+        );
+      }
+
+      return result;
     } catch (err) {
       const errorMessage =
         err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
@@ -96,10 +142,23 @@ export class TaxonomyInlineService {
         queryString,
       )) as unknown as SpResultRecordUpdateType;
 
-      return processProcedureResultMutation(
+      const result = processProcedureResultMutation(
         resultData,
         'Taxonomy update failed',
       );
+
+      // Notify only after successful persistence; delivery must not delay the response.
+      if (
+        result.statusCode === RESPONSE_CODES.SUCCESS &&
+        result.errorId === 0 &&
+        (result.quantity ?? 0) > 0
+      ) {
+        this.webhookService.notifyTaxonomyAllInBackground(
+          dataJsonDto.pe_system_client_id,
+        );
+      }
+
+      return result;
     } catch (err) {
       const errorMessage =
         err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
@@ -115,10 +174,23 @@ export class TaxonomyInlineService {
         queryString,
       )) as unknown as SpResultRecordUpdateType;
 
-      return processProcedureResultMutation(
+      const result = processProcedureResultMutation(
         resultData,
         'Taxonomy update failed',
       );
+
+      // Notify only after successful persistence; delivery must not delay the response.
+      if (
+        result.statusCode === RESPONSE_CODES.SUCCESS &&
+        result.errorId === 0 &&
+        (result.quantity ?? 0) > 0
+      ) {
+        this.webhookService.notifyTaxonomyAllInBackground(
+          dataJsonDto.pe_system_client_id,
+        );
+      }
+
+      return result;
     } catch (err) {
       const errorMessage =
         err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
@@ -134,10 +206,23 @@ export class TaxonomyInlineService {
         queryString,
       )) as unknown as SpResultRecordUpdateType;
 
-      return processProcedureResultMutation(
+      const result = processProcedureResultMutation(
         resultData,
         'Taxonomy update failed',
       );
+
+      // Notify only after successful persistence; delivery must not delay the response.
+      if (
+        result.statusCode === RESPONSE_CODES.SUCCESS &&
+        result.errorId === 0 &&
+        (result.quantity ?? 0) > 0
+      ) {
+        this.webhookService.notifyTaxonomyAllInBackground(
+          dataJsonDto.pe_system_client_id,
+        );
+      }
+
+      return result;
     } catch (err) {
       const errorMessage =
         err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
@@ -155,10 +240,23 @@ export class TaxonomyInlineService {
         queryString,
       )) as unknown as SpResultRecordUpdateType;
 
-      return processProcedureResultMutation(
+      const result = processProcedureResultMutation(
         resultData,
         'Taxonomy update failed',
       );
+
+      // Notify only after successful persistence; delivery must not delay the response.
+      if (
+        result.statusCode === RESPONSE_CODES.SUCCESS &&
+        result.errorId === 0 &&
+        (result.quantity ?? 0) > 0
+      ) {
+        this.webhookService.notifyTaxonomyAllInBackground(
+          dataJsonDto.pe_system_client_id,
+        );
+      }
+
+      return result;
     } catch (err) {
       const errorMessage =
         err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
@@ -174,10 +272,23 @@ export class TaxonomyInlineService {
         queryString,
       )) as unknown as SpResultRecordUpdateType;
 
-      return processProcedureResultMutation(
+      const result = processProcedureResultMutation(
         resultData,
         'Taxonomy update failed',
       );
+
+      // Notify only after successful persistence; delivery must not delay the response.
+      if (
+        result.statusCode === RESPONSE_CODES.SUCCESS &&
+        result.errorId === 0 &&
+        (result.quantity ?? 0) > 0
+      ) {
+        this.webhookService.notifyTaxonomyAllInBackground(
+          dataJsonDto.pe_system_client_id,
+        );
+      }
+
+      return result;
     } catch (err) {
       const errorMessage =
         err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;

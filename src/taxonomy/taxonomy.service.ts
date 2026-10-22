@@ -3,6 +3,7 @@ import { MESSAGES } from 'src/core/utils/constants/globalConstants';
 import { resultQueryData } from 'src/core/utils/globalResult/global.result';
 import { ResultModel } from 'src/core/utils/result.model';
 import { DatabaseService } from 'src/database/database.service';
+import { WebhookService } from 'src/webhook/webhook.service';
 import { TaxonomyCreateDto } from './dto/taxonomy-create.dto';
 import { TaxonomyDeleteDto } from './dto/taxonomy-delete.dto';
 import { TaxonomyFindDto } from './dto/taxonomy-find.dto';
@@ -49,7 +50,10 @@ import { buildHierarchy } from './utils/build-hierarchy.util';
 
 @Injectable()
 export class TaxonomyService {
-  constructor(private readonly dbService: DatabaseService) {}
+  constructor(
+    private readonly dbService: DatabaseService,
+    private readonly webhookService: WebhookService,
+  ) {}
 
   async tskTaxonomyCreateV2(dataJsonDto: TaxonomyCreateDto) {
     try {
@@ -68,6 +72,13 @@ export class TaxonomyService {
         //TODO: Send instructions by email or WhatsApp
       }
       const Feedback = DefaultFeedback[0]?.sp_message || '';
+
+      // Notify clients only after a successful persistence; delivery must not delay the response.
+      if (errorId === 0 && recordId > 0) {
+        this.webhookService.notifyTaxonomyAllInBackground(
+          dataJsonDto.pe_system_client_id,
+        );
+      }
 
       return resultQueryData<SpResultRecordCreateType>(
         0,
@@ -102,6 +113,13 @@ export class TaxonomyService {
         //TODO: Send instructions by email or WhatsApp
       }
       const Feedback = DefaultFeedback[0]?.sp_message || '';
+
+      // Notify clients only after a successful persistence; delivery must not delay the response.
+      if (errorId === 0 && recordId > 0) {
+        this.webhookService.notifyTaxonomyAllInBackground(
+          dataJsonDto.pe_system_client_id,
+        );
+      }
 
       return resultQueryData<SpResultRecordCreateType>(
         0,
@@ -354,6 +372,13 @@ export class TaxonomyService {
       }
       const Feedback = DefaultFeedback[0]?.sp_message || '';
 
+      // Notify clients only after a successful persistence; delivery must not delay the response.
+      if (errorId === 0 && recordId > 0) {
+        this.webhookService.notifyTaxonomyAllInBackground(
+          dataJsonDto.pe_system_client_id,
+        );
+      }
+
       return resultQueryData<SpResultRecordUpdateType>(
         0,
         recordId,
@@ -387,6 +412,13 @@ export class TaxonomyService {
         //TODO: Send instructions by email or WhatsApp
       }
       const Feedback = DefaultFeedback[0]?.sp_message || '';
+
+      // Notify clients only after a successful persistence; delivery must not delay the response.
+      if (errorId === 0 && recordId > 0) {
+        this.webhookService.notifyTaxonomyAllInBackground(
+          dataJsonDto.pe_system_client_id,
+        );
+      }
 
       return resultQueryData<SpResultRecordUpdateType>(
         0,
@@ -422,6 +454,13 @@ export class TaxonomyService {
       }
       const Feedback = DefaultFeedback[0]?.sp_message || '';
 
+      // Notify clients only after a successful persistence; delivery must not delay the response.
+      if (errorId === 0 && recordId > 0) {
+        this.webhookService.notifyTaxonomyAllInBackground(
+          dataJsonDto.pe_system_client_id,
+        );
+      }
+
       return resultQueryData<SpResultRecordUpdateType>(
         0,
         recordId,
@@ -455,6 +494,13 @@ export class TaxonomyService {
         //TODO: Send instructions by email or WhatsApp
       }
       const Feedback = DefaultFeedback[0]?.sp_message || '';
+
+      // Notify clients only after a successful persistence; delivery must not delay the response.
+      if (errorId === 0 && recordId > 0) {
+        this.webhookService.notifyTaxonomyAllInBackground(
+          dataJsonDto.pe_system_client_id,
+        );
+      }
 
       return resultQueryData<SpResultRecordUpdateType>(
         0,
@@ -490,6 +536,13 @@ export class TaxonomyService {
       }
       const Feedback = DefaultFeedback[0]?.sp_message || '';
 
+      // Notify clients only after a successful persistence; delivery must not delay the response.
+      if (errorId === 0 && recordId > 0) {
+        this.webhookService.notifyTaxonomyAllInBackground(
+          dataJsonDto.pe_system_client_id,
+        );
+      }
+
       return resultQueryData<SpResultRecordUpdateType>(
         0,
         recordId,
@@ -523,6 +576,13 @@ export class TaxonomyService {
         //TODO: Send instructions by email or WhatsApp
       }
       const Feedback = DefaultFeedback[0]?.sp_message || '';
+
+      // Notify clients only after a successful persistence; delivery must not delay the response.
+      if (errorId === 0 && recordId > 0) {
+        this.webhookService.notifyTaxonomyAllInBackground(
+          dataJsonDto.pe_system_client_id,
+        );
+      }
 
       return resultQueryData<SpResultRecordUpdateType>(
         0,
@@ -558,6 +618,13 @@ export class TaxonomyService {
       }
       const Feedback = DefaultFeedback[0]?.sp_message || '';
 
+      // Notify clients only after a successful persistence; delivery must not delay the response.
+      if (errorId === 0 && recordId > 0) {
+        this.webhookService.notifyTaxonomyAllInBackground(
+          dataJsonDto.pe_system_client_id,
+        );
+      }
+
       return resultQueryData<SpResultRecordUpdateType>(
         0,
         recordId,
@@ -592,6 +659,13 @@ export class TaxonomyService {
       }
       const Feedback = DefaultFeedback[0]?.sp_message || '';
 
+      // Notify clients only after a successful persistence; delivery must not delay the response.
+      if (errorId === 0 && recordId > 0) {
+        this.webhookService.notifyTaxonomyAllInBackground(
+          dataJsonDto.pe_system_client_id,
+        );
+      }
+
       return resultQueryData<SpResultRecordDeleteType>(
         0,
         recordId,
@@ -625,6 +699,13 @@ export class TaxonomyService {
         //TODO: Send instructions by email or WhatsApp
       }
       const Feedback = DefaultFeedback[0]?.sp_message || '';
+
+      // Notify clients only after a successful persistence; delivery must not delay the response.
+      if (errorId === 0 && recordId > 0) {
+        this.webhookService.notifyTaxonomyAllInBackground(
+          dataJsonDto.pe_system_client_id,
+        );
+      }
 
       return resultQueryData<SpResultRecordDeleteType>(
         0,

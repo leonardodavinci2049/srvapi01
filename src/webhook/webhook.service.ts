@@ -1,4 +1,4 @@
-import { forwardRef, Inject, Injectable } from '@nestjs/common';
+import { forwardRef, Inject, Injectable, Logger } from '@nestjs/common';
 import { AppConfigService } from 'src/app-config/app-config.service';
 import { envs } from 'src/core/config/envs';
 import {
@@ -20,6 +20,8 @@ interface WebhookTarget {
 
 @Injectable()
 export class WebhookService {
+  private readonly logger = new Logger(WebhookService.name);
+
   constructor(
     @Inject(forwardRef(() => AppConfigService))
     private readonly appConfigService: AppConfigService,
@@ -45,6 +47,22 @@ export class WebhookService {
     systemClientId?: number | null,
   ): Promise<WebhookTestTriggerResponse> {
     return this.notifyAll(systemClientId, { module: 'taxonomy', scope: 'all' });
+  }
+
+  /**
+   * Fire-and-forget taxonomy revalidation for request flows.
+   * Never awaited and never throws, so the originating operation is not affected.
+   */
+  notifyTaxonomyAllInBackground(systemClientId?: number | null): void {
+    void this.notifyTaxonomyAll(systemClientId)
+      .then((delivery) => {
+        if (!delivery.success) {
+          this.logger.warn('Cache revalidation webhook delivery failed');
+        }
+      })
+      .catch(() => {
+        this.logger.warn('Cache revalidation webhook delivery failed');
+      });
   }
 
   private async notifyAll(
