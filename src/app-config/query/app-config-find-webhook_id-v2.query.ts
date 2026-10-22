@@ -1,55 +1,31 @@
-import { AppConfigFindIdV2Dto } from '../dto/app-config-find-id-v2.dto';
+import type { AppConfigFindWebhookIdV2Dto } from '../dto/app-config-find-webhook-id-v2.dto';
 
-interface AppConfigFindIdV2QueryResult {
+interface AppConfigFindWebhookIdV2QueryResult {
   queryString: string;
-  queryParams: [
-    number,
-    number,
-    number,
-    string,
-    string,
-    string,
-    string,
-    number | null,
-    number,
-  ];
+  queryParams: [number];
 }
 
-export function AppConfigFindIdV2Query(
-  dataJsonDto: AppConfigFindIdV2Dto,
-): AppConfigFindIdV2QueryResult {
-  const olAppId = dataJsonDto.pe_app_id;
+export function AppConfigFindWebhookIdV2Query(
+  dataJsonDto: AppConfigFindWebhookIdV2Dto,
+): AppConfigFindWebhookIdV2QueryResult {
   const olSystemClientId = dataJsonDto.pe_system_client_id;
-  const olStoreId = dataJsonDto.pe_store_id;
-  const olOrganizationId = dataJsonDto.pe_organization_id;
-  const olUserId = dataJsonDto.pe_user_id;
-  const olUserName = dataJsonDto.pe_user_name;
-  const olUserRole = dataJsonDto.pe_user_role;
-  const olPersonId = dataJsonDto.pe_person_id ?? null;
-  const olConfigId = dataJsonDto.pe_config_id;
 
-  const queryString = `call sp_app_config_find_id_v1(
-        ?,
-        ?,
-        ?,
-        ?,
-        ?,
-        ?,
-        ?,
-        ?,
-        ?
-      )`;
+  const queryString = `
+    SELECT
+      tbl_app_config.ID,
+      tbl_app_config.APP_NAME,
+      tbl_app_config.DOMINIO,
+      tbl_app_config.WEBHOOK_APP1,
+      tbl_app_config.WEBHOOK_APP2,
+      tbl_app_config.WEBHOOK_APP3,
+      tbl_app_config.GENERAL_CONFIG_JSON
+    FROM tbl_app_config
+    WHERE tbl_app_config.ID_SYSTEM_CLIENTE = ?
+    LIMIT 1
+  `;
 
-  const queryParams: AppConfigFindIdV2QueryResult['queryParams'] = [
-    olAppId,
+  const queryParams: AppConfigFindWebhookIdV2QueryResult['queryParams'] = [
     olSystemClientId,
-    olStoreId,
-    olOrganizationId,
-    olUserId,
-    olUserName,
-    olUserRole,
-    olPersonId,
-    olConfigId,
   ];
 
   return { queryString, queryParams };

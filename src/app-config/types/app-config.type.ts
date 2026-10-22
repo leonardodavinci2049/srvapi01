@@ -52,6 +52,16 @@ export interface TblAppConfigFindId extends RowDataPacket {
   CREATEDAT: Date | null;
 }
 
+export interface TblAppConfigFindWebhookId extends RowDataPacket {
+  ID: number;
+  APP_NAME: string | null;
+  DOMINIO: string | null;
+  WEBHOOK_APP1: string | null;
+  WEBHOOK_APP2: string | null;
+  WEBHOOK_APP3: string | null;
+  GENERAL_CONFIG_JSON: string | null;
+}
+
 export interface TblAppMenuFindType extends RowDataPacket {
   ID: number;
   APP_ID: number | null;
