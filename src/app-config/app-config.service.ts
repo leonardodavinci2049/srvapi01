@@ -1,4 +1,4 @@
-import { forwardRef, Inject, Injectable, Logger } from '@nestjs/common';
+import { forwardRef, Inject, Injectable } from '@nestjs/common';
 import { processProcedureResultMutation } from 'src/core/process-result/process-procedure-result.mutation';
 import { processProcedureResultMultiQuery } from 'src/core/process-result/process-procedure-result.query';
 import { processSqlResultQuery } from 'src/core/process-result/process-sql-result.query';
@@ -29,8 +29,6 @@ import {
 
 @Injectable()
 export class AppConfigService {
-  private readonly logger = new Logger(AppConfigService.name);
-
   constructor(
     private readonly dbService: DatabaseService,
     @Inject(forwardRef(() => WebhookService))
@@ -150,16 +148,9 @@ export class AppConfigService {
         result.errorId === 0 &&
         (result.quantity ?? 0) > 0
       ) {
-        void this.webhookService
-          .notifyAppConfigAll(dataJsonDto.pe_system_client_id)
-          .then((delivery) => {
-            if (!delivery.success) {
-              this.logger.warn('Cache revalidation webhook delivery failed');
-            }
-          })
-          .catch(() => {
-            this.logger.warn('Cache revalidation webhook delivery failed');
-          });
+        this.webhookService.notifyAppConfigAllInBackground(
+          dataJsonDto.pe_system_client_id,
+        );
       }
 
       return result;
