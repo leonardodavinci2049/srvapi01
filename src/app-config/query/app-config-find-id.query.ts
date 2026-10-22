@@ -1,6 +1,6 @@
 import { AppConfigFindIdV2Dto } from '../dto/app-config-find-id-v2.dto';
 
-interface AppConfigFindIdV2QueryResult {
+interface AppConfigFindIdQueryResult {
   queryString: string;
   queryParams: [
     number,
@@ -15,9 +15,9 @@ interface AppConfigFindIdV2QueryResult {
   ];
 }
 
-export function AppConfigFindIdV2Query(
+export function AppConfigFindIdQuery(
   dataJsonDto: AppConfigFindIdV2Dto,
-): AppConfigFindIdV2QueryResult {
+): AppConfigFindIdQueryResult {
   const olAppId = dataJsonDto.pe_app_id;
   const olSystemClientId = dataJsonDto.pe_system_client_id;
   const olStoreId = dataJsonDto.pe_store_id;
@@ -40,7 +40,7 @@ export function AppConfigFindIdV2Query(
         ?
       )`;
 
-  const queryParams: AppConfigFindIdV2QueryResult['queryParams'] = [
+  const queryParams: AppConfigFindIdQueryResult['queryParams'] = [
     olAppId,
     olSystemClientId,
     olStoreId,

@@ -3,6 +3,7 @@ import { AuthGuard } from 'src/core/guards/auth.guard';
 import { AppConfigService } from './app-config.service';
 import { AppConfigFindAllV2Dto } from './dto/app-config-find-all-v2.dto';
 import { AppConfigFindIdV2Dto } from './dto/app-config-find-id-v2.dto';
+import { AppConfigFindWebhookIdV2Dto } from './dto/app-config-find-webhook-id-v2.dto';
 import { AppConfigUpdGeneralFieldV2Dto } from './dto/app-config-upd-general-field-v2.dto';
 import { AppMenuFindTypeV2Dto } from './dto/app-menu-find-type-v2.dto';
 
@@ -35,6 +36,12 @@ export class AppConfigController {
   @Post('v2/app-config-find-id')
   appConfigFindIdV2(@Body() dataJsonDto: AppConfigFindIdV2Dto) {
     return this.appConfigService.taskAppConfigFindIdV2(dataJsonDto);
+  }
+
+  @UseGuards(AuthGuard)
+  @Post('v2/app-config-find-webhook-id')
+  appConfigFindWebhookIdV2(@Body() dataJsonDto: AppConfigFindWebhookIdV2Dto) {
+    return this.appConfigService.taskAppConfigFindWebhookIdV2(dataJsonDto);
   }
 
   @UseGuards(AuthGuard)

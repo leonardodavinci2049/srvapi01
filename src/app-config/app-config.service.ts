@@ -1,15 +1,18 @@
 import { Injectable } from '@nestjs/common';
 import { processProcedureResultMutation } from 'src/core/process-result/process-procedure-result.mutation';
 import { processProcedureResultMultiQuery } from 'src/core/process-result/process-procedure-result.query';
+import { processSqlResultQuery } from 'src/core/process-result/process-sql-result.query';
 import { MESSAGES } from 'src/core/utils/constants/globalConstants';
 import { ResultModel } from 'src/core/utils/result.model';
 import { DatabaseService } from 'src/database/database.service';
 import { AppConfigFindAllV2Dto } from './dto/app-config-find-all-v2.dto';
 import { AppConfigFindIdV2Dto } from './dto/app-config-find-id-v2.dto';
+import { AppConfigFindWebhookIdV2Dto } from './dto/app-config-find-webhook-id-v2.dto';
 import { AppConfigUpdGeneralFieldV2Dto } from './dto/app-config-upd-general-field-v2.dto';
 import { AppMenuFindTypeV2Dto } from './dto/app-menu-find-type-v2.dto';
 import { AppConfigFindAllV2Query } from './query/app-config-find-all-v2.query';
-import { AppConfigFindIdV2Query } from './query/app-config-find-id-v2.query';
+import { AppConfigFindIdQuery } from './query/app-config-find-id.query';
+import { AppConfigFindWebhookIdV2Query } from './query/app-config-find-webhook_id-v2.query';
 import { AppConfigUpdGeneralFieldV2Query } from './query/app-config-upd-general-field-v2.query';
 import { AppMenuFindTypeV2Query } from './query/app-menu-find-type-v2.query';
 import {
@@ -17,6 +20,7 @@ import {
   SpResultAppConfigFindIdData,
   SpResultAppMenuFindTypeData,
   SpResultRecordUpdateType,
+  TblAppConfigFindWebhookId,
 } from './types/app-config.type';
 
 @Injectable()
@@ -46,7 +50,7 @@ export class AppConfigService {
 
   async taskAppConfigFindIdV2(dataJsonDto: AppConfigFindIdV2Dto) {
     try {
-      const { queryString, queryParams } = AppConfigFindIdV2Query(dataJsonDto);
+      const { queryString, queryParams } = AppConfigFindIdQuery(dataJsonDto);
 
       //console.log('queryParams: ', queryParams);
 
@@ -60,6 +64,29 @@ export class AppConfigService {
       return processProcedureResultMultiQuery(
         resultData,
         ['App Config'],
+        'Configuração da aplicação não encontrada',
+      );
+    } catch (err) {
+      const errorMessage =
+        err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
+      return new ResultModel(100404, errorMessage, 0, []);
+    }
+  }
+
+  async taskAppConfigFindWebhookIdV2(dataJsonDto: AppConfigFindWebhookIdV2Dto) {
+    try {
+      const { queryString, queryParams } =
+        AppConfigFindWebhookIdV2Query(dataJsonDto);
+
+      const resultData =
+        await this.dbService.selectExecute<TblAppConfigFindWebhookId>(
+          queryString,
+          queryParams,
+        );
+
+      return processSqlResultQuery(
+        resultData,
+        'App Config',
         'Configuração da aplicação não encontrada',
       );
     } catch (err) {
