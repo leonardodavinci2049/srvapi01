@@ -1,8 +1,8 @@
 import { Body, Controller, Post, UseGuards } from '@nestjs/common';
-import { AuthGuard } from '../core/guards/auth.guard.js';
-import { WebhookTestTriggerDto } from './dto/webhook-test-trigger.dto.js';
-import { WebhookService } from './webhook.service.js';
-import type { WebhookTestTriggerResponse } from './types/webhook.type.js';
+import { AuthGuard } from 'src/core/guards/auth.guard';
+import { WebhookTestTriggerDto } from './dto/webhook-test-trigger.dto';
+import type { WebhookTestTriggerResponse } from './types/webhook.type';
+import { WebhookService } from './webhook.service';
 
 @Controller('webhook')
 export class WebhookController {
@@ -13,26 +13,8 @@ export class WebhookController {
   async testTrigger(
     @Body() dataJsonDto: WebhookTestTriggerDto,
   ): Promise<WebhookTestTriggerResponse> {
-    const results = await this.webhookService.notifyProductsAll(
+    return this.webhookService.notifyProductsAll(
       dataJsonDto.pe_system_client_id,
     );
-
-    if (results.length === 0) {
-      return {
-        success: false,
-        message: 'Nenhum webhook configurado para o cliente informado',
-        results,
-      };
-    }
-
-    const success = results.every((result) => result.success);
-
-    return {
-      success,
-      message: success
-        ? 'Webhooks acionados com sucesso'
-        : 'Um ou mais webhooks falharam',
-      results,
-    };
   }
 }

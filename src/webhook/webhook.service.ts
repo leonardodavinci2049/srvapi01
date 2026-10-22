@@ -1,12 +1,13 @@
 import { Injectable } from '@nestjs/common';
-import { AppConfigService } from '../app-config/app-config.service.js';
-import { envs } from '../core/config/envs.js';
+import { AppConfigService } from 'src/app-config/app-config.service';
+import { envs } from 'src/core/config/envs';
 import {
   WEBHOOK_SOURCE_FIELDS,
   type WebhookDispatchResult,
   type WebhookErrorCode,
   type WebhookSourceField,
-} from './types/webhook.type.js';
+  type WebhookTestTriggerResponse,
+} from './types/webhook.type';
 
 /** Payload fixo esperado pelos receptores de revalidação. */
 const PRODUCTS_ALL_PAYLOAD = { module: 'products', scope: 'all' } as const;
@@ -23,45 +24,67 @@ interface WebhookTarget {
 export class WebhookService {
   constructor(private readonly appConfigService: AppConfigService) {}
 
-  /**
-   * Aciona em paralelo os webhooks (`webhookApp1|2|3`) configurados para o
-   * cliente, com o payload fixo `products/all`. Best-effort: nunca lança para
-   * o chamador e não registra log nesta etapa. Cliente ausente ou menor que 1
-   * não aciona nada.
-   */
+  /** Aciona em paralelo os webhooks configurados com o payload fixo `products/all`. */
   async notifyProductsAll(
     systemClientId?: number | null,
-  ): Promise<WebhookDispatchResult[]> {
+  ): Promise<WebhookTestTriggerResponse> {
     if (!this.isValidSystemClientId(systemClientId)) {
-      return [];
+      return {
+        success: false,
+        message: 'ID do cliente do sistema inválido',
+        results: [],
+      };
     }
 
+    let appConfigResult: unknown;
     try {
-      const appConfigResult = await this.appConfigService.taskAppConfigIdV2({
-        pe_system_client_id: systemClientId,
-      });
-      const targets = this.collectTargets(
-        this.extractRows(appConfigResult.data),
-      );
-
-      if (targets.length === 0) {
-        return [];
-      }
-
-      const settled = await Promise.allSettled(
-        targets.map((target) => this.dispatch(target)),
-      );
-
-      return settled.map((outcome, index) =>
-        outcome.status === 'fulfilled'
-          ? outcome.value
-          : this.buildFailure(targets[index], 'NETWORK_ERROR'),
-      );
+      appConfigResult =
+        await this.appConfigService.taskAppConfigFindWebhookIdV2({
+          pe_system_client_id: systemClientId,
+        });
     } catch {
-      // Sem configuração, falha de consulta ou qualquer erro inesperado: o
-      // fluxo de origem segue normalmente.
-      return [];
+      return {
+        success: false,
+        message: 'Não foi possível carregar a configuração dos webhooks',
+        results: [],
+      };
     }
+
+    if (!this.isSuccessfulAppConfigResult(appConfigResult)) {
+      return {
+        success: false,
+        message: 'Não foi possível carregar a configuração dos webhooks',
+        results: [],
+      };
+    }
+
+    const targets = this.collectTargets(this.extractRows(appConfigResult));
+
+    if (targets.length === 0) {
+      return {
+        success: false,
+        message: 'Nenhum webhook configurado para o cliente informado',
+        results: [],
+      };
+    }
+
+    const settled = await Promise.allSettled(
+      targets.map((target) => this.dispatch(target)),
+    );
+    const results = settled.map((outcome, index) =>
+      outcome.status === 'fulfilled'
+        ? outcome.value
+        : this.buildFailure(targets[index], 'NETWORK_ERROR'),
+    );
+    const success = results.every((result) => result.success);
+
+    return {
+      success,
+      message: success
+        ? 'Webhooks acionados com sucesso'
+        : 'Um ou mais webhooks falharam',
+      results,
+    };
   }
 
   private isValidSystemClientId(
@@ -80,8 +103,21 @@ export class WebhookService {
       return [];
     }
 
-    const rows = (data as { AppConfig?: unknown }).AppConfig;
+    const resultData = (data as { data?: unknown }).data;
+    if (typeof resultData !== 'object' || resultData === null) {
+      return [];
+    }
+
+    const rows = (resultData as { 'App Config'?: unknown })['App Config'];
     return Array.isArray(rows) ? rows : [];
+  }
+
+  private isSuccessfulAppConfigResult(result: unknown): boolean {
+    if (typeof result !== 'object' || result === null) {
+      return false;
+    }
+
+    return (result as { statusCode?: unknown }).statusCode === 100200;
   }
 
   /** Coleta somente URLs `http`/`https` não vazias dos três campos. */
@@ -130,6 +166,10 @@ export class WebhookService {
   private async dispatch(
     target: WebhookTarget,
   ): Promise<WebhookDispatchResult> {
+    if (!envs.REVALIDATE_SECRET) {
+      return this.buildFailure(target, 'CONFIGURATION_ERROR');
+    }
+
     try {
       const response = await fetch(target.url, {
         method: 'POST',
@@ -147,7 +187,6 @@ export class WebhookService {
       if (!response.ok) {
         return {
           field: target.field,
-          url: target.url,
           success: false,
           status: response.status,
           error: 'HTTP_ERROR',
@@ -156,7 +195,6 @@ export class WebhookService {
 
       return {
         field: target.field,
-        url: target.url,
         success: true,
         status: response.status,
       };
@@ -182,7 +220,6 @@ export class WebhookService {
   ): WebhookDispatchResult {
     return {
       field: target.field,
-      url: target.url,
       success: false,
       status: null,
       error,

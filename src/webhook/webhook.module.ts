@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
-import { AppConfigModule } from '../app-config/app-config.module.js';
-import { WebhookController } from './webhook.controller.js';
-import { WebhookService } from './webhook.service.js';
+import { AppConfigModule } from 'src/app-config/app-config.module';
+import { WebhookController } from './webhook.controller';
+import { WebhookService } from './webhook.service';
 
 @Module({
   imports: [AppConfigModule],

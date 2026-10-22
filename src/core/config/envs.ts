@@ -10,6 +10,11 @@ const envsSchema = z
     APP_JWT_SECRET: z.string().min(1),
     APP_PORT: z.coerce.number().positive(),
     API_KEY: z.string().min(1),
+    REVALIDATE_SECRET: z.preprocess(
+      (value) =>
+        typeof value === 'string' && value.trim() === '' ? undefined : value,
+      z.string().trim().min(1).optional(),
+    ),
 
     DATABASE_HOST: z.string().min(1),
     DATABASE_PORT: z.coerce.number().positive(),
@@ -54,6 +59,7 @@ export const envs = {
   APP_JWT_SECRET: envVars.APP_JWT_SECRET,
   APP_PORT: envVars.APP_PORT,
   API_KEY: envVars.API_KEY,
+  REVALIDATE_SECRET: envVars.REVALIDATE_SECRET,
 
   DATABASE_HOST: envVars.DATABASE_HOST,
   DATABASE_PORT: envVars.DATABASE_PORT,
