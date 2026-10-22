@@ -1,10 +1,10 @@
-import { Module } from '@nestjs/common';
+import { forwardRef, Module } from '@nestjs/common';
 import { AppConfigModule } from 'src/app-config/app-config.module';
 import { WebhookController } from './webhook.controller';
 import { WebhookService } from './webhook.service';
 
 @Module({
-  imports: [AppConfigModule],
+  imports: [forwardRef(() => AppConfigModule)],
   controllers: [WebhookController],
   providers: [WebhookService],
   exports: [WebhookService],

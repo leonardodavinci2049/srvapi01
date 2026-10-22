@@ -8,6 +8,7 @@ import {
 } from 'src/core/utils/constants/globalConstants';
 import { ResultModel } from 'src/core/utils/result.model';
 import { DatabaseService } from 'src/database/database.service';
+import { WebhookService } from 'src/webhook/webhook.service';
 import { SpTaxonomyFindMenuManagerV3Dto } from './dto/sp-taxonomy-find-menu-manager-v3.dto';
 import { SpTaxonomyProductManagerV2Dto } from './dto/sp-taxonomy-product-manager-v2.dto';
 import { SpTaxonomyRelCreateBulkV3Dto } from './dto/sp-taxonomy-rel-create-Bulk-v3.dto';
@@ -45,7 +46,10 @@ import {
 export class TaxonomyBaseService {
   private readonly logger = new Logger(TaxonomyBaseService.name);
 
-  constructor(private readonly dbService: DatabaseService) {}
+  constructor(
+    private readonly dbService: DatabaseService,
+    private readonly webhookService: WebhookService,
+  ) {}
 
   private hasCandidatesContract(resultData: unknown[]): boolean {
     return resultData.some(
@@ -73,10 +77,30 @@ export class TaxonomyBaseService {
         queryString,
       )) as unknown as SpResultRecordCreateType;
 
-      return processProcedureResultMutation(
+      const result = processProcedureResultMutation(
         resultData,
         'Taxonomy create failed',
       );
+
+      // Notify only after successful persistence; delivery must not delay the response.
+      if (
+        result.statusCode === RESPONSE_CODES.SUCCESS &&
+        result.errorId === 0 &&
+        (result.quantity ?? 0) > 0
+      ) {
+        void this.webhookService
+          .notifyTaxonomyAll(dataJsonDto.pe_system_client_id)
+          .then((delivery) => {
+            if (!delivery.success) {
+              this.logger.warn('Cache revalidation webhook delivery failed');
+            }
+          })
+          .catch(() => {
+            this.logger.warn('Cache revalidation webhook delivery failed');
+          });
+      }
+
+      return result;
     } catch (err) {
       const errorMessage =
         err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
@@ -152,10 +176,30 @@ export class TaxonomyBaseService {
         queryString,
       )) as unknown as SpResultTaxonomyWebMenuV3Data;
 
-      return processProcedureResultMutation(
+      const result = processProcedureResultMutation(
         resultData,
         'Taxonomy update failed',
       );
+
+      // Notify only after successful persistence; delivery must not delay the response.
+      if (
+        result.statusCode === RESPONSE_CODES.SUCCESS &&
+        result.errorId === 0 &&
+        (result.quantity ?? 0) > 0
+      ) {
+        void this.webhookService
+          .notifyTaxonomyAll(dataJsonDto.pe_system_client_id)
+          .then((delivery) => {
+            if (!delivery.success) {
+              this.logger.warn('Cache revalidation webhook delivery failed');
+            }
+          })
+          .catch(() => {
+            this.logger.warn('Cache revalidation webhook delivery failed');
+          });
+      }
+
+      return result;
     } catch (err) {
       const errorMessage =
         err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
@@ -171,10 +215,30 @@ export class TaxonomyBaseService {
         queryString,
       )) as unknown as SpResultTaxonomyWebMenuV3Data;
 
-      return processProcedureResultMutation(
+      const result = processProcedureResultMutation(
         resultData,
         'Taxonomy update failed',
       );
+
+      // Notify only after successful persistence; delivery must not delay the response.
+      if (
+        result.statusCode === RESPONSE_CODES.SUCCESS &&
+        result.errorId === 0 &&
+        (result.quantity ?? 0) > 0
+      ) {
+        void this.webhookService
+          .notifyTaxonomyAll(dataJsonDto.pe_system_client_id)
+          .then((delivery) => {
+            if (!delivery.success) {
+              this.logger.warn('Cache revalidation webhook delivery failed');
+            }
+          })
+          .catch(() => {
+            this.logger.warn('Cache revalidation webhook delivery failed');
+          });
+      }
+
+      return result;
     } catch (err) {
       const errorMessage =
         err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
@@ -190,10 +254,30 @@ export class TaxonomyBaseService {
         queryString,
       )) as unknown as SpResultRecordDeleteType;
 
-      return processProcedureResultMutation(
+      const result = processProcedureResultMutation(
         resultData,
         'Taxonomy delete failed',
       );
+
+      // Notify only after successful persistence; delivery must not delay the response.
+      if (
+        result.statusCode === RESPONSE_CODES.SUCCESS &&
+        result.errorId === 0 &&
+        (result.quantity ?? 0) > 0
+      ) {
+        void this.webhookService
+          .notifyTaxonomyAll(dataJsonDto.pe_system_client_id)
+          .then((delivery) => {
+            if (!delivery.success) {
+              this.logger.warn('Cache revalidation webhook delivery failed');
+            }
+          })
+          .catch(() => {
+            this.logger.warn('Cache revalidation webhook delivery failed');
+          });
+      }
+
+      return result;
     } catch (err) {
       const errorMessage =
         err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
@@ -310,6 +394,24 @@ export class TaxonomyBaseService {
         'Taxonomy relationship bulk create failed',
       );
       if (candidates) result.info1 = 'taxonomy-bulk-candidates-v1';
+
+      // Notify only after successful persistence; delivery must not delay the response.
+      if (
+        result.statusCode === RESPONSE_CODES.SUCCESS &&
+        result.errorId === 0 &&
+        (result.quantity ?? 0) > 0
+      ) {
+        void this.webhookService
+          .notifyTaxonomyAll(dataJsonDto.pe_system_client_id)
+          .then((delivery) => {
+            if (!delivery.success) {
+              this.logger.warn('Cache revalidation webhook delivery failed');
+            }
+          })
+          .catch(() => {
+            this.logger.warn('Cache revalidation webhook delivery failed');
+          });
+      }
       return result;
     } catch (err) {
       this.logger.error(

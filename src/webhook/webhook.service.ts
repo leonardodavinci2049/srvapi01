@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { forwardRef, Inject, Injectable } from '@nestjs/common';
 import { AppConfigService } from 'src/app-config/app-config.service';
 import { envs } from 'src/core/config/envs';
 import {
@@ -20,7 +20,10 @@ interface WebhookTarget {
 
 @Injectable()
 export class WebhookService {
-  constructor(private readonly appConfigService: AppConfigService) {}
+  constructor(
+    @Inject(forwardRef(() => AppConfigService))
+    private readonly appConfigService: AppConfigService,
+  ) {}
 
   /** Revalidate all product caches at the configured destinations. */
   async notifyProductsAll(

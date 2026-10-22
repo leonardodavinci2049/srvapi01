@@ -74,6 +74,7 @@ ecosystem.config.cjs
 /docs-database
 
 # project generated files
+/logs
 /scripts
 /docs
 /API-documentation/
