@@ -43,6 +43,7 @@ import { TaxonomyBaseModule } from 'src/taxonomy-base/taxonomy-base.module';
 import { TaxonomyInlineModule } from 'src/taxonomy-inline/taxonomy-inline.module';
 import { TaxonomyRelModule } from 'src/taxonomy-rel/taxonomy-rel.module';
 import { TaxonomyWebModule } from 'src/taxonomy-web/taxonomy-web.module';
+import { WebhookModule } from 'src/webhook/webhook.module';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 
@@ -86,6 +87,7 @@ import { AppService } from './app.service';
     PtypeModule,
     PurchasingModule,
     SupplierModule,
+    WebhookModule,
     SellerModule,
     OrderItemsModule,
     OrderPdvModule,
