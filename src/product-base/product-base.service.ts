@@ -1,4 +1,4 @@
-import { Injectable, Logger } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { processProcedureResultMutation } from 'src/core/process-result/process-procedure-result.mutation';
 import { processProcedureResultMultiQuery } from 'src/core/process-result/process-procedure-result.query';
 import {
@@ -30,8 +30,6 @@ import {
 
 @Injectable()
 export class ProductBaseService {
-  private readonly logger = new Logger(ProductBaseService.name);
-
   constructor(
     private readonly dbService: DatabaseService,
     private readonly webhookService: WebhookService,
@@ -59,16 +57,9 @@ export class ProductBaseService {
         result.errorId === 0 &&
         (result.quantity ?? 0) > 0
       ) {
-        void this.webhookService
-          .notifyProductsAll(dataJsonDto.pe_system_client_id)
-          .then((delivery) => {
-            if (!delivery.success) {
-              this.logger.warn('Cache revalidation webhook delivery failed');
-            }
-          })
-          .catch(() => {
-            this.logger.warn('Cache revalidation webhook delivery failed');
-          });
+        this.webhookService.notifyProductsAllInBackground(
+          dataJsonDto.pe_system_client_id,
+        );
       }
 
       return result;

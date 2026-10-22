@@ -114,9 +114,9 @@ export class TaxonomyService {
       }
       const Feedback = DefaultFeedback[0]?.sp_message || '';
 
-      // Notify clients only after a successful persistence; delivery must not delay the response.
+      // Relation changes also affect the `CATEGORIAS` field of product payloads.
       if (errorId === 0 && recordId > 0) {
-        this.webhookService.notifyTaxonomyAllInBackground(
+        this.webhookService.notifyTaxonomyRelInBackground(
           dataJsonDto.pe_system_client_id,
         );
       }
@@ -700,9 +700,9 @@ export class TaxonomyService {
       }
       const Feedback = DefaultFeedback[0]?.sp_message || '';
 
-      // Notify clients only after a successful persistence; delivery must not delay the response.
+      // Relation changes also affect the `CATEGORIAS` field of product payloads.
       if (errorId === 0 && recordId > 0) {
-        this.webhookService.notifyTaxonomyAllInBackground(
+        this.webhookService.notifyTaxonomyRelInBackground(
           dataJsonDto.pe_system_client_id,
         );
       }

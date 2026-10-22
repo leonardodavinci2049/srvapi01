@@ -3,6 +3,7 @@ import { MESSAGES } from 'src/core/utils/constants/globalConstants';
 import { resultQueryData } from 'src/core/utils/globalResult/global.result';
 import { ResultModel } from 'src/core/utils/result.model';
 import { DatabaseService } from 'src/database/database.service';
+import { WebhookService } from 'src/webhook/webhook.service';
 import { ProductCreateDto } from './dto/product-create.dto';
 import { ProductFindDto } from './dto/product-find.dto';
 import { ProductFindIdDto } from './dto/product-find_id.dto';
@@ -58,7 +59,10 @@ import {
 
 @Injectable()
 export class ProductService {
-  constructor(private readonly dbService: DatabaseService) {}
+  constructor(
+    private readonly dbService: DatabaseService,
+    private readonly webhookService: WebhookService,
+  ) {}
 
   create() {
     return 'This action adds a new product';
@@ -81,6 +85,13 @@ export class ProductService {
         //TODO: Send instructions by email or WhatsApp
       }
       const Feedback = DefaultFeedback[0]?.sp_message || '';
+
+      // Notify clients only after a successful persistence; delivery must not delay the response.
+      if (errorId === 0 && recordId > 0) {
+        this.webhookService.notifyProductsAllInBackground(
+          dataJsonDto.pe_system_client_id,
+        );
+      }
 
       return resultQueryData<SpResultRecordCreateType>(
         0,
@@ -365,6 +376,13 @@ export class ProductService {
       }
       const Feedback = DefaultFeedback[0]?.sp_message || '';
 
+      // Notify clients only after a successful persistence; delivery must not delay the response.
+      if (errorId === 0 && recordId > 0) {
+        this.webhookService.notifyProductsAllInBackground(
+          dataJsonDto.pe_system_client_id,
+        );
+      }
+
       return resultQueryData<SpResultRecordUpdateType>(
         0,
         recordId,
@@ -398,6 +416,13 @@ export class ProductService {
         //TODO: Send instructions by email or WhatsApp
       }
       const Feedback = DefaultFeedback[0]?.sp_message || '';
+
+      // Notify clients only after a successful persistence; delivery must not delay the response.
+      if (errorId === 0 && recordId > 0) {
+        this.webhookService.notifyProductsAllInBackground(
+          dataJsonDto.pe_system_client_id,
+        );
+      }
 
       return resultQueryData<SpResultRecordUpdateType>(
         0,
@@ -433,6 +458,13 @@ export class ProductService {
       }
       const Feedback = DefaultFeedback[0]?.sp_message || '';
 
+      // Notify clients only after a successful persistence; delivery must not delay the response.
+      if (errorId === 0 && recordId > 0) {
+        this.webhookService.notifyProductsAllInBackground(
+          dataJsonDto.pe_system_client_id,
+        );
+      }
+
       return resultQueryData<SpResultRecordUpdateType>(
         0,
         recordId,
@@ -467,6 +499,13 @@ export class ProductService {
       }
       const Feedback = DefaultFeedback[0]?.sp_message || '';
 
+      // Notify clients only after a successful persistence; delivery must not delay the response.
+      if (errorId === 0 && recordId > 0) {
+        this.webhookService.notifyProductsAllInBackground(
+          dataJsonDto.pe_system_client_id,
+        );
+      }
+
       return resultQueryData<SpResultRecordUpdateType>(
         0,
         recordId,
@@ -499,6 +538,13 @@ export class ProductService {
         //TODO: Send instructions by email or WhatsApp
       }
       const Feedback = DefaultFeedback[0]?.sp_message || '';
+
+      // Notify clients only after a successful persistence; delivery must not delay the response.
+      if (errorId === 0 && recordId > 0) {
+        this.webhookService.notifyProductsAllInBackground(
+          dataJsonDto.pe_system_client_id,
+        );
+      }
 
       return resultQueryData<SpResultRecordUpdateType>(
         0,
@@ -534,6 +580,13 @@ export class ProductService {
       }
       const Feedback = DefaultFeedback[0]?.sp_message || '';
 
+      // Notify clients only after a successful persistence; delivery must not delay the response.
+      if (errorId === 0 && recordId > 0) {
+        this.webhookService.notifyProductsAllInBackground(
+          dataJsonDto.pe_system_client_id,
+        );
+      }
+
       return resultQueryData<SpResultRecordUpdateType>(
         0,
         recordId,
@@ -568,6 +621,13 @@ export class ProductService {
       }
       const Feedback = DefaultFeedback[0]?.sp_message || '';
 
+      // Notify clients only after a successful persistence; delivery must not delay the response.
+      if (errorId === 0 && recordId > 0) {
+        this.webhookService.notifyProductsAllInBackground(
+          dataJsonDto.pe_system_client_id,
+        );
+      }
+
       return resultQueryData<SpResultRecordUpdateType>(
         0,
         recordId,
@@ -601,6 +661,13 @@ export class ProductService {
         //TODO: Send instructions by email or WhatsApp
       }
       const Feedback = DefaultFeedback[0]?.sp_message || '';
+
+      // Notify clients only after a successful persistence; delivery must not delay the response.
+      if (errorId === 0 && recordId > 0) {
+        this.webhookService.notifyProductsAllInBackground(
+          dataJsonDto.pe_system_client_id,
+        );
+      }
 
       return resultQueryData<SpResultRecordUpdateType>(
         0,
@@ -637,6 +704,13 @@ export class ProductService {
       }
       const Feedback = DefaultFeedback[0]?.sp_message || '';
 
+      // Notify clients only after a successful persistence; delivery must not delay the response.
+      if (errorId === 0 && recordId > 0) {
+        this.webhookService.notifyProductsAllInBackground(
+          dataJsonDto.pe_system_client_id,
+        );
+      }
+
       return resultQueryData<SpResultRecordUpdateType>(
         0,
         recordId,
@@ -669,6 +743,13 @@ export class ProductService {
         //TODO: Send instructions by email or WhatsApp
       }
       const Feedback = DefaultFeedback[0]?.sp_message || '';
+
+      // Notify clients only after a successful persistence; delivery must not delay the response.
+      if (errorId === 0 && recordId > 0) {
+        this.webhookService.notifyProductsAllInBackground(
+          dataJsonDto.pe_system_client_id,
+        );
+      }
 
       return resultQueryData<SpResultRecordUpdateType>(
         0,
@@ -706,6 +787,13 @@ export class ProductService {
       }
       const Feedback = DefaultFeedback[0]?.sp_message || '';
 
+      // Notify clients only after a successful persistence; delivery must not delay the response.
+      if (errorId === 0 && recordId > 0) {
+        this.webhookService.notifyProductsAllInBackground(
+          dataJsonDto.pe_system_client_id,
+        );
+      }
+
       return resultQueryData<SpResultRecordUpdateType>(
         0,
         recordId,
@@ -738,6 +826,13 @@ export class ProductService {
         //TODO: Send instructions by email or WhatsApp
       }
       const Feedback = DefaultFeedback[0]?.sp_message || '';
+
+      // Notify clients only after a successful persistence; delivery must not delay the response.
+      if (errorId === 0 && recordId > 0) {
+        this.webhookService.notifyProductsAllInBackground(
+          dataJsonDto.pe_system_client_id,
+        );
+      }
 
       return resultQueryData<SpResultRecordUpdateType>(
         0,
@@ -773,6 +868,13 @@ export class ProductService {
       }
       const Feedback = DefaultFeedback[0]?.sp_message || '';
 
+      // Notify clients only after a successful persistence; delivery must not delay the response.
+      if (errorId === 0 && recordId > 0) {
+        this.webhookService.notifyProductsAllInBackground(
+          dataJsonDto.pe_system_client_id,
+        );
+      }
+
       return resultQueryData<SpResultRecordUpdateType>(
         0,
         recordId,
@@ -806,6 +908,13 @@ export class ProductService {
         //TODO: Send instructions by email or WhatsApp
       }
       const Feedback = DefaultFeedback[0]?.sp_message || '';
+
+      // Notify clients only after a successful persistence; delivery must not delay the response.
+      if (errorId === 0 && recordId > 0) {
+        this.webhookService.notifyProductsAllInBackground(
+          dataJsonDto.pe_system_client_id,
+        );
+      }
 
       return resultQueryData<SpResultRecordUpdateType>(
         0,

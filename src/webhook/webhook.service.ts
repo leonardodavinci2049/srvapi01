@@ -34,6 +34,11 @@ export class WebhookService {
     return this.notifyAll(systemClientId, { module: 'products', scope: 'all' });
   }
 
+  /** Fire-and-forget products revalidation for request flows. */
+  notifyProductsAllInBackground(systemClientId?: number | null): void {
+    this.dispatchInBackground(this.notifyProductsAll(systemClientId));
+  }
+
   async notifyAppConfigAll(
     systemClientId?: number | null,
   ): Promise<WebhookTestTriggerResponse> {
@@ -54,9 +59,28 @@ export class WebhookService {
    * Never awaited and never throws, so the originating operation is not affected.
    */
   notifyTaxonomyAllInBackground(systemClientId?: number | null): void {
-    void this.notifyTaxonomyAll(systemClientId)
-      .then((delivery) => {
-        if (!delivery.success) {
+    this.dispatchInBackground(this.notifyTaxonomyAll(systemClientId));
+  }
+
+  /**
+   * Category↔product relation changes alter the taxonomy cache and the
+   * `CATEGORIAS` field embedded in product payloads, so both are revalidated.
+   */
+  notifyTaxonomyRelInBackground(systemClientId?: number | null): void {
+    this.notifyTaxonomyAllInBackground(systemClientId);
+    this.notifyProductsAllInBackground(systemClientId);
+  }
+
+  /**
+   * Delivers without awaiting; failures are only logged so the caller is never
+   * blocked nor receives an exception from the revalidation flow.
+   */
+  private dispatchInBackground(
+    delivery: Promise<WebhookTestTriggerResponse>,
+  ): void {
+    void delivery
+      .then((result) => {
+        if (!result.success) {
           this.logger.warn('Cache revalidation webhook delivery failed');
         }
       })
