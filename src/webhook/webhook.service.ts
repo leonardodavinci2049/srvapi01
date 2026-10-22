@@ -5,12 +5,10 @@ import {
   WEBHOOK_SOURCE_FIELDS,
   type WebhookDispatchResult,
   type WebhookErrorCode,
+  type WebhookRevalidationPayload,
   type WebhookSourceField,
   type WebhookTestTriggerResponse,
 } from './types/webhook.type';
-
-/** Payload fixo esperado pelos receptores de revalidação. */
-const PRODUCTS_ALL_PAYLOAD = { module: 'products', scope: 'all' } as const;
 
 /** Timeout curto: o fluxo de origem nunca aguarda o webhook. */
 const WEBHOOK_TIMEOUT_MS = 5000;
@@ -24,9 +22,31 @@ interface WebhookTarget {
 export class WebhookService {
   constructor(private readonly appConfigService: AppConfigService) {}
 
-  /** Aciona em paralelo os webhooks configurados com o payload fixo `products/all`. */
+  /** Revalidate all product caches at the configured destinations. */
   async notifyProductsAll(
     systemClientId?: number | null,
+  ): Promise<WebhookTestTriggerResponse> {
+    return this.notifyAll(systemClientId, { module: 'products', scope: 'all' });
+  }
+
+  async notifyAppConfigAll(
+    systemClientId?: number | null,
+  ): Promise<WebhookTestTriggerResponse> {
+    return this.notifyAll(systemClientId, {
+      module: 'app-config',
+      scope: 'all',
+    });
+  }
+
+  async notifyTaxonomyAll(
+    systemClientId?: number | null,
+  ): Promise<WebhookTestTriggerResponse> {
+    return this.notifyAll(systemClientId, { module: 'taxonomy', scope: 'all' });
+  }
+
+  private async notifyAll(
+    systemClientId: number | null | undefined,
+    payload: WebhookRevalidationPayload,
   ): Promise<WebhookTestTriggerResponse> {
     if (!this.isValidSystemClientId(systemClientId)) {
       return {
@@ -69,7 +89,7 @@ export class WebhookService {
     }
 
     const settled = await Promise.allSettled(
-      targets.map((target) => this.dispatch(target)),
+      targets.map((target) => this.dispatch(target, payload)),
     );
     const results = settled.map((outcome, index) =>
       outcome.status === 'fulfilled'
@@ -165,6 +185,7 @@ export class WebhookService {
   /** POST de revalidação; converte qualquer falha em resultado sanitizado. */
   private async dispatch(
     target: WebhookTarget,
+    payload: WebhookRevalidationPayload,
   ): Promise<WebhookDispatchResult> {
     if (!envs.REVALIDATE_SECRET) {
       return this.buildFailure(target, 'CONFIGURATION_ERROR');
@@ -177,7 +198,7 @@ export class WebhookService {
           'Content-Type': 'application/json',
           'x-revalidate-secret': envs.REVALIDATE_SECRET,
         },
-        body: JSON.stringify(PRODUCTS_ALL_PAYLOAD),
+        body: JSON.stringify(payload),
         signal: AbortSignal.timeout(WEBHOOK_TIMEOUT_MS),
       });
 
