@@ -1,4 +1,5 @@
 import { Injectable } from '@nestjs/common';
+import { processProcedureResultMutation } from 'src/core/process-result/process-procedure-result.mutation';
 import { processProcedureResultMultiQuery } from 'src/core/process-result/process-procedure-result.query';
 import { processSqlResultQuery } from 'src/core/process-result/process-sql-result.query';
 import { MESSAGES } from 'src/core/utils/constants/globalConstants';
@@ -8,11 +9,14 @@ import { SellerFindIdDto } from './dto/seller-find-id.dto';
 import { SellerFindManagerAllV2Dto } from './dto/seller-find-manager-all-v2.dto';
 import { SellerFindManagerIdV2Dto } from './dto/seller-find-manager-id-v2.dto';
 import { SellerFindSearchV2Dto } from './dto/seller-find-search-v2.dto';
+import { SellerUpdGeneralFieldDto } from './dto/seller-upd-general-field.dto';
 import { SellerFindIdQuery } from './query/seller-find-id.query';
 import { SellerFindManagerAllV2Query } from './query/seller-find-manager-all-v2.query';
 import { SellerFindManagerIdV2Query } from './query/seller-find-manager-id-v2.query';
 import { SellerFindSearchV2Query } from './query/seller-find-search-v2.query';
+import { SellerUpdGeneralFieldQuery } from './query/seller-upd-general-field.query';
 import {
+  SpResultRecordUpdateType,
   SpResultSellerFindManagerAllData,
   SpResultSellerFindManagerIdData,
   TblSellerFindId,
@@ -100,6 +104,27 @@ export class SellerService {
         resultData,
         ['Seller Information'],
         'Seller Information not found',
+      );
+    } catch (err) {
+      const errorMessage =
+        err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
+      return new ResultModel(100404, errorMessage, 0, []);
+    }
+  }
+
+  async taskSellerUpdGeneralFieldV2(dataJsonDto: SellerUpdGeneralFieldDto) {
+    try {
+      const { queryString, queryParams } =
+        SellerUpdGeneralFieldQuery(dataJsonDto);
+
+      const resultData = (await this.dbService.selectExecute(
+        queryString,
+        queryParams,
+      )) as unknown as SpResultRecordUpdateType;
+
+      return processProcedureResultMutation(
+        resultData,
+        'Seller field update failed',
       );
     } catch (err) {
       const errorMessage =

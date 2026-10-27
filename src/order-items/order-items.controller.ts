@@ -6,6 +6,7 @@ import { OrderItemFindIdDto } from './dto/order-item-find-id.dto';
 import { OrderItemUpdDiscountDto } from './dto/order-item-upd-discount.dto';
 import { OrderItemUpdDiscountAdmDto } from './dto/order-item-upd-discount-adm.dto';
 import { OrderItemUpdFreteVlDto } from './dto/order-item-upd-frete-vl.dto';
+import { OrderItemUpdGeneralFieldDto } from './dto/order-item-upd-general-field.dto';
 import { OrderItemUpdInlFieldDto } from './dto/order-item-upd-inl-field.dto';
 import { OrderItemUpdInsuranceVlDto } from './dto/order-item-upd-insurance-vl.dto';
 import { OrderItemUpdNotesDto } from './dto/order-item-upd-notes.dto';
@@ -96,5 +97,11 @@ export class OrderItemsController {
   @Post('v2/order-items-delete')
   orderItemDeleteV2(@Body() dataJsonDto: OrderItemDeleteDto) {
     return this.orderItemsService.tskorderItemDeleteV2(dataJsonDto);
+  }
+
+  @UseGuards(AuthGuard)
+  @Post('v2/order-items-upd-general-field')
+  orderItemUpdGeneralFieldV2(@Body() dataJsonDto: OrderItemUpdGeneralFieldDto) {
+    return this.orderItemsService.tskOrderItemUpdGeneralFieldV2(dataJsonDto);
   }
 }

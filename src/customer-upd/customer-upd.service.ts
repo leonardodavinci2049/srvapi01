@@ -9,12 +9,14 @@ import { CustomerUpdAddressDto } from './dto/customer-upd-address.dto';
 import { CustomerUpdBusinessDto } from './dto/customer-upd-business.dto';
 import { CustomerUpdFlagDto } from './dto/customer-upd-flag.dto';
 import { CustomerUpdGeneralDto } from './dto/customer-upd-general.dto';
+import { CustomerUpdGeneralFieldDto } from './dto/customer-upd-general-field.dto';
 import { CustomerUpdInternetDto } from './dto/customer-upd-internet.dto';
 import { CustomerUpdPersonalDto } from './dto/customer-upd-personal.dto';
 import { CustomerUpdAddressQuery } from './query/customer-upd-address.query';
 import { CustomerUpdBusinessQuery } from './query/customer-upd-business.query';
 import { CustomerUpdFlagQuery } from './query/customer-upd-flag.query';
 import { CustomerUpdGeneralQuery } from './query/customer-upd-general.query';
+import { CustomerUpdGeneralFieldQuery } from './query/customer-upd-general-field.query';
 import { CustomerUpdInternetQuery } from './query/customer-upd-internet.query';
 import { CustomerUpdPersonalQuery } from './query/customer-upd-personal.query';
 import { SpResultRecordUpdateType } from './types/costumer-upd.type';
@@ -129,6 +131,27 @@ export class CustomerUpdService {
       return processProcedureResultMutation(
         resultData,
         'Customer update personal failed',
+      );
+    } catch (err) {
+      const errorMessage =
+        err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
+      return new ResultModel(100404, errorMessage, 0, []);
+    }
+  }
+
+  async TaskCustomerUpdGeneralField(dataJsonDto: CustomerUpdGeneralFieldDto) {
+    try {
+      const { queryString, queryParams } =
+        CustomerUpdGeneralFieldQuery(dataJsonDto);
+
+      const resultData = (await this.dbService.selectExecute(
+        queryString,
+        queryParams,
+      )) as unknown as SpResultRecordUpdateType;
+
+      return processProcedureResultMutation(
+        resultData,
+        'Customer field update failed',
       );
     } catch (err) {
       const errorMessage =

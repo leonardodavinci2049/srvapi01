@@ -4,6 +4,7 @@ import { SellerFindIdDto } from './dto/seller-find-id.dto';
 import { SellerFindManagerAllV2Dto } from './dto/seller-find-manager-all-v2.dto';
 import { SellerFindManagerIdV2Dto } from './dto/seller-find-manager-id-v2.dto';
 import { SellerFindSearchV2Dto } from './dto/seller-find-search-v2.dto';
+import { SellerUpdGeneralFieldDto } from './dto/seller-upd-general-field.dto';
 import { SellerService } from './seller.service';
 
 @Controller('seller')
@@ -32,5 +33,11 @@ export class SellerController {
   @Post('v2/seller-find-manager-id')
   sellerFindManagerIdV2(@Body() dataJsonDto: SellerFindManagerIdV2Dto) {
     return this.sellerService.taskSellerFindManagerIdV2(dataJsonDto);
+  }
+
+  @UseGuards(AuthGuard)
+  @Post('v2/seller-upd-general-field')
+  sellerUpdGeneralFieldV2(@Body() dataJsonDto: SellerUpdGeneralFieldDto) {
+    return this.sellerService.taskSellerUpdGeneralFieldV2(dataJsonDto);
   }
 }

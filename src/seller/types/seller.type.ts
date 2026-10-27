@@ -17,6 +17,8 @@ export interface SpOperationResult {
   changedRows: number;
 }
 
+export type SpResultRecordUpdateType = [SpDefaultFeedback[], SpOperationResult];
+
 export interface TblSellerFindManagerAll extends RowDataPacket {
   ID_CUSTOMER: number;
   ID_TIPO_CLIENTE: number;

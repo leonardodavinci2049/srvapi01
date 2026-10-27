@@ -12,6 +12,7 @@ import { CarrierFindIdV2Dto } from './dto/carrier-find-id-v2.dto';
 import { CarrierFindManagerAllV2Dto } from './dto/carrier-find-manager-all-v2.dto';
 import { CarrierFindManagerIdV2Dto } from './dto/carrier-find-manager-id-v2.dto';
 import { CarrierFindSearchV2Dto } from './dto/carrier-find-search-v2.dto';
+import { CarrierUpdGeneralFieldDto } from './dto/carrier-upd-general-field.dto';
 import { CarrierUpdateV2Dto } from './dto/carrier-update-v2.dto';
 import { CarrierCreateV2Query } from './query/carrier-create-v2.query';
 import { CarrierDeleteV2Query } from './query/carrier-delete-v2.query';
@@ -20,6 +21,7 @@ import { CarrierFindIdV2Query } from './query/carrier-find-id-v2.query';
 import { CarrierFindManagerAllV2Query } from './query/carrier-find-manager-all-v2.query';
 import { CarrierFindManagerIdV2Query } from './query/carrier-find-manager-id-v2.query';
 import { CarrierFindSearchV2Query } from './query/carrier-find-search-v2.query';
+import { CarrierUpdGeneralFieldQuery } from './query/carrier-upd-general-field.query';
 import { CarrierUpdateV2Query } from './query/carrier-update-v2.query';
 import {
   SpResultCarrierFindAllData,
@@ -195,6 +197,27 @@ export class CarrierService {
       return processProcedureResultMutation(
         resultData,
         'Carrier delete failed',
+      );
+    } catch (err) {
+      const errorMessage =
+        err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
+      return new ResultModel(100404, errorMessage, 0, []);
+    }
+  }
+
+  async taskCarrierUpdGeneralFieldV2(dataJsonDto: CarrierUpdGeneralFieldDto) {
+    try {
+      const { queryString, queryParams } =
+        CarrierUpdGeneralFieldQuery(dataJsonDto);
+
+      const resultData = (await this.dbService.selectExecute(
+        queryString,
+        queryParams,
+      )) as unknown as SpResultRecordUpdateType;
+
+      return processProcedureResultMutation(
+        resultData,
+        'Carrier field update failed',
       );
     } catch (err) {
       const errorMessage =

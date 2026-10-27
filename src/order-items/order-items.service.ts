@@ -11,6 +11,7 @@ import { OrderItemUpdDiscountDto } from './dto/order-item-upd-discount.dto';
 
 import { OrderItemUpdDiscountAdmDto } from './dto/order-item-upd-discount-adm.dto';
 import { OrderItemUpdFreteVlDto } from './dto/order-item-upd-frete-vl.dto';
+import { OrderItemUpdGeneralFieldDto } from './dto/order-item-upd-general-field.dto';
 import { OrderItemUpdInlFieldDto } from './dto/order-item-upd-inl-field.dto';
 import { OrderItemUpdInsuranceVlDto } from './dto/order-item-upd-insurance-vl.dto';
 import { OrderItemUpdNotesDto } from './dto/order-item-upd-notes.dto';
@@ -23,6 +24,7 @@ import { OrderItemFindIdQuery } from './query/order-item-find-id.query';
 import { OrderItemUpdDiscountQuery } from './query/order-item-upd-discount.query';
 import { OrderItemUpdDiscountAdmQuery } from './query/order-item-upd-discount-adm.query';
 import { OrderItemUpdFreteVlQuery } from './query/order-item-upd-frete-vl.query';
+import { OrderItemUpdGeneralFieldQuery } from './query/order-item-upd-general-field.query';
 import { OrderItemUpdInlFieldQuery } from './query/order-item-upd-inl-field.query';
 import { OrderItemUpdInsuranceVlQuery } from './query/order-item-upd-insurance-vl.query';
 import { OrderItemUpdNotesQuery } from './query/order-item-upd-notes.query';
@@ -242,6 +244,29 @@ export class OrderItemsService {
       return processProcedureResultMutation(
         resultData,
         'Order Item delete failed',
+      );
+    } catch (err) {
+      const errorMessage =
+        err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
+      return new ResultModel(100404, errorMessage, 0, []);
+    }
+  }
+
+  async tskOrderItemUpdGeneralFieldV2(
+    dataJsonDto: OrderItemUpdGeneralFieldDto,
+  ) {
+    try {
+      const { queryString, queryParams } =
+        OrderItemUpdGeneralFieldQuery(dataJsonDto);
+
+      const resultData = (await this.dbService.selectExecute(
+        queryString,
+        queryParams,
+      )) as unknown as SpResultRecordUpdateType;
+
+      return processProcedureResultMutation(
+        resultData,
+        'Order item field update failed',
       );
     } catch (err) {
       const errorMessage =
