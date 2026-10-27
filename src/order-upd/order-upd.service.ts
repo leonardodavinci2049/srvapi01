@@ -6,6 +6,7 @@ import { DatabaseService } from 'src/database/database.service';
 import { OrderUpdCustomerIdDto } from './dto/order-upd-customer-id.dto';
 import { OrderUpdDiscountIdDto } from './dto/order-upd-discount-id.dto';
 import { OrderUpdFreteIdDto } from './dto/order-upd-frete-id.dto';
+import { OrderUpdGeneralFieldDto } from './dto/order-upd-general-field.dto';
 import { OrderUpdInlFieldDto } from './dto/order-upd-inl-field.dto';
 import { OrderUpdNotesIdDto } from './dto/order-upd-notes-id.dto';
 import { OrderUpdPgMethodIdDto } from './dto/order-upd-pg-method-id.dto';
@@ -14,6 +15,7 @@ import { OrderUpdStatusIdDto } from './dto/order-upd-status-id.dto';
 import { OrderUpdCustomerIdQuery } from './query/order-upd-customer-id.query';
 import { OrderUpdDiscountIdQuery } from './query/order-upd-discount-id.query';
 import { OrderUpdFreteIdQuery } from './query/order-upd-frete-id.query';
+import { OrderUpdGeneralFieldQuery } from './query/order-upd-general-field.query';
 import { OrderUpdInlFieldQuery } from './query/order-upd-inl-field.query';
 import { OrderUpdNotesIdQuery } from './query/order-upd-notes-id.query';
 import { OrderUpdPgMethodIdQuery } from './query/order-upd-pg-method-id.query';
@@ -169,6 +171,27 @@ export class OrderUpdService {
       return processProcedureResultMutation(
         resultData,
         'Order Item update failed',
+      );
+    } catch (err) {
+      const errorMessage =
+        err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
+      return new ResultModel(100404, errorMessage, 0, []);
+    }
+  }
+
+  async taskOrderUpdGeneralFieldV2(dataJsonDto: OrderUpdGeneralFieldDto) {
+    try {
+      const { queryString, queryParams } =
+        OrderUpdGeneralFieldQuery(dataJsonDto);
+
+      const resultData = (await this.dbService.selectExecute(
+        queryString,
+        queryParams,
+      )) as unknown as SpResultRecordUpdateType;
+
+      return processProcedureResultMutation(
+        resultData,
+        'Order field update failed',
       );
     } catch (err) {
       const errorMessage =

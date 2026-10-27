@@ -10,6 +10,7 @@ import { SupplierFindSearchV2Dto } from './dto/supplier-find-search-v2.dto';
 import { SupplierRelCreateV2Dto } from './dto/supplier-rel-create-v2.dto';
 import { SupplierRelDeleteV2Dto } from './dto/supplier-rel-delete-v2.dto';
 import { SupplierRelFindProdAllV2Dto } from './dto/supplier-rel-find-prod-all-v2.dto';
+import { SupplierUpdGeneralFieldDto } from './dto/supplier-upd-general-field.dto';
 import { SupplierUpdateV2Dto } from './dto/supplier-update-v2.dto';
 import { SupplierService } from './supplier.service';
 
@@ -98,5 +99,11 @@ export class SupplierController {
   @Post('v2/supplier-delete')
   taskSupplierDeleteV2(@Body() dataJsonDto: SupplierDeleteV2Dto) {
     return this.supplierService.taskSupplierDeleteV2(dataJsonDto);
+  }
+
+  @UseGuards(AuthGuard)
+  @Post('v2/supplier-upd-general-field')
+  supplierUpdGeneralFieldV2(@Body() dataJsonDto: SupplierUpdGeneralFieldDto) {
+    return this.supplierService.taskSupplierUpdGeneralFieldV2(dataJsonDto);
   }
 }

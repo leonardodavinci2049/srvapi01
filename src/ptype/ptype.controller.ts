@@ -7,6 +7,7 @@ import { TypeFindIdV2Dto } from './dto/type-find-id-v2.dto';
 import { TypeFindManagerAllV2Dto } from './dto/type-find-manager-all-v2.dto';
 import { TypeFindManagerIdV2Dto } from './dto/type-find-manager-id-v2.dto';
 import { TypeFindSearchV2Dto } from './dto/type-find-search-v2.dto';
+import { TypeUpdGeneralFieldDto } from './dto/type-upd-general-field.dto';
 import { TypeUpdateV2Dto } from './dto/type-update-v2.dto';
 import { PtypeService } from './ptype.service';
 
@@ -75,5 +76,11 @@ export class PtypeController {
   @Post('v2/ptype-delete')
   ptypeDeleteV2(@Body() dataJsonDto: TypeDeleteV2Dto) {
     return this.ptypeService.taskTypeDeleteV2(dataJsonDto);
+  }
+
+  @UseGuards(AuthGuard)
+  @Post('v2/ptype-upd-general-field')
+  ptypeUpdGeneralFieldV2(@Body() dataJsonDto: TypeUpdGeneralFieldDto) {
+    return this.ptypeService.taskTypeUpdGeneralFieldV2(dataJsonDto);
   }
 }

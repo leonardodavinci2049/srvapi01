@@ -15,6 +15,7 @@ import { SupplierFindSearchV2Dto } from './dto/supplier-find-search-v2.dto';
 import { SupplierRelCreateV2Dto } from './dto/supplier-rel-create-v2.dto';
 import { SupplierRelDeleteV2Dto } from './dto/supplier-rel-delete-v2.dto';
 import { SupplierRelFindProdAllV2Dto } from './dto/supplier-rel-find-prod-all-v2.dto';
+import { SupplierUpdGeneralFieldDto } from './dto/supplier-upd-general-field.dto';
 import { SupplierUpdateV2Dto } from './dto/supplier-update-v2.dto';
 import { SupplierCreateV2Query } from './query/supplier-create-v2.query';
 import { SupplierDeleteV2Query } from './query/supplier-delete-v2.query';
@@ -26,6 +27,7 @@ import { SupplierFindSearchV2Query } from './query/supplier-find-search-v2.query
 import { SupplierRelCreateV2Query } from './query/supplier-rel-create-v2.query';
 import { SupplierRelDeleteV2Query } from './query/supplier-rel-delete-v2.query';
 import { SupplierRelFindProdAllV2Query } from './query/supplier-rel-find-prod-all-v2.query';
+import { SupplierUpdGeneralFieldQuery } from './query/supplier-upd-general-field.query';
 import { SupplierUpdateV2Query } from './query/supplier-update-v2.query';
 import {
   SpResultRecordCreateType,
@@ -257,6 +259,27 @@ export class SupplierService {
       return processProcedureResultMutation(
         resultData,
         'Supplier delete failed',
+      );
+    } catch (err) {
+      const errorMessage =
+        err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
+      return new ResultModel(100404, errorMessage, 0, []);
+    }
+  }
+
+  async taskSupplierUpdGeneralFieldV2(dataJsonDto: SupplierUpdGeneralFieldDto) {
+    try {
+      const { queryString, queryParams } =
+        SupplierUpdGeneralFieldQuery(dataJsonDto);
+
+      const resultData = (await this.dbService.selectExecute(
+        queryString,
+        queryParams,
+      )) as unknown as SpResultRecordUpdateType;
+
+      return processProcedureResultMutation(
+        resultData,
+        'Supplier field update failed',
       );
     } catch (err) {
       const errorMessage =

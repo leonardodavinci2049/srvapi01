@@ -8,6 +8,7 @@ import { CarrierFindIdV2Dto } from './dto/carrier-find-id-v2.dto';
 import { CarrierFindManagerAllV2Dto } from './dto/carrier-find-manager-all-v2.dto';
 import { CarrierFindManagerIdV2Dto } from './dto/carrier-find-manager-id-v2.dto';
 import { CarrierFindSearchV2Dto } from './dto/carrier-find-search-v2.dto';
+import { CarrierUpdGeneralFieldDto } from './dto/carrier-upd-general-field.dto';
 import { CarrierUpdateV2Dto } from './dto/carrier-update-v2.dto';
 
 @Controller('carrier')
@@ -60,5 +61,11 @@ export class CarrierController {
   @Post('v2/carrier-delete')
   carrierDeleteV2(@Body() dataJsonDto: CarrierDeleteV2Dto) {
     return this.carrierService.taskCarrierDeleteV2(dataJsonDto);
+  }
+
+  @UseGuards(AuthGuard)
+  @Post('v2/carrier-upd-general-field')
+  carrierUpdGeneralFieldV2(@Body() dataJsonDto: CarrierUpdGeneralFieldDto) {
+    return this.carrierService.taskCarrierUpdGeneralFieldV2(dataJsonDto);
   }
 }

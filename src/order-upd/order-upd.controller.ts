@@ -3,6 +3,7 @@ import { AuthGuard } from 'src/core/guards/auth.guard';
 import { OrderUpdCustomerIdDto } from './dto/order-upd-customer-id.dto';
 import { OrderUpdDiscountIdDto } from './dto/order-upd-discount-id.dto';
 import { OrderUpdFreteIdDto } from './dto/order-upd-frete-id.dto';
+import { OrderUpdGeneralFieldDto } from './dto/order-upd-general-field.dto';
 import { OrderUpdInlFieldDto } from './dto/order-upd-inl-field.dto';
 import { OrderUpdNotesIdDto } from './dto/order-upd-notes-id.dto';
 import { OrderUpdPgMethodIdDto } from './dto/order-upd-pg-method-id.dto';
@@ -75,5 +76,11 @@ export class OrderUpdController {
   @Post('v2/order-upd-status-id')
   OrderUpdStatusIdV2(@Body() dataJsonDto: OrderUpdStatusIdDto) {
     return this.orderUpdService.taskOrderUpdStatusIdV2(dataJsonDto);
+  }
+
+  @UseGuards(AuthGuard)
+  @Post('v2/order-upd-general-field')
+  OrderUpdGeneralFieldV2(@Body() dataJsonDto: OrderUpdGeneralFieldDto) {
+    return this.orderUpdService.taskOrderUpdGeneralFieldV2(dataJsonDto);
   }
 }

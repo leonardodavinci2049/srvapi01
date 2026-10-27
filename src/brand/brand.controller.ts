@@ -9,6 +9,7 @@ import { BrandFindIdV2Dto } from './dto/brand-find-id-v2.dto';
 import { BrandFindManagerAllV2Dto } from './dto/brand-find-manager-all-v2.dto';
 import { BrandFindManagerIdV2Dto } from './dto/brand-find-manager-id_v2.dto';
 import { BrandFindSearchV2Dto } from './dto/brand-find-search-v2.dto';
+import { BrandUpdGeneralFieldDto } from './dto/brand-upd-general-field.dto';
 import { BrandUpdateV2Dto } from './dto/brand-update-v2.dto';
 
 @Controller('brand')
@@ -76,5 +77,11 @@ export class BrandController {
   @Post('v2/brand-delete')
   brandDeleteV2(@Body() dataJsonDto: BrandDeleteV2Dto) {
     return this.brandService.taskBrandDeleteV2(dataJsonDto);
+  }
+
+  @UseGuards(AuthGuard)
+  @Post('v2/brand-upd-general-field')
+  brandUpdGeneralFieldV2(@Body() dataJsonDto: BrandUpdGeneralFieldDto) {
+    return this.brandService.taskBrandUpdGeneralFieldV2(dataJsonDto);
   }
 }

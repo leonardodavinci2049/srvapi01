@@ -14,6 +14,7 @@ import { TypeFindIdV2Dto } from './dto/type-find-id-v2.dto';
 import { TypeFindManagerAllV2Dto } from './dto/type-find-manager-all-v2.dto';
 import { TypeFindManagerIdV2Dto } from './dto/type-find-manager-id-v2.dto';
 import { TypeFindSearchV2Dto } from './dto/type-find-search-v2.dto';
+import { TypeUpdGeneralFieldDto } from './dto/type-upd-general-field.dto';
 import { TypeUpdateV2Dto } from './dto/type-update-v2.dto';
 import { TypeCreateV2Query } from './query/type-create-v2.query';
 import { TypeDeleteV2Query } from './query/type-delete-v2.query';
@@ -23,6 +24,7 @@ import { TypeFindIdV2Query } from './query/type-find-id-v2.query';
 import { TypeFindManagerAllV2Query } from './query/type-find-manager-all-v2.query';
 import { TypeFindManagerIdV2Query } from './query/type-find-manager-id-v2.query';
 import { TypeFindSearchV2Query } from './query/type-find-search-v2.query';
+import { TypeUpdGeneralFieldQuery } from './query/type-upd-general-field.query';
 import { TypeUpdateV2Query } from './query/type-update-v2.query';
 import {
   SpResultPTypeFindAllData,
@@ -223,6 +225,27 @@ export class PtypeService {
         resultData,
         qtRecords,
         '',
+      );
+    } catch (err) {
+      const errorMessage =
+        err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
+      return new ResultModel(100404, errorMessage, 0, []);
+    }
+  }
+
+  async taskTypeUpdGeneralFieldV2(dataJsonDto: TypeUpdGeneralFieldDto) {
+    try {
+      const { queryString, queryParams } =
+        TypeUpdGeneralFieldQuery(dataJsonDto);
+
+      const resultData = (await this.dbService.selectExecute(
+        queryString,
+        queryParams,
+      )) as unknown as SpResultRecordUpdateType;
+
+      return processProcedureResultMutation(
+        resultData,
+        'Product type field update failed',
       );
     } catch (err) {
       const errorMessage =
