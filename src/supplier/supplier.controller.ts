@@ -11,6 +11,13 @@ import { SupplierRelCreateV2Dto } from './dto/supplier-rel-create-v2.dto';
 import { SupplierRelDeleteV2Dto } from './dto/supplier-rel-delete-v2.dto';
 import { SupplierRelFindProdAllV2Dto } from './dto/supplier-rel-find-prod-all-v2.dto';
 import { SupplierUpdGeneralFieldDto } from './dto/supplier-upd-general-field.dto';
+import { SupplierUpdAddressV2Dto } from './dto/supplier-upd-address-v2.dto';
+import { SupplierUpdBusinessV2Dto } from './dto/supplier-upd-business-v2.dto';
+import { SupplierUpdDeliveryV2Dto } from './dto/supplier-upd-delivery-v2.dto';
+import { SupplierUpdGeneralV2Dto } from './dto/supplier-upd-general-v2.dto';
+import { SupplierUpdInlTypePersonV2Dto } from './dto/supplier-upd-inl-type-person-v2.dto';
+import { SupplierUpdInternetV2Dto } from './dto/supplier-upd-internet-v2.dto';
+import { SupplierUpdPersonalV2Dto } from './dto/supplier-upd-personal-v2.dto';
 import { SupplierUpdateV2Dto } from './dto/supplier-update-v2.dto';
 import { SupplierService } from './supplier.service';
 
@@ -105,5 +112,49 @@ export class SupplierController {
   @Post('v2/supplier-upd-general-field')
   supplierUpdGeneralFieldV2(@Body() dataJsonDto: SupplierUpdGeneralFieldDto) {
     return this.supplierService.taskSupplierUpdGeneralFieldV2(dataJsonDto);
+  }
+
+  @UseGuards(AuthGuard)
+  @Post('v2/supplier-upd-address')
+  supplierUpdAddressV2(@Body() dataJsonDto: SupplierUpdAddressV2Dto) {
+    return this.supplierService.taskSupplierUpdAddressV2(dataJsonDto);
+  }
+
+  @UseGuards(AuthGuard)
+  @Post('v2/supplier-upd-business')
+  supplierUpdBusinessV2(@Body() dataJsonDto: SupplierUpdBusinessV2Dto) {
+    return this.supplierService.taskSupplierUpdBusinessV2(dataJsonDto);
+  }
+
+  @UseGuards(AuthGuard)
+  @Post('v2/supplier-upd-delivery')
+  supplierUpdDeliveryV2(@Body() dataJsonDto: SupplierUpdDeliveryV2Dto) {
+    return this.supplierService.taskSupplierUpdDeliveryV2(dataJsonDto);
+  }
+
+  @UseGuards(AuthGuard)
+  @Post('v2/supplier-upd-general')
+  supplierUpdGeneralV2(@Body() dataJsonDto: SupplierUpdGeneralV2Dto) {
+    return this.supplierService.taskSupplierUpdGeneralV2(dataJsonDto);
+  }
+
+  @UseGuards(AuthGuard)
+  @Post('v2/supplier-upd-inl-type-person')
+  supplierUpdInlTypePersonV2(
+    @Body() dataJsonDto: SupplierUpdInlTypePersonV2Dto,
+  ) {
+    return this.supplierService.taskSupplierUpdInlTypePersonV2(dataJsonDto);
+  }
+
+  @UseGuards(AuthGuard)
+  @Post('v2/supplier-upd-internet')
+  supplierUpdInternetV2(@Body() dataJsonDto: SupplierUpdInternetV2Dto) {
+    return this.supplierService.taskSupplierUpdInternetV2(dataJsonDto);
+  }
+
+  @UseGuards(AuthGuard)
+  @Post('v2/supplier-upd-personal')
+  supplierUpdPersonalV2(@Body() dataJsonDto: SupplierUpdPersonalV2Dto) {
+    return this.supplierService.taskSupplierUpdPersonalV2(dataJsonDto);
   }
 }

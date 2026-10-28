@@ -1,8 +1,23 @@
 import { SupplierFindIdV2Dto } from '../dto/supplier-find-id-v2.dto';
 
+interface SupplierFindIdV2QueryResult {
+  queryString: string;
+  queryParams: [
+    number,
+    number,
+    number,
+    string,
+    string,
+    string,
+    string,
+    number | null,
+    number,
+  ];
+}
+
 export function SupplierFindIdV2Query(
   dataJsonDto: SupplierFindIdV2Dto,
-): string {
+): SupplierFindIdV2QueryResult {
   const olAppId = dataJsonDto.pe_app_id ?? 1;
   const olSystemClientId = dataJsonDto.pe_system_client_id;
   const olStoreId = dataJsonDto.pe_store_id;
@@ -10,20 +25,32 @@ export function SupplierFindIdV2Query(
   const olUserId = dataJsonDto.pe_user_id;
   const olUserName = dataJsonDto.pe_user_name;
   const olUserRole = dataJsonDto.pe_user_role;
-  const olPersonId = dataJsonDto.pe_person_id;
+  const olPersonId = dataJsonDto.pe_person_id ?? null;
   const olSupplierId = dataJsonDto.pe_supplier_id;
 
-  const queryString = ` call sp_supplier_find_id_v2(
-        ${olAppId},
-        ${olSystemClientId},
-        ${olStoreId},
-        '${olOrganizationId}',
-        '${olUserId}',
-        '${olUserName}',
-        '${olUserRole}',
-        ${olPersonId},
-        ${olSupplierId}
-      ) `;
+  const queryString = `call sp_supplier_find_id_v2(
+        ?,
+        ?,
+        ?,
+        ?,
+        ?,
+        ?,
+        ?,
+        ?,
+        ?
+      )`;
 
-  return queryString;
+  const queryParams: SupplierFindIdV2QueryResult['queryParams'] = [
+    olAppId,
+    olSystemClientId,
+    olStoreId,
+    olOrganizationId,
+    olUserId,
+    olUserName,
+    olUserRole,
+    olPersonId,
+    olSupplierId,
+  ];
+
+  return { queryString, queryParams };
 }

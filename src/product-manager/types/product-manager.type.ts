@@ -204,3 +204,32 @@ export type SpResultProductFindManagerIdData = [
   TblRelatedProducts[],
   SpOperationResult,
 ];
+
+export interface TblProductFindManagerRelations extends RowDataPacket {
+  ID_PRODUTO: number;
+  PRODUTO: string | null;
+  ESTOQUE_LOJA: number | null;
+  VL_ATACADO: string | null;
+  VL_CORPORATIVO: string | null;
+  VL_VAREJO: string | null;
+  DESCRICAO_TAB: string | null;
+  ETIQUETA: string | null;
+  REF: string | null;
+  MODELO: string | null;
+  ID_TIPO: number | null;
+  TIPO: string | null;
+  ID_MARCA: number | null;
+  MARCA: string | null;
+  PATH_IMAGEM_MARCA: string | null;
+  FORNECEDOR: string | null;
+  PATH_IMAGEM: string | null;
+  PATH_PAGE: string | null;
+  SLUG: string | null;
+  DATADOCADASTRO: Date | null;
+}
+
+export type SpResultProductFindManagerRelationsData = [
+  TblProductFindManagerRelations[],
+  SpDefaultFeedback[],
+  SpOperationResult,
+];

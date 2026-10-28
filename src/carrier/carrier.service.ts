@@ -13,6 +13,11 @@ import { CarrierFindManagerAllV2Dto } from './dto/carrier-find-manager-all-v2.dt
 import { CarrierFindManagerIdV2Dto } from './dto/carrier-find-manager-id-v2.dto';
 import { CarrierFindSearchV2Dto } from './dto/carrier-find-search-v2.dto';
 import { CarrierUpdGeneralFieldDto } from './dto/carrier-upd-general-field.dto';
+import { CarrierUpdAddressV2Dto } from './dto/carrier-upd-address-v2.dto';
+import { CarrierUpdBusinessV2Dto } from './dto/carrier-upd-business-v2.dto';
+import { CarrierUpdInlTypePersonV2Dto } from './dto/carrier-upd-inl-type-person-v2.dto';
+import { CarrierUpdInternetV2Dto } from './dto/carrier-upd-internet-v2.dto';
+import { CarrierUpdPersonalV2Dto } from './dto/carrier-upd-personal-v2.dto';
 import { CarrierUpdateV2Dto } from './dto/carrier-update-v2.dto';
 import { CarrierCreateV2Query } from './query/carrier-create-v2.query';
 import { CarrierDeleteV2Query } from './query/carrier-delete-v2.query';
@@ -22,6 +27,11 @@ import { CarrierFindManagerAllV2Query } from './query/carrier-find-manager-all-v
 import { CarrierFindManagerIdV2Query } from './query/carrier-find-manager-id-v2.query';
 import { CarrierFindSearchV2Query } from './query/carrier-find-search-v2.query';
 import { CarrierUpdGeneralFieldQuery } from './query/carrier-upd-general-field.query';
+import { CarrierUpdAddressV2Query } from './query/carrier-upd-address-v2.query';
+import { CarrierUpdBusinessV2Query } from './query/carrier-upd-business-v2.query';
+import { CarrierUpdInlTypePersonV2Query } from './query/carrier-upd-inl-type-person-v2.query';
+import { CarrierUpdInternetV2Query } from './query/carrier-upd-internet-v2.query';
+import { CarrierUpdPersonalV2Query } from './query/carrier-upd-personal-v2.query';
 import { CarrierUpdateV2Query } from './query/carrier-update-v2.query';
 import {
   SpResultCarrierFindAllData,
@@ -150,10 +160,11 @@ export class CarrierService {
 
   async taskCarrierFindIdV2(dataJsonDto: CarrierFindIdV2Dto) {
     try {
-      const queryString = CarrierFindIdV2Query(dataJsonDto);
+      const { queryString, queryParams } = CarrierFindIdV2Query(dataJsonDto);
 
       const resultData = (await this.dbService.selectExecute(
         queryString,
+        queryParams,
       )) as unknown as SpResultCarrierFindIdData;
 
       return processProcedureResultMultiQuery(
@@ -218,6 +229,113 @@ export class CarrierService {
       return processProcedureResultMutation(
         resultData,
         'Carrier field update failed',
+      );
+    } catch (err) {
+      const errorMessage =
+        err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
+      return new ResultModel(100404, errorMessage, 0, []);
+    }
+  }
+
+  async taskCarrierUpdAddressV2(dataJsonDto: CarrierUpdAddressV2Dto) {
+    try {
+      const { queryString, queryParams } =
+        CarrierUpdAddressV2Query(dataJsonDto);
+
+      const resultData = (await this.dbService.selectExecute(
+        queryString,
+        queryParams,
+      )) as unknown as SpResultRecordUpdateType;
+
+      return processProcedureResultMutation(
+        resultData,
+        'Carrier address update failed',
+      );
+    } catch (err) {
+      const errorMessage =
+        err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
+      return new ResultModel(100404, errorMessage, 0, []);
+    }
+  }
+
+  async taskCarrierUpdBusinessV2(dataJsonDto: CarrierUpdBusinessV2Dto) {
+    try {
+      const { queryString, queryParams } =
+        CarrierUpdBusinessV2Query(dataJsonDto);
+
+      const resultData = (await this.dbService.selectExecute(
+        queryString,
+        queryParams,
+      )) as unknown as SpResultRecordUpdateType;
+
+      return processProcedureResultMutation(
+        resultData,
+        'Carrier business update failed',
+      );
+    } catch (err) {
+      const errorMessage =
+        err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
+      return new ResultModel(100404, errorMessage, 0, []);
+    }
+  }
+
+  async taskCarrierUpdInlTypePersonV2(
+    dataJsonDto: CarrierUpdInlTypePersonV2Dto,
+  ) {
+    try {
+      const { queryString, queryParams } =
+        CarrierUpdInlTypePersonV2Query(dataJsonDto);
+
+      const resultData = (await this.dbService.selectExecute(
+        queryString,
+        queryParams,
+      )) as unknown as SpResultRecordUpdateType;
+
+      return processProcedureResultMutation(
+        resultData,
+        'Carrier person type update failed',
+      );
+    } catch (err) {
+      const errorMessage =
+        err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
+      return new ResultModel(100404, errorMessage, 0, []);
+    }
+  }
+
+  async taskCarrierUpdInternetV2(dataJsonDto: CarrierUpdInternetV2Dto) {
+    try {
+      const { queryString, queryParams } =
+        CarrierUpdInternetV2Query(dataJsonDto);
+
+      const resultData = (await this.dbService.selectExecute(
+        queryString,
+        queryParams,
+      )) as unknown as SpResultRecordUpdateType;
+
+      return processProcedureResultMutation(
+        resultData,
+        'Carrier internet update failed',
+      );
+    } catch (err) {
+      const errorMessage =
+        err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
+      return new ResultModel(100404, errorMessage, 0, []);
+    }
+  }
+
+  async taskCarrierUpdPersonalV2(dataJsonDto: CarrierUpdPersonalV2Dto) {
+    try {
+      const { queryString, queryParams } =
+        CarrierUpdPersonalV2Query(dataJsonDto);
+
+      const resultData = (await this.dbService.selectExecute(
+        queryString,
+        queryParams,
+      )) as unknown as SpResultRecordUpdateType;
+
+      return processProcedureResultMutation(
+        resultData,
+        'Carrier personal update failed',
       );
     } catch (err) {
       const errorMessage =

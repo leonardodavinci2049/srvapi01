@@ -13,6 +13,10 @@ import { BrandFindManagerAllV2Dto } from './dto/brand-find-manager-all-v2.dto';
 import { BrandFindManagerIdV2Dto } from './dto/brand-find-manager-id_v2.dto';
 import { BrandFindSearchV2Dto } from './dto/brand-find-search-v2.dto';
 import { BrandUpdGeneralFieldDto } from './dto/brand-upd-general-field.dto';
+import { BrandUpdInlFlagActiveV2Dto } from './dto/brand-upd-inl-flag-active-v2.dto';
+import { BrandUpdInlNameV2Dto } from './dto/brand-upd-inl-name-v2.dto';
+import { BrandUpdInlNotesV2Dto } from './dto/brand-upd-inl-notes-v2.dto';
+import { BrandUpdInlSlugV2Dto } from './dto/brand-upd-inl-slug-v2.dto';
 import { BrandUpdateV2Dto } from './dto/brand-update-v2.dto';
 import { BrandCreateV2Query } from './query/brand-create-v2.query';
 import { BrandDeleteV2Query } from './query/brand-delete-v2.query';
@@ -22,6 +26,10 @@ import { BrandFindManagerAllV2Query } from './query/brand-find-manager-all-v2.qu
 import { BrandFindManagerIdV2Query } from './query/brand-find-manager-id-v2.query';
 import { BrandFindSearchV2Query } from './query/brand-find-search-v2.query';
 import { BrandUpdGeneralFieldQuery } from './query/brand-upd-general-field.query';
+import { BrandUpdInlFlagActiveV2Query } from './query/brand-upd-inl-flag-active-v2.query';
+import { BrandUpdInlNameV2Query } from './query/brand-upd-inl-name-v2.query';
+import { BrandUpdInlNotesV2Query } from './query/brand-upd-inl-notes-v2.query';
+import { BrandUpdInlSlugV2Query } from './query/brand-upd-inl-slug-v2.query';
 import { BrandUpdateV2Query } from './query/brand-update-v2.query';
 import {
   SpResultBrandFindAllData,
@@ -203,6 +211,87 @@ export class BrandService {
       return processProcedureResultMutation(
         resultData,
         'Brand field update failed',
+      );
+    } catch (err) {
+      const errorMessage =
+        err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
+      return new ResultModel(100404, errorMessage, 0, []);
+    }
+  }
+
+  async taskBrandUpdInlFlagActiveV2(dataJsonDto: BrandUpdInlFlagActiveV2Dto) {
+    try {
+      const { queryString, queryParams } =
+        BrandUpdInlFlagActiveV2Query(dataJsonDto);
+
+      const resultData = (await this.dbService.selectExecute(
+        queryString,
+        queryParams,
+      )) as unknown as SpResultRecordUpdateType;
+
+      return processProcedureResultMutation(
+        resultData,
+        'Brand flag active update failed',
+      );
+    } catch (err) {
+      const errorMessage =
+        err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
+      return new ResultModel(100404, errorMessage, 0, []);
+    }
+  }
+
+  async taskBrandUpdInlNameV2(dataJsonDto: BrandUpdInlNameV2Dto) {
+    try {
+      const { queryString, queryParams } = BrandUpdInlNameV2Query(dataJsonDto);
+
+      const resultData = (await this.dbService.selectExecute(
+        queryString,
+        queryParams,
+      )) as unknown as SpResultRecordUpdateType;
+
+      return processProcedureResultMutation(
+        resultData,
+        'Brand name update failed',
+      );
+    } catch (err) {
+      const errorMessage =
+        err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
+      return new ResultModel(100404, errorMessage, 0, []);
+    }
+  }
+
+  async taskBrandUpdInlNotesV2(dataJsonDto: BrandUpdInlNotesV2Dto) {
+    try {
+      const { queryString, queryParams } = BrandUpdInlNotesV2Query(dataJsonDto);
+
+      const resultData = (await this.dbService.selectExecute(
+        queryString,
+        queryParams,
+      )) as unknown as SpResultRecordUpdateType;
+
+      return processProcedureResultMutation(
+        resultData,
+        'Brand notes update failed',
+      );
+    } catch (err) {
+      const errorMessage =
+        err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
+      return new ResultModel(100404, errorMessage, 0, []);
+    }
+  }
+
+  async taskBrandUpdInlSlugV2(dataJsonDto: BrandUpdInlSlugV2Dto) {
+    try {
+      const { queryString, queryParams } = BrandUpdInlSlugV2Query(dataJsonDto);
+
+      const resultData = (await this.dbService.selectExecute(
+        queryString,
+        queryParams,
+      )) as unknown as SpResultRecordUpdateType;
+
+      return processProcedureResultMutation(
+        resultData,
+        'Brand slug update failed',
       );
     } catch (err) {
       const errorMessage =

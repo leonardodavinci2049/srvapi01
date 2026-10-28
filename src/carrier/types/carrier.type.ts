@@ -33,8 +33,49 @@ export type SpResultCarrierFindAllData = [
 ];
 
 export interface TblCarrierFindId extends RowDataPacket {
-  ID_TIPO: number;
-  TIPO: string;
+  ID_TRANSPORTADORA: number;
+  NOME: string | null;
+  PATH_IMAGEM: string | null;
+  FONE1: string | null;
+  WHATAPP1: string | null;
+  CONTATO1: string | null;
+  EMAIL1: string | null;
+  ID_PESSOA_TIPO: number | null;
+  TIPO_PESSOA: string;
+  FISIJURI: string | null;
+  RAZAO_SOCIAL: string | null;
+  CNPJ: string | null;
+  INSC_ESTADUAL: string | null;
+  INSC_MUNICIPAL: string | null;
+  NOME_FANTASIA: string | null;
+  DATA_CNPJ: Date | null;
+  NOME_RESPONSAVEL: string | null;
+  CARGO_RESPOSNAVEL: string | null;
+  PRIMEIRO_NOME: string | null;
+  CARGO: string | null;
+  CPF: string | null;
+  RG: string | null;
+  DATADONASCIMENTO: Date | null;
+  CEP: string | null;
+  ENDERECO: string | null;
+  ENDERECO_NUMERO: string | null;
+  COMPLEMENTO: string | null;
+  BAIRRO: string | null;
+  CIDADE: string | null;
+  UF: string | null;
+  REGIAO_PAIS: string | null;
+  PAIS: string | null;
+  COD_MUNICIPIO: number | null;
+  COD_UF: number | null;
+  WEBSITE: string | null;
+  SKYPE: string | null;
+  FACEBOOK: string | null;
+  TWITTER: string | null;
+  FRETADOR: number | null;
+  INATIVO: number | null;
+  DATADOCADASTRO: Date | null;
+  ANOTACOES: string | null;
+  DT_UPDATE: Date | null;
 }
 
 export interface TblCarrierFindManagerAll extends RowDataPacket {
