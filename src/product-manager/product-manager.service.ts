@@ -9,12 +9,14 @@ import { ResultModel } from 'src/core/utils/result.model';
 import { DatabaseService } from 'src/database/database.service';
 import { ProductFindManagerAllV2Dto } from './dto/product-find-manager-all-v2.dto';
 import { ProductFindManagerIdV2Dto } from './dto/product-find-manager-id-v2.dto';
+import { ProductFindManagerRelationsV2Dto } from './dto/product-find-manager-relations-v2.dto';
 import { ProductFindManagerSearchV2Dto } from './dto/product-find-manager-search.dto';
 import { ProductFindTaxonomyCandidatesV2Dto } from './dto/product-find-taxonomy-candidates-v2.dto';
 import { ProductFindTaxonomyIdV2Dto } from './dto/product-find-taxonomy-id-v2.dto';
 import { ProductFindTaxonomyOutsideAllV2Dto } from './dto/product-find-taxonomy-outside-all-v2.dto';
 import { ProductFindManagerAllV2Query } from './query/product-find-manager-all-v2.query';
 import { ProductFindManagerIdV2Query } from './query/product-find-manager-id-v2.query';
+import { ProductFindManagerRelationsV2Query } from './query/product-find-manager-relations-v2.query';
 import { ProductFindManagerSearchV2Query } from './query/product-find-manager-search.query';
 import { ProductFindTaxonomyCandidatesV2Query } from './query/product-find-taxonomy-candidates-v2.query';
 import { ProductFindTaxonomyIdV2Query } from './query/product-find-taxonomy-id-v2.query';
@@ -23,6 +25,7 @@ import { SpResultProductFindTaxonomyData } from './types/product-find-taxonomy-v
 import {
   SpResultProductFindManagerAllData,
   SpResultProductFindManagerIdData,
+  SpResultProductFindManagerRelationsData,
 } from './types/product-manager.type';
 
 @Injectable()
@@ -167,6 +170,30 @@ export class ProductManagerService {
         resultData,
         ['Product Manager find Id', 'Related Categories', 'Related Products'],
         'Customer find Allnot found',
+      );
+    } catch (err) {
+      const errorMessage =
+        err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
+      return new ResultModel(100404, errorMessage, 0, []);
+    }
+  }
+
+  async taskProductFindManagerRelationsV2(
+    dataJsonDto: ProductFindManagerRelationsV2Dto,
+  ) {
+    try {
+      const { queryString, queryParams } =
+        ProductFindManagerRelationsV2Query(dataJsonDto);
+
+      const resultData = (await this.dbService.selectExecute(
+        queryString,
+        queryParams,
+      )) as unknown as SpResultProductFindManagerRelationsData;
+
+      return processProcedureResultMultiQuery(
+        resultData,
+        ['Product Manager find Relations'],
+        'Product Manager find Relations not found',
       );
     } catch (err) {
       const errorMessage =

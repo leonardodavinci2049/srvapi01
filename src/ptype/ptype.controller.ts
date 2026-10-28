@@ -8,6 +8,10 @@ import { TypeFindManagerAllV2Dto } from './dto/type-find-manager-all-v2.dto';
 import { TypeFindManagerIdV2Dto } from './dto/type-find-manager-id-v2.dto';
 import { TypeFindSearchV2Dto } from './dto/type-find-search-v2.dto';
 import { TypeUpdGeneralFieldDto } from './dto/type-upd-general-field.dto';
+import { TypeUpdInlFlagActiveV2Dto } from './dto/type-upd-inl-flag-active-v2.dto';
+import { TypeUpdInlNameV2Dto } from './dto/type-upd-inl-name-v2.dto';
+import { TypeUpdInlNotesV2Dto } from './dto/type-upd-inl-notes-v2.dto';
+import { TypeUpdInlSlugV2Dto } from './dto/type-upd-inl-slug-v2.dto';
 import { TypeUpdateV2Dto } from './dto/type-update-v2.dto';
 import { PtypeService } from './ptype.service';
 
@@ -82,5 +86,29 @@ export class PtypeController {
   @Post('v2/ptype-upd-general-field')
   ptypeUpdGeneralFieldV2(@Body() dataJsonDto: TypeUpdGeneralFieldDto) {
     return this.ptypeService.taskTypeUpdGeneralFieldV2(dataJsonDto);
+  }
+
+  @UseGuards(AuthGuard)
+  @Post('v2/ptype-upd-inl-flag-active')
+  ptypeUpdInlFlagActiveV2(@Body() dataJsonDto: TypeUpdInlFlagActiveV2Dto) {
+    return this.ptypeService.taskTypeUpdInlFlagActiveV2(dataJsonDto);
+  }
+
+  @UseGuards(AuthGuard)
+  @Post('v2/ptype-upd-inl-name')
+  ptypeUpdInlNameV2(@Body() dataJsonDto: TypeUpdInlNameV2Dto) {
+    return this.ptypeService.taskTypeUpdInlNameV2(dataJsonDto);
+  }
+
+  @UseGuards(AuthGuard)
+  @Post('v2/ptype-upd-inl-notes')
+  ptypeUpdInlNotesV2(@Body() dataJsonDto: TypeUpdInlNotesV2Dto) {
+    return this.ptypeService.taskTypeUpdInlNotesV2(dataJsonDto);
+  }
+
+  @UseGuards(AuthGuard)
+  @Post('v2/ptype-upd-inl-slug')
+  ptypeUpdInlSlugV2(@Body() dataJsonDto: TypeUpdInlSlugV2Dto) {
+    return this.ptypeService.taskTypeUpdInlSlugV2(dataJsonDto);
   }
 }

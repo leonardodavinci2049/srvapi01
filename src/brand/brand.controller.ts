@@ -10,6 +10,10 @@ import { BrandFindManagerAllV2Dto } from './dto/brand-find-manager-all-v2.dto';
 import { BrandFindManagerIdV2Dto } from './dto/brand-find-manager-id_v2.dto';
 import { BrandFindSearchV2Dto } from './dto/brand-find-search-v2.dto';
 import { BrandUpdGeneralFieldDto } from './dto/brand-upd-general-field.dto';
+import { BrandUpdInlFlagActiveV2Dto } from './dto/brand-upd-inl-flag-active-v2.dto';
+import { BrandUpdInlNameV2Dto } from './dto/brand-upd-inl-name-v2.dto';
+import { BrandUpdInlNotesV2Dto } from './dto/brand-upd-inl-notes-v2.dto';
+import { BrandUpdInlSlugV2Dto } from './dto/brand-upd-inl-slug-v2.dto';
 import { BrandUpdateV2Dto } from './dto/brand-update-v2.dto';
 
 @Controller('brand')
@@ -83,5 +87,29 @@ export class BrandController {
   @Post('v2/brand-upd-general-field')
   brandUpdGeneralFieldV2(@Body() dataJsonDto: BrandUpdGeneralFieldDto) {
     return this.brandService.taskBrandUpdGeneralFieldV2(dataJsonDto);
+  }
+
+  @UseGuards(AuthGuard)
+  @Post('v2/brand-upd-inl-flag-active')
+  brandUpdInlFlagActiveV2(@Body() dataJsonDto: BrandUpdInlFlagActiveV2Dto) {
+    return this.brandService.taskBrandUpdInlFlagActiveV2(dataJsonDto);
+  }
+
+  @UseGuards(AuthGuard)
+  @Post('v2/brand-upd-inl-name')
+  brandUpdInlNameV2(@Body() dataJsonDto: BrandUpdInlNameV2Dto) {
+    return this.brandService.taskBrandUpdInlNameV2(dataJsonDto);
+  }
+
+  @UseGuards(AuthGuard)
+  @Post('v2/brand-upd-inl-notes')
+  brandUpdInlNotesV2(@Body() dataJsonDto: BrandUpdInlNotesV2Dto) {
+    return this.brandService.taskBrandUpdInlNotesV2(dataJsonDto);
+  }
+
+  @UseGuards(AuthGuard)
+  @Post('v2/brand-upd-inl-slug')
+  brandUpdInlSlugV2(@Body() dataJsonDto: BrandUpdInlSlugV2Dto) {
+    return this.brandService.taskBrandUpdInlSlugV2(dataJsonDto);
   }
 }

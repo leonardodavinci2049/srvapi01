@@ -16,6 +16,13 @@ import { SupplierRelCreateV2Dto } from './dto/supplier-rel-create-v2.dto';
 import { SupplierRelDeleteV2Dto } from './dto/supplier-rel-delete-v2.dto';
 import { SupplierRelFindProdAllV2Dto } from './dto/supplier-rel-find-prod-all-v2.dto';
 import { SupplierUpdGeneralFieldDto } from './dto/supplier-upd-general-field.dto';
+import { SupplierUpdAddressV2Dto } from './dto/supplier-upd-address-v2.dto';
+import { SupplierUpdBusinessV2Dto } from './dto/supplier-upd-business-v2.dto';
+import { SupplierUpdDeliveryV2Dto } from './dto/supplier-upd-delivery-v2.dto';
+import { SupplierUpdGeneralV2Dto } from './dto/supplier-upd-general-v2.dto';
+import { SupplierUpdInlTypePersonV2Dto } from './dto/supplier-upd-inl-type-person-v2.dto';
+import { SupplierUpdInternetV2Dto } from './dto/supplier-upd-internet-v2.dto';
+import { SupplierUpdPersonalV2Dto } from './dto/supplier-upd-personal-v2.dto';
 import { SupplierUpdateV2Dto } from './dto/supplier-update-v2.dto';
 import { SupplierCreateV2Query } from './query/supplier-create-v2.query';
 import { SupplierDeleteV2Query } from './query/supplier-delete-v2.query';
@@ -28,6 +35,13 @@ import { SupplierRelCreateV2Query } from './query/supplier-rel-create-v2.query';
 import { SupplierRelDeleteV2Query } from './query/supplier-rel-delete-v2.query';
 import { SupplierRelFindProdAllV2Query } from './query/supplier-rel-find-prod-all-v2.query';
 import { SupplierUpdGeneralFieldQuery } from './query/supplier-upd-general-field.query';
+import { SupplierUpdAddressV2Query } from './query/supplier-upd-address-v2.query';
+import { SupplierUpdBusinessV2Query } from './query/supplier-upd-business-v2.query';
+import { SupplierUpdDeliveryV2Query } from './query/supplier-upd-delivery-v2.query';
+import { SupplierUpdGeneralV2Query } from './query/supplier-upd-general-v2.query';
+import { SupplierUpdInlTypePersonV2Query } from './query/supplier-upd-inl-type-person-v2.query';
+import { SupplierUpdInternetV2Query } from './query/supplier-upd-internet-v2.query';
+import { SupplierUpdPersonalV2Query } from './query/supplier-upd-personal-v2.query';
 import { SupplierUpdateV2Query } from './query/supplier-update-v2.query';
 import {
   SpResultRecordCreateType,
@@ -192,10 +206,11 @@ export class SupplierService {
 
   async taskSupplierFindIdV2(dataJsonDto: SupplierFindIdV2Dto) {
     try {
-      const queryString = SupplierFindIdV2Query(dataJsonDto);
+      const { queryString, queryParams } = SupplierFindIdV2Query(dataJsonDto);
 
       const resultData = (await this.dbService.selectExecute(
         queryString,
+        queryParams,
       )) as unknown as SpResultSupplierFindIdData;
 
       return processProcedureResultMultiQuery(
@@ -280,6 +295,155 @@ export class SupplierService {
       return processProcedureResultMutation(
         resultData,
         'Supplier field update failed',
+      );
+    } catch (err) {
+      const errorMessage =
+        err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
+      return new ResultModel(100404, errorMessage, 0, []);
+    }
+  }
+
+  async taskSupplierUpdAddressV2(dataJsonDto: SupplierUpdAddressV2Dto) {
+    try {
+      const { queryString, queryParams } =
+        SupplierUpdAddressV2Query(dataJsonDto);
+
+      const resultData = (await this.dbService.selectExecute(
+        queryString,
+        queryParams,
+      )) as unknown as SpResultRecordUpdateType;
+
+      return processProcedureResultMutation(
+        resultData,
+        'Supplier address update failed',
+      );
+    } catch (err) {
+      const errorMessage =
+        err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
+      return new ResultModel(100404, errorMessage, 0, []);
+    }
+  }
+
+  async taskSupplierUpdBusinessV2(dataJsonDto: SupplierUpdBusinessV2Dto) {
+    try {
+      const { queryString, queryParams } =
+        SupplierUpdBusinessV2Query(dataJsonDto);
+
+      const resultData = (await this.dbService.selectExecute(
+        queryString,
+        queryParams,
+      )) as unknown as SpResultRecordUpdateType;
+
+      return processProcedureResultMutation(
+        resultData,
+        'Supplier business update failed',
+      );
+    } catch (err) {
+      const errorMessage =
+        err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
+      return new ResultModel(100404, errorMessage, 0, []);
+    }
+  }
+
+  async taskSupplierUpdDeliveryV2(dataJsonDto: SupplierUpdDeliveryV2Dto) {
+    try {
+      const { queryString, queryParams } =
+        SupplierUpdDeliveryV2Query(dataJsonDto);
+
+      const resultData = (await this.dbService.selectExecute(
+        queryString,
+        queryParams,
+      )) as unknown as SpResultRecordUpdateType;
+
+      return processProcedureResultMutation(
+        resultData,
+        'Supplier delivery update failed',
+      );
+    } catch (err) {
+      const errorMessage =
+        err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
+      return new ResultModel(100404, errorMessage, 0, []);
+    }
+  }
+
+  async taskSupplierUpdGeneralV2(dataJsonDto: SupplierUpdGeneralV2Dto) {
+    try {
+      const { queryString, queryParams } =
+        SupplierUpdGeneralV2Query(dataJsonDto);
+
+      const resultData = (await this.dbService.selectExecute(
+        queryString,
+        queryParams,
+      )) as unknown as SpResultRecordUpdateType;
+
+      return processProcedureResultMutation(
+        resultData,
+        'Supplier general update failed',
+      );
+    } catch (err) {
+      const errorMessage =
+        err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
+      return new ResultModel(100404, errorMessage, 0, []);
+    }
+  }
+
+  async taskSupplierUpdInlTypePersonV2(
+    dataJsonDto: SupplierUpdInlTypePersonV2Dto,
+  ) {
+    try {
+      const { queryString, queryParams } =
+        SupplierUpdInlTypePersonV2Query(dataJsonDto);
+
+      const resultData = (await this.dbService.selectExecute(
+        queryString,
+        queryParams,
+      )) as unknown as SpResultRecordUpdateType;
+
+      return processProcedureResultMutation(
+        resultData,
+        'Supplier person type update failed',
+      );
+    } catch (err) {
+      const errorMessage =
+        err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
+      return new ResultModel(100404, errorMessage, 0, []);
+    }
+  }
+
+  async taskSupplierUpdInternetV2(dataJsonDto: SupplierUpdInternetV2Dto) {
+    try {
+      const { queryString, queryParams } =
+        SupplierUpdInternetV2Query(dataJsonDto);
+
+      const resultData = (await this.dbService.selectExecute(
+        queryString,
+        queryParams,
+      )) as unknown as SpResultRecordUpdateType;
+
+      return processProcedureResultMutation(
+        resultData,
+        'Supplier internet update failed',
+      );
+    } catch (err) {
+      const errorMessage =
+        err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
+      return new ResultModel(100404, errorMessage, 0, []);
+    }
+  }
+
+  async taskSupplierUpdPersonalV2(dataJsonDto: SupplierUpdPersonalV2Dto) {
+    try {
+      const { queryString, queryParams } =
+        SupplierUpdPersonalV2Query(dataJsonDto);
+
+      const resultData = (await this.dbService.selectExecute(
+        queryString,
+        queryParams,
+      )) as unknown as SpResultRecordUpdateType;
+
+      return processProcedureResultMutation(
+        resultData,
+        'Supplier personal update failed',
       );
     } catch (err) {
       const errorMessage =

@@ -9,6 +9,11 @@ import { CarrierFindManagerAllV2Dto } from './dto/carrier-find-manager-all-v2.dt
 import { CarrierFindManagerIdV2Dto } from './dto/carrier-find-manager-id-v2.dto';
 import { CarrierFindSearchV2Dto } from './dto/carrier-find-search-v2.dto';
 import { CarrierUpdGeneralFieldDto } from './dto/carrier-upd-general-field.dto';
+import { CarrierUpdAddressV2Dto } from './dto/carrier-upd-address-v2.dto';
+import { CarrierUpdBusinessV2Dto } from './dto/carrier-upd-business-v2.dto';
+import { CarrierUpdInlTypePersonV2Dto } from './dto/carrier-upd-inl-type-person-v2.dto';
+import { CarrierUpdInternetV2Dto } from './dto/carrier-upd-internet-v2.dto';
+import { CarrierUpdPersonalV2Dto } from './dto/carrier-upd-personal-v2.dto';
 import { CarrierUpdateV2Dto } from './dto/carrier-update-v2.dto';
 
 @Controller('carrier')
@@ -67,5 +72,35 @@ export class CarrierController {
   @Post('v2/carrier-upd-general-field')
   carrierUpdGeneralFieldV2(@Body() dataJsonDto: CarrierUpdGeneralFieldDto) {
     return this.carrierService.taskCarrierUpdGeneralFieldV2(dataJsonDto);
+  }
+
+  @UseGuards(AuthGuard)
+  @Post('v2/carrier-upd-address')
+  carrierUpdAddressV2(@Body() dataJsonDto: CarrierUpdAddressV2Dto) {
+    return this.carrierService.taskCarrierUpdAddressV2(dataJsonDto);
+  }
+
+  @UseGuards(AuthGuard)
+  @Post('v2/carrier-upd-business')
+  carrierUpdBusinessV2(@Body() dataJsonDto: CarrierUpdBusinessV2Dto) {
+    return this.carrierService.taskCarrierUpdBusinessV2(dataJsonDto);
+  }
+
+  @UseGuards(AuthGuard)
+  @Post('v2/carrier-upd-inl-type-person')
+  carrierUpdInlTypePersonV2(@Body() dataJsonDto: CarrierUpdInlTypePersonV2Dto) {
+    return this.carrierService.taskCarrierUpdInlTypePersonV2(dataJsonDto);
+  }
+
+  @UseGuards(AuthGuard)
+  @Post('v2/carrier-upd-internet')
+  carrierUpdInternetV2(@Body() dataJsonDto: CarrierUpdInternetV2Dto) {
+    return this.carrierService.taskCarrierUpdInternetV2(dataJsonDto);
+  }
+
+  @UseGuards(AuthGuard)
+  @Post('v2/carrier-upd-personal')
+  carrierUpdPersonalV2(@Body() dataJsonDto: CarrierUpdPersonalV2Dto) {
+    return this.carrierService.taskCarrierUpdPersonalV2(dataJsonDto);
   }
 }

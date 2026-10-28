@@ -9,6 +9,7 @@ import {
 import { AuthGuard } from 'src/core/guards/auth.guard';
 import { ProductFindManagerAllV2Dto } from './dto/product-find-manager-all-v2.dto';
 import { ProductFindManagerIdV2Dto } from './dto/product-find-manager-id-v2.dto';
+import { ProductFindManagerRelationsV2Dto } from './dto/product-find-manager-relations-v2.dto';
 import { ProductFindManagerSearchV2Dto } from './dto/product-find-manager-search.dto';
 import { ProductFindTaxonomyCandidatesV2Dto } from './dto/product-find-taxonomy-candidates-v2.dto';
 import { ProductFindTaxonomyIdV2Dto } from './dto/product-find-taxonomy-id-v2.dto';
@@ -47,6 +48,17 @@ export class ProductManagerController {
   @HttpCode(HttpStatus.OK)
   productFindManagerIdV2(@Body() dataJsonDto: ProductFindManagerIdV2Dto) {
     return this.productManagerService.taskProductFindManagerIdV2(dataJsonDto);
+  }
+
+  @UseGuards(AuthGuard)
+  @Post('v2/product-find-manager-relations')
+  @HttpCode(HttpStatus.OK)
+  productFindManagerRelationsV2(
+    @Body() dataJsonDto: ProductFindManagerRelationsV2Dto,
+  ) {
+    return this.productManagerService.taskProductFindManagerRelationsV2(
+      dataJsonDto,
+    );
   }
 
   @UseGuards(AuthGuard)

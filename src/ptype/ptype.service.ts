@@ -15,6 +15,10 @@ import { TypeFindManagerAllV2Dto } from './dto/type-find-manager-all-v2.dto';
 import { TypeFindManagerIdV2Dto } from './dto/type-find-manager-id-v2.dto';
 import { TypeFindSearchV2Dto } from './dto/type-find-search-v2.dto';
 import { TypeUpdGeneralFieldDto } from './dto/type-upd-general-field.dto';
+import { TypeUpdInlFlagActiveV2Dto } from './dto/type-upd-inl-flag-active-v2.dto';
+import { TypeUpdInlNameV2Dto } from './dto/type-upd-inl-name-v2.dto';
+import { TypeUpdInlNotesV2Dto } from './dto/type-upd-inl-notes-v2.dto';
+import { TypeUpdInlSlugV2Dto } from './dto/type-upd-inl-slug-v2.dto';
 import { TypeUpdateV2Dto } from './dto/type-update-v2.dto';
 import { TypeCreateV2Query } from './query/type-create-v2.query';
 import { TypeDeleteV2Query } from './query/type-delete-v2.query';
@@ -25,6 +29,10 @@ import { TypeFindManagerAllV2Query } from './query/type-find-manager-all-v2.quer
 import { TypeFindManagerIdV2Query } from './query/type-find-manager-id-v2.query';
 import { TypeFindSearchV2Query } from './query/type-find-search-v2.query';
 import { TypeUpdGeneralFieldQuery } from './query/type-upd-general-field.query';
+import { TypeUpdInlFlagActiveV2Query } from './query/type-upd-inl-flag-active-v2.query';
+import { TypeUpdInlNameV2Query } from './query/type-upd-inl-name-v2.query';
+import { TypeUpdInlNotesV2Query } from './query/type-upd-inl-notes-v2.query';
+import { TypeUpdInlSlugV2Query } from './query/type-upd-inl-slug-v2.query';
 import { TypeUpdateV2Query } from './query/type-update-v2.query';
 import {
   SpResultPTypeFindAllData,
@@ -246,6 +254,87 @@ export class PtypeService {
       return processProcedureResultMutation(
         resultData,
         'Product type field update failed',
+      );
+    } catch (err) {
+      const errorMessage =
+        err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
+      return new ResultModel(100404, errorMessage, 0, []);
+    }
+  }
+
+  async taskTypeUpdInlFlagActiveV2(dataJsonDto: TypeUpdInlFlagActiveV2Dto) {
+    try {
+      const { queryString, queryParams } =
+        TypeUpdInlFlagActiveV2Query(dataJsonDto);
+
+      const resultData = (await this.dbService.selectExecute(
+        queryString,
+        queryParams,
+      )) as unknown as SpResultRecordUpdateType;
+
+      return processProcedureResultMutation(
+        resultData,
+        'Type flag active update failed',
+      );
+    } catch (err) {
+      const errorMessage =
+        err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
+      return new ResultModel(100404, errorMessage, 0, []);
+    }
+  }
+
+  async taskTypeUpdInlNameV2(dataJsonDto: TypeUpdInlNameV2Dto) {
+    try {
+      const { queryString, queryParams } = TypeUpdInlNameV2Query(dataJsonDto);
+
+      const resultData = (await this.dbService.selectExecute(
+        queryString,
+        queryParams,
+      )) as unknown as SpResultRecordUpdateType;
+
+      return processProcedureResultMutation(
+        resultData,
+        'Type name update failed',
+      );
+    } catch (err) {
+      const errorMessage =
+        err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
+      return new ResultModel(100404, errorMessage, 0, []);
+    }
+  }
+
+  async taskTypeUpdInlNotesV2(dataJsonDto: TypeUpdInlNotesV2Dto) {
+    try {
+      const { queryString, queryParams } = TypeUpdInlNotesV2Query(dataJsonDto);
+
+      const resultData = (await this.dbService.selectExecute(
+        queryString,
+        queryParams,
+      )) as unknown as SpResultRecordUpdateType;
+
+      return processProcedureResultMutation(
+        resultData,
+        'Type notes update failed',
+      );
+    } catch (err) {
+      const errorMessage =
+        err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
+      return new ResultModel(100404, errorMessage, 0, []);
+    }
+  }
+
+  async taskTypeUpdInlSlugV2(dataJsonDto: TypeUpdInlSlugV2Dto) {
+    try {
+      const { queryString, queryParams } = TypeUpdInlSlugV2Query(dataJsonDto);
+
+      const resultData = (await this.dbService.selectExecute(
+        queryString,
+        queryParams,
+      )) as unknown as SpResultRecordUpdateType;
+
+      return processProcedureResultMutation(
+        resultData,
+        'Type slug update failed',
       );
     } catch (err) {
       const errorMessage =
