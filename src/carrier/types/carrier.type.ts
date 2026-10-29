@@ -52,7 +52,6 @@ export interface TblCarrierFindId extends RowDataPacket {
   NOME_RESPONSAVEL: string | null;
   CARGO_RESPOSNAVEL: string | null;
   PRIMEIRO_NOME: string | null;
-  CARGO: string | null;
   CPF: string | null;
   RG: string | null;
   DATADONASCIMENTO: Date | null;
@@ -71,6 +70,8 @@ export interface TblCarrierFindId extends RowDataPacket {
   SKYPE: string | null;
   FACEBOOK: string | null;
   TWITTER: string | null;
+  INSTAGRAM: string | null;
+  MAP: string | null;
   FRETADOR: number | null;
   INATIVO: number | null;
   DATADOCADASTRO: Date | null;

@@ -18,7 +18,7 @@ interface CarrierFindIdV2QueryResult {
 export function CarrierFindIdV2Query(
   dataJsonDto: CarrierFindIdV2Dto,
 ): CarrierFindIdV2QueryResult {
-  const olAppId = dataJsonDto.pe_app_id ?? 1;
+  const olAppId = dataJsonDto.pe_app_id;
   const olSystemClientId = dataJsonDto.pe_system_client_id;
   const olStoreId = dataJsonDto.pe_store_id;
   const olOrganizationId = dataJsonDto.pe_organization_id;
