@@ -15,6 +15,7 @@ import { CarrierFindSearchV2Dto } from './dto/carrier-find-search-v2.dto';
 import { CarrierUpdGeneralFieldDto } from './dto/carrier-upd-general-field.dto';
 import { CarrierUpdAddressV2Dto } from './dto/carrier-upd-address-v2.dto';
 import { CarrierUpdBusinessV2Dto } from './dto/carrier-upd-business-v2.dto';
+import { CarrierUpdGeneralV2Dto } from './dto/carrier-upd-general-v2.dto';
 import { CarrierUpdInlTypePersonV2Dto } from './dto/carrier-upd-inl-type-person-v2.dto';
 import { CarrierUpdInternetV2Dto } from './dto/carrier-upd-internet-v2.dto';
 import { CarrierUpdPersonalV2Dto } from './dto/carrier-upd-personal-v2.dto';
@@ -28,6 +29,8 @@ import { CarrierFindManagerIdV2Query } from './query/carrier-find-manager-id-v2.
 import { CarrierFindSearchV2Query } from './query/carrier-find-search-v2.query';
 import { CarrierUpdGeneralFieldQuery } from './query/carrier-upd-general-field.query';
 import { CarrierUpdAddressV2Query } from './query/carrier-upd-address-v2.query';
+import { CarrierUpdGeneralV2Query } from './query/carrier-upd-general-v2.query';
+import { SpResultCarrierUpdGeneralData } from './types/carrier.type';
 import { CarrierUpdBusinessV2Query } from './query/carrier-upd-business-v2.query';
 import { CarrierUpdInlTypePersonV2Query } from './query/carrier-upd-inl-type-person-v2.query';
 import { CarrierUpdInternetV2Query } from './query/carrier-upd-internet-v2.query';
@@ -43,7 +46,6 @@ import {
   TblCarrierFindManagerId,
   TblCarrierFindSearch,
 } from './types/carrier.type';
-
 @Injectable()
 export class CarrierService {
   constructor(private readonly dbService: DatabaseService) {}
@@ -315,6 +317,27 @@ export class CarrierService {
       return processProcedureResultMutation(
         resultData,
         'Carrier internet update failed',
+      );
+    } catch (err) {
+      const errorMessage =
+        err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
+      return new ResultModel(100404, errorMessage, 0, []);
+    }
+  }
+
+  async taskCarrierUpdGeneralV2(dataJsonDto: CarrierUpdGeneralV2Dto) {
+    try {
+      const { queryString, queryParams } =
+        CarrierUpdGeneralV2Query(dataJsonDto);
+
+      const resultData = (await this.dbService.selectExecute(
+        queryString,
+        queryParams,
+      )) as unknown as SpResultCarrierUpdGeneralData;
+
+      return processProcedureResultMutation(
+        resultData,
+        'Carrier general update failed',
       );
     } catch (err) {
       const errorMessage =
