@@ -130,6 +130,7 @@ export interface TblCarrierFindManagerId extends RowDataPacket {
   NOME_FANTASIA: string | null;
   NOME_RESPONSAVEL: string | null;
   CARGO: string | null;
+  PRIMEIRO_NOME: string | null;
   CPF: string | null;
   RG: string | null;
   DATADONASCIMENTO: Date | null;
@@ -147,6 +148,8 @@ export interface TblCarrierFindManagerId extends RowDataPacket {
   WEBSITE: string | null;
   FACEBOOK: string | null;
   TWITTER: string | null;
+  INSTAGRAM: string | null;
+  MAP: string | null;
   FRETADOR: number | null;
   DT_ULTIMA_COMPRA: Date | null;
   ANOTACOES: string | null;
