@@ -11,6 +11,7 @@ import { CarrierFindSearchV2Dto } from './dto/carrier-find-search-v2.dto';
 import { CarrierUpdGeneralFieldDto } from './dto/carrier-upd-general-field.dto';
 import { CarrierUpdAddressV2Dto } from './dto/carrier-upd-address-v2.dto';
 import { CarrierUpdBusinessV2Dto } from './dto/carrier-upd-business-v2.dto';
+import { CarrierUpdGeneralV2Dto } from './dto/carrier-upd-general-v2.dto';
 import { CarrierUpdInlTypePersonV2Dto } from './dto/carrier-upd-inl-type-person-v2.dto';
 import { CarrierUpdInternetV2Dto } from './dto/carrier-upd-internet-v2.dto';
 import { CarrierUpdPersonalV2Dto } from './dto/carrier-upd-personal-v2.dto';
@@ -96,6 +97,12 @@ export class CarrierController {
   @Post('v2/carrier-upd-internet')
   carrierUpdInternetV2(@Body() dataJsonDto: CarrierUpdInternetV2Dto) {
     return this.carrierService.taskCarrierUpdInternetV2(dataJsonDto);
+  }
+
+  @UseGuards(AuthGuard)
+  @Post('v2/carrier-upd-general')
+  carrierUpdGeneralV2(@Body() dataJsonDto: CarrierUpdGeneralV2Dto) {
+    return this.carrierService.taskCarrierUpdGeneralV2(dataJsonDto);
   }
 
   @UseGuards(AuthGuard)

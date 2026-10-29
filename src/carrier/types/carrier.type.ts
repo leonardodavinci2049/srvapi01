@@ -21,6 +21,23 @@ export type SpResultRecordCreateType = [SpDefaultFeedback[], SpOperationResult];
 export type SpResultRecordUpdateType = [SpDefaultFeedback[], SpOperationResult];
 export type SpResultRecordDeleteType = [SpDefaultFeedback[], SpOperationResult];
 
+export interface TblCarrierUpdGeneral extends RowDataPacket {
+  ID_TRANSPORTADORA: number;
+  ID_SYSTEM_CLIENTE: number;
+  NOME: string | null;
+  FONE1: string | null;
+  WHATAPP1: string | null;
+  CONTATO1: string | null;
+  EMAIL1: string | null;
+  DT_UPDATE: Date | null;
+}
+
+export type SpResultCarrierUpdGeneralData = [
+  SpDefaultFeedback[],
+  TblCarrierUpdGeneral[],
+  SpOperationResult,
+];
+
 export interface TblCarrierFindALL extends RowDataPacket {
   ID_TIPO: number;
   TIPO: string;
