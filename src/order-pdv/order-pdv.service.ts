@@ -8,16 +8,45 @@ import {
 import { DatabaseService } from 'src/database/database.service';
 import { OrdersPdvFindAllDto } from './dto/orders-pdv-find-all.dto';
 import { OrdersPdvFindIdDto } from './dto/orders-pdv-find-id.dto';
+import { OrdersPdvFindQtDto } from './dto/orders-pdv-find-qt.dto';
 import { OrdersPdvFindAllQuery } from './query/orders-pdv-find-all.query';
 import { OrdersPdvFindIdQuery } from './query/orders-pdv-find-id.query';
+import { OrdersPdvFindQtQuery } from './query/orders-pdv-find-qt.query';
 import {
   SpResultOrdersPdvFindAllData,
   SpResultOrdersPdvFindIdData,
+  SpResultOrdersPdvFindQtData,
 } from './types/order-pdv.type';
 
 @Injectable()
 export class OrderPdvService {
   constructor(private readonly dbService: DatabaseService) {}
+
+  async taskOrdersPdvFindQtV2(
+    dataJsonDto: OrdersPdvFindQtDto,
+  ): Promise<ResultModel> {
+    try {
+      const { queryString, queryParams } = OrdersPdvFindQtQuery(dataJsonDto);
+      const resultData = (await this.dbService.selectExecute(
+        queryString,
+        queryParams,
+      )) as unknown as SpResultOrdersPdvFindQtData;
+      return processProcedureResultMultiQuery(
+        resultData,
+        ['ordersFindQt'],
+        MESSAGES.SEARCH_NO_RESULTS,
+      );
+    } catch {
+      return new ResultModel(
+        RESPONSE_CODES.INTERNAL_ERROR,
+        MESSAGES.UNKNOWN_ERROR,
+        '0',
+        { ordersFindQt: [] },
+        0,
+        1,
+      );
+    }
+  }
 
   async taskOrdersPdvFindAllV2(
     dataJsonDto: OrdersPdvFindAllDto,
