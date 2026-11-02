@@ -8,6 +8,14 @@ export interface SpDefaultFeedback extends RowDataPacket {
 
 export type SpFeedbackResult = [SpDefaultFeedback[], ResultSetHeader];
 
+export interface OrdersPdvQuantityRow extends RowDataPacket {
+  QT_PEDIDOS: number;
+}
+
+export type SpResultOrdersPdvFindQtData =
+  | [OrdersPdvQuantityRow[], SpDefaultFeedback[], ResultSetHeader]
+  | SpFeedbackResult;
+
 export interface OrdersPdvListRow extends RowDataPacket {
   ID_PEDIDO: number;
   ID_CLIENTE: number;

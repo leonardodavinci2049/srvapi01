@@ -2,6 +2,7 @@ import { Body, Controller, Get, Post, UseGuards } from '@nestjs/common';
 import { AuthGuard } from 'src/core/guards/auth.guard';
 import { OrdersPdvFindAllDto } from './dto/orders-pdv-find-all.dto';
 import { OrdersPdvFindIdDto } from './dto/orders-pdv-find-id.dto';
+import { OrdersPdvFindQtDto } from './dto/orders-pdv-find-qt.dto';
 import { OrderPdvService } from './order-pdv.service';
 
 @Controller('order-pdv')
@@ -24,6 +25,12 @@ export class OrderPdvController {
   @Post('v2/orders-pdv-find-all')
   ordersPdvFindAllV2(@Body() dataJsonDto: OrdersPdvFindAllDto) {
     return this.service.taskOrdersPdvFindAllV2(dataJsonDto);
+  }
+
+  @UseGuards(AuthGuard)
+  @Post('v2/orders-pdv-find-qt')
+  ordersPdvFindQtV2(@Body() dataJsonDto: OrdersPdvFindQtDto) {
+    return this.service.taskOrdersPdvFindQtV2(dataJsonDto);
   }
 
   @UseGuards(AuthGuard)
