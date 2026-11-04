@@ -191,6 +191,8 @@ export class BrandService {
       )) as unknown as SpResultRecordUpdateType;
 
       return processProcedureResultMutation(resultData, 'Brand delete failed');
+
+      
     } catch (err) {
       const errorMessage =
         err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
