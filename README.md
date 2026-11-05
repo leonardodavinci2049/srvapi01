@@ -195,7 +195,7 @@ HTTP POST /api/<feature>/v2/<action>
  Query    ── pure function returning the SP/SQL call string
         │
         ▼
- DbConnectionService.selectExecute / ModifyExecute ── mysql2 pool
+ DbConnectionService.selectExecute / mutationQuery ── mysql2 pool
 ```
 
 ### Naming conventions

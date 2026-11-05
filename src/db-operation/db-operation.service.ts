@@ -40,7 +40,24 @@ export class DbOperationService {
     return results;
   }
 
-  // Método para SELECT com segurança reforçada
+  /**
+   * Runs an INSERT, UPDATE, or DELETE through mysql2's `query` API.
+   * Build optional SQL clauses from trusted code and pass values through placeholders.
+   * Choose dynamic table and column names from an explicit allowlist.
+   */
+  async mutationQuery(
+    queryString: string,
+    params?: QueryParams,
+  ): Promise<ResultSetHeader> {
+    const [results] = await this.trackOperation('mutationQuery', () =>
+      this.dbConnectionService.withConnection((executor) =>
+        executor.query<ResultSetHeader>(queryString, params),
+      ),
+    );
+    return results;
+  }
+
+  /** Runs reads, including multi-result-set stored procedures, through `execute`. */
   async selectExecute<T extends RowDataPacket>(
     queryString: string,
     params?: QueryParams,
@@ -48,17 +65,6 @@ export class DbOperationService {
     return this.dbConnectionService.withConnection(async (connection) => {
       const [results] = await connection.execute<T[]>(queryString, params);
       return results;
-    });
-  }
-
-  // Insert/Update/Delete usando execute
-  async ModifyExecute(
-    queryString: string,
-    params?: QueryParams,
-  ): Promise<ResultSetHeader> {
-    return this.dbConnectionService.withConnection(async (connection) => {
-      const [results] = await connection.execute(queryString, params);
-      return results as ResultSetHeader;
     });
   }
 
