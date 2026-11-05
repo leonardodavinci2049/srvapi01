@@ -1,10 +1,10 @@
 import { Module } from '@nestjs/common';
-import { DbConnectionModule } from 'src/db-connection/db-connection.module';
+import { DbOperationModule } from 'src/db-operation/db-operation.module';
 import { ProductPdvController } from './product-pdv.controller';
 import { ProductPdvService } from './product-pdv.service';
 
 @Module({
-  imports: [DbConnectionModule],
+  imports: [DbOperationModule],
   controllers: [ProductPdvController],
   providers: [ProductPdvService],
 })

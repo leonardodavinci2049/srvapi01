@@ -3,7 +3,7 @@ import { processProcedureResultMutation } from 'src/core/process-result/process-
 import { MESSAGES } from 'src/core/utils/constants/globalConstants';
 import { resultQueryData } from 'src/core/utils/globalResult/global.result';
 import { ResultModel } from 'src/core/utils/result.model';
-import { DbConnectionService } from 'src/db-connection/db-connection.service';
+import { DbOperationService } from 'src/db-operation/db-operation.service';
 import { CheckIfExistsDto } from './dto/check-if-exists.dto';
 import { CheckIfExistsV3Dto } from './dto/check-if-exists-v3.dto';
 import { CheckIfCnpjExistsQuery } from './query/check-if-cnpj-exists.query';
@@ -27,13 +27,13 @@ import {
 
 @Injectable()
 export class CheckService {
-  constructor(private readonly dbConnectionService: DbConnectionService) {}
+  constructor(private readonly dbOperationService: DbOperationService) {}
 
   async taskCheckIfCnpjExistsV3(dataJsonDto: CheckIfExistsV3Dto) {
     try {
       const queryString = CheckIfCnpjExistsV3Query(dataJsonDto);
 
-      const resultData = (await this.dbConnectionService.selectExecute(
+      const resultData = (await this.dbOperationService.selectExecute(
         queryString,
       )) as unknown as SpResultRecordCheckType;
 
@@ -52,7 +52,7 @@ export class CheckService {
     try {
       const queryString = CheckIfCpfExistsV3Query(dataJsonDto);
 
-      const resultData = (await this.dbConnectionService.selectExecute(
+      const resultData = (await this.dbOperationService.selectExecute(
         queryString,
       )) as unknown as SpResultRecordCheckType;
 
@@ -71,7 +71,7 @@ export class CheckService {
     try {
       const queryString = CheckIfEmailExistsV3Query(dataJsonDto);
 
-      const resultData = (await this.dbConnectionService.selectExecute(
+      const resultData = (await this.dbOperationService.selectExecute(
         queryString,
       )) as unknown as SpResultRecordCheckType;
 
@@ -90,7 +90,7 @@ export class CheckService {
     try {
       const queryString = CheckIfProductNameExistV3Query(dataJsonDto);
 
-      const resultData = (await this.dbConnectionService.selectExecute(
+      const resultData = (await this.dbOperationService.selectExecute(
         queryString,
       )) as unknown as SpResultRecordCheckType;
 
@@ -109,7 +109,7 @@ export class CheckService {
     try {
       const queryString = CheckIfProductSlugExistV3Query(dataJsonDto);
 
-      const resultData = (await this.dbConnectionService.selectExecute(
+      const resultData = (await this.dbOperationService.selectExecute(
         queryString,
       )) as unknown as SpResultRecordCheckType;
 
@@ -128,7 +128,7 @@ export class CheckService {
     try {
       const queryString = CheckIfTaxonomyNameExistsV3Query(dataJsonDto);
 
-      const resultData = (await this.dbConnectionService.selectExecute(
+      const resultData = (await this.dbOperationService.selectExecute(
         queryString,
       )) as unknown as SpResultRecordCheckType;
 
@@ -147,7 +147,7 @@ export class CheckService {
     try {
       const queryString = CheckIfTaxonomySlugExistsV3Query(dataJsonDto);
 
-      const resultData = (await this.dbConnectionService.selectExecute(
+      const resultData = (await this.dbOperationService.selectExecute(
         queryString,
       )) as unknown as SpResultRecordCheckType;
 
@@ -168,7 +168,7 @@ export class CheckService {
     try {
       const queryString = CheckIfEmailExistsQuery(dataJsonDto);
 
-      const resultData = (await this.dbConnectionService.selectExecute(
+      const resultData = (await this.dbOperationService.selectExecute(
         queryString,
       )) as unknown as SpCheckIfExistType;
 
@@ -202,7 +202,7 @@ export class CheckService {
     try {
       const queryString = CheckIfCpfExistsQuery(dataJsonDto);
 
-      const resultData = (await this.dbConnectionService.selectExecute(
+      const resultData = (await this.dbOperationService.selectExecute(
         queryString,
       )) as unknown as SpCheckIfExistType;
 
@@ -236,7 +236,7 @@ export class CheckService {
     try {
       const queryString = CheckIfCnpjExistsQuery(dataJsonDto);
 
-      const resultData = (await this.dbConnectionService.selectExecute(
+      const resultData = (await this.dbOperationService.selectExecute(
         queryString,
       )) as unknown as SpCheckIfExistType;
 
@@ -270,7 +270,7 @@ export class CheckService {
     try {
       const queryString = CheckIfProductNameExistsQuery(dataJsonDto);
 
-      const resultData = (await this.dbConnectionService.selectExecute(
+      const resultData = (await this.dbOperationService.selectExecute(
         queryString,
       )) as unknown as SpCheckIfExistType;
 
@@ -304,7 +304,7 @@ export class CheckService {
     try {
       const queryString = CheckIfProductSlugExistsQuery(dataJsonDto);
 
-      const resultData = (await this.dbConnectionService.selectExecute(
+      const resultData = (await this.dbOperationService.selectExecute(
         queryString,
       )) as unknown as SpCheckIfExistType;
 
@@ -338,7 +338,7 @@ export class CheckService {
     try {
       const queryString = CheckIfTaxomomyNameExistsQuery(dataJsonDto);
 
-      const resultData = (await this.dbConnectionService.selectExecute(
+      const resultData = (await this.dbOperationService.selectExecute(
         queryString,
       )) as unknown as SpCheckIfExistType;
 
@@ -372,7 +372,7 @@ export class CheckService {
     try {
       const queryString = CheckIfTaxomomySlugExistsQuery(dataJsonDto);
 
-      const resultData = (await this.dbConnectionService.selectExecute(
+      const resultData = (await this.dbOperationService.selectExecute(
         queryString,
       )) as unknown as SpCheckIfExistType;
 

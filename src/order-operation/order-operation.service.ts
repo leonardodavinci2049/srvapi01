@@ -3,7 +3,7 @@ import { processProcedureResultMutation } from 'src/core/process-result/process-
 import { processProcedureResultMultiQuery } from 'src/core/process-result/process-procedure-result.query';
 import { MESSAGES } from 'src/core/utils/constants/globalConstants';
 import { ResultModel } from 'src/core/utils/result.model';
-import { DbConnectionService } from 'src/db-connection/db-connection.service';
+import { DbOperationService } from 'src/db-operation/db-operation.service';
 import { OrderOperAddItemDto } from './dto/order-oper-add-item.dto';
 import { OrderOperCloseIdDto } from './dto/order-oper-close-id.dto';
 import { OrderOperCreateDto } from './dto/order-oper-create.dto';
@@ -25,13 +25,13 @@ import {
 
 @Injectable()
 export class OrderOperationService {
-  constructor(private readonly dbConnectionService: DbConnectionService) {}
+  constructor(private readonly dbOperationService: DbOperationService) {}
 
   async taskOrderOperCreateV2(dataJsonDto: OrderOperCreateDto) {
     try {
       const queryString = OrderOperCreateQuery(dataJsonDto);
 
-      const resultData = (await this.dbConnectionService.selectExecute(
+      const resultData = (await this.dbOperationService.selectExecute(
         queryString,
       )) as unknown as SpResultRecordUpdateType;
 
@@ -51,7 +51,7 @@ export class OrderOperationService {
       const { queryString, queryParams } =
         OrderOperCreateManagerQuery(dataJsonDto);
 
-      const resultData = (await this.dbConnectionService.selectExecute(
+      const resultData = (await this.dbOperationService.selectExecute(
         queryString,
         queryParams,
       )) as unknown as SpResultRecordCreateType;
@@ -71,7 +71,7 @@ export class OrderOperationService {
     try {
       const queryString = OrderOperAddItemQuery(dataJsonDto);
 
-      const resultData = (await this.dbConnectionService.selectExecute(
+      const resultData = (await this.dbOperationService.selectExecute(
         queryString,
       )) as unknown as SpResultRecordOperationType;
 
@@ -90,7 +90,7 @@ export class OrderOperationService {
     try {
       const queryString = OrderOperCloseIdQuery(dataJsonDto);
 
-      const resultData = (await this.dbConnectionService.selectExecute(
+      const resultData = (await this.dbOperationService.selectExecute(
         queryString,
       )) as unknown as SpResultRecordOperationType;
 
@@ -109,7 +109,7 @@ export class OrderOperationService {
     try {
       const queryString = OrderOperReverseIdQuery(dataJsonDto);
 
-      const resultData = (await this.dbConnectionService.selectExecute(
+      const resultData = (await this.dbOperationService.selectExecute(
         queryString,
       )) as unknown as SpResultRecordUpdateType;
 
@@ -130,7 +130,7 @@ export class OrderOperationService {
     try {
       const queryString = OrderOperSendingByEmailIdQuery(dataJsonDto);
 
-      const resultData = (await this.dbConnectionService.selectExecute(
+      const resultData = (await this.dbOperationService.selectExecute(
         queryString,
       )) as unknown as SpResultOrderOperSendingByEmailData;
 

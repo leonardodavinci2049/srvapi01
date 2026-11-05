@@ -1,26 +1,6 @@
 import { Injectable, Logger } from '@nestjs/common';
-import {
-  createPool,
-  Pool,
-  PoolConnection,
-  PoolOptions,
-  ResultSetHeader,
-  RowDataPacket,
-  // Add this import
-} from 'mysql2/promise';
+import { createPool, Pool, PoolConnection, PoolOptions } from 'mysql2/promise';
 import { envs } from 'src/core/config/envs';
-
-// Tipos compatíveis com mysql2 v3.18+
-type SqlParam =
-  | string
-  | number
-  | bigint
-  | boolean
-  | Date
-  | null
-  | Buffer
-  | Uint8Array;
-type QueryParams = SqlParam[] | { [key: string]: SqlParam };
 
 @Injectable()
 export class DbConnectionService {
@@ -65,74 +45,12 @@ export class DbConnectionService {
       });
   }
 
-  // Método para SELECT (sem transação)
-  async selectQuery<T extends RowDataPacket>(
-    queryString: string,
-    params?: QueryParams,
-  ): Promise<T[]> {
-    const [results] = await this.poolConnection.query<T[]>(queryString, params);
-    return results;
-  }
-  // Método para SELECT com segurança reforçada
-  async selectExecute<T extends RowDataPacket>(
-    queryString: string,
-    params?: QueryParams,
-  ): Promise<T[]> {
-    const [results] = await this.poolConnection.execute<T[]>(
-      queryString,
-      params,
-    );
-    return results;
+  // Expõe o pool para as operações de banco de dados
+  public getPool(): Pool {
+    return this.poolConnection;
   }
 
-  // Insert/Update/Delete usando execute
-  async ModifyExecute(
-    queryString: string,
-    params?: QueryParams,
-  ): Promise<ResultSetHeader> {
-    const [results] = await this.poolConnection.execute(queryString, params);
-    return results as ResultSetHeader;
-  }
-
-  // Insert/Update/Delete usando query
-  async ModifyQuery(
-    queryString: string,
-    params?: QueryParams,
-  ): Promise<ResultSetHeader> {
-    const [results] = await this.poolConnection.query(queryString, params);
-    return results as ResultSetHeader;
-  }
-
-  // Operações com transação
-  async runInTransaction<T>(
-    callback: (connection: PoolConnection) => Promise<T>,
-  ): Promise<T> {
-    const connection = await this.getConnection();
-
-    try {
-      await connection.beginTransaction();
-      const result = await callback(connection);
-      await connection.commit();
-      return result;
-    } catch (error) {
-      await connection.rollback();
-      this.logger.error('Transação falhou. Revertida.', error);
-      throw error;
-    } finally {
-      connection.release();
-    }
-  }
-
-  //🧪 Exemplo de uso com transação
-
-  /* await this.dbConnectionService.runInTransaction(async (conn) => {
-  await conn.execute('UPDATE users SET balance = balance - ? WHERE id = ?', [100, 1]);
-  await conn.execute('UPDATE users SET balance = balance + ? WHERE id = ?', [100, 2]);
-});
-
- */
-
-  async getConnection() {
+  public async getConnection(): Promise<PoolConnection> {
     try {
       return await this.poolConnection.getConnection();
     } catch (error) {
@@ -140,21 +58,11 @@ export class DbConnectionService {
       throw error;
     }
   }
-  // Fechamento do pool ao encerrar módulo
+
   // Fechamento do pool ao encerrar módulo
   async onModuleDestroy(): Promise<void> {
     await this.poolConnection.end();
     this.logger.log('MySQL connection pool closed');
-  }
-
-  // Para procedimentos armazenados que retornam múltiplos conjuntos de resultados
-  async chamarProcedimento<T extends RowDataPacket>(
-    nomeProcedimento: string,
-    params?: SqlParam[],
-  ): Promise<T[][]> {
-    const query = `CALL ${nomeProcedimento}(${params ? params.map(() => '?').join(',') : ''})`;
-    const [results] = await this.poolConnection.execute<T[][]>(query, params);
-    return results;
   }
 }
 
@@ -165,16 +73,5 @@ export class DbConnectionError extends Error {
   ) {
     super(mensagem);
     this.name = 'DbConnectionError';
-  }
-}
-
-export class DbQueryExecutionError extends Error {
-  constructor(
-    mensagem: string,
-    public readonly consulta: string,
-    public readonly erroOriginal: Error,
-  ) {
-    super(mensagem);
-    this.name = 'DbQueryExecutionError';
   }
 }

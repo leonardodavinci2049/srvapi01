@@ -4,7 +4,7 @@ import { processProcedureResultMultiQuery } from 'src/core/process-result/proces
 import { processSqlResultQuery } from 'src/core/process-result/process-sql-result.query';
 import { MESSAGES } from 'src/core/utils/constants/globalConstants';
 import { ResultModel } from 'src/core/utils/result.model';
-import { DbConnectionService } from 'src/db-connection/db-connection.service';
+import { DbOperationService } from 'src/db-operation/db-operation.service';
 import { CostumerCreateDto } from './dto/costumer-create.dto';
 import { CostumerCreateManagerDto } from './dto/costumer-create-manager.dto';
 import { CostumerFindAllDto } from './dto/costumer-find-all.dto';
@@ -36,13 +36,13 @@ import {
 
 @Injectable()
 export class CustomerService {
-  constructor(private readonly dbConnectionService: DbConnectionService) {}
+  constructor(private readonly dbOperationService: DbOperationService) {}
 
   async taskCustomerCreateV2(dataJsonDto: CostumerCreateDto) {
     try {
       const queryString = CostumerCreateQuery(dataJsonDto);
 
-      const resultData = (await this.dbConnectionService.selectExecute(
+      const resultData = (await this.dbOperationService.selectExecute(
         queryString,
       )) as unknown as SpResultRecordCreateType;
 
@@ -63,7 +63,7 @@ export class CustomerService {
         CostumerCreateManagerQuery(dataJsonDto);
       //  console.log('queryString: '+ queryString);
       //  console.log('queryParams: '+ queryParams);
-      const resultData = (await this.dbConnectionService.selectExecute(
+      const resultData = (await this.dbOperationService.selectExecute(
         queryString,
         queryParams,
       )) as unknown as SpResultRecordCreateType;
@@ -83,7 +83,7 @@ export class CustomerService {
     try {
       const queryString = CostumerFindAllQuery(dataJsonDto);
 
-      const resultData = (await this.dbConnectionService.selectExecute(
+      const resultData = (await this.dbOperationService.selectExecute(
         queryString,
       )) as unknown as SpResultCustomerFindAllData;
 
@@ -105,7 +105,7 @@ export class CustomerService {
         CustomerFindSearchV2Query(dataJsonDto);
 
       const resultData =
-        await this.dbConnectionService.selectExecute<TblCustomerFindSearch>(
+        await this.dbOperationService.selectExecute<TblCustomerFindSearch>(
           queryString,
           queryParams,
         );
@@ -127,7 +127,7 @@ export class CustomerService {
     try {
       const queryString = CostumerFindManagerAllV2Query(dataJsonDto);
 
-      const resultData = (await this.dbConnectionService.selectExecute(
+      const resultData = (await this.dbOperationService.selectExecute(
         queryString,
       )) as unknown as SpResultCustomerFindManagerAllData;
 
@@ -147,7 +147,7 @@ export class CustomerService {
     try {
       const queryString = CostumerFindManagerIdQuery(dataJsonDto);
 
-      const resultData = (await this.dbConnectionService.selectExecute(
+      const resultData = (await this.dbOperationService.selectExecute(
         queryString,
       )) as unknown as SpResultCustomerFindManagerIdData;
 
@@ -167,7 +167,7 @@ export class CustomerService {
     try {
       const queryString = CostumerFindPdvIdQuery(dataJsonDto);
 
-      const resultData = (await this.dbConnectionService.selectExecute(
+      const resultData = (await this.dbOperationService.selectExecute(
         queryString,
       )) as unknown as SpResultCustomerFindPdvIdData;
 
@@ -187,7 +187,7 @@ export class CustomerService {
     try {
       const queryString = CostumerFindIdQuery(dataJsonDto);
 
-      const resultData = (await this.dbConnectionService.selectExecute(
+      const resultData = (await this.dbOperationService.selectExecute(
         queryString,
       )) as unknown as SpResultCustomerFindIdData;
 
@@ -209,7 +209,7 @@ export class CustomerService {
     try {
       const queryString = CustomerFindLatestProductsQuery(dataJsonDto);
 
-      const resultData = (await this.dbConnectionService.selectExecute(
+      const resultData = (await this.dbOperationService.selectExecute(
         queryString,
       )) as unknown as SpResultCustomerLatestProductsFindAllData;
 

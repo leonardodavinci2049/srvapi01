@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { processProcedureResultMultiQuery } from 'src/core/process-result/process-procedure-result.query';
 import { MESSAGES } from 'src/core/utils/constants/globalConstants';
 import { ResultModel } from 'src/core/utils/result.model';
-import { DbConnectionService } from 'src/db-connection/db-connection.service';
+import { DbOperationService } from 'src/db-operation/db-operation.service';
 import { OrdersManagerFindAllDto } from './dto/orders-manager-find-all.dto';
 import { OrdersManagerFindIdDto } from './dto/orders-manager-find-id.dto';
 import { OrdersManagerFindAllQuery } from './query/orders-manager-find-all.query';
@@ -14,17 +14,17 @@ import {
 
 @Injectable()
 export class OrderManagerService {
-  constructor(private readonly dbConnectionService: DbConnectionService) {}
+  constructor(private readonly dbOperationService: DbOperationService) {}
 
   async taskOrdersManagerFindAll(dataJsonDto: OrdersManagerFindAllDto) {
     try {
       const { queryString, queryParams } =
         OrdersManagerFindAllQuery(dataJsonDto);
 
-     //  console.log('queryString: ', queryString);
-     //  console.log('queryParams: ', queryParams);
+      //  console.log('queryString: ', queryString);
+      //  console.log('queryParams: ', queryParams);
 
-      const resultData = (await this.dbConnectionService.selectExecute(
+      const resultData = (await this.dbOperationService.selectExecute(
         queryString,
         queryParams,
       )) as unknown as SpResultOrdersManagerFindAllData;
@@ -46,7 +46,7 @@ export class OrderManagerService {
       const { queryString, queryParams } =
         OrdersManagerFindIdQuery(dataJsonDto);
 
-      const resultData = (await this.dbConnectionService.selectExecute(
+      const resultData = (await this.dbOperationService.selectExecute(
         queryString,
         queryParams,
       )) as unknown as SpResultOrdersManagerFindIdData;

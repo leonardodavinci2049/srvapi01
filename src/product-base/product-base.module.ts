@@ -1,11 +1,11 @@
 import { Module } from '@nestjs/common';
-import { DbConnectionModule } from 'src/db-connection/db-connection.module';
+import { DbOperationModule } from 'src/db-operation/db-operation.module';
 import { WebhookModule } from 'src/webhook/webhook.module';
 import { ProductBaseController } from './product-base.controller';
 import { ProductBaseService } from './product-base.service';
 
 @Module({
-  imports: [DbConnectionModule, WebhookModule],
+  imports: [DbOperationModule, WebhookModule],
   controllers: [ProductBaseController],
   providers: [ProductBaseService],
 })

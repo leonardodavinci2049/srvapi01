@@ -3,7 +3,7 @@ import { processProcedureResultMutation } from 'src/core/process-result/process-
 import { processProcedureResultMultiQuery } from 'src/core/process-result/process-procedure-result.query';
 import { MESSAGES } from 'src/core/utils/constants/globalConstants';
 import { ResultModel } from 'src/core/utils/result.model';
-import { DbConnectionService } from 'src/db-connection/db-connection.service';
+import { DbOperationService } from 'src/db-operation/db-operation.service';
 import { CartClearAllV1Dto } from './dto/cart-clear-all-v1.dto';
 import { CartCloseV1Dto } from './dto/cart-close-v1.dto';
 import { CartFindAllV1Dto } from './dto/cart-find-ALL-v1.dto';
@@ -36,13 +36,13 @@ import {
 
 @Injectable()
 export class CartService {
-  constructor(private readonly dbConnectionService: DbConnectionService) {}
+  constructor(private readonly dbOperationService: DbOperationService) {}
 
   async tskCartItemAddV1(dataJsonDto: CartItemAddV1Dto) {
     try {
       const queryString = CartItemAddV1Query(dataJsonDto);
 
-      const resultData = (await this.dbConnectionService.selectExecute(
+      const resultData = (await this.dbOperationService.selectExecute(
         queryString,
       )) as unknown as SpResultRecordCreateType;
 
@@ -57,7 +57,7 @@ export class CartService {
     try {
       const queryString = CartFindIdV1Query(dataJsonDto);
 
-      const resultData = (await this.dbConnectionService.selectExecute(
+      const resultData = (await this.dbOperationService.selectExecute(
         queryString,
       )) as unknown as SpResultCartFindIdData;
 
@@ -77,7 +77,7 @@ export class CartService {
     try {
       const queryString = CartFindSessionV1Query(dataJsonDto);
 
-      const resultData = (await this.dbConnectionService.selectExecute(
+      const resultData = (await this.dbOperationService.selectExecute(
         queryString,
       )) as unknown as SpResultCartFindSessionData;
 
@@ -97,7 +97,7 @@ export class CartService {
     try {
       const queryString = CartFindQtV1Query(dataJsonDto);
 
-      const resultData = (await this.dbConnectionService.selectExecute(
+      const resultData = (await this.dbOperationService.selectExecute(
         queryString,
       )) as unknown as SpResultCartFindQtData;
 
@@ -116,7 +116,7 @@ export class CartService {
     try {
       const queryString = CartFindAllV1Query(dataJsonDto);
 
-      const resultData = (await this.dbConnectionService.selectExecute(
+      const resultData = (await this.dbOperationService.selectExecute(
         queryString,
       )) as unknown as SpResultCartFindAllData;
 
@@ -136,7 +136,7 @@ export class CartService {
     try {
       const queryString = CartUpdSendToV1Query(dataJsonDto);
 
-      const resultData = (await this.dbConnectionService.selectExecute(
+      const resultData = (await this.dbOperationService.selectExecute(
         queryString,
       )) as unknown as SpResultRecordUpdateType;
 
@@ -155,7 +155,7 @@ export class CartService {
     try {
       const queryString = CartItemUpdQtV1Query(dataJsonDto);
 
-      const resultData = (await this.dbConnectionService.selectExecute(
+      const resultData = (await this.dbOperationService.selectExecute(
         queryString,
       )) as unknown as SpResultRecordUpdateType;
 
@@ -174,7 +174,7 @@ export class CartService {
     try {
       const queryString = CartClearAllV1Query(dataJsonDto);
 
-      const resultData = (await this.dbConnectionService.selectExecute(
+      const resultData = (await this.dbOperationService.selectExecute(
         queryString,
       )) as unknown as SpResultRecordUpdateType;
 
@@ -193,7 +193,7 @@ export class CartService {
     try {
       const queryString = CartItemDeleteV1Query(dataJsonDto);
 
-      const resultData = (await this.dbConnectionService.selectExecute(
+      const resultData = (await this.dbOperationService.selectExecute(
         queryString,
       )) as unknown as SpResultRecordDeleteType;
 
@@ -211,7 +211,7 @@ export class CartService {
     try {
       const queryString = CartCloseV1Query(dataJsonDto);
 
-      const resultData = (await this.dbConnectionService.selectExecute(
+      const resultData = (await this.dbOperationService.selectExecute(
         queryString,
       )) as unknown as SpResultRecordUpdateType;
 

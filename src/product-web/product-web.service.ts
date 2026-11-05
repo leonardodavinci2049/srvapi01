@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { processProcedureResultMultiQuery } from 'src/core/process-result/process-procedure-result.query';
 import { MESSAGES } from 'src/core/utils/constants/globalConstants';
 import { ResultModel } from 'src/core/utils/result.model';
-import { DbConnectionService } from 'src/db-connection/db-connection.service';
+import { DbOperationService } from 'src/db-operation/db-operation.service';
 import { ProductWebFindIdV3Dto } from './dto/product-web-find-id-v3.dto';
 import { ProductWebFindV3Dto } from './dto/product-web-find-v3.dto';
 import { ProductWebSectionsV3Dto } from './dto/product-web-sections-v3.dto';
@@ -17,13 +17,13 @@ import {
 
 @Injectable()
 export class ProductWebService {
-  constructor(private readonly dbConnectionService: DbConnectionService) {}
+  constructor(private readonly dbOperationService: DbOperationService) {}
 
   async tskProductWebFindIdV3(dataJsonDto: ProductWebFindIdV3Dto) {
     try {
       const queryString = webFindIdProductQuery(dataJsonDto);
 
-      const resultData = (await this.dbConnectionService.selectExecute(
+      const resultData = (await this.dbOperationService.selectExecute(
         queryString,
       )) as unknown as SpProductWebFindIdDataType;
 
@@ -42,7 +42,7 @@ export class ProductWebService {
     try {
       const queryString = webFindProductQuery(dataJsonDto);
 
-      const resultData = (await this.dbConnectionService.selectExecute(
+      const resultData = (await this.dbOperationService.selectExecute(
         queryString,
       )) as unknown as SpProductWebFindDataType;
 
@@ -62,7 +62,7 @@ export class ProductWebService {
     try {
       const queryString = webFindProductSectionsQuery(dataJsonDto);
 
-      const resultData = (await this.dbConnectionService.selectExecute(
+      const resultData = (await this.dbOperationService.selectExecute(
         queryString,
       )) as unknown as SpProductWebSectionsDataType;
 

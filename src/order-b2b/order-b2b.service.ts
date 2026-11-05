@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { processProcedureResultMultiQuery } from 'src/core/process-result/process-procedure-result.query';
 import { MESSAGES } from 'src/core/utils/constants/globalConstants';
 import { ResultModel } from 'src/core/utils/result.model';
-import { DbConnectionService } from 'src/db-connection/db-connection.service';
+import { DbOperationService } from 'src/db-operation/db-operation.service';
 
 import { OrderFindBudgetCustomerIdV2Dto } from './dto/order-find-budget-customer-id-v2.dto';
 import { OrderFindDashboardCustomerIdV2Dto } from './dto/order-find-dashboard-customer-id-v2.dto';
@@ -24,7 +24,7 @@ import {
 
 @Injectable()
 export class OrderB2bService {
-  constructor(private readonly dbConnectionService: DbConnectionService) {}
+  constructor(private readonly dbOperationService: DbOperationService) {}
 
   async taskOrderFindBudgetCustomerIdV2(
     dataJsonDto: OrderFindBudgetCustomerIdV2Dto,
@@ -32,7 +32,7 @@ export class OrderB2bService {
     try {
       const queryString = OrderFindBudgetCustomerIdV2Query(dataJsonDto);
 
-      const resultData = (await this.dbConnectionService.selectExecute(
+      const resultData = (await this.dbOperationService.selectExecute(
         queryString,
       )) as unknown as ResultOrderFindBudgetCustomerIdV2Data;
 
@@ -60,7 +60,7 @@ export class OrderB2bService {
     try {
       const queryString = OrderFindDashboardCustomerIdV2Query(dataJsonDto);
 
-      const resultData = (await this.dbConnectionService.selectExecute(
+      const resultData = (await this.dbOperationService.selectExecute(
         queryString,
       )) as unknown as ResultOrderFindDashboardCustomerIdV2Data;
 
@@ -86,7 +86,7 @@ export class OrderB2bService {
     try {
       const queryString = OrderItemFindQtV2Query(dataJsonDto);
 
-      const resultData = (await this.dbConnectionService.selectExecute(
+      const resultData = (await this.dbOperationService.selectExecute(
         queryString,
       )) as unknown as ResultOrderItemFindQtV2Data;
 
@@ -106,7 +106,7 @@ export class OrderB2bService {
     try {
       const queryString = ordersFindLatestV2Query(dataJsonDto);
 
-      const resultData = (await this.dbConnectionService.selectExecute(
+      const resultData = (await this.dbOperationService.selectExecute(
         queryString,
       )) as unknown as ResultOrdersFindLatestV2Data;
 
@@ -128,7 +128,7 @@ export class OrderB2bService {
     try {
       const queryString = ordersStatisticsCustomerV2Query(dataJsonDto);
 
-      const resultData = (await this.dbConnectionService.selectExecute(
+      const resultData = (await this.dbOperationService.selectExecute(
         queryString,
       )) as unknown as ResultOrdersStatisticsCustomerV2Data;
 

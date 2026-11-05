@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { processProcedureResultMultiQuery } from 'src/core/process-result/process-procedure-result.query';
 import { MESSAGES } from 'src/core/utils/constants/globalConstants';
 import { ResultModel } from 'src/core/utils/result.model';
-import { DbConnectionService } from 'src/db-connection/db-connection.service';
+import { DbOperationService } from 'src/db-operation/db-operation.service';
 import { TaxonomyWebFindIdV3Dto } from './dto/taxonomy-web-find-id-v3.dto';
 import { TaxonomyWebFindMenuV3Dto } from './dto/taxonomy-web-find-menu-v3.dto';
 import { TaxonomyWebFindIdV3Query } from './query/taxonomy-web-find-id-v3.query';
@@ -14,13 +14,13 @@ import {
 
 @Injectable()
 export class TaxonomyWebService {
-  constructor(private readonly dbConnectionService: DbConnectionService) {}
+  constructor(private readonly dbOperationService: DbOperationService) {}
 
   async taskTaxonomyWebFindIdV3(dataJsonDto: TaxonomyWebFindIdV3Dto) {
     try {
       const queryString = TaxonomyWebFindIdV3Query(dataJsonDto);
 
-      const resultData = (await this.dbConnectionService.selectExecute(
+      const resultData = (await this.dbOperationService.selectExecute(
         queryString,
       )) as unknown as SpResultTaxonomyWebFindIdV3Data;
 
@@ -40,7 +40,7 @@ export class TaxonomyWebService {
     try {
       const queryString = TaxonomyWebFindMenuV3Query(dataJsonDto);
 
-      const resultData = (await this.dbConnectionService.selectExecute(
+      const resultData = (await this.dbOperationService.selectExecute(
         queryString,
       )) as unknown as SpResultTaxonomyWebMenuV3Data;
 

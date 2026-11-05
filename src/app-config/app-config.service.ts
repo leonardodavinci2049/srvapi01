@@ -7,7 +7,7 @@ import {
   RESPONSE_CODES,
 } from 'src/core/utils/constants/globalConstants';
 import { ResultModel } from 'src/core/utils/result.model';
-import { DbConnectionService } from 'src/db-connection/db-connection.service';
+import { DbOperationService } from 'src/db-operation/db-operation.service';
 import { WebhookService } from 'src/webhook/webhook.service';
 import { AppConfigFindAllV2Dto } from './dto/app-config-find-all-v2.dto';
 import { AppConfigFindIdV2Dto } from './dto/app-config-find-id-v2.dto';
@@ -30,7 +30,7 @@ import {
 @Injectable()
 export class AppConfigService {
   constructor(
-    private readonly dbConnectionService: DbConnectionService,
+    private readonly dbOperationService: DbOperationService,
     @Inject(forwardRef(() => WebhookService))
     private readonly webhookService: WebhookService,
   ) {}
@@ -39,7 +39,7 @@ export class AppConfigService {
     try {
       const { queryString, queryParams } = AppConfigFindAllV2Query(dataJsonDto);
 
-      const resultData = (await this.dbConnectionService.selectExecute(
+      const resultData = (await this.dbOperationService.selectExecute(
         queryString,
         queryParams,
       )) as unknown as SpResultAppConfigFindAllData;
@@ -62,7 +62,7 @@ export class AppConfigService {
 
       //console.log('queryParams: ', queryParams);
 
-      const resultData = (await this.dbConnectionService.selectExecute(
+      const resultData = (await this.dbOperationService.selectExecute(
         queryString,
         queryParams,
       )) as unknown as SpResultAppConfigFindIdData;
@@ -87,7 +87,7 @@ export class AppConfigService {
         AppConfigFindWebhookIdV2Query(dataJsonDto);
 
       const resultData =
-        await this.dbConnectionService.selectExecute<TblAppConfigFindWebhookId>(
+        await this.dbOperationService.selectExecute<TblAppConfigFindWebhookId>(
           queryString,
           queryParams,
         );
@@ -108,7 +108,7 @@ export class AppConfigService {
     try {
       const { queryString, queryParams } = AppMenuFindTypeV2Query(dataJsonDto);
 
-      const resultData = (await this.dbConnectionService.selectExecute(
+      const resultData = (await this.dbOperationService.selectExecute(
         queryString,
         queryParams,
       )) as unknown as SpResultAppMenuFindTypeData;
@@ -132,7 +132,7 @@ export class AppConfigService {
       const { queryString, queryParams } =
         AppConfigUpdGeneralFieldV2Query(dataJsonDto);
 
-      const resultData = (await this.dbConnectionService.selectExecute(
+      const resultData = (await this.dbOperationService.selectExecute(
         queryString,
         queryParams,
       )) as unknown as SpResultRecordUpdateType;
