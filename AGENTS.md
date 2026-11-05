@@ -13,7 +13,7 @@ Nested instruction files supplement/override this one — read the closest `AGEN
 - **NestJS Config v4.0.4** (`@nestjs/config`) for environment and application configuration.
 - **NestJS Swagger v11.4.6** (`@nestjs/swagger`) for OpenAPI documentation.
 - **NestJS Throttler v6.5.0** (`@nestjs/throttler`) for request rate limiting.
-- **MySQL2 v3.23.2** (`mysql2`) for local DB access through the singleton pool in `DatabaseService`.
+- **MySQL2 v3.23.2** (`mysql2`) for local DB access through the singleton pool in `DbConnectionService`.
 - **Zod v4.4.3** (`zod`) for runtime validation of environment variables and application data.
 - **Biome v2.5.6** (`@biomejs/biome`) for linting and formatting.
 - **TypeScript v6.0.3** (`typescript`) for static typing and compilation.
@@ -61,7 +61,7 @@ Variables are Zod-validated at boot in `src/core/config/envs.ts` (fails fast): `
 ### Directory and fluxo map
 
 ```text
-HTTP request -> controller -> service -> query -> DatabaseService
+HTTP request -> controller -> service -> query -> DbConnectionService
                                 |           |
                                 v           v
                          result helpers  MySQL/MariaDB
@@ -70,17 +70,17 @@ HTTP POST /api/<feature>/v2/<action>
   -> Controller (@UseGuards(AuthGuard), DTO validation)
   -> Service (orchestration, error handling, ResultModel)
   -> Query (pure function returning queryString + queryParams)
-  -> DatabaseService (mysql2 pool)
+  -> DbConnectionService (mysql2 pool)
 ```
 
-- Feature module layout: `*.module.ts`, `*.controller.ts`, `*.service.ts`, `dto/`, `query/`, `types/`, plus `entities/` when adopted. Register new modules in `src/app.main/app.module.ts`; import `DatabaseModule` where `DatabaseService` is used.
+- Feature module layout: `*.module.ts`, `*.controller.ts`, `*.service.ts`, `dto/`, `query/`, `types/`, plus `entities/` when adopted. Register new modules in `src/app.main/app.module.ts`; import `DbConnectionModule` where `DbConnectionService` is used.
 - Controllers hold HTTP/DTO concerns only — no SQL or business rules.
 - Imports: absolute `src/...` for shared code; relative within a module.
 - Global in `src/main.ts`: prefix `/api`, `ValidationPipe` with `whitelist`/`forbidNonWhitelisted`/`transform`/implicit conversion, CORS; `ThrottlerGuard` global. Do not weaken auth, validation, or rate limiting without documented impact analysis.
 
 ## Database & Stored Procedures
 
-- All access via `src/database/database.service.ts`: `selectQuery`/`selectExecute` (reads), `ModifyExecute`/`ModifyQuery` (mutations), `runInTransaction` (atomic multi-step, rollback + connection release).
+- All access via `src/db-connection/db-connection.service.ts`: `selectQuery`/`selectExecute` (reads), `ModifyExecute`/`ModifyQuery` (mutations), `runInTransaction` (atomic multi-step, rollback + connection release).
 - Queries always use `?` placeholders — never concatenate or interpolate DTO data into SQL. Legacy interpolated queries exist: don't copy them or migrate them beyond the requested scope.
 - Every tenant-bound operation must preserve `pe_system_client_id` and `pe_store_id`; never remove tenant filters.
 - SP definitions live in the `stored-procedures` symlink to `/home/leomer/projects/mercury-projects/erp-database-sql-procedures/stored-procedures`. Before changing/exposing a procedure, verify signature, parameter order, and result sets there.

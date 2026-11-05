@@ -1,11 +1,11 @@
 import { forwardRef, Module } from '@nestjs/common';
-import { DatabaseModule } from 'src/database/database.module';
+import { DbConnectionModule } from 'src/db-connection/db-connection.module';
 import { WebhookModule } from 'src/webhook/webhook.module';
 import { AppConfigController } from './app-config.controller';
 import { AppConfigService } from './app-config.service';
 
 @Module({
-  imports: [DatabaseModule, forwardRef(() => WebhookModule)],
+  imports: [DbConnectionModule, forwardRef(() => WebhookModule)],
   controllers: [AppConfigController],
   providers: [AppConfigService],
   exports: [AppConfigService],

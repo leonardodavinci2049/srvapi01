@@ -4,7 +4,7 @@ import { processProcedureResultMultiQuery } from 'src/core/process-result/proces
 import { processSqlResultQuery } from 'src/core/process-result/process-sql-result.query';
 import { MESSAGES } from 'src/core/utils/constants/globalConstants';
 import { ResultModel } from 'src/core/utils/result.model';
-import { DatabaseService } from 'src/database/database.service';
+import { DbConnectionService } from 'src/db-connection/db-connection.service';
 import { SellerFindIdDto } from './dto/seller-find-id.dto';
 import { SellerFindManagerAllV2Dto } from './dto/seller-find-manager-all-v2.dto';
 import { SellerFindManagerIdV2Dto } from './dto/seller-find-manager-id-v2.dto';
@@ -25,14 +25,14 @@ import {
 
 @Injectable()
 export class SellerService {
-  constructor(private readonly dbService: DatabaseService) {}
+  constructor(private readonly dbConnectionService: DbConnectionService) {}
 
   async taskSellerSearchAllV2(dataJsonDto: SellerFindSearchV2Dto) {
     try {
       const { queryString, queryParams } = SellerFindSearchV2Query(dataJsonDto);
 
       const resultData =
-        await this.dbService.selectExecute<TblSellerFindSearch>(
+        await this.dbConnectionService.selectExecute<TblSellerFindSearch>(
           queryString,
           queryParams,
         );
@@ -55,7 +55,7 @@ export class SellerService {
       const queryString = SellerFindIdQuery(dataJsonDto);
 
       const resultData =
-        await this.dbService.selectExecute<TblSellerFindId>(queryString);
+        await this.dbConnectionService.selectExecute<TblSellerFindId>(queryString);
 
       return processSqlResultQuery(
         resultData,
@@ -74,7 +74,7 @@ export class SellerService {
     try {
       const queryString = SellerFindManagerAllV2Query(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultSellerFindManagerAllData;
 
@@ -95,7 +95,7 @@ export class SellerService {
       const { queryString, queryParams } =
         SellerFindManagerIdV2Query(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
         queryParams,
       )) as unknown as SpResultSellerFindManagerIdData;
@@ -117,7 +117,7 @@ export class SellerService {
       const { queryString, queryParams } =
         SellerUpdGeneralFieldQuery(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
         queryParams,
       )) as unknown as SpResultRecordUpdateType;

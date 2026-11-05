@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { processProcedureResultMutation } from 'src/core/process-result/process-procedure-result.mutation';
 import { MESSAGES } from 'src/core/utils/constants/globalConstants';
 import { ResultModel } from 'src/core/utils/result.model';
-import { DatabaseService } from 'src/database/database.service';
+import { DbConnectionService } from 'src/db-connection/db-connection.service';
 import { CustomerUpdInlFieldDto } from './dto/costumer-upd-inl-field.dto';
 import { CustomerUpdInlEmailDto } from './dto/customer-upd-inl-email.dto';
 import { CustomerUpdInlNameDto } from './dto/customer-upd-inl-name.dto';
@@ -25,7 +25,7 @@ import { SpResultRecordUpdateType } from './types/costumer-inline.type';
 
 @Injectable()
 export class CustomerInlineService {
-  constructor(private readonly dbService: DatabaseService) {}
+  constructor(private readonly dbConnectionService: DbConnectionService) {}
 
   create() {
     return 'This action adds a new customerInline';
@@ -35,7 +35,7 @@ export class CustomerInlineService {
     try {
       const queryString = CustomerUpdInlFieldQuery(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultRecordUpdateType;
 
@@ -54,7 +54,7 @@ export class CustomerInlineService {
     try {
       const queryString = CustomerUpdInlEmailQuery(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultRecordUpdateType;
 
@@ -73,7 +73,7 @@ export class CustomerInlineService {
     try {
       const queryString = CustomerUpdInlNameQuery(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultRecordUpdateType;
 
@@ -91,7 +91,7 @@ export class CustomerInlineService {
     try {
       const queryString = CustomerUpdInlNotesQuery(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultRecordUpdateType;
 
@@ -109,7 +109,7 @@ export class CustomerInlineService {
     try {
       const queryString = CustomerUpdInlPhoneQuery(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultRecordUpdateType;
 
@@ -127,7 +127,7 @@ export class CustomerInlineService {
     try {
       const queryString = CustomerUpdInlSellerIdQuery(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultRecordUpdateType;
 
@@ -147,7 +147,7 @@ export class CustomerInlineService {
     try {
       const queryString = CustomerUpdInlTypeCustomerQuery(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultRecordUpdateType;
 
@@ -166,7 +166,7 @@ export class CustomerInlineService {
     try {
       const queryString = CustomerUpdInlTypePersonQuery(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultRecordUpdateType;
 
@@ -185,7 +185,7 @@ export class CustomerInlineService {
     try {
       const queryString = CustomerUpdInlWhatsappQuery(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultRecordUpdateType;
 

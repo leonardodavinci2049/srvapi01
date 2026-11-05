@@ -3,7 +3,7 @@ import { processProcedureResultMutation } from 'src/core/process-result/process-
 import { MESSAGES } from 'src/core/utils/constants/globalConstants';
 import { ResultModel } from 'src/core/utils/result.model';
 
-import { DatabaseService } from 'src/database/database.service';
+import { DbConnectionService } from 'src/db-connection/db-connection.service';
 
 import { CustomerUpdAddressDto } from './dto/customer-upd-address.dto';
 import { CustomerUpdBusinessDto } from './dto/customer-upd-business.dto';
@@ -23,13 +23,13 @@ import { SpResultRecordUpdateType } from './types/costumer-upd.type';
 
 @Injectable()
 export class CustomerUpdService {
-  constructor(private readonly dbService: DatabaseService) {}
+  constructor(private readonly dbConnectionService: DbConnectionService) {}
 
   async TaskCustomerUpdAddress(dataJsonDto: CustomerUpdAddressDto) {
     try {
       const queryString = CustomerUpdAddressQuery(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultRecordUpdateType;
 
@@ -48,7 +48,7 @@ export class CustomerUpdService {
     try {
       const queryString = CustomerUpdBusinessQuery(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultRecordUpdateType;
 
@@ -67,7 +67,7 @@ export class CustomerUpdService {
     try {
       const queryString = CustomerUpdFlagQuery(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultRecordUpdateType;
 
@@ -86,7 +86,7 @@ export class CustomerUpdService {
     try {
       const queryString = CustomerUpdGeneralQuery(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultRecordUpdateType;
 
@@ -105,7 +105,7 @@ export class CustomerUpdService {
     try {
       const queryString = CustomerUpdInternetQuery(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultRecordUpdateType;
 
@@ -124,7 +124,7 @@ export class CustomerUpdService {
     try {
       const queryString = CustomerUpdPersonalQuery(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultRecordUpdateType;
 
@@ -144,7 +144,7 @@ export class CustomerUpdService {
       const { queryString, queryParams } =
         CustomerUpdGeneralFieldQuery(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
         queryParams,
       )) as unknown as SpResultRecordUpdateType;

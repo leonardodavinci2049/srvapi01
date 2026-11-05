@@ -4,7 +4,7 @@ import { processProcedureResultMultiQuery } from 'src/core/process-result/proces
 import { processSqlResultQuery } from 'src/core/process-result/process-sql-result.query';
 import { MESSAGES } from 'src/core/utils/constants/globalConstants';
 import { ResultModel } from 'src/core/utils/result.model';
-import { DatabaseService } from 'src/database/database.service';
+import { DbConnectionService } from 'src/db-connection/db-connection.service';
 import { SupplierCreateV2Dto } from './dto/supplier-create-v2.dto';
 import { SupplierDeleteV2Dto } from './dto/supplier-delete-v2.dto';
 import { SupplierFindAllV2Dto } from './dto/supplier-find-all-v2.dto';
@@ -56,13 +56,13 @@ import {
 
 @Injectable()
 export class SupplierService {
-  constructor(private readonly dbService: DatabaseService) {}
+  constructor(private readonly dbConnectionService: DbConnectionService) {}
 
   async taskSupplierCreateV2(dataJsonDto: SupplierCreateV2Dto) {
     try {
       const queryString = SupplierCreateV2Query(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultRecordCreateType;
 
@@ -81,7 +81,7 @@ export class SupplierService {
     try {
       const queryString = SupplierRelCreateV2Query(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultRecordCreateType;
 
@@ -100,7 +100,7 @@ export class SupplierService {
     try {
       const queryString = SupplierFindAllV2Query(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultSupplierFindAllData;
 
@@ -122,7 +122,7 @@ export class SupplierService {
         SupplierFindSearchV2Query(dataJsonDto);
 
       const resultData =
-        await this.dbService.selectExecute<TblSupplierFindSearch>(
+        await this.dbConnectionService.selectExecute<TblSupplierFindSearch>(
           queryString,
           queryParams,
         );
@@ -144,7 +144,7 @@ export class SupplierService {
     try {
       const queryString = SupplierFindManagerAllV2Query(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultSupplierFindManagerAllData;
 
@@ -166,7 +166,7 @@ export class SupplierService {
         SupplierFindManagerIdV2Query(dataJsonDto);
 
       const resultData =
-        await this.dbService.selectExecute<TblSupplierFindManagerId>(
+        await this.dbConnectionService.selectExecute<TblSupplierFindManagerId>(
           queryString,
           queryParams,
         );
@@ -188,7 +188,7 @@ export class SupplierService {
     try {
       const queryString = SupplierRelFindProdAllV2Query(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultSupplierFindAllData;
 
@@ -208,7 +208,7 @@ export class SupplierService {
     try {
       const { queryString, queryParams } = SupplierFindIdV2Query(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
         queryParams,
       )) as unknown as SpResultSupplierFindIdData;
@@ -229,7 +229,7 @@ export class SupplierService {
     try {
       const queryString = SupplierUpdateV2Query(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultRecordUpdateType;
 
@@ -248,7 +248,7 @@ export class SupplierService {
     try {
       const queryString = SupplierRelDeleteV2Query(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultRecordDeleteType;
 
@@ -267,7 +267,7 @@ export class SupplierService {
     try {
       const queryString = SupplierDeleteV2Query(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultRecordDeleteType;
 
@@ -287,7 +287,7 @@ export class SupplierService {
       const { queryString, queryParams } =
         SupplierUpdGeneralFieldQuery(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
         queryParams,
       )) as unknown as SpResultRecordUpdateType;
@@ -308,7 +308,7 @@ export class SupplierService {
       const { queryString, queryParams } =
         SupplierUpdAddressV2Query(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
         queryParams,
       )) as unknown as SpResultRecordUpdateType;
@@ -329,7 +329,7 @@ export class SupplierService {
       const { queryString, queryParams } =
         SupplierUpdBusinessV2Query(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
         queryParams,
       )) as unknown as SpResultRecordUpdateType;
@@ -350,7 +350,7 @@ export class SupplierService {
       const { queryString, queryParams } =
         SupplierUpdDeliveryV2Query(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
         queryParams,
       )) as unknown as SpResultRecordUpdateType;
@@ -371,7 +371,7 @@ export class SupplierService {
       const { queryString, queryParams } =
         SupplierUpdGeneralV2Query(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
         queryParams,
       )) as unknown as SpResultRecordUpdateType;
@@ -394,7 +394,7 @@ export class SupplierService {
       const { queryString, queryParams } =
         SupplierUpdInlTypePersonV2Query(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
         queryParams,
       )) as unknown as SpResultRecordUpdateType;
@@ -415,7 +415,7 @@ export class SupplierService {
       const { queryString, queryParams } =
         SupplierUpdInternetV2Query(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
         queryParams,
       )) as unknown as SpResultRecordUpdateType;
@@ -436,7 +436,7 @@ export class SupplierService {
       const { queryString, queryParams } =
         SupplierUpdPersonalV2Query(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
         queryParams,
       )) as unknown as SpResultRecordUpdateType;

@@ -4,7 +4,7 @@ import { processProcedureResultMultiQuery } from 'src/core/process-result/proces
 import { processSqlResultQuery } from 'src/core/process-result/process-sql-result.query';
 import { MESSAGES } from 'src/core/utils/constants/globalConstants';
 import { ResultModel } from 'src/core/utils/result.model';
-import { DatabaseService } from 'src/database/database.service';
+import { DbConnectionService } from 'src/db-connection/db-connection.service';
 import { BrandCreateV2Dto } from './dto/brand-create-v2.dto';
 import { BrandDeleteV2Dto } from './dto/brand-delete-v2.dto';
 import { BrandFindAllV2Dto } from './dto/brand-find-all-v2.dto';
@@ -42,13 +42,13 @@ import {
 
 @Injectable()
 export class BrandService {
-  constructor(private readonly dbService: DatabaseService) {}
+  constructor(private readonly dbConnectionService: DbConnectionService) {}
 
   async taskBrandCreateV2(dataJsonDto: BrandCreateV2Dto) {
     try {
       const queryString = BrandCreateV2Query(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultRecordCreateType;
 
@@ -64,7 +64,7 @@ export class BrandService {
     try {
       const { queryString, queryParams } = BrandFindSearchV2Query(dataJsonDto);
 
-      const resultData = await this.dbService.selectExecute<TblBrandFindSearch>(
+      const resultData = await this.dbConnectionService.selectExecute<TblBrandFindSearch>(
         queryString,
         queryParams,
       );
@@ -86,7 +86,7 @@ export class BrandService {
     try {
       const queryString = BrandFindAllV2Query(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultBrandFindAllData;
 
@@ -106,7 +106,7 @@ export class BrandService {
     try {
       const queryString = BrandFindManagerAllV2Query(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultBrandFindManagerAllData;
 
@@ -126,7 +126,7 @@ export class BrandService {
     try {
       const queryString = BrandFindIdV2Query(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultBrandFindAllData;
 
@@ -148,7 +148,7 @@ export class BrandService {
         BrandFindManagerIdV2Query(dataJsonDto);
 
       const resultData =
-        await this.dbService.selectExecute<TblBrandFindManagerId>(
+        await this.dbConnectionService.selectExecute<TblBrandFindManagerId>(
           queryString,
           queryParams,
         );
@@ -170,7 +170,7 @@ export class BrandService {
     try {
       const queryString = BrandUpdateV2Query(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultRecordUpdateType;
 
@@ -186,11 +186,13 @@ export class BrandService {
     try {
       const queryString = BrandDeleteV2Query(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultRecordUpdateType;
 
       return processProcedureResultMutation(resultData, 'Brand delete failed');
+
+      
     } catch (err) {
       const errorMessage =
         err instanceof Error ? err.message : MESSAGES.UNKNOWN_ERROR;
@@ -203,7 +205,7 @@ export class BrandService {
       const { queryString, queryParams } =
         BrandUpdGeneralFieldQuery(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
         queryParams,
       )) as unknown as SpResultRecordUpdateType;
@@ -224,7 +226,7 @@ export class BrandService {
       const { queryString, queryParams } =
         BrandUpdInlFlagActiveV2Query(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
         queryParams,
       )) as unknown as SpResultRecordUpdateType;
@@ -244,7 +246,7 @@ export class BrandService {
     try {
       const { queryString, queryParams } = BrandUpdInlNameV2Query(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
         queryParams,
       )) as unknown as SpResultRecordUpdateType;
@@ -264,7 +266,7 @@ export class BrandService {
     try {
       const { queryString, queryParams } = BrandUpdInlNotesV2Query(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
         queryParams,
       )) as unknown as SpResultRecordUpdateType;
@@ -284,7 +286,7 @@ export class BrandService {
     try {
       const { queryString, queryParams } = BrandUpdInlSlugV2Query(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
         queryParams,
       )) as unknown as SpResultRecordUpdateType;
