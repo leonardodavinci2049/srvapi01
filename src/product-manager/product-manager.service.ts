@@ -77,7 +77,7 @@ export class ProductManagerService {
       ) VALUES (${Array(33).fill('?').join(', ')})
     `;
 
-    await this.dbOperationService.ModifyExecute(insertQuery, [
+    await this.dbOperationService.mutationQuery(insertQuery, [
       dataJsonDto.pe_app_id ?? 1,
       dataJsonDto.pe_system_client_id,
       dataJsonDto.pe_store_id,

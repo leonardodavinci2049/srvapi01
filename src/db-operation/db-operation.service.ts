@@ -57,8 +57,7 @@ export class DbOperationService {
     return results;
   }
 
-
-  // Método para SELECT com segurança reforçada
+  /** Runs reads, including multi-result-set stored procedures, through `execute`. */
   async selectExecute<T extends RowDataPacket>(
     queryString: string,
     params?: QueryParams,
@@ -66,17 +65,6 @@ export class DbOperationService {
     return this.dbConnectionService.withConnection(async (connection) => {
       const [results] = await connection.execute<T[]>(queryString, params);
       return results;
-    });
-  }
-
-  // Insert/Update/Delete usando execute
-  async ModifyExecute(
-    queryString: string,
-    params?: QueryParams,
-  ): Promise<ResultSetHeader> {
-    return this.dbConnectionService.withConnection(async (connection) => {
-      const [results] = await connection.execute(queryString, params);
-      return results as ResultSetHeader;
     });
   }
 
