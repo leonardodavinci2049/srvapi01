@@ -46,6 +46,7 @@ import { TaxonomyWebModule } from 'src/taxonomy-web/taxonomy-web.module';
 import { WebhookModule } from 'src/webhook/webhook.module';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { DbOperationModule } from 'src/db-operation/db-operation.module';
 
 @Module({
   imports: [
@@ -57,7 +58,7 @@ import { AppService } from './app.service';
       exclude: ['/api/*'], // Exclui a API
       serveRoot: '/', // Serve na raiz da aplicação
     }),
-
+    DbOperationModule,
     ProductModule, // Importando o módulo de produtos
     ProductPdvModule, // Importando o módulo de produtos para PDV
     ProductManagerModule,
