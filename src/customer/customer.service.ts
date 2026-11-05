@@ -105,7 +105,7 @@ export class CustomerService {
         CustomerFindSearchV2Query(dataJsonDto);
 
       const resultData =
-        await this.dbOperationService.selectExecute<TblCustomerFindSearch>(
+        await this.dbOperationService.selectQuery<TblCustomerFindSearch>(
           queryString,
           queryParams,
         );

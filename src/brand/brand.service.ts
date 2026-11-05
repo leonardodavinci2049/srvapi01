@@ -65,7 +65,7 @@ export class BrandService {
       const { queryString, queryParams } = BrandFindSearchV2Query(dataJsonDto);
 
       const resultData =
-        await this.dbOperationService.selectExecute<TblBrandFindSearch>(
+        await this.dbOperationService.selectQuery<TblBrandFindSearch>(
           queryString,
           queryParams,
         );
@@ -149,7 +149,7 @@ export class BrandService {
         BrandFindManagerIdV2Query(dataJsonDto);
 
       const resultData =
-        await this.dbOperationService.selectExecute<TblBrandFindManagerId>(
+        await this.dbOperationService.selectQuery<TblBrandFindManagerId>(
           queryString,
           queryParams,
         );

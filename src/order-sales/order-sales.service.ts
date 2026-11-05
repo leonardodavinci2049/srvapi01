@@ -317,7 +317,7 @@ export class OrderSalesService {
       const queryString = OrderFindCoTipoFreteQuery(dataJsonDto);
 
       const resultData =
-        await this.dbOperationService.selectExecute<TblOrderFindCoTipoFrete>(
+        await this.dbOperationService.selectQuery<TblOrderFindCoTipoFrete>(
           queryString,
         );
 

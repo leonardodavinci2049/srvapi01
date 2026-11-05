@@ -90,7 +90,7 @@ export class PtypeService {
       const { queryString, queryParams } = TypeFindSearchV2Query(dataJsonDto);
 
       const resultData =
-        await this.dbOperationService.selectExecute<TblPTypeFindSearch>(
+        await this.dbOperationService.selectQuery<TblPTypeFindSearch>(
           queryString,
           queryParams,
         );
@@ -134,7 +134,7 @@ export class PtypeService {
         TypeFindManagerIdV2Query(dataJsonDto);
 
       const resultData =
-        await this.dbOperationService.selectExecute<TblPTypeFindManagerId>(
+        await this.dbOperationService.selectQuery<TblPTypeFindManagerId>(
           queryString,
           queryParams,
         );
