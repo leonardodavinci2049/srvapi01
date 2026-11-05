@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { processProcedureResultMultiQuery } from 'src/core/process-result/process-procedure-result.query';
 import { MESSAGES } from 'src/core/utils/constants/globalConstants';
 import { ResultModel } from 'src/core/utils/result.model';
-import { DatabaseService } from 'src/database/database.service';
+import { DbConnectionService } from 'src/db-connection/db-connection.service';
 import { ProductFindPdvSearchV2Dto } from './dto/product-find-Pdv-search.dto';
 import { ProductFindPdvAllV2Dto } from './dto/product-find-pdv-all-v2.dto';
 import { ProductFindPdvIdV2Dto } from './dto/product-find-pdv-id-v2.dto';
@@ -16,7 +16,7 @@ import {
 
 @Injectable()
 export class ProductPdvService {
-  constructor(private readonly dbService: DatabaseService) {}
+  constructor(private readonly dbConnectionService: DbConnectionService) {}
   create() {
     return 'This action adds a new productPdv';
   }
@@ -25,7 +25,7 @@ export class ProductPdvService {
     try {
       const queryString = ProductFindPdvAllV2Query(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultProductFindPdvAllData;
 
@@ -45,7 +45,7 @@ export class ProductPdvService {
     try {
       const queryString = ProductFindPdvSearchV2Query(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultProductFindPdvAllData;
 
@@ -65,7 +65,7 @@ export class ProductPdvService {
     try {
       const queryString = ProductFindPdvIdV2Query(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultProductFindPdvIdData;
 

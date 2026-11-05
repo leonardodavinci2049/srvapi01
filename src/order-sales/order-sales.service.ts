@@ -3,7 +3,7 @@ import { processProcedureResultMultiQuery } from 'src/core/process-result/proces
 import { processSqlResultQuery } from 'src/core/process-result/process-sql-result.query';
 import { MESSAGES } from 'src/core/utils/constants/globalConstants';
 import { ResultModel } from 'src/core/utils/result.model';
-import { DatabaseService } from 'src/database/database.service';
+import { DbConnectionService } from 'src/db-connection/db-connection.service';
 import { SpResultOrderFindCustomerAllData } from 'src/order-reports/types/order-reports.type';
 import { OrderFindCoCarrierIdDto } from './dto/order-find-co-carrier-id.dto';
 import { OrderFindCoCustomerIdDto } from './dto/order-find-co-customer-id.dto';
@@ -51,13 +51,13 @@ import {
 
 @Injectable()
 export class OrderSalesService {
-  constructor(private readonly dbService: DatabaseService) {}
+  constructor(private readonly dbConnectionService: DbConnectionService) {}
 
   async taskOrdersFindDashboardIdV2(dataJsonDto: OrdersFindDashboardIdDto) {
     try {
       const queryString = OrdersFindDashboardIdQuery(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultOrderFindCustomerAllData;
 
@@ -77,7 +77,7 @@ export class OrderSalesService {
     try {
       const queryString = OrdersFindOrderIdQuery(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultOrderFindOrderIdData;
 
@@ -97,7 +97,7 @@ export class OrderSalesService {
     try {
       const queryString = OrdersFindCartIdQuery(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultOrderFindCartIdData;
 
@@ -117,7 +117,7 @@ export class OrderSalesService {
     try {
       const queryString = OrderFindCoSummaryIdQuery(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultOrderFindCoSummaryIdData;
 
@@ -137,7 +137,7 @@ export class OrderSalesService {
     try {
       const queryString = OrderFindCoCarrierIdQuery(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultOrderFindCoCarrierIdData;
 
@@ -157,7 +157,7 @@ export class OrderSalesService {
     try {
       const queryString = OrderFindCoCustomerIdQuery(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultOrderFindCoCustomerIdData;
 
@@ -177,7 +177,7 @@ export class OrderSalesService {
     try {
       const queryString = OrderFindCoDeliveryIdQuery(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultOrderFindCoDeliveryIdData;
 
@@ -197,7 +197,7 @@ export class OrderSalesService {
     try {
       const queryString = OrderFindCoEquipmentIdQuery(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultOrderFindEquipmentIdData;
 
@@ -217,7 +217,7 @@ export class OrderSalesService {
     try {
       const queryString = OrderFindCoHistoryIdQuery(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultOrderFindCoHistoryIdData;
 
@@ -237,7 +237,7 @@ export class OrderSalesService {
     try {
       const queryString = OrderFindCoNfIdQuery(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultOrderFindCoNfIdData;
       return processProcedureResultMultiQuery(
@@ -256,7 +256,7 @@ export class OrderSalesService {
     try {
       const queryString = OrderFindCoPgFormaIdQuery(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultOrderFindCoPgFormaIdData;
 
@@ -276,7 +276,7 @@ export class OrderSalesService {
     try {
       const queryString = OrderFindCoProtocolIdQuery(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultOrderFindProtocolIdData;
 
@@ -296,7 +296,7 @@ export class OrderSalesService {
     try {
       const queryString = OrderFindCoSellerIdQuery(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultOrderFindCoSellerIdData;
 
@@ -317,7 +317,7 @@ export class OrderSalesService {
       const queryString = OrderFindCoTipoFreteQuery(dataJsonDto);
 
       const resultData =
-        await this.dbService.selectExecute<TblOrderFindCoTipoFrete>(
+        await this.dbConnectionService.selectExecute<TblOrderFindCoTipoFrete>(
           queryString,
         );
 

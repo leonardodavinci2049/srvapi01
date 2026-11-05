@@ -6,7 +6,7 @@ import {
 } from 'src/core/utils/constants/globalConstants';
 import { ResultModel } from 'src/core/utils/result.model';
 
-import { DatabaseService } from 'src/database/database.service';
+import { DbConnectionService } from 'src/db-connection/db-connection.service';
 import { WebhookService } from 'src/webhook/webhook.service';
 import { TaxonomyUpdInlImagePathV3Dto } from './dto/taxonomy-upd-inl-image-path-v3.dto';
 import { TaxonomyUpdInlInactiveV3Dto } from './dto/taxonomy-upd-inl-inactive-v3.dto';
@@ -29,7 +29,7 @@ import { SpResultRecordUpdateType } from './types/taxonomy-inline.type';
 @Injectable()
 export class TaxonomyInlineService {
   constructor(
-    private readonly dbService: DatabaseService,
+    private readonly dbConnectionService: DbConnectionService,
     private readonly webhookService: WebhookService,
   ) {}
   create() {
@@ -40,7 +40,7 @@ export class TaxonomyInlineService {
     try {
       const queryString = TaxonomyUpdInlParentIdV3Query(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultRecordUpdateType;
 
@@ -72,7 +72,7 @@ export class TaxonomyInlineService {
     try {
       const queryString = TaxonomyUpdInlNotesV3Query(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultRecordUpdateType;
 
@@ -104,7 +104,7 @@ export class TaxonomyInlineService {
     try {
       const queryString = TaxonomyUpdInlNameV3Query(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultRecordUpdateType;
 
@@ -138,7 +138,7 @@ export class TaxonomyInlineService {
     try {
       const queryString = TaxonomyUpdInlImagePathV3Query(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultRecordUpdateType;
 
@@ -170,7 +170,7 @@ export class TaxonomyInlineService {
     try {
       const queryString = TaxonomyUpdInlInactiveV3Query(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultRecordUpdateType;
 
@@ -202,7 +202,7 @@ export class TaxonomyInlineService {
     try {
       const queryString = TaxonomyUpdInlOrderV3Query(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultRecordUpdateType;
 
@@ -236,7 +236,7 @@ export class TaxonomyInlineService {
     try {
       const queryString = TaxonomyUpdInlQtProductsV3Query(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultRecordUpdateType;
 
@@ -268,7 +268,7 @@ export class TaxonomyInlineService {
     try {
       const queryString = TaxonomyUpdInlSlugV3Query(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultRecordUpdateType;
 

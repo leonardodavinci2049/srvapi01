@@ -1,10 +1,10 @@
 import { Module } from '@nestjs/common';
-import { DatabaseModule } from 'src/database/database.module';
+import { DbConnectionModule } from 'src/db-connection/db-connection.module';
 import { CustomerInlineController } from './customer-inline.controller';
 import { CustomerInlineService } from './customer-inline.service';
 
 @Module({
-  imports: [DatabaseModule],
+  imports: [DbConnectionModule],
   controllers: [CustomerInlineController],
   providers: [CustomerInlineService],
 })

@@ -1,10 +1,10 @@
 import { Module } from '@nestjs/common';
-import { DatabaseModule } from 'src/database/database.module';
+import { DbConnectionModule } from 'src/db-connection/db-connection.module';
 import { CarrierController } from './carrier.controller';
 import { CarrierService } from './carrier.service';
 
 @Module({
-  imports: [DatabaseModule],
+  imports: [DbConnectionModule],
   controllers: [CarrierController],
   providers: [CarrierService],
 })

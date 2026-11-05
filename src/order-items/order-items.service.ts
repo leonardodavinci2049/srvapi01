@@ -3,7 +3,7 @@ import { processProcedureResultMutation } from 'src/core/process-result/process-
 import { processProcedureResultMultiQuery } from 'src/core/process-result/process-procedure-result.query';
 import { MESSAGES } from 'src/core/utils/constants/globalConstants';
 import { ResultModel } from 'src/core/utils/result.model';
-import { DatabaseService } from 'src/database/database.service';
+import { DbConnectionService } from 'src/db-connection/db-connection.service';
 import { OrderItemDeleteDto } from './dto/order-item-delete.dto';
 import { OrderItemFindAllDto } from './dto/order-item-find-all.dto';
 import { OrderItemFindIdDto } from './dto/order-item-find-id.dto';
@@ -39,13 +39,13 @@ import {
 
 @Injectable()
 export class OrderItemsService {
-  constructor(private readonly dbService: DatabaseService) {}
+  constructor(private readonly dbConnectionService: DbConnectionService) {}
 
   async tskOrderItemUpdInlFieldV2(dataJsonDto: OrderItemUpdInlFieldDto) {
     try {
       const queryString = OrderItemUpdInlFieldQuery(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultRecordUpdateType;
 
@@ -64,7 +64,7 @@ export class OrderItemsService {
     try {
       const queryString = OrderItemFindIdQuery(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultOrderItemsFindIdData;
 
@@ -84,7 +84,7 @@ export class OrderItemsService {
     try {
       const queryString = OrderItemFindAllQuery(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultOrderItemsFindData;
 
@@ -104,7 +104,7 @@ export class OrderItemsService {
     try {
       const queryString = OrderItemUpdDiscountAdmQuery(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultRecordUpdateType;
 
@@ -123,7 +123,7 @@ export class OrderItemsService {
     try {
       const queryString = OrderItemUpdDiscountQuery(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultRecordUpdateType;
 
@@ -142,7 +142,7 @@ export class OrderItemsService {
     try {
       const queryString = OrderItemUpdFreteVlQuery(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultRecordUpdateType;
 
@@ -161,7 +161,7 @@ export class OrderItemsService {
     try {
       const queryString = OrderItemUpdInsuranceVlQuery(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultRecordUpdateType;
 
@@ -180,7 +180,7 @@ export class OrderItemsService {
     try {
       const queryString = OrderItemUpdNotesQuery(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultRecordUpdateType;
 
@@ -199,7 +199,7 @@ export class OrderItemsService {
     try {
       const queryString = OrderItemUpdQtQuery(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultRecordUpdateType;
 
@@ -218,7 +218,7 @@ export class OrderItemsService {
     try {
       const queryString = OrderItemUpdValueQuery(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultRecordUpdateType;
 
@@ -237,7 +237,7 @@ export class OrderItemsService {
     try {
       const queryString = OrderItemDeleteQuery(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultRecordDeleteType;
 
@@ -259,7 +259,7 @@ export class OrderItemsService {
       const { queryString, queryParams } =
         OrderItemUpdGeneralFieldQuery(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
         queryParams,
       )) as unknown as SpResultRecordUpdateType;

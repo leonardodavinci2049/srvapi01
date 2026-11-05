@@ -7,7 +7,7 @@ import {
 } from 'src/core/utils/constants/globalConstants';
 import { ResultModel } from 'src/core/utils/result.model';
 
-import { DatabaseService } from 'src/database/database.service';
+import { DbConnectionService } from 'src/db-connection/db-connection.service';
 import { WebhookService } from 'src/webhook/webhook.service';
 
 import { ProductCreateV3Dto } from './dto/product-create-v3.dto';
@@ -31,7 +31,7 @@ import {
 @Injectable()
 export class ProductBaseService {
   constructor(
-    private readonly dbService: DatabaseService,
+    private readonly dbConnectionService: DbConnectionService,
     private readonly webhookService: WebhookService,
   ) {}
   create() {
@@ -42,7 +42,7 @@ export class ProductBaseService {
     try {
       const queryString = ProductCreateV3Query(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultRecordCreateType;
 
@@ -74,7 +74,7 @@ export class ProductBaseService {
     try {
       const queryString = ProductFindAllV3Query(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultProductFindBaseAllV3Data;
 
@@ -94,7 +94,7 @@ export class ProductBaseService {
     try {
       const queryString = ProductFindPremiumV1Query(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultProductFindPremiumV1Data;
 
@@ -114,7 +114,7 @@ export class ProductBaseService {
     try {
       const queryString = ProductFindSearchAllV3Query(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultProductFindBaseSearchAllV3Data;
 
@@ -134,7 +134,7 @@ export class ProductBaseService {
     try {
       const queryString = ProductFindIdV3Query(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultProductFindBaseIdV3Data;
 

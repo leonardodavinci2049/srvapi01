@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { processProcedureResultMutation } from 'src/core/process-result/process-procedure-result.mutation';
 import { MESSAGES } from 'src/core/utils/constants/globalConstants';
 import { ResultModel } from 'src/core/utils/result.model';
-import { DatabaseService } from 'src/database/database.service';
+import { DbConnectionService } from 'src/db-connection/db-connection.service';
 import { OrderUpdCustomerIdDto } from './dto/order-upd-customer-id.dto';
 import { OrderUpdDiscountIdDto } from './dto/order-upd-discount-id.dto';
 import { OrderUpdFreteIdDto } from './dto/order-upd-frete-id.dto';
@@ -25,13 +25,13 @@ import { SpResultRecordUpdateType } from './types/order-upd.type';
 
 @Injectable()
 export class OrderUpdService {
-  constructor(private readonly dbService: DatabaseService) {}
+  constructor(private readonly dbConnectionService: DbConnectionService) {}
 
   async taskOrderUpdInlFieldV2(dataJsonDto: OrderUpdInlFieldDto) {
     try {
       const queryString = OrderUpdInlFieldQuery(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultRecordUpdateType;
 
@@ -50,7 +50,7 @@ export class OrderUpdService {
     try {
       const queryString = OrderUpdCustomerIdQuery(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultRecordUpdateType;
 
@@ -69,7 +69,7 @@ export class OrderUpdService {
     try {
       const queryString = OrderUpdDiscountIdQuery(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultRecordUpdateType;
 
@@ -88,7 +88,7 @@ export class OrderUpdService {
     try {
       const queryString = OrderUpdFreteIdQuery(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultRecordUpdateType;
 
@@ -107,7 +107,7 @@ export class OrderUpdService {
     try {
       const queryString = OrderUpdNotesIdQuery(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultRecordUpdateType;
 
@@ -126,7 +126,7 @@ export class OrderUpdService {
     try {
       const queryString = OrderUpdPgMethodIdQuery(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultRecordUpdateType;
 
@@ -145,7 +145,7 @@ export class OrderUpdService {
     try {
       const queryString = OrderUpdSellerIdQuery(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultRecordUpdateType;
 
@@ -164,7 +164,7 @@ export class OrderUpdService {
     try {
       const queryString = OrderUpdStatusIdQuery(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultRecordUpdateType;
 
@@ -184,7 +184,7 @@ export class OrderUpdService {
       const { queryString, queryParams } =
         OrderUpdGeneralFieldQuery(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
         queryParams,
       )) as unknown as SpResultRecordUpdateType;

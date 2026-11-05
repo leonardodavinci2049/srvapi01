@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { MESSAGES } from 'src/core/utils/constants/globalConstants';
 import { resultQueryData } from 'src/core/utils/globalResult/global.result';
 import { ResultModel } from 'src/core/utils/result.model';
-import { DatabaseService } from 'src/database/database.service';
+import { DbConnectionService } from 'src/db-connection/db-connection.service';
 import { WebhookService } from 'src/webhook/webhook.service';
 import { ProductCreateDto } from './dto/product-create.dto';
 import { ProductFindDto } from './dto/product-find.dto';
@@ -60,7 +60,7 @@ import {
 @Injectable()
 export class ProductService {
   constructor(
-    private readonly dbService: DatabaseService,
+    private readonly dbConnectionService: DbConnectionService,
     private readonly webhookService: WebhookService,
   ) {}
 
@@ -72,7 +72,7 @@ export class ProductService {
     try {
       const queryString = createProductQuery(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultRecordCreateType;
 
@@ -113,7 +113,7 @@ export class ProductService {
     try {
       const queryString = findProductIdQuery(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpProductFindIdDataType;
 
@@ -153,7 +153,7 @@ export class ProductService {
     try {
       const queryString = findProductQuery(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpProductFindDataType;
 
@@ -193,7 +193,7 @@ export class ProductService {
     try {
       const queryString = webFindIdProductQuery(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpProductWebFindIdDataType;
 
@@ -233,7 +233,7 @@ export class ProductService {
     try {
       const queryString = webFindProductQuery(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpProductWebFindDataType;
 
@@ -278,7 +278,7 @@ export class ProductService {
     try {
       const queryString = webFindProductSectionsQuery(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpProductWebSectionsDataType;
 
@@ -320,7 +320,7 @@ export class ProductService {
     try {
       const queryString = pdvFindProductQuery(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpProductPdvFindDataType;
 
@@ -362,7 +362,7 @@ export class ProductService {
     try {
       const queryString = updGeneralProductQuery(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultRecordUpdateType;
 
@@ -403,7 +403,7 @@ export class ProductService {
     try {
       const queryString = updNameProductQuery(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultRecordUpdateType;
 
@@ -444,7 +444,7 @@ export class ProductService {
     try {
       const queryString = updPathImageProductQuery(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultRecordUpdateType;
 
@@ -485,7 +485,7 @@ export class ProductService {
     try {
       const queryString = updTypeProductQuery(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultRecordUpdateType;
 
@@ -525,7 +525,7 @@ export class ProductService {
     try {
       const queryString = updBrandProductQuery(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultRecordUpdateType;
 
@@ -566,7 +566,7 @@ export class ProductService {
     try {
       const queryString = updStockProductQuery(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultRecordUpdateType;
 
@@ -607,7 +607,7 @@ export class ProductService {
     try {
       const queryString = updPriceProductQuery(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultRecordUpdateType;
 
@@ -648,7 +648,7 @@ export class ProductService {
     try {
       const queryString = updFlagsProductQuery(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultRecordUpdateType;
 
@@ -690,7 +690,7 @@ export class ProductService {
     try {
       const queryString = updCaracteristicsProductQuery(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultRecordUpdateType;
 
@@ -730,7 +730,7 @@ export class ProductService {
     try {
       const queryString = updTaxValuesProductQuery(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultRecordUpdateType;
 
@@ -773,7 +773,7 @@ export class ProductService {
     try {
       const queryString = ProductUpdShortDescriptionQuery(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultRecordUpdateType;
 
@@ -813,7 +813,7 @@ export class ProductService {
     try {
       const queryString = updDescriptionProductQuery(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultRecordUpdateType;
 
@@ -854,7 +854,7 @@ export class ProductService {
     try {
       const queryString = updVariouProductQuery(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultRecordUpdateType;
 
@@ -895,7 +895,7 @@ export class ProductService {
     try {
       const queryString = ProductUpdMetadataQuery(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultRecordUpdateType;
 

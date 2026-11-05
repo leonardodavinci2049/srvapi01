@@ -7,7 +7,7 @@ import {
   RESPONSE_CODES,
 } from 'src/core/utils/constants/globalConstants';
 import { ResultModel } from 'src/core/utils/result.model';
-import { DatabaseService } from 'src/database/database.service';
+import { DbConnectionService } from 'src/db-connection/db-connection.service';
 import { WebhookService } from 'src/webhook/webhook.service';
 import { SpTaxonomyFindMenuManagerV3Dto } from './dto/sp-taxonomy-find-menu-manager-v3.dto';
 import { SpTaxonomyProductManagerV2Dto } from './dto/sp-taxonomy-product-manager-v2.dto';
@@ -47,7 +47,7 @@ export class TaxonomyBaseService {
   private readonly logger = new Logger(TaxonomyBaseService.name);
 
   constructor(
-    private readonly dbService: DatabaseService,
+    private readonly dbConnectionService: DbConnectionService,
     private readonly webhookService: WebhookService,
   ) {}
 
@@ -73,7 +73,7 @@ export class TaxonomyBaseService {
     try {
       const queryString = TaxonomyCreateV3Query(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultRecordCreateType;
 
@@ -105,7 +105,7 @@ export class TaxonomyBaseService {
     try {
       const queryString = TaxonomyFindAllV3Query(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultTaxonomyFindAllV3Data;
 
@@ -125,7 +125,7 @@ export class TaxonomyBaseService {
     try {
       const queryString = TaxonomyFindIdV3Query(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultTaxonomyFindIdV3Data;
 
@@ -145,7 +145,7 @@ export class TaxonomyBaseService {
     try {
       const queryString = TaxonomyFindMenuV3Query(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultTaxonomyFindMenuV3Data;
 
@@ -165,7 +165,7 @@ export class TaxonomyBaseService {
     try {
       const queryString = TaxonomyUpdateV3Query(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultTaxonomyWebMenuV3Data;
 
@@ -197,7 +197,7 @@ export class TaxonomyBaseService {
     try {
       const queryString = TaxonomyUpdMetadataV3Query(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultTaxonomyWebMenuV3Data;
 
@@ -229,7 +229,7 @@ export class TaxonomyBaseService {
     try {
       const queryString = TaxonomyDeleteV3Query(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultRecordDeleteType;
 
@@ -283,7 +283,7 @@ export class TaxonomyBaseService {
     try {
       const { queryString, queryParams } =
         SpTaxonomyProductManagerV2Query(dataJsonDto);
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
         queryParams,
       )) as unknown as SpResultTaxonomyProductManagerV2Data;
@@ -319,7 +319,7 @@ export class TaxonomyBaseService {
     try {
       const queryString = SpTaxonomyFindMenuManagerV3Query(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultTaxonomyFindMenuManagerV3Data;
 
@@ -354,7 +354,7 @@ export class TaxonomyBaseService {
     try {
       const { queryString, queryParams } =
         SpTaxonomyRelCreateBulkV3Query(dataJsonDto);
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
         queryParams,
       )) as unknown as SpResultTaxonomyRelCreateBulkV3Data;

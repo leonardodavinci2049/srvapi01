@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { MESSAGES } from 'src/core/utils/constants/globalConstants';
 import { resultQueryData } from 'src/core/utils/globalResult/global.result';
 import { ResultModel } from 'src/core/utils/result.model';
-import { DatabaseService } from 'src/database/database.service';
+import { DbConnectionService } from 'src/db-connection/db-connection.service';
 import { WebhookService } from 'src/webhook/webhook.service';
 import { TaxonomyCreateDto } from './dto/taxonomy-create.dto';
 import { TaxonomyDeleteDto } from './dto/taxonomy-delete.dto';
@@ -51,7 +51,7 @@ import { buildHierarchy } from './utils/build-hierarchy.util';
 @Injectable()
 export class TaxonomyService {
   constructor(
-    private readonly dbService: DatabaseService,
+    private readonly dbConnectionService: DbConnectionService,
     private readonly webhookService: WebhookService,
   ) {}
 
@@ -59,7 +59,7 @@ export class TaxonomyService {
     try {
       const queryString = createTaxonomyQuery(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultRecordCreateType;
 
@@ -100,7 +100,7 @@ export class TaxonomyService {
     try {
       const queryString = createTaxonomyRelQuery(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultRecordCreateType;
 
@@ -141,7 +141,7 @@ export class TaxonomyService {
     try {
       const queryString = findTaxonomyIdQuery(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultTaxonomyFindIdData;
 
@@ -181,7 +181,7 @@ export class TaxonomyService {
     try {
       const queryString = findTaxonomyQuery(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultTaxonomyFindData;
 
@@ -220,7 +220,7 @@ export class TaxonomyService {
     try {
       const queryString = findTaxonomyMenuQuery(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultTaxonomyFindMenuData;
 
@@ -269,7 +269,7 @@ export class TaxonomyService {
     try {
       const queryString = findTaxonomyWebMenuQuery(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultTaxonomyWebMenuData;
 
@@ -318,7 +318,7 @@ export class TaxonomyService {
     try {
       const queryString = findTaxonomyRelProdutoQuery(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultTaxonomyRelProdutoData;
 
@@ -358,7 +358,7 @@ export class TaxonomyService {
     try {
       const queryString = updateTaxonomyQuery(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultRecordUpdateType;
 
@@ -399,7 +399,7 @@ export class TaxonomyService {
     try {
       const queryString = taxonomyUpdNameQuery(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultRecordUpdateType;
 
@@ -440,7 +440,7 @@ export class TaxonomyService {
     try {
       const queryString = taxonomyUpdParentIdQuery(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultRecordUpdateType;
 
@@ -481,7 +481,7 @@ export class TaxonomyService {
     try {
       const queryString = taxonomyUpdOrdemQuery(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultRecordUpdateType;
 
@@ -522,7 +522,7 @@ export class TaxonomyService {
     try {
       const queryString = taxonomyUpdPathImageQuery(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultRecordUpdateType;
 
@@ -563,7 +563,7 @@ export class TaxonomyService {
     try {
       const queryString = taxonomyUpdInactiveQuery(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultRecordUpdateType;
 
@@ -604,7 +604,7 @@ export class TaxonomyService {
     try {
       const queryString = taxonomyUpdMetadataQuery(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultRecordUpdateType;
 
@@ -645,7 +645,7 @@ export class TaxonomyService {
     try {
       const queryString = deleteTaxonomyQuery(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultRecordDeleteType;
 
@@ -686,7 +686,7 @@ export class TaxonomyService {
     try {
       const queryString = deleteTaxonomyRelQuery(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultRecordDeleteType;
 

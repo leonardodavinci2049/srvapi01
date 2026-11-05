@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { processProcedureResultMultiQuery } from 'src/core/process-result/process-procedure-result.query';
 import { MESSAGES } from 'src/core/utils/constants/globalConstants';
 import { ResultModel } from 'src/core/utils/result.model';
-import { DatabaseService } from 'src/database/database.service';
+import { DbConnectionService } from 'src/db-connection/db-connection.service';
 import { ProductWholesaleFindAllV2Dto } from './dto/product-wholesale-find-all-v2.dto';
 import { ProductWholesaleFindIdV2Dto } from './dto/product-wholesale-find-id-v2.dto';
 import { ProductWholesaleSectionsV2Dto } from './dto/product-wholesale-sections-v2.dto';
@@ -23,7 +23,7 @@ import {
 
 @Injectable()
 export class ProductWholesaleService {
-  constructor(private readonly dbService: DatabaseService) {}
+  constructor(private readonly dbConnectionService: DbConnectionService) {}
 
   async tskProductWholesaleFindAllV2(
     dataJsonDto: ProductWholesaleFindAllV2Dto,
@@ -32,7 +32,7 @@ export class ProductWholesaleService {
       const { queryString, queryParams } =
         ProductWholesaleFindAllV2Query(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
         queryParams,
       )) as unknown as SpProductWebFindDataType;
@@ -54,7 +54,7 @@ export class ProductWholesaleService {
       const { queryString, queryParams } =
         ProductWholesaleFindIdV2Query(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
         queryParams,
       )) as unknown as SpProductWebFindIdDataType;
@@ -81,7 +81,7 @@ export class ProductWholesaleService {
       // console.log('queryString', queryString);
       // console.log('queryParams', queryParams);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
         queryParams,
       )) as unknown as SpProductWebSectionsDataType;
@@ -105,7 +105,7 @@ export class ProductWholesaleService {
       const { queryString, queryParams } =
         ProductWholesaleTaxonomyFindMenuV2Query(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
         queryParams,
       )) as unknown as SpProductWholesaleTaxonomyFindMenuDataType;
@@ -129,7 +129,7 @@ export class ProductWholesaleService {
       const { queryString, queryParams } =
         ProductWholesaleTaxonomyFindIdV2Query(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
         queryParams,
       )) as unknown as SpProductWholesaleTaxonomyFindIdDataType;
