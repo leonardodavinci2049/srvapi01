@@ -32,7 +32,7 @@ export class SellerService {
       const { queryString, queryParams } = SellerFindSearchV2Query(dataJsonDto);
 
       const resultData =
-        await this.dbOperationService.selectExecute<TblSellerFindSearch>(
+        await this.dbOperationService.selectQuery<TblSellerFindSearch>(
           queryString,
           queryParams,
         );
