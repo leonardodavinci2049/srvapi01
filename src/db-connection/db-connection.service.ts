@@ -65,13 +65,3 @@ export class DbConnectionService {
     this.logger.log('MySQL connection pool closed');
   }
 }
-
-export class DbConnectionError extends Error {
-  constructor(
-    mensagem: string,
-    public readonly erroOriginal: Error,
-  ) {
-    super(mensagem);
-    this.name = 'DbConnectionError';
-  }
-}
