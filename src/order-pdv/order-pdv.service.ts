@@ -5,7 +5,7 @@ import {
   MESSAGES,
   RESPONSE_CODES,
 } from 'src/core/utils/constants/globalConstants';
-import { DbConnectionService } from 'src/db-connection/db-connection.service';
+import { DbOperationService } from 'src/db-operation/db-operation.service';
 import { OrdersPdvFindAllDto } from './dto/orders-pdv-find-all.dto';
 import { OrdersPdvFindIdDto } from './dto/orders-pdv-find-id.dto';
 import { OrdersPdvFindQtDto } from './dto/orders-pdv-find-qt.dto';
@@ -20,14 +20,14 @@ import {
 
 @Injectable()
 export class OrderPdvService {
-  constructor(private readonly dbConnectionService: DbConnectionService) {}
+  constructor(private readonly dbOperationService: DbOperationService) {}
 
   async taskOrdersPdvFindQtV2(
     dataJsonDto: OrdersPdvFindQtDto,
   ): Promise<ResultModel> {
     try {
       const { queryString, queryParams } = OrdersPdvFindQtQuery(dataJsonDto);
-      const resultData = (await this.dbConnectionService.selectExecute(
+      const resultData = (await this.dbOperationService.selectExecute(
         queryString,
         queryParams,
       )) as unknown as SpResultOrdersPdvFindQtData;
@@ -53,7 +53,7 @@ export class OrderPdvService {
   ): Promise<ResultModel> {
     try {
       const { queryString, queryParams } = OrdersPdvFindAllQuery(dataJsonDto);
-      const resultData = (await this.dbConnectionService.selectExecute(
+      const resultData = (await this.dbOperationService.selectExecute(
         queryString,
         queryParams,
       )) as unknown as SpResultOrdersPdvFindAllData;
@@ -80,7 +80,7 @@ export class OrderPdvService {
   ): Promise<ResultModel> {
     try {
       const { queryString, queryParams } = OrdersPdvFindIdQuery(dataJsonDto);
-      const resultData = (await this.dbConnectionService.selectExecute(
+      const resultData = (await this.dbOperationService.selectExecute(
         queryString,
         queryParams,
       )) as unknown as SpResultOrdersPdvFindIdData;

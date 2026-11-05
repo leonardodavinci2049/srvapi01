@@ -1,10 +1,10 @@
 import { Module } from '@nestjs/common';
-import { DbConnectionModule } from 'src/db-connection/db-connection.module';
+import { DbOperationModule } from 'src/db-operation/db-operation.module';
 import { TaxonomyWebController } from './taxonomy-web.controller';
 import { TaxonomyWebService } from './taxonomy-web.service';
 
 @Module({
-  imports: [DbConnectionModule],
+  imports: [DbOperationModule],
   controllers: [TaxonomyWebController],
   providers: [TaxonomyWebService],
 })

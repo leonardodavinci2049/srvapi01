@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { processProcedureResultMultiQuery } from 'src/core/process-result/process-procedure-result.query';
 import { MESSAGES } from 'src/core/utils/constants/globalConstants';
 import { ResultModel } from 'src/core/utils/result.model';
-import { DbConnectionService } from 'src/db-connection/db-connection.service';
+import { DbOperationService } from 'src/db-operation/db-operation.service';
 import { PurchasingFindManagerAllDto } from './dto/purchasing-find-manager-all.dto';
 import { PurchasingFindManagerIdDto } from './dto/purchasing-find-manager-id.dto';
 import { PurchasingFindManagerAllQuery } from './query/purchasing-find-manager-all.query';
@@ -14,7 +14,7 @@ import {
 
 @Injectable()
 export class PurchasingService {
-  constructor(private readonly dbConnectionService: DbConnectionService) {}
+  constructor(private readonly dbOperationService: DbOperationService) {}
 
   async taskPurchasingFindManagerAll(dataJsonDto: PurchasingFindManagerAllDto) {
     try {
@@ -23,7 +23,7 @@ export class PurchasingService {
 
       //console.log('queryParams', queryParams);
 
-      const resultData = (await this.dbConnectionService.selectExecute(
+      const resultData = (await this.dbOperationService.selectExecute(
         queryString,
         queryParams,
       )) as unknown as SpResultPurchasingFindManagerAllData;
@@ -45,7 +45,7 @@ export class PurchasingService {
       const { queryString, queryParams } =
         PurchasingFindManagerIdQuery(dataJsonDto);
 
-      const resultData = (await this.dbConnectionService.selectExecute(
+      const resultData = (await this.dbOperationService.selectExecute(
         queryString,
         queryParams,
       )) as unknown as SpResultPurchasingFindManagerIdData;

@@ -6,13 +6,13 @@ import {
   MESSAGES,
   RESPONSE_CODES,
 } from 'src/core/utils/constants/globalConstants';
-import { DbConnectionService } from 'src/db-connection/db-connection.service';
+import { DbOperationService } from 'src/db-operation/db-operation.service';
 import { CustomerPdvCreateV2Dto } from './dto/customer-pdv-create-v2.dto';
 import { CustomerPdvFindAllV2Dto } from './dto/customer-pdv-find-all-v2.dto';
 import { CustomerPdvFindIdDto } from './dto/customer-pdv-find-id.dto';
 import { CustomerPdvSearchV2Dto } from './dto/customer-pdv-search-v2.dto';
-import { CustomerPdvCreateV2Query } from './query/customer-pdv-create-v2.query';
 import { CustomerPdvFindAllV2Query } from './query/customer-pdv_find-all-v2.query';
+import { CustomerPdvCreateV2Query } from './query/customer-pdv-create-v2.query';
 import { CustomerPdvFindIdQuery } from './query/customer-pdv-find-id.query';
 import { CustomerPdvSearchV2Query } from './query/customer-pdv-search-v2.query';
 import {
@@ -24,7 +24,7 @@ import {
 
 @Injectable()
 export class CustomerPdvService {
-  constructor(private readonly dbConnectionService: DbConnectionService) {}
+  constructor(private readonly dbOperationService: DbOperationService) {}
 
   async taskCustomerPdvCreateV2(
     dataJsonDto: CustomerPdvCreateV2Dto,
@@ -32,7 +32,7 @@ export class CustomerPdvService {
     try {
       const { queryString, queryParams } =
         CustomerPdvCreateV2Query(dataJsonDto);
-      const resultData = (await this.dbConnectionService.selectExecute(
+      const resultData = (await this.dbOperationService.selectExecute(
         queryString,
         queryParams,
       )) as unknown as SpResultCustomerPdvCreateData;
@@ -59,7 +59,7 @@ export class CustomerPdvService {
     try {
       const { queryString, queryParams } =
         CustomerPdvFindAllV2Query(dataJsonDto);
-      const resultData = (await this.dbConnectionService.selectExecute(
+      const resultData = (await this.dbOperationService.selectExecute(
         queryString,
         queryParams,
       )) as unknown as SpResultCustomerPdvFindAllData;
@@ -86,7 +86,7 @@ export class CustomerPdvService {
   ): Promise<ResultModel> {
     try {
       const { queryString, queryParams } = CustomerPdvFindIdQuery(dataJsonDto);
-      const resultData = (await this.dbConnectionService.selectExecute(
+      const resultData = (await this.dbOperationService.selectExecute(
         queryString,
         queryParams,
       )) as unknown as SpResultCustomerPdvFindIdData;
@@ -114,7 +114,7 @@ export class CustomerPdvService {
     try {
       const { queryString, queryParams } =
         CustomerPdvSearchV2Query(dataJsonDto);
-      const resultData = (await this.dbConnectionService.selectExecute(
+      const resultData = (await this.dbOperationService.selectExecute(
         queryString,
         queryParams,
       )) as unknown as SpResultCustomerPdvSearchData;

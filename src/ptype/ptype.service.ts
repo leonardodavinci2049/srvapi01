@@ -5,7 +5,7 @@ import { processSqlResultQuery } from 'src/core/process-result/process-sql-resul
 import { MESSAGES } from 'src/core/utils/constants/globalConstants';
 import { resultQueryData } from 'src/core/utils/globalResult/global.result';
 import { ResultModel } from 'src/core/utils/result.model';
-import { DbConnectionService } from 'src/db-connection/db-connection.service';
+import { DbOperationService } from 'src/db-operation/db-operation.service';
 import { TypeCreateV2Dto } from './dto/type-create-v2.dto';
 import { TypeDeleteV2Dto } from './dto/type-delete-v2.dto';
 import { TypeFindAllDto } from './dto/type-find-all.dto';
@@ -47,13 +47,13 @@ import {
 
 @Injectable()
 export class PtypeService {
-  constructor(private readonly dbConnectionService: DbConnectionService) {}
+  constructor(private readonly dbOperationService: DbOperationService) {}
 
   async taskTypeCreateV2(dataJsonDto: TypeCreateV2Dto) {
     try {
       const queryString = TypeCreateV2Query(dataJsonDto);
 
-      const resultData = (await this.dbConnectionService.selectExecute(
+      const resultData = (await this.dbOperationService.selectExecute(
         queryString,
       )) as unknown as SpResultRecordCreateType;
 
@@ -69,7 +69,7 @@ export class PtypeService {
     try {
       const queryString = TypeFindAllV2Query(dataJsonDto);
 
-      const resultData = (await this.dbConnectionService.selectExecute(
+      const resultData = (await this.dbOperationService.selectExecute(
         queryString,
       )) as unknown as SpResultPTypeFindAllData;
 
@@ -89,10 +89,11 @@ export class PtypeService {
     try {
       const { queryString, queryParams } = TypeFindSearchV2Query(dataJsonDto);
 
-      const resultData = await this.dbConnectionService.selectExecute<TblPTypeFindSearch>(
-        queryString,
-        queryParams,
-      );
+      const resultData =
+        await this.dbOperationService.selectExecute<TblPTypeFindSearch>(
+          queryString,
+          queryParams,
+        );
 
       return processSqlResultQuery(
         resultData,
@@ -111,7 +112,7 @@ export class PtypeService {
     try {
       const queryString = TypeFindManagerAllV2Query(dataJsonDto);
 
-      const resultData = (await this.dbConnectionService.selectExecute(
+      const resultData = (await this.dbOperationService.selectExecute(
         queryString,
       )) as unknown as SpResultPTypeFindManagerAllData;
 
@@ -133,7 +134,7 @@ export class PtypeService {
         TypeFindManagerIdV2Query(dataJsonDto);
 
       const resultData =
-        await this.dbConnectionService.selectExecute<TblPTypeFindManagerId>(
+        await this.dbOperationService.selectExecute<TblPTypeFindManagerId>(
           queryString,
           queryParams,
         );
@@ -154,7 +155,7 @@ export class PtypeService {
     try {
       const queryString = TypeFindIdV2Query(dataJsonDto);
 
-      const resultData = (await this.dbConnectionService.selectExecute(
+      const resultData = (await this.dbOperationService.selectExecute(
         queryString,
       )) as unknown as SpResultPTypeFindIdData;
 
@@ -174,7 +175,7 @@ export class PtypeService {
     try {
       const queryString = TypeUpdateV2Query(dataJsonDto);
 
-      const resultData = (await this.dbConnectionService.selectExecute(
+      const resultData = (await this.dbOperationService.selectExecute(
         queryString,
       )) as unknown as SpResultRecordUpdateType;
 
@@ -190,7 +191,7 @@ export class PtypeService {
     try {
       const queryString = TypeDeleteV2Query(dataJsonDto);
 
-      const resultData = (await this.dbConnectionService.selectExecute(
+      const resultData = (await this.dbOperationService.selectExecute(
         queryString,
       )) as unknown as SpResultRecordDeleteType;
 
@@ -206,7 +207,7 @@ export class PtypeService {
     try {
       const queryString = TypeFindAllQuery(dataJsonDto);
 
-      const resultData = (await this.dbConnectionService.selectExecute(
+      const resultData = (await this.dbOperationService.selectExecute(
         queryString,
       )) as unknown as SpResultPTypeFindAllData;
 
@@ -246,7 +247,7 @@ export class PtypeService {
       const { queryString, queryParams } =
         TypeUpdGeneralFieldQuery(dataJsonDto);
 
-      const resultData = (await this.dbConnectionService.selectExecute(
+      const resultData = (await this.dbOperationService.selectExecute(
         queryString,
         queryParams,
       )) as unknown as SpResultRecordUpdateType;
@@ -267,7 +268,7 @@ export class PtypeService {
       const { queryString, queryParams } =
         TypeUpdInlFlagActiveV2Query(dataJsonDto);
 
-      const resultData = (await this.dbConnectionService.selectExecute(
+      const resultData = (await this.dbOperationService.selectExecute(
         queryString,
         queryParams,
       )) as unknown as SpResultRecordUpdateType;
@@ -287,7 +288,7 @@ export class PtypeService {
     try {
       const { queryString, queryParams } = TypeUpdInlNameV2Query(dataJsonDto);
 
-      const resultData = (await this.dbConnectionService.selectExecute(
+      const resultData = (await this.dbOperationService.selectExecute(
         queryString,
         queryParams,
       )) as unknown as SpResultRecordUpdateType;
@@ -307,7 +308,7 @@ export class PtypeService {
     try {
       const { queryString, queryParams } = TypeUpdInlNotesV2Query(dataJsonDto);
 
-      const resultData = (await this.dbConnectionService.selectExecute(
+      const resultData = (await this.dbOperationService.selectExecute(
         queryString,
         queryParams,
       )) as unknown as SpResultRecordUpdateType;
@@ -327,7 +328,7 @@ export class PtypeService {
     try {
       const { queryString, queryParams } = TypeUpdInlSlugV2Query(dataJsonDto);
 
-      const resultData = (await this.dbConnectionService.selectExecute(
+      const resultData = (await this.dbOperationService.selectExecute(
         queryString,
         queryParams,
       )) as unknown as SpResultRecordUpdateType;
