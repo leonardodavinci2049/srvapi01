@@ -6,6 +6,7 @@ import {
 } from '@nestjs/common';
 import { createPool, Pool, PoolConnection, PoolOptions } from 'mysql2/promise';
 import { envs } from 'src/core/config/envs';
+import { writeLocalLog } from 'src/core/utils/functions/write_local_log';
 import { DatabasePoolQueueFullError } from './db-connection.errors';
 
 @Injectable()
@@ -40,7 +41,7 @@ export class DbConnectionService
       connection = await this.getConnection();
       this.logger.log('database_connection_initialized');
     } catch (error: unknown) {
-      this.logError('database_connection_initialization_failed', error);
+      await this.logError('database_connection_initialization_failed', error);
       try {
         await this.closePool();
       } catch {
@@ -62,10 +63,10 @@ export class DbConnectionService
     } catch (error: unknown) {
       // mysql2 supplies no code for queue rejection. Only classify acquisition.
       if (error instanceof Error && error.message === 'Queue limit reached.') {
-        this.logError('database_pool_queue_full');
+        await this.logError('database_pool_queue_full');
         throw new DatabasePoolQueueFullError();
       }
-      this.logError('database_connection_acquisition_failed', error);
+      await this.logError('database_connection_acquisition_failed', error);
       throw error;
     }
   }
@@ -92,23 +93,32 @@ export class DbConnectionService
       .then(() => {
         this.logger.log('database_pool_closed');
       })
-      .catch((error: unknown) => {
-        this.logError('database_pool_close_failed', error);
+      .catch(async (error: unknown) => {
+        await this.logError('database_pool_close_failed', error);
         throw new Error('Database connection pool shutdown failed.');
       });
     return this.poolClosePromise;
   }
 
-  private logError(event: string, error?: unknown): void {
-    const code =
+  private async logError(event: string, error?: unknown): Promise<void> {
+    const code = this.getErrorCode(error);
+    const diagnostic = { event, code: code ?? null };
+    this.logger.error(diagnostic);
+    await writeLocalLog(DbConnectionService.name, diagnostic, 'error');
+  }
+
+  private getErrorCode(error: unknown): string | undefined {
+    if (
       typeof error === 'object' &&
       error !== null &&
       'code' in error &&
       typeof error.code === 'string' &&
       /^[A-Z][A-Z0-9_]{0,63}$/.test(error.code)
-        ? error.code
-        : undefined;
-    this.logger.error({ event, code: code ?? null });
+    ) {
+      return error.code;
+    }
+
+    return undefined;
   }
 
   private logPoolSaturation(): void {
