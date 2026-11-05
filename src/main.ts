@@ -6,6 +6,7 @@ import { envs } from './core/config';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   const loggerApp = new Logger('WSERPADMIN');
+  app.enableShutdownHooks();
 
   // Set the global prefix for all routes
   app.setGlobalPrefix('api');
@@ -29,9 +30,21 @@ async function bootstrap() {
     allowedHeaders: 'Content-Type, Accept',
   });
 
-  await app.listen(process.env.APP_PORT ?? 3000);
+  try {
+    await app.listen(process.env.APP_PORT ?? 3000);
+  } catch {
+    try {
+      await app.close();
+    } catch {
+      loggerApp.error('application_cleanup_failed');
+    }
+    throw new Error('Application initialization failed.');
+  }
   loggerApp.log(`Application is running on port: ${envs.APP_PORT}`);
 }
 
 // Start the application
-void bootstrap();
+void bootstrap().catch(() => {
+  Logger.error('application_initialization_failed', 'Bootstrap');
+  process.exitCode = 1;
+});
