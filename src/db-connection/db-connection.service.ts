@@ -1,20 +1,23 @@
-import { Injectable, Logger } from '@nestjs/common';
+import {
+  Injectable,
+  Logger,
+  OnApplicationShutdown,
+  OnModuleInit,
+} from '@nestjs/common';
 import { createPool, Pool, PoolConnection, PoolOptions } from 'mysql2/promise';
 import { envs } from 'src/core/config/envs';
+import { DatabasePoolQueueFullError } from './db-connection.errors';
 
 @Injectable()
-export class DbConnectionService {
-  // Property to hold the connection to MySQL database
-  private poolConnection: Pool;
-  // Logger instance
+export class DbConnectionService
+  implements OnModuleInit, OnApplicationShutdown
+{
+  private readonly poolConnection: Pool;
+  private poolClosePromise: Promise<void> | undefined;
+  private lastPoolSaturationWarningAt: number | undefined;
   private readonly logger = new Logger(DbConnectionService.name);
 
-  // Call the connect method when an instance of DbConnectionService is created
   constructor() {
-    this.connect();
-  }
-
-  public connect() {
     const config: PoolOptions = {
       host: envs.DATABASE_HOST,
       port: envs.DATABASE_PORT,
@@ -28,24 +31,27 @@ export class DbConnectionService {
     };
 
     this.poolConnection = createPool(config);
-
-    // Testa a conexão real com o banco de dados
-    this.poolConnection
-      .getConnection()
-      .then((connection) => {
-        this.logger.log(
-          `Conectado ao banco de dados MySQL (${envs.DATABASE_HOST}:${envs.DATABASE_PORT})`,
-        );
-        connection.release();
-      })
-      .catch((error: Error) => {
-        this.logger.error(
-          `Falha ao conectar ao banco de dados MySQL (${envs.DATABASE_HOST}:${envs.DATABASE_PORT}): ${error.message}`,
-        );
-      });
+    this.poolConnection.on('enqueue', () => this.logPoolSaturation());
   }
 
-  // Expõe o pool para as operações de banco de dados
+  async onModuleInit(): Promise<void> {
+    let connection: PoolConnection | undefined;
+    try {
+      connection = await this.getConnection();
+      this.logger.log('database_connection_initialized');
+    } catch (error: unknown) {
+      this.logError('database_connection_initialization_failed', error);
+      try {
+        await this.closePool();
+      } catch {
+        // Closing already logged its failure; keep the initialization failure.
+      }
+      throw new Error('Initial database connection check failed.');
+    } finally {
+      connection?.release();
+    }
+  }
+
   public getPool(): Pool {
     return this.poolConnection;
   }
@@ -53,15 +59,67 @@ export class DbConnectionService {
   public async getConnection(): Promise<PoolConnection> {
     try {
       return await this.poolConnection.getConnection();
-    } catch (error) {
-      this.logger.error(`Failed to get database connection: ${error}`, error);
+    } catch (error: unknown) {
+      // mysql2 supplies no code for queue rejection. Only classify acquisition.
+      if (error instanceof Error && error.message === 'Queue limit reached.') {
+        this.logError('database_pool_queue_full');
+        throw new DatabasePoolQueueFullError();
+      }
+      this.logError('database_connection_acquisition_failed', error);
       throw error;
     }
   }
 
-  // Fechamento do pool ao encerrar módulo
-  async onModuleDestroy(): Promise<void> {
-    await this.poolConnection.end();
-    this.logger.log('MySQL connection pool closed');
+  async withConnection<T>(
+    callback: (connection: PoolConnection) => Promise<T>,
+  ): Promise<T> {
+    const connection = await this.getConnection();
+    try {
+      return await callback(connection);
+    } finally {
+      connection.release();
+    }
+  }
+
+  onApplicationShutdown(): Promise<void> {
+    return this.closePool();
+  }
+
+  private closePool(): Promise<void> {
+    // Retain the same promise even on rejection; never call end twice.
+    this.poolClosePromise ??= Promise.resolve()
+      .then(() => this.poolConnection.end())
+      .then(() => {
+        this.logger.log('database_pool_closed');
+      })
+      .catch((error: unknown) => {
+        this.logError('database_pool_close_failed', error);
+        throw new Error('Database connection pool shutdown failed.');
+      });
+    return this.poolClosePromise;
+  }
+
+  private logError(event: string, error?: unknown): void {
+    const code =
+      typeof error === 'object' &&
+      error !== null &&
+      'code' in error &&
+      typeof error.code === 'string' &&
+      /^[A-Z][A-Z0-9_]{0,63}$/.test(error.code)
+        ? error.code
+        : undefined;
+    this.logger.error({ event, code: code ?? null });
+  }
+
+  private logPoolSaturation(): void {
+    const now = Date.now();
+    if (
+      this.lastPoolSaturationWarningAt !== undefined &&
+      now - this.lastPoolSaturationWarningAt < 60_000
+    ) {
+      return;
+    }
+    this.lastPoolSaturationWarningAt = now;
+    this.logger.warn('database_pool_waiting_for_connection');
   }
 }
