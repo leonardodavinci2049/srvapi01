@@ -80,7 +80,7 @@ HTTP POST /api/<feature>/v2/<action>
 
 ## Database & Stored Procedures
 
-- All access via `src/db-connection/db-connection.service.ts`: `selectQuery`/`selectExecute` (reads), `ModifyExecute`/`ModifyQuery` (mutations), `runInTransaction` (atomic multi-step, rollback + connection release).
+- All access via `src/db-operation/db-operation.service.ts`: `selectExecute` (reads, including `CALL` on multi-result-set stored procedures) and `ModifyExecute` (mutations). Both wrap `execute` (prepared statements) on the pool from `src/db-connection/db-connection.service.ts`.
 - Queries always use `?` placeholders — never concatenate or interpolate DTO data into SQL. Legacy interpolated queries exist: don't copy them or migrate them beyond the requested scope.
 - Every tenant-bound operation must preserve `pe_system_client_id` and `pe_store_id`; never remove tenant filters.
 - SP definitions live in the `stored-procedures` symlink to `/home/leomer/projects/mercury-projects/erp-database-sql-procedures/stored-procedures`. Before changing/exposing a procedure, verify signature, parameter order, and result sets there.
