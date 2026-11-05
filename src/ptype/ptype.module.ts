@@ -1,10 +1,10 @@
 import { Module } from '@nestjs/common';
-import { DatabaseModule } from 'src/database/database.module';
+import { DbConnectionModule } from 'src/db-connection/db-connection.module';
 import { PtypeController } from './ptype.controller';
 import { PtypeService } from './ptype.service';
 
 @Module({
-  imports: [DatabaseModule],
+  imports: [DbConnectionModule],
   controllers: [PtypeController],
   providers: [PtypeService],
 })

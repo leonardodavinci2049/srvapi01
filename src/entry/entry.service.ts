@@ -3,7 +3,7 @@ import { processProcedureResultMutation } from 'src/core/process-result/process-
 import { processProcedureResultMultiQuery } from 'src/core/process-result/process-procedure-result.query';
 import { MESSAGES } from 'src/core/utils/constants/globalConstants';
 import { ResultModel } from 'src/core/utils/result.model';
-import { DatabaseService } from 'src/database/database.service';
+import { DbConnectionService } from 'src/db-connection/db-connection.service';
 import { EntryCreateV2Dto } from './dto/entry-create-v2.dto';
 import { EntryDeleteV2Dto } from './dto/entry-delete-v2.dto';
 import { EntryFindAllV2Dto } from './dto/entry-find-all-v2.dto';
@@ -42,13 +42,13 @@ import {
 
 @Injectable()
 export class EntryService {
-  constructor(private readonly dbService: DatabaseService) {}
+  constructor(private readonly dbConnectionService: DbConnectionService) {}
 
   async taskEntryCreateV2(dataJsonDto: EntryCreateV2Dto) {
     try {
       const { queryString, queryParams } = EntryCreateV2Query(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
         queryParams,
       )) as unknown as SpResultRecordCreateType;
@@ -65,7 +65,7 @@ export class EntryService {
     try {
       const { queryString, queryParams } = EntryFindAllV2Query(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
         queryParams,
       )) as unknown as SpResultEntryFindAllData;
@@ -86,7 +86,7 @@ export class EntryService {
     try {
       const { queryString, queryParams } = EntryFindIdV2Query(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
         queryParams,
       )) as unknown as SpResultEntryFindIdData;
@@ -107,7 +107,7 @@ export class EntryService {
     try {
       const { queryString, queryParams } = EntryFindSearchV2Query(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
         queryParams,
       )) as unknown as SpResultEntryFindSearchData;
@@ -129,7 +129,7 @@ export class EntryService {
       const { queryString, queryParams } =
         EntryProcessInventoryV2Query(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
         queryParams,
       )) as unknown as SpResultRecordOperationType;
@@ -149,7 +149,7 @@ export class EntryService {
     try {
       const { queryString, queryParams } = EntryUpdMainQuery(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
         queryParams,
       )) as unknown as SpResultRecordUpdateType;
@@ -166,7 +166,7 @@ export class EntryService {
     try {
       const { queryString, queryParams } = EntryUpdNotesQuery(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
         queryParams,
       )) as unknown as SpResultRecordUpdateType;
@@ -187,7 +187,7 @@ export class EntryService {
       const { queryString, queryParams } =
         EntryUpdDollarValueQuery(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
         queryParams,
       )) as unknown as SpResultRecordUpdateType;
@@ -207,7 +207,7 @@ export class EntryService {
     try {
       const { queryString, queryParams } = EntryUpdCarrierIdQuery(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
         queryParams,
       )) as unknown as SpResultRecordUpdateType;
@@ -227,7 +227,7 @@ export class EntryService {
     try {
       const { queryString, queryParams } = EntryUpdSupplierIdQuery(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
         queryParams,
       )) as unknown as SpResultRecordUpdateType;
@@ -247,7 +247,7 @@ export class EntryService {
     try {
       const { queryString, queryParams } = EntryUpdTaxRatesQuery(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
         queryParams,
       )) as unknown as SpResultRecordUpdateType;
@@ -268,7 +268,7 @@ export class EntryService {
       const { queryString, queryParams } =
         EntryUpdGeneralFieldQuery(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
         queryParams,
       )) as unknown as SpResultRecordUpdateType;
@@ -288,7 +288,7 @@ export class EntryService {
     try {
       const { queryString, queryParams } = EntryDeleteV2Query(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
         queryParams,
       )) as unknown as SpResultRecordDeleteType;

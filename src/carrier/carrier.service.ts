@@ -4,7 +4,7 @@ import { processProcedureResultMultiQuery } from 'src/core/process-result/proces
 import { processSqlResultQuery } from 'src/core/process-result/process-sql-result.query';
 import { MESSAGES } from 'src/core/utils/constants/globalConstants';
 import { ResultModel } from 'src/core/utils/result.model';
-import { DatabaseService } from 'src/database/database.service';
+import { DbConnectionService } from 'src/db-connection/db-connection.service';
 import { CarrierCreateV2Dto } from './dto/carrier-create-v2.dto';
 import { CarrierDeleteV2Dto } from './dto/carrier-delete-v2.dto';
 import { CarrierFindAllV2Dto } from './dto/carrier-find-all-v2.dto';
@@ -48,7 +48,7 @@ import {
 } from './types/carrier.type';
 @Injectable()
 export class CarrierService {
-  constructor(private readonly dbService: DatabaseService) {}
+  constructor(private readonly dbConnectionService: DbConnectionService) {}
   create() {
     return 'This action adds a new carrier';
   }
@@ -57,7 +57,7 @@ export class CarrierService {
     try {
       const queryString = CarrierCreateV2Query(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultRecordCreateType;
 
@@ -76,7 +76,7 @@ export class CarrierService {
     try {
       const queryString = CarrierFindAllV2Query(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultCarrierFindAllData;
 
@@ -98,7 +98,7 @@ export class CarrierService {
         CarrierFindSearchV2Query(dataJsonDto);
 
       const resultData =
-        await this.dbService.selectExecute<TblCarrierFindSearch>(
+        await this.dbConnectionService.selectExecute<TblCarrierFindSearch>(
           queryString,
           queryParams,
         );
@@ -120,7 +120,7 @@ export class CarrierService {
     try {
       const queryString = CarrierFindManagerAllV2Query(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultCarrierFindManagerAllData;
 
@@ -142,7 +142,7 @@ export class CarrierService {
         CarrierFindManagerIdV2Query(dataJsonDto);
 
       const resultData =
-        await this.dbService.selectExecute<TblCarrierFindManagerId>(
+        await this.dbConnectionService.selectExecute<TblCarrierFindManagerId>(
           queryString,
           queryParams,
         );
@@ -164,7 +164,7 @@ export class CarrierService {
     try {
       const { queryString, queryParams } = CarrierFindIdV2Query(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
         queryParams,
       )) as unknown as SpResultCarrierFindIdData;
@@ -184,7 +184,7 @@ export class CarrierService {
     try {
       const queryString = CarrierUpdateV2Query(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultRecordUpdateType;
 
@@ -203,7 +203,7 @@ export class CarrierService {
     try {
       const queryString = CarrierDeleteV2Query(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultRecordDeleteType;
 
@@ -223,7 +223,7 @@ export class CarrierService {
       const { queryString, queryParams } =
         CarrierUpdGeneralFieldQuery(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
         queryParams,
       )) as unknown as SpResultRecordUpdateType;
@@ -244,7 +244,7 @@ export class CarrierService {
       const { queryString, queryParams } =
         CarrierUpdAddressV2Query(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
         queryParams,
       )) as unknown as SpResultRecordUpdateType;
@@ -265,7 +265,7 @@ export class CarrierService {
       const { queryString, queryParams } =
         CarrierUpdBusinessV2Query(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
         queryParams,
       )) as unknown as SpResultRecordUpdateType;
@@ -288,7 +288,7 @@ export class CarrierService {
       const { queryString, queryParams } =
         CarrierUpdInlTypePersonV2Query(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
         queryParams,
       )) as unknown as SpResultRecordUpdateType;
@@ -309,7 +309,7 @@ export class CarrierService {
       const { queryString, queryParams } =
         CarrierUpdInternetV2Query(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
         queryParams,
       )) as unknown as SpResultRecordUpdateType;
@@ -330,7 +330,7 @@ export class CarrierService {
       const { queryString, queryParams } =
         CarrierUpdGeneralV2Query(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
         queryParams,
       )) as unknown as SpResultCarrierUpdGeneralData;
@@ -351,7 +351,7 @@ export class CarrierService {
       const { queryString, queryParams } =
         CarrierUpdPersonalV2Query(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
         queryParams,
       )) as unknown as SpResultRecordUpdateType;

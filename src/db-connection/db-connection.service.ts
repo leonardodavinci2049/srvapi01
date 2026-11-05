@@ -23,13 +23,13 @@ type SqlParam =
 type QueryParams = SqlParam[] | { [key: string]: SqlParam };
 
 @Injectable()
-export class DatabaseService {
+export class DbConnectionService {
   // Property to hold the connection to MySQL database
   private poolConnection: Pool;
   // Logger instance
-  private readonly logger = new Logger(DatabaseService.name);
+  private readonly logger = new Logger(DbConnectionService.name);
 
-  // Call the connect method when an instance of DatabaseService is created
+  // Call the connect method when an instance of DbConnectionService is created
   constructor() {
     this.connect();
   }
@@ -125,7 +125,7 @@ export class DatabaseService {
 
   //🧪 Exemplo de uso com transação
 
-  /* await this.databaseService.runInTransaction(async (conn) => {
+  /* await this.dbConnectionService.runInTransaction(async (conn) => {
   await conn.execute('UPDATE users SET balance = balance - ? WHERE id = ?', [100, 1]);
   await conn.execute('UPDATE users SET balance = balance + ? WHERE id = ?', [100, 2]);
 });
@@ -158,23 +158,23 @@ export class DatabaseService {
   }
 }
 
-export class ErroConexaoBancoDados extends Error {
+export class DbConnectionError extends Error {
   constructor(
     mensagem: string,
     public readonly erroOriginal: Error,
   ) {
     super(mensagem);
-    this.name = 'ErroConexaoBancoDados';
+    this.name = 'DbConnectionError';
   }
 }
 
-export class ErroExecucaoConsulta extends Error {
+export class DbQueryExecutionError extends Error {
   constructor(
     mensagem: string,
     public readonly consulta: string,
     public readonly erroOriginal: Error,
   ) {
     super(mensagem);
-    this.name = 'ErroExecucaoConsulta';
+    this.name = 'DbQueryExecutionError';
   }
 }

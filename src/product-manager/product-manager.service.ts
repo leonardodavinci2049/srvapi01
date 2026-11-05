@@ -6,7 +6,7 @@ import {
   RESPONSE_CODES,
 } from 'src/core/utils/constants/globalConstants';
 import { ResultModel } from 'src/core/utils/result.model';
-import { DatabaseService } from 'src/database/database.service';
+import { DbConnectionService } from 'src/db-connection/db-connection.service';
 import { ProductFindManagerAllV2Dto } from './dto/product-find-manager-all-v2.dto';
 import { ProductFindManagerIdV2Dto } from './dto/product-find-manager-id-v2.dto';
 import { ProductFindManagerRelationsV2Dto } from './dto/product-find-manager-relations-v2.dto';
@@ -30,7 +30,7 @@ import {
 
 @Injectable()
 export class ProductManagerService {
-  constructor(private readonly dbService: DatabaseService) {}
+  constructor(private readonly dbConnectionService: DbConnectionService) {}
   create() {
     return 'This action adds a new productManager';
   }
@@ -77,7 +77,7 @@ export class ProductManagerService {
       ) VALUES (${Array(33).fill('?').join(', ')})
     `;
 
-    await this.dbService.ModifyExecute(insertQuery, [
+    await this.dbConnectionService.ModifyExecute(insertQuery, [
       dataJsonDto.pe_app_id ?? 1,
       dataJsonDto.pe_system_client_id,
       dataJsonDto.pe_store_id,
@@ -120,7 +120,7 @@ export class ProductManagerService {
 
       await this.createProductFindManagerAllFilterLog(dataJsonDto, queryString);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultProductFindManagerAllData;
 
@@ -142,7 +142,7 @@ export class ProductManagerService {
     try {
       const queryString = ProductFindManagerSearchV2Query(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultProductFindManagerAllData;
 
@@ -162,7 +162,7 @@ export class ProductManagerService {
     try {
       const queryString = ProductFindManagerIdV2Query(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultProductFindManagerIdData;
 
@@ -185,7 +185,7 @@ export class ProductManagerService {
       const { queryString, queryParams } =
         ProductFindManagerRelationsV2Query(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
         queryParams,
       )) as unknown as SpResultProductFindManagerRelationsData;
@@ -209,7 +209,7 @@ export class ProductManagerService {
       const { queryString, queryParams } =
         ProductFindTaxonomyIdV2Query(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
         queryParams,
       )) as unknown as SpResultProductFindTaxonomyData;
@@ -238,7 +238,7 @@ export class ProductManagerService {
       const { queryString, queryParams } =
         ProductFindTaxonomyOutsideAllV2Query(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
         queryParams,
       )) as unknown as SpResultProductFindTaxonomyData;
@@ -267,7 +267,7 @@ export class ProductManagerService {
       const { queryString, queryParams } =
         ProductFindTaxonomyCandidatesV2Query(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
         queryParams,
       )) as unknown as SpResultProductFindTaxonomyData;

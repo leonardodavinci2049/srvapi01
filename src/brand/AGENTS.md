@@ -11,7 +11,7 @@ O módulo `Brand` segue o padrão de arquitetura v2 do projeto, utilizando Store
 - `dto/`: Definições de entrada com validação (`class-validator`) e documentação Swagger (`@ApiProperty`).
 - `query/`: Funções puras que geram as strings de chamada das Stored Procedures (ex: `CALL sp_brand_find_all_v2(...)`).
 - `types/`: Interfaces que estendem `RowDataPacket` para tipagem dos retornos do MySQL.
-- `brand.service.ts`: Orquestração, chamada ao `DatabaseService` e tratamento de erros.
+- `brand.service.ts`: Orquestração, chamada ao `DbConnectionService` e tratamento de erros.
 - `brand.controller.ts`: Endpoints versionados (v2) e protegidos por `AuthGuard`.
 
 ## Stored Procedures Relacionadas

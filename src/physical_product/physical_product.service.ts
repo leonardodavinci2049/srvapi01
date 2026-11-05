@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { processProcedureResultMultiQuery } from 'src/core/process-result/process-procedure-result.query';
 import { MESSAGES } from 'src/core/utils/constants/globalConstants';
 import { ResultModel } from 'src/core/utils/result.model';
-import { DatabaseService } from 'src/database/database.service';
+import { DbConnectionService } from 'src/db-connection/db-connection.service';
 import { OrderItemFindAllCustomerV2Dto } from './dto/order-item-find-all-customer-v2.dto';
 import { OrderItemFindIdCustomerV2Dto } from './dto/order-item-find-id-customer-v2.dto';
 import { PhysicalProductFindAllV2Dto } from './dto/physical-product-find-all-v2.dto';
@@ -32,7 +32,7 @@ import {
 
 @Injectable()
 export class PhysicalProductService {
-  constructor(private readonly dbService: DatabaseService) {}
+  constructor(private readonly dbConnectionService: DbConnectionService) {}
 
   async taskOrderItemFindAllCustomerV2(
     dataJsonDto: OrderItemFindAllCustomerV2Dto,
@@ -40,7 +40,7 @@ export class PhysicalProductService {
     try {
       const queryString = OrderItemFindAllCustomerV2Query(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpOrderItemFindAllCustomerV2DataType;
 
@@ -62,7 +62,7 @@ export class PhysicalProductService {
     try {
       const queryString = OrderItemFindIdCustomerV2Query(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpOrderItemFindIdCustomerV2DataType;
 
@@ -82,7 +82,7 @@ export class PhysicalProductService {
     try {
       const queryString = PhysicalProductFindAllV2Query(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpPhysicalProductFindAllV2DataType;
 
@@ -104,7 +104,7 @@ export class PhysicalProductService {
     try {
       const queryString = PhysicalProductWarrantyIdCustomerV2Query(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpPhysicalProductWarrantyMovCustomerV2DataType;
 
@@ -126,7 +126,7 @@ export class PhysicalProductService {
     try {
       const queryString = PhysicalProductWarrantyIdV2Query(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpPhysicalProductWarrantyIdCustomerV2DataType;
 
@@ -149,7 +149,7 @@ export class PhysicalProductService {
       const queryString =
         PhysicalProductWarrantyMovCustomerV2Query(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpPhysicalProductWarrantyIdV2DataType;
 
@@ -171,7 +171,7 @@ export class PhysicalProductService {
     try {
       const queryString = PhysicalProductWarrantyMovV2Query(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpPhysicalProductWarrantyMovV2DataType;
 
@@ -193,7 +193,7 @@ export class PhysicalProductService {
     try {
       const queryString = PhysicalProductWarrantySearchV2Query(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpPhysicalProductWarrantySearchV2DataType;
 

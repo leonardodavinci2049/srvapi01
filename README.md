@@ -29,7 +29,7 @@ A multi-tenant **wholesale / B2B e-commerce REST API** built with [NestJS](https
 - **API-key authentication** via `AuthGuard` on all business routes.
 - **Rate limiting** with `@nestjs/throttler` to protect against brute-force / abuse.
 - **Strict payload validation** through `class-validator` DTOs with Swagger (`@ApiProperty`) metadata.
-- **Database layer with no ORM** — raw SQL and Stored Procedures over `mysql2`, with a typed `DatabaseService` and connection pooling.
+- **Database layer with no ORM** — raw SQL and Stored Procedures over `mysql2`, with a typed `DbConnectionService` and connection pooling.
 - **Validated configuration** — environment variables are parsed and validated with `Zod` at boot.
 - **Domain-driven modules** — self-contained feature modules (controller → service → query → types).
 
@@ -67,7 +67,7 @@ srvapi01/
 │   │   ├── procedure.result/# Stored-procedure result processors
 │   │   ├── procedures/
 │   │   └── utils/           # ResultModel, constants, helpers
-│   ├── database/            # DatabaseService (pool, execute/query, transactions)
+│   ├── db-connection/            # DbConnectionService (pool, execute/query, transactions)
 │   └── <feature>/           # Feature modules (see below)
 ├── pageroot/                # Static assets served at root
 ├── test/                    # E2E tests
@@ -189,13 +189,13 @@ HTTP POST /api/<feature>/v2/<action>
  Controller (@UseGuards(AuthGuard)) ── validates via DTO (class-validator)
         │
         ▼
- Service  ── builds the query string, calls DatabaseService, maps ResultModel
+ Service  ── builds the query string, calls DbConnectionService, maps ResultModel
         │
         ▼
  Query    ── pure function returning the SP/SQL call string
         │
         ▼
- DatabaseService.selectExecute / ModifyExecute ── mysql2 pool
+ DbConnectionService.selectExecute / ModifyExecute ── mysql2 pool
 ```
 
 ### Naming conventions
@@ -206,11 +206,11 @@ HTTP POST /api/<feature>/v2/<action>
 - **Controller methods:** `<feature><Action>V2` (`brandFindAllV2`)
 - **Tables:** `tbl_*` · **Stored Procedures:** `sp_*_v2`
 - **SP parameters (locals):** `pe_*` (`pe_system_client_id`, `pe_store_id`)
-- **Imports:** absolute for shared code (`src/core/...`, `src/database/...`); relative within a module.
+- **Imports:** absolute for shared code (`src/core/...`, `src/db-connection/...`); relative within a module.
 
 ### Data access
 
-- **No ORM / no Prisma.** Use `DatabaseService` with raw SQL and Stored Procedures.
+- **No ORM / no Prisma.** Use `DbConnectionService` with raw SQL and Stored Procedures.
 - Cast DB results explicitly: `(await db.selectExecute(...)) as unknown as T[]`.
 - Define row interfaces extending `RowDataPacket` from `mysql2`.
 

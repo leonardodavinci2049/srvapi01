@@ -1,10 +1,10 @@
 import { Module } from '@nestjs/common';
-import { DatabaseModule } from 'src/database/database.module';
+import { DbConnectionModule } from 'src/db-connection/db-connection.module';
 import { GeneralCallController } from './general-call.controller';
 import { GeneralCallService } from './general-call.service';
 
 @Module({
-  imports: [DatabaseModule],
+  imports: [DbConnectionModule],
   controllers: [GeneralCallController],
   providers: [GeneralCallService],
 })

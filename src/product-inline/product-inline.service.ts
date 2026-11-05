@@ -6,7 +6,7 @@ import {
 } from 'src/core/utils/constants/globalConstants';
 import { ResultModel } from 'src/core/utils/result.model';
 
-import { DatabaseService } from 'src/database/database.service';
+import { DbConnectionService } from 'src/db-connection/db-connection.service';
 import { WebhookService } from 'src/webhook/webhook.service';
 
 import { ProductUpdInlBrandV3Dto } from './dto/product-upd-inl-brand-v3.dto';
@@ -34,7 +34,7 @@ import { SpResultRecordUpdateType } from './types/product-inline.type';
 @Injectable()
 export class ProductInlineService {
   constructor(
-    private readonly dbService: DatabaseService,
+    private readonly dbConnectionService: DbConnectionService,
     private readonly webhookService: WebhookService,
   ) {}
   create() {
@@ -45,7 +45,7 @@ export class ProductInlineService {
     try {
       const queryString = ProductUpdInlFieldQuery(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultRecordUpdateType;
 
@@ -77,7 +77,7 @@ export class ProductInlineService {
     try {
       const queryString = ProductUpdInlBrandV3Query(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultRecordUpdateType;
 
@@ -111,7 +111,7 @@ export class ProductInlineService {
     try {
       const queryString = ProductUpdInlDescriptionV3Query(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultRecordUpdateType;
 
@@ -143,7 +143,7 @@ export class ProductInlineService {
     try {
       const queryString = ProductUpdInlNameV3Query(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultRecordUpdateType;
 
@@ -175,7 +175,7 @@ export class ProductInlineService {
     try {
       const queryString = ProductUpdInlPathImageV3Query(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultRecordUpdateType;
 
@@ -209,7 +209,7 @@ export class ProductInlineService {
     try {
       const queryString = ProductUpdInlShortDescriptionV3Query(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultRecordUpdateType;
 
@@ -241,7 +241,7 @@ export class ProductInlineService {
     try {
       const queryString = ProductUpdInlStockMinV3Query(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultRecordUpdateType;
 
@@ -273,7 +273,7 @@ export class ProductInlineService {
     try {
       const queryString = ProductUpdInlStockV3Query(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultRecordUpdateType;
 
@@ -305,7 +305,7 @@ export class ProductInlineService {
     try {
       const queryString = ProductUpdInlTypeV3Query(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultRecordUpdateType;
 
@@ -337,7 +337,7 @@ export class ProductInlineService {
     try {
       const queryString = ProductUpdInlVariouV3Query(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultRecordUpdateType;
 

@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { processProcedureResultMultiQuery } from 'src/core/process-result/process-procedure-result.query';
 import { MESSAGES } from 'src/core/utils/constants/globalConstants';
 import { ResultModel } from 'src/core/utils/result.model';
-import { DatabaseService } from 'src/database/database.service';
+import { DbConnectionService } from 'src/db-connection/db-connection.service';
 import { OrdersFindCustomerAllDto } from './dto/orders-find-customer-all.dto';
 import { OrdersFindCustomerIdDto } from './dto/orders-find-customer-id.dto';
 import { OrdersFindLatestAllDto } from './dto/orders-find-latest-all.dto';
@@ -32,13 +32,13 @@ import {
 
 @Injectable()
 export class OrderReportsService {
-  constructor(private readonly dbService: DatabaseService) {}
+  constructor(private readonly dbConnectionService: DbConnectionService) {}
 
   async taskOrdersFindSaleAllV2(dataJsonDto: OrdersFindSaleAllDto) {
     try {
       const queryString = OrdersFindSaleAllQuery(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultOrderFindSaleAllData;
 
@@ -58,7 +58,7 @@ export class OrderReportsService {
     try {
       const queryString = OrdersFindSaleIdQuery(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultOrderFindSaleIdData;
 
@@ -85,7 +85,7 @@ export class OrderReportsService {
     try {
       const queryString = OrdersFindCustomerAllQuery(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultOrderFindCustomerAllData;
 
@@ -105,7 +105,7 @@ export class OrderReportsService {
     try {
       const queryString = OrdersFindCustomerIdQuery(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultOrderFindCustomerIdData;
 
@@ -131,7 +131,7 @@ export class OrderReportsService {
     try {
       const queryString = OrdersFindSellerAllQuery(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultOrderFindSellerAllData;
 
@@ -151,7 +151,7 @@ export class OrderReportsService {
     try {
       const queryString = OrdersFindSellerIdQuery(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultOrderFindSellerIdData;
 
@@ -176,7 +176,7 @@ export class OrderReportsService {
     try {
       const queryString = OrdersFindLatestAllQuery(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultOrderFindLatestAllData;
 
@@ -196,7 +196,7 @@ export class OrderReportsService {
     try {
       const queryString = OrdersFindLatestIdQuery(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultOrderFindLatestIdData;
 

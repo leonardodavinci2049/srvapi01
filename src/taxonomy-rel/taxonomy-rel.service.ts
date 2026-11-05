@@ -6,7 +6,7 @@ import {
   RESPONSE_CODES,
 } from 'src/core/utils/constants/globalConstants';
 import { ResultModel } from 'src/core/utils/result.model';
-import { DatabaseService } from 'src/database/database.service';
+import { DbConnectionService } from 'src/db-connection/db-connection.service';
 import { WebhookService } from 'src/webhook/webhook.service';
 
 import { TaxonomyRelCreateV3Dto } from './dto/taxonomy-rel-create-v3.dto';
@@ -24,7 +24,7 @@ import {
 @Injectable()
 export class TaxonomyRelService {
   constructor(
-    private readonly dbService: DatabaseService,
+    private readonly dbConnectionService: DbConnectionService,
     private readonly webhookService: WebhookService,
   ) {}
 
@@ -36,7 +36,7 @@ export class TaxonomyRelService {
     try {
       const queryString = TaxonomyRelCreateV3Query(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultRecordCreateType;
 
@@ -68,7 +68,7 @@ export class TaxonomyRelService {
     try {
       const queryString = TaxonomyRelProdutoAllV3Query(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultTaxonomyRelProdutoV3Data;
 
@@ -88,7 +88,7 @@ export class TaxonomyRelService {
     try {
       const queryString = TaxonomyRelDeleteV3Query(dataJsonDto);
 
-      const resultData = (await this.dbService.selectExecute(
+      const resultData = (await this.dbConnectionService.selectExecute(
         queryString,
       )) as unknown as SpResultRecordDeleteType;
 
