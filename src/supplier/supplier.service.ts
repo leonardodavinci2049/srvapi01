@@ -122,7 +122,7 @@ export class SupplierService {
         SupplierFindSearchV2Query(dataJsonDto);
 
       const resultData =
-        await this.dbOperationService.selectExecute<TblSupplierFindSearch>(
+        await this.dbOperationService.selectQuery<TblSupplierFindSearch>(
           queryString,
           queryParams,
         );
@@ -166,7 +166,7 @@ export class SupplierService {
         SupplierFindManagerIdV2Query(dataJsonDto);
 
       const resultData =
-        await this.dbOperationService.selectExecute<TblSupplierFindManagerId>(
+        await this.dbOperationService.selectQuery<TblSupplierFindManagerId>(
           queryString,
           queryParams,
         );

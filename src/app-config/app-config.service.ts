@@ -87,7 +87,7 @@ export class AppConfigService {
         AppConfigFindWebhookIdV2Query(dataJsonDto);
 
       const resultData =
-        await this.dbOperationService.selectExecute<TblAppConfigFindWebhookId>(
+        await this.dbOperationService.selectQuery<TblAppConfigFindWebhookId>(
           queryString,
           queryParams,
         );

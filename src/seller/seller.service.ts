@@ -55,9 +55,7 @@ export class SellerService {
       const queryString = SellerFindIdQuery(dataJsonDto);
 
       const resultData =
-        await this.dbOperationService.selectExecute<TblSellerFindId>(
-          queryString,
-        );
+        await this.dbOperationService.selectQuery<TblSellerFindId>(queryString);
 
       return processSqlResultQuery(
         resultData,

@@ -98,7 +98,7 @@ export class CarrierService {
         CarrierFindSearchV2Query(dataJsonDto);
 
       const resultData =
-        await this.dbOperationService.selectExecute<TblCarrierFindSearch>(
+        await this.dbOperationService.selectQuery<TblCarrierFindSearch>(
           queryString,
           queryParams,
         );
@@ -142,7 +142,7 @@ export class CarrierService {
         CarrierFindManagerIdV2Query(dataJsonDto);
 
       const resultData =
-        await this.dbOperationService.selectExecute<TblCarrierFindManagerId>(
+        await this.dbOperationService.selectQuery<TblCarrierFindManagerId>(
           queryString,
           queryParams,
         );
