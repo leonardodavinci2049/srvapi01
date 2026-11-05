@@ -46,10 +46,11 @@ export class BrandService {
 
   async taskBrandCreateV2(dataJsonDto: BrandCreateV2Dto) {
     try {
-      const queryString = BrandCreateV2Query(dataJsonDto);
+      const { procedureName, queryParams } = BrandCreateV2Query(dataJsonDto);
 
-      const resultData = (await this.dbOperationService.selectExecute(
-        queryString,
+      const resultData = (await this.dbOperationService.callProcedure(
+        procedureName,
+        queryParams,
       )) as unknown as SpResultRecordCreateType;
 
       return processProcedureResultMutation(resultData, 'Brand create failed');
@@ -85,10 +86,11 @@ export class BrandService {
 
   async taskBrandFindAllV2(dataJsonDto: BrandFindAllV2Dto) {
     try {
-      const queryString = BrandFindAllV2Query(dataJsonDto);
+      const { procedureName, queryParams } = BrandFindAllV2Query(dataJsonDto);
 
-      const resultData = (await this.dbOperationService.selectExecute(
-        queryString,
+      const resultData = (await this.dbOperationService.callProcedure(
+        procedureName,
+        queryParams,
       )) as unknown as SpResultBrandFindAllData;
 
       return processProcedureResultMultiQuery(
@@ -105,10 +107,12 @@ export class BrandService {
 
   async taskBrandFindManagerAllV2(dataJsonDto: BrandFindManagerAllV2Dto) {
     try {
-      const queryString = BrandFindManagerAllV2Query(dataJsonDto);
+      const { procedureName, queryParams } =
+        BrandFindManagerAllV2Query(dataJsonDto);
 
-      const resultData = (await this.dbOperationService.selectExecute(
-        queryString,
+      const resultData = (await this.dbOperationService.callProcedure(
+        procedureName,
+        queryParams,
       )) as unknown as SpResultBrandFindManagerAllData;
 
       return processProcedureResultMultiQuery(
@@ -125,10 +129,11 @@ export class BrandService {
 
   async taskBrandFindIdV2(dataJsonDto: BrandFindIdV2Dto) {
     try {
-      const queryString = BrandFindIdV2Query(dataJsonDto);
+      const { procedureName, queryParams } = BrandFindIdV2Query(dataJsonDto);
 
-      const resultData = (await this.dbOperationService.selectExecute(
-        queryString,
+      const resultData = (await this.dbOperationService.callProcedure(
+        procedureName,
+        queryParams,
       )) as unknown as SpResultBrandFindAllData;
 
       return processProcedureResultMultiQuery(
@@ -169,10 +174,11 @@ export class BrandService {
 
   async taskBrandUpdateV2(dataJsonDto: BrandUpdateV2Dto) {
     try {
-      const queryString = BrandUpdateV2Query(dataJsonDto);
+      const { procedureName, queryParams } = BrandUpdateV2Query(dataJsonDto);
 
-      const resultData = (await this.dbOperationService.selectExecute(
-        queryString,
+      const resultData = (await this.dbOperationService.callProcedure(
+        procedureName,
+        queryParams,
       )) as unknown as SpResultRecordUpdateType;
 
       return processProcedureResultMutation(resultData, 'Brand update failed');
@@ -185,10 +191,11 @@ export class BrandService {
 
   async taskBrandDeleteV2(dataJsonDto: BrandDeleteV2Dto) {
     try {
-      const queryString = BrandDeleteV2Query(dataJsonDto);
+      const { procedureName, queryParams } = BrandDeleteV2Query(dataJsonDto);
 
-      const resultData = (await this.dbOperationService.selectExecute(
-        queryString,
+      const resultData = (await this.dbOperationService.callProcedure(
+        procedureName,
+        queryParams,
       )) as unknown as SpResultRecordUpdateType;
 
       return processProcedureResultMutation(resultData, 'Brand delete failed');
@@ -201,11 +208,11 @@ export class BrandService {
 
   async taskBrandUpdGeneralFieldV2(dataJsonDto: BrandUpdGeneralFieldDto) {
     try {
-      const { queryString, queryParams } =
+      const { procedureName, queryParams } =
         BrandUpdGeneralFieldQuery(dataJsonDto);
 
-      const resultData = (await this.dbOperationService.selectExecute(
-        queryString,
+      const resultData = (await this.dbOperationService.callProcedure(
+        procedureName,
         queryParams,
       )) as unknown as SpResultRecordUpdateType;
 
@@ -222,11 +229,11 @@ export class BrandService {
 
   async taskBrandUpdInlFlagActiveV2(dataJsonDto: BrandUpdInlFlagActiveV2Dto) {
     try {
-      const { queryString, queryParams } =
+      const { procedureName, queryParams } =
         BrandUpdInlFlagActiveV2Query(dataJsonDto);
 
-      const resultData = (await this.dbOperationService.selectExecute(
-        queryString,
+      const resultData = (await this.dbOperationService.callProcedure(
+        procedureName,
         queryParams,
       )) as unknown as SpResultRecordUpdateType;
 
@@ -243,10 +250,11 @@ export class BrandService {
 
   async taskBrandUpdInlNameV2(dataJsonDto: BrandUpdInlNameV2Dto) {
     try {
-      const { queryString, queryParams } = BrandUpdInlNameV2Query(dataJsonDto);
+      const { procedureName, queryParams } =
+        BrandUpdInlNameV2Query(dataJsonDto);
 
-      const resultData = (await this.dbOperationService.selectExecute(
-        queryString,
+      const resultData = (await this.dbOperationService.callProcedure(
+        procedureName,
         queryParams,
       )) as unknown as SpResultRecordUpdateType;
 
@@ -263,10 +271,11 @@ export class BrandService {
 
   async taskBrandUpdInlNotesV2(dataJsonDto: BrandUpdInlNotesV2Dto) {
     try {
-      const { queryString, queryParams } = BrandUpdInlNotesV2Query(dataJsonDto);
+      const { procedureName, queryParams } =
+        BrandUpdInlNotesV2Query(dataJsonDto);
 
-      const resultData = (await this.dbOperationService.selectExecute(
-        queryString,
+      const resultData = (await this.dbOperationService.callProcedure(
+        procedureName,
         queryParams,
       )) as unknown as SpResultRecordUpdateType;
 
@@ -283,10 +292,11 @@ export class BrandService {
 
   async taskBrandUpdInlSlugV2(dataJsonDto: BrandUpdInlSlugV2Dto) {
     try {
-      const { queryString, queryParams } = BrandUpdInlSlugV2Query(dataJsonDto);
+      const { procedureName, queryParams } =
+        BrandUpdInlSlugV2Query(dataJsonDto);
 
-      const resultData = (await this.dbOperationService.selectExecute(
-        queryString,
+      const resultData = (await this.dbOperationService.callProcedure(
+        procedureName,
         queryParams,
       )) as unknown as SpResultRecordUpdateType;
 

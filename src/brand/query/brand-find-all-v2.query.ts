@@ -1,6 +1,6 @@
 import { BrandFindAllV2Dto } from '../dto/brand-find-all-v2.dto';
 
-export function BrandFindAllV2Query(dataJsonDto: BrandFindAllV2Dto): string {
+export function BrandFindAllV2Query(dataJsonDto: BrandFindAllV2Dto) {
   const olAppId = dataJsonDto.pe_app_id ?? 0;
   const olSystemClientId = dataJsonDto.pe_system_client_id;
   const olStoreId = dataJsonDto.pe_store_id;
@@ -8,25 +8,26 @@ export function BrandFindAllV2Query(dataJsonDto: BrandFindAllV2Dto): string {
   const olUserId = dataJsonDto.pe_user_id;
   const olUserName = dataJsonDto.pe_user_name;
   const olUserRole = dataJsonDto.pe_user_role;
-  const olPersonId = dataJsonDto.pe_person_id;
+  const olPersonId = dataJsonDto.pe_person_id ?? null;
 
   const olSearch = dataJsonDto.pe_search;
 
   const olInactive = dataJsonDto.pe_inactive;
   const olLimit = dataJsonDto.pe_limit;
 
-  const queryString = ` call sp_brand_find_all_v2(
-        ${olAppId},
-        ${olSystemClientId},
-        ${olStoreId},
-        '${olOrganizationId}',
-        '${olUserId}',
-        '${olUserName}',
-        '${olUserRole}',
-        ${olPersonId},
-        '${olSearch}',
-        ${olInactive},
-        ${olLimit}      ) `;
+  const queryParams = [
+    olAppId,
+    olSystemClientId,
+    olStoreId,
+    olOrganizationId,
+    olUserId,
+    olUserName,
+    olUserRole,
+    olPersonId,
+    olSearch,
+    olInactive,
+    olLimit,
+  ];
 
-  return queryString;
+  return { procedureName: 'sp_brand_find_all_v2', queryParams };
 }

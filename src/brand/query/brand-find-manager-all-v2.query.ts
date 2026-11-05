@@ -2,7 +2,7 @@ import { BrandFindManagerAllV2Dto } from '../dto/brand-find-manager-all-v2.dto';
 
 export function BrandFindManagerAllV2Query(
   dataJsonDto: BrandFindManagerAllV2Dto,
-): string {
+) {
   const olAppId = dataJsonDto.pe_app_id ?? 0;
   const olSystemClientId = dataJsonDto.pe_system_client_id;
   const olStoreId = dataJsonDto.pe_store_id;
@@ -10,7 +10,7 @@ export function BrandFindManagerAllV2Query(
   const olUserId = dataJsonDto.pe_user_id;
   const olUserName = dataJsonDto.pe_user_name;
   const olUserRole = dataJsonDto.pe_user_role;
-  const olPersonId = dataJsonDto.pe_person_id;
+  const olPersonId = dataJsonDto.pe_person_id ?? null;
 
   const olSearch = dataJsonDto.pe_search;
 
@@ -20,22 +20,22 @@ export function BrandFindManagerAllV2Query(
   const olColumnId = dataJsonDto.pe_column_id;
   const olOrderId = dataJsonDto.pe_order_id;
 
-  const queryString = ` call sp_brand_find_manager_all_v2(
-        ${olAppId},
-        ${olSystemClientId},
-        ${olStoreId},
-        '${olOrganizationId}',
-        '${olUserId}',
-        '${olUserName}',
-        '${olUserRole}',
-        ${olPersonId},
-        '${olSearch}',
-        ${olInactive},
-        ${olQtRecords},
-        ${olPageId},
-        ${olColumnId},
-        ${olOrderId}
-      ) `;
+  const queryParams = [
+    olAppId,
+    olSystemClientId,
+    olStoreId,
+    olOrganizationId,
+    olUserId,
+    olUserName,
+    olUserRole,
+    olPersonId,
+    olSearch,
+    olInactive,
+    olQtRecords,
+    olPageId,
+    olColumnId,
+    olOrderId,
+  ];
 
-  return queryString;
+  return { procedureName: 'sp_brand_find_manager_all_v2', queryParams };
 }

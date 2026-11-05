@@ -1,7 +1,7 @@
 import { BrandUpdInlNameV2Dto } from '../dto/brand-upd-inl-name-v2.dto';
 
 interface BrandUpdInlNameV2QueryResult {
-  queryString: string;
+  procedureName: string;
   queryParams: [
     number,
     number,
@@ -30,19 +30,6 @@ export function BrandUpdInlNameV2Query(
   const olBrandId = dataJsonDto.pe_brand_id;
   const olBrandName = dataJsonDto.pe_brand_name;
 
-  const queryString = `call sp_brand_upd_inl_name_v2(
-        ?,
-        ?,
-        ?,
-        ?,
-        ?,
-        ?,
-        ?,
-        ?,
-        ?,
-        ?
-      )`;
-
   const queryParams: BrandUpdInlNameV2QueryResult['queryParams'] = [
     olAppId,
     olSystemClientId,
@@ -56,5 +43,8 @@ export function BrandUpdInlNameV2Query(
     olBrandName,
   ];
 
-  return { queryString, queryParams };
+  return {
+    procedureName: 'sp_brand_upd_inl_name_v2',
+    queryParams,
+  };
 }
