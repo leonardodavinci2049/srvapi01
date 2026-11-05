@@ -1,6 +1,7 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Logger } from '@nestjs/common';
 import { ResultSetHeader, RowDataPacket } from 'mysql2/promise';
 import { writeLocalLog } from 'src/core/utils/functions/write_local_log';
+import { DatabasePoolQueueFullError } from 'src/db-connection/db-connection.errors';
 import { DbConnectionService } from 'src/db-connection/db-connection.service';
 
 // Tipos compatíveis com mysql2 v3.18+
@@ -17,8 +18,10 @@ type QueryParams = SqlParam[] | { [key: string]: SqlParam };
 
 @Injectable()
 export class DbOperationService {
-  constructor(private readonly dbConnectionService: DbConnectionService) {}
+  /** Logs failed operations without SQL, parameters, or driver messages. */
+  private readonly logger = new Logger(DbOperationService.name);
 
+  constructor(private readonly dbConnectionService: DbConnectionService) {}
 
   /**
    * Runs a read query through mysql2's `query` API.
@@ -36,8 +39,6 @@ export class DbOperationService {
     );
     return results;
   }
-
-
 
   // Método para SELECT com segurança reforçada
   async selectExecute<T extends RowDataPacket>(
@@ -61,7 +62,7 @@ export class DbOperationService {
     });
   }
 
-/** Includes pool wait and cleanup; successful operations remain silent. */
+  /** Includes pool wait and cleanup; successful operations remain silent. */
   private async trackOperation<T>(
     operation: string,
     callback: () => Promise<T>,
@@ -84,6 +85,4 @@ export class DbOperationService {
       throw error;
     }
   }
-
-
 }
