@@ -3,6 +3,7 @@ import { ResultSetHeader, RowDataPacket } from 'mysql2/promise';
 import { writeLocalLog } from 'src/core/utils/functions/write_local_log';
 import { DatabasePoolQueueFullError } from 'src/db-connection/db-connection.errors';
 import { DbConnectionService } from 'src/db-connection/db-connection.service';
+import { ProcedureResult } from 'src/db-connection/db-connection.types';
 
 // Tipos compatíveis com mysql2 v3.18+
 type SqlParam =
@@ -56,6 +57,41 @@ export class DbOperationService {
     );
     return results;
   }
+
+
+ /**
+   * Calls an internally selected procedure, optionally qualified as schema.name.
+   * Validates and quotes identifiers; values are bound through placeholders.
+   * Returns the raw row sets and execution header without changing feedback.
+   */
+  async callProcedure<T extends RowDataPacket = RowDataPacket>(
+    procedureName: string,
+    params?: SqlParam[],
+  ): Promise<ProcedureResult<T>> {
+    if (
+      !/^[A-Za-z_][A-Za-z0-9_$]*(?:\.[A-Za-z_][A-Za-z0-9_$]*)?$/.test(
+        procedureName,
+      )
+    ) {
+      throw new Error('Invalid procedure name.');
+    }
+
+    const identifier = procedureName
+      .split('.')
+      .map((part) => `\`${part}\``)
+      .join('.');
+    const placeholders = params?.map(() => '?').join(',') ?? '';
+    const [results] = await this.trackOperation('callProcedure', () =>
+      this.dbConnectionService.withConnection((executor) =>
+        executor.execute(`CALL ${identifier}(${placeholders})`, params),
+      ),
+    );
+
+    // mysql2's generic CALL type does not describe multiple heterogeneous row sets.
+    // Row validation remains the responsibility of the result processors.
+    return results as unknown as ProcedureResult<T>;
+  }
+
 
   /** Runs reads, including multi-result-set stored procedures, through `execute`. */
   async selectExecute<T extends RowDataPacket>(
